@@ -93,12 +93,16 @@ class ApiController extends Controller
             case 'services':
 	            $model = Services::model()->findByPk($_GET['id']);
 	            break;
+            case 'whitelists':
+	            $model = $this->_viewWhitelist();
+	            break;
 	       	default:
 	            $this->_sendResponse(501, sprintf(
 	                'Mode <b>view</b> is not implemented for model <b>%s</b>',
 	                $_GET['model']) );
 	            Yii::app()->end();
 	    }
+
 
 	    // Did we find the requested model? If not, raise an error
 	    if(is_null($model))
@@ -143,84 +147,7 @@ class ApiController extends Controller
 	    // Try to assign POST values to attributes
 
 	    if ($_GET['model'] == 'threats'){
-
-	    	$user_id=$_POST['user_id'];
-	        $category=$_POST['category'];
-	        $service_name=$_POST['service_name'];
-	        $service_url=$_POST['service_url'];
-	        $domain=$_POST['domain'];
-	        $url=$_POST['url'];
-
-	        $data = Yii::app()->db->createCommand()
-                        ->setFetchMode(PDO::FETCH_OBJ)
-                        ->select('s.id as service_id, c.id as category_id')
-                        ->from('tbl_categories c, tbl_services s')
-                        ->where(array(
-                                    'and',
-                                    'c.name = :category',
-                                    's.name = :service_name'),
-                            array(
-                                    ':category'=>$category,
-                                    ':service_name'=>$service_name)
-                            )
-                        ->queryAll();
-
-	        if (count($data)>0){
-				$service_id = $data[0]->service_id;
-	        }
-	        else{
-
-	        	$data = Yii::app()->db->createCommand()
-		                        ->setFetchMode(PDO::FETCH_OBJ)
-		                        ->select('c.id as category_id')
-		                        ->from('tbl_categories c')
-		                        ->where(array(
-		                                    'and',
-		                                    'c.name = :category'),
-		                            array(
-		                                    ':category'=>$category)
-		                            )
-		                        ->queryAll();
-
-	            if (count($data)>0){
-
-	            	$category_id = $data[0]->category_id;
-
-	            	$service = new Services; 
-		        	$service->category_id=$category_id ;
-		        	$service->name=$service_name;
-		        	$service->url=$service_url;
-
-		        	if (!$service->save()){
-			    		var_dump($service->errors);die;
-			    	}else{
-			    		$service_id = $service->service_id;
-			    	}
-		        }
-	            else{
-					$this->_sendResponse(501, 
-		                sprintf('Category not found <b>%s</b>',
-		                $category) );
-	                Yii::app()->end();
-	            }
-	        }
-
-
-	        if (isset($service_id)){
-
-		        $model = new Threats; 
-		    	$model->user_id=3;
-		    	$model->service_id=$service_id;
-		    	$model->domain=$domain;
-		    	$model->url=$url;
-			}
-			else{
-				$this->_sendResponse(501, 
-	                sprintf('Service not found <b>%s</b>',
-	                $service_name) );
-                Yii::app()->end();
-            }
-
+			$model=$this->_createPost();
 		}
 	    else {
 		    foreach($_POST as $var=>$value) {
@@ -266,6 +193,8 @@ class ApiController extends Controller
 	    $json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
 	    $put_vars = CJSON::decode($json,true);  //true means use associative array
 	 
+
+
 	    switch($_GET['model'])
 	    {
 	        // Find respective model
@@ -288,12 +217,16 @@ class ApiController extends Controller
             case 'services':
 	            $models = Services::model()->findByPk($_GET['id']);
 	            break;
+            case 'whitelists':
+	            $models = $this->_updateWhitelist($put_vars);
+	            break;
 	        default:
 	            $this->_sendResponse(501, 
 	                sprintf( 'Error: Mode <b>update</b> is not implemented for model <b>%s</b>',
 	                $_GET['model']) );
 	            Yii::app()->end();
 	    }
+
 	    // Did we find the requested model? If not, raise an error
 	    if($model === null)
 	        $this->_sendResponse(400, 
@@ -466,5 +399,202 @@ class ApiController extends Controller
 	        echo $body;
 	    }
 	    Yii::app()->end();
+	}
+
+	public function _updateWhitelist($put_vars){
+
+		$user_id = $_GET['id'];
+
+		if ($put_vars!=null)
+		{
+			foreach ($put_vars as $domain => $services){
+
+				foreach ($services as $service_name => $status){
+
+					$data = Yii::app()->db->createCommand()
+			                ->setFetchMode(PDO::FETCH_OBJ)
+			                ->select('w.id as whitelist_id')
+			                ->from('tbl_whitelists w, tbl_services s')
+			                ->where(array(
+			                            'and',
+			                            'w.service_id = s.id',
+			                            's.name = :service_name',
+			                            'w.domain = :domain'),
+			                    array(
+			                            ':domain'=>$domain,
+			                            ':service_name'=>$service_name)
+			                    )
+			                ->queryAll();
+
+		            if (count($data)==0 && $status){
+
+		            	$service = Yii::app()->db->createCommand()
+			                ->setFetchMode(PDO::FETCH_OBJ)
+			                ->select('s.id as service_id')
+			                ->from('tbl_services s')
+			                ->where(array(
+			                            'and',
+			                            's.name = :service_name'),
+			                    array(
+			                            ':service_name'=>$service_name)
+			                    )
+			                ->queryAll();
+
+		                if (count($service)>0){
+
+		                	$service_id = $service[0]->service_id;
+		                	$model = new Whitelists;
+			        	  	$model->user_id=$user_id;
+			        	  	$model->service_id=$service_id;
+			        	  	$model->domain = $domain;
+			        	  	$model->status = true;
+		        	  		$model->create_at = date('Y-m-d H:i:s');
+
+			        	  	$model->save();
+			        	  	
+		                }
+		                else
+		                {
+		                	$this->_sendResponse(501, 
+				                sprintf('Service not found <b>%s</b>',
+				                $service_name) );
+				            Yii::app()->end();
+		                }
+
+		            	
+		            } else if (count($data)>0 && $status==false){
+
+		            	$model = Whitelists::model()->findByPk($data[0]->whitelist_id);
+		            	$model->delete();
+		            }
+
+	            }
+
+			}
+		}
+
+		$this->_sendResponse(200, CJSON::encode($put_vars),'application/json');
+
+	}
+
+	public function _createWhitelist(){
+	}
+	
+	public function _viewWhitelist(){
+
+		$user_id=$_GET['id'];
+
+
+
+
+		$data = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('s.name as service, w.status as status, w.domain as domain')
+	                ->from('tbl_whitelists w, tbl_services s')
+	                ->where(array(
+	                            'and',
+	                            'w.service_id = s.id',
+	                            'w.user_id = :user_id'),
+	                    array(
+	                            ':user_id'=>$user_id)
+	                    )
+	                ->queryAll();
+
+        $result = array();
+
+        foreach($data as $whitelist){
+
+        	$domain = $whitelist->domain;
+
+        	if (!isset($result[$domain])){
+        		$result[$domain]=array();
+        	}
+      
+        	$result[$domain][$whitelist->service]=$whitelist->status;
+        }
+
+        return $result;
+
+	}
+
+	public function _createPost(){
+
+		$user_id=$_POST['user_id'];
+	    $category=$_POST['category'];
+	    $service_name=$_POST['service_name'];
+	    $service_url=$_POST['service_url'];
+	    $domain=$_POST['domain'];
+	    $url=$_POST['url'];
+
+	    $data = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('s.id as service_id, c.id as category_id')
+	                ->from('tbl_categories c, tbl_services s')
+	                ->where(array(
+	                            'and',
+	                            'c.name = :category',
+	                            's.name = :service_name'),
+	                    array(
+	                            ':category'=>$category,
+	                            ':service_name'=>$service_name)
+	                    )
+	                ->queryAll();
+
+	    if (count($data)>0){
+			$service_id = $data[0]->service_id;
+	    }
+	    else{
+
+	    	$data = Yii::app()->db->createCommand()
+	                        ->setFetchMode(PDO::FETCH_OBJ)
+	                        ->select('c.id as category_id')
+	                        ->from('tbl_categories c')
+	                        ->where(array(
+	                                    'and',
+	                                    'c.name = :category'),
+	                            array(
+	                                    ':category'=>$category)
+	                            )
+	                        ->queryAll();
+
+	        if (count($data)>0){
+
+	        	$category_id = $data[0]->category_id;
+
+	        	$service = new Services; 
+	        	$service->category_id=$category_id ;
+	        	$service->name=$service_name;
+	        	$service->url=$service_url;
+
+	        	if (!$service->save()){
+		    		var_dump($service->errors);die;
+		    	}else{
+		    		$service_id = $service->service_id;
+		    	}
+	        }
+	        else{
+				$this->_sendResponse(501, 
+	                sprintf('Category not found <b>%s</b>',
+	                $category) );
+	            Yii::app()->end();
+	        }
+	    }
+
+	    if (isset($service_id)){
+
+	        $model = new Threats; 
+	    	$model->user_id=3;
+	    	$model->service_id=$service_id;
+	    	$model->domain=$domain;
+	    	$model->url=$url;
+		}
+		else{
+			$this->_sendResponse(501, 
+	            sprintf('Service not found <b>%s</b>',
+	            $service_name) );
+	        Yii::app()->end();
+	    }	
+
+	    return $model;
 	}
 }

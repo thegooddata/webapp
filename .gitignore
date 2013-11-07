@@ -1,3 +1,4 @@
 assets/
-protected/runtime/
-themes/classic/views/
+TGD/protected/runtime/application.log
+application.log
+application.log.*
