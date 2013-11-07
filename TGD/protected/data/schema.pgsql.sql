@@ -44,12 +44,13 @@ CREATE TABLE tbl_services (
 );
 
 --DROP TABLE tbl_whitelist;
-CREATE TABLE tbl_whitelist (
+CREATE TABLE tbl_whitelists (
   id SERIAL PRIMARY KEY,
   user_id int NOT NULL references tbl_users(id),
-  category_id int NOT NULL references tbl_categories(id),
   domain varchar(255) NOT NULL DEFAULT '',
-  status varchar(50) NOT NULL DEFAULT ''
+  service_id int references tbl_services(id),
+  status boolean NOT NULL DEFAULT true,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 --DROP TABLE tbl_threats;
@@ -61,6 +62,7 @@ CREATE TABLE tbl_threats (
   url text NOT NULL DEFAULT '',
   create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
 
 --DROP TABLE tbl_history;
 CREATE TABLE tbl_history (
