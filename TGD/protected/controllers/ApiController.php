@@ -473,7 +473,9 @@ class ApiController extends Controller
 			}
 		}
 
-		$this->_sendResponse(200, CJSON::encode($put_vars),'application/json');
+		$model = $this->_viewWhitelist();
+
+		$this->_sendResponse(200, CJSON::encode($model),'application/json');
 
 	}
 
