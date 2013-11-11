@@ -73,6 +73,15 @@ CREATE TABLE tbl_history (
   create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+--DROP TABLE tbl_queries_blacklist;
+CREATE TABLE tbl_queries_blacklist (
+  id SERIAL PRIMARY KEY,
+  category varchar(255) NOT NULL DEFAULT '',
+  word varchar(255) NOT NULL DEFAULT '',
+  lang varchar(128) NOT NULL,
+  create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 --DROP TABLE tbl_profiles_fields;
 CREATE TABLE tbl_profiles_fields (
   id SERIAL PRIMARY KEY,

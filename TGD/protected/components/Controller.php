@@ -26,6 +26,7 @@ class Controller extends CController
 		array('label'=>'Manage Services', 'url'=>array('/services/admin')),
 		array('label'=>'Manage User Historial', 'url'=>array('/history/admin')),
 		array('label'=>'Manage Whitelists', 'url'=>array('/whitelists/admin')),
+		array('label'=>'Manage Queries Blacklist', 'url'=>array('/queriesBlacklist/admin')),
 	);
 
 	/**

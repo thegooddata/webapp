@@ -24,6 +24,7 @@ class ApiController extends Controller
     // Actions
     public function actionList()
 	{
+		//die($_GET['model']);
 	    // Get the respective model instance
 	    switch($_GET['model'])
 	    {
@@ -44,6 +45,9 @@ class ApiController extends Controller
 	            break;
             case 'services':
 	            $models = Services::model()->findAll();
+	            break;
+            case 'queriesBlacklist':
+	            $models = queriesBlacklist::model()->findAll();
 	            break;
 	        default:
 	            // Model not implemented error
@@ -96,6 +100,8 @@ class ApiController extends Controller
             case 'whitelists':
 	            $model = $this->_viewWhitelist();
 	            break;
+	       
+	            
 	       	default:
 	            $this->_sendResponse(501, sprintf(
 	                'Mode <b>view</b> is not implemented for model <b>%s</b>',
@@ -482,13 +488,11 @@ class ApiController extends Controller
 	public function _createWhitelist(){
 	}
 	
+	
+
 	public function _viewWhitelist(){
 
 		$user_id=$_GET['id'];
-
-
-
-
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('s.name as service, w.status as status, w.domain as domain')
