@@ -11,6 +11,12 @@
 class UserModule extends CWebModule
 {
 	/**
+	 * @var string
+	 * @desc salt for encrypt pass
+	 */
+	public $salt = '';
+
+	/**
 	 * @var int
 	 * @desc items on page
 	 */
@@ -163,7 +169,7 @@ class UserModule extends CWebModule
 	public static function encrypting($string="") {
 		$hash = Yii::app()->getModule('user')->hash;
 		if ($hash=="md5")
-			return md5($string);
+			return md5(Yii::app()->getModule('user')->salt.$string);
 		if ($hash=="sha1")
 			return sha1($string);
 		else

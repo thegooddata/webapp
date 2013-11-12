@@ -20,6 +20,32 @@ class ApiController extends Controller
     {
             return array();
     }
+
+    public function actionUser(){
+    	
+    	$value = $_GET['username'];
+    	$password = $_GET['password'];
+
+    	$user = Yii::app()->db->createCommand()
+			                ->setFetchMode(PDO::FETCH_OBJ)
+			                ->select('*')
+			                ->from('tbl_users u')
+			                ->where(array(
+			                            'and',
+			                            '(u.username = :value or u.email = :value)',
+			                            'u.password = :password'),
+			                    array(
+			                            ':value'=>$value,
+			                            ':password'=>$password)
+			                    )
+			                ->queryAll();
+
+		if(empty($user)) {
+	         $this->_sendResponse(404, 'No user found with username: '.$_GET['username']);
+	    } else {
+	        $this->_sendResponse(200, CJSON::encode($user),'application/json');
+	    }             
+    }
  
     // Actions
     public function actionList()
