@@ -14,14 +14,14 @@
 	<?php echo $form->errorSummary($model); ?>
 
 		<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->dropDownList($model, 'user_id', GxHtml::listDataEx(Users::model()->findAllAttributes(null, true))); ?>
-		<?php echo $form->error($model,'user_id'); ?>
+		<?php echo $form->labelEx($model,'member_id'); ?>
+		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->error($model,'member_id'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'create_at'); ?>
-		<?php echo $form->textField($model, 'create_at'); ?>
-		<?php echo $form->error($model,'create_at'); ?>
+		<?php echo $form->labelEx($model,'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php echo $form->error($model,'created_at'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'provider'); ?>

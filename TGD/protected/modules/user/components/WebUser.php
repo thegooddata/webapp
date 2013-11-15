@@ -52,7 +52,7 @@ class WebUser extends CWebUser
         $userAttributes = CMap::mergeArray(array(
                                                 'email'=>$user->email,
                                                 'username'=>$user->username,
-                                                'create_at'=>$user->create_at,
+                                                'created_at'=>$user->created_at,
                                                 'lastvisit_at'=>$user->lastvisit_at,
                                            ),$user->profile->getAttributes());
         foreach ($userAttributes as $attrName=>$attrValue) {

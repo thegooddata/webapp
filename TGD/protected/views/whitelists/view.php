@@ -21,18 +21,18 @@ $this->menu=array(
 	'attributes' => array(
 'id',
 array(
-			'name' => 'user',
+			'name' => 'member',
 			'type' => 'raw',
-			'value' => $model->user !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->user)), array('users/view', 'id' => GxActiveRecord::extractPkValue($model->user, true))) : null,
+			'value' => $model->member !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->member)), array('members/view', 'id' => GxActiveRecord::extractPkValue($model->member, true))) : null,
 			),
 'domain',
 array(
-			'name' => 'service',
+			'name' => 'adtracksSources',
 			'type' => 'raw',
-			'value' => $model->service !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->service)), array('services/view', 'id' => GxActiveRecord::extractPkValue($model->service, true))) : null,
+			'value' => $model->adtracksSources !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->adtracksSources)), array('adtracksSources/view', 'id' => GxActiveRecord::extractPkValue($model->adtracksSources, true))) : null,
 			),
 'status:boolean',
-'create_at',
+'created_at',
 	),
 )); ?>
 

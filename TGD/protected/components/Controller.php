@@ -19,12 +19,12 @@ class Controller extends CController
 	 */
 	
 	public $menu_admin=array(
-		array('label'=>'Manage Users', 'url'=>array('/user/admin')),
+		array('label'=>'Manage Members', 'url'=>array('/user/admin')),
 		array('label'=>'Manage Queries', 'url'=>array('/queries/admin')),	
-		array('label'=>'Manage Threats', 'url'=>array('/threats/admin')),	
-		array('label'=>'Manage Categories', 'url'=>array('/categories/admin')),	
-		array('label'=>'Manage Services', 'url'=>array('/services/admin')),
-		array('label'=>'Manage User Historial', 'url'=>array('/history/admin')),
+		array('label'=>'Manage Adtracks', 'url'=>array('/adtracks/admin')),	
+		array('label'=>'Manage Adtracks Sources', 'url'=>array('/adtracksSources/admin')),	
+		array('label'=>'Manage Adtracks Types', 'url'=>array('/adtracksTypes/admin')),
+		array('label'=>'Manage Browsing', 'url'=>array('/browsing/admin')),
 		array('label'=>'Manage Whitelists', 'url'=>array('/whitelists/admin')),
 		array('label'=>'Manage Queries Blacklist', 'url'=>array('/queriesBlacklist/admin')),
 	);

@@ -118,7 +118,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131029',
+		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131115',
 		    'username'=>'dani',
 		    'password'=>'',
 		    'charset'=>'UTF8',

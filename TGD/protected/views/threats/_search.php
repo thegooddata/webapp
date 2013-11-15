@@ -11,13 +11,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'user_id'); ?>
-		<?php echo $form->dropDownList($model, 'user_id', GxHtml::listDataEx(Users::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->label($model, 'member_id'); ?>
+		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'service_id'); ?>
-		<?php echo $form->dropDownList($model, 'service_id', GxHtml::listDataEx(Services::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->dropDownList($model, 'service_id', GxHtml::listDataEx(ThreatsSources::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
@@ -31,8 +31,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'create_at'); ?>
-		<?php echo $form->textField($model, 'create_at'); ?>
+		<?php echo $form->label($model, 'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
 	</div>
 
 	<div class="row buttons">

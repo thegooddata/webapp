@@ -44,22 +44,22 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'columns' => array(
 		'id',
 		array(
-				'name'=>'user_id',
-				'value'=>'GxHtml::valueEx($data->user)',
-				'filter'=>GxHtml::listDataEx(Users::model()->findAllAttributes(null, true)),
+				'name'=>'member_id',
+				'value'=>'GxHtml::valueEx($data->member)',
+				'filter'=>GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)),
 				),
 		'domain',
 		array(
-				'name'=>'service_id',
-				'value'=>'GxHtml::valueEx($data->service)',
-				'filter'=>GxHtml::listDataEx(Services::model()->findAllAttributes(null, true)),
+				'name'=>'adtracks_sources_id',
+				'value'=>'GxHtml::valueEx($data->adtracksSources)',
+				'filter'=>GxHtml::listDataEx(AdtracksSources::model()->findAllAttributes(null, true)),
 				),
 		array(
 					'name' => 'status',
 					'value' => '($data->status === 0) ? Yii::t(\'app\', \'No\') : Yii::t(\'app\', \'Yes\')',
 					'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')),
 					),
-		'create_at',
+		'created_at',
 		array(
 			'class' => 'CButtonColumn',
 		),

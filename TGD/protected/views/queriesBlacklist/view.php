@@ -21,9 +21,9 @@ $this->menu=array(
 	'attributes' => array(
 'id',
 'category',
-'word',
+'headword',
 'lang',
-'create_at',
+'created_at',
 	),
 )); ?>
 

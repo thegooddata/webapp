@@ -8,10 +8,10 @@ if (!UserModule::isAdmin())
 	$this->menu_admin=array();
 
 $this->menu=array(
-    array('label'=>UserModule::t('Create User'), 'url'=>array('create')),
-    array('label'=>UserModule::t('Manage Users'), 'url'=>array('admin')),
+    array('label'=>UserModule::t('Create Member'), 'url'=>array('create')),
+    array('label'=>UserModule::t('Manage Members'), 'url'=>array('admin')),
     array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('profileField/admin')),
-    array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+    array('label'=>UserModule::t('List Member'), 'url'=>array('/user')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 ");
 
 ?>
-<h1><?php echo UserModule::t("Manage Users"); ?></h1>
+<h1><?php echo UserModule::t("Manage Members"); ?></h1>
 
 <p><?php echo UserModule::t("You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done."); ?></p>
 
@@ -59,7 +59,7 @@ $('.search-form form').submit(function(){
 			'type'=>'raw',
 			'value'=>'CHtml::link(UHtml::markSearch($data,"email"), "mailto:".$data->email)',
 		),
-		'create_at',
+		'created_at',
 		'lastvisit_at',
 		array(
 			'name'=>'superuser',

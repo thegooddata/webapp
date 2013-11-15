@@ -13,7 +13,7 @@
  * @property integer $user_id
  * @property string $domain
  * @property string $url
- * @property string $create_at
+ * @property string $created_at
  *
  * @property Users $user
  */
@@ -40,9 +40,9 @@ abstract class BaseHistory extends GxActiveRecord {
 			array('user_id', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('domain', 'length', 'max'=>255),
-			array('url, create_at', 'safe'),
-			array('domain, url, create_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, domain, url, create_at', 'safe', 'on'=>'search'),
+			array('url, created_at', 'safe'),
+			array('domain, url, created_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, domain, url, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +63,7 @@ abstract class BaseHistory extends GxActiveRecord {
 			'user_id' => null,
 			'domain' => Yii::t('app', 'Domain'),
 			'url' => Yii::t('app', 'Url'),
-			'create_at' => Yii::t('app', 'Create At'),
+			'created_at' => Yii::t('app', 'Create At'),
 			'user' => null,
 		);
 	}
@@ -75,7 +75,7 @@ abstract class BaseHistory extends GxActiveRecord {
 		$criteria->compare('user_id', $this->user_id);
 		$criteria->compare('domain', $this->domain, true);
 		$criteria->compare('url', $this->url, true);
-		$criteria->compare('create_at', $this->create_at, true);
+		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

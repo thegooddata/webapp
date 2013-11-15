@@ -19,9 +19,9 @@
 		<?php echo $form->error($model,'category'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'word'); ?>
-		<?php echo $form->textField($model, 'word', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'word'); ?>
+		<?php echo $form->labelEx($model,'headword'); ?>
+		<?php echo $form->textField($model, 'headword', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'headword'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'lang'); ?>
@@ -29,9 +29,9 @@
 		<?php echo $form->error($model,'lang'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'create_at'); ?>
-		<?php echo $form->textField($model, 'create_at'); ?>
-		<?php echo $form->error($model,'create_at'); ?>
+		<?php echo $form->labelEx($model,'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php echo $form->error($model,'created_at'); ?>
 		</div><!-- row -->
 
 

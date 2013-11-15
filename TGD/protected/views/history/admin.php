@@ -50,7 +50,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				),
 		'domain',
 		'url',
-		'create_at',
+		'created_at',
 		array(
 			'class' => 'CButtonColumn',
 		),

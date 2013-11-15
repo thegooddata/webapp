@@ -7,14 +7,14 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('category')); ?>:
 	<?php echo GxHtml::encode($data->category); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('word')); ?>:
-	<?php echo GxHtml::encode($data->word); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('headword')); ?>:
+	<?php echo GxHtml::encode($data->headword); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('lang')); ?>:
 	<?php echo GxHtml::encode($data->lang); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('create_at')); ?>:
-	<?php echo GxHtml::encode($data->create_at); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
+	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />
 
 </div>

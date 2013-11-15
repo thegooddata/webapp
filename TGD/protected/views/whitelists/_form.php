@@ -14,9 +14,9 @@
 	<?php echo $form->errorSummary($model); ?>
 
 		<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->dropDownList($model, 'user_id', GxHtml::listDataEx(Users::model()->findAllAttributes(null, true))); ?>
-		<?php echo $form->error($model,'user_id'); ?>
+		<?php echo $form->labelEx($model,'member_id'); ?>
+		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->error($model,'member_id'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'domain'); ?>
@@ -24,9 +24,9 @@
 		<?php echo $form->error($model,'domain'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'service_id'); ?>
-		<?php echo $form->dropDownList($model, 'service_id', GxHtml::listDataEx(Services::model()->findAllAttributes(null, true))); ?>
-		<?php echo $form->error($model,'service_id'); ?>
+		<?php echo $form->labelEx($model,'adtracks_sources_id'); ?>
+		<?php echo $form->dropDownList($model, 'adtracks_sources_id', GxHtml::listDataEx(AdtracksSources::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->error($model,'adtracks_sources_id'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
@@ -34,9 +34,9 @@
 		<?php echo $form->error($model,'status'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'create_at'); ?>
-		<?php echo $form->textField($model, 'create_at'); ?>
-		<?php echo $form->error($model,'create_at'); ?>
+		<?php echo $form->labelEx($model,'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php echo $form->error($model,'created_at'); ?>
 		</div><!-- row -->
 
 

@@ -13,8 +13,8 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('url')); ?>:
 	<?php echo GxHtml::encode($data->url); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('create_at')); ?>:
-	<?php echo GxHtml::encode($data->create_at); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
+	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />
 
 </div>

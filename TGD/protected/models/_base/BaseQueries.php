@@ -10,14 +10,14 @@
  * followed by relations of table "{{queries}}" available as properties of the model.
  *
  * @property integer $id
- * @property integer $user_id
- * @property string $create_at
+ * @property integer $member_id
+ * @property string $created_at
  * @property string $provider
  * @property string $data
  * @property string $query
  * @property string $lang
  *
- * @property Users $user
+ * @property Members $member
  */
 abstract class BaseQueries extends GxActiveRecord {
 
@@ -39,19 +39,19 @@ abstract class BaseQueries extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('user_id, provider, data, query, lang', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('member_id, provider, data, query, lang', 'required'),
+			array('member_id', 'numerical', 'integerOnly'=>true),
 			array('provider, lang', 'length', 'max'=>128),
 			array('data', 'length', 'max'=>256),
-			array('create_at', 'safe'),
-			array('create_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, create_at, provider, data, query, lang', 'safe', 'on'=>'search'),
+			array('created_at', 'safe'),
+			array('created_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, member_id, created_at, provider, data, query, lang', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
-			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
+			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
 		);
 	}
 
@@ -63,13 +63,13 @@ abstract class BaseQueries extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'user_id' => null,
-			'create_at' => Yii::t('app', 'Create At'),
+			'member_id' => null,
+			'created_at' => Yii::t('app', 'Create At'),
 			'provider' => Yii::t('app', 'Provider'),
 			'data' => Yii::t('app', 'Data'),
 			'query' => Yii::t('app', 'Query'),
 			'lang' => Yii::t('app', 'Lang'),
-			'user' => null,
+			'member' => null,
 		);
 	}
 
@@ -77,8 +77,8 @@ abstract class BaseQueries extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('user_id', $this->user_id);
-		$criteria->compare('create_at', $this->create_at, true);
+		$criteria->compare('member_id', $this->member_id);
+		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('provider', $this->provider, true);
 		$criteria->compare('data', $this->data, true);
 		$criteria->compare('query', $this->query, true);

@@ -16,8 +16,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'word'); ?>
-		<?php echo $form->textField($model, 'word', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'headword'); ?>
+		<?php echo $form->textField($model, 'headword', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">
@@ -26,8 +26,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'create_at'); ?>
-		<?php echo $form->textField($model, 'create_at'); ?>
+		<?php echo $form->label($model, 'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
 	</div>
 
 	<div class="row buttons">

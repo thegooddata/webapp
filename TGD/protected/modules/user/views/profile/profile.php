@@ -7,7 +7,7 @@ if (!UserModule::isAdmin())
 	$this->menu_admin=array();
 
 $this->menu=array(
-    array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+    array('label'=>UserModule::t('List Member'), 'url'=>array('/user')),
     array('label'=>UserModule::t('Edit'), 'url'=>array('edit')),
     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
     array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
@@ -43,8 +43,8 @@ $this->menu=array(
     	<td><?php echo CHtml::encode($model->email); ?></td>
 	</tr>
 	<tr>
-		<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?></th>
-    	<td><?php echo $model->create_at; ?></td>
+		<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('created_at')); ?></th>
+    	<td><?php echo $model->created_at; ?></td>
 	</tr>
 	<tr>
 		<th class="label"><?php echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?></th>

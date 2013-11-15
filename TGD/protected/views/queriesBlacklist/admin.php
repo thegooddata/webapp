@@ -44,9 +44,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'columns' => array(
 		'id',
 		'category',
-		'word',
+		'headword',
 		'lang',
-		'create_at',
+		'created_at',
 		array(
 			'class' => 'CButtonColumn',
 		),

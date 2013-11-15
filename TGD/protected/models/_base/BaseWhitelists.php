@@ -10,14 +10,14 @@
  * followed by relations of table "{{whitelists}}" available as properties of the model.
  *
  * @property integer $id
- * @property integer $user_id
+ * @property integer $member_id
  * @property string $domain
- * @property integer $service_id
+ * @property integer $adtracks_sources_id
  * @property boolean $status
- * @property string $create_at
+ * @property string $created_at
  *
- * @property Users $user
- * @property Services $service
+ * @property Members $member
+ * @property AdtracksSources $adtracksSources
  */
 abstract class BaseWhitelists extends GxActiveRecord {
 
@@ -39,19 +39,19 @@ abstract class BaseWhitelists extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('user_id', 'required'),
-			array('user_id, service_id', 'numerical', 'integerOnly'=>true),
+			array('member_id, adtracks_sources_id', 'required'),
+			array('member_id, adtracks_sources_id', 'numerical', 'integerOnly'=>true),
 			array('domain', 'length', 'max'=>255),
-			array('status, create_at', 'safe'),
-			array('domain, service_id, status, create_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, domain, service_id, status, create_at', 'safe', 'on'=>'search'),
+			array('status, created_at', 'safe'),
+			array('domain, status, created_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, member_id, domain, adtracks_sources_id, status, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
-			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
-			'service' => array(self::BELONGS_TO, 'Services', 'service_id'),
+			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
+			'adtracksSources' => array(self::BELONGS_TO, 'AdtracksSources', 'adtracks_sources_id'),
 		);
 	}
 
@@ -63,13 +63,13 @@ abstract class BaseWhitelists extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'user_id' => null,
+			'member_id' => null,
 			'domain' => Yii::t('app', 'Domain'),
-			'service_id' => null,
+			'adtracks_sources_id' => null,
 			'status' => Yii::t('app', 'Status'),
-			'create_at' => Yii::t('app', 'Create At'),
-			'user' => null,
-			'service' => null,
+			'created_at' => Yii::t('app', 'Created At'),
+			'member' => null,
+			'adtracksSources' => null,
 		);
 	}
 
@@ -77,11 +77,11 @@ abstract class BaseWhitelists extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('user_id', $this->user_id);
+		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('domain', $this->domain, true);
-		$criteria->compare('service_id', $this->service_id);
+		$criteria->compare('adtracks_sources_id', $this->adtracks_sources_id);
 		$criteria->compare('status', $this->status);
-		$criteria->compare('create_at', $this->create_at, true);
+		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

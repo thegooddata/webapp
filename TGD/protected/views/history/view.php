@@ -27,7 +27,7 @@ array(
 			),
 'domain',
 'url',
-'create_at',
+'created_at',
 	),
 )); ?>
 

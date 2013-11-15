@@ -44,11 +44,11 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'columns' => array(
 		'id',
 		array(
-				'name'=>'user_id',
-				'value'=>'GxHtml::valueEx($data->user)',
-				'filter'=>GxHtml::listDataEx(Users::model()->findAllAttributes(null, true)),
+				'name'=>'member_id',
+				'value'=>'GxHtml::valueEx($data->member)',
+				'filter'=>GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)),
 				),
-		'create_at',
+		'created_at',
 		'provider',
 		'data',
 		'query',

@@ -103,7 +103,7 @@ class SiteController extends Controller
 	 //    	$model->service_id=$service_id;
 	 //    	$model->domain=$domain;
 	 //    	$model->url=$url;
-		// 	$model->create_at = date('Y-m-d H:i:s');
+		// 	$model->created_at = date('Y-m-d H:i:s');
 
 	 //    	if (!$model->save()){
 	 //    		var_dump($model->errors);die;

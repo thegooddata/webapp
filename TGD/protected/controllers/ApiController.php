@@ -29,7 +29,7 @@ class ApiController extends Controller
     	$user = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
 			                ->select('*')
-			                ->from('tbl_users u')
+			                ->from('tbl_members u')
 			                ->where(array(
 			                            'and',
 			                            '(u.username = :value or u.email = :value)',
@@ -60,17 +60,17 @@ class ApiController extends Controller
             case 'categories':
 	            $models = Categories::model()->findAll();
 	            break;
-            case 'history':
-	            $models = History::model()->findAll();
+            case 'browsing':
+	            $models = Browsing::model()->findAll();
 	            break;
             case 'queries':
 	            $models = Queries::model()->findAll();
 	            break;
-            case 'threats':
-	            $models = Threats::model()->findAll();
+            case 'adtracks':
+	            $models = Adtracks::model()->findAll();
 	            break;
-            case 'services':
-	            $models = Services::model()->findAll();
+            case 'adtrackssources':
+	            $models = AdtracksSources::model()->findAll();
 	            break;
             case 'queriesBlacklist':
 	            $models = queriesBlacklist::model()->findAll();
@@ -111,17 +111,17 @@ class ApiController extends Controller
             case 'categories':
 	            $model = Categories::model()->findByPk($_GET['id']);
 	            break;
-            case 'history':
-	            $model = History::model()->findByPk($_GET['id']);
+            case 'browsing':
+	            $model = Browsing::model()->findByPk($_GET['id']);
 	            break;
             case 'queries':
 	            $model = Queries::model()->findByPk($_GET['id']);
 	            break;
-            case 'threats':
-	            $model = Threats::model()->findByPk($_GET['id']);
+            case 'adtracks':
+	            $model = Adtracks::model()->findByPk($_GET['id']);
 	            break;
-            case 'services':
-	            $model = Services::model()->findByPk($_GET['id']);
+            case 'adtrackssources':
+	            $model = AdtracksSources::model()->findByPk($_GET['id']);
 	            break;
             case 'whitelists':
 	            $model = $this->_viewWhitelist();
@@ -154,17 +154,17 @@ class ApiController extends Controller
             case 'categories':
 	            $model = new Categories;  
 	            break;
-            case 'history':
-	            $model = new History;  
+            case 'browsing':
+	            $model = new Browsing;  
 	            break;
             case 'queries':
 	            $model = new Queries;  
 	            break;
-            case 'threats':
-	            $model = new Threats;  
+            case 'adtracks':
+	            $model = new Adtracks;  
 	            break;
-            case 'services':
-	            $model = new Services;  
+            case 'adtrackssources':
+	            $model = new AdtracksSources;  
 	            break;
             case 'posts':
 	            $model = new Post;                    
@@ -178,8 +178,8 @@ class ApiController extends Controller
 
 	    // Try to assign POST values to attributes
 
-	    if ($_GET['model'] == 'threats'){
-			$model=$this->_createPost();
+	    if ($_GET['model'] == 'adtracks'){
+			$model=$this->_createAdtrack();
 		}
 	    else {
 		    foreach($_POST as $var=>$value) {
@@ -193,9 +193,9 @@ class ApiController extends Controller
 		    }
 	    }
 
-	    //Set create_at
-		if (!isset($model->create_at)){
-		 	$model->create_at = date('Y-m-d H:i:s');
+	    //Set created_at
+		if (!isset($model->created_at)){
+		 	$model->created_at = date('Y-m-d H:i:s');
 		}
 
 	    // Try to save the model
@@ -237,17 +237,17 @@ class ApiController extends Controller
             case 'categories':
 	            $models = Categories::model()->findByPk($_GET['id']);
 	            break;
-            case 'history':
-	            $models = History::model()->findByPk($_GET['id']);
+            case 'browsing':
+	            $models = Browsing::model()->findByPk($_GET['id']);
 	            break;
             case 'queries':
 	            $models = Queries::model()->findByPk($_GET['id']);
 	            break;
-            case 'threats':
-	            $models = Threats::model()->findByPk($_GET['id']);
+            case 'adtracks':
+	            $models = Adtracks::model()->findByPk($_GET['id']);
 	            break;
-            case 'services':
-	            $models = Services::model()->findByPk($_GET['id']);
+            case 'adtrackssources':
+	            $models = AdtracksSources::model()->findByPk($_GET['id']);
 	            break;
             case 'whitelists':
 	            $models = $this->_updateWhitelist($put_vars);
@@ -297,17 +297,17 @@ class ApiController extends Controller
             case 'categories':
 	            $model = Categories::model()->findByPk($_GET['id']);
 	            break;
-            case 'history':
-	            $model = History::model()->findByPk($_GET['id']);
+            case 'browsing':
+	            $model = Browsing::model()->findByPk($_GET['id']);
 	            break;
             case 'queries':
 	            $model = Queries::model()->findByPk($_GET['id']);
 	            break;
-            case 'threats':
-	            $model = Threats::model()->findByPk($_GET['id']);
+            case 'adtracks':
+	            $model = Adtracks::model()->findByPk($_GET['id']);
 	            break;
-            case 'services':
-	            $model = Services::model()->findByPk($_GET['id']);
+            case 'adtrackssources':
+	            $model = AdtracksSources::model()->findByPk($_GET['id']);
 	            break;
 	        default:
 	            $this->_sendResponse(501, 
@@ -435,10 +435,11 @@ class ApiController extends Controller
 
 	public function _updateWhitelist($put_vars){
 
-		$user_id = $_GET['id'];
+		$member_id = $_GET['id'];
 
 		if ($put_vars!=null)
 		{
+
 			foreach ($put_vars as $domain => $services){
 
 				foreach ($services as $service_name => $status){
@@ -446,10 +447,10 @@ class ApiController extends Controller
 					$data = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
 			                ->select('w.id as whitelist_id')
-			                ->from('tbl_whitelists w, tbl_services s')
+			                ->from('tbl_whitelists w, tbl_adtracks_sources s')
 			                ->where(array(
 			                            'and',
-			                            'w.service_id = s.id',
+			                            'w.adtracks_sources_id = s.id',
 			                            's.name = :service_name',
 			                            'w.domain = :domain'),
 			                    array(
@@ -462,8 +463,8 @@ class ApiController extends Controller
 
 		            	$service = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
-			                ->select('s.id as service_id')
-			                ->from('tbl_services s')
+			                ->select('s.id as adtracks_sources_id')
+			                ->from('tbl_adtracks_sources s')
 			                ->where(array(
 			                            'and',
 			                            's.name = :service_name'),
@@ -474,13 +475,13 @@ class ApiController extends Controller
 
 		                if (count($service)>0){
 
-		                	$service_id = $service[0]->service_id;
+		                	$adtracks_sources_id = $service[0]->adtracks_sources_id;
 		                	$model = new Whitelists;
-			        	  	$model->user_id=$user_id;
-			        	  	$model->service_id=$service_id;
+			        	  	$model->member_id=$member_id;
+			        	  	$model->adtracks_sources_id=$adtracks_sources_id;
 			        	  	$model->domain = $domain;
 			        	  	$model->status = true;
-		        	  		$model->create_at = date('Y-m-d H:i:s');
+		        	  		$model->created_at = date('Y-m-d H:i:s');
 
 			        	  	$model->save();
 			        	  	
@@ -518,17 +519,17 @@ class ApiController extends Controller
 
 	public function _viewWhitelist(){
 
-		$user_id=$_GET['id'];
+		$member_id=$_GET['id'];
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('s.name as service, w.status as status, w.domain as domain')
-	                ->from('tbl_whitelists w, tbl_services s')
+	                ->from('tbl_whitelists w, tbl_adtracks_sources s')
 	                ->where(array(
 	                            'and',
-	                            'w.service_id = s.id',
-	                            'w.user_id = :user_id'),
+	                            'w.adtracks_sources_id = s.id',
+	                            'w.member_id = :member_id'),
 	                    array(
-	                            ':user_id'=>$user_id)
+	                            ':member_id'=>$member_id)
 	                    )
 	                ->queryAll();
 
@@ -549,9 +550,9 @@ class ApiController extends Controller
 
 	}
 
-	public function _createPost(){
+	public function _createAdtrack(){
 
-		$user_id=$_POST['user_id'];
+		$member_id=$_POST['member_id'];
 	    $category=$_POST['category'];
 	    $service_name=$_POST['service_name'];
 	    $service_url=$_POST['service_url'];
@@ -560,8 +561,8 @@ class ApiController extends Controller
 
 	    $data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
-	                ->select('s.id as service_id, c.id as category_id')
-	                ->from('tbl_categories c, tbl_services s')
+	                ->select('s.id as adtracks_sources_id, c.id as category_id')
+	                ->from('tbl_adtracks_types c, tbl_adtracks_sources s')
 	                ->where(array(
 	                            'and',
 	                            'c.name = :category',
@@ -573,17 +574,17 @@ class ApiController extends Controller
 	                ->queryAll();
 
 	    if (count($data)>0){
-			$service_id = $data[0]->service_id;
+			$adtracks_sources_id = $data[0]->adtracks_sources_id;
 	    }
 	    else{
 
 	    	$data = Yii::app()->db->createCommand()
 	                        ->setFetchMode(PDO::FETCH_OBJ)
-	                        ->select('c.id as category_id')
-	                        ->from('tbl_categories c')
+	                        ->select('t.id as category_id')
+	                        ->from('tbl_adtracks_types t')
 	                        ->where(array(
 	                                    'and',
-	                                    'c.name = :category'),
+	                                    't.name = :category'),
 	                            array(
 	                                    ':category'=>$category)
 	                            )
@@ -593,7 +594,7 @@ class ApiController extends Controller
 
 	        	$category_id = $data[0]->category_id;
 
-	        	$service = new Services; 
+	        	$service = new AdtracksSources; 
 	        	$service->category_id=$category_id ;
 	        	$service->name=$service_name;
 	        	$service->url=$service_url;
@@ -601,7 +602,7 @@ class ApiController extends Controller
 	        	if (!$service->save()){
 		    		var_dump($service->errors);die;
 		    	}else{
-		    		$service_id = $service->service_id;
+		    		$adtracks_sources_id = $service->adtracks_sources_id;
 		    	}
 	        }
 	        else{
@@ -612,11 +613,11 @@ class ApiController extends Controller
 	        }
 	    }
 
-	    if (isset($service_id)){
+	    if (isset($adtracks_sources_id)){
 
-	        $model = new Threats; 
-	    	$model->user_id=3;
-	    	$model->service_id=$service_id;
+	        $model = new Adtracks; 
+	    	$model->member_id=3;
+	    	$model->adtracks_sources_id=$adtracks_sources_id;
 	    	$model->domain=$domain;
 	    	$model->url=$url;
 		}

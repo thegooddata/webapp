@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 $this->layout='//layouts/column2';
 $this->menu=array(
-    array('label'=>UserModule::t('List User'), 'url'=>array('index')),
+    array('label'=>UserModule::t('List Member'), 'url'=>array('index')),
 );
 ?>
 <h1><?php echo UserModule::t('View User').' "'.$model->username.'"'; ?></h1>
@@ -28,7 +28,7 @@ $this->menu=array(
 		}
 	}
 	array_push($attributes,
-		'create_at',
+		'created_at',
 		array(
 			'name' => 'lastvisit_at',
 			'value' => (($model->lastvisit_at!='0000-00-00 00:00:00')?$model->lastvisit_at:UserModule::t('Not visited')),

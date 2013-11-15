@@ -29,9 +29,9 @@
 		<?php echo $form->error($model,'url'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'create_at'); ?>
-		<?php echo $form->textField($model, 'create_at'); ?>
-		<?php echo $form->error($model,'create_at'); ?>
+		<?php echo $form->labelEx($model,'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php echo $form->error($model,'created_at'); ?>
 		</div><!-- row -->
 
 
