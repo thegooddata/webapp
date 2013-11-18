@@ -20,6 +20,7 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
+'user_id',
 array(
 			'name' => 'member',
 			'type' => 'raw',

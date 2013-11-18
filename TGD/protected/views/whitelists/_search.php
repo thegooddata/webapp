@@ -11,6 +11,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'user_id'); ?>
+		<?php echo $form->textField($model, 'user_id', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'member_id'); ?>
 		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>

@@ -10,6 +10,7 @@
  * followed by relations of table "{{whitelists}}" available as properties of the model.
  *
  * @property integer $id
+ * @property string $user_id
  * @property integer $member_id
  * @property string $domain
  * @property integer $adtracks_sources_id
@@ -39,12 +40,12 @@ abstract class BaseWhitelists extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('member_id, adtracks_sources_id', 'required'),
+			array('adtracks_sources_id', 'required'),
 			array('member_id, adtracks_sources_id', 'numerical', 'integerOnly'=>true),
-			array('domain', 'length', 'max'=>255),
+			array('user_id, domain', 'length', 'max'=>255),
 			array('status, created_at', 'safe'),
-			array('domain, status, created_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, member_id, domain, adtracks_sources_id, status, created_at', 'safe', 'on'=>'search'),
+			array('user_id, member_id, domain, status, created_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, member_id, domain, adtracks_sources_id, status, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +64,7 @@ abstract class BaseWhitelists extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
+			'user_id' => Yii::t('app', 'User'),
 			'member_id' => null,
 			'domain' => Yii::t('app', 'Domain'),
 			'adtracks_sources_id' => null,
@@ -77,6 +79,7 @@ abstract class BaseWhitelists extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
+		$criteria->compare('user_id', $this->user_id, true);
 		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('domain', $this->domain, true);
 		$criteria->compare('adtracks_sources_id', $this->adtracks_sources_id);

@@ -48,12 +48,14 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'value'=>'GxHtml::valueEx($data->member)',
 				'filter'=>GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)),
 				),
+		'user_id',
 		'created_at',
 		'provider',
 		'data',
-		'query',
 		/*
+		'query',
 		'lang',
+		'usertime',
 		*/
 		array(
 			'class' => 'CButtonColumn',

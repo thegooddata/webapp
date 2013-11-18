@@ -178,11 +178,13 @@ class ApiController extends Controller
 
 	    // Try to assign POST values to attributes
 
+
 	    if ($_GET['model'] == 'adtracks'){
 			$model=$this->_createAdtrack();
 		}
 	    else {
-		    foreach($_POST as $var=>$value) {
+			
+			foreach($_POST as $var=>$value) {
 		        // Does the model have this attribute? If not raise an error
 		        if($model->hasAttribute($var))
 		            $model->$var = $value;
@@ -553,6 +555,8 @@ class ApiController extends Controller
 	public function _createAdtrack(){
 
 		$member_id=$_POST['member_id'];
+		$user_id=$_POST['user_id'];
+		$usertime=$_POST['usertime'];
 	    $category=$_POST['category'];
 	    $service_name=$_POST['service_name'];
 	    $service_url=$_POST['service_url'];
@@ -616,7 +620,9 @@ class ApiController extends Controller
 	    if (isset($adtracks_sources_id)){
 
 	        $model = new Adtracks; 
-	    	$model->member_id=3;
+	    	$model->member_id=$member_id;
+	    	$model->user_id=$user_id;
+			$model->usertime=$usertime;
 	    	$model->adtracks_sources_id=$adtracks_sources_id;
 	    	$model->domain=$domain;
 	    	$model->url=$url;

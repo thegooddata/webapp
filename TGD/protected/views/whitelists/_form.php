@@ -14,6 +14,11 @@
 	<?php echo $form->errorSummary($model); ?>
 
 		<div class="row">
+		<?php echo $form->labelEx($model,'user_id'); ?>
+		<?php echo $form->textField($model, 'user_id', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'user_id'); ?>
+		</div><!-- row -->
+		<div class="row">
 		<?php echo $form->labelEx($model,'member_id'); ?>
 		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true))); ?>
 		<?php echo $form->error($model,'member_id'); ?>

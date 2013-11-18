@@ -1,3 +1,7 @@
+delete from tbl_adtracks;
+delete from tbl_queries;
+delete from tbl_browsing;
+
 --- EVENTS DATA ---
 
 --DROP TABLE tbl_events;
@@ -83,17 +87,20 @@ CREATE TABLE tbl_adtracks_sources (
 --DROP TABLE tbl_adtracks;
 CREATE TABLE tbl_adtracks (
   id SERIAL PRIMARY KEY,
-  member_id int NOT NULL references tbl_members(id),
+  user_id varchar(255) DEFAULT '',
+  member_id int references tbl_members(id),
   adtracks_sources_id int NOT NULL references tbl_adtracks_sources(id),
   domain varchar(255) NOT NULL DEFAULT '',
   url text NOT NULL DEFAULT '',
-  created_at TIMESTAMP with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP  
 );
 
 --DROP TABLE tbl_whitelists;
 CREATE TABLE tbl_whitelists (
   id SERIAL PRIMARY KEY,
-  member_id int NOT NULL references tbl_members(id),
+  user_id varchar(255) DEFAULT '',
+  member_id int references tbl_members(id),
   domain varchar(255) NOT NULL DEFAULT '',
   adtracks_sources_id int NOT NULL references tbl_adtracks_sources(id),
   status boolean NOT NULL DEFAULT true,
@@ -106,9 +113,11 @@ CREATE TABLE tbl_whitelists (
 CREATE TABLE tbl_browsing (
   id SERIAL PRIMARY KEY,
   member_id int NOT NULL references tbl_members(id),
+  user_id varchar(255) DEFAULT '',
   domain varchar(255) NOT NULL DEFAULT '',
   url text NOT NULL DEFAULT '',
-  created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -117,12 +126,14 @@ CREATE TABLE tbl_browsing (
 --DROP TABLE tbl_queries;
 CREATE TABLE tbl_queries (
   id SERIAL PRIMARY KEY,
-  member_id int NOT NULL references tbl_members(id),
+  member_id int references tbl_members(id),
+  user_id varchar(255) DEFAULT '',
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   provider varchar(128) NOT NULL,
   data varchar(256) NOT NULL,
   query text NOT NULL,
-  lang varchar(128) NOT NULL
+  lang varchar(128) NOT NULL,
+  usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 --DROP TABLE tbl_queries_blacklist;

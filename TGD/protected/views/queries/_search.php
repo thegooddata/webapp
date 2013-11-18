@@ -16,6 +16,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'user_id'); ?>
+		<?php echo $form->textField($model, 'user_id', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
 		<?php echo $form->textField($model, 'created_at'); ?>
 	</div>
@@ -38,6 +43,11 @@
 	<div class="row">
 		<?php echo $form->label($model, 'lang'); ?>
 		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'usertime'); ?>
+		<?php echo $form->textField($model, 'usertime'); ?>
 	</div>
 
 	<div class="row buttons">

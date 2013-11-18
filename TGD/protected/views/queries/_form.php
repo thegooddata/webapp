@@ -19,6 +19,11 @@
 		<?php echo $form->error($model,'member_id'); ?>
 		</div><!-- row -->
 		<div class="row">
+		<?php echo $form->labelEx($model,'user_id'); ?>
+		<?php echo $form->textField($model, 'user_id', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'user_id'); ?>
+		</div><!-- row -->
+		<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>
 		<?php echo $form->textField($model, 'created_at'); ?>
 		<?php echo $form->error($model,'created_at'); ?>
@@ -42,6 +47,11 @@
 		<?php echo $form->labelEx($model,'lang'); ?>
 		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
 		<?php echo $form->error($model,'lang'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'usertime'); ?>
+		<?php echo $form->textField($model, 'usertime'); ?>
+		<?php echo $form->error($model,'usertime'); ?>
 		</div><!-- row -->
 
 

@@ -43,6 +43,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
+		'user_id',
 		array(
 				'name'=>'member_id',
 				'value'=>'GxHtml::valueEx($data->member)',
@@ -59,7 +60,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 					'value' => '($data->status === 0) ? Yii::t(\'app\', \'No\') : Yii::t(\'app\', \'Yes\')',
 					'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')),
 					),
+		/*
 		'created_at',
+		*/
 		array(
 			'class' => 'CButtonColumn',
 		),
