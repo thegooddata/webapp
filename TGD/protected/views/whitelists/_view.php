@@ -22,5 +22,10 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />
+	<?php /*
+	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
+	<?php echo GxHtml::encode($data->updated_at); ?>
+	<br />
+	*/ ?>
 
 </div>

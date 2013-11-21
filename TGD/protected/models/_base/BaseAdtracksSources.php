@@ -10,12 +10,14 @@
  * followed by relations of table "{{adtracks_sources}}" available as properties of the model.
  *
  * @property integer $id
- * @property integer $category_id
+ * @property integer $adtrack_type_id
  * @property string $name
  * @property string $url
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property Adtracks[] $adtracks
- * @property AdtracksTypes $category
+ * @property AdtracksTypes $adtrackType
  * @property Whitelists[] $whitelists
  */
 abstract class BaseAdtracksSources extends GxActiveRecord {
@@ -38,18 +40,19 @@ abstract class BaseAdtracksSources extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('category_id', 'required'),
-			array('category_id', 'numerical', 'integerOnly'=>true),
+			array('adtrack_type_id', 'required'),
+			array('adtrack_type_id', 'numerical', 'integerOnly'=>true),
 			array('name, url', 'length', 'max'=>255),
-			array('name, url', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, category_id, name, url', 'safe', 'on'=>'search'),
+			array('created_at, updated_at', 'safe'),
+			array('name, url, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, adtrack_type_id, name, url, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
 			'adtracks' => array(self::HAS_MANY, 'Adtracks', 'adtracks_sources_id'),
-			'category' => array(self::BELONGS_TO, 'AdtracksTypes', 'category_id'),
+			'adtrackType' => array(self::BELONGS_TO, 'AdtracksTypes', 'adtrack_type_id'),
 			'whitelists' => array(self::HAS_MANY, 'Whitelists', 'adtracks_sources_id'),
 		);
 	}
@@ -62,11 +65,13 @@ abstract class BaseAdtracksSources extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'category_id' => null,
+			'adtrack_type_id' => null,
 			'name' => Yii::t('app', 'Name'),
 			'url' => Yii::t('app', 'Url'),
+			'created_at' => Yii::t('app', 'Created At'),
+			'updated_at' => Yii::t('app', 'Updated At'),
 			'adtracks' => null,
-			'category' => null,
+			'adtrackType' => null,
 			'whitelists' => null,
 		);
 	}
@@ -75,9 +80,11 @@ abstract class BaseAdtracksSources extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('category_id', $this->category_id);
+		$criteria->compare('adtrack_type_id', $this->adtrack_type_id);
 		$criteria->compare('name', $this->name, true);
 		$criteria->compare('url', $this->url, true);
+		$criteria->compare('created_at', $this->created_at, true);
+		$criteria->compare('updated_at', $this->updated_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

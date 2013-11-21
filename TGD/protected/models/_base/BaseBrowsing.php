@@ -14,8 +14,9 @@
  * @property string $user_id
  * @property string $domain
  * @property string $url
- * @property string $created_at
  * @property string $usertime
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property Members $member
  */
@@ -39,12 +40,11 @@ abstract class BaseBrowsing extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('member_id', 'required'),
 			array('member_id', 'numerical', 'integerOnly'=>true),
 			array('user_id, domain', 'length', 'max'=>255),
-			array('url, created_at, usertime', 'safe'),
-			array('user_id, domain, url, created_at, usertime', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, member_id, user_id, domain, url, created_at, usertime', 'safe', 'on'=>'search'),
+			array('url, usertime, created_at, updated_at', 'safe'),
+			array('member_id, user_id, domain, url, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, member_id, user_id, domain, url, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,8 +66,9 @@ abstract class BaseBrowsing extends GxActiveRecord {
 			'user_id' => Yii::t('app', 'User'),
 			'domain' => Yii::t('app', 'Domain'),
 			'url' => Yii::t('app', 'Url'),
-			'created_at' => Yii::t('app', 'Created At'),
 			'usertime' => Yii::t('app', 'Usertime'),
+			'created_at' => Yii::t('app', 'Created At'),
+			'updated_at' => Yii::t('app', 'Updated At'),
 			'member' => null,
 		);
 	}
@@ -80,8 +81,9 @@ abstract class BaseBrowsing extends GxActiveRecord {
 		$criteria->compare('user_id', $this->user_id, true);
 		$criteria->compare('domain', $this->domain, true);
 		$criteria->compare('url', $this->url, true);
-		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('usertime', $this->usertime, true);
+		$criteria->compare('created_at', $this->created_at, true);
+		$criteria->compare('updated_at', $this->updated_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

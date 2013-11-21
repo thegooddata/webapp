@@ -28,8 +28,9 @@ array(
 'user_id',
 'domain',
 'url',
-'created_at',
 'usertime',
+'created_at',
+'updated_at',
 	),
 )); ?>
 

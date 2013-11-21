@@ -44,12 +44,14 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'columns' => array(
 		'id',
 		array(
-				'name'=>'category_id',
-				'value'=>'GxHtml::valueEx($data->category)',
+				'name'=>'adtrack_type_id',
+				'value'=>'GxHtml::valueEx($data->adtrackType)',
 				'filter'=>GxHtml::listDataEx(AdtracksTypes::model()->findAllAttributes(null, true)),
 				),
 		'name',
 		'url',
+		'created_at',
+		'updated_at',
 		array(
 			'class' => 'CButtonColumn',
 		),

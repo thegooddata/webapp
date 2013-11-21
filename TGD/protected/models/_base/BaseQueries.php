@@ -12,12 +12,13 @@
  * @property integer $id
  * @property integer $member_id
  * @property string $user_id
- * @property string $created_at
  * @property string $provider
  * @property string $data
  * @property string $query
  * @property string $lang
  * @property string $usertime
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property Members $member
  */
@@ -46,9 +47,9 @@ abstract class BaseQueries extends GxActiveRecord {
 			array('user_id', 'length', 'max'=>255),
 			array('provider, lang', 'length', 'max'=>128),
 			array('data', 'length', 'max'=>256),
-			array('created_at, usertime', 'safe'),
-			array('member_id, user_id, created_at, usertime', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, member_id, user_id, created_at, provider, data, query, lang, usertime', 'safe', 'on'=>'search'),
+			array('usertime, created_at, updated_at', 'safe'),
+			array('member_id, user_id, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, member_id, user_id, provider, data, query, lang, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,12 +69,13 @@ abstract class BaseQueries extends GxActiveRecord {
 			'id' => Yii::t('app', 'ID'),
 			'member_id' => null,
 			'user_id' => Yii::t('app', 'User'),
-			'created_at' => Yii::t('app', 'Created At'),
 			'provider' => Yii::t('app', 'Provider'),
 			'data' => Yii::t('app', 'Data'),
 			'query' => Yii::t('app', 'Query'),
 			'lang' => Yii::t('app', 'Lang'),
 			'usertime' => Yii::t('app', 'Usertime'),
+			'created_at' => Yii::t('app', 'Created At'),
+			'updated_at' => Yii::t('app', 'Updated At'),
 			'member' => null,
 		);
 	}
@@ -84,12 +86,13 @@ abstract class BaseQueries extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('user_id', $this->user_id, true);
-		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('provider', $this->provider, true);
 		$criteria->compare('data', $this->data, true);
 		$criteria->compare('query', $this->query, true);
 		$criteria->compare('lang', $this->lang, true);
 		$criteria->compare('usertime', $this->usertime, true);
+		$criteria->compare('created_at', $this->created_at, true);
+		$criteria->compare('updated_at', $this->updated_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

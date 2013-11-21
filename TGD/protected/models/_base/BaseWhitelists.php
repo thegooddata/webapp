@@ -16,6 +16,7 @@
  * @property integer $adtracks_sources_id
  * @property boolean $status
  * @property string $created_at
+ * @property string $updated_at
  *
  * @property Members $member
  * @property AdtracksSources $adtracksSources
@@ -43,9 +44,9 @@ abstract class BaseWhitelists extends GxActiveRecord {
 			array('adtracks_sources_id', 'required'),
 			array('member_id, adtracks_sources_id', 'numerical', 'integerOnly'=>true),
 			array('user_id, domain', 'length', 'max'=>255),
-			array('status, created_at', 'safe'),
-			array('user_id, member_id, domain, status, created_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, member_id, domain, adtracks_sources_id, status, created_at', 'safe', 'on'=>'search'),
+			array('status, created_at, updated_at', 'safe'),
+			array('user_id, member_id, domain, status, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, member_id, domain, adtracks_sources_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +71,7 @@ abstract class BaseWhitelists extends GxActiveRecord {
 			'adtracks_sources_id' => null,
 			'status' => Yii::t('app', 'Status'),
 			'created_at' => Yii::t('app', 'Created At'),
+			'updated_at' => Yii::t('app', 'Updated At'),
 			'member' => null,
 			'adtracksSources' => null,
 		);
@@ -85,6 +87,7 @@ abstract class BaseWhitelists extends GxActiveRecord {
 		$criteria->compare('adtracks_sources_id', $this->adtracks_sources_id);
 		$criteria->compare('status', $this->status);
 		$criteria->compare('created_at', $this->created_at, true);
+		$criteria->compare('updated_at', $this->updated_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

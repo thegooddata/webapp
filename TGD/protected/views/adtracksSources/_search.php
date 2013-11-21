@@ -11,8 +11,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'category_id'); ?>
-		<?php echo $form->dropDownList($model, 'category_id', GxHtml::listDataEx(AdtracksTypes::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->label($model, 'adtrack_type_id'); ?>
+		<?php echo $form->dropDownList($model, 'adtrack_type_id', GxHtml::listDataEx(AdtracksTypes::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
@@ -23,6 +23,16 @@
 	<div class="row">
 		<?php echo $form->label($model, 'url'); ?>
 		<?php echo $form->textField($model, 'url', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'updated_at'); ?>
+		<?php echo $form->textField($model, 'updated_at'); ?>
 	</div>
 
 	<div class="row buttons">

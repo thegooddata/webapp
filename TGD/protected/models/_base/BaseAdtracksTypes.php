@@ -42,7 +42,7 @@ abstract class BaseAdtracksTypes extends GxActiveRecord {
 
 	public function relations() {
 		return array(
-			'adtracksSources' => array(self::HAS_MANY, 'AdtracksSources', 'category_id'),
+			'adtracksSources' => array(self::HAS_MANY, 'AdtracksSources', 'adtrack_type_id'),
 		);
 	}
 

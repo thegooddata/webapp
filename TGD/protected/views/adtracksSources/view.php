@@ -21,12 +21,14 @@ $this->menu=array(
 	'attributes' => array(
 'id',
 array(
-			'name' => 'category',
+			'name' => 'adtrackType',
 			'type' => 'raw',
-			'value' => $model->category !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->category)), array('adtracksTypes/view', 'id' => GxActiveRecord::extractPkValue($model->category, true))) : null,
+			'value' => $model->adtrackType !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->adtrackType)), array('adtracksTypes/view', 'id' => GxActiveRecord::extractPkValue($model->adtrackType, true))) : null,
 			),
 'name',
 'url',
+'created_at',
+'updated_at',
 	),
 )); ?>
 

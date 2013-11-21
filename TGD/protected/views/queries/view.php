@@ -26,12 +26,13 @@ array(
 			'value' => $model->member !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->member)), array('members/view', 'id' => GxActiveRecord::extractPkValue($model->member, true))) : null,
 			),
 'user_id',
-'created_at',
 'provider',
 'data',
 'query',
 'lang',
 'usertime',
+'created_at',
+'updated_at',
 	),
 )); ?>
 

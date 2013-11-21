@@ -24,11 +24,6 @@
 		<?php echo $form->error($model,'user_id'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
-		<?php echo $form->error($model,'created_at'); ?>
-		</div><!-- row -->
-		<div class="row">
 		<?php echo $form->labelEx($model,'provider'); ?>
 		<?php echo $form->textField($model, 'provider', array('maxlength' => 128)); ?>
 		<?php echo $form->error($model,'provider'); ?>
@@ -52,6 +47,16 @@
 		<?php echo $form->labelEx($model,'usertime'); ?>
 		<?php echo $form->textField($model, 'usertime'); ?>
 		<?php echo $form->error($model,'usertime'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php echo $form->error($model,'created_at'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'updated_at'); ?>
+		<?php echo $form->textField($model, 'updated_at'); ?>
+		<?php echo $form->error($model,'updated_at'); ?>
 		</div><!-- row -->
 
 

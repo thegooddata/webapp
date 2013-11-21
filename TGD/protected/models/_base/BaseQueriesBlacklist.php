@@ -14,6 +14,7 @@
  * @property string $headword
  * @property string $lang
  * @property string $created_at
+ * @property string $updated_at
  *
  */
 abstract class BaseQueriesBlacklist extends GxActiveRecord {
@@ -39,9 +40,9 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 			array('lang', 'required'),
 			array('category, headword', 'length', 'max'=>255),
 			array('lang', 'length', 'max'=>128),
-			array('created_at', 'safe'),
-			array('category, headword, created_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, category, headword, lang, created_at', 'safe', 'on'=>'search'),
+			array('created_at, updated_at', 'safe'),
+			array('category, headword, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, category, headword, lang, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +63,7 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 			'headword' => Yii::t('app', 'Headword'),
 			'lang' => Yii::t('app', 'Lang'),
 			'created_at' => Yii::t('app', 'Created At'),
+			'updated_at' => Yii::t('app', 'Updated At'),
 		);
 	}
 
@@ -73,6 +75,7 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 		$criteria->compare('headword', $this->headword, true);
 		$criteria->compare('lang', $this->lang, true);
 		$criteria->compare('created_at', $this->created_at, true);
+		$criteria->compare('updated_at', $this->updated_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

@@ -195,11 +195,6 @@ class ApiController extends Controller
 		    }
 	    }
 
-	    //Set created_at
-		if (!isset($model->created_at)){
-		 	$model->created_at = date('Y-m-d H:i:s');
-		}
-
 	    // Try to save the model
 	    if($model->save())
 	        $this->_sendResponse(200, CJSON::encode($model),'application/json');
@@ -227,8 +222,6 @@ class ApiController extends Controller
 	    $json = file_get_contents('php://input'); //$GLOBALS['HTTP_RAW_POST_DATA'] is not preferred: http://www.php.net/manual/en/ini.core.php#ini.always-populate-raw-post-data
 	    $put_vars = CJSON::decode($json,true);  //true means use associative array
 	 
-
-
 	    switch($_GET['model'])
 	    {
 	        // Find respective model
@@ -437,10 +430,12 @@ class ApiController extends Controller
 
 	public function _updateWhitelist($put_vars){
 
-		$member_id = $_GET['id'];
+		$user_id= $_GET['user_id'];
+		$member_id= isset($_GET['member_id']) ? $_GET['member_id'] : null;
 
 		if ($put_vars!=null)
 		{
+
 
 			foreach ($put_vars as $domain => $services){
 
@@ -454,9 +449,12 @@ class ApiController extends Controller
 			                            'and',
 			                            'w.adtracks_sources_id = s.id',
 			                            's.name = :service_name',
+			                            '(w.member_id = :member_id or w.user_id = :user_id)',
 			                            'w.domain = :domain'),
 			                    array(
 			                            ':domain'=>$domain,
+			                            ':member_id'=>$member_id,
+	                            		':user_id'=>$user_id,
 			                            ':service_name'=>$service_name)
 			                    )
 			                ->queryAll();
@@ -479,19 +477,19 @@ class ApiController extends Controller
 
 		                	$adtracks_sources_id = $service[0]->adtracks_sources_id;
 		                	$model = new Whitelists;
+		                	$model->user_id=$user_id;
 			        	  	$model->member_id=$member_id;
 			        	  	$model->adtracks_sources_id=$adtracks_sources_id;
 			        	  	$model->domain = $domain;
 			        	  	$model->status = true;
-		        	  		$model->created_at = date('Y-m-d H:i:s');
-
+		        	  		
 			        	  	$model->save();
 			        	  	
 		                }
 		                else
 		                {
 		                	$this->_sendResponse(501, 
-				                sprintf('Service not found <b>%s</b>',
+				                sprintf('Adtrack source not found <b>%s</b>',
 				                $service_name) );
 				            Yii::app()->end();
 		                }
@@ -500,7 +498,8 @@ class ApiController extends Controller
 		            } else if (count($data)>0 && $status==false){
 
 		            	$model = Whitelists::model()->findByPk($data[0]->whitelist_id);
-		            	$model->delete();
+		            	$model->status = false;
+		            	$model->save();
 		            }
 
 	            }
@@ -511,6 +510,7 @@ class ApiController extends Controller
 		$model = $this->_viewWhitelist();
 
 		$this->_sendResponse(200, CJSON::encode($model),'application/json');
+		die();
 
 	}
 
@@ -521,7 +521,11 @@ class ApiController extends Controller
 
 	public function _viewWhitelist(){
 
-		$member_id=$_GET['id'];
+		$user_id= $_GET['user_id'];
+		$member_id= isset($_GET['member_id']) ? $_GET['member_id'] : null;
+
+		
+		
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('s.name as service, w.status as status, w.domain as domain')
@@ -529,8 +533,10 @@ class ApiController extends Controller
 	                ->where(array(
 	                            'and',
 	                            'w.adtracks_sources_id = s.id',
-	                            'w.member_id = :member_id'),
+	                            '(w.user_id = :user_id or w.member_id = :member_id)' ),
 	                    array(
+	                            
+	                            ':user_id'=>$user_id,
 	                            ':member_id'=>$member_id)
 	                    )
 	                ->queryAll();
@@ -584,7 +590,7 @@ class ApiController extends Controller
 
 	    	$data = Yii::app()->db->createCommand()
 	                        ->setFetchMode(PDO::FETCH_OBJ)
-	                        ->select('t.id as category_id')
+	                        ->select('t.id as adtracks_sources_id')
 	                        ->from('tbl_adtracks_types t')
 	                        ->where(array(
 	                                    'and',
@@ -596,22 +602,22 @@ class ApiController extends Controller
 
 	        if (count($data)>0){
 
-	        	$category_id = $data[0]->category_id;
+	        	$adtracks_sources_id = $data[0]->adtracks_sources_id;
 
 	        	$service = new AdtracksSources; 
-	        	$service->category_id=$category_id ;
+	        	$service->adtrack_type_id=$adtracks_sources_id ;
 	        	$service->name=$service_name;
 	        	$service->url=$service_url;
 
 	        	if (!$service->save()){
 		    		var_dump($service->errors);die;
 		    	}else{
-		    		$adtracks_sources_id = $service->adtracks_sources_id;
+		    		$adtracks_sources_id = $service->id;
 		    	}
 	        }
 	        else{
 				$this->_sendResponse(501, 
-	                sprintf('Category not found <b>%s</b>',
+	                sprintf('Adtrack source not found <b>%s</b>',
 	                $category) );
 	            Yii::app()->end();
 	        }
@@ -629,7 +635,7 @@ class ApiController extends Controller
 		}
 		else{
 			$this->_sendResponse(501, 
-	            sprintf('Service not found <b>%s</b>',
+	            sprintf('Adtrack source not found <b>%s</b>',
 	            $service_name) );
 	        Yii::app()->end();
 	    }	

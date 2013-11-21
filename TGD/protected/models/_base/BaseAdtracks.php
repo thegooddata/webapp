@@ -15,8 +15,9 @@
  * @property integer $adtracks_sources_id
  * @property string $domain
  * @property string $url
- * @property string $created_at
  * @property string $usertime
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property Members $member
  * @property AdtracksSources $adtracksSources
@@ -41,12 +42,12 @@ abstract class BaseAdtracks extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('adtracks_sources_id, created_at', 'required'),
+			array('adtracks_sources_id', 'required'),
 			array('member_id, adtracks_sources_id', 'numerical', 'integerOnly'=>true),
 			array('user_id, domain', 'length', 'max'=>255),
-			array('url, usertime', 'safe'),
-			array('user_id, member_id, domain, url, usertime', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, member_id, adtracks_sources_id, domain, url, created_at, usertime', 'safe', 'on'=>'search'),
+			array('url, usertime, created_at, updated_at', 'safe'),
+			array('user_id, member_id, domain, url, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, member_id, adtracks_sources_id, domain, url, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,8 +71,9 @@ abstract class BaseAdtracks extends GxActiveRecord {
 			'adtracks_sources_id' => null,
 			'domain' => Yii::t('app', 'Domain'),
 			'url' => Yii::t('app', 'Url'),
-			'created_at' => Yii::t('app', 'Created At'),
 			'usertime' => Yii::t('app', 'Usertime'),
+			'created_at' => Yii::t('app', 'Created At'),
+			'updated_at' => Yii::t('app', 'Updated At'),
 			'member' => null,
 			'adtracksSources' => null,
 		);
@@ -86,8 +88,9 @@ abstract class BaseAdtracks extends GxActiveRecord {
 		$criteria->compare('adtracks_sources_id', $this->adtracks_sources_id);
 		$criteria->compare('domain', $this->domain, true);
 		$criteria->compare('url', $this->url, true);
-		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('usertime', $this->usertime, true);
+		$criteria->compare('created_at', $this->created_at, true);
+		$criteria->compare('updated_at', $this->updated_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

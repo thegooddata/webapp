@@ -19,12 +19,15 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('url')); ?>:
 	<?php echo GxHtml::encode($data->url); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('usertime')); ?>:
+	<?php echo GxHtml::encode($data->usertime); ?>
+	<br />
+	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />
-	<?php /*
-	<?php echo GxHtml::encode($data->getAttributeLabel('usertime')); ?>:
-	<?php echo GxHtml::encode($data->usertime); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
+	<?php echo GxHtml::encode($data->updated_at); ?>
 	<br />
 	*/ ?>
 

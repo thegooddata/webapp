@@ -106,7 +106,11 @@ return array(
 				// REST patterns
 		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
+		        
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
+		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/', 'verb'=>'PUT'),
+		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/<member_id:\d*>', 'verb'=>'PUT'),
+
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        
@@ -118,7 +122,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131115',
+		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131121',
 		    'username'=>'dani',
 		    'password'=>'',
 		    'charset'=>'UTF8',

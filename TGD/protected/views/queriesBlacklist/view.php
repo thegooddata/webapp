@@ -24,6 +24,7 @@ $this->menu=array(
 'headword',
 'lang',
 'created_at',
+'updated_at',
 	),
 )); ?>
 

@@ -27,7 +27,12 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		
+
+		// $ls = LoansStatus::model()->findByPk(1);
+		// $ls->name = 'daniel';
+		// $ls->save();
+
+		// die;
 
 		// $user_id='1';
   //       $category='Disco1nnect';

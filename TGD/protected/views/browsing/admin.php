@@ -51,9 +51,10 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'user_id',
 		'domain',
 		'url',
-		'created_at',
-		/*
 		'usertime',
+		/*
+		'created_at',
+		'updated_at',
 		*/
 		array(
 			'class' => 'CButtonColumn',
