@@ -1,0 +1,83 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 27, 2013, 7:02:43 PM
+    Author     : juan
+*/
+*{
+    color: #1d5987;
+    font-family: ProximaNovaSoft-Medium;
+}
+
+body {
+    background: url(img/thegooddata_background-white.png) no-repeat top center fixed;
+}
+
+/* Fonts*/
+
+.ProximaNovaSoft-Medium { font-family: ProximaNovaSoft-Medium; }
+.ProximaNovaSoft-Semibold { font-family: ProximaNovaSoft-Semibold; }
+.ProximaNovaSoft-Bold { font-family: ProximaNovaSoft-Bold; }
+.ProximaNovaSoft-Regular { font-family: ProximaNovaSoft-Regular; }
+
+/* Custom container */
+ .container-narrow {
+     margin: 0 auto;
+     max-width: 700px;
+ }
+ .container-narrow > hr {
+     margin: 30px 0;
+ }
+
+ /* Main marketing message and sign up button */
+ .jumbotron {
+     margin:80px 0;
+     text-align: center;
+ }
+ .jumbotron h1 {
+     font-size: 50px;
+     line-height: 1;
+     margin-top: 30px;
+ }
+ .jumbotron .btn {
+     font-size: 21px;
+     padding: 14px 24px;
+     border-radius: 25px;
+
+ }
+
+ .jumbotron .lead{
+     margin-top: 30px;
+ }
+ /* Supporting marketing content */
+ .contact > div, .contact a, .contact a:hover{
+     color: #666;
+ }
+ 
+ .contact > div{
+     padding:0px 10px;
+ }
+
+ .icon-gray{
+     background-image: url("bootstrap/img/glyphicons-halflings-gray.png");
+ }
+ .icon-github{
+     background-position: 0px 0px;
+     background-image: url("img/GitHub-gray.png");
+ }
+ 
+ [class^="icon-"],[class*="icon-"]{
+     margin-top: -1px;
+ }
+ 
+ 
+ .left-align{
+     text-align: left;
+ }
+ 
+ .right-align{
+     text-align: right;
+ }
