@@ -1,8 +1,9 @@
 <?php
 
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/../yii/framework/yii.php';
-$config=dirname(__FILE__).'/protected/config/main.php';
+$local_config = require(dirname(__FILE__).'/protected/config/local_config.php');
+$yii= $local_config['yiiFrameworkPath'].'/yii.php';
+$config = dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG',true);

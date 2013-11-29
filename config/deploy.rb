@@ -33,6 +33,7 @@ namespace :deploy do
   
   task :rename_main_file do
     run "mv #{release_path}/protected/config/main.prod.php #{release_path}/protected/config/main.php"
+    run "mv #{release_path}/protected/config/local_config.prod.php #{release_path}/protected/config/local_config.php"
   end
   
   task :move_TGD_to_current do
