@@ -41,8 +41,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'id_loans_countries'); ?>
-		<?php echo $form->dropDownList($model, 'id_loans_countries', GxHtml::listDataEx(LoansCountries::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->label($model, 'id_countries'); ?>
+		<?php echo $form->dropDownList($model, 'id_countries', GxHtml::listDataEx(Countries::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">

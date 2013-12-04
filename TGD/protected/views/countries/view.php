@@ -25,7 +25,16 @@ $this->menu=array(
 	),
 )); ?>
 
-<h2><?php echo GxHtml::encode($model->getRelationLabel('loans')); ?></h2>
+<h2><?php echo GxHtml::encode($model->getRelationLabel('membersPiis')); ?></h2>
+<?php
+	echo GxHtml::openTag('ul');
+	foreach($model->membersPiis as $relatedModel) {
+		echo GxHtml::openTag('li');
+		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('membersPii/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
+		echo GxHtml::closeTag('li');
+	}
+	echo GxHtml::closeTag('ul');
+?><h2><?php echo GxHtml::encode($model->getRelationLabel('loans')); ?></h2>
 <?php
 	echo GxHtml::openTag('ul');
 	foreach($model->loans as $relatedModel) {

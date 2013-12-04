@@ -31,9 +31,9 @@ array(
 			),
 'image',
 array(
-			'name' => 'idLoansCountries',
+			'name' => 'idCountries',
 			'type' => 'raw',
-			'value' => $model->idLoansCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansCountries)), array('loansCountries/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansCountries, true))) : null,
+			'value' => $model->idCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idCountries)), array('countries/view', 'id' => GxActiveRecord::extractPkValue($model->idCountries, true))) : null,
 			),
 'partner',
 'amount',

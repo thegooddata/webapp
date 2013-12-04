@@ -49,9 +49,9 @@
 		<?php echo $form->error($model,'image'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'id_loans_countries'); ?>
-		<?php echo $form->dropDownList($model, 'id_loans_countries', GxHtml::listDataEx(LoansCountries::model()->findAllAttributes(null, true))); ?>
-		<?php echo $form->error($model,'id_loans_countries'); ?>
+		<?php echo $form->labelEx($model,'id_countries'); ?>
+		<?php echo $form->dropDownList($model, 'id_countries', GxHtml::listDataEx(Countries::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->error($model,'id_countries'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'partner'); ?>

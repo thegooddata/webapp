@@ -55,9 +55,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		/*
 		'image',
 		array(
-				'name'=>'id_loans_countries',
-				'value'=>'GxHtml::valueEx($data->idLoansCountries)',
-				'filter'=>GxHtml::listDataEx(LoansCountries::model()->findAllAttributes(null, true)),
+				'name'=>'id_countries',
+				'value'=>'GxHtml::valueEx($data->idCountries)',
+				'filter'=>GxHtml::listDataEx(Countries::model()->findAllAttributes(null, true)),
 				),
 		'partner',
 		'amount',
