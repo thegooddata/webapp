@@ -40,9 +40,11 @@ class UserController extends Controller
 	public function actionView()
 	{
 		$model = $this->loadModel();
+		
 		$this->render('view',array(
 			'model'=>$model,
 		));
+
 	}
 
 	/**

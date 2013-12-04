@@ -50,7 +50,8 @@ $this->menu=array(
 		array(
 			'name' => 'status',
 			'value' => User::itemAlias("UserStatus",$model->status),
-		)
+		),
+		'key'
 	);
 	
 	$this->widget('zii.widgets.CDetailView', array(
