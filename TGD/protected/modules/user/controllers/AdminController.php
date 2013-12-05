@@ -112,7 +112,8 @@ class AdminController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$profile->attributes=$_POST['Profile'];
+			$profile->attributes=((isset($_POST['Profile'])?$_POST['Profile']:array()));;
+			
 			
 			if($model->validate()&&$profile->validate()) {
 				$old_password = User::model()->notsafe()->findByPk($model->id);
@@ -125,6 +126,8 @@ class AdminController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
+
+		//var_dump($model);die;
 
 		$this->render('update',array(
 			'model'=>$model,

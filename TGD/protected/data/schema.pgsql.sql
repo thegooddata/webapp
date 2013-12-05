@@ -28,17 +28,54 @@
 
 --- MEMBERS DATA ---
 
+--DROP TABLE tbl_loans_countries;
+CREATE TABLE tbl_countries (
+  id SERIAL PRIMARY KEY,
+
+  name_en_us varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_countries  (name_en_us, name_es) VALUES
+('United Kingdom', 'Reino Unido'),
+('Spain', 'España'),
+('France', 'Francia');
+
+--DROP TABLE tbl_members_pii;
+CREATE TABLE tbl_members_pii (
+  id SERIAL PRIMARY KEY,
+
+  firstname varchar(128) NOT NULL,
+  surname varchar(128) NOT NULL,
+  streetnumber varchar(128) NOT NULL,
+  street varchar(128) NOT NULL,
+  streetdetails varchar(128) NOT NULL,
+  city varchar(128) NOT NULL,
+  state varchar(128) NOT NULL,
+  zipcode varchar(128) NOT NULL,
+  id_countries int NOT NULL references tbl_countries(id),
+  email varchar(128) NOT NULL,
+  birthdate date NOT NULL,
+  agreerules boolean NOT NULL,
+
+  created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
 --DROP TABLE tbl_members;
 CREATE TABLE tbl_members (
   id SERIAL PRIMARY KEY,
 
   username varchar(20) NOT NULL,
   password varchar(128) NOT NULL,
-  email varchar(128) NOT NULL,
+  email varchar(128),
   activkey varchar(128) NOT NULL DEFAULT '',
   lastvisit_at TIMESTAMP with time zone,
   superuser int NOT NULL DEFAULT '0',
   status int NOT NULL DEFAULT '0',
+
+  key text DEFAULT '',
 
   created_at TIMESTAMP with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -80,9 +117,9 @@ CREATE TABLE tbl_profiles_fields (
   visible int NOT NULL DEFAULT '0'
 );
 
-INSERT INTO tbl_profiles_fields (varname, title, field_type, field_size, field_size_min, required, match, range, error_message, other_validator, default_value, widget, widgetparams, position, visible) VALUES
-('lastname', 'Last Name', 'VARCHAR', 50, 3, 1, '', '', 'Incorrect Last Name (length between 3 and 50 characters).', '', '', '', '', 1, 3),
-('firstname', 'First Name', 'VARCHAR', 50, 3, 1, '', '', 'Incorrect First Name (length between 3 and 50 characters).', '', '', '', '', 0, 3);
+-- INSERT INTO tbl_profiles_fields (varname, title, field_type, field_size, field_size_min, required, match, range, error_message, other_validator, default_value, widget, widgetparams, position, visible) VALUES
+-- ('lastname', 'Last Name', 'VARCHAR', 50, 3, 1, '', '', 'Incorrect Last Name (length between 3 and 50 characters).', '', '', '', '', 1, 3),
+-- ('firstname', 'First Name', 'VARCHAR', 50, 3, 1, '', '', 'Incorrect First Name (length between 3 and 50 characters).', '', '', '', '', 0, 3);
 
 --- ADTHREATS DATA ---
 
@@ -222,19 +259,6 @@ INSERT INTO tbl_loans_activities (name_en_us, name_es) VALUES
 ('Agriculture', 'Agricultura'),
 ('Health', 'Salud');
 
---DROP TABLE tbl_loans_countries;
-CREATE TABLE tbl_loans_countries (
-  id SERIAL PRIMARY KEY,
-
-  name_en_us varchar(255) DEFAULT '',
-  name_es varchar(255) DEFAULT ''
-);
-
-INSERT INTO tbl_loans_countries  (name_en_us, name_es) VALUES
-('United Kingdom', 'Reino Unido'),
-('Spain', 'España'),
-('France', 'Francia');
-
 --DROP TABLE tbl_achievements_types;
 CREATE TABLE tbl_achievements_types (
   id SERIAL PRIMARY KEY,
@@ -301,7 +325,7 @@ CREATE TABLE tbl_loans (
   
   id_loans_activity int NOT NULL references tbl_loans_activities(id),
   image varchar(255) DEFAULT '',
-  id_loans_countries int NOT NULL references tbl_loans_countries(id),
+  id_countries int NOT NULL references tbl_countries(id),
   partner varchar(255) DEFAULT '',
   amount numeric DEFAULT '0',
   term int DEFAULT '0',

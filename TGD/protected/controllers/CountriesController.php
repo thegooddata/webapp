@@ -1,20 +1,20 @@
 <?php
 
-class LoansCountriesController extends GxController {
+class CountriesController extends GxController {
 
 
 	public function actionView($id) {
 		$this->render('view', array(
-			'model' => $this->loadModel($id, 'LoansCountries'),
+			'model' => $this->loadModel($id, 'Countries'),
 		));
 	}
 
 	public function actionCreate() {
-		$model = new LoansCountries;
+		$model = new Countries;
 
 
-		if (isset($_POST['LoansCountries'])) {
-			$model->setAttributes($_POST['LoansCountries']);
+		if (isset($_POST['Countries'])) {
+			$model->setAttributes($_POST['Countries']);
 
 			if ($model->save()) {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
@@ -28,11 +28,11 @@ class LoansCountriesController extends GxController {
 	}
 
 	public function actionUpdate($id) {
-		$model = $this->loadModel($id, 'LoansCountries');
+		$model = $this->loadModel($id, 'Countries');
 
 
-		if (isset($_POST['LoansCountries'])) {
-			$model->setAttributes($_POST['LoansCountries']);
+		if (isset($_POST['Countries'])) {
+			$model->setAttributes($_POST['Countries']);
 
 			if ($model->save()) {
 				$this->redirect(array('view', 'id' => $model->id));
@@ -46,7 +46,7 @@ class LoansCountriesController extends GxController {
 
 	public function actionDelete($id) {
 		if (Yii::app()->getRequest()->getIsPostRequest()) {
-			$this->loadModel($id, 'LoansCountries')->delete();
+			$this->loadModel($id, 'Countries')->delete();
 
 			if (!Yii::app()->getRequest()->getIsAjaxRequest())
 				$this->redirect(array('admin'));
@@ -55,18 +55,18 @@ class LoansCountriesController extends GxController {
 	}
 
 	public function actionIndex() {
-		$dataProvider = new CActiveDataProvider('LoansCountries');
+		$dataProvider = new CActiveDataProvider('Countries');
 		$this->render('index', array(
 			'dataProvider' => $dataProvider,
 		));
 	}
 
 	public function actionAdmin() {
-		$model = new LoansCountries('search');
+		$model = new Countries('search');
 		$model->unsetAttributes();
 
-		if (isset($_GET['LoansCountries']))
-			$model->setAttributes($_GET['LoansCountries']);
+		if (isset($_GET['Countries']))
+			$model->setAttributes($_GET['Countries']);
 
 		$this->render('admin', array(
 			'model' => $model,

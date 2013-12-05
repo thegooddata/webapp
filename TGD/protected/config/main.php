@@ -27,7 +27,10 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		
+		'redoctober' => array(
+			'class'=>'ext.redoctober'
+		),
+
 		'TGD' => array(
 			'class'=>'ext.TGD'
 		),
@@ -78,6 +81,16 @@ return array(
 
 	// application components
 	'components'=>array(
+		'redoctober' => array(
+			'class' => 'ext.redoctober',
+			'url' => 'https://localhost:8080',
+			'username' => 'dani',
+			'password' => 'dani',
+			'owners' => '"user1","user2"',
+			'minimun' => 2,
+			'cert' => "/Users/dani/Dev/redoctober/cert/server.crt"
+		),
+
 		'mail' => array(
 		    'class' => 'ext.yii-mail.YiiMail',
 		    'transportType'=>'smtp',
@@ -122,7 +135,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131121',
+		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131205',
 		    'username'=>'dani',
 		    'password'=>'',
 		    'charset'=>'UTF8',

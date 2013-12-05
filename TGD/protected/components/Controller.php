@@ -29,11 +29,12 @@ class Controller extends CController
 		array('label'=>'Manage Queries Blacklist', 'url'=>array('/queriesBlacklist/admin')),
 		array('label'=>'Manage Loans Status', 'url'=>array('/loansStatus/admin')),
 		array('label'=>'Manage Loans Activities', 'url'=>array('/loansActivities/admin')),
-		array('label'=>'Manage Loans Countries', 'url'=>array('/loansCountries/admin')),
+		array('label'=>'Manage Countries', 'url'=>array('/countries/admin')),
 		array('label'=>'Manage Loans', 'url'=>array('/loans/admin')),
 		array('label'=>'Manage Incomes', 'url'=>array('/incomes/admin')),
 		array('label'=>'Manage Achievements', 'url'=>array('/achievements/admin')),
 		array('label'=>'Manage Achievements Types', 'url'=>array('/achievementsTypes/admin')),
+		array('label'=>'Manage PII', 'url'=>array('/membersPii/admin')),
 	);
 
 	/**

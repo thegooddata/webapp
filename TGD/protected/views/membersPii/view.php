@@ -20,18 +20,24 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
-'name_en_us',
-'name_es',
+'firstname',
+'surname',
+'streetnumber',
+'street',
+'streetdetails',
+'city',
+'state',
+'zipcode',
+array(
+			'name' => 'idCountries',
+			'type' => 'raw',
+			'value' => $model->idCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idCountries)), array('countries/view', 'id' => GxActiveRecord::extractPkValue($model->idCountries, true))) : null,
+			),
+'email',
+'birthdate',
+'agreerules:boolean',
+'created_at',
+'updated_at',
 	),
 )); ?>
 
-<h2><?php echo GxHtml::encode($model->getRelationLabel('loans')); ?></h2>
-<?php
-	echo GxHtml::openTag('ul');
-	foreach($model->loans as $relatedModel) {
-		echo GxHtml::openTag('li');
-		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('loans/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
-		echo GxHtml::closeTag('li');
-	}
-	echo GxHtml::closeTag('ul');
-?>

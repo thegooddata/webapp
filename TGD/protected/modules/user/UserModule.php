@@ -277,4 +277,46 @@ class UserModule extends CWebModule
 	public function users() {
 		return User;
 	}
+
+
+	public static function createUser($email,$username,$password,$verifyPassword){
+		$model = new RegistrationForm;
+        $profile=new Profile;
+
+	    $model->username=$username;
+	    $model->password=$password;
+	    $model->verifyPassword=$verifyPassword;
+	    $model->email=$email;
+	    
+        $profile->attributes=array();
+
+        if($model->validate()&&$profile->validate())
+        {
+
+            $soucePassword = $model->password;
+            $model->activkey=UserModule::encrypting(microtime().$model->password);
+            $model->password=UserModule::encrypting($model->password);
+            $model->verifyPassword=UserModule::encrypting($model->verifyPassword);
+			$model->superuser=0;
+			$model->status=User::STATUS_NOACTIVE;
+			
+			if ($model->save()) {
+				$profile->user_id=$model->id;
+				$profile->save();
+
+				return $model;
+        	}
+        	else{
+        		var_dump($model->getErrors());
+        		die;
+        	}
+        } 
+        else{ 
+        	$profile->validate();
+        	var_dump($model->getErrors());
+    		die;
+        }
+
+        return null;
+	}
 }

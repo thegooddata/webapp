@@ -23,8 +23,8 @@
 	<?php echo GxHtml::encode($data->image); ?>
 	<br />
 	<?php /*
-	<?php echo GxHtml::encode($data->getAttributeLabel('id_loans_countries')); ?>:
-		<?php echo GxHtml::encode(GxHtml::valueEx($data->idLoansCountries)); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('id_countries')); ?>:
+		<?php echo GxHtml::encode(GxHtml::valueEx($data->idCountries)); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('partner')); ?>:
 	<?php echo GxHtml::encode($data->partner); ?>

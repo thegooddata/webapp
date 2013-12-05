@@ -28,6 +28,50 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 
+		//CREACION DE UN USUARIO
+		// $username='daniel';//.rand(0,1000);
+		// $password='dani1234';
+		// $verifyPassword='dani1234';
+		// //$email='da@da.com'.rand(0,1000);
+		// $email='';
+
+
+		// $member = Yii::app()->getModule('user')->createUser($email,$username,$password,$verifyPassword);
+
+		// $pii = new MembersPII();
+		// $pii->firstname='dani';
+		// $pii->surname='garcia';
+		// $pii->streetnumber='garcia';
+		// $pii->street='garcia';
+		// $pii->streetdetails='garcia';
+		// $pii->city='garcia';
+		// $pii->state='garcia';
+		// $pii->zipcode='garcia';
+		// $pii->country='garcia';
+		// $pii->email='garcia';
+		// $pii->birthdate='garcia';
+		// $pii->agreerules='d';
+
+		// if($pii->validate())
+  //       {
+  //           $pii->save();
+  //       }
+  //       else
+  //       {
+  //       	print_r($pii->getErrors());
+  //       }
+		
+		// $mensaje = Yii::app()->redoctober->encrypt($pii->id);
+		// $member->key=$mensaje;
+		// $member->save();
+
+		
+		// $mensaje = Yii::app()->redoctober->decrypt('eyJWZXJzaW9uIjoxLCJWYXVsdElkIjo3MDQ2NDA1MTAsIktleVNldCI6W3siTmFtZSI6WyJ1c2VyMSIsInVzZXIyIl0sIktleSI6Ii9DcVVkSTJIWko5MmwyY2VmRldkTnc9PSJ9LHsiTmFtZSI6WyJ1c2VyMiIsInVzZXIxIl0sIktleSI6IkJvMGRPaGdMYW40b0lKNXl4S216OUE9PSJ9XSwiS2V5U2V0UlNBIjp7InVzZXIxIjp7IktleSI6IkJnRTlYa2YwWmdMek52WjNwcnF1NmZ0Y3NqT2d0QTU2NDVIZEZUUVZCY1JENnU3ZmVjZEtaa3pDNjJGS0c1MW5jb09yU1RNMmIzVWE1M2FXaFdvZVJqK05RYjJ0OXEvc0RsV2pPWkJqWlhLNmNJTUlvbzNXaVU1WVE5RkFYNGh6LzhGTlVCdFJrbk5hTU9uZlFENmxmazJEOVBqYVRBOUtYNlZLSGpTVWhvak1DNExzckNUTkt3dzRFLzltSUN4c1cwVTdHbHRrZi9zUkZRL1FvRFJWRVNPajV2ZFNNRWtMUnpUaFp1U1VYMXJHM3I0aUE1RGQzY0RKR2hJU1RDYTcvaGhqSE9QOE1SM0xXSVUwRUUxV0wxQkZ3N09QOWgyRlBCcnJFYUN0NUpKem96YWNGWmpEWXdHaklDMkRhODR3L3NRNng0TGRGR0UwSzZUamx4L2Jtdz09In0sInVzZXIyIjp7IktleSI6IkRsU2U0cG9McFRobU9Sa3FOS2gwUTc5c0pGbFZ1YXVrZU9uVk15dXBQUjlZNmNkQldpeDJZWjJWaHZvOEJIcWJ2czFONHNxSG5rRG1xYjZyU1JTWDV1TnV0MnJUWlJVT3JhcFBhSWd0cFVON1pOMU5QQ0JhQldzZFpZdHp4TjlUM2pZYitLbTYvaG5mQS9YM0tGQUhtT0ZBQW9yVTRxc0Jxc2tZTXR3SmZUOEd2RmJZdGJJVVQxRFRLaHFjWUVNTFF0bWdyUUhBTXNZU3hGenNSZ0tqaXN6UWswVU9BVUw2d3pQTzRLYWtOWVB0YkYrTk5WR2JXcUNmbkxIQ21iU2tCVURVQ3Awa2h4UTVqVFZLaUloUlRmRGljZk8weFZQSDFsV2hKOU4rckN0KzZ0SkxpZkVzTE1JUDU4dDVsS1NkTllKYXk1T0xYOGV5K2pBU2VMQ3pxZz09In19LCJJViI6IkZKQmZpNVJNSUlhQ1MyOVNIeEFoenc9PSIsIkRhdGEiOiJEQ2MxUWFRYWRHWitNRzE1WmsvRitBPT0iLCJTaWduYXR1cmUiOiJNaU80SzdGVEFWNE92TFlxTkZIQUlMd1pSZTQ9In0=');
+
+		// //$mensaje = Yii::app()->redoctober->encrypt('dani');
+		// var_dump($mensaje);
+		// die;
+
 		// $ls = LoansStatus::model()->findByPk(1);
 		// $ls->name = 'daniel';
 		// $ls->save();

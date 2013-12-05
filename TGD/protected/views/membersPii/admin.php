@@ -16,7 +16,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('loans-grid', {
+	$.fn.yiiGridView.update('members-pii-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -38,41 +38,32 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id' => 'loans-grid',
+	'id' => 'members-pii-grid',
 	'dataProvider' => $model->search(),
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'leader',
-		'currency',
-		'title_en_us',
-		'title_es',
-		array(
-				'name'=>'id_loans_activity',
-				'value'=>'GxHtml::valueEx($data->idLoansActivity)',
-				'filter'=>GxHtml::listDataEx(LoansActivities::model()->findAllAttributes(null, true)),
-				),
+		'firstname',
+		'surname',
+		'streetnumber',
+		'street',
+		'streetdetails',
 		/*
-		'image',
+		'city',
+		'state',
+		'zipcode',
 		array(
 				'name'=>'id_countries',
 				'value'=>'GxHtml::valueEx($data->idCountries)',
 				'filter'=>GxHtml::listDataEx(Countries::model()->findAllAttributes(null, true)),
 				),
-		'partner',
-		'amount',
-		'term',
-		'contribution',
-		'loan_date',
-		'loan_update',
+		'email',
+		'birthdate',
 		array(
-				'name'=>'id_loans_status',
-				'value'=>'GxHtml::valueEx($data->idLoansStatus)',
-				'filter'=>GxHtml::listDataEx(LoansStatus::model()->findAllAttributes(null, true)),
-				),
-		'paidback',
-		'loss_currency',
-		'loss_defaut',
+					'name' => 'agreerules',
+					'value' => '($data->agreerules === 0) ? Yii::t(\'app\', \'No\') : Yii::t(\'app\', \'Yes\')',
+					'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')),
+					),
 		'created_at',
 		'updated_at',
 		*/

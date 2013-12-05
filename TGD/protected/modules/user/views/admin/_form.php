@@ -22,7 +22,6 @@
 		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
@@ -40,6 +39,13 @@
 		<?php echo $form->dropDownList($model,'status',User::itemAlias('UserStatus')); ?>
 		<?php echo $form->error($model,'status'); ?>
 	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'key'); ?>
+		<?php echo $form->textArea($model, 'key'); ?>
+		<?php echo $form->error($model,'key'); ?>
+	</div><!-- row -->
+
 <?php 
 		$profileFields=Profile::getFields();
 		if ($profileFields) {

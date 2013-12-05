@@ -16,7 +16,7 @@
  * @property string $title_es
  * @property integer $id_loans_activity
  * @property string $image
- * @property integer $id_loans_countries
+ * @property integer $id_countries
  * @property string $partner
  * @property string $amount
  * @property integer $term
@@ -31,7 +31,7 @@
  * @property string $updated_at
  *
  * @property LoansActivities $idLoansActivity
- * @property LoansCountries $idLoansCountries
+ * @property Countries $idCountries
  * @property LoansStatus $idLoansStatus
  */
 abstract class BaseLoans extends GxActiveRecord {
@@ -54,19 +54,19 @@ abstract class BaseLoans extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('id, id_loans_activity, id_loans_countries, id_loans_status', 'required'),
-			array('id_loans_activity, id_loans_countries, term, id_loans_status', 'numerical', 'integerOnly'=>true),
+			array('id, id_loans_activity, id_countries, id_loans_status', 'required'),
+			array('id_loans_activity, id_countries, term, id_loans_status', 'numerical', 'integerOnly'=>true),
 			array('id, leader, currency, title_en_us, title_es, image, partner', 'length', 'max'=>255),
 			array('amount, contribution, loan_date, loan_update, paidback, loss_currency, loss_defaut, created_at, updated_at', 'safe'),
 			array('leader, currency, title_en_us, title_es, image, partner, amount, term, contribution, loan_date, loan_update, paidback, loss_currency, loss_defaut, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, leader, currency, title_en_us, title_es, id_loans_activity, image, id_loans_countries, partner, amount, term, contribution, loan_date, loan_update, id_loans_status, paidback, loss_currency, loss_defaut, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, leader, currency, title_en_us, title_es, id_loans_activity, image, id_countries, partner, amount, term, contribution, loan_date, loan_update, id_loans_status, paidback, loss_currency, loss_defaut, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
 			'idLoansActivity' => array(self::BELONGS_TO, 'LoansActivities', 'id_loans_activity'),
-			'idLoansCountries' => array(self::BELONGS_TO, 'LoansCountries', 'id_loans_countries'),
+			'idCountries' => array(self::BELONGS_TO, 'Countries', 'id_countries'),
 			'idLoansStatus' => array(self::BELONGS_TO, 'LoansStatus', 'id_loans_status'),
 		);
 	}
@@ -85,7 +85,7 @@ abstract class BaseLoans extends GxActiveRecord {
 			'title_es' => Yii::t('app', 'Title Es'),
 			'id_loans_activity' => null,
 			'image' => Yii::t('app', 'Image'),
-			'id_loans_countries' => null,
+			'id_countries' => null,
 			'partner' => Yii::t('app', 'Partner'),
 			'amount' => Yii::t('app', 'Amount'),
 			'term' => Yii::t('app', 'Term'),
@@ -99,7 +99,7 @@ abstract class BaseLoans extends GxActiveRecord {
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
 			'idLoansActivity' => null,
-			'idLoansCountries' => null,
+			'idCountries' => null,
 			'idLoansStatus' => null,
 		);
 	}
@@ -114,7 +114,7 @@ abstract class BaseLoans extends GxActiveRecord {
 		$criteria->compare('title_es', $this->title_es, true);
 		$criteria->compare('id_loans_activity', $this->id_loans_activity);
 		$criteria->compare('image', $this->image, true);
-		$criteria->compare('id_loans_countries', $this->id_loans_countries);
+		$criteria->compare('id_countries', $this->id_countries);
 		$criteria->compare('partner', $this->partner, true);
 		$criteria->compare('amount', $this->amount, true);
 		$criteria->compare('term', $this->term);

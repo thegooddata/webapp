@@ -2,7 +2,7 @@
 
 
 <?php $form = $this->beginWidget('GxActiveForm', array(
-	'id' => 'loans-countries-form',
+	'id' => 'countries-form',
 	'enableAjaxValidation' => false,
 ));
 ?>
@@ -24,6 +24,8 @@
 		<?php echo $form->error($model,'name_es'); ?>
 		</div><!-- row -->
 
+		<label><?php echo GxHtml::encode($model->getRelationLabel('membersPiis')); ?></label>
+		<?php echo $form->checkBoxList($model, 'membersPiis', GxHtml::encodeEx(GxHtml::listDataEx(MembersPii::model()->findAllAttributes(null, true)), false, true)); ?>
 		<label><?php echo GxHtml::encode($model->getRelationLabel('loans')); ?></label>
 		<?php echo $form->checkBoxList($model, 'loans', GxHtml::encodeEx(GxHtml::listDataEx(Loans::model()->findAllAttributes(null, true)), false, true)); ?>
 
