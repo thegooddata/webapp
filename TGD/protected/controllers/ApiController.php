@@ -73,7 +73,7 @@ class ApiController extends Controller
 	            $models = AdtracksSources::model()->findAll();
 	            break;
             case 'queriesBlacklist':
-	            $models = queriesBlacklist::model()->findAll();
+	            $models = QueriesBlacklist::model()->findAll();
 	            break;
 	        default:
 	            // Model not implemented error
@@ -488,10 +488,10 @@ class ApiController extends Controller
 		                }
 		                else
 		                {
-		                	$this->_sendResponse(501, 
-				                sprintf('Adtrack source not found <b>%s</b>',
-				                $service_name) );
-				            Yii::app()->end();
+		              //   	$this->_sendResponse(501, 
+				            //     sprintf('Adtrack source not found <b>%s</b>',
+				            //     $service_name) );
+				            // Yii::app()->end();
 		                }
 
 		            	
