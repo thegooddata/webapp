@@ -175,7 +175,7 @@ CREATE TABLE tbl_whitelists (
   id SERIAL PRIMARY KEY,
 
   user_id varchar(255) DEFAULT '',
-  member_id int references tbl_members(id),
+  member_id int,
   domain varchar(255) NOT NULL DEFAULT '',
   adtracks_sources_id int NOT NULL references tbl_adtracks_sources(id),
   status boolean NOT NULL DEFAULT true,
