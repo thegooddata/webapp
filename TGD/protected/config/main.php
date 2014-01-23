@@ -117,8 +117,15 @@ return array(
 			'rules'=>array(
 
 				// REST patterns
+				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
+				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
+
+				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
+				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
+
 		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
+		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%]+>', 'verb'=>'GET'),
 		        
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/', 'verb'=>'PUT'),
@@ -135,7 +142,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20131205',
+		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20140123',
 		    'username'=>'dani',
 		    'password'=>'',
 		    'charset'=>'UTF8',
@@ -181,3 +188,31 @@ return array(
 		'adminEmail'=>'webmaster@example.com',
 	),
 );
+
+/*
+
+{
+  "name":<username>,
+  "mail":<email>,
+  "pass":<password>,
+  "status":1,
+  "field_user_display_name":
+  {
+  	"und":
+  	[
+	  	{
+		  	"value":<display name>,
+		  	"format":null,
+		  	"safe_value":<display name>
+		}
+  	]
+  }
+}
+
+http://manage.thegooddata.org/rest/user/create
+
+http://manage.thegooddata.org/rest/user/6.json
+
+http://manage.thegooddata.org/rest/session/token/
+
+*/

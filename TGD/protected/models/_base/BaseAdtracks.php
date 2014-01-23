@@ -16,10 +16,10 @@
  * @property string $domain
  * @property string $url
  * @property string $usertime
+ * @property string $status
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Members $member
  * @property AdtracksSources $adtracksSources
  */
 abstract class BaseAdtracks extends GxActiveRecord {
@@ -44,16 +44,15 @@ abstract class BaseAdtracks extends GxActiveRecord {
 		return array(
 			array('adtracks_sources_id', 'required'),
 			array('member_id, adtracks_sources_id', 'numerical', 'integerOnly'=>true),
-			array('user_id, domain', 'length', 'max'=>255),
+			array('user_id, domain, status', 'length', 'max'=>255),
 			array('url, usertime, created_at, updated_at', 'safe'),
-			array('user_id, member_id, domain, url, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, member_id, adtracks_sources_id, domain, url, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('user_id, member_id, domain, url, usertime, status, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, member_id, adtracks_sources_id, domain, url, usertime, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
-			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
 			'adtracksSources' => array(self::BELONGS_TO, 'AdtracksSources', 'adtracks_sources_id'),
 		);
 	}
@@ -67,14 +66,14 @@ abstract class BaseAdtracks extends GxActiveRecord {
 		return array(
 			'id' => Yii::t('app', 'ID'),
 			'user_id' => Yii::t('app', 'User'),
-			'member_id' => null,
+			'member_id' => Yii::t('app', 'Member'),
 			'adtracks_sources_id' => null,
 			'domain' => Yii::t('app', 'Domain'),
 			'url' => Yii::t('app', 'Url'),
 			'usertime' => Yii::t('app', 'Usertime'),
+			'status' => Yii::t('app', 'Status'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
-			'member' => null,
 			'adtracksSources' => null,
 		);
 	}
@@ -89,6 +88,7 @@ abstract class BaseAdtracks extends GxActiveRecord {
 		$criteria->compare('domain', $this->domain, true);
 		$criteria->compare('url', $this->url, true);
 		$criteria->compare('usertime', $this->usertime, true);
+		$criteria->compare('status', $this->status, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
 

@@ -10,9 +10,13 @@
  * and there are no model relations.
  *
  * @property integer $id
- * @property string $category
- * @property string $headword
  * @property string $lang
+ * @property string $category
+ * @property string $topic
+ * @property string $search_term
+ * @property string $headword
+ * @property string $midword
+ * @property string $action
  * @property string $created_at
  * @property string $updated_at
  *
@@ -32,17 +36,17 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 	}
 
 	public static function representingColumn() {
-		return 'category';
+		return 'lang';
 	}
 
 	public function rules() {
 		return array(
 			array('lang', 'required'),
-			array('category, headword', 'length', 'max'=>255),
 			array('lang', 'length', 'max'=>128),
+			array('category, topic, search_term, headword, midword, action', 'length', 'max'=>255),
 			array('created_at, updated_at', 'safe'),
-			array('category, headword, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, category, headword, lang, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('category, topic, search_term, headword, midword, action, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, lang, category, topic, search_term, headword, midword, action, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,9 +63,13 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'category' => Yii::t('app', 'Category'),
-			'headword' => Yii::t('app', 'Headword'),
 			'lang' => Yii::t('app', 'Lang'),
+			'category' => Yii::t('app', 'Category'),
+			'topic' => Yii::t('app', 'Topic'),
+			'search_term' => Yii::t('app', 'Search Term'),
+			'headword' => Yii::t('app', 'Headword'),
+			'midword' => Yii::t('app', 'Midword'),
+			'action' => Yii::t('app', 'Action'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
 		);
@@ -71,9 +79,13 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('category', $this->category, true);
-		$criteria->compare('headword', $this->headword, true);
 		$criteria->compare('lang', $this->lang, true);
+		$criteria->compare('category', $this->category, true);
+		$criteria->compare('topic', $this->topic, true);
+		$criteria->compare('search_term', $this->search_term, true);
+		$criteria->compare('headword', $this->headword, true);
+		$criteria->compare('midword', $this->midword, true);
+		$criteria->compare('action', $this->action, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
 

@@ -16,18 +16,21 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('activkey')); ?>:
 	<?php echo GxHtml::encode($data->activkey); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
-	<?php echo GxHtml::encode($data->created_at); ?>
-	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('lastvisit_at')); ?>:
 	<?php echo GxHtml::encode($data->lastvisit_at); ?>
 	<br />
-	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('superuser')); ?>:
 	<?php echo GxHtml::encode($data->superuser); ?>
 	<br />
+	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('status')); ?>:
 	<?php echo GxHtml::encode($data->status); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('key')); ?>:
+	<?php echo GxHtml::encode($data->key); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
+	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />
 	*/ ?>
 

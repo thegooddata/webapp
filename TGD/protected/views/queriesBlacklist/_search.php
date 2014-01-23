@@ -11,8 +11,23 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'lang'); ?>
+		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'category'); ?>
 		<?php echo $form->textField($model, 'category', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'topic'); ?>
+		<?php echo $form->textField($model, 'topic', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'search_term'); ?>
+		<?php echo $form->textField($model, 'search_term', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">
@@ -21,8 +36,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'lang'); ?>
-		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
+		<?php echo $form->label($model, 'midword'); ?>
+		<?php echo $form->textField($model, 'midword', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'action'); ?>
+		<?php echo $form->textField($model, 'action', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">

@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'member_id'); ?>
-		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->textField($model, 'member_id'); ?>
 	</div>
 
 	<div class="row">
@@ -38,6 +38,11 @@
 	<div class="row">
 		<?php echo $form->label($model, 'lang'); ?>
 		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'share'); ?>
+		<?php echo $form->textField($model, 'share', array('maxlength' => 128)); ?>
 	</div>
 
 	<div class="row">

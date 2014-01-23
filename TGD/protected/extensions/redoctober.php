@@ -109,4 +109,7 @@ class redoctober extends CApplicationComponent
 curl --cacert cert/server.crt https://localhost:8080/encrypt  \
         -d '{"Name":"Alice","Password":"Lewis","Minimum":2, "Owners":["Alice","Bill","Cat","Dodo"],"Data":"V2h5IGlzIGEgcmF2ZW4gbGlrZSBhIHdyaXRpbmcgZGVzaz8="}'
 
+./bin/redoctober -addr=localhost:8080 -vaultpath=diskrecord.json -cert=/etc/ssl/certs/thegooddata.org.crt -key=/etc/ssl/private/thegooddata.org.key -static=index.html
+
+
 */

@@ -46,14 +46,165 @@ class ApiController extends Controller
 	        $this->_sendResponse(200, CJSON::encode($user),'application/json');
 	    }             
     }
- 
+ 	
+ 	// Actions
+    public function actionCount()
+	{
+		switch($_GET['model'])
+	    {	
+	    	case 'loans':
+	            $models = Loans::model()->findAll();
+	            break;
+            case 'queries':
+            	$models = $this->_countQueries();
+            	break;
+
+    		default:
+	            // Model not implemented error
+	            $this->_sendResponse(501, sprintf(
+	                'Error: Mode <b>list</b> is not implemented for model <b>%s</b>',
+	                $_GET['model']) );
+	            Yii::app()->end();
+	    }
+
+        // Prepare response
+        if (is_array($models))
+        {
+        	$rows = array();
+	        foreach($models as $model)
+	            $rows[] = $model->attributes;
+	        // Send the response
+	        $this->_sendResponse(200, CJSON::encode((string)count($rows)),'application/json');
+    	}
+    	else
+    	{
+    		// Send the response
+    		$rows = array();
+    		$this->_sendResponse(200, CJSON::encode($models),'application/json');
+    	}
+
+	}
+
+	public function _countQueries(){
+		$user_id=$_GET['user_id'];
+		$member_id=$_GET['user_id'];
+
+		if (!is_numeric($_GET['user_id'])){
+			$member_id=0;
+		}
+
+
+
+		$datas = Yii::app()->db->createCommand()
+			                ->setFetchMode(PDO::FETCH_OBJ)
+			                ->select('count(*)')
+			                ->from('tbl_queries')
+			                ->where(array(
+			                            'and',
+			                            '(user_id = :user_id or member_id = :member_id)',
+			                            'share = :share'
+			                            ),
+					                    array(
+				                            'user_id'=>$user_id,
+				                            'member_id'=>$member_id,
+				                            'share'=>'true')
+					                    )
+			                ->queryAll();
+
+		return $datas[0]->count;
+	}
+
+
+	public function actionPercentil()
+	{
+		switch($_GET['model'])
+	    {	
+            case 'queries':
+            	$models = $this->_percentileQueries();
+            	break;
+
+    		default:
+	            // Model not implemented error
+	            $this->_sendResponse(501, sprintf(
+	                'Error: Mode <b>list</b> is not implemented for model <b>%s</b>',
+	                $_GET['model']) );
+	            Yii::app()->end();
+	    }
+	    // Did we get some results?
+	    if(empty($models)) {
+	        // No
+	   		$this->_sendResponse(200, CJSON::encode('0'),'application/json');
+	     } else {
+	        $this->_sendResponse(200, CJSON::encode($models),'application/json');
+	    }
+	}
+
+	public function _percentileQueries()
+	{
+		$user_id=$_GET['user_id'];
+		$member_id=$_GET['user_id'];
+
+		if (!is_numeric($_GET['user_id'])){
+			$member_id=0;
+		}
+
+		if ($member_id!=0)
+		{
+			$datas = Yii::app()->db->createCommand()
+			    ->setFetchMode(PDO::FETCH_OBJ)
+			    ->select('percentile')
+			    ->from('view_queries_members_percentil')
+			    ->where(array(
+			                'and',
+			                'member_id = :member_id'
+			                ),
+			                array(
+			                    'member_id'=>$member_id)
+			                )
+			    ->queryAll();
+
+		    if (count($datas)>0)
+		    	return $datas[0]->percentile;
+			else
+				return 0;
+			
+		}
+		else
+		{
+			$datas = Yii::app()->db->createCommand()
+			    ->setFetchMode(PDO::FETCH_OBJ)
+			    ->select('percentile')
+			    ->from('view_queries_users_percentil')
+			    ->where(array(
+			                'and',
+			                'user_id = :user_id'
+			                ),
+			                array(
+			                    'user_id'=>$user_id)
+			                )
+			    ->queryAll();
+
+		    if (count($datas)>0)
+		    	return $datas[0]->percentile;
+			else
+				return 0;
+
+			//return $datas[0]->queries;
+		}
+	}
     // Actions
     public function actionList()
 	{
 		//die($_GET['model']);
 	    // Get the respective model instance
 	    switch($_GET['model'])
-	    {
+	    {	
+	    	 case 'loans':
+	            $models = Loans::model()->findAll();
+	            break;
+    		case 'achievements':
+    			$models = $this->_listAchievements();
+    			 break;
             case 'users':
 	            $models = Users::model()->findAll();
 	            break;
@@ -85,9 +236,9 @@ class ApiController extends Controller
 	    // Did we get some results?
 	    if(empty($models)) {
 	        // No
-	        $this->_sendResponse(200, 
-	                sprintf('No items where found for model <b>%s</b>', $_GET['model']) );
-	    } else {
+	        $rows = array();
+	        $this->_sendResponse(200, CJSON::encode($rows),'application/json');
+        } else {
 	        // Prepare response
 	        $rows = array();
 	        foreach($models as $model)
@@ -100,8 +251,8 @@ class ApiController extends Controller
     public function actionView()
 	{
 	    // Check if id was submitted via GET
-	    if(!isset($_GET['id']))
-	        $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
+	    // if(!isset($_GET['id']) && !isset($_GET['id']))
+	    //     $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
 	 
 	    switch($_GET['model'])
 	    {
@@ -126,7 +277,9 @@ class ApiController extends Controller
             case 'whitelists':
 	            $model = $this->_viewWhitelist();
 	            break;
-	       
+	       	case 'queriesblacklist':
+	       		$model = $this->_viewQueriesblacklist();
+	       		break;
 	            
 	       	default:
 	            $this->_sendResponse(501, sprintf(
@@ -428,6 +581,23 @@ class ApiController extends Controller
 	    Yii::app()->end();
 	}
 
+	public function _listAchievements(){
+		$achievements= Achievements::model()->findAll();
+		$achievements_valid=array();
+
+		foreach ($achievements as $achievement){
+			$todays_date = date("Y-m-d");
+			$today = strtotime($todays_date);
+			$init_date = strtotime($achievement->achievements_start);
+			$expiration_date = strtotime($achievement->achievements_finish);
+
+			if ($expiration_date > $today && $init_date < $today) {
+			     $achievements_valid[]=$achievement;
+			} 
+		}
+		return $achievements_valid;
+	}
+
 	public function _updateWhitelist($put_vars){
 
 		$user_id= $_GET['user_id'];
@@ -518,14 +688,34 @@ class ApiController extends Controller
 	}
 	
 	
+	public function _viewQueriesblacklist(){
+		$query= $_GET['query'];
+
+		$data = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('id')
+	                ->from('tbl_queries_blacklist')
+	                ->where(array(
+	                            'and',
+	                            '(midword = :query1 or midword = :query2 or midword = :query3)'
+	                            ),
+	                    	array(	
+	                            
+	                            ':query1'=>"/b".$query,
+	                            ':query2'=>"/b".$query."/b",
+	                            ':query3'=>$query."/b",
+	                            )
+                    	)
+	                ->queryAll();
+
+		return $data;
+	}
 
 	public function _viewWhitelist(){
 
 		$user_id= $_GET['user_id'];
 		$member_id= isset($_GET['member_id']) ? $_GET['member_id'] : null;
 
-		
-		
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('s.name as service, w.status as status, w.domain as domain')
@@ -555,7 +745,6 @@ class ApiController extends Controller
         }
 
         return $result;
-
 	}
 
 	public function _createAdtrack(){
@@ -567,6 +756,7 @@ class ApiController extends Controller
 	    $service_name=$_POST['service_name'];
 	    $service_url=$_POST['service_url'];
 	    $domain=$_POST['domain'];
+	    $status=$_POST['status'];
 	    $url=$_POST['url'];
 
 	    $data = Yii::app()->db->createCommand()
@@ -631,6 +821,7 @@ class ApiController extends Controller
 			$model->usertime=$usertime;
 	    	$model->adtracks_sources_id=$adtracks_sources_id;
 	    	$model->domain=$domain;
+	    	$model->status=$status;
 	    	$model->url=$url;
 		}
 		else{

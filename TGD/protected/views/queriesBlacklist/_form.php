@@ -14,9 +14,24 @@
 	<?php echo $form->errorSummary($model); ?>
 
 		<div class="row">
+		<?php echo $form->labelEx($model,'lang'); ?>
+		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
+		<?php echo $form->error($model,'lang'); ?>
+		</div><!-- row -->
+		<div class="row">
 		<?php echo $form->labelEx($model,'category'); ?>
 		<?php echo $form->textField($model, 'category', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'category'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'topic'); ?>
+		<?php echo $form->textField($model, 'topic', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'topic'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'search_term'); ?>
+		<?php echo $form->textField($model, 'search_term', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'search_term'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'headword'); ?>
@@ -24,9 +39,14 @@
 		<?php echo $form->error($model,'headword'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'lang'); ?>
-		<?php echo $form->textField($model, 'lang', array('maxlength' => 128)); ?>
-		<?php echo $form->error($model,'lang'); ?>
+		<?php echo $form->labelEx($model,'midword'); ?>
+		<?php echo $form->textField($model, 'midword', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'midword'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'action'); ?>
+		<?php echo $form->textField($model, 'action', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'action'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>

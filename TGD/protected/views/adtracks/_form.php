@@ -20,7 +20,7 @@
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'member_id'); ?>
-		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->textField($model, 'member_id'); ?>
 		<?php echo $form->error($model,'member_id'); ?>
 		</div><!-- row -->
 		<div class="row">
@@ -42,6 +42,11 @@
 		<?php echo $form->labelEx($model,'usertime'); ?>
 		<?php echo $form->textField($model, 'usertime'); ?>
 		<?php echo $form->error($model,'usertime'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->textField($model, 'status', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'status'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>

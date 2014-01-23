@@ -15,7 +15,7 @@
 
 		<div class="row">
 		<?php echo $form->labelEx($model,'member_id'); ?>
-		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->textField($model, 'member_id'); ?>
 		<?php echo $form->error($model,'member_id'); ?>
 		</div><!-- row -->
 		<div class="row">

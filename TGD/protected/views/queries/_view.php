@@ -5,7 +5,7 @@
 	<br />
 
 	<?php echo GxHtml::encode($data->getAttributeLabel('member_id')); ?>:
-		<?php echo GxHtml::encode(GxHtml::valueEx($data->member)); ?>
+	<?php echo GxHtml::encode($data->member_id); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('user_id')); ?>:
 	<?php echo GxHtml::encode($data->user_id); ?>
@@ -23,6 +23,9 @@
 	<?php echo GxHtml::encode($data->lang); ?>
 	<br />
 	<?php /*
+	<?php echo GxHtml::encode($data->getAttributeLabel('share')); ?>:
+	<?php echo GxHtml::encode($data->share); ?>
+	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('usertime')); ?>:
 	<?php echo GxHtml::encode($data->usertime); ?>
 	<br />

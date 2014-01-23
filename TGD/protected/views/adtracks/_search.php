@@ -17,7 +17,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'member_id'); ?>
-		<?php echo $form->dropDownList($model, 'member_id', GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->textField($model, 'member_id'); ?>
 	</div>
 
 	<div class="row">
@@ -38,6 +38,11 @@
 	<div class="row">
 		<?php echo $form->label($model, 'usertime'); ?>
 		<?php echo $form->textField($model, 'usertime'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'status'); ?>
+		<?php echo $form->textField($model, 'status', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">

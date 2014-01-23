@@ -24,41 +24,15 @@ $this->menu=array(
 'password',
 'email',
 'activkey',
-'created_at',
 'lastvisit_at',
 'superuser',
 'status',
+'key',
+'created_at',
 	),
 )); ?>
 
-<h2><?php echo GxHtml::encode($model->getRelationLabel('queries')); ?></h2>
-<?php
-	echo GxHtml::openTag('ul');
-	foreach($model->queries as $relatedModel) {
-		echo GxHtml::openTag('li');
-		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('queries/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
-		echo GxHtml::closeTag('li');
-	}
-	echo GxHtml::closeTag('ul');
-?><h2><?php echo GxHtml::encode($model->getRelationLabel('histories')); ?></h2>
-<?php
-	echo GxHtml::openTag('ul');
-	foreach($model->histories as $relatedModel) {
-		echo GxHtml::openTag('li');
-		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('history/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
-		echo GxHtml::closeTag('li');
-	}
-	echo GxHtml::closeTag('ul');
-?><h2><?php echo GxHtml::encode($model->getRelationLabel('threats')); ?></h2>
-<?php
-	echo GxHtml::openTag('ul');
-	foreach($model->threats as $relatedModel) {
-		echo GxHtml::openTag('li');
-		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('threats/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
-		echo GxHtml::closeTag('li');
-	}
-	echo GxHtml::closeTag('ul');
-?><h2><?php echo GxHtml::encode($model->getRelationLabel('whitelists')); ?></h2>
+<h2><?php echo GxHtml::encode($model->getRelationLabel('whitelists')); ?></h2>
 <?php
 	echo GxHtml::openTag('ul');
 	foreach($model->whitelists as $relatedModel) {

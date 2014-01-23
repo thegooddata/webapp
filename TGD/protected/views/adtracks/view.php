@@ -21,11 +21,7 @@ $this->menu=array(
 	'attributes' => array(
 'id',
 'user_id',
-array(
-			'name' => 'member',
-			'type' => 'raw',
-			'value' => $model->member !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->member)), array('members/view', 'id' => GxActiveRecord::extractPkValue($model->member, true))) : null,
-			),
+'member_id',
 array(
 			'name' => 'adtracksSources',
 			'type' => 'raw',
@@ -34,6 +30,7 @@ array(
 'domain',
 'url',
 'usertime',
+'status',
 'created_at',
 'updated_at',
 	),

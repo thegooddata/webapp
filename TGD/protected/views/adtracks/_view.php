@@ -8,7 +8,7 @@
 	<?php echo GxHtml::encode($data->user_id); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('member_id')); ?>:
-		<?php echo GxHtml::encode(GxHtml::valueEx($data->member)); ?>
+	<?php echo GxHtml::encode($data->member_id); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('adtracks_sources_id')); ?>:
 		<?php echo GxHtml::encode(GxHtml::valueEx($data->adtracksSources)); ?>
@@ -23,6 +23,9 @@
 	<?php echo GxHtml::encode($data->usertime); ?>
 	<br />
 	<?php /*
+	<?php echo GxHtml::encode($data->getAttributeLabel('status')); ?>:
+	<?php echo GxHtml::encode($data->status); ?>
+	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />

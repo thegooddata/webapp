@@ -131,7 +131,7 @@ CREATE TABLE tbl_adtracks_types (
 );
 
 INSERT INTO tbl_adtracks_types (name) VALUES
-('Disconnect'),
+('Others'),
 ('Advertising'),
 ('Analytics'),
 ('Social');
@@ -159,11 +159,12 @@ CREATE TABLE tbl_adtracks (
   id SERIAL PRIMARY KEY,
 
   user_id varchar(255) DEFAULT '',
-  member_id int references tbl_members(id),
+  member_id int,
   adtracks_sources_id int NOT NULL references tbl_adtracks_sources(id),
   domain varchar(255) NOT NULL DEFAULT '',
   url text NOT NULL DEFAULT '',
   usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,  
+  status varchar(255) NOT NULL DEFAULT '',
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
@@ -189,7 +190,7 @@ CREATE TABLE tbl_whitelists (
 CREATE TABLE tbl_browsing (
   id SERIAL PRIMARY KEY,
 
-  member_id int references tbl_members(id),
+  member_id int,
   user_id varchar(255) DEFAULT '',
   domain varchar(255) NOT NULL DEFAULT '',
   url text NOT NULL DEFAULT '',
@@ -205,12 +206,13 @@ CREATE TABLE tbl_browsing (
 CREATE TABLE tbl_queries (
   id SERIAL PRIMARY KEY,
 
-  member_id int references tbl_members(id),
+  member_id int,
   user_id varchar(255) DEFAULT '',
   provider varchar(128) NOT NULL,
   data varchar(256) NOT NULL,
   query text NOT NULL,
   lang varchar(128) NOT NULL,
+  share varchar(128) DEFAULT 'true', 
   usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
@@ -221,17 +223,21 @@ CREATE TABLE tbl_queries (
 CREATE TABLE tbl_queries_blacklist (
   id SERIAL PRIMARY KEY,
 
-  category varchar(255) NOT NULL DEFAULT '',
-  headword varchar(255) NOT NULL DEFAULT '',
   lang varchar(128) NOT NULL,
-
+  category varchar(255) NOT NULL DEFAULT '',
+  topic varchar(255) NOT NULL DEFAULT '',
+  search_term varchar(255) NOT NULL DEFAULT '',
+  headword varchar(255) NOT NULL DEFAULT '',
+  midword varchar(255) NOT NULL DEFAULT '',
+  action varchar(255) NOT NULL DEFAULT 'use',
+  
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO tbl_queries_blacklist (category, headword,lang) VALUES
-('sex', 'sex','en'),
-('sex', 'sex','es');
+-- INSERT INTO tbl_queries_blacklist (category, headword,lang) VALUES
+-- ('sex', 'sex','en'),
+-- ('sex', 'sex','es');
 
 --- GOOD DATA ---
 
@@ -296,6 +302,9 @@ CREATE TABLE tbl_achievements (
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO tbl_achievements  (id,achievement_type_id, title_en_us,link_en_us,text_en_us,achievements_start,achievements_finish) VALUES
+(1, 1, 'This a sample achievement with two lines. I hope it fills the extension content.','http://www.thegooddata.org','This a sample achievement with two lines. I hope it fill the extension content.','01/01/2014','01/01/2015');
+
 --DROP TABLE tbl_incomes;
 CREATE TABLE tbl_incomes (
   id varchar(255) PRIMARY KEY,
@@ -340,3 +349,56 @@ CREATE TABLE tbl_loans (
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+--VIEWS
+CREATE OR REPLACE VIEW view_queries AS 
+ SELECT tbl_queries.user_id, 
+    tbl_queries.member_id, 
+    count(*) AS queries
+   FROM tbl_members, 
+    tbl_queries
+  GROUP BY tbl_queries.user_id, tbl_queries.member_id;
+
+CREATE OR REPLACE VIEW view_queries_members AS 
+ SELECT tbl_queries.member_id, 
+    count(*) AS queries
+   FROM tbl_members, 
+    tbl_queries
+  WHERE tbl_queries.member_id IS NOT NULL
+  GROUP BY tbl_queries.member_id;
+
+CREATE OR REPLACE VIEW view_queries_members_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_queries_members b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_queries_members a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_queries_members) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_queries_members b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+CREATE OR REPLACE VIEW view_queries_users AS 
+ SELECT tbl_queries.user_id, 
+    count(*) AS queries
+   FROM tbl_members, 
+    tbl_queries
+  GROUP BY tbl_queries.user_id;
+
+CREATE OR REPLACE VIEW view_queries_users_percentil AS 
+ SELECT a.user_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_queries_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_queries_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_queries_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_queries_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
