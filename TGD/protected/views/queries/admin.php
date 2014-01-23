@@ -50,10 +50,10 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'query',
 		/*
 		'lang',
+		'share',
 		'usertime',
 		'created_at',
 		'updated_at',
-		'share',
 		*/
 		array(
 			'class' => 'CButtonColumn',

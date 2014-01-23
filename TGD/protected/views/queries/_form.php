@@ -44,6 +44,11 @@
 		<?php echo $form->error($model,'lang'); ?>
 		</div><!-- row -->
 		<div class="row">
+		<?php echo $form->labelEx($model,'share'); ?>
+		<?php echo $form->textField($model, 'share', array('maxlength' => 128)); ?>
+		<?php echo $form->error($model,'share'); ?>
+		</div><!-- row -->
+		<div class="row">
 		<?php echo $form->labelEx($model,'usertime'); ?>
 		<?php echo $form->textField($model, 'usertime'); ?>
 		<?php echo $form->error($model,'usertime'); ?>
@@ -57,11 +62,6 @@
 		<?php echo $form->labelEx($model,'updated_at'); ?>
 		<?php echo $form->textField($model, 'updated_at'); ?>
 		<?php echo $form->error($model,'updated_at'); ?>
-		</div><!-- row -->
-		<div class="row">
-		<?php echo $form->labelEx($model,'share'); ?>
-		<?php echo $form->textField($model, 'share', array('maxlength' => 128)); ?>
-		<?php echo $form->error($model,'share'); ?>
 		</div><!-- row -->
 
 

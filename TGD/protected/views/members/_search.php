@@ -26,11 +26,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model, 'lastvisit_at'); ?>
 		<?php echo $form->textField($model, 'lastvisit_at'); ?>
 	</div>
@@ -43,6 +38,16 @@
 	<div class="row">
 		<?php echo $form->label($model, 'status'); ?>
 		<?php echo $form->textField($model, 'status'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'key'); ?>
+		<?php echo $form->textArea($model, 'key'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'created_at'); ?>
+		<?php echo $form->textField($model, 'created_at'); ?>
 	</div>
 
 	<div class="row buttons">

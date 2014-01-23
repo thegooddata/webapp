@@ -14,14 +14,12 @@
  * @property string $password
  * @property string $email
  * @property string $activkey
- * @property string $created_at
  * @property string $lastvisit_at
  * @property integer $superuser
  * @property integer $status
+ * @property string $key
+ * @property string $created_at
  *
- * @property Queries[] $queries
- * @property History[] $histories
- * @property Threats[] $threats
  * @property Whitelists[] $whitelists
  */
 abstract class BaseMembers extends GxActiveRecord {
@@ -44,22 +42,19 @@ abstract class BaseMembers extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('username, password, email, created_at', 'required'),
+			array('username, password, created_at', 'required'),
 			array('superuser, status', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>20),
 			array('password, email, activkey', 'length', 'max'=>128),
-			array('lastvisit_at', 'safe'),
-			array('activkey, lastvisit_at, superuser, status', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status', 'safe', 'on'=>'search'),
+			array('lastvisit_at, key', 'safe'),
+			array('email, activkey, lastvisit_at, superuser, status, key', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, username, password, email, activkey, lastvisit_at, superuser, status, key, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
-			'queries' => array(self::HAS_MANY, 'Queries', 'user_id'),
-			'histories' => array(self::HAS_MANY, 'History', 'user_id'),
-			'threats' => array(self::HAS_MANY, 'Threats', 'user_id'),
-			'whitelists' => array(self::HAS_MANY, 'Whitelists', 'user_id'),
+			'whitelists' => array(self::HAS_MANY, 'Whitelists', 'member_id'),
 		);
 	}
 
@@ -75,13 +70,11 @@ abstract class BaseMembers extends GxActiveRecord {
 			'password' => Yii::t('app', 'Password'),
 			'email' => Yii::t('app', 'Email'),
 			'activkey' => Yii::t('app', 'Activkey'),
-			'created_at' => Yii::t('app', 'Create At'),
 			'lastvisit_at' => Yii::t('app', 'Lastvisit At'),
 			'superuser' => Yii::t('app', 'Superuser'),
 			'status' => Yii::t('app', 'Status'),
-			'queries' => null,
-			'histories' => null,
-			'threats' => null,
+			'key' => Yii::t('app', 'Key'),
+			'created_at' => Yii::t('app', 'Created At'),
 			'whitelists' => null,
 		);
 	}
@@ -94,10 +87,11 @@ abstract class BaseMembers extends GxActiveRecord {
 		$criteria->compare('password', $this->password, true);
 		$criteria->compare('email', $this->email, true);
 		$criteria->compare('activkey', $this->activkey, true);
-		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('lastvisit_at', $this->lastvisit_at, true);
 		$criteria->compare('superuser', $this->superuser);
 		$criteria->compare('status', $this->status);
+		$criteria->compare('key', $this->key, true);
+		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

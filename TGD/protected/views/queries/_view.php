@@ -23,6 +23,9 @@
 	<?php echo GxHtml::encode($data->lang); ?>
 	<br />
 	<?php /*
+	<?php echo GxHtml::encode($data->getAttributeLabel('share')); ?>:
+	<?php echo GxHtml::encode($data->share); ?>
+	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('usertime')); ?>:
 	<?php echo GxHtml::encode($data->usertime); ?>
 	<br />
@@ -31,9 +34,6 @@
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
 	<?php echo GxHtml::encode($data->updated_at); ?>
-	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('share')); ?>:
-	<?php echo GxHtml::encode($data->share); ?>
 	<br />
 	*/ ?>
 

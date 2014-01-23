@@ -26,10 +26,10 @@ $this->menu=array(
 'data',
 'query',
 'lang',
+'share',
 'usertime',
 'created_at',
 'updated_at',
-'share',
 	),
 )); ?>
 

@@ -47,11 +47,12 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'password',
 		'email',
 		'activkey',
-		'created_at',
-		/*
 		'lastvisit_at',
+		/*
 		'superuser',
 		'status',
+		'key',
+		'created_at',
 		*/
 		array(
 			'class' => 'CButtonColumn',
