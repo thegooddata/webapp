@@ -53,6 +53,11 @@
 		<?php echo $form->textField($model, 'updated_at'); ?>
 		<?php echo $form->error($model,'updated_at'); ?>
 		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->textField($model, 'status', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'status'); ?>
+		</div><!-- row -->
 
 
 <?php

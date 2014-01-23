@@ -20,11 +20,7 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
-array(
-			'name' => 'member',
-			'type' => 'raw',
-			'value' => $model->member !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->member)), array('members/view', 'id' => GxActiveRecord::extractPkValue($model->member, true))) : null,
-			),
+'member_id',
 'user_id',
 'provider',
 'data',
@@ -33,6 +29,7 @@ array(
 'usertime',
 'created_at',
 'updated_at',
+'share',
 	),
 )); ?>
 

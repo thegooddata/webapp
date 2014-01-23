@@ -7,7 +7,7 @@
  * property or method in class "Browsing".
  *
  * Columns in table "{{browsing}}" available as properties of the model,
- * followed by relations of table "{{browsing}}" available as properties of the model.
+ * and there are no model relations.
  *
  * @property integer $id
  * @property integer $member_id
@@ -18,7 +18,6 @@
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Members $member
  */
 abstract class BaseBrowsing extends GxActiveRecord {
 
@@ -50,7 +49,6 @@ abstract class BaseBrowsing extends GxActiveRecord {
 
 	public function relations() {
 		return array(
-			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
 		);
 	}
 
@@ -62,14 +60,13 @@ abstract class BaseBrowsing extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'member_id' => null,
+			'member_id' => Yii::t('app', 'Member'),
 			'user_id' => Yii::t('app', 'User'),
 			'domain' => Yii::t('app', 'Domain'),
 			'url' => Yii::t('app', 'Url'),
 			'usertime' => Yii::t('app', 'Usertime'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
-			'member' => null,
 		);
 	}
 

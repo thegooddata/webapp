@@ -43,11 +43,17 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'category',
-		'headword',
 		'lang',
+		'category',
+		'topic',
+		'search_term',
+		'headword',
+		/*
+		'midword',
+		'action',
 		'created_at',
 		'updated_at',
+		*/
 		array(
 			'class' => 'CButtonColumn',
 		),

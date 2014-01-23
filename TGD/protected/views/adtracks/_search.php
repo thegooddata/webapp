@@ -50,6 +50,11 @@
 		<?php echo $form->textField($model, 'updated_at'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model, 'status'); ?>
+		<?php echo $form->textField($model, 'status', array('maxlength' => 255)); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo GxHtml::submitButton(Yii::t('app', 'Search')); ?>
 	</div>

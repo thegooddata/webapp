@@ -88,7 +88,7 @@ return array(
 			'password' => 'dani',
 			'owners' => '"user1","user2"',
 			'minimun' => 2,
-			'cert' => "/usr/share/redoctober/cert/server.crt"
+			'cert' => "/etc/ssl/certs/thegooddata.org.crt"
 		),
 
 		'mail' => array(

@@ -5,7 +5,7 @@
 	<br />
 
 	<?php echo GxHtml::encode($data->getAttributeLabel('member_id')); ?>:
-		<?php echo GxHtml::encode(GxHtml::valueEx($data->member)); ?>
+	<?php echo GxHtml::encode($data->member_id); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('user_id')); ?>:
 	<?php echo GxHtml::encode($data->user_id); ?>
@@ -31,6 +31,9 @@
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
 	<?php echo GxHtml::encode($data->updated_at); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('share')); ?>:
+	<?php echo GxHtml::encode($data->share); ?>
 	<br />
 	*/ ?>
 

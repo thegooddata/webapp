@@ -18,6 +18,7 @@
  * @property string $usertime
  * @property string $created_at
  * @property string $updated_at
+ * @property string $status
  *
  * @property Members $member
  * @property AdtracksSources $adtracksSources
@@ -44,10 +45,10 @@ abstract class BaseAdtracks extends GxActiveRecord {
 		return array(
 			array('adtracks_sources_id', 'required'),
 			array('member_id, adtracks_sources_id', 'numerical', 'integerOnly'=>true),
-			array('user_id, domain', 'length', 'max'=>255),
+			array('user_id, domain, status', 'length', 'max'=>255),
 			array('url, usertime, created_at, updated_at', 'safe'),
-			array('user_id, member_id, domain, url, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, member_id, adtracks_sources_id, domain, url, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('user_id, member_id, domain, url, usertime, created_at, updated_at, status', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, member_id, adtracks_sources_id, domain, url, usertime, created_at, updated_at, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +75,7 @@ abstract class BaseAdtracks extends GxActiveRecord {
 			'usertime' => Yii::t('app', 'Usertime'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
+			'status' => Yii::t('app', 'Status'),
 			'member' => null,
 			'adtracksSources' => null,
 		);
@@ -91,6 +93,7 @@ abstract class BaseAdtracks extends GxActiveRecord {
 		$criteria->compare('usertime', $this->usertime, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
+		$criteria->compare('status', $this->status, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

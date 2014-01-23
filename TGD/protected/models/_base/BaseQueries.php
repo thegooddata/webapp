@@ -7,7 +7,7 @@
  * property or method in class "Queries".
  *
  * Columns in table "{{queries}}" available as properties of the model,
- * followed by relations of table "{{queries}}" available as properties of the model.
+ * and there are no model relations.
  *
  * @property integer $id
  * @property integer $member_id
@@ -19,8 +19,8 @@
  * @property string $usertime
  * @property string $created_at
  * @property string $updated_at
+ * @property string $share
  *
- * @property Members $member
  */
 abstract class BaseQueries extends GxActiveRecord {
 
@@ -45,17 +45,16 @@ abstract class BaseQueries extends GxActiveRecord {
 			array('provider, data, query, lang', 'required'),
 			array('member_id', 'numerical', 'integerOnly'=>true),
 			array('user_id', 'length', 'max'=>255),
-			array('provider, lang', 'length', 'max'=>128),
+			array('provider, lang, share', 'length', 'max'=>128),
 			array('data', 'length', 'max'=>256),
 			array('usertime, created_at, updated_at', 'safe'),
-			array('member_id, user_id, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, member_id, user_id, provider, data, query, lang, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('member_id, user_id, usertime, created_at, updated_at, share', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, member_id, user_id, provider, data, query, lang, usertime, created_at, updated_at, share', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
-			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
 		);
 	}
 
@@ -67,7 +66,7 @@ abstract class BaseQueries extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'member_id' => null,
+			'member_id' => Yii::t('app', 'Member'),
 			'user_id' => Yii::t('app', 'User'),
 			'provider' => Yii::t('app', 'Provider'),
 			'data' => Yii::t('app', 'Data'),
@@ -76,7 +75,7 @@ abstract class BaseQueries extends GxActiveRecord {
 			'usertime' => Yii::t('app', 'Usertime'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
-			'member' => null,
+			'share' => Yii::t('app', 'Share'),
 		);
 	}
 
@@ -93,6 +92,7 @@ abstract class BaseQueries extends GxActiveRecord {
 		$criteria->compare('usertime', $this->usertime, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
+		$criteria->compare('share', $this->share, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

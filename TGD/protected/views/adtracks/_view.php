@@ -29,6 +29,9 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
 	<?php echo GxHtml::encode($data->updated_at); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('status')); ?>:
+	<?php echo GxHtml::encode($data->status); ?>
+	<br />
 	*/ ?>
 
 </div>
