@@ -117,8 +117,15 @@ return array(
 			'rules'=>array(
 
 				// REST patterns
+				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
+				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
+
+				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
+				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
+
 		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
+		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%]+>', 'verb'=>'GET'),
 		        
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/', 'verb'=>'PUT'),
