@@ -80,7 +80,7 @@ class ApiController extends Controller
     	{
     		// Send the response
     		$rows = array();
-    		$this->_sendResponse(200, CJSON::encode($models),'application/json');
+    		$this->_sendResponse(200, CJSON::encode((string)$models),'application/json');
     	}
 
 	}
