@@ -21,9 +21,11 @@ return array(
 
         'ext.yii-mail.YiiMailMessage',
         'ext.giix-components.*',
+
+        'ext.Mailchimp.*',
 	),
 
-	
+	'theme'=>'tgd',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -108,8 +110,8 @@ return array(
 			'allowAutoLogin'=>true,
 			'class' => 'WebUser',
 		),
-		// uncomment the following to enable URLs in path-format
 		
+		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,

@@ -21,9 +21,11 @@ return array(
 
         'ext.yii-mail.YiiMailMessage',
         'ext.giix-components.*',
+
+        'ext.Mailchimp.*',
 	),
 
-	
+	'theme'=>'tgd',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool

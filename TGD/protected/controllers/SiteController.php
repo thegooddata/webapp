@@ -2,6 +2,12 @@
 
 class SiteController extends Controller
 {
+	public function init()
+	{
+   		Yii::app()->theme = 'blank';
+	    parent::init();
+	}
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -25,6 +31,68 @@ class SiteController extends Controller
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
+
+	public function actionSubscribelist()
+	{
+		if ($_POST['b_c536df10462fb6afe72117895_b5320da781']!='') die('spam spam spam');
+
+		// require_once 'mailchimp-api-php/src/Mailchimp.php';
+		// require_once 'mailchimp-api-php/config.php';
+		$apikey = "4e0891dc6249ea5d20e206083727bfd2-us3";
+		$mailchimp = new Mailchimp($apikey);
+		$lists = new Mailchimp_Lists($mailchimp);
+
+		//$id = $lists->getList(array('id'=>$_POST['id']));
+		$id = $lists->getList(array('id'=>'b5320da781'));
+		
+		$email = array('email' => $_POST['MERGE0']);
+		//$email = array('email' => 'juan.menendez.buitrago@gmail.com');
+
+		$result = $lists->subscribe('b5320da781', $email, null, 'html', true, false, true, true);
+
+		if (is_array($result) && isset($result['email'])) {
+		    ?>
+		<html>
+		    <body>
+		        <div class="wrapper rounded6" id="templateContainer">
+		            <div id="templateBody" class="bodyContent rounded6">
+		                <div class="confirm-email"><p>We need to confirm your email address.</p>
+		                    <p>To complete the subscription process, please click the link in the email we just sent you.</p>
+		                    <div class="vcard"><span class="org fn">The Good Data Cooperative Limited</span><div class="adr"><div class="street-address">Unit 1 82 Clerkenwell Road</div><span class="locality">London</span>, <span class="region">NJ</span>  <span class="postal-code">EC1M 5RF</span> <div class="country-name">United Kingdom</div><br><a href="http://thegooddata.us3.list-manage.com/vcard?u=c536df10462fb6afe72117895&id=b5320da781" class="hcard-download">Add us to your address book</a></div>
+		                    </div>
+		                    <br>
+		                    <a class="button" href="http://www.thegooddata.org">&laquo; return to our website</a>
+		                </div>
+		            </div>
+		    </body>
+		</html>
+		    <?php
+		}else{
+		    ?>
+		<html>
+		    <body>
+		        <div class="wrapper rounded6" id="templateContainer">
+		            <div id="templateBody" class="bodyContent rounded6">
+		                <h2>Doh!</h2>
+		                <div><p>There has been a problem with your subscription. Please get in touch with us so we can fix this mess.</p>
+		                    <br>
+		                    <a class="button" href="http://www.thegooddata.org">&laquo; return to our website</a>
+		                </div>
+		            </div>
+		    </body>
+		</html>
+		    <?php    
+		}
+
+		die;
+
+	}
+
+	public function actionSignup()
+	{
+		$this->render('signup');
+	}
+
 	public function actionIndex()
 	{
 
