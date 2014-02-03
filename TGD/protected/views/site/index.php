@@ -31,7 +31,7 @@
                 </div>
                 <nav>
                     <ul class="clearfix">
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/login"); ?>">Login</a></li>
+                        <!-- <li><a href="<?php echo Yii::app()->controller->createUrl("user/login"); ?>">Login</a></li> -->
                         <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
                         <li><a class="active" href="#">Install in chrome</a></li>
                     </ul> 
