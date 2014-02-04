@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/media_queries.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">              
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/modal.css">       
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 
     </head>
