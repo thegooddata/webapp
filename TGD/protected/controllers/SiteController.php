@@ -48,7 +48,7 @@ class SiteController extends Controller
 		$email = array('email' => $_POST['MERGE0']);
 		//$email = array('email' => 'juan.menendez.buitrago@gmail.com');
 
-		$result = $lists->subscribe('b5320da781', $email, null, 'html', true, false, true, true);
+		$result = $lists->subscribe('b5320da781', $email, null, 'html', false, false, true, true);
 
 		if (is_array($result) && isset($result['email'])) {
 		    ?>
