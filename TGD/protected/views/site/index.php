@@ -161,7 +161,7 @@
                     <ul class="clearfix">
                         <li>
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/license.png" alt="License">
-                            <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 3.0 License.</p>
+                            <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
                         </li>
                         <li>
                             <a href="#" title="Designed by Timeless">
@@ -189,7 +189,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <form action="subscribeList.php" method="POST" class="form-inline" role="form">
+                        <form action="<?php echo Yii::app()->controller->createUrl("site/subscribelist"); ?>" method="POST" class="form-inline" role="form">
                             <!-- form -->
                             <input type="hidden" name="u" value="c536df10462fb6afe72117895">
                             <input type="hidden" name="id" value="b5320da781">
