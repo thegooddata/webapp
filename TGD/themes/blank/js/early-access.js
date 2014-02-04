@@ -39,13 +39,13 @@ $('#myModal').on('shown.bs.modal', function(e) {
                 function(data, status) { // success callback
                     $('.modal-header h2').html('Success!');
                     $('.modal-body').empty().append(data).height(modalBodyHeight).css('text-align', 'center');
-                    $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">Â« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
+                    $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
                 },
                 'html' // data type expected from the server
                 ).error(function() {
             $('.modal-header h2').html('Error');
-            $('.modal-body').empty().append('Shit happens').height(modalBodyHeight).css('text-align', 'center');
-            $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">Â« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
+            $('.modal-body').empty().append('Something went wrong while processing your request').height(modalBodyHeight).css('text-align', 'center');
+            $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
         });
     });
 });
