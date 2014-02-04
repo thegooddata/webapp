@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/home.css"> 
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/media_queries.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-modal.min.css">              
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">              
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 
     </head>
@@ -172,11 +172,37 @@
                 </div>
             </div>
         </footer>
-
-
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Early access</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- welcome message -->
+                        <div id="subscribeFormWelcome">
+                            <span>Enjoy your data!&nbsp;We are in private beta right now. Please submit your email and we will contact you shortly about joining the beta.</span><br>
+                            <br>
+                            <span>For frequent updates, follow us&nbsp;</span><a href="https://twitter.com/thegooddata" target="blank">@thegooddata</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="subscribeList.php" method="POST" class="form-inline" role="form">
+                            <!-- form -->
+                            <input type="hidden" name="u" value="c536df10462fb6afe72117895">
+                            <input type="hidden" name="id" value="b5320da781">
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="MERGE0" id="MERGE0" size="25" placeholder="Enter email">
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="submit">Send</button>
+                            <!-- real people should not fill this in and expect good things -->
+                            <div style="position: absolute; left: -5000px;"><input type="text" name="b_c536df10462fb6afe72117895_b5320da781" value=""></div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
         <!-- Le JavaScript -->
@@ -184,54 +210,10 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/jquery-1.9.1.min.js"><\/script>');</script>
 
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/main.js"></script>  
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/main.js"></script>  
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.stellar.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap-modal.min.js"></script>
-        <script>
-            var form;
-            $('a').click(function(e) {
-                e.preventDefault();
-                var modal = $('#myModal').modal({'keyboard': true, remote: '<?php echo Yii::app()->controller->createUrl("site/signup"); ?>'});
-            });
-
-            $('#myModal').on('shown.bs.modal', function(e) {
-                var $form = $(this).find('form');
-                $form.submit(function(e) {
-                    e.preventDefault();
-
-                    var $form = $(this),
-                        url = $form.attr('action'),
-                        id = $form.find("input[name=id]").val(),
-                        MERGE0 = $form.find("input[name=MERGE0]").val(),
-                        spam = $form.find("input[name=b_c536df10462fb6afe72117895_b5320da781]").val();
-
-                    var data = {
-                        id: id,
-                        MERGE0: MERGE0,
-                        b_c536df10462fb6afe72117895_b5320da781: spam
-                    };
-
-                    var posting = $.post(
-                            url,
-                            data,
-                            function(data, status) {
-                                $(".modal-header h2").html('Almost finished...')
-                                var content = $(data).find("#templateBody");
-                                $( ".modal-body" ).empty().append( content );
-                                //$("#result").empty().append(content);
-                            },
-                            'html');
-                    var $modalBody = $(".modal-body");
-                    var modalBodyHeight = $modalBody.height();
-                    
-                    $(".modal-body").empty().append('<div class="loading bodyContent">Sending subscription, please wait a second... or two</div>');
-                });
-
-            });
-
-
-        </script>
-
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/early-access.js"></script>
     </body>
 </html>

@@ -52,38 +52,16 @@ class SiteController extends Controller
 
 		if (is_array($result) && isset($result['email'])) {
 		    ?>
-		<html>
-		    <body>
-		        <div class="wrapper rounded6" id="templateContainer">
-		            <div id="templateBody" class="bodyContent rounded6">
-		                <div class="confirm-email"><p>We need to confirm your email address.</p>
-		                    <p>To complete the subscription process, please click the link in the email we just sent you.</p>
-		                    <div class="vcard"><span class="org fn">The Good Data Cooperative Limited</span><div class="adr"><div class="street-address">Unit 1 82 Clerkenwell Road</div><span class="locality">London</span>, <span class="region">NJ</span>  <span class="postal-code">EC1M 5RF</span> <div class="country-name">United Kingdom</div><br><a href="http://thegooddata.us3.list-manage.com/vcard?u=c536df10462fb6afe72117895&id=b5320da781" class="hcard-download">Add us to your address book</a></div>
-		                    </div>
-		                    <br>
-		                    <a class="button" href="http://www.thegooddata.org">&laquo; return to our website</a>
-		                </div>
-		            </div>
-		    </body>
-		</html>
-		    <?php
-		}else{
-		    ?>
-		<html>
-		    <body>
-		        <div class="wrapper rounded6" id="templateContainer">
-		            <div id="templateBody" class="bodyContent rounded6">
-		                <h2>Doh!</h2>
-		                <div><p>There has been a problem with your subscription. Please get in touch with us so we can fix this mess.</p>
-		                    <br>
-		                    <a class="button" href="http://www.thegooddata.org">&laquo; return to our website</a>
-		                </div>
-		            </div>
-		    </body>
-		</html>
-		    <?php    
-		}
+                        <div>
+                            <div>
+                                <span class="glyphicon glyphicon-ok-circle"></span>
+                            </div>
+                            <p>We'll send you an invite once we're ready.</p>
+                            <p>For frequent updates, follow us <a href="https://www.twitter.com/thegooddata" target="blank">@thegooddata</a></p>
+                        </div>
 
+		    <?php
+		}
 		die;
 
 	}
