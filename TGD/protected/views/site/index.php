@@ -45,7 +45,7 @@
                 <div class="wrap clearfix">
                     <h1>Browse the web anonymously<br/> while doing some good.</h1>
                     <a href="#">install in chrome</a>
-                    <p>The Good Data helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
+                    <p>TheGoodData helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
 
                     <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_small.png" data-stellar-ratio="-3" data-stellar-vertical-offset="-55"alt="">
                     <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_big.png" data-stellar-ratio="-1.2" data-stellar-vertical-offset="-102"alt="">
@@ -64,7 +64,7 @@
             <div class="wrap clearfix">        
                 <div class="content clearfix">
                     <h1>You own your data.</h1>
-                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. The Good Data extension<br/>blocks browsing data leaks to third parties.</p>
+                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension<br/>blocks browsing data leaks to third parties.</p>
                     <a href="#">our product</a>
                 </div> <!-- content -->
 
@@ -83,7 +83,7 @@
             <div class="wrap clearfix">
                 <div class="content clearfix">
                     <h1>It's in your hands to<br/> make your data work<br/> for the social good.</h1>
-                    <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Kiva, the other part will be used<br/> to fund the operations at The Good Data, your company.</p>
+                    <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Kiva, the other part will be used<br/> to fund the operations at TheGoodData, your company.</p>
                     <a href="#">our partners</a>
                 </div> <!-- content -->
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/hand.png" alt="Its in Your Hand">
@@ -92,8 +92,8 @@
 
         <section class="your_company clearfix">
             <div class="wrap clearfix">
-                <h1>You don't just own just your data,<br/> You also own The Good Data.</h1>
-                <p>Winning back data ownership in front of Corporations can only be achieved<br/> with the collaboration of thousands of people like you. That’s why, if you wish,<br/> you can become owner of The Good Data at no cost. You will be informed of<br/> company progress and can take part on major decisions.</p>
+                <h1>You don't just own just your data,<br/> You also own TheGoodData.</h1>
+                <p>Winning back data ownership in front of Corporations can only be achieved<br/> with the collaboration of thousands of people like you. That’s why, if you wish,<br/> you can become owner of TheGoodData at no cost. You will be informed of<br/> company progress and can take part on major decisions.</p>
                 <a href="#">your company</a>  
 
                 <div class="sun clearfix">

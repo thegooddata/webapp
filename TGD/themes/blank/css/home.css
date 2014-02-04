@@ -106,6 +106,15 @@ nav a.active{
     transition: all 0.2s ease-out;
 }
 
+nav .install{
+    background-color: #E96553;
+}
+
+nav .install a:hover,
+nav .install a.active{ 
+    color: white; 
+    transition: all 0.2s ease-out;
+}
 /*------- Introduction -------*/
 
 section.intro{
@@ -429,8 +438,8 @@ section.start .wrap{
         position: absolute;
         top: 18px;
         left: 22%;
-        content: "123"; 
-        padding: 15px 40px;
+        content: ""; 
+        padding: 15px 50px;
         color: transparent;        
         background: url(../images/start_arrow.png) no-repeat 15px 7px;
         transition: all 0.3s ease-out;
@@ -453,8 +462,8 @@ section.start .wrap{
         transition: all 0.3s ease-out;
     }
     section.start a:hover h2:after{ 
-        content: "123"; 
-        padding: 15px 40px;
+        content: ""; 
+        padding: 15px 50px;
         color: transparent;        
         background: url(../images/start_arrow.png) no-repeat 50px 7px;
         opacity: 1;
@@ -505,6 +514,9 @@ footer .footer{
             footer ul li a:hover{
                 color: #85bee5;
             }
+            footer ul li a.red{
+                color: #E96553;
+            }
     footer ul.social{
         width: 168px;
         margin: 25px 0 0 0;
@@ -543,7 +555,7 @@ footer .footer{
             background: url(../images/social_icons_hover.png) no-repeat 0px 1px;
         }
         footer ul.social li a{
-            padding: 10px 17px;
+            padding: 13px 17px;
             transition: background 0.25s ease-out;
         }
         footer ul.social li a:hoverbackground 0.25s ease-out{           
