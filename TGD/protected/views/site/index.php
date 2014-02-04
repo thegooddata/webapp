@@ -34,7 +34,7 @@
                     <ul class="clearfix">
                         <!-- <li><a href="<?php echo Yii::app()->controller->createUrl("user/login"); ?>">Login</a></li> -->
                         <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
-                        <li><a class="active" href="#">Install in chrome</a></li>
+                        <li class="install"><a class="active" href="#">Install in chrome</a></li>
                     </ul> 
                 </nav>
             </div> <!-- wrap -->
@@ -64,7 +64,7 @@
             <div class="wrap clearfix">        
                 <div class="content clearfix">
                     <h1>You own your data.</h1>
-                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension<br/>blocks browsing data leaks to third parties.</p>
+                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension<br/>blocks browsing data that would otherwise be used by third party trackers.</p>
                     <a href="#">our product</a>
                 </div> <!-- content -->
 
@@ -133,8 +133,8 @@
                     <ul class="clearfix">
                         <h4>company</h4>
                         <li><a href="#">Your Company</a></li>
-                        <li><a href="#">Member's Area</a></li>
-                        <li><a href="#">Donate</a></li>
+                        <li><a href="#" class="red">Collaborate</a></li>
+                        <li><a href="#" class="red">Donate</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>contact</h4>

@@ -438,8 +438,8 @@ section.start .wrap{
         position: absolute;
         top: 18px;
         left: 22%;
-        content: ""; 
-        padding: 15px 50px;
+        content: "123"; 
+        padding: 15px 40px;
         color: transparent;        
         background: url(../images/start_arrow.png) no-repeat 15px 7px;
         transition: all 0.3s ease-out;
