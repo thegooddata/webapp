@@ -9,7 +9,8 @@
         <title>The Good Data</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
+        <meta name="description" content="TheGoodData helps you enjoy the benefits of being a data owner. Its browser extension will improve your privacy by blocking data threats that track you online. Moreover, if you you give us express permission, it will also make that data works for a good cause.">
+        <meta name="keywords" content="privacy, trackers, block trackers, online privacy, data privacy, data ownership, data protection, data for good, good data, value of data, data locker, data vault, secure vault, data assistant, personal data assistant, social good, philanthropy, donating, donation, charity, social development, economic development, grassroots development, poverty alleviation, social investment, social entrepreneurship, innovation, data cooperative">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/normalize.min.css">  
 
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/home.css"> 
@@ -64,7 +65,7 @@
             <div class="wrap clearfix">        
                 <div class="content clearfix">
                     <h1>You own your data.</h1>
-                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension<br/>blocks browsing data that would otherwise be used by third party trackers.</p>
+                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension blocks<br/>browsing data that would otherwise be used by third party trackers.</p>
                     <a href="#">our product</a>
                 </div> <!-- content -->
 
@@ -133,7 +134,7 @@
                     <ul class="clearfix">
                         <h4>company</h4>
                         <li><a href="#">Your Company</a></li>
-                        <li><a href="#" class="red">Collaborate</a></li>
+                        <li><a href="//manage.thegooddata.org" class="red exclude">Collaborate</a></li>
                         <li><a href="#" class="red">Donate</a></li>
                     </ul>
                     <ul class="clearfix">
@@ -161,7 +162,7 @@
                 <div class="wrap clearfix">
                     <ul class="clearfix">
                         <li>
-                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/license.png" alt="License">
+                            <a href="#"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/license.png" alt="License"></a>
                             <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
                         </li>
                         <li>

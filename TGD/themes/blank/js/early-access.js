@@ -1,7 +1,7 @@
 // save original content
 var content = $('.modal-dialog').html();
 // bind a modal pop-up to the click event on any link in this page
-$('a').click(function(e) {
+$('a').not('.exclude').click(function(e) {
     e.preventDefault();
     var modal = $('#myModal').modal({'keyboard': true});
 });
