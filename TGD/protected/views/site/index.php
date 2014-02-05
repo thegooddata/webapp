@@ -162,7 +162,7 @@
                 <div class="wrap clearfix">
                     <ul class="clearfix">
                         <li>
-                            <a href="#"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/license.png" alt="License"></a>
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/license.png" alt="License">
                             <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
                         </li>
                         <li>
