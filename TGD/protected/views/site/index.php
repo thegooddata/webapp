@@ -149,10 +149,10 @@
                         <li><a href="#">Company Rules</a></li>
                     </ul>        
                     <ul class="social clearfix">
-                        <li class="first"><a id="gooddata" href="#"></a></li>
+                        <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>
                         <li><a id="wordpress" href="#"></a></li>
-                        <li><a id="reddit" href="#"></a></li>
-                        <li class="last"><a id="twitter" href="#"></a></li>
+                        <li><a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a></li>
+                        <li class="last"><a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a></li>
                         <em><a href="http://www.thegooddata.org">thegooddata.org</a></em>
                     </ul>
                 </div> <!-- wrap -->
