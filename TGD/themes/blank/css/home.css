@@ -166,6 +166,7 @@ section.intro{
     }
     section.intro .wrap a{
         margin-top: 50px;
+        padding: 15px 32px 13px;
     }
     section.intro .wrap a:active{        
         margin-top: 52px;
