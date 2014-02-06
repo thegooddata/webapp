@@ -47,14 +47,14 @@
                     <a href="#">install in chrome</a>
                     <p>TheGoodData helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
 
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_small.png" data-stellar-ratio="-3" data-stellar-vertical-offset="-55"alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_big.png" data-stellar-ratio="-1.2" data-stellar-vertical-offset="-102"alt="">
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/red_small.png" data-stellar-ratio="-1.5" data-stellar-vertical-offset="-53"alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_big.png" data-stellar-ratio="-2.7" data-stellar-vertical-offset="-25"alt="">
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/blue_small.png" data-stellar-ratio="-3" data-stellar-vertical-offset="-55"alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/blue_big.png" data-stellar-ratio="-1" data-stellar-vertical-offset="-102"alt="">
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_small.png" data-stellar-ratio="-1.5" data-stellar-vertical-offset="-53"alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/red_big.png" data-stellar-ratio="-2.7" data-stellar-vertical-offset="-25"alt="">  
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_small.png" data-stellar-ratio="-3" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_big.png" data-stellar-ratio="-1.2" alt="">
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/red_small.png" data-stellar-ratio="-1.5" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_big.png" data-stellar-ratio="-2.7" alt="">
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/blue_small.png" data-stellar-ratio="-3" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/blue_big.png" data-stellar-ratio="-1" alt="">
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_small.png" data-stellar-ratio="-1.5" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/red_big.png" data-stellar-ratio="-2.7" alt="">  
 
                 </div> <!-- wrap -->
             </section> <!-- intro -->
