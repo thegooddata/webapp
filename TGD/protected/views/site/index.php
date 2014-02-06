@@ -165,7 +165,7 @@
                             <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
                         </li>
                         <li>
-                            <a href="hhttp://timeless.co" title="Designed by Timeless">
+                            <a href="http://timeless.co" title="Designed by Timeless">
                                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/timeless_logo.png" alt="Timeless">
                             </a>
                         </li>
