@@ -16,7 +16,20 @@ class LoansController extends GxController {
 		if (isset($_POST['Loans'])) {
 			$model->setAttributes($_POST['Loans']);
 
+			/* START UPLOAD FILE */
+			$model->image=CUploadedFile::getInstance($model,'image');
+			/* END UPLOAD FILE */
+
 			if ($model->save()) {
+
+				/* START UPLOAD FILE */
+				if ($model->image!=null){
+					$model->image->saveAs(
+						 Yii::app()->getBasePath()."/../uploads/".$model->image->getName()
+					 );	
+				}
+				/* END UPLOAD FILE */
+
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else
@@ -30,11 +43,40 @@ class LoansController extends GxController {
 	public function actionUpdate($id) {
 		$model = $this->loadModel($id, 'Loans');
 
-
 		if (isset($_POST['Loans'])) {
+			
+			/* START UPLOAD FILE */
+			$image_anterior=$model->image;
+			/* END UPLOAD FILE */
+
 			$model->setAttributes($_POST['Loans']);
 
-			if ($model->save()) {
+			/* START UPLOAD FILE */
+			$image = CUploadedFile::getInstance($model,'image');
+			$image_save=false;
+
+			if ($image == null)
+			{
+				$model->image=$image_anterior;
+            }
+            else
+            {
+            	$model->image=$image;
+				$image_save=true;
+			}
+			/* END UPLOAD FILE */
+
+			if ($model->save()) 
+			{
+				/* START UPLOAD FILE */
+				if ($image_save)
+				{
+					$model->image->saveAs(
+						 Yii::app()->getBasePath()."/../uploads/".$model->image->getName()
+				 	);
+				}
+				/* END UPLOAD FILE */
+					
 				$this->redirect(array('view', 'id' => $model->id));
 			}
 		}

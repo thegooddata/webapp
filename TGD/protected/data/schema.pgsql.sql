@@ -351,8 +351,91 @@ CREATE TABLE tbl_loans (
 );
 
 
+--FUNCTION
+CREATE OR REPLACE FUNCTION _getRiskMember (i integer)
+RETURNS float AS $total$
+declare
+  total float;
+BEGIN
+  total:=0;
+  SELECT ( (select SUM(adtracks) from view_adtracks_members where member_id= i) / (select SUM(visited) from view_browsing_members where member_id= i) ) as ratio
+   into total FROM tbl_adtracks;
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION _getRiskTotal ()
+RETURNS float AS $total$
+declare
+  total float;
+BEGIN
+  SELECT ( (select SUM(adtracks) from view_adtracks_members) / (select SUM(visited) from view_browsing_members) ) as ratio
+   into total FROM tbl_adtracks;
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION _getRiskRatioMember (i integer)
+RETURNS float AS $total$
+declare
+  block float;
+  allow float;
+  total float;
+BEGIN
+  total:=0;
+  select count(*) into block from tbl_adtracks where member_id= i and status='block';
+  select count(*) into allow from tbl_adtracks where member_id= i and status='allow';
+
+  total:=100-allow/block * 100;
+  
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION _getRiskRatioTotal ()
+RETURNS float AS $total$
+declare
+  block float;
+  allow float;
+  total float;
+BEGIN
+  total:=0;
+  select count(*) into block from tbl_adtracks where status='block';
+  select count(*) into allow from tbl_adtracks where status='allow';
+
+  total:=100-allow/block * 100;
+  
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
 
 --VIEWS
+
+
+CREATE OR REPLACE VIEW view_adtracks_sources_members AS 
+select a.member_id,t.name, count(*) 
+  from tbl_adtracks a,tbl_adtracks_sources s,tbl_adtracks_types t
+  where a.adtracks_sources_id = s.id and s.adtrack_type_id = t.id
+  group by t.name,a.member_id
+  order by t.name
+
+
+CREATE OR REPLACE VIEW view_adtracks_sources_total AS 
+select t.name, count(*) 
+  from tbl_adtracks a,tbl_adtracks_sources s,tbl_adtracks_types t
+  where a.adtracks_sources_id = s.id and s.adtrack_type_id = t.id
+  group by t.name
+  order by t.name
+
+CREATE OR REPLACE VIEW view_adtracks_members AS 
+ select member_id,domain,count(*) as adtracks from tbl_adtracks group by domain,member_id order by adtracks desc;
+
+CREATE OR REPLACE VIEW view_browsing_members AS 
+ select member_id,domain,count(*) as visited from tbl_browsing group by member_id,domain order by visited desc;
+
 CREATE OR REPLACE VIEW view_queries AS 
  SELECT tbl_queries.user_id, 
     tbl_queries.member_id, 
@@ -388,6 +471,74 @@ CREATE OR REPLACE VIEW view_queries_users AS
    FROM tbl_members, 
     tbl_queries
   GROUP BY tbl_queries.user_id;
+
+CREATE OR REPLACE VIEW view_adtracks_users AS 
+SELECT tbl_adtracks.member_id, 
+    count(*) AS queries
+   FROM tbl_members, 
+    tbl_adtracks
+  GROUP BY tbl_adtracks.member_id;
+
+CREATE OR REPLACE VIEW view_adtracks_year_users AS 
+SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('year', NOW())::date and date_trunc('month', date_trunc('year', NOW()) + '1 year'::interval) - '1 seconds'::interval GROUP BY member_id;
+
+
+CREATE OR REPLACE VIEW view_adtracks_month_users AS 
+SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval GROUP BY member_id;
+
+
+CREATE OR REPLACE VIEW view_adtracks_week_users AS 
+SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('week', NOW())::date and date_trunc('week', NOW()) + '6 days'::interval GROUP BY member_id;
+
+
+
+
+CREATE OR REPLACE VIEW view_adtracks_year_users_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_adtracks_year_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_adtracks_year_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_adtracks_year_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_adtracks_year_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
+
+CREATE OR REPLACE VIEW view_adtracks_month_users_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_adtracks_month_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_adtracks_month_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_adtracks_month_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_adtracks_month_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
+
+CREATE OR REPLACE VIEW view_adtracks_week_users_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_adtracks_week_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_adtracks_week_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_adtracks_week_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_adtracks_week_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
 
 CREATE OR REPLACE VIEW view_queries_users_percentil AS 
  SELECT a.user_id, 

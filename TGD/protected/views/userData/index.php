@@ -9,10 +9,10 @@
                         <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are 5 levels of seniority based on data shared, ownership status and particiation on company forums: Apprentice, Journeyman, Owner, Expert owner, Manager." data-placement="top" data-toggle="popover"></i></h2>
 
                         <div class="seniority apprentice">
-                            <span>Apprentice</span>
+                            <span><?php echo $queries_percentile_text;?></span>
                         </div>                                      
 
-                        <div class="gray">You have contributed with less than 100 data points</div>
+                        <div class="gray">You have contributed with less than <?php echo $queries_count; ?> data points</div>
 
                     </section>
 
@@ -70,7 +70,7 @@
                                 <div class="pager gray clearfix">
                                     <div class="pull-left">
                                         <button type="button" class="btn btn-xs download">DOWNLOAD</button>
-                                        <button type="button" class="btn btn-xs delete">DELETE</button>
+                                        <!-- <button type="button" class="btn btn-xs delete">DELETE</button> -->
                                     </div>
                                     <div class="pull-right">
                                         <ul class="pagination">
@@ -182,7 +182,7 @@
                                             <?php } else { ?>
                                             <tr>
                                                 <td class="query"><?php echo $browse->domain; ?></td>
-                                                <td class="engine"><?php echo (strlen($browsing_detail->url) > 45) ? substr($browsing_detail->url,0,45).'...' : $browsing_detail->url;?></td>
+                                                <td class="engine"><?php echo (strlen($browsing_details[$browse->domain][0]->url) > 45) ? substr($browsing_details[$browse->domain][0]->url,0,45).'...' : $browsing_details[$browse->domain][0]->url;?></td>
                                                 <td class="date"><?php echo date_format(date_create($browsing_details[$browse->domain][0]->created_at), 'Y-m-d H:i:s')?></td>
                                                 <td class="events">1</td>
                                             </tr>
@@ -193,7 +193,7 @@
                                 <div class="pager gray clearfix">
                                     <div class="pull-left">
                                         <button type="button" class="btn btn-xs download">DOWNLOAD</button>
-                                        <button type="button" class="btn btn-xs delete">DELETE</button>
+                                        <!-- <button type="button" class="btn btn-xs delete">DELETE</button> -->
                                     </div>
                                     <div class="pull-right">
                                         <ul class="pagination">
@@ -247,6 +247,19 @@
                 <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.min.js"></script>
                 
                 <script>
+
+                    $( document ).ready(function() {
+                        $('.download').click(function(){
+
+                            if ( $('#queries:visible').length > 0 ){
+                                window.location.href = "<?php echo Yii::app()->createUrl('userData/exportQueries')?>";
+                            }
+                            else if ( $('#sites:visible').length > 0 ){
+                                window.location.href = "<?php echo Yii::app()->createUrl('userData/exportBrowsing')?>";
+                            }
+                        });                    
+                    });
+                        
 
                     // Seniority help
                     $('#seniority-help').popover({'animation': true, 'trigger': 'hover'});

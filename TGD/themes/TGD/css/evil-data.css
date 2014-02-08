@@ -323,15 +323,15 @@ and open the template in the editor.
 #mix-threats .legend .social span {
   background-color: #ea6654;
 }
-#mix-threats .legend .cookies span {
+#mix-threats .legend .others span {
   background-color: #fcc34a;
 }
-#mix-threats .legend .beacons span {
+#mix-threats .legend .analytics span {
   background-color: #72bc81;
 }
-#mix-threats .legend .others span {
+/*#mix-threats .legend .others span {
   background-color: #095779;
-}
+}*/
 #mix-threats .chart {
   position: relative;
   border-bottom: none;

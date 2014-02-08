@@ -21,9 +21,6 @@ and open the template in the editor.
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.row section:nth-child(1) {
-  margin-top: 3rem;
-}
 .row [class^=col-]:first-child {
   padding-left: 0;
 }

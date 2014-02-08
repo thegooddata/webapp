@@ -1,9 +1,11 @@
 <div class="form">
 
 
+
 <?php $form = $this->beginWidget('GxActiveForm', array(
 	'id' => 'loans-form',
 	'enableAjaxValidation' => false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 ));
 ?>
 
@@ -45,8 +47,15 @@
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->textField($model, 'image', array('maxlength' => 255)); ?>
+		<?php echo $form->FileField($model, 'image', array('style'=>'width:500px; display:inline')); ?> 
 		<?php echo $form->error($model,'image'); ?>
+
+		<!-- START UPLOAD FILE -->
+		<?php if ($model->image != null) { ?>
+		<img src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo $model->image ?>" />
+		<?php } ?>
+		<!-- END UPLOAD FILE -->
+
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'id_countries'); ?>
@@ -120,3 +129,9 @@ echo GxHtml::submitButton(Yii::t('app', 'Save'));
 $this->endWidget();
 ?>
 </div><!-- form -->
+
+<style>
+.input-file{
+	width:200px;
+}
+</style>

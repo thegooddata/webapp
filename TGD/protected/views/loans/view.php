@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 	array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	array('label'=>Yii::t('app', 'Update') . ' ' . $model->label(), 'url'=>array('update', 'id' => $model->id)),
 	array('label'=>Yii::t('app', 'Delete') . ' ' . $model->label(), 'url'=>'#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm'=>'Are you sure you want to delete this item?')),
@@ -29,7 +28,14 @@ array(
 			'type' => 'raw',
 			'value' => $model->idLoansActivity !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansActivity)), array('loansActivities/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansActivity, true))) : null,
 			),
-'image',
+/* START UPLOAD FILE */
+array(
+            'type'=>'raw',
+            'width'=>'200',
+            'alt'=>'hi images',
+            'value'=> CHtml::image(Yii::app()->baseUrl.'/uploads/'.$model->image),
+        ),
+/* END UPLOAD FILE */
 array(
 			'name' => 'idCountries',
 			'type' => 'raw',
