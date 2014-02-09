@@ -133,7 +133,7 @@
                     <ul class="clearfix">
                         <h4>company</h4>
                         <li><a href="#">Your Company</a></li>
-                        <li><a href="//manage.thegooddata.org" class="red exclude">Collaborate</a></li>
+                        <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
                         <li><a href="#" class="red">Donate</a></li>
                     </ul>
                     <ul class="clearfix">
