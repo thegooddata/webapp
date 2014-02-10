@@ -113,7 +113,11 @@ class GoodDataController extends Controller
 		    ->from('tbl_loans')
 		    ->queryAll();
 
-		$result['money_lent']=$datas[0]->total;
+	    $total =0;
+	    if ($datas[0]->total != null)
+	    	$total =$datas[0]->total;
+
+		$result['money_lent']=$total;
 
     	$datas = Yii::app()->db->createCommand()
 		    ->setFetchMode(PDO::FETCH_OBJ)
@@ -189,7 +193,11 @@ class GoodDataController extends Controller
 		    ->from('view_loans_countries')
 		    ->queryAll();
 
-		$result['loans_countries']=$datas[0]->total;
+	    $total =0;
+	    if ($datas[0]->total != null)
+	    	$total =$datas[0]->total;
+	    
+		$result['loans_countries']=$total;
 
 		$datas = Yii::app()->db->createCommand()
 		    ->setFetchMode(PDO::FETCH_OBJ)
