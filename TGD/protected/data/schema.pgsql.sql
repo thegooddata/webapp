@@ -83,7 +83,7 @@ CREATE TABLE tbl_members (
 );
 
 INSERT INTO tbl_members (username, password, email, activkey, superuser, status) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 1),
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 1);
 
 --DROP TABLE tbl_profiles;
 CREATE TABLE tbl_profiles (
@@ -93,7 +93,7 @@ CREATE TABLE tbl_profiles (
 );
 
 INSERT INTO tbl_profiles (lastname, firstname) VALUES
-('Admin', 'Administrator'),
+('Admin', 'Administrator');
 
 --DROP TABLE tbl_profiles_fields;
 CREATE TABLE tbl_profiles_fields (

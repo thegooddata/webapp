@@ -23,9 +23,10 @@ return array(
         'ext.giix-components.*',
 
         'ext.Mailchimp.*',
+        'ext.CSVExport',
 	),
 
-	
+	'theme'=>'tgd',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool

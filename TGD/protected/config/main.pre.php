@@ -23,6 +23,7 @@ return array(
         'ext.giix-components.*',
 
         'ext.Mailchimp.*',
+        'ext.CSVExport',
 	),
 
 	'theme'=>'tgd',
