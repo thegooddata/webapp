@@ -84,8 +84,6 @@ CREATE TABLE tbl_members (
 
 INSERT INTO tbl_members (username, password, email, activkey, superuser, status) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 1),
-('demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', 0, 1),
-('tsunamix','be3100b2dc0330f2df69a539fdd0c798','danielgarciagomez@gmail.com','9e52e0092a845c445d86b13e0e8e7b50',0,1);
 
 --DROP TABLE tbl_profiles;
 CREATE TABLE tbl_profiles (
@@ -96,7 +94,6 @@ CREATE TABLE tbl_profiles (
 
 INSERT INTO tbl_profiles (lastname, firstname) VALUES
 ('Admin', 'Administrator'),
-('Demo', 'Demo');
 
 --DROP TABLE tbl_profiles_fields;
 CREATE TABLE tbl_profiles_fields (
@@ -394,9 +391,12 @@ BEGIN
   select count(*) into block from tbl_adtracks where member_id= i and status='block';
   select count(*) into allow from tbl_adtracks where member_id= i and status='allow';
 
+  if ( allow <> 0 and  block <>0) THEN
   total:=100-allow/block * 100;
-  
-   RETURN total;
+  END IF; 
+
+  RETURN total;
+   
 END;
 $total$ LANGUAGE plpgsql;
 
@@ -420,14 +420,14 @@ $total$ LANGUAGE plpgsql;
 --VIEWS
 
 CREATE OR REPLACE VIEW view_loans_countries AS 
-select count(*) as total from tbl_loans group by id_countries 
+select count(*) as total from tbl_loans group by id_countries;
 
 CREATE OR REPLACE VIEW view_adtracks_sources_members AS 
 select a.member_id,t.name, count(*) 
   from tbl_adtracks a,tbl_adtracks_sources s,tbl_adtracks_types t
   where a.adtracks_sources_id = s.id and s.adtrack_type_id = t.id
   group by t.name,a.member_id
-  order by t.name
+  order by t.name;
 
 
 CREATE OR REPLACE VIEW view_adtracks_sources_total AS 
@@ -435,7 +435,7 @@ select t.name, count(*)
   from tbl_adtracks a,tbl_adtracks_sources s,tbl_adtracks_types t
   where a.adtracks_sources_id = s.id and s.adtrack_type_id = t.id
   group by t.name
-  order by t.name
+  order by t.name;
 
 CREATE OR REPLACE VIEW view_adtracks_members AS 
  select member_id,domain,count(*) as adtracks from tbl_adtracks group by domain,member_id order by adtracks desc;
@@ -561,11 +561,11 @@ CREATE OR REPLACE VIEW view_queries_users_percentil AS
 
 
 CREATE OR REPLACE VIEW view_members_month AS 
-  select count(*) as total FROM tbl_members where lastvisit_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval
+  select count(*) as total FROM tbl_members where lastvisit_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval;
 
 CREATE OR REPLACE VIEW view_queries_month AS 
-  select count(*) as total  FROM tbl_queries where created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval
+  select count(*) as total  FROM tbl_queries where created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval;
 
 CREATE OR REPLACE VIEW view_queries_trade_month AS 
-  select count(*) as total  FROM tbl_queries where tbl_queries.share='true' and created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval
+  select count(*) as total  FROM tbl_queries where tbl_queries.share='true' and created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval;
 
