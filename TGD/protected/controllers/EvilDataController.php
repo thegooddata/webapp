@@ -255,6 +255,7 @@ class EvilDataController extends Controller
 		$adtracks = Yii::app()->db->createCommand()
 			    ->setFetchMode(PDO::FETCH_OBJ)
 			    ->select("_getRiskMember (".$member_id.") as risk")
+			    ->from('tbl_members')
 			    ->queryAll();
 
 		$result = array();
@@ -264,6 +265,7 @@ class EvilDataController extends Controller
 		$adtracks = Yii::app()->db->createCommand()
 			    ->setFetchMode(PDO::FETCH_OBJ)
 			    ->select("_getRiskTotal () as risk")
+			    ->from('tbl_members')
 			    ->queryAll();
 
 	    $result['risk_average']=number_format($adtracks[0]->risk, 2, '.', '');
@@ -271,6 +273,7 @@ class EvilDataController extends Controller
 	    $adtracks = Yii::app()->db->createCommand()
 			    ->setFetchMode(PDO::FETCH_OBJ)
 			    ->select("_getRiskRatioMember (".$member_id.") as risk")
+			    ->from('tbl_members')
 			    ->queryAll();
 
 	    $result['risk_ratio_you']=number_format($adtracks[0]->risk, 2, '.', '');
@@ -278,6 +281,7 @@ class EvilDataController extends Controller
 	    $adtracks = Yii::app()->db->createCommand()
 			    ->setFetchMode(PDO::FETCH_OBJ)
 			    ->select("_getRiskRatioTotal () as risk")
+			    ->from('tbl_members')
 			    ->queryAll();
 
 	    $result['risk_ratio_average']=number_format($adtracks[0]->risk, 2, '.', '');
