@@ -59,7 +59,7 @@
                             <?php if (!Yii::app()->user->isGuest){ ?>
 
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Manage the Company</a></li>
+                                <li class="active"><a target="_blank" href="https://collaborate.thegooddata.org/">Collaborate With Us</a></li>
                                 <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/><?php echo Yii::app()->user->username; ?><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo Yii::app()->createUrl('user/profile');?>">account settings</a></li>
