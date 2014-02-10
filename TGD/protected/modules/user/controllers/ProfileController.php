@@ -28,7 +28,10 @@ class ProfileController extends Controller
 	 */
 	public function actionEdit()
 	{
+
 		$model = $this->loadUser();
+
+
 		$profile=$model->profile;
 		
 		// ajax validator
@@ -50,6 +53,7 @@ class ProfileController extends Controller
 				$this->redirect(array('/user/profile'));
 			} else $profile->validate();
 		}
+
 
 		$this->render('edit',array(
 			'model'=>$model,
@@ -95,11 +99,16 @@ class ProfileController extends Controller
 	{
 		if($this->_model===null)
 		{
-			if(Yii::app()->user->id)
+			if(Yii::app()->user->id){
 				$this->_model=Yii::app()->controller->module->user();
-			if($this->_model===null)
+			}
+			
+			if($this->_model===null){
 				$this->redirect(Yii::app()->controller->module->loginUrl);
+			}
 		}
+
+		// var_dump($this->_model);die;
 		return $this->_model;
 	}
 }
