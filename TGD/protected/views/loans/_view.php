@@ -50,11 +50,8 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('paidback')); ?>:
 	<?php echo GxHtml::encode($data->paidback); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('loss_currency')); ?>:
-	<?php echo GxHtml::encode($data->loss_currency); ?>
-	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('loss_defaut')); ?>:
-	<?php echo GxHtml::encode($data->loss_defaut); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('loss')); ?>:
+	<?php echo GxHtml::encode($data->loss); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>

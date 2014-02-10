@@ -32,6 +32,8 @@
 CREATE TABLE tbl_countries (
   id SERIAL PRIMARY KEY,
 
+  code varchar(255) DEFAULT '',
+  
   name_en_us varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
@@ -249,9 +251,12 @@ CREATE TABLE tbl_loans_status (
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_loans_status (name_en_us, name_es) VALUES
-('Fundraising', 'Recaudación de fondos'),
-('Funded', 'Financiado');
+INSERT INTO tbl_loans_status (id,name_en_us, name_es) VALUES
+(1,'Fundraising', 'Recaudación de fondos'),
+(2,'Funded', 'Financiado'),
+(3,'Paid Back', 'Pagado'),
+(4,'Paying back', 'Reembolsando'),
+(5,'Lost', 'Perdido');
 
 --DROP TABLE tbl_loans_activities;
 CREATE TABLE tbl_loans_activities (
@@ -336,16 +341,16 @@ CREATE TABLE tbl_loans (
   image varchar(255) DEFAULT '',
   id_countries int NOT NULL references tbl_countries(id),
   partner varchar(255) DEFAULT '',
-  amount numeric DEFAULT '0',
+  amount real DEFAULT '0',
   term int DEFAULT '0',
-  contribution numeric DEFAULT '0',
+  contribution real DEFAULT '0',
   loan_date TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   loan_update TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   id_loans_status int NOT NULL references tbl_loans_status(id),
-  paidback numeric DEFAULT '0',
-  loss_currency numeric DEFAULT '0',
-  loss_defaut numeric DEFAULT '0',
-
+  
+  paidback real DEFAULT '0',
+  loss real DEFAULT '0',
+  
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
@@ -414,6 +419,8 @@ $total$ LANGUAGE plpgsql;
 
 --VIEWS
 
+CREATE OR REPLACE VIEW view_loans_countries AS 
+select count(*) as total from tbl_loans group by id_countries 
 
 CREATE OR REPLACE VIEW view_adtracks_sources_members AS 
 select a.member_id,t.name, count(*) 
@@ -490,9 +497,6 @@ SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between
 CREATE OR REPLACE VIEW view_adtracks_week_users AS 
 SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('week', NOW())::date and date_trunc('week', NOW()) + '6 days'::interval GROUP BY member_id;
 
-
-
-
 CREATE OR REPLACE VIEW view_adtracks_year_users_percentil AS 
  SELECT a.member_id, 
     round(100.0 * (( SELECT count(*) AS count
@@ -552,4 +556,16 @@ CREATE OR REPLACE VIEW view_queries_users_percentil AS
   ORDER BY round(100.0 * (( SELECT count(*) AS count
       FROM view_queries_users b
      WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
+
+CREATE OR REPLACE VIEW view_members_month AS 
+  select count(*) as total FROM tbl_members where lastvisit_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval
+
+CREATE OR REPLACE VIEW view_queries_month AS 
+  select count(*) as total  FROM tbl_queries where created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval
+
+CREATE OR REPLACE VIEW view_queries_trade_month AS 
+  select count(*) as total  FROM tbl_queries where tbl_queries.share='true' and created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval
 

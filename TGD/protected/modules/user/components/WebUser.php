@@ -49,12 +49,21 @@ class WebUser extends CWebUser
     public function updateSession() {
         $user = Yii::app()->getModule('user')->user($this->id);
         $this->name = $user->username;
+        // $userAttributes = CMap::mergeArray(array(
+        //                                         'email'=>$user->email,
+        //                                         'username'=>$user->username,
+        //                                         'created_at'=>$user->created_at,
+        //                                         'lastvisit_at'=>$user->lastvisit_at,
+        //                                    ),$user->profile->getAttributes());
+
         $userAttributes = CMap::mergeArray(array(
                                                 'email'=>$user->email,
                                                 'username'=>$user->username,
                                                 'created_at'=>$user->created_at,
                                                 'lastvisit_at'=>$user->lastvisit_at,
-                                           ),$user->profile->getAttributes());
+                                           ),array());
+
+        
         foreach ($userAttributes as $attrName=>$attrValue) {
             $this->setState($attrName,$attrValue);
         }

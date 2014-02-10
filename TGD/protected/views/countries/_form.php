@@ -23,6 +23,11 @@
 		<?php echo $form->textField($model, 'name_es', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'name_es'); ?>
 		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'code'); ?>
+		<?php echo $form->textField($model, 'code', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'code'); ?>
+		</div><!-- row -->
 
 		<label><?php echo GxHtml::encode($model->getRelationLabel('membersPiis')); ?></label>
 		<?php echo $form->checkBoxList($model, 'membersPiis', GxHtml::encodeEx(GxHtml::listDataEx(MembersPii::model()->findAllAttributes(null, true)), false, true)); ?>

@@ -70,8 +70,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'filter'=>GxHtml::listDataEx(LoansStatus::model()->findAllAttributes(null, true)),
 				),
 		'paidback',
-		'loss_currency',
-		'loss_defaut',
+		'loss',
 		'created_at',
 		'updated_at',
 		*/

@@ -2,6 +2,22 @@
 
 class EvilDataController extends Controller
 {
+	public function filters()
+    {
+        return array( 'accessControl' ); // perform access control for CRUD operations
+    }
+ 
+    public function accessRules()
+    {
+        return array(
+            array('allow', // allow authenticated users to access all actions
+                'users'=>array('@'),
+            ),
+            array('deny'),
+        );
+    }
+    
+    
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -354,9 +370,13 @@ class EvilDataController extends Controller
 
 		$day = date('w');
 		$day=$day-1;
+		
+		if ($day<0)
+			$day=6;
+
 		$week_start = date('Y-m-d', strtotime('-'.$day.' days'));
 		$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
-		
+
 		$data = $this->_getThreatsDatePerDay($member_id,$week_start,$week_end);
 		
 		$result = array();

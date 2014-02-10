@@ -12,6 +12,7 @@
  * @property integer $id
  * @property string $name_en_us
  * @property string $name_es
+ * @property string $code
  *
  * @property MembersPii[] $membersPiis
  * @property Loans[] $loans
@@ -36,9 +37,9 @@ abstract class BaseCountries extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('name_en_us, name_es', 'length', 'max'=>255),
-			array('name_en_us, name_es', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, name_en_us, name_es', 'safe', 'on'=>'search'),
+			array('name_en_us, name_es, code', 'length', 'max'=>255),
+			array('name_en_us, name_es, code', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, name_en_us, name_es, code', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +60,7 @@ abstract class BaseCountries extends GxActiveRecord {
 			'id' => Yii::t('app', 'ID'),
 			'name_en_us' => Yii::t('app', 'Name En Us'),
 			'name_es' => Yii::t('app', 'Name Es'),
+			'code' => Yii::t('app', 'Code'),
 			'membersPiis' => null,
 			'loans' => null,
 		);
@@ -70,6 +72,7 @@ abstract class BaseCountries extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('name_en_us', $this->name_en_us, true);
 		$criteria->compare('name_es', $this->name_es, true);
+		$criteria->compare('code', $this->code, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

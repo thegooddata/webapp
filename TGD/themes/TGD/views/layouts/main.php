@@ -32,7 +32,9 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
+        
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         
     </head>
 
@@ -85,11 +87,11 @@
                             array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
                             array('label'=>'Contact', 'url'=>array('/site/contact')),
                             */
-                            array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("Login"), 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("Register"), 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("LOGIN"), 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
                             
 
-                            array('label'=>'Manage', 'url'=>array('/manage/index'), 'visible'=>!Yii::app()->user->isGuest),
+                            array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->id == 1),
 
                             array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),

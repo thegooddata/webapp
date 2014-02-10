@@ -84,12 +84,32 @@
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'loan_date'); ?>
-		<?php echo $form->textField($model, 'loan_date'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'loan_date',
+			'value' => $model->loan_date,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 		<?php echo $form->error($model,'loan_date'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'loan_update'); ?>
-		<?php echo $form->textField($model, 'loan_update'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'loan_update',
+			'value' => $model->loan_update,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 		<?php echo $form->error($model,'loan_update'); ?>
 		</div><!-- row -->
 		<div class="row">
@@ -103,23 +123,38 @@
 		<?php echo $form->error($model,'paidback'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'loss_currency'); ?>
-		<?php echo $form->textField($model, 'loss_currency'); ?>
-		<?php echo $form->error($model,'loss_currency'); ?>
-		</div><!-- row -->
-		<div class="row">
-		<?php echo $form->labelEx($model,'loss_defaut'); ?>
-		<?php echo $form->textField($model, 'loss_defaut'); ?>
-		<?php echo $form->error($model,'loss_defaut'); ?>
+		<?php echo $form->labelEx($model,'loss'); ?>
+		<?php echo $form->textField($model, 'loss'); ?>
+		<?php echo $form->error($model,'loss'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created_at',
+			'value' => $model->created_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 		<?php echo $form->error($model,'created_at'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model, 'updated_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'updated_at',
+			'value' => $model->updated_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 		<?php echo $form->error($model,'updated_at'); ?>
 		</div><!-- row -->
 

@@ -20,6 +20,11 @@
 		<?php echo $form->textField($model, 'name_es', array('maxlength' => 255)); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model, 'code'); ?>
+		<?php echo $form->textField($model, 'code', array('maxlength' => 255)); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo GxHtml::submitButton(Yii::t('app', 'Search')); ?>
 	</div>

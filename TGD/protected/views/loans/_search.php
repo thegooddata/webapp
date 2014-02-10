@@ -67,12 +67,32 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'loan_date'); ?>
-		<?php echo $form->textField($model, 'loan_date'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'loan_date',
+			'value' => $model->loan_date,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'loan_update'); ?>
-		<?php echo $form->textField($model, 'loan_update'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'loan_update',
+			'value' => $model->loan_update,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
@@ -86,23 +106,38 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'loss_currency'); ?>
-		<?php echo $form->textField($model, 'loss_currency'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'loss_defaut'); ?>
-		<?php echo $form->textField($model, 'loss_defaut'); ?>
+		<?php echo $form->label($model, 'loss'); ?>
+		<?php echo $form->textField($model, 'loss'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created_at',
+			'value' => $model->created_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'updated_at'); ?>
-		<?php echo $form->textField($model, 'updated_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'updated_at',
+			'value' => $model->updated_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row buttons">
