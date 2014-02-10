@@ -165,7 +165,7 @@
                             <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
                         </li>
                         <li>
-                            <a href="hhttp://timeless.co" title="Designed by Timeless">
+                            <a href="http://timeless.co" title="Designed by Timeless">
                                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/timeless_logo.png" alt="Timeless">
                             </a>
                         </li>
@@ -216,5 +216,10 @@
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.stellar.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/early-access.js"></script>
+        <!--[if !(lt IE 8)]><!--> 
+           <script type="text/javascript"> 
+             (function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src=document.location.protocol+"//d1agz031tafz8n.cloudfront.net/thedaywefightback.js/widget.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();
+           </script>
+        <!--<![endif]-->        
     </body>
 </html>
