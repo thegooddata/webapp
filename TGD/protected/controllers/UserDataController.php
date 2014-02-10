@@ -226,6 +226,21 @@ class UserDataController extends Controller
 		$this->visualizar();
 	}
 
+	public function actionDeleteQueries()
+	{
+		$member_id=Yii::app()->user->id;
+		
+		Queries::model()->deleteAll('member_id IN (' . $member_id . ')');
+		$this->visualizar();
+	}
+
+	public function actionDeleteBrowsing()
+	{
+		$member_id=Yii::app()->user->id;
+		
+		Browsing::model()->deleteAll('member_id IN (' . $member_id . ')');
+		$this->visualizar();
+	}
 
 
 

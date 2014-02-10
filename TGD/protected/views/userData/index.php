@@ -61,7 +61,7 @@
                                             <td class="engine"><?php echo $query->provider;?></td>
                                             <td class="date"><?php echo date_format(date_create($query->created_at), 'Y-m-d H:i:s')?></td>
                                             <!-- <td class="events">3</td> -->
-                                            <td class="sensitive-data checked"><a href="<?php echo Yii::app()->createUrl('userData/deleteQuery', array('queries_pag' => $queries_pag, 'id_query'=>$query->id))?>" class="glyphicon glyphicon-remove"></span></td> 
+                                            <td class="sensitive-data checked"><a href="<?php echo Yii::app()->createUrl('userData/deleteQuery', array('queries_pag' => $queries_pag, 'id_query'=>$query->id))?>" class="glyphicon glyphicon-remove delete"></span></td> 
                                         </tr>
                                         <?php } ?>
 
@@ -234,7 +234,7 @@
                         <!-- row -->
 
                         <div class="buttons">
-                            <button type="button" class="btn btn-primary pull-right">DELETE ALL DATA</button>
+                            <a href="#" class="btn btn-primary pull-right delete_all">DELETE ALL DATA</a>
                         </div>
                     </section>
                 </div>
@@ -248,6 +248,25 @@
                 <script>
 
                     $( document ).ready(function() {
+
+
+                        $(document).on('click','.delete',function() {
+                            if(!confirm('Are you sure you want to delete this item?')) return false;
+                            return true;
+                        });
+
+                        $(document).on('click','.delete_all',function() {
+                            if(!confirm('Are you sure you want to delete this item?')) return false;
+                            
+                            if ( $('#queries:visible').length > 0 ){
+                                window.location.href = "<?php echo Yii::app()->createUrl('userData/deleteQueries',array('queries_pag' => $queries_pag))?>";
+                            }
+                            else if ( $('#sites:visible').length > 0 ){
+                                window.location.href = "<?php echo Yii::app()->createUrl('userData/deleteBrowsing',array('browsing_pag' => $browsing_pag))?>";
+                            }
+
+                        });
+
                         $('.download').click(function(){
 
                             if ( $('#queries:visible').length > 0 ){
