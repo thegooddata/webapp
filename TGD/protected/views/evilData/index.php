@@ -131,14 +131,14 @@
                         <h2>Your risk profile</h2>
                         <div class="row">
                             <div class="col-md-4 col-lg-4"><div class="square you mid-risk">You</div></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount risk you">5.3</span><span class="subtext">Threats per page visited</span></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount ratio you">40</span><span class="subtext">Percentage of threats allowed</span></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount risk you">0</span><span class="subtext">Threats per page visited</span></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount ratio you">0</span><span class="subtext">Percentage of threats allowed</span></div>
                             <div class="col-md-4 col-lg-4 risk-meter mid-risk">Risk Lover</div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-20px.png"/><br/>Average</div></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount risk average">3.2</span><span class="subtext">Threats per page visited</span></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount ratio average">15</span><span class="subtext">Percentage of threats allowed</span></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount risk average">0</span><span class="subtext">Threats per page visited</span></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount ratio average">0</span><span class="subtext">Percentage of threats allowed</span></div>
                             <div class="col-md-4 col-lg-4"></div>
                         </div>
                     </div>
