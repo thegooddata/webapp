@@ -4,9 +4,12 @@ class SiteController extends Controller
 {
 	public function init()
 	{
-   		Yii::app()->theme = 'blank';
+   		Yii::app()->theme = 'tgd';
+   		$this->layout='//layouts/blank';
+
 	    parent::init();
 	}
+
 
 	/**
 	 * Declares class-based actions.
@@ -68,11 +71,18 @@ class SiteController extends Controller
 
 	public function actionSignup()
 	{
+		Yii::app()->theme = 'blank';
 		$this->render('signup');
 	}
 
+	public function actionOurparners(){
+		Yii::app()->theme = 'tgd';
+		$this->render('ourparners');
+	}
+
 	public function actionIndex()
-	{
+	{	
+		Yii::app()->theme = 'tgd';
 
 		// //CREACION DE UN USUARIO
 		// $username='daniel'.rand(0,1000);
@@ -256,6 +266,8 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
+		Yii::app()->theme = 'blank';
+
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)
@@ -270,6 +282,8 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
+		Yii::app()->theme = 'blank';
+
 		$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
 		{
@@ -296,6 +310,8 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
+		Yii::app()->theme = 'blank';
+
 		$model=new LoginForm;
 
 		// if it is ajax validation request
@@ -322,6 +338,8 @@ class SiteController extends Controller
 	 */
 	public function actionLogout()
 	{
+		Yii::app()->theme = 'blank';
+
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}

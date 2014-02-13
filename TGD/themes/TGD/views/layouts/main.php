@@ -14,14 +14,17 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" type="text/css">
 
-        <!-- Custom styles for this template -->
+        <!-- Base -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/header-and-footer.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" type="text/css">
         
+        <!-- Custom -->
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" rel="stylesheet">
+
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/good-data.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/evil-data.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/user-data.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/partners.css" type="text/css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -39,6 +42,7 @@
     </head>
 
     <body>
+
         <header class="navbar  navbar-fixed-top">
             <div>
                 <div class="container">
@@ -50,32 +54,89 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="#" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
+                            <a href="#" class="navbar-brand"><img src="img/logo-big.png"/>TheGoodData</a>
                         </div>
 
+                        <?php if (!Yii::app()->user->isGuest){ ?>
                         <div class="collapse navbar-collapse">
-
-
-                            <?php if (!Yii::app()->user->isGuest){ ?>
-
                             <ul class="nav navbar-nav">
-                                <li class="active"><a target="_blank" href="https://collaborate.thegooddata.org/">Collaborate With Us</a></li>
-                                <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/><?php echo Yii::app()->user->username; ?><b class="caret"></b></a>
+                                <li class="active"><a href="#">Manage the Company</a></li>
+                                <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown"><img src="img/jacob.jpg" class="avatar"/>Username<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo Yii::app()->createUrl('user/profile');?>">account settings</a></li>
+                                        <li><a href="#">account settings</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo Yii::app()->createUrl('user/logout');?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
-
-
+                                        <li><a href="#"><span class="glyphicon glyphicon-off"></span> logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
-                            <?php } ?>
                         </div>
-                    </div><!--/.nav-collapse -->
+                        <?php } else { ?>
+
+                        <nav>
+                            <ul class="clearfix">
+                                <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
+                                <li class="install"><a class="active" href="#">Install in chrome</a></li>
+                            </ul> 
+                        </nav>
+
+                        <?php } ?>
+
+                    </div>
                 </div>
             </div>
         </header>
+
+        <!-- 
+        
+
+        <header class="navbar  navbar-fixed-top">
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="navbar-header">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="#" class="navbar-brand"><img src="img/logo-big.png"/>TheGoodData</a>
+                        </div>
+
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Manage the Company</a></li>
+                                <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown"><img src="img/jacob.jpg" class="avatar"/>Username<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">account settings</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-off"></span> logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header> -->
+        
+        
+<!-- 
+        <header class="clearfix">
+            <div class="wrap">
+                <div class="logo">
+                    <a href="http://www.thegooddata.org"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo.png" alt="The Good Data"></a>
+                </div>
+                <nav>
+                    <ul class="clearfix">
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
+                        <li class="install"><a class="active" href="#">Install in chrome</a></li>
+                    </ul> 
+                </nav>
+            </div>
+        </header>
+ -->
+
         <div id="secondary-nav">
             <div class="container">
                 <div class="row">

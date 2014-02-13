@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>TheGoodData | Enjoy your data</title>
-        <meta name="viewport" content="width=device-width">
-        <meta name="description" content="TheGoodData helps you enjoy the benefits of being a data owner. Its browser extension will improve your privacy by blocking data threats that track you online. Moreover, if you you give us express permission, it will also make that data works for a good cause.">
-        <meta name="keywords" content="privacy, trackers, block trackers, online privacy, data privacy, data ownership, data protection, data for good, good data, value of data, data locker, data vault, secure vault, data assistant, personal data assistant, social good, philanthropy, donating, donation, charity, social development, economic development, grassroots development, poverty alleviation, social investment, social entrepreneurship, innovation, data cooperative">
+
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/normalize.min.css">  
 
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/home.css"> 
@@ -19,26 +8,6 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/modal.css">       
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 
-    </head>
-    <body ontouchstart="">
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
-
-        <header class="clearfix">
-            <div class="wrap">
-                <div class="logo">
-                    <a href="http://www.thegooddata.org"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.png" alt="The Good Data"></a>
-                </div>
-                <nav>
-                    <ul class="clearfix">
-                        <!-- <li><a href="<?php echo Yii::app()->controller->createUrl("user/login"); ?>">Login</a></li> -->
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
-                        <li class="install"><a class="active" href="#">Install in chrome</a></li>
-                    </ul> 
-                </nav>
-            </div> <!-- wrap -->
-        </header>
         <div class="slide" id="slide2" data-slide="2" style="overflow: hidden;">
             <section class="intro clearfix">       
 
@@ -47,14 +16,14 @@
                     <a href="#">install in chrome</a>
                     <p>TheGoodData helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
 
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_small.png" data-stellar-ratio="-3" alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_big.png" data-stellar-ratio="-1.2" alt="">
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/red_small.png" data-stellar-ratio="-1.5" alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/yellow_big.png" data-stellar-ratio="-2.7" alt="">
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/blue_small.png" data-stellar-ratio="-3" alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/blue_big.png" data-stellar-ratio="-1" alt="">
-                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/green_small.png" data-stellar-ratio="-1.5" alt="">
-                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/red_big.png" data-stellar-ratio="-2.7" alt="">  
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/yellow_small.png" data-stellar-ratio="-3" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/green_big.png" data-stellar-ratio="-1.2" alt="">
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/red_small.png" data-stellar-ratio="-1.5" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/yellow_big.png" data-stellar-ratio="-2.7" alt="">
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/blue_small.png" data-stellar-ratio="-3" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/blue_big.png" data-stellar-ratio="-1" alt="">
+                    <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/green_small.png" data-stellar-ratio="-1.5" alt="">
+                    <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/red_big.png" data-stellar-ratio="-2.7" alt="">  
 
                 </div> <!-- wrap -->
             </section> <!-- intro -->
@@ -68,13 +37,13 @@
                     <a href="#">our product</a>
                 </div> <!-- content -->
 
-                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/seed3.png" alt="Your Data">
-                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/seed4.png" alt="Your Data">
-                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/seed5.png" alt="Your Data">
-                <img id="bag1" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/bag1.png" alt="Your Data">
-                <img id="bag2" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/bag.jpg" alt="Your Data">
-                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/seed1.png" alt="Your Data">
-                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/seed2.png" alt="Your Data">
+                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed3.png" alt="Your Data">
+                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed4.png" alt="Your Data">
+                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed5.png" alt="Your Data">
+                <img id="bag1" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/bag1.png" alt="Your Data">
+                <img id="bag2" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/bag.jpg" alt="Your Data">
+                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed1.png" alt="Your Data">
+                <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed2.png" alt="Your Data">
 
             </div> <!-- wrap -->
         </section> <!-- our_product -->
@@ -84,9 +53,9 @@
                 <div class="content clearfix">
                     <h1>It's in your hands to<br/> make your data work<br/> for the social good.</h1>
                     <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Kiva, the other part will be used<br/> to fund the operations at TheGoodData, your company.</p>
-                    <a href="#">our partners</a>
+                    <a href="<?php echo Yii::app()->controller->createUrl("site/ourparners"); ?>">our partners</a>
                 </div> <!-- content -->
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/hand.png" alt="Its in Your Hand">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/hand.png" alt="Its in Your Hand">
             </div> <!-- wrap -->
         </section> <!-- our_partners -->
 
@@ -97,16 +66,16 @@
                 <a href="#">your company</a>  
 
                 <div class="sun clearfix">
-                    <img id="sun1" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/sun1.png" alt="">
-                    <img id="sun2" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/sun2.png" alt="">
-                    <img id="sun3" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/sun3.png" alt="">        
+                    <img id="sun1" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun1.png" alt="">
+                    <img id="sun2" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun2.png" alt="">
+                    <img id="sun3" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun3.png" alt="">        
                 </div>      
             </div> <!-- wrap -->
             <div class="cloud clearfix">
                 <div id="cloud1"></div>
                 <div id="cloud2"></div>
             </div>
-            <img id="fields" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/fields.png" alt="">
+            <img id="fields" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/fields.png" alt="">
         </section> <!-- your_company -->
 
         <section class="start clearfix">
@@ -114,99 +83,6 @@
                 <a href="#"><h2>start enjoying your data now</h2></a>            
             </div> <!-- wrap -->
         </section> <!-- start -->      
-
-        <footer class="clearfix">
-            <div class="footer clearfix">
-                <div class="wrap clearfix">
-                    <ul class="clearfix">
-                        <h4>product</h4>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                    <ul class="clearfix">
-                        <h4>third parties</h4>
-                        <li><a href="#">Coder's Program</a></li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Media</a></li>
-                    </ul>
-                    <ul class="clearfix">
-                        <h4>company</h4>
-                        <li><a href="#">Your Company</a></li>
-                        <li><a href="//manage.thegooddata.org" class="red exclude">Collaborate</a></li>
-                        <li><a href="#" class="red">Donate</a></li>
-                    </ul>
-                    <ul class="clearfix">
-                        <h4>contact</h4>
-                        <li>82 Clerkenwell Road</li>
-                        <li>London EC1M 5RF, UK</li>
-                        <li><a href="#">Email Us</a></li>
-                    </ul>
-                    <ul id="fifth" class="clearfix">
-                        <h4>legal stuff</h4>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Company Rules</a></li>
-                    </ul>        
-                    <ul class="social clearfix">
-                        <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>
-                        <li><a id="wordpress" href="#"></a></li>
-                        <li><a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a></li>
-                        <li class="last"><a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a></li>
-                        <em><a href="http://www.thegooddata.org">thegooddata.org</a></em>
-                    </ul>
-                </div> <!-- wrap -->
-            </div>
-            <div class="license clearfix">
-                <div class="wrap clearfix">
-                    <ul class="clearfix">
-                        <li>
-                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/license.png" alt="License">
-                            <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
-                        </li>
-                        <li>
-                            <a href="http://timeless.co" title="Designed by Timeless">
-                                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/timeless_logo.png" alt="Timeless">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>Early access</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- welcome message -->
-                        <div id="subscribeFormWelcome">
-                            <span>Enjoy your data!&nbsp;We are in private beta right now. Please submit your email and we will contact you shortly about joining the beta.</span><br>
-                            <br>
-                            <span>For frequent updates, follow us&nbsp;</span><a href="https://twitter.com/thegooddata" target="blank">@thegooddata</a>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="<?php echo Yii::app()->controller->createUrl("site/subscribelist"); ?>" method="POST" class="form-inline" role="form">
-                            <!-- form -->
-                            <input type="hidden" name="u" value="c536df10462fb6afe72117895">
-                            <input type="hidden" name="id" value="b5320da781">
-                            <div class="form-group">
-                                <input class="form-control" type="email" name="MERGE0" id="MERGE0" size="25" placeholder="Enter email">
-                            </div>
-                            <button type="submit" class="btn btn-primary" name="submit">Send</button>
-                            <!-- real people should not fill this in and expect good things -->
-                            <div style="position: absolute; left: -5000px;"><input type="text" name="b_c536df10462fb6afe72117895_b5320da781" value=""></div>
-                        </form>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-        <!-- Le JavaScript -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/jquery-1.9.1.min.js"><\/script>');</script>
@@ -221,5 +97,3 @@
              (function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src=document.location.protocol+"//d1agz031tafz8n.cloudfront.net/thedaywefightback.js/widget.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();
            </script>
         <!--<![endif]-->        
-    </body>
-</html>
