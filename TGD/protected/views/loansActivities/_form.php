@@ -14,9 +14,9 @@
 	<?php echo $form->errorSummary($model); ?>
 
 		<div class="row">
-		<?php echo $form->labelEx($model,'name_en_us'); ?>
-		<?php echo $form->textField($model, 'name_en_us', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'name_en_us'); ?>
+		<?php echo $form->labelEx($model,'name_en'); ?>
+		<?php echo $form->textField($model, 'name_en', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'name_en'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'name_es'); ?>

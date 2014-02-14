@@ -34,11 +34,11 @@ CREATE TABLE tbl_countries (
 
   code varchar(255) DEFAULT '',
   
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_countries  (name_en_us, name_es) VALUES
+INSERT INTO tbl_countries  (name_en, name_es) VALUES
 ('United Kingdom', 'Reino Unido'),
 ('Spain', 'España'),
 ('France', 'Francia');
@@ -49,11 +49,11 @@ CREATE TABLE tbl_currencies (
 
   code varchar(255) DEFAULT '',
   
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_currencies  (code, name_en_us,name_es) VALUES
+INSERT INTO tbl_currencies  (code, name_en,name_es) VALUES
 ('USD', 'Dollar', 'Dolar'),
 ('EURO', 'Euro', 'Euro');
 
@@ -258,12 +258,12 @@ CREATE TABLE tbl_queries_blacklist (
 CREATE TABLE tbl_loans_status (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
 
-INSERT INTO tbl_loans_status (id,name_en_us, name_es) VALUES
+INSERT INTO tbl_loans_status (id,name_en, name_es) VALUES
 (1,'fundraising', 'Recaudación de fondos'),
 (2,'Funded', 'Financiado'),
 (3,'Paying Back', 'Reembolsando'),
@@ -274,11 +274,11 @@ INSERT INTO tbl_loans_status (id,name_en_us, name_es) VALUES
 CREATE TABLE tbl_loans_activities (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_loans_activities (name_en_us, name_es) VALUES
+INSERT INTO tbl_loans_activities (name_en, name_es) VALUES
 ('Agriculture', 'Agricultura'),
 ('Health', 'Salud');
 
@@ -286,13 +286,13 @@ INSERT INTO tbl_loans_activities (name_en_us, name_es) VALUES
 CREATE TABLE tbl_achievements_types (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT '',
 
   icon varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_achievements_types  (name_en_us, name_es,icon) VALUES
+INSERT INTO tbl_achievements_types  (name_en, name_es,icon) VALUES
 ('Users news', 'Noticias de usuarios','news.png'),
 ('Incomes', 'Ingresos','money.png');
 
@@ -303,10 +303,10 @@ CREATE TABLE tbl_achievements (
 
   achievement_type_id int references tbl_achievements_types(id),
 
-  link_en_us varchar(255) DEFAULT '',
+  link_en varchar(255) DEFAULT '',
   link_es varchar(255) DEFAULT '',
 
-  text_en_us text DEFAULT '',
+  text_en text DEFAULT '',
   text_es text DEFAULT '',
 
   achievements_start TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
@@ -316,18 +316,18 @@ CREATE TABLE tbl_achievements (
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO tbl_achievements  (id,achievement_type_id, link_en_us,text_en_us,achievements_start,achievements_finish) VALUES
+INSERT INTO tbl_achievements  (id,achievement_type_id, link_en,text_en,achievements_start,achievements_finish) VALUES
 (1, 1, 'http://www.thegooddata.org','This a sample achievement with two lines. I hope it fill the extension content.','01/01/2014','01/01/2015');
 
 --DROP TABLE tbl_achievements_types;
 CREATE TABLE tbl_incomes_types (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_incomes_types  (name_en_us, name_es) VALUES
+INSERT INTO tbl_incomes_types  (name_en, name_es) VALUES
 ('Donations', 'Donaciones'),
 ('Data trade', 'Data trade');
 
@@ -352,11 +352,11 @@ CREATE TABLE tbl_incomes (
 CREATE TABLE tbl_loans_leaders (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_loans_leaders  (name_en_us, name_es) VALUES
+INSERT INTO tbl_loans_leaders  (name_en, name_es) VALUES
 ('Kiva', 'Kiva');
 
 --DROP TABLE tbl_loans;
@@ -368,7 +368,7 @@ CREATE TABLE tbl_loans (
   leader int NOT NULL references tbl_loans_leaders(id),
   loan_url varchar(255) DEFAULT '',
 
-  title_en_us varchar(255) DEFAULT '',
+  title_en varchar(255) DEFAULT '',
   title_es varchar(255) DEFAULT '',
   
   id_loans_activity int NOT NULL references tbl_loans_activities(id),

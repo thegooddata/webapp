@@ -2456,11 +2456,11 @@ Stack trace:
 REQUEST_URI=/TGD/src/webapp/TGD/loans/update/favicon.ico
 ---
 2014/02/08 16:12:35 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "tbl_loans_pkey"
-DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/08 16:12:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "tbl_loans_pkey"
-DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -2478,11 +2478,11 @@ REQUEST_URI=/TGD/src/webapp/TGD/loans/create
 HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/loans/create
 ---
 2014/02/08 16:13:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "tbl_loans_pkey"
-DETAIL:  Key (id)=(2) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+DETAIL:  Key (id)=(2) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/08 16:13:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "tbl_loans_pkey"
-DETAIL:  Key (id)=(2) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+DETAIL:  Key (id)=(2) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -2744,10 +2744,10 @@ Stack trace:
 #7 {main}
 REQUEST_URI=/TGD/src/webapp/TGD/loans/update/favicon.ico
 ---
-2014/02/08 16:31:29 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "USD". The SQL statement executed was: UPDATE "tbl_loans" SET "id"=:yp0, "leader"=:yp1, "currency"=:yp2, "title_en_us"=:yp3, "title_es"=:yp4, "id_loans_activity"=:yp5, "image"=:yp6, "id_countries"=:yp7, "partner"=:yp8, "amount"=:yp9, "term"=:yp10, "contribution"=:yp11, "loan_date"=:yp12, "loan_update"=:yp13, "id_loans_status"=:yp14, "paidback"=:yp15, "loss_currency"=:yp16, "loss_defaut"=:yp17, "created_at"=:yp18, "updated_at"=NOW() WHERE "tbl_loans"."id"='1'.
+2014/02/08 16:31:29 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "USD". The SQL statement executed was: UPDATE "tbl_loans" SET "id"=:yp0, "leader"=:yp1, "currency"=:yp2, "title_en"=:yp3, "title_es"=:yp4, "id_loans_activity"=:yp5, "image"=:yp6, "id_countries"=:yp7, "partner"=:yp8, "amount"=:yp9, "term"=:yp10, "contribution"=:yp11, "loan_date"=:yp12, "loan_update"=:yp13, "id_loans_status"=:yp14, "paidback"=:yp15, "loss_currency"=:yp16, "loss_defaut"=:yp17, "created_at"=:yp18, "updated_at"=NOW() WHERE "tbl_loans"."id"='1'.
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (69)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/08 16:31:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "USD". The SQL statement executed was: UPDATE "tbl_loans" SET "id"=:yp0, "leader"=:yp1, "currency"=:yp2, "title_en_us"=:yp3, "title_es"=:yp4, "id_loans_activity"=:yp5, "image"=:yp6, "id_countries"=:yp7, "partner"=:yp8, "amount"=:yp9, "term"=:yp10, "contribution"=:yp11, "loan_date"=:yp12, "loan_update"=:yp13, "id_loans_status"=:yp14, "paidback"=:yp15, "loss_currency"=:yp16, "loss_defaut"=:yp17, "created_at"=:yp18, "updated_at"=NOW() WHERE "tbl_loans"."id"='1'' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+2014/02/08 16:31:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "USD". The SQL statement executed was: UPDATE "tbl_loans" SET "id"=:yp0, "leader"=:yp1, "currency"=:yp2, "title_en"=:yp3, "title_es"=:yp4, "id_loans_activity"=:yp5, "image"=:yp6, "id_countries"=:yp7, "partner"=:yp8, "amount"=:yp9, "term"=:yp10, "contribution"=:yp11, "loan_date"=:yp12, "loan_update"=:yp13, "id_loans_status"=:yp14, "paidback"=:yp15, "loss_currency"=:yp16, "loss_defaut"=:yp17, "created_at"=:yp18, "updated_at"=NOW() WHERE "tbl_loans"."id"='1'' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1751): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1127): CActiveRecord->updateByPk('1', Array)
@@ -3305,10 +3305,10 @@ Stack trace:
 REQUEST_URI=/TGD/src/webapp/TGD/loans/1
 HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/loans/admin
 ---
-2014/02/09 12:08:52 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+2014/02/09 12:08:52 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 12:08:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+2014/02/09 12:08:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -3325,10 +3325,10 @@ Stack trace:
 REQUEST_URI=/TGD/src/webapp/TGD/loans/create
 HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/loans/create
 ---
-2014/02/09 12:09:03 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+2014/02/09 12:09:03 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 12:09:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+2014/02/09 12:09:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -3345,10 +3345,10 @@ Stack trace:
 REQUEST_URI=/TGD/src/webapp/TGD/loans/create
 HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/loans/create
 ---
-2014/02/09 12:14:04 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+2014/02/09 12:14:04 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 12:14:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+2014/02/09 12:14:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -3365,10 +3365,10 @@ Stack trace:
 REQUEST_URI=/TGD/src/webapp/TGD/loans/create
 HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/loans/create
 ---
-2014/02/09 12:14:58 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+2014/02/09 12:14:58 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 12:14:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+2014/02/09 12:14:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type numeric: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -3385,10 +3385,10 @@ Stack trace:
 REQUEST_URI=/TGD/src/webapp/TGD/loans/create
 HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/loans/create
 ---
-2014/02/09 12:26:51 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type real: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+2014/02/09 12:26:51 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type real: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 12:26:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type real: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+2014/02/09 12:26:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input syntax for type real: "25,25". The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -3551,7 +3551,7 @@ REQUEST_URI=/TGD/src/webapp/TGD/goodData/index
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php (123)
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (38)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 12:59:23 [error] [php] Undefined property: stdClass::$title_en_US (/Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php:123)
+2014/02/09 12:59:23 [error] [php] Undefined property: stdClass::$title_en (/Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php:123)
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/web/CController.php(869): GoodDataController->renderFile()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/web/CController.php(782): GoodDataController->renderPartial()
@@ -3661,7 +3661,7 @@ REQUEST_URI=/TGD/src/webapp/TGD/goodData/index
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php (123)
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (38)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 13:00:25 [error] [php] Undefined property: stdClass::$title_en_US (/Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php:123)
+2014/02/09 13:00:25 [error] [php] Undefined property: stdClass::$title_en (/Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php:123)
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/web/CController.php(869): GoodDataController->renderFile()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/web/CController.php(782): GoodDataController->renderPartial()
@@ -3683,7 +3683,7 @@ REQUEST_URI=/TGD/src/webapp/TGD/goodData/index
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php (123)
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (38)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
-2014/02/09 13:00:26 [error] [php] Undefined property: stdClass::$title_en_US (/Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php:123)
+2014/02/09 13:00:26 [error] [php] Undefined property: stdClass::$title_en (/Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php:123)
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/web/CController.php(869): GoodDataController->renderFile()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/web/CController.php(782): GoodDataController->renderPartial()
@@ -3798,11 +3798,11 @@ in /Users/dani/Dev/TGD/src/webapp/TGD/protected/views/goodData/index.php (123)
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (44)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/09 13:45:11 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "tbl_loans_pkey"
-DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
+DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW()).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/LoansController.php (23)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/09 13:45:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23505]: Unique violation: 7 ERROR:  duplicate key value violates unique constraint "tbl_loans_pkey"
-DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en_us", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
+DETAIL:  Key (id)=(1) already exists.. The SQL statement executed was: INSERT INTO "tbl_loans" ("leader", "currency", "title_en", "title_es", "image", "partner", "term", "id", "id_loans_activity", "id_countries", "amount", "contribution", "loan_date", "loan_update", "id_loans_status", "paidback", "loss_currency", "loss_defaut", "created_at", "updated_at") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, NOW(), NOW())' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:358
 Stack trace:
 #0 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
 #1 /Users/dani/Dev/TGD/src/webapp/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
@@ -3986,14 +3986,14 @@ REQUEST_URI=/TGD/src/webapp/TGD/goodData/GoodInvestmentsData
 ---
 2014/02/09 14:36:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "tbl_status" does not exist
 LINE 2: ..._loans", "tbl_loans_activities", "tbl_countries", "tbl_statu...
-                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en_us" AS "activity", "tbl_countries"."name_en_us" AS "country", "tbl_countries"."code"
+                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en" AS "activity", "tbl_countries"."name_en" AS "country", "tbl_countries"."code"
 FROM "tbl_loans", "tbl_loans_activities", "tbl_countries", "tbl_status"
 WHERE (tbl_loans_activities.id = tbl_loans.id_loans_activity) AND (tbl_countries.id = tbl_loans.id_countries) AND (tbl_status.id = tbl_loans.id_status).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (141)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/09 14:36:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "tbl_status" does not exist
 LINE 2: ..._loans", "tbl_loans_activities", "tbl_countries", "tbl_statu...
-                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en_us" AS "activity", "tbl_countries"."name_en_us" AS "country", "tbl_countries"."code"
+                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en" AS "activity", "tbl_countries"."name_en" AS "country", "tbl_countries"."code"
 FROM "tbl_loans", "tbl_loans_activities", "tbl_countries", "tbl_status"
 WHERE (tbl_loans_activities.id = tbl_loans.id_loans_activity) AND (tbl_countries.id = tbl_loans.id_countries) AND (tbl_status.id = tbl_loans.id_status)' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:543
 Stack trace:
@@ -4018,14 +4018,14 @@ HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/goodData/index
 ---
 2014/02/09 14:36:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42703]: Undefined column: 7 ERROR:  column tbl_loans.id_status does not exist
 LINE 3: ...bl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans....
-                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en_us" AS "activity", "tbl_countries"."name_en_us" AS "country", "tbl_countries"."code"
+                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en" AS "activity", "tbl_countries"."name_en" AS "country", "tbl_countries"."code"
 FROM "tbl_loans", "tbl_loans_activities", "tbl_countries", "tbl_loans_status"
 WHERE (tbl_loans_activities.id = tbl_loans.id_loans_activity) AND (tbl_countries.id = tbl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans.id_status).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (141)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/09 14:36:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42703]: Undefined column: 7 ERROR:  column tbl_loans.id_status does not exist
 LINE 3: ...bl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans....
-                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en_us" AS "activity", "tbl_countries"."name_en_us" AS "country", "tbl_countries"."code"
+                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en" AS "activity", "tbl_countries"."name_en" AS "country", "tbl_countries"."code"
 FROM "tbl_loans", "tbl_loans_activities", "tbl_countries", "tbl_loans_status"
 WHERE (tbl_loans_activities.id = tbl_loans.id_loans_activity) AND (tbl_countries.id = tbl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans.id_status)' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:543
 Stack trace:
@@ -4050,14 +4050,14 @@ HTTP_REFERER=http://localhost/TGD/src/webapp/TGD/goodData/index
 ---
 2014/02/09 14:36:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42703]: Undefined column: 7 ERROR:  column tbl_loans.id_loan_status does not exist
 LINE 3: ...bl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans....
-                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en_us" AS "activity", "tbl_countries"."name_en_us" AS "country", "tbl_countries"."code"
+                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en" AS "activity", "tbl_countries"."name_en" AS "country", "tbl_countries"."code"
 FROM "tbl_loans", "tbl_loans_activities", "tbl_countries", "tbl_loans_status"
 WHERE (tbl_loans_activities.id = tbl_loans.id_loans_activity) AND (tbl_countries.id = tbl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans.id_loan_status).
 in /Users/dani/Dev/TGD/src/webapp/TGD/protected/controllers/GoodDataController.php (141)
 in /Users/dani/Dev/TGD/src/webapp/TGD/index.php (14)
 2014/02/09 14:36:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42703]: Undefined column: 7 ERROR:  column tbl_loans.id_loan_status does not exist
 LINE 3: ...bl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans....
-                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en_us" AS "activity", "tbl_countries"."name_en_us" AS "country", "tbl_countries"."code"
+                                                             ^. The SQL statement executed was: SELECT "tbl_loans".*, "tbl_loans_activities"."name_en" AS "activity", "tbl_countries"."name_en" AS "country", "tbl_countries"."code"
 FROM "tbl_loans", "tbl_loans_activities", "tbl_countries", "tbl_loans_status"
 WHERE (tbl_loans_activities.id = tbl_loans.id_loans_activity) AND (tbl_countries.id = tbl_loans.id_countries) AND (tbl_loans_status.id = tbl_loans.id_loan_status)' in /Users/dani/Dev/TGD/src/webapp/yii/framework/db/CDbCommand.php:543
 Stack trace:

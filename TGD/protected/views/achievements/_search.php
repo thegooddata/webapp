@@ -16,8 +16,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'link_en_us'); ?>
-		<?php echo $form->textField($model, 'link_en_us', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'link_en'); ?>
+		<?php echo $form->textField($model, 'link_en', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">
@@ -26,8 +26,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'text_en_us'); ?>
-		<?php echo $form->textArea($model, 'text_en_us'); ?>
+		<?php echo $form->label($model, 'text_en'); ?>
+		<?php echo $form->textArea($model, 'text_en'); ?>
 	</div>
 
 	<div class="row">

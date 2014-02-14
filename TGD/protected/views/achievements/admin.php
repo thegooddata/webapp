@@ -47,9 +47,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'value'=>'GxHtml::valueEx($data->achievementType)',
 				'filter'=>GxHtml::listDataEx(AchievementsTypes::model()->findAllAttributes(null, true)),
 				),
-		'link_en_us',
+		'link_en',
 		'link_es',
-		'text_en_us',
+		'text_en',
 		'text_es',
 		/*
 		'achievements_start',

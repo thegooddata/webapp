@@ -52,7 +52,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'filter'=>GxHtml::listDataEx(LoansLeaders::model()->findAllAttributes(null, true)),
 				),
 		'loan_url',
-		'title_en_us',
+		'title_en',
 		'title_es',
 		/*
 		array(

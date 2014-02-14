@@ -30,10 +30,10 @@
 		<?php echo $form->textField($model, 'loan_url', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'loan_url'); ?>
 		</div><!-- row -->
-		<div class="row loans_title_en_us title_en_us">
-		<?php echo $form->labelEx($model,'title_en_us'); ?>
-		<?php echo $form->textField($model, 'title_en_us', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'title_en_us'); ?>
+		<div class="row loans_title_en title_en">
+		<?php echo $form->labelEx($model,'title_en'); ?>
+		<?php echo $form->textField($model, 'title_en', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'title_en'); ?>
 		</div><!-- row -->
 		<div class="row loans_title_es title_es">
 		<?php echo $form->labelEx($model,'title_es'); ?>

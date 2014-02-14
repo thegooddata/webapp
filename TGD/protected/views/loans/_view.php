@@ -13,8 +13,8 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('loan_url')); ?>:
 	<?php echo GxHtml::encode($data->loan_url); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('title_en_us')); ?>:
-	<?php echo GxHtml::encode($data->title_en_us); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('title_en')); ?>:
+	<?php echo GxHtml::encode($data->title_en); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('title_es')); ?>:
 	<?php echo GxHtml::encode($data->title_es); ?>

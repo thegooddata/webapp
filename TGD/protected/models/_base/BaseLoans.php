@@ -13,7 +13,7 @@
  * @property string $loan_identifier
  * @property integer $leader
  * @property string $loan_url
- * @property string $title_en_us
+ * @property string $title_en
  * @property string $title_es
  * @property integer $id_loans_activity
  * @property integer $id_countries
@@ -60,10 +60,10 @@ abstract class BaseLoans extends GxActiveRecord {
 			array('leader, id_loans_activity, id_countries, currency, id_loans_status', 'required'),
 			array('leader, id_loans_activity, id_countries, currency, term, id_loans_status', 'numerical', 'integerOnly'=>true),
 			array('amount, contribution, paidback, loss', 'numerical'),
-			array('loan_identifier, loan_url, title_en_us, title_es, partner, image', 'length', 'max'=>255),
+			array('loan_identifier, loan_url, title_en, title_es, partner, image', 'length', 'max'=>255),
 			array('loan_date, loan_update, created_at, updated_at', 'safe'),
-			array('loan_identifier, loan_url, title_en_us, title_es, partner, amount, term, contribution, loan_date, loan_update, paidback, loss, image, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, loan_identifier, leader, loan_url, title_en_us, title_es, id_loans_activity, id_countries, partner, amount, currency, term, contribution, loan_date, loan_update, paidback, loss, id_loans_status, image, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('loan_identifier, loan_url, title_en, title_es, partner, amount, term, contribution, loan_date, loan_update, paidback, loss, image, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, loan_identifier, leader, loan_url, title_en, title_es, id_loans_activity, id_countries, partner, amount, currency, term, contribution, loan_date, loan_update, paidback, loss, id_loans_status, image, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -88,7 +88,7 @@ abstract class BaseLoans extends GxActiveRecord {
 			'loan_identifier' => Yii::t('app', 'Loan Identifier'),
 			'leader' => null,
 			'loan_url' => Yii::t('app', 'Loan Url'),
-			'title_en_us' => Yii::t('app', 'Title En Us'),
+			'title_en' => Yii::t('app', 'Title En'),
 			'title_es' => Yii::t('app', 'Title Es'),
 			'id_loans_activity' => null,
 			'id_countries' => null,
@@ -120,7 +120,7 @@ abstract class BaseLoans extends GxActiveRecord {
 		$criteria->compare('loan_identifier', $this->loan_identifier, true);
 		$criteria->compare('leader', $this->leader);
 		$criteria->compare('loan_url', $this->loan_url, true);
-		$criteria->compare('title_en_us', $this->title_en_us, true);
+		$criteria->compare('title_en', $this->title_en, true);
 		$criteria->compare('title_es', $this->title_es, true);
 		$criteria->compare('id_loans_activity', $this->id_loans_activity);
 		$criteria->compare('id_countries', $this->id_countries);

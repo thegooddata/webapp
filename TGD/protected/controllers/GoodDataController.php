@@ -265,7 +265,7 @@ class GoodDataController extends Controller
 
 		$loans = Yii::app()->db->createCommand()
 			    ->setFetchMode(PDO::FETCH_OBJ)
-			    ->select('tbl_loans.*,tbl_loans_activities.name_en_us as activity,tbl_countries.name_en_us as country, tbl_loans_status.name_en_us as status, tbl_countries.code')
+			    ->select('tbl_loans.*,tbl_loans_activities.name_en as activity,tbl_countries.name_en as country, tbl_loans_status.name_en as status, tbl_countries.code')
 			    ->from('tbl_loans,tbl_loans_activities,tbl_countries,tbl_loans_status')
 			     ->where(array(
 	                'and',

@@ -23,20 +23,20 @@
 		<?php echo $form->dropDownList($model, 'achievement_type_id', GxHtml::listDataEx(AchievementsTypes::model()->findAllAttributes(null, true))); ?>
 		<?php echo $form->error($model,'achievement_type_id'); ?>
 		</div><!-- row -->
-		<div class="row achievements_link_en_us link_en_us">
-		<?php echo $form->labelEx($model,'link_en_us'); ?>
-		<?php echo $form->textField($model, 'link_en_us', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'link_en_us'); ?>
+		<div class="row achievements_link_en link_en">
+		<?php echo $form->labelEx($model,'link_en'); ?>
+		<?php echo $form->textField($model, 'link_en', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'link_en'); ?>
 		</div><!-- row -->
 		<div class="row achievements_link_es link_es">
 		<?php echo $form->labelEx($model,'link_es'); ?>
 		<?php echo $form->textField($model, 'link_es', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'link_es'); ?>
 		</div><!-- row -->
-		<div class="row achievements_text_en_us text_en_us">
-		<?php echo $form->labelEx($model,'text_en_us'); ?>
-		<?php echo $form->textArea($model, 'text_en_us'); ?>
-		<?php echo $form->error($model,'text_en_us'); ?>
+		<div class="row achievements_text_en text_en">
+		<?php echo $form->labelEx($model,'text_en'); ?>
+		<?php echo $form->textArea($model, 'text_en'); ?>
+		<?php echo $form->error($model,'text_en'); ?>
 		</div><!-- row -->
 		<div class="row achievements_text_es text_es">
 		<?php echo $form->labelEx($model,'text_es'); ?>

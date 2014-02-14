@@ -36,6 +36,10 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         
+        <!-- Admin -->
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/admin.css" type="text/css">
+
+
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         

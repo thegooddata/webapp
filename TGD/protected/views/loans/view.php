@@ -29,7 +29,7 @@ array(
 			'value' => $model->leader0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->leader0)), array('loansLeaders/view', 'id' => GxActiveRecord::extractPkValue($model->leader0, true))) : null,
 			),
 'loan_url',
-'title_en_us',
+'title_en',
 'title_es',
 array(
 			'name' => 'idLoansActivity',
