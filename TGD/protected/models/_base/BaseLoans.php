@@ -9,28 +9,32 @@
  * Columns in table "{{loans}}" available as properties of the model,
  * followed by relations of table "{{loans}}" available as properties of the model.
  *
- * @property string $id
- * @property string $leader
- * @property string $currency
+ * @property integer $id
+ * @property string $loan_identifier
+ * @property integer $leader
+ * @property string $loan_url
  * @property string $title_en_us
  * @property string $title_es
  * @property integer $id_loans_activity
- * @property string $image
  * @property integer $id_countries
  * @property string $partner
  * @property double $amount
+ * @property integer $currency
  * @property integer $term
  * @property double $contribution
  * @property string $loan_date
  * @property string $loan_update
- * @property integer $id_loans_status
  * @property double $paidback
  * @property double $loss
+ * @property integer $id_loans_status
+ * @property string $image
  * @property string $created_at
  * @property string $updated_at
  *
+ * @property LoansLeaders $leader0
  * @property LoansActivities $idLoansActivity
  * @property Countries $idCountries
+ * @property Currencies $currency0
  * @property LoansStatus $idLoansStatus
  */
 abstract class BaseLoans extends GxActiveRecord {
@@ -48,25 +52,27 @@ abstract class BaseLoans extends GxActiveRecord {
 	}
 
 	public static function representingColumn() {
-		return 'id';
+		return 'loan_identifier';
 	}
 
 	public function rules() {
 		return array(
-			array('id, id_loans_activity, id_countries, id_loans_status', 'required'),
-			array('id_loans_activity, id_countries, term, id_loans_status', 'numerical', 'integerOnly'=>true),
+			array('leader, id_loans_activity, id_countries, currency, id_loans_status', 'required'),
+			array('leader, id_loans_activity, id_countries, currency, term, id_loans_status', 'numerical', 'integerOnly'=>true),
 			array('amount, contribution, paidback, loss', 'numerical'),
-			array('id, leader, currency, title_en_us, title_es, image, partner', 'length', 'max'=>255),
+			array('loan_identifier, loan_url, title_en_us, title_es, partner, image', 'length', 'max'=>255),
 			array('loan_date, loan_update, created_at, updated_at', 'safe'),
-			array('leader, currency, title_en_us, title_es, image, partner, amount, term, contribution, loan_date, loan_update, paidback, loss, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, leader, currency, title_en_us, title_es, id_loans_activity, image, id_countries, partner, amount, term, contribution, loan_date, loan_update, id_loans_status, paidback, loss, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('loan_identifier, loan_url, title_en_us, title_es, partner, amount, term, contribution, loan_date, loan_update, paidback, loss, image, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, loan_identifier, leader, loan_url, title_en_us, title_es, id_loans_activity, id_countries, partner, amount, currency, term, contribution, loan_date, loan_update, paidback, loss, id_loans_status, image, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
+			'leader0' => array(self::BELONGS_TO, 'LoansLeaders', 'leader'),
 			'idLoansActivity' => array(self::BELONGS_TO, 'LoansActivities', 'id_loans_activity'),
 			'idCountries' => array(self::BELONGS_TO, 'Countries', 'id_countries'),
+			'currency0' => array(self::BELONGS_TO, 'Currencies', 'currency'),
 			'idLoansStatus' => array(self::BELONGS_TO, 'LoansStatus', 'id_loans_status'),
 		);
 	}
@@ -79,26 +85,30 @@ abstract class BaseLoans extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'leader' => Yii::t('app', 'Leader'),
-			'currency' => Yii::t('app', 'Currency'),
+			'loan_identifier' => Yii::t('app', 'Loan Identifier'),
+			'leader' => null,
+			'loan_url' => Yii::t('app', 'Loan Url'),
 			'title_en_us' => Yii::t('app', 'Title En Us'),
 			'title_es' => Yii::t('app', 'Title Es'),
-			'id_loans_activity' => Yii::t('app', 'Sector'),
-			'image' => Yii::t('app', 'Image'),
-			'id_countries' => Yii::t('app', 'Country'),
+			'id_loans_activity' => null,
+			'id_countries' => null,
 			'partner' => Yii::t('app', 'Partner'),
 			'amount' => Yii::t('app', 'Amount'),
-			'term' => Yii::t('app', 'Term Months'),
+			'currency' => null,
+			'term' => Yii::t('app', 'Term'),
 			'contribution' => Yii::t('app', 'Contribution'),
 			'loan_date' => Yii::t('app', 'Loan Date'),
 			'loan_update' => Yii::t('app', 'Loan Update'),
-			'id_loans_status' => null,
 			'paidback' => Yii::t('app', 'Paidback'),
 			'loss' => Yii::t('app', 'Loss'),
+			'id_loans_status' => null,
+			'image' => Yii::t('app', 'Image'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
+			'leader0' => null,
 			'idLoansActivity' => null,
 			'idCountries' => null,
+			'currency0' => null,
 			'idLoansStatus' => null,
 		);
 	}
@@ -106,23 +116,25 @@ abstract class BaseLoans extends GxActiveRecord {
 	public function search() {
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, true);
-		$criteria->compare('leader', $this->leader, true);
-		$criteria->compare('currency', $this->currency, true);
+		$criteria->compare('id', $this->id);
+		$criteria->compare('loan_identifier', $this->loan_identifier, true);
+		$criteria->compare('leader', $this->leader);
+		$criteria->compare('loan_url', $this->loan_url, true);
 		$criteria->compare('title_en_us', $this->title_en_us, true);
 		$criteria->compare('title_es', $this->title_es, true);
 		$criteria->compare('id_loans_activity', $this->id_loans_activity);
-		$criteria->compare('image', $this->image, true);
 		$criteria->compare('id_countries', $this->id_countries);
 		$criteria->compare('partner', $this->partner, true);
 		$criteria->compare('amount', $this->amount);
+		$criteria->compare('currency', $this->currency);
 		$criteria->compare('term', $this->term);
 		$criteria->compare('contribution', $this->contribution);
 		$criteria->compare('loan_date', $this->loan_date, true);
 		$criteria->compare('loan_update', $this->loan_update, true);
-		$criteria->compare('id_loans_status', $this->id_loans_status);
 		$criteria->compare('paidback', $this->paidback);
 		$criteria->compare('loss', $this->loss);
+		$criteria->compare('id_loans_status', $this->id_loans_status);
+		$criteria->compare('image', $this->image, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
 

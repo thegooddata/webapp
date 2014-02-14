@@ -43,6 +43,21 @@ INSERT INTO tbl_countries  (name_en_us, name_es) VALUES
 ('Spain', 'España'),
 ('France', 'Francia');
 
+--DROP TABLE tbl_currencies;
+CREATE TABLE tbl_currencies (
+  id SERIAL PRIMARY KEY,
+
+  code varchar(255) DEFAULT '',
+  
+  name_en_us varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_currencies  (code, name_en_us,name_es) VALUES
+('USD', 'Dollar', 'Dolar'),
+('EURO', 'Euro', 'Euro');
+
+
 --DROP TABLE tbl_members_pii;
 CREATE TABLE tbl_members_pii (
   id SERIAL PRIMARY KEY,
@@ -324,30 +339,49 @@ CREATE TABLE tbl_incomes (
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
+--DROP TABLE tbl_loans_countries;
+CREATE TABLE tbl_loans_leaders (
+  id SERIAL PRIMARY KEY,
+
+  name_en_us varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_loans_leaders  (name_en_us, name_es) VALUES
+('Kiva', 'Kiva');
+
 --DROP TABLE tbl_loans;
 CREATE TABLE tbl_loans (
-  id varchar(255) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
 
-  leader varchar(255) DEFAULT '',
-  currency varchar(255) DEFAULT 'USD',
+  loan_identifier varchar(255) DEFAULT '',
   
+  leader int NOT NULL references tbl_loans_leaders(id),
+  loan_url varchar(255) DEFAULT '',
+
   title_en_us varchar(255) DEFAULT '',
   title_es varchar(255) DEFAULT '',
   
   id_loans_activity int NOT NULL references tbl_loans_activities(id),
-  image varchar(255) DEFAULT '',
   id_countries int NOT NULL references tbl_countries(id),
+
   partner varchar(255) DEFAULT '',
   amount real DEFAULT '0',
+
+  currency int NOT NULL references tbl_currencies(id),
   term int DEFAULT '0',
   contribution real DEFAULT '0',
+
   loan_date TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   loan_update TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
-  id_loans_status int NOT NULL references tbl_loans_status(id),
-  
+
   paidback real DEFAULT '0',
   loss real DEFAULT '0',
-  
+
+  id_loans_status int NOT NULL references tbl_loans_status(id),
+
+  image varchar(255) DEFAULT '',
+
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );

@@ -45,17 +45,21 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'leader',
-		'currency',
+		'loan_identifier',
+		array(
+				'name'=>'leader',
+				'value'=>'GxHtml::valueEx($data->leader0)',
+				'filter'=>GxHtml::listDataEx(LoansLeaders::model()->findAllAttributes(null, true)),
+				),
+		'loan_url',
 		'title_en_us',
 		'title_es',
+		/*
 		array(
 				'name'=>'id_loans_activity',
 				'value'=>'GxHtml::valueEx($data->idLoansActivity)',
 				'filter'=>GxHtml::listDataEx(LoansActivities::model()->findAllAttributes(null, true)),
 				),
-		/*
-		'image',
 		array(
 				'name'=>'id_countries',
 				'value'=>'GxHtml::valueEx($data->idCountries)',
@@ -63,17 +67,23 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				),
 		'partner',
 		'amount',
+		array(
+				'name'=>'currency',
+				'value'=>'GxHtml::valueEx($data->currency0)',
+				'filter'=>GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)),
+				),
 		'term',
 		'contribution',
 		'loan_date',
 		'loan_update',
+		'paidback',
+		'loss',
 		array(
 				'name'=>'id_loans_status',
 				'value'=>'GxHtml::valueEx($data->idLoansStatus)',
 				'filter'=>GxHtml::listDataEx(LoansStatus::model()->findAllAttributes(null, true)),
 				),
-		'paidback',
-		'loss',
+		'image',
 		'created_at',
 		'updated_at',
 		*/

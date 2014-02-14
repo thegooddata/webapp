@@ -22,14 +22,43 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
-'leader',
-'currency',
+'loan_identifier',
+array(
+			'name' => 'leader0',
+			'type' => 'raw',
+			'value' => $model->leader0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->leader0)), array('loansLeaders/view', 'id' => GxActiveRecord::extractPkValue($model->leader0, true))) : null,
+			),
+'loan_url',
 'title_en_us',
 'title_es',
 array(
 			'name' => 'idLoansActivity',
 			'type' => 'raw',
 			'value' => $model->idLoansActivity !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansActivity)), array('loansActivities/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansActivity, true))) : null,
+			),
+
+array(
+			'name' => 'idCountries',
+			'type' => 'raw',
+			'value' => $model->idCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idCountries)), array('countries/view', 'id' => GxActiveRecord::extractPkValue($model->idCountries, true))) : null,
+			),
+'partner',
+'amount',
+array(
+			'name' => 'currency0',
+			'type' => 'raw',
+			'value' => $model->currency0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->currency0)), array('currencies/view', 'id' => GxActiveRecord::extractPkValue($model->currency0, true))) : null,
+			),
+'term',
+'contribution',
+'loan_date',
+'loan_update',
+'paidback',
+'loss',
+array(
+			'name' => 'idLoansStatus',
+			'type' => 'raw',
+			'value' => $model->idLoansStatus !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansStatus)), array('loansStatus/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansStatus, true))) : null,
 			),
 /* START UPLOAD FILE */
 array(
@@ -39,24 +68,6 @@ array(
             'value'=> CHtml::image(Yii::app()->baseUrl.'/uploads/'.$model->image),
         ),
 /* END UPLOAD FILE */
-array(
-			'name' => 'idCountries',
-			'type' => 'raw',
-			'value' => $model->idCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idCountries)), array('countries/view', 'id' => GxActiveRecord::extractPkValue($model->idCountries, true))) : null,
-			),
-'partner',
-'amount',
-'term',
-'contribution',
-'loan_date',
-'loan_update',
-array(
-			'name' => 'idLoansStatus',
-			'type' => 'raw',
-			'value' => $model->idLoansStatus !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansStatus)), array('loansStatus/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansStatus, true))) : null,
-			),
-'paidback',
-'loss',
 'created_at',
 'updated_at',
 	),
