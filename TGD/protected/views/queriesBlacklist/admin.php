@@ -46,12 +46,10 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'id',
 		'lang',
 		'category',
-		'topic',
-		'search_term',
 		'headword',
-		/*
 		'midword',
 		'action',
+		/*
 		'created_at',
 		'updated_at',
 		*/

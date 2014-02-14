@@ -223,8 +223,8 @@ CREATE TABLE tbl_queries_blacklist (
 
   lang varchar(128) NOT NULL,
   category varchar(255) NOT NULL DEFAULT '',
-  topic varchar(255) NOT NULL DEFAULT '',
-  search_term varchar(255) NOT NULL DEFAULT '',
+  -- topic varchar(255) NOT NULL DEFAULT '',
+  -- search_term varchar(255) NOT NULL DEFAULT '',
   headword varchar(255) NOT NULL DEFAULT '',
   midword varchar(255) NOT NULL DEFAULT '',
   action varchar(255) NOT NULL DEFAULT 'use',

@@ -23,8 +23,6 @@ $this->menu=array(
 'id',
 'lang',
 'category',
-'topic',
-'search_term',
 'headword',
 'midword',
 'action',
