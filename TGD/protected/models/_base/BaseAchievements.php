@@ -35,7 +35,7 @@ abstract class BaseAchievements extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Achievements|Achievements', $n);
+		return Yii::t('app', 'Announcement|Announcements', $n);
 	}
 
 	public static function representingColumn() {
@@ -74,8 +74,8 @@ abstract class BaseAchievements extends GxActiveRecord {
 			'link_es' => Yii::t('app', 'Link Es'),
 			'text_en_us' => Yii::t('app', 'Text En Us'),
 			'text_es' => Yii::t('app', 'Text Es'),
-			'achievements_start' => Yii::t('app', 'Achievements Start'),
-			'achievements_finish' => Yii::t('app', 'Achievements Finish'),
+			'achievements_start' => Yii::t('app', 'Achievement Start'),
+			'achievements_finish' => Yii::t('app', 'Achievement Finish'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
 			'achievementType' => null,

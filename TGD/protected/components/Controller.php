@@ -20,21 +20,29 @@ class Controller extends CController
 	
 	public $menu_admin=array(
 		array('label'=>'Manage Members', 'url'=>array('/user/admin')),
-		array('label'=>'Manage Queries', 'url'=>array('/queries/admin')),	
-		array('label'=>'Manage Adtracks', 'url'=>array('/adtracks/admin')),	
-		array('label'=>'Manage Adtracks Sources', 'url'=>array('/adtracksSources/admin')),	
-		array('label'=>'Manage Adtracks Types', 'url'=>array('/adtracksTypes/admin')),
+		array('label'=>'Manage Members PII', 'url'=>array('/membersPii/admin')),
+		
 		array('label'=>'Manage Browsing', 'url'=>array('/browsing/admin')),
-		array('label'=>'Manage Whitelists', 'url'=>array('/whitelists/admin')),
-		array('label'=>'Manage Queries Blacklist', 'url'=>array('/queriesBlacklist/admin')),
-		array('label'=>'Manage Loans Status', 'url'=>array('/loansStatus/admin')),
-		array('label'=>'Manage Loans Activities', 'url'=>array('/loansActivities/admin')),
-		array('label'=>'Manage Countries', 'url'=>array('/countries/admin')),
+
+		array('label'=>'Manage Queries', 'url'=>array('/queries/admin')),	
+		// array('label'=>'Manage Query Blacklist', 'url'=>array('/queriesBlacklist/admin')),
+
+		array('label'=>'Manage Webtrack', 'url'=>array('/adtracks/admin')),	
+		// array('label'=>'Manage Webtrack Sources', 'url'=>array('/adtracksSources/admin')),	
+		// array('label'=>'Manage Webtrack Types', 'url'=>array('/adtracksTypes/admin')),
+		// array('label'=>'Manage Webtrack Whitelists', 'url'=>array('/whitelists/admin')),
+		
+		array('label'=>'Manage Income', 'url'=>array('/incomes/admin')),
+
 		array('label'=>'Manage Loans', 'url'=>array('/loans/admin')),
-		array('label'=>'Manage Incomes', 'url'=>array('/incomes/admin')),
-		array('label'=>'Manage Achievements', 'url'=>array('/achievements/admin')),
-		array('label'=>'Manage Achievements Types', 'url'=>array('/achievementsTypes/admin')),
-		array('label'=>'Manage PII', 'url'=>array('/membersPii/admin')),
+		// array('label'=>'Manage Loan Status', 'url'=>array('/loansStatus/admin')),
+		// array('label'=>'Manage Loan Sector', 'url'=>array('/loansActivities/admin')),
+		
+		array('label'=>'Manage Countries', 'url'=>array('/countries/admin')),
+		
+		array('label'=>'Manage Announcements', 'url'=>array('/achievements/admin')),
+		//array('label'=>'Manage Achievement Types', 'url'=>array('/achievementsTypes/admin')),
+		
 	);
 
 	/**

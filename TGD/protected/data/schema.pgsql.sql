@@ -148,8 +148,7 @@ CREATE TABLE tbl_adtracks_sources (
 );
 
 INSERT INTO tbl_adtracks_sources (adtrack_type_id,name,url) VALUES
-(4,'Twitter','http://www.twitter.com'),
-(4,'Facebook','http://www.facebook.com');
+(4,'*','');
 
 
 
@@ -248,12 +247,13 @@ CREATE TABLE tbl_loans_status (
   name_es varchar(255) DEFAULT ''
 );
 
+
 INSERT INTO tbl_loans_status (id,name_en_us, name_es) VALUES
-(1,'Fundraising', 'Recaudación de fondos'),
+(1,'fundraising', 'Recaudación de fondos'),
 (2,'Funded', 'Financiado'),
-(3,'Paid Back', 'Pagado'),
-(4,'Paying back', 'Reembolsando'),
-(5,'Lost', 'Perdido');
+(3,'Paying Back', 'Reembolsando'),
+(4,'Paid', 'Pagado'),
+(5,'At Loss', 'Perdido');
 
 --DROP TABLE tbl_loans_activities;
 CREATE TABLE tbl_loans_activities (
@@ -388,8 +388,8 @@ declare
   total float;
 BEGIN
   total:=0;
-  select count(*) into block from tbl_adtracks where member_id= i and status='block';
-  select count(*) into allow from tbl_adtracks where member_id= i and status='allow';
+  select count(*) into block from tbl_adtracks where member_id= i and status='blocked';
+  select count(*) into allow from tbl_adtracks where member_id= i and status='allowed';
 
   if ( allow <> 0 and  block <>0) THEN
   total:=100-allow/block * 100;
@@ -408,8 +408,8 @@ declare
   total float;
 BEGIN
   total:=0;
-  select count(*) into block from tbl_adtracks where status='block';
-  select count(*) into allow from tbl_adtracks where status='allow';
+  select count(*) into block from tbl_adtracks where status='blocked';
+  select count(*) into allow from tbl_adtracks where status='allowed';
 
   total:=100-allow/block * 100;
   

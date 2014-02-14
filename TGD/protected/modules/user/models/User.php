@@ -5,7 +5,10 @@ class User extends CActiveRecord
 	const STATUS_NOACTIVE=0;
 	const STATUS_ACTIVE=1;
 	const STATUS_BANNED=-1;
-	
+	const STATUS_EXPULSED=2;
+	const STATUS_APPLIED=3;
+	const STATUS_LEFT=4;
+
 	//TODO: Delete for next version (backward compatibility)
 	const STATUS_BANED=-1;
 	
@@ -119,7 +122,7 @@ class User extends CActiveRecord
                 'condition'=>'status='.self::STATUS_NOACTIVE,
             ),
             'banned'=>array(
-                'condition'=>'status='.self::STATUS_BANNED,
+                'condition'=>'status='.self::STATUS_BANNED.' or status='.self::STATUS_EXPULSED,
             ),
             'superuser'=>array(
                 'condition'=>'superuser=1',
@@ -142,8 +145,11 @@ class User extends CActiveRecord
 		$_items = array(
 			'UserStatus' => array(
 				self::STATUS_NOACTIVE => UserModule::t('Not active'),
-				self::STATUS_ACTIVE => UserModule::t('Active'),
-				self::STATUS_BANNED => UserModule::t('Banned'),
+				self::STATUS_ACTIVE => UserModule::t('Accepted'),
+				self::STATUS_BANNED => UserModule::t('Rejected'),
+				self::STATUS_EXPULSED => UserModule::t('Expulsed'),
+				self::STATUS_APPLIED => UserModule::t('Applied'),
+				self::STATUS_LEFT => UserModule::t('Left'),
 			),
 			'AdminStatus' => array(
 				'0' => UserModule::t('No'),
@@ -168,11 +174,17 @@ class User extends CActiveRecord
         $criteria=new CDbCriteria;
         
         $criteria->compare('id',$this->id);
-        $criteria->compare('username',$this->username,true);
+        
+        //$criteria->compare('username',$this->username,true);
+		$criteria->compare('LOWER(username)',strtolower($this->username),true); 
+
         $criteria->compare('password',$this->password);
-        $criteria->compare('email',$this->email,true);
-        $criteria->compare('activkey',$this->activkey);
-        $criteria->compare('created_at',$this->created_at);
+
+        //$criteria->compare('email',$this->email,true);
+		$criteria->compare('LOWER(email)',strtolower($this->email),true); 
+	    
+	    $criteria->compare('activkey',$this->activkey);
+    	$criteria->compare('created_at',$this->created_at);
         $criteria->compare('lastvisit_at',$this->lastvisit_at);
         $criteria->compare('superuser',$this->superuser);
         $criteria->compare('status',$this->status);

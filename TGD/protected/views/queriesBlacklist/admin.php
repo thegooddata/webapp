@@ -7,6 +7,8 @@ $this->breadcrumbs = array(
 
 $this->menu = array(
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries', 'url' => array('queries/admin')),
+
 	);
 
 Yii::app()->clientScript->registerScript('search', "

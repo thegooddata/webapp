@@ -26,7 +26,7 @@ abstract class BaseLoansStatus extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'LoansStatus|LoansStatuses', $n);
+		return Yii::t('app', 'Loan Status|Loan Status', $n);
 	}
 
 	public static function representingColumn() {

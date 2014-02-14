@@ -59,13 +59,13 @@ class WhitelistsController extends GxController {
 	}
 
 	public function actionDelete($id) {
-		if (Yii::app()->getRequest()->getIsPostRequest()) {
+		// if (Yii::app()->getRequest()->getIsPostRequest()) {
 			$this->loadModel($id, 'Whitelists')->delete();
 
 			if (!Yii::app()->getRequest()->getIsAjaxRequest())
 				$this->redirect(array('admin'));
-		} else
-			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
+		// } else
+		// 	throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
 	}
 
 	public function actionIndex() {

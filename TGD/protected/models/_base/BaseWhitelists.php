@@ -32,7 +32,7 @@ abstract class BaseWhitelists extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Whitelists|Whitelists', $n);
+		return Yii::t('app', 'Webtrack Whitelists|Webtrack Whitelists', $n);
 	}
 
 	public static function representingColumn() {

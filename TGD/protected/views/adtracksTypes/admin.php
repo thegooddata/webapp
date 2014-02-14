@@ -7,6 +7,9 @@ $this->breadcrumbs = array(
 
 $this->menu = array(
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Sources', 'url' => array('adtrackssources/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Whitelist', 'url' => array('whitelists/admin')),
 	);
 
 Yii::app()->clientScript->registerScript('search', "

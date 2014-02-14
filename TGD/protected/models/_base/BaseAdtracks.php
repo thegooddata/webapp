@@ -33,7 +33,7 @@ abstract class BaseAdtracks extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Adtracks|Adtracks', $n);
+		return Yii::t('app', 'Webtrack|Webtrack', $n);
 	}
 
 	public static function representingColumn() {
@@ -67,7 +67,7 @@ abstract class BaseAdtracks extends GxActiveRecord {
 			'id' => Yii::t('app', 'ID'),
 			'user_id' => Yii::t('app', 'User'),
 			'member_id' => Yii::t('app', 'Member'),
-			'adtracks_sources_id' => null,
+			'adtracks_sources_id' => 'Broker',
 			'domain' => Yii::t('app', 'Domain'),
 			'url' => Yii::t('app', 'Url'),
 			'usertime' => Yii::t('app', 'Usertime'),
