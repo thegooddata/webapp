@@ -13,10 +13,10 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-		<div class="row incomes_source_type source_type">
-		<?php echo $form->labelEx($model,'source_type'); ?>
-		<?php echo $form->textField($model, 'source_type', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'source_type'); ?>
+		<div class="row incomes_type type">
+		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->dropDownList($model, 'type', GxHtml::listDataEx(IncomesTypes::model()->findAllAttributes(null, true))); ?>
+		<?php echo $form->error($model,'type'); ?>
 		</div><!-- row -->
 		<div class="row incomes_source_name source_name">
 		<?php echo $form->labelEx($model,'source_name'); ?>

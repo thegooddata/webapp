@@ -316,14 +316,26 @@ CREATE TABLE tbl_achievements (
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO tbl_achievements  (id,achievement_type_id, title_en_us,link_en_us,text_en_us,achievements_start,achievements_finish) VALUES
-(1, 1, 'This a sample achievement with two lines. I hope it fills the extension content.','http://www.thegooddata.org','This a sample achievement with two lines. I hope it fill the extension content.','01/01/2014','01/01/2015');
+INSERT INTO tbl_achievements  (id,achievement_type_id, link_en_us,text_en_us,achievements_start,achievements_finish) VALUES
+(1, 1, 'http://www.thegooddata.org','This a sample achievement with two lines. I hope it fill the extension content.','01/01/2014','01/01/2015');
+
+--DROP TABLE tbl_achievements_types;
+CREATE TABLE tbl_incomes_types (
+  id SERIAL PRIMARY KEY,
+
+  name_en_us varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_incomes_types  (name_en_us, name_es) VALUES
+('Donations', 'Donaciones'),
+('Data trade', 'Data trade');
 
 --DROP TABLE tbl_incomes;
 CREATE TABLE tbl_incomes (
   id SERIAL PRIMARY KEY,
 
-  source_type varchar(255) DEFAULT '',
+  type int NOT NULL references tbl_incomes_types(id),
   source_name varchar(255) DEFAULT '',
   gross_amount numeric DEFAULT '0',
   expenses numeric DEFAULT '0',

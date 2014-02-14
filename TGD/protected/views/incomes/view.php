@@ -19,7 +19,11 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
-'source_type',
+array(
+			'name' => 'type0',
+			'type' => 'raw',
+			'value' => $model->type0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->type0)), array('incomesTypes/view', 'id' => GxActiveRecord::extractPkValue($model->type0, true))) : null,
+			),
 'source_name',
 'gross_amount',
 'expenses',

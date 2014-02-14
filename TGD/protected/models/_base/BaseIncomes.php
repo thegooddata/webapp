@@ -10,7 +10,7 @@
  * followed by relations of table "{{incomes}}" available as properties of the model.
  *
  * @property integer $id
- * @property string $source_type
+ * @property integer $type
  * @property string $source_name
  * @property string $gross_amount
  * @property string $expenses
@@ -21,6 +21,7 @@
  * @property string $created_at
  * @property string $updated_at
  *
+ * @property IncomesTypes $type0
  * @property Currencies $currency0
  */
 abstract class BaseIncomes extends GxActiveRecord {
@@ -38,22 +39,23 @@ abstract class BaseIncomes extends GxActiveRecord {
 	}
 
 	public static function representingColumn() {
-		return 'source_type';
+		return 'source_name';
 	}
 
 	public function rules() {
 		return array(
-			array('currency', 'required'),
-			array('currency', 'numerical', 'integerOnly'=>true),
-			array('source_type, source_name', 'length', 'max'=>255),
+			array('type, currency', 'required'),
+			array('type, currency', 'numerical', 'integerOnly'=>true),
+			array('source_name', 'length', 'max'=>255),
 			array('gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe'),
-			array('source_type, source_name, gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, source_type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('source_name, gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
+			'type0' => array(self::BELONGS_TO, 'IncomesTypes', 'type'),
 			'currency0' => array(self::BELONGS_TO, 'Currencies', 'currency'),
 		);
 	}
@@ -66,7 +68,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'source_type' => Yii::t('app', 'Source Type'),
+			'type' => null,
 			'source_name' => Yii::t('app', 'Source Name'),
 			'gross_amount' => Yii::t('app', 'Gross Amount'),
 			'expenses' => Yii::t('app', 'Expenses'),
@@ -76,6 +78,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 			'loan_reserved' => Yii::t('app', 'Loan Reserved'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
+			'type0' => null,
 			'currency0' => null,
 		);
 	}
@@ -84,7 +87,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('source_type', $this->source_type, true);
+		$criteria->compare('type', $this->type);
 		$criteria->compare('source_name', $this->source_name, true);
 		$criteria->compare('gross_amount', $this->gross_amount, true);
 		$criteria->compare('expenses', $this->expenses, true);

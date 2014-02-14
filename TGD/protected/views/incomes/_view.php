@@ -4,8 +4,8 @@
 	<?php echo GxHtml::link(GxHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
 	<br />
 
-	<?php echo GxHtml::encode($data->getAttributeLabel('source_type')); ?>:
-	<?php echo GxHtml::encode($data->source_type); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('type')); ?>:
+		<?php echo GxHtml::encode(GxHtml::valueEx($data->type0)); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('source_name')); ?>:
 	<?php echo GxHtml::encode($data->source_name); ?>

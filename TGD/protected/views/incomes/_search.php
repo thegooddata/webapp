@@ -11,8 +11,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'source_type'); ?>
-		<?php echo $form->textField($model, 'source_type', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'type'); ?>
+		<?php echo $form->dropDownList($model, 'type', GxHtml::listDataEx(IncomesTypes::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
