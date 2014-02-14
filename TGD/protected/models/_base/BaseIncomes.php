@@ -9,7 +9,7 @@
  * Columns in table "{{incomes}}" available as properties of the model,
  * and there are no model relations.
  *
- * @property string $id
+ * @property integer $id
  * @property string $source_type
  * @property string $source_name
  * @property string $gross_amount
@@ -37,13 +37,12 @@ abstract class BaseIncomes extends GxActiveRecord {
 	}
 
 	public static function representingColumn() {
-		return 'id';
+		return 'source_type';
 	}
 
 	public function rules() {
 		return array(
-			array('id', 'required'),
-			array('id, source_type, source_name, currency', 'length', 'max'=>255),
+			array('source_type, source_name, currency', 'length', 'max'=>255),
 			array('gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe'),
 			array('source_type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, source_type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -79,7 +78,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 	public function search() {
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, true);
+		$criteria->compare('id', $this->id);
 		$criteria->compare('source_type', $this->source_type, true);
 		$criteria->compare('source_name', $this->source_name, true);
 		$criteria->compare('gross_amount', $this->gross_amount, true);

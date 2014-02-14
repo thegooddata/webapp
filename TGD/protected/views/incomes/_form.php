@@ -13,32 +13,27 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-		<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model, 'id', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'id'); ?>
-		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_source_type source_type">
 		<?php echo $form->labelEx($model,'source_type'); ?>
 		<?php echo $form->textField($model, 'source_type', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'source_type'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_source_name source_name">
 		<?php echo $form->labelEx($model,'source_name'); ?>
 		<?php echo $form->textField($model, 'source_name', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'source_name'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_gross_amount gross_amount">
 		<?php echo $form->labelEx($model,'gross_amount'); ?>
 		<?php echo $form->textField($model, 'gross_amount'); ?>
 		<?php echo $form->error($model,'gross_amount'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_expenses expenses">
 		<?php echo $form->labelEx($model,'expenses'); ?>
 		<?php echo $form->textField($model, 'expenses'); ?>
 		<?php echo $form->error($model,'expenses'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_income_date income_date">
 		<?php echo $form->labelEx($model,'income_date'); ?>
 		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model' => $model,
@@ -53,22 +48,22 @@
 ; ?>
 		<?php echo $form->error($model,'income_date'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_currency currency">
 		<?php echo $form->labelEx($model,'currency'); ?>
 		<?php echo $form->textField($model, 'currency', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'currency'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_xrate_usd_spot xrate_usd_spot">
 		<?php echo $form->labelEx($model,'xrate_usd_spot'); ?>
 		<?php echo $form->textField($model, 'xrate_usd_spot'); ?>
 		<?php echo $form->error($model,'xrate_usd_spot'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_loan_reserved loan_reserved">
 		<?php echo $form->labelEx($model,'loan_reserved'); ?>
 		<?php echo $form->textField($model, 'loan_reserved'); ?>
 		<?php echo $form->error($model,'loan_reserved'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_created_at created_at">
 		<?php echo $form->labelEx($model,'created_at'); ?>
 		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model' => $model,
@@ -83,7 +78,7 @@
 ; ?>
 		<?php echo $form->error($model,'created_at'); ?>
 		</div><!-- row -->
-		<div class="row">
+		<div class="row incomes_updated_at updated_at">
 		<?php echo $form->labelEx($model,'updated_at'); ?>
 		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model' => $model,

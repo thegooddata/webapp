@@ -324,7 +324,7 @@ INSERT INTO tbl_achievements  (id,achievement_type_id, title_en_us,link_en_us,te
 
 --DROP TABLE tbl_incomes;
 CREATE TABLE tbl_incomes (
-  id varchar(255) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
 
   source_type varchar(255) DEFAULT '',
   source_name varchar(255) DEFAULT '',
