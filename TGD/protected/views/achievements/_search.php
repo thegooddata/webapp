@@ -16,16 +16,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'title_en_us'); ?>
-		<?php echo $form->textField($model, 'title_en_us', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'title_es'); ?>
-		<?php echo $form->textField($model, 'title_es', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model, 'link_en_us'); ?>
 		<?php echo $form->textField($model, 'link_en_us', array('maxlength' => 255)); ?>
 	</div>

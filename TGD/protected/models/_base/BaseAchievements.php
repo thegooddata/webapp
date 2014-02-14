@@ -11,8 +11,6 @@
  *
  * @property string $id
  * @property integer $achievement_type_id
- * @property string $title_en_us
- * @property string $title_es
  * @property string $link_en_us
  * @property string $link_es
  * @property string $text_en_us
@@ -35,7 +33,7 @@ abstract class BaseAchievements extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Announcement|Announcements', $n);
+		return Yii::t('app', 'Achievements|Achievements', $n);
 	}
 
 	public static function representingColumn() {
@@ -46,10 +44,10 @@ abstract class BaseAchievements extends GxActiveRecord {
 		return array(
 			array('id', 'required'),
 			array('achievement_type_id', 'numerical', 'integerOnly'=>true),
-			array('id, title_en_us, title_es, link_en_us, link_es', 'length', 'max'=>255),
+			array('id, link_en_us, link_es', 'length', 'max'=>255),
 			array('text_en_us, text_es, achievements_start, achievements_finish, created_at, updated_at', 'safe'),
-			array('achievement_type_id, title_en_us, title_es, link_en_us, link_es, text_en_us, text_es, achievements_start, achievements_finish, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, achievement_type_id, title_en_us, title_es, link_en_us, link_es, text_en_us, text_es, achievements_start, achievements_finish, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('achievement_type_id, link_en_us, link_es, text_en_us, text_es, achievements_start, achievements_finish, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, achievement_type_id, link_en_us, link_es, text_en_us, text_es, achievements_start, achievements_finish, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,14 +66,12 @@ abstract class BaseAchievements extends GxActiveRecord {
 		return array(
 			'id' => Yii::t('app', 'ID'),
 			'achievement_type_id' => null,
-			'title_en_us' => Yii::t('app', 'Title En Us'),
-			'title_es' => Yii::t('app', 'Title Es'),
 			'link_en_us' => Yii::t('app', 'Link En Us'),
 			'link_es' => Yii::t('app', 'Link Es'),
 			'text_en_us' => Yii::t('app', 'Text En Us'),
 			'text_es' => Yii::t('app', 'Text Es'),
-			'achievements_start' => Yii::t('app', 'Achievement Start'),
-			'achievements_finish' => Yii::t('app', 'Achievement Finish'),
+			'achievements_start' => Yii::t('app', 'Achievements Start'),
+			'achievements_finish' => Yii::t('app', 'Achievements Finish'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
 			'achievementType' => null,
@@ -87,8 +83,6 @@ abstract class BaseAchievements extends GxActiveRecord {
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('achievement_type_id', $this->achievement_type_id);
-		$criteria->compare('title_en_us', $this->title_en_us, true);
-		$criteria->compare('title_es', $this->title_es, true);
 		$criteria->compare('link_en_us', $this->link_en_us, true);
 		$criteria->compare('link_es', $this->link_es, true);
 		$criteria->compare('text_en_us', $this->text_en_us, true);

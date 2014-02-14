@@ -303,9 +303,6 @@ CREATE TABLE tbl_achievements (
 
   achievement_type_id int references tbl_achievements_types(id),
 
-  title_en_us varchar(255) DEFAULT '',
-  title_es varchar(255) DEFAULT '',
-
   link_en_us varchar(255) DEFAULT '',
   link_es varchar(255) DEFAULT '',
 

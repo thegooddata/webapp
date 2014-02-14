@@ -23,16 +23,6 @@
 		<?php echo $form->dropDownList($model, 'achievement_type_id', GxHtml::listDataEx(AchievementsTypes::model()->findAllAttributes(null, true))); ?>
 		<?php echo $form->error($model,'achievement_type_id'); ?>
 		</div><!-- row -->
-		<div class="row achievements_title_en_us title_en_us">
-		<?php echo $form->labelEx($model,'title_en_us'); ?>
-		<?php echo $form->textField($model, 'title_en_us', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'title_en_us'); ?>
-		</div><!-- row -->
-		<div class="row achievements_title_es title_es">
-		<?php echo $form->labelEx($model,'title_es'); ?>
-		<?php echo $form->textField($model, 'title_es', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'title_es'); ?>
-		</div><!-- row -->
 		<div class="row achievements_link_en_us link_en_us">
 		<?php echo $form->labelEx($model,'link_en_us'); ?>
 		<?php echo $form->textField($model, 'link_en_us', array('maxlength' => 255)); ?>
