@@ -50,7 +50,7 @@
 		</div><!-- row -->
 		<div class="row incomes_currency currency">
 		<?php echo $form->labelEx($model,'currency'); ?>
-		<?php echo $form->textField($model, 'currency', array('maxlength' => 255)); ?>
+		<?php echo $form->dropDownList($model, 'currency', GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true))); ?>
 		<?php echo $form->error($model,'currency'); ?>
 		</div><!-- row -->
 		<div class="row incomes_xrate_usd_spot xrate_usd_spot">

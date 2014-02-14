@@ -20,7 +20,7 @@
 	<?php echo GxHtml::encode($data->income_date); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('currency')); ?>:
-	<?php echo GxHtml::encode($data->currency); ?>
+		<?php echo GxHtml::encode(GxHtml::valueEx($data->currency0)); ?>
 	<br />
 	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('xrate_usd_spot')); ?>:

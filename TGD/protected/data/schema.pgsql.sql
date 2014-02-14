@@ -331,7 +331,7 @@ CREATE TABLE tbl_incomes (
   gross_amount numeric DEFAULT '0',
   expenses numeric DEFAULT '0',
   income_date TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
-  currency varchar(255) DEFAULT 'USD', 
+  currency int NOT NULL references tbl_currencies(id),
   xrate_USD_spot numeric DEFAULT '0', 
   loan_reserved numeric DEFAULT '50',
 

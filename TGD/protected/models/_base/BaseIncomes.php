@@ -7,7 +7,7 @@
  * property or method in class "Incomes".
  *
  * Columns in table "{{incomes}}" available as properties of the model,
- * and there are no model relations.
+ * followed by relations of table "{{incomes}}" available as properties of the model.
  *
  * @property integer $id
  * @property string $source_type
@@ -15,12 +15,13 @@
  * @property string $gross_amount
  * @property string $expenses
  * @property string $income_date
- * @property string $currency
+ * @property integer $currency
  * @property string $xrate_usd_spot
  * @property string $loan_reserved
  * @property string $created_at
  * @property string $updated_at
  *
+ * @property Currencies $currency0
  */
 abstract class BaseIncomes extends GxActiveRecord {
 
@@ -42,15 +43,18 @@ abstract class BaseIncomes extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('source_type, source_name, currency', 'length', 'max'=>255),
+			array('currency', 'required'),
+			array('currency', 'numerical', 'integerOnly'=>true),
+			array('source_type, source_name', 'length', 'max'=>255),
 			array('gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe'),
-			array('source_type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('source_type, source_name, gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, source_type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
+			'currency0' => array(self::BELONGS_TO, 'Currencies', 'currency'),
 		);
 	}
 
@@ -67,11 +71,12 @@ abstract class BaseIncomes extends GxActiveRecord {
 			'gross_amount' => Yii::t('app', 'Gross Amount'),
 			'expenses' => Yii::t('app', 'Expenses'),
 			'income_date' => Yii::t('app', 'Income Date'),
-			'currency' => Yii::t('app', 'Currency'),
+			'currency' => null,
 			'xrate_usd_spot' => Yii::t('app', 'Xrate Usd Spot'),
 			'loan_reserved' => Yii::t('app', 'Loan Reserved'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
+			'currency0' => null,
 		);
 	}
 
@@ -84,7 +89,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 		$criteria->compare('gross_amount', $this->gross_amount, true);
 		$criteria->compare('expenses', $this->expenses, true);
 		$criteria->compare('income_date', $this->income_date, true);
-		$criteria->compare('currency', $this->currency, true);
+		$criteria->compare('currency', $this->currency);
 		$criteria->compare('xrate_usd_spot', $this->xrate_usd_spot, true);
 		$criteria->compare('loan_reserved', $this->loan_reserved, true);
 		$criteria->compare('created_at', $this->created_at, true);

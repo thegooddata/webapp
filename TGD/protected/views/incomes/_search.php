@@ -47,7 +47,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'currency'); ?>
-		<?php echo $form->textField($model, 'currency', array('maxlength' => 255)); ?>
+		<?php echo $form->dropDownList($model, 'currency', GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
