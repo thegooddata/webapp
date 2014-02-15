@@ -75,9 +75,9 @@ class SiteController extends Controller
 		$this->render('signup');
 	}
 
-	public function actionOurparners(){
+	public function actionOurpartners(){
 		Yii::app()->theme = 'tgd';
-		$this->render('ourparners');
+		$this->render('ourpartners');
 	}
 
 	public function actionIndex()
