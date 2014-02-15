@@ -12,6 +12,9 @@
     Created on : Jan 4, 2014, 5:53:51 PM
     Author     : juan
 */
+#secondary-nav{
+    display: none;
+}
 #page-title {
   background-color: #72bc81;
   color: white;
