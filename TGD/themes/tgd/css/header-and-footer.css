@@ -91,6 +91,38 @@ audio,
 video {
     font-family: ProximaNovaSoft-Regular;
 }
+
+footer ul{ padding:0; margin:0}
+footer li{ list-style:none;}
+a{ text-decoration:none;}
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.nav a{
+    color: #7d7d7d;
+    font-family: "ProximaNovaSoft-Regular",Arial;
+    font-size: 1.125em;
+    font-weight: 700;
+    padding: 20px 35px;
+    transition: all 0.2s ease-out;
+}          
+.nav a:hover,
+.nav a.active{ 
+    color: #e96553; 
+    transition: all 0.2s ease-out;
+}
+
+.nav .install{
+    background-color: #E96553;
+}
+
+.nav .install a:hover,
+.nav .install a.active{ 
+    color: white; 
+    transition: all 0.2s ease-out;
+}
+
 htm {
     font-size: 62.5%;
 }
