@@ -89,209 +89,228 @@ time,
 mark,
 audio,
 video {
-  font-family: ProximaNovaSoft-Regular;
+    font-family: ProximaNovaSoft-Regular;
 }
 htm {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 body {
-  padding-top: 70px;
+    padding-top: 70px;
 }
 .navbar-toggle .icon-bar {
-  background-color: #eeeeee;
+    background-color: #eeeeee;
 }
 .navbar-fixed-top {
-  border-bottom: none;
+    border-bottom: none;
 }
 .navbar-fixed-top a {
-  color: #095779;
+    color: #095779;
 }
 .navbar-fixed-top a.navbar-brand {
-  font-family: ProximaNovaSoft-Semibold;
-  font-size: 2.1rem;
-  padding: 15px 0px;
+    font-family: ProximaNovaSoft-Semibold;
+    font-size: 2.1rem;
+    padding: 15px 0px;
 }
 .navbar-fixed-top a img {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 .navbar-fixed-top a img.avatar {
-  width: 3rem;
-  height: 3rem;
-  -webkit-border-radius: 1.5rem;
-  -moz-border-radius: 1.5rem;
-  border-radius: 1.5rem;
-  margin-top: -0.7rem;
+    width: 3rem;
+    height: 3rem;
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    border-radius: 1.5rem;
+    margin-top: -0.7rem;
 }
 .navbar-fixed-top > div {
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
-  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
-  background-color: white;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
+    background-color: white;
 }
 .navbar-fixed-top > div .navbar-collapse {
-  float: right;
+    float: right;
 }
 .navbar-fixed-top > div .navbar-collapse li {
-  box-shadow: 1px 0 0 #E9E9E9, 1px 0 0 #EAEAEA inset;
+    box-shadow: 1px 0 0 #E9E9E9, 1px 0 0 #EAEAEA inset;
 }
 .navbar-fixed-top > div .navbar-collapse li a {
-  color: #7d7d7d;
-  font-weight: bold;
-  font-size: 1.6rem;
-  padding: 25px 35px;
+    color: #7d7d7d;
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 25px 35px;
 }
 .navbar-fixed-top > div .dropdown .dropdown-toggle {
-  padding-bottom: 22px;
+    padding-bottom: 22px;
 }
 .navbar-fixed-top > div .dropdown .caret {
-  margin-left: 0.5rem;
+    margin-left: 0.5rem;
 }
 .navbar-fixed-top > div .dropdown-menu {
-  width: 20.8rem;
+    width: 20.8rem;
 }
 .navbar-fixed-top > div .dropdown-menu li a {
-  padding: 0.5rem 1rem;
-  font-weight: normal;
-  font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    font-weight: normal;
+    font-size: 1.4rem;
 }
 .navbar-fixed-top > div .dropdown-menu li a .glyphicon {
-  font-size: smaller;
+    font-size: smaller;
 }
 #secondary-nav {
-  background-color: #ecf4f8;
-  -webkit-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
-  -moz-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+    background-color: #ecf4f8;
+    -webkit-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+    -moz-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
 }
 #secondary-nav .navbar-nav > li a {
-  margin: 13px 13px 13px 0px;
-  padding: 7px 15px;
-  color: #095779;
-  font-family: ProximaNovaSoft-Bold;
-  font-size: 1.25rem;
-  line-height: 1em;
-  -webkit-border-radius: 17px;
-  -moz-border-radius: 17px;
-  border-radius: 17px;
+    margin: 13px 13px 13px 0px;
+    padding: 7px 15px;
+    color: #095779;
+    font-family: ProximaNovaSoft-Bold;
+    font-size: 1.25rem;
+    line-height: 1em;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    border-radius: 17px;
 }
 #secondary-nav .navbar-nav > li a:hover {
-  background-color: #8ac6ea;
+    background-color: #8ac6ea;
 }
 #secondary-nav .navbar-nav > li.active a {
-  background-color: #095779;
-  color: white;
+    background-color: #095779;
+    color: white;
 }
-footer {
-  margin-top: 2.4rem;
+footer .footer{
+    background-color: #fbfbfb;
+    box-shadow: inset 0 2px 0 #fff;
+    padding: 20px 0 25px 0;
 }
-footer .footer {
-  padding-top: 2.4rem;
-  padding-bottom: 25px;
-  background-color: #FBFBFB;
-  box-shadow: 0 2px 0 #FFFFFF inset;
-  color: #58646b;
+footer ul{
+    float: left;
+    margin-right: 6%;
 }
-footer .license {
-  background-color: #EEEEEE;
-  box-shadow: 0 2px 0 #E4E4E4 inset;
-  padding: 2.5rem 0;
+footer ul:nth-child(5),
+#fifth{
+    margin-right: 3%;
 }
-footer .license ul li {
-  float: left;
+.first{
+    margin-left: 0;
 }
-footer .license ul li > img {
-  float: left;
-  margin-top: 0.2rem;
+.last{
+    margin-right: 0;
 }
-footer .license ul li a {
-  font-weight: bold;
-  color: #7d7d7d;
+footer ul li{
+    color: #6f818d;
+    font-family: "ProximaNovaSoft-Regular",Arial;
+    font-size: 0.875em;            
 }
-footer .license ul li p {
-  color: #666666;
-  float: left;
-  font-size: 1.2rem;
-  line-height: 1.1em;
-  margin: 0 25px 0 20px;
-  width: 21.2rem;
+footer ul h4{
+    color: #57636b;
+    font-family: "ProximaNovaSoft-Regular",Arial;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    margin: 8px 0;
 }
-footer .license ul li:nth-child(1) {
-  width: 34.7rem;
+footer ul li a{
+    color: #6f818d;
+    font-family: "ProximaNovaSoft-Regular",Arial;
+    font-size: .99em;
 }
-footer .license ul li:last-child {
-  margin-top: 5px;
-  padding: 2px 0 5px 18px;
-  border-left: 1px solid #ddd;
+footer ul li a:hover{
+    color: #85bee5;
 }
-footer div[class^=col-] {
-  float: left;
-  margin-right: 6%;
-  font-size: 1.4rem;
+footer ul li a.red{
+    color: #E96553;
 }
-footer div[class^=col-] h4 {
-  font-size: 1.4rem;
-  font-family: ProximaNovaSoft-Bold;
-  text-transform: uppercase;
-  margin-bottom: 1.3rem;
+footer ul.social{
+    width: 168px;
+    margin: 25px 0 0 0;
+    /*float: right;*/
 }
-footer div[class^=col-] li {
-  line-height: 1.6em;
+footer ul.social li{
+    float: left;
+    margin: 0 4px;
 }
-footer div[class=col-5] {
-  margin-right: 0;
-  float: right;
+footer ul.social li:last-child{
+    margin-right: 0;
 }
-footer .col-5 {
-  width: 176px;
+a#reddit{            
+    background: url(../img/social_icons.png) no-repeat -81px 1px;
 }
-footer .col-5 ul {
-  margin-top: 10px;
+a#twitter{
+    background: url(../img/social_icons.png) no-repeat -122px 1px;
 }
-footer .col-5 ul li {
-  float: left;
+a#wordpress{
+    background: url(../img/social_icons.png) no-repeat -41px 1px;
 }
-footer .col-5 ul li.name {
-  background-image: none;
-  padding: 0px;
-  clear: both;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.8em;
-  font-family: ProximaNovaSoft-Bold;
-  margin: 10px auto;
-  text-align: center;
-  width: 100%;
+a#gooddata{
+    background: url(../img/social_icons.png) no-repeat 0px 1px;
 }
-footer .col-5 ul li a {
-  padding: 13px 22px;
-  background-image: url("img/footer-buttons.png");
-  background-repeat: no-repeat;
+
+a#reddit:hover{
+    background: url(../img/social_icons_hover.png) no-repeat -81px 1px;            
 }
-footer .col-5 ul li a:hover {
-  background-image: url("img/footer-buttons-hover.png");
+a#twitter:hover{
+    background: url(../img/social_icons_hover.png) no-repeat -122px 1px;
 }
-footer .col-5 ul li a.twitter {
-  background-position: -117px 5px;
+a#wordpress:hover{
+    background: url(../img/social_icons_hover.png) no-repeat -41px 1px;
 }
-footer .col-5 ul li a.reddit {
-  background-position: -76px 5px;
+a#gooddata:hover{
+    background: url(../img/social_icons_hover.png) no-repeat 0px 1px;
 }
-footer .col-5 ul li a.wordpress {
-  background-position: -36px 5px;
+footer ul.social li a{
+    padding: 13px 17px;
+    transition: background 0.25s ease-out;
 }
-footer .col-5 ul li a.thegooddata {
-  background-position: 5px 5px;
+footer ul.social li a:hoverbackground 0.25s ease-out{           
+    transition: background 0.25s ease-out;
 }
-footer ul {
-  padding: 0px;
+footer ul.social em a{
+    display: block;
+    color: #6f818d;
+    font-family: "ProximaNovaSoft-Regular";
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: normal;
+    letter-spacing: 2px;
+    margin-top: 40px;    
+    margin-left: 4px;    
 }
-footer ul li {
-  list-style: none;
+
+footer .license{
+    background-color: #eee;
+    box-shadow: inset 0 2px 0 #e4e4e4;
+    padding: 20px 0;
 }
-footer ul li:nth-child(1) {
-  font-family: ProximaNovaSoft-Semibold;
-  margin-bottom: 10px;
+footer .license ul{
+    width: 525px;
+    float: none;
+    margin: 0 auto;
+    /*margin-left: 25%;*/
 }
-footer ul li.thegooddata {
-  margin: 0px;
+footer .license ul li{
+    display: block;
+    float: left;
 }
+footer .license ul li:last-child{
+    padding: 2px 0 5px 18px;
+    margin-top: 5px;
+    border-left: 1px solid #ddd;
+}
+footer .license li>img{
+    float: left;
+    margin-top: 5px;
+    cursor: pointer;
+}
+footer .license li p{
+    color: #666;
+    font-family: "ProximaNovaSoft-Regular";
+    font-size: 0.85em;
+    float: left;
+    margin: 0 25px 0 20px;
+}
+
+
