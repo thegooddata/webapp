@@ -16,7 +16,7 @@
 
         <!-- Base -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/header-and-footer.css" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" type="text/css">
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" rel="stylesheet" type="text/css">
         
         <!-- Custom -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" rel="stylesheet">
@@ -24,7 +24,7 @@
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/good-data.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/evil-data.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/user-data.css" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/partners.css" type="text/css">
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/partners.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -75,14 +75,12 @@
                             </ul>
                         </div>
                         <?php } else { ?>
-
-                        <nav>
-                            <ul class="clearfix">
-                                <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
                                 <li class="install"><a class="active" href="#">Install in chrome</a></li>
-                            </ul> 
-                        </nav>
-
+                            </ul>
+                        </div>
                         <?php } ?>
 
                     </div>
@@ -193,74 +191,68 @@
 
 
         <!-- END main content -->
+      
 
-        <footer>
-            <div class="wrap footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-1">
-                            <ul>
-                                <h4>Product</h4>
-                                <li>Technology</li>
-                                <li>FAQs</li>
-                                <li>Support</li>
-                            </ul>
-                        </div>
-                        <div class="col-2">
-                            <ul>
-                                <h4>Third Parties</h4>
-                                <li>Coders' program</li>
-                                <li>Partners</li>
-                                <li>Media</li>
-                            </ul>
-                        </div>
-                        <div class="col-3">
-                            <ul>
-                                <h4>Contact</h4>
-                                <li>82 Clerkenwell Road</li>
-                                <li>London EC1M 5RF, UK</li>
-                                <li>Email us</li>
-                            </ul>
-                        </div>
-                        <div class="col-4">
-                            <ul>
-                                <h4>Legal Stuff</h4>
-                                <li>Terms of service</li>
-                                <li>Privacy Policy</li>
-                                <li>Company Rules</li>
-                            </ul>
-                        </div>
-                        <div class="col-5">
-                            <ul>
-                                <li><a href="#" class="thegooddata"></a></li>
-                                <li><a href="#" class="wordpress"></a></li>
-                                <li><a href="#" class="reddit"></a></li>
-                                <li><a href="#" class="twitter"></a></li>
-                                <li class="name">thegooddata.org</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <footer class="clearfix">
+            <div class="footer clearfix">
+                <div class="container clearfix">
+                    <ul class="clearfix">
+                        <h4>product</h4>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                    <ul class="clearfix">
+                        <h4>third parties</h4>
+                        <li><a href="#">Coder's Program</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                    <ul class="clearfix">
+                        <h4>company</h4>
+                        <li><a href="#">Your Company</a></li>
+                        <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
+                        <li><a href="#" class="red">Donate</a></li>
+                    </ul>
+                    <ul class="clearfix">
+                        <h4>contact</h4>
+                        <li>82 Clerkenwell Road</li>
+                        <li>London EC1M 5RF, UK</li>
+                        <li><a href="#">Email Us</a></li>
+                    </ul>
+                    <ul id="fifth" class="clearfix">
+                        <h4>legal stuff</h4>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Company Rules</a></li>
+                    </ul>        
+                    <ul class="social clearfix">
+                        <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>
+                        <li><a id="wordpress" href="#"></a></li>
+                        <li><a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a></li>
+                        <li class="last"><a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a></li>
+                        <em><a href="http://www.thegooddata.org">thegooddata.org</a></em>
+                    </ul>
+                </div> <!-- wrap -->
             </div>
-            <div class="license">
-                <div class="container">
-                    <div class="row">
-                        <ul class="col-sm-16 col-md-10 col-md-offset-3 col-lg-10 col-lg-offset-3">
-                            <li>
-                                <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
-                                <p>Except where otherwise noted, content on this site is licensed under a <a href="//creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>.</p>
-                            </li>
-                            <li>
-                                <a title="Designed by Timeless" href="#">
-                                    <img alt="Timeless" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/timeless_logo.png">
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
+            <div class="license clearfix">
+                <div class="wrap clearfix">
+                    <ul class="clearfix">
+                        <li>
+                            <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
+                            <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p>
+                        </li>
+                        <li>
+                            <a href="http://timeless.co" title="Designed by Timeless">
+                                                            <img alt="Timeless" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/timeless_logo.png">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </footer>
+        
+        
 
         
         
