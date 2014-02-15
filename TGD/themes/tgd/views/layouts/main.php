@@ -58,7 +58,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="#" class="navbar-brand"><img src="img/logo-big.png"/>TheGoodData</a>
+                            <a href="#" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
                         </div>
 
                         <?php if (!Yii::app()->user->isGuest){ ?>
