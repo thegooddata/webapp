@@ -19,7 +19,7 @@
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" rel="stylesheet" type="text/css">
         
         <!-- Custom -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" rel="stylesheet">
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/home.css" rel="stylesheet">
 
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/good-data.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/evil-data.css" rel="stylesheet">

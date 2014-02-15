@@ -1,6 +1,3 @@
-<!-- 
-<a href="<?php echo Yii::app()->controller->createUrl("site/page",array('view'=>'juan'));?>">Pagina de Juan</a> 
--->
 
 <div id="page-title">
     <div class="container">
