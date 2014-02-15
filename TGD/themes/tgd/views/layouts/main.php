@@ -9,40 +9,16 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="favicon.ico">
 
-        <title>User Data</title>
-
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" type="text/css">
-
-        <!-- Base -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/header-and-footer.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" rel="stylesheet" type="text/css">
-        
-        <!-- Custom -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/home.css" rel="stylesheet">
-
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/good-data.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/evil-data.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/user-data.css" rel="stylesheet">
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/partners.css" rel="stylesheet" type="text/css">
+        <title>TheGoodData | Enjoy your data <?php echo $this->pageTitle; ?></title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
         
         <!-- Admin -->
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/admin.css" type="text/css">
-
-
-        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
-        
     </head>
 
     <body>
@@ -58,7 +34,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="#" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
+                            <a href="/" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
                         </div>
 
                         <?php if (!Yii::app()->user->isGuest){ ?>
@@ -251,11 +227,5 @@
                 </div>
             </div>
         </footer>
-        
-        
-
-        
-        
-        
     </body>
 </html>
