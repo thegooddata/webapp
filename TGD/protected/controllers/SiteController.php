@@ -11,6 +11,7 @@ class SiteController extends Controller {
         
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/bootstrap.min.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/sign-in.js', CClientScript::POS_END);
         parent::init();
     }
 
@@ -69,9 +70,16 @@ class SiteController extends Controller {
         die;
     }
 
+    
     public function actionSignup() {
         Yii::app()->theme = 'blank';
         $this->render('signup');
+    }
+    
+    public function actionSignin() {
+        Yii::app()->theme = 'blank';
+        Yii::app()->clientScript->reset();
+        $this->render('signin');
     }
 
     public function actionOurpartners() {
@@ -100,6 +108,7 @@ class SiteController extends Controller {
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/register.css');
 
         // add js specific for this page
+        Yii::app()->clientScript->registerScriptFile('https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBIqMM7HGjLXLXHpvBemGUj7sADxe7zEJ0&sensor=false&libraries=places', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/register.js', CClientScript::POS_END);
         
         $this->render('register');

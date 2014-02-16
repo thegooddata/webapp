@@ -41,7 +41,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="#">Manage the Company</a></li>
-                                <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown"><img src="img/jacob.jpg" class="avatar"/>Username<b class="caret"></b></a>
+                                <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown">username<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">account settings</a></li>
                                         <li class="divider"></li>
@@ -53,7 +53,7 @@
                         <?php } else { ?>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
+                                <li id="sign-in" class="active"><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
                                 <li class="install"><a class="active" href="#">Install in chrome</a></li>
                             </ul>
                         </div>
