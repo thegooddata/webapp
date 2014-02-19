@@ -1,17 +1,15 @@
-        
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/register.css">     
 
-        <div id="page-title">
+        <div id="tgd-page-title">
             <div class="container">
                 <div class="row">
                     <h2>Become a member</h2>
                 </div>
             </div>
         </div> 
-        <section id="page-content">
+        <section id="tgd-page-content">
             <div class="container">
                 <div class="row">
-                    <div id="form" class="col-sm-16 col-md-10 col-lg-10">
+                    <div id="registration-form" class="col-sm-16 col-md-10 col-lg-10">
                         <p>You can use TheGoodData extension without registration, 
                             but if you also want to become a Member of TheGoodData
                             Cooperative Ltd., you need to submit your personal 
@@ -37,11 +35,11 @@
                             </div>
                             <div class="form-group col-sm-16 col-md-16 col-lg-16">
                                 <label>Street name</label>
-                                <input type="text" class="form-control" id="streetName" name="streetName">
+                                <input id="autocomplete" type="text" class="form-control" name="streetName">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Street number</label>
-                                <input type="text" class="form-control" id="streetNumber" name="streetNumber">
+                                <input type="text" class="form-control" id="street_number" name="streetNumber">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Street details</label>
@@ -49,11 +47,11 @@
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>City</label>
-                                <input type="text" class="form-control" id="city" name="city">
+                                <input type="text" class="form-control" id="locality" name="city">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>State/County</label>
-                                <input type="text" class="form-control" id="stateCounty" name="stateCounty">
+                                <input type="text" class="form-control" id="administrative_area_level_1" name="stateCounty">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Country</label>
@@ -61,7 +59,7 @@
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Post code</label>
-                                <input type="text" class="form-control" id="postCode" name="postCode">
+                                <input type="text" class="form-control" id="postal_code" name="postCode">
                             </div>
                             <div class="form-group col-sm-16 split-3">
                                 <label>Birth date</label>
@@ -1419,3 +1417,5 @@
                 </div>
             </div>
         </section>
+
+        

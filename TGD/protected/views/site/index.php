@@ -1,15 +1,11 @@
 
-        
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/media_queries.css">              
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/modal.css">       
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
-
+       
         <div class="slide" id="slide2" data-slide="2" style="overflow: hidden;">
-            <section class="intro clearfix">       
+            <section id="intro" class="intro clearfix">       
 
                 <div class="container clearfix">
                     <h1>Browse the web anonymously<br/> while doing some good.</h1>
-                    <a href="#">install in chrome</a>
+                    <a class="tgd-button" href="#">install in chrome</a>
                     <p>TheGoodData helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
 
                     <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/yellow_small.png" data-stellar-ratio="-3" alt="">
@@ -30,7 +26,7 @@
                 <div class="content clearfix">
                     <h1>You own your data.</h1>
                     <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension blocks<br/>browsing data that would otherwise be used by third party trackers.</p>
-                    <a href="#">our product</a>
+                    <a class="tgd-button" href="#">our product</a>
                 </div> <!-- content -->
 
                 <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed3.png" alt="Your Data">
@@ -49,17 +45,17 @@
                 <div class="content clearfix">
                     <h1>It's in your hands to<br/> make your data work<br/> for the social good.</h1>
                     <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Kiva, the other part will be used<br/> to fund the operations at TheGoodData, your company.</p>
-                    <a href="<?php echo Yii::app()->controller->createUrl("site/ourparners"); ?>">our partners</a>
+                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("site/ourparners"); ?>">our partners</a>
                 </div> <!-- content -->
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/hand.png" alt="Its in Your Hand">
             </div> <!-- container -->
         </section> <!-- our_partners -->
 
-        <section class="your_company clearfix">
+        <section id="your_company" class="your_company clearfix">
             <div class="container clearfix">
                 <h1>You don't just own just your data,<br/> You also own TheGoodData.</h1>
                 <p>Winning back data ownership in front of Corporations can only be achieved<br/> with the collaboration of thousands of people like you. That’s why, if you wish,<br/> you can become owner of TheGoodData at no cost. You will be informed of<br/> company progress and can take part on major decisions.</p>
-                <a href="#">your company</a>  
+                <a class="tgd-button" href="#">your company</a>  
 
                 <div class="sun clearfix">
                     <img id="sun1" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun1.png" alt="">
@@ -74,9 +70,9 @@
             <img id="fields" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/fields.png" alt="">
         </section> <!-- your_company -->
 
-        <section class="start clearfix">
+        <section id="start" class="start clearfix">
             <div class="container clearfix">
-                <a href="#"><h2>start enjoying your data now</h2></a>            
+                <a class="button" href="#"><h2>start enjoying your data now</h2></a>            
             </div> <!-- container -->
         </section> <!-- start -->      
 

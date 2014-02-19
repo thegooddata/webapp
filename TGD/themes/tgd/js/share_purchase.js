@@ -1,7 +1,7 @@
 $(function() {
     var sameSize = function() {
-        var rowHeight = $('#page-content .row').innerHeight();
-        $('#description').innerHeight(rowHeight);
+        var rowHeight = $('#tgd-page-content .row > div:first-child').innerHeight();
+        $('#descriptions').innerHeight(rowHeight);
         $('#form').innerHeight(rowHeight);
     };
 

@@ -2,16 +2,20 @@
 
 class SiteController extends Controller {
 
+    public $bodyId = "";
+
     public function init() {
         Yii::app()->theme = 'tgd';
         $this->layout = '//layouts/blank';
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/bootstrap.min.css');
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/header-and-footer.css');
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/webfonts.css');
-        
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/bootstrap.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/sign-in.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/bootstrap.min.css');
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/header-and-footer.css');
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/webfonts.css');
+        // add css specific for the site controller
+        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/new-main.css');
+
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.min.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/sign-in.js', CClientScript::POS_END);
         parent::init();
     }
 
@@ -70,12 +74,11 @@ class SiteController extends Controller {
         die;
     }
 
-    
     public function actionSignup() {
         Yii::app()->theme = 'blank';
         $this->render('signup');
     }
-    
+
     public function actionSignin() {
         Yii::app()->theme = 'blank';
         Yii::app()->clientScript->reset();
@@ -89,55 +92,62 @@ class SiteController extends Controller {
         // set title
         $this->pageTitle = " - Our partners";
 
-        // add css specific for this page
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/partners.css');
-
         // add js specific for this page
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/partners.js', CClientScript::POS_END);
-        
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/partners.js', CClientScript::POS_END);
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-partners";
+
         $this->render('ourpartners');
     }
 
     public function actionRegister() {
         Yii::app()->theme = 'tgd';
-        
+
         // set title
         $this->pageTitle = " - Register";
 
-        // add css specific for this page
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/register.css');
 
         // add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/register.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile('https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBIqMM7HGjLXLXHpvBemGUj7sADxe7zEJ0&sensor=false&libraries=places', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/register.js', CClientScript::POS_END);
         
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-register";
+
+
         $this->render('register');
     }
 
     public function actionPurchase() {
         Yii::app()->theme = 'tgd';
-        
+
         // set title
         $this->pageTitle = " - Share Purchase";
 
         // add css specific for this page
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/share_purchase.css');
+//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/share_purchase.css');
 
         // add js specific for this page
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/share_purchase.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/share_purchase.js', CClientScript::POS_END);
         
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-share-purchase";
+
         $this->render('share_purchase');
     }
+
     public function actionIndex() {
         Yii::app()->theme = 'tgd';
 
-        // add css specific for this page
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/css/home.css');
-
         // add js specific for this page
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/modernizr-2.6.2.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/jquery.stellar.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/main.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/modernizr-2.6.2.min.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.stellar.min.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/main.js', CClientScript::POS_END);
+
+        // set body id to #landing-page
+        $this->bodyId = "landing-page";
+
         // //CREACION DE UN USUARIO
         // $username='daniel'.rand(0,1000);
         // $password='dani1234';
