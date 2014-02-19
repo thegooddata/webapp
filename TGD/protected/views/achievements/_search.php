@@ -16,18 +16,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'title_en_us'); ?>
-		<?php echo $form->textField($model, 'title_en_us', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'title_es'); ?>
-		<?php echo $form->textField($model, 'title_es', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'link_en_us'); ?>
-		<?php echo $form->textField($model, 'link_en_us', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'link_en'); ?>
+		<?php echo $form->textField($model, 'link_en', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">
@@ -36,8 +26,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'text_en_us'); ?>
-		<?php echo $form->textArea($model, 'text_en_us'); ?>
+		<?php echo $form->label($model, 'text_en'); ?>
+		<?php echo $form->textArea($model, 'text_en'); ?>
 	</div>
 
 	<div class="row">
@@ -47,22 +37,62 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'achievements_start'); ?>
-		<?php echo $form->textField($model, 'achievements_start'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'achievements_start',
+			'value' => $model->achievements_start,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'achievements_finish'); ?>
-		<?php echo $form->textField($model, 'achievements_finish'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'achievements_finish',
+			'value' => $model->achievements_finish,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created_at',
+			'value' => $model->created_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'updated_at'); ?>
-		<?php echo $form->textField($model, 'updated_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'updated_at',
+			'value' => $model->updated_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row buttons">

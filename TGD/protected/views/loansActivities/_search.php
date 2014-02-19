@@ -11,8 +11,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'name_en_us'); ?>
-		<?php echo $form->textField($model, 'name_en_us', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'name_en'); ?>
+		<?php echo $form->textField($model, 'name_en', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">

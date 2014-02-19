@@ -31,7 +31,7 @@ abstract class BaseAdtracksSources extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'AdtracksSources|AdtracksSources', $n);
+		return Yii::t('app', 'Webtrack Sources|Webtrack Sources', $n);
 	}
 
 	public static function representingColumn() {

@@ -8,7 +8,7 @@
 	<?php echo GxHtml::encode($data->user_id); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('member_id')); ?>:
-		<?php echo GxHtml::encode(GxHtml::valueEx($data->member)); ?>
+	<?php echo GxHtml::encode($data->member_id); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('domain')); ?>:
 	<?php echo GxHtml::encode($data->domain); ?>

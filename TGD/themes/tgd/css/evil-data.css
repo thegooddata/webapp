@@ -1,0 +1,356 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 8, 2014, 5:13:17 PM
+    Author     : juan
+*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* 
+    Created on : Jan 4, 2014, 5:53:51 PM
+    Author     : juan
+*/
+.row.block-row {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.row.block-row:nth-child(1) {
+  margin-top: 4rem;
+}
+.row .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#threats-identified:nth-child(1),
+#risk-profile:nth-child(1),
+#threats-ranking:nth-child(1),
+#mix-threats:nth-child(1) {
+  padding-left: 0;
+}
+#threats-identified:nth-child(2),
+#risk-profile:nth-child(2),
+#threats-ranking:nth-child(2),
+#mix-threats:nth-child(2) {
+  padding-right: 0;
+}
+#threats-identified > div,
+#risk-profile > div,
+#threats-ranking > div,
+#mix-threats > div {
+  border: 1px solid #eeeeee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#threats-identified > div > div,
+#risk-profile > div > div,
+#threats-ranking > div > div,
+#mix-threats > div > div,
+#threats-identified > div h2,
+#risk-profile > div h2,
+#threats-ranking > div h2,
+#mix-threats > div h2 {
+  border-bottom: 1px solid #eeeeee;
+}
+#threats-identified > div > div.no-bottom,
+#risk-profile > div > div.no-bottom,
+#threats-ranking > div > div.no-bottom,
+#mix-threats > div > div.no-bottom,
+#threats-identified > div h2.no-bottom,
+#risk-profile > div h2.no-bottom,
+#threats-ranking > div h2.no-bottom,
+#mix-threats > div h2.no-bottom {
+  border-bottom: none;
+}
+#threats-identified h2,
+#risk-profile h2,
+#threats-ranking h2,
+#mix-threats h2 {
+  font-family: ProximaNovaSoft-Regular;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  margin: 0rem;
+  padding: 1.5rem 1rem 1.2rem 1.5rem;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+#threats-identified .amount,
+#risk-profile .amount,
+#threats-ranking .amount,
+#mix-threats .amount {
+  font-size: 3.4rem;
+  display: block;
+  line-height: 1em;
+}
+#threats-identified .amount.small,
+#risk-profile .amount.small,
+#threats-ranking .amount.small,
+#mix-threats .amount.small {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+#threats-identified .subtext,
+#risk-profile .subtext,
+#threats-ranking .subtext,
+#mix-threats .subtext {
+  font-size: 1.4rem;
+  display: block;
+  color: #7d7d7d;
+  line-height: 1em;
+}
+#threats-identified h2 {
+  background-color: #1c8ccf;
+}
+#threats-identified h2 + div {
+  background-color: #fafafa;
+}
+#threats-identified canvas {
+  margin: 0px 10px;
+}
+#threats-identified .clearfix {
+  padding: 2rem 1rem;
+}
+#threats-identified .item {
+  width: 44%;
+  float: left;
+  padding: 0rem;
+}
+#threats-identified .item:nth-child(2),
+#threats-identified .item:nth-child(3) {
+  width: 28%;
+  padding-left: 1rem;
+}
+#threats-identified .item:nth-child(2) .amount,
+#threats-identified .item:nth-child(3) .amount {
+  line-height: 3.4rem;
+  position: relative;
+  bottom: -0.5rem;
+}
+#threats-identified .nav-tabs {
+  width: 100%;
+  background-color: #fafafa;
+  border-bottom: 1px solid #eeeeee;
+}
+#threats-identified .nav-tabs li {
+  font-size: 1.2rem;
+  background-color: #fafafa;
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+  width: 33%;
+  text-align: center;
+}
+#threats-identified .nav-tabs li:last-child {
+  width: 34%;
+  border-right: none;
+}
+#threats-identified .nav-tabs li.active {
+  border-bottom: 1px solid #8ac6ea;
+  border-top: 1px solid #8ac6ea;
+}
+#threats-identified .nav-tabs li.active a {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  color: white;
+  background-color: #8ac6ea;
+}
+#threats-identified .nav-tabs li a {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  margin-right: 0;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: none;
+}
+#threats-identified .nav-tabs li a:hover {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  border: none;
+}
+#threats-identified .chart {
+  border-bottom: none;
+}
+#threats-identified .legend {
+  position: relative;
+  border: none;
+}
+#threats-identified .legend ul {
+  position: absolute;
+  width: 100%;
+  top: -25px;
+  left: -25px;
+  margin: 0;
+}
+#threats-identified .legend li {
+  float: left;
+  width: 50%;
+  list-style: none;
+}
+#threats-identified .legend li:nth-child(2) {
+  text-align: right;
+}
+#risk-profile h2 {
+  background-color: #72bc81;
+}
+#risk-profile .row {
+  border-bottom: 1px solid #eeeeee;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+#risk-profile .row:last-child {
+  border: none;
+  background-color: #fafafa;
+}
+#risk-profile .row > div:last-child {
+  text-align: center;
+  font-size: 1.2rem;
+}
+#risk-profile .square {
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  border-radius: 0.3rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 6.4rem;
+  line-height: 1em;
+  color: white;
+  background: #eeeeee;
+}
+#risk-profile .square.you {
+  padding: 2.2rem 1.5rem 1.8rem 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+#risk-profile .square.you.low-risk {
+  background: #72bc81;
+}
+#risk-profile .square.you.mid-risk {
+  background: #fcc34a;
+}
+#risk-profile .square.you.high-risk {
+  background: #ea6654;
+}
+#risk-profile .square.tgd {
+  padding: 1.3rem 1.2rem 1.5rem;
+  text-align: center;
+  background: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
+#risk-profile .square.tgd img {
+  margin-bottom: 0.5rem;
+}
+#risk-profile .risk-meter {
+  padding-top: 46px;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+#risk-profile .risk-meter.low-risk {
+  color: #72bc81;
+  background-image: url("../img/risk_lover_green.png");
+}
+#risk-profile .risk-meter.mid-risk {
+  color: #fcc34a;
+  background-image: url("../img/risk_lover_yellow.png");
+}
+#risk-profile .risk-meter.high-risk {
+  color: #ea6654;
+  background-image: url("../img/risk_lover.png");
+}
+#threats-ranking h2 {
+  background-color: #ea6654;
+}
+#threats-ranking .table {
+  margin-bottom: 0;
+}
+#threats-ranking .table a {
+  color: #ea6654;
+}
+#threats-ranking .table > thead > tr > th {
+  padding: 5px 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fafafa;
+}
+#threats-ranking .table > thead > tr > td {
+  padding: 5px 10px;
+}
+#threats-ranking .table > tbody > tr > th {
+  padding: 5px 10px;
+}
+#threats-ranking .table > tbody > tr > td {
+  padding: 5px 10px;
+}
+#threats-ranking .table > tbody > tr > td:nth-child(3),
+#threats-ranking .table > tbody > tr > td:nth-child(4) {
+  text-align: center;
+}
+#mix-threats h2 {
+  background-color: #8ac6ea;
+}
+#mix-threats .legend {
+  background-color: #fafafa;
+  padding: 2rem 1rem;
+}
+#mix-threats .legend div {
+  float: left;
+}
+#mix-threats .legend div span {
+  display: block;
+  width: 0.14rem;
+  height: 0.5rem;
+  float: left;
+  line-height: 0;
+  font-size: 0;
+  margin: 0.6rem 0.4rem 0.2rem 2.4rem;
+  padding: 0.25rem 0.7rem;
+  background-color: black;
+}
+#mix-threats .legend .advertising span {
+  background-color: #8ac6ea;
+}
+#mix-threats .legend .social span {
+  background-color: #ea6654;
+}
+#mix-threats .legend .others span {
+  background-color: #fcc34a;
+}
+#mix-threats .legend .analytics span {
+  background-color: #72bc81;
+}
+/*#mix-threats .legend .others span {
+  background-color: #095779;
+}*/
+#mix-threats .chart {
+  position: relative;
+  border-bottom: none;
+  padding: 3rem;
+}
+#mix-threats .chart div {
+  position: absolute;
+}
+#mix-threats .chart div:nth-child(1) {
+  font-size: 1.8rem;
+  font-weight: bold;
+  top: 143px;
+  left: 135px;
+}
+#mix-threats .chart div:nth-child(2) {
+  text-align: center;
+  top: 133px;
+  left: 416px;
+}
+#mix-threats canvas {
+  float: left;
+}

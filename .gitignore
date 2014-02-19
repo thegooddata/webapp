@@ -1,4 +1,6 @@
 assets/
+uploads/
+TGD/protected/runtime/
 TGD/protected/runtime/application.log
 application.log
 application.log.*

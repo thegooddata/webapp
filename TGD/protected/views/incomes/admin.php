@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	);
 
@@ -43,13 +42,21 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'source_type',
+		array(
+				'name'=>'type',
+				'value'=>'GxHtml::valueEx($data->type0)',
+				'filter'=>GxHtml::listDataEx(IncomesTypes::model()->findAllAttributes(null, true)),
+				),
 		'source_name',
 		'gross_amount',
 		'expenses',
 		'income_date',
 		/*
-		'currency',
+		array(
+				'name'=>'currency',
+				'value'=>'GxHtml::valueEx($data->currency0)',
+				'filter'=>GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)),
+				),
 		'xrate_usd_spot',
 		'loan_reserved',
 		'created_at',

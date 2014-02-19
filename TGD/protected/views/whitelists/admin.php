@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	);
 
@@ -44,11 +43,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'columns' => array(
 		'id',
 		'user_id',
-		array(
-				'name'=>'member_id',
-				'value'=>'GxHtml::valueEx($data->member)',
-				'filter'=>GxHtml::listDataEx(Members::model()->findAllAttributes(null, true)),
-				),
+		'member_id',
 		'domain',
 		array(
 				'name'=>'adtracks_sources_id',

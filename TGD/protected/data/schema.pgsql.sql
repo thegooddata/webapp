@@ -32,14 +32,31 @@
 CREATE TABLE tbl_countries (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  code varchar(255) DEFAULT '',
+  
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_countries  (name_en_us, name_es) VALUES
+INSERT INTO tbl_countries  (name_en, name_es) VALUES
 ('United Kingdom', 'Reino Unido'),
 ('Spain', 'España'),
 ('France', 'Francia');
+
+--DROP TABLE tbl_currencies;
+CREATE TABLE tbl_currencies (
+  id SERIAL PRIMARY KEY,
+
+  code varchar(255) DEFAULT '',
+  
+  name_en varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_currencies  (code, name_en,name_es) VALUES
+('USD', 'Dollar', 'Dolar'),
+('EURO', 'Euro', 'Euro');
+
 
 --DROP TABLE tbl_members_pii;
 CREATE TABLE tbl_members_pii (
@@ -81,9 +98,7 @@ CREATE TABLE tbl_members (
 );
 
 INSERT INTO tbl_members (username, password, email, activkey, superuser, status) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 1),
-('demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', 0, 1),
-('tsunamix','be3100b2dc0330f2df69a539fdd0c798','danielgarciagomez@gmail.com','9e52e0092a845c445d86b13e0e8e7b50',0,1);
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 1);
 
 --DROP TABLE tbl_profiles;
 CREATE TABLE tbl_profiles (
@@ -93,8 +108,7 @@ CREATE TABLE tbl_profiles (
 );
 
 INSERT INTO tbl_profiles (lastname, firstname) VALUES
-('Admin', 'Administrator'),
-('Demo', 'Demo');
+('Admin', 'Administrator');
 
 --DROP TABLE tbl_profiles_fields;
 CREATE TABLE tbl_profiles_fields (
@@ -149,8 +163,7 @@ CREATE TABLE tbl_adtracks_sources (
 );
 
 INSERT INTO tbl_adtracks_sources (adtrack_type_id,name,url) VALUES
-(4,'Twitter','http://www.twitter.com'),
-(4,'Facebook','http://www.facebook.com');
+(4,'*','');
 
 
 
@@ -225,8 +238,8 @@ CREATE TABLE tbl_queries_blacklist (
 
   lang varchar(128) NOT NULL,
   category varchar(255) NOT NULL DEFAULT '',
-  topic varchar(255) NOT NULL DEFAULT '',
-  search_term varchar(255) NOT NULL DEFAULT '',
+  -- topic varchar(255) NOT NULL DEFAULT '',
+  -- search_term varchar(255) NOT NULL DEFAULT '',
   headword varchar(255) NOT NULL DEFAULT '',
   midword varchar(255) NOT NULL DEFAULT '',
   action varchar(255) NOT NULL DEFAULT 'use',
@@ -245,23 +258,27 @@ CREATE TABLE tbl_queries_blacklist (
 CREATE TABLE tbl_loans_status (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_loans_status (name_en_us, name_es) VALUES
-('Fundraising', 'Recaudación de fondos'),
-('Funded', 'Financiado');
+
+INSERT INTO tbl_loans_status (id,name_en, name_es) VALUES
+(1,'fundraising', 'Recaudación de fondos'),
+(2,'Funded', 'Financiado'),
+(3,'Paying Back', 'Reembolsando'),
+(4,'Paid', 'Pagado'),
+(5,'At Loss', 'Perdido');
 
 --DROP TABLE tbl_loans_activities;
 CREATE TABLE tbl_loans_activities (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_loans_activities (name_en_us, name_es) VALUES
+INSERT INTO tbl_loans_activities (name_en, name_es) VALUES
 ('Agriculture', 'Agricultura'),
 ('Health', 'Salud');
 
@@ -269,13 +286,13 @@ INSERT INTO tbl_loans_activities (name_en_us, name_es) VALUES
 CREATE TABLE tbl_achievements_types (
   id SERIAL PRIMARY KEY,
 
-  name_en_us varchar(255) DEFAULT '',
+  name_en varchar(255) DEFAULT '',
   name_es varchar(255) DEFAULT '',
 
   icon varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_achievements_types  (name_en_us, name_es,icon) VALUES
+INSERT INTO tbl_achievements_types  (name_en, name_es,icon) VALUES
 ('Users news', 'Noticias de usuarios','news.png'),
 ('Incomes', 'Ingresos','money.png');
 
@@ -286,13 +303,10 @@ CREATE TABLE tbl_achievements (
 
   achievement_type_id int references tbl_achievements_types(id),
 
-  title_en_us varchar(255) DEFAULT '',
-  title_es varchar(255) DEFAULT '',
-
-  link_en_us varchar(255) DEFAULT '',
+  link_en varchar(255) DEFAULT '',
   link_es varchar(255) DEFAULT '',
 
-  text_en_us text DEFAULT '',
+  text_en text DEFAULT '',
   text_es text DEFAULT '',
 
   achievements_start TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
@@ -302,19 +316,31 @@ CREATE TABLE tbl_achievements (
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO tbl_achievements  (id,achievement_type_id, title_en_us,link_en_us,text_en_us,achievements_start,achievements_finish) VALUES
-(1, 1, 'This a sample achievement with two lines. I hope it fills the extension content.','http://www.thegooddata.org','This a sample achievement with two lines. I hope it fill the extension content.','01/01/2014','01/01/2015');
+INSERT INTO tbl_achievements  (id,achievement_type_id, link_en,text_en,achievements_start,achievements_finish) VALUES
+(1, 1, 'http://www.thegooddata.org','This a sample achievement with two lines. I hope it fill the extension content.','01/01/2014','01/01/2015');
+
+--DROP TABLE tbl_achievements_types;
+CREATE TABLE tbl_incomes_types (
+  id SERIAL PRIMARY KEY,
+
+  name_en varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_incomes_types  (name_en, name_es) VALUES
+('Donations', 'Donaciones'),
+('Data trade', 'Data trade');
 
 --DROP TABLE tbl_incomes;
 CREATE TABLE tbl_incomes (
-  id varchar(255) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
 
-  source_type varchar(255) DEFAULT '',
+  type int NOT NULL references tbl_incomes_types(id),
   source_name varchar(255) DEFAULT '',
   gross_amount numeric DEFAULT '0',
   expenses numeric DEFAULT '0',
   income_date TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
-  currency varchar(255) DEFAULT 'USD', 
+  currency int NOT NULL references tbl_currencies(id),
   xrate_USD_spot numeric DEFAULT '0', 
   loan_reserved numeric DEFAULT '50',
 
@@ -322,37 +348,144 @@ CREATE TABLE tbl_incomes (
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
+--DROP TABLE tbl_loans_countries;
+CREATE TABLE tbl_loans_leaders (
+  id SERIAL PRIMARY KEY,
+
+  name_en varchar(255) DEFAULT '',
+  name_es varchar(255) DEFAULT ''
+);
+
+INSERT INTO tbl_loans_leaders  (name_en, name_es) VALUES
+('Kiva', 'Kiva');
+
 --DROP TABLE tbl_loans;
 CREATE TABLE tbl_loans (
-  id varchar(255) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
 
-  leader varchar(255) DEFAULT '',
-  currency varchar(255) DEFAULT 'USD',
+  loan_identifier varchar(255) DEFAULT '',
   
-  title_en_us varchar(255) DEFAULT '',
+  leader int NOT NULL references tbl_loans_leaders(id),
+  loan_url varchar(255) DEFAULT '',
+
+  title_en varchar(255) DEFAULT '',
   title_es varchar(255) DEFAULT '',
   
   id_loans_activity int NOT NULL references tbl_loans_activities(id),
-  image varchar(255) DEFAULT '',
   id_countries int NOT NULL references tbl_countries(id),
+
   partner varchar(255) DEFAULT '',
-  amount numeric DEFAULT '0',
+  amount real DEFAULT '0',
+
+  currency int NOT NULL references tbl_currencies(id),
   term int DEFAULT '0',
-  contribution numeric DEFAULT '0',
+  contribution real DEFAULT '0',
+
   loan_date TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   loan_update TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+
+  paidback real DEFAULT '0',
+  loss real DEFAULT '0',
+
   id_loans_status int NOT NULL references tbl_loans_status(id),
-  paidback numeric DEFAULT '0',
-  loss_currency numeric DEFAULT '0',
-  loss_defaut numeric DEFAULT '0',
+
+  image varchar(255) DEFAULT '',
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 
+--FUNCTION
+CREATE OR REPLACE FUNCTION _getRiskMember (i integer)
+RETURNS float AS $total$
+declare
+  total float;
+BEGIN
+  total:=0;
+  SELECT ( (select SUM(adtracks) from view_adtracks_members where member_id= i) / (select SUM(visited) from view_browsing_members where member_id= i) ) as ratio
+   into total FROM tbl_adtracks;
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION _getRiskTotal ()
+RETURNS float AS $total$
+declare
+  total float;
+BEGIN
+  SELECT ( (select SUM(adtracks) from view_adtracks_members) / (select SUM(visited) from view_browsing_members) ) as ratio
+   into total FROM tbl_adtracks;
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION _getRiskRatioMember (i integer)
+RETURNS float AS $total$
+declare
+  block float;
+  allow float;
+  total float;
+BEGIN
+  total:=0;
+  select count(*) into block from tbl_adtracks where member_id= i and status='blocked';
+  select count(*) into allow from tbl_adtracks where member_id= i and status='allowed';
+
+  if ( allow <> 0 and  block <>0) THEN
+  total:=100-allow/block * 100;
+  END IF; 
+
+  RETURN total;
+   
+END;
+$total$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION _getRiskRatioTotal ()
+RETURNS float AS $total$
+declare
+  block float;
+  allow float;
+  total float;
+BEGIN
+  total:=0;
+  select count(*) into block from tbl_adtracks where status='blocked';
+  select count(*) into allow from tbl_adtracks where status='allowed';
+
+  total:=100-allow/block * 100;
+  
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
 
 --VIEWS
+
+CREATE OR REPLACE VIEW view_loans_countries AS 
+select count(*) as total from tbl_loans group by id_countries;
+
+CREATE OR REPLACE VIEW view_adtracks_sources_members AS 
+select a.member_id,t.name, count(*) 
+  from tbl_adtracks a,tbl_adtracks_sources s,tbl_adtracks_types t
+  where a.adtracks_sources_id = s.id and s.adtrack_type_id = t.id
+  group by t.name,a.member_id
+  order by t.name;
+
+
+CREATE OR REPLACE VIEW view_adtracks_sources_total AS 
+select t.name, count(*) 
+  from tbl_adtracks a,tbl_adtracks_sources s,tbl_adtracks_types t
+  where a.adtracks_sources_id = s.id and s.adtrack_type_id = t.id
+  group by t.name
+  order by t.name;
+
+CREATE OR REPLACE VIEW view_adtracks_members AS 
+ select member_id,domain,count(*) as adtracks from tbl_adtracks group by domain,member_id order by adtracks desc;
+
+CREATE OR REPLACE VIEW view_browsing_members AS 
+ select member_id,domain,count(*) as visited from tbl_browsing group by member_id,domain order by visited desc;
+
 CREATE OR REPLACE VIEW view_queries AS 
  SELECT tbl_queries.user_id, 
     tbl_queries.member_id, 
@@ -389,6 +522,71 @@ CREATE OR REPLACE VIEW view_queries_users AS
     tbl_queries
   GROUP BY tbl_queries.user_id;
 
+CREATE OR REPLACE VIEW view_adtracks_users AS 
+SELECT tbl_adtracks.member_id, 
+    count(*) AS queries
+   FROM tbl_members, 
+    tbl_adtracks
+  GROUP BY tbl_adtracks.member_id;
+
+CREATE OR REPLACE VIEW view_adtracks_year_users AS 
+SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('year', NOW())::date and date_trunc('month', date_trunc('year', NOW()) + '1 year'::interval) - '1 seconds'::interval GROUP BY member_id;
+
+
+CREATE OR REPLACE VIEW view_adtracks_month_users AS 
+SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval GROUP BY member_id;
+
+
+CREATE OR REPLACE VIEW view_adtracks_week_users AS 
+SELECT member_id, count(*) AS queries FROM tbl_adtracks where created_at between date_trunc('week', NOW())::date and date_trunc('week', NOW()) + '6 days'::interval GROUP BY member_id;
+
+CREATE OR REPLACE VIEW view_adtracks_year_users_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_adtracks_year_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_adtracks_year_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_adtracks_year_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_adtracks_year_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
+
+CREATE OR REPLACE VIEW view_adtracks_month_users_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_adtracks_month_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_adtracks_month_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_adtracks_month_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_adtracks_month_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
+
+CREATE OR REPLACE VIEW view_adtracks_week_users_percentil AS 
+ SELECT a.member_id, 
+    round(100.0 * (( SELECT count(*) AS count
+           FROM view_adtracks_week_users b
+          WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) AS percentile, 
+    a.queries
+   FROM view_adtracks_week_users a
+  CROSS JOIN ( SELECT count(*) AS cnt
+           FROM view_adtracks_week_users) total
+  ORDER BY round(100.0 * (( SELECT count(*) AS count
+      FROM view_adtracks_week_users b
+     WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
 CREATE OR REPLACE VIEW view_queries_users_percentil AS 
  SELECT a.user_id, 
     round(100.0 * (( SELECT count(*) AS count
@@ -401,4 +599,16 @@ CREATE OR REPLACE VIEW view_queries_users_percentil AS
   ORDER BY round(100.0 * (( SELECT count(*) AS count
       FROM view_queries_users b
      WHERE b.queries <= a.queries))::numeric / total.cnt::numeric, 1) DESC;
+
+
+
+
+CREATE OR REPLACE VIEW view_members_month AS 
+  select count(*) as total FROM tbl_members where lastvisit_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval;
+
+CREATE OR REPLACE VIEW view_queries_month AS 
+  select count(*) as total  FROM tbl_queries where created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval;
+
+CREATE OR REPLACE VIEW view_queries_trade_month AS 
+  select count(*) as total  FROM tbl_queries where tbl_queries.share='true' and created_at between date_trunc('month', NOW())::date and date_trunc('month', date_trunc('month', NOW()) + '1 month'::interval) - '1 seconds'::interval;
 

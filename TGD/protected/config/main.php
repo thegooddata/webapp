@@ -21,9 +21,12 @@ return array(
 
         'ext.yii-mail.YiiMailMessage',
         'ext.giix-components.*',
+
+        'ext.Mailchimp.*',
+        'ext.CSVExport',
 	),
 
-	
+	'theme'=>'TGD',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -108,8 +111,8 @@ return array(
 			'allowAutoLogin'=>true,
 			'class' => 'WebUser',
 		),
-		// uncomment the following to enable URLs in path-format
 		
+		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
@@ -120,9 +123,8 @@ return array(
 				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
 				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
 
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
-
+				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentil/<user_id:[\w-]+>', 'verb'=>'GET'),
+				
 		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%]+>', 'verb'=>'GET'),
@@ -142,7 +144,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20140123',
+		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=TGD_20140216',
 		    'username'=>'dani',
 		    'password'=>'',
 		    'charset'=>'UTF8',

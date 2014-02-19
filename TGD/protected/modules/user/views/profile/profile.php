@@ -7,10 +7,10 @@ if (!UserModule::isAdmin())
 	$this->menu_admin=array();
 
 $this->menu=array(
-    array('label'=>UserModule::t('List Member'), 'url'=>array('/user')),
+    // array('label'=>UserModule::t('List Member'), 'url'=>array('/user')),
     array('label'=>UserModule::t('Edit'), 'url'=>array('edit')),
     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
-    array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
+//     array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
 );
 ?><h1><?php echo UserModule::t('Your profile'); ?></h1>
 

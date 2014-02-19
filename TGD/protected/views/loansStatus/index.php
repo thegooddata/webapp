@@ -8,6 +8,10 @@ $this->breadcrumbs = array(
 $this->menu = array(
 	array('label'=>Yii::t('app', 'Create') . ' ' . LoansStatus::label(), 'url' => array('create')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . LoansStatus::label(2), 'url' => array('admin')),
+
+	array('label'=>'Manage Loan', 'url'=>array('/loans/admin')),
+	array('label'=>'Manage Loan Sector', 'url'=>array('/loansActivities/admin')),
+	
 );
 ?>
 

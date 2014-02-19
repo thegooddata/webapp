@@ -1,0 +1,97 @@
+/* 
+    Created on : Jan 4, 2014, 5:53:51 PM
+    Author     : juan
+*/
+
+@font-size-base: 62.5%;
+
+
+// large title (21px) intended for use with h2
+@font-size-large-h2: 1.5em;
+// regular title (16.1px) intended for use with h2
+@font-size-medium-h2: 1.15em;
+
+@font-size-xxlarge: 3.4rem;
+@font-size-xlarge: 2.1em;
+// large font size (16px)
+@font-size-large: 1.142em;
+// regular font size (14px)
+@font-size-medium: 1em;
+// small font size (12px)
+@font-size-small: 0.857em;
+@font-size-xsmall: 1.25rem;
+@font-size-xxsmall: 1.2rem;
+
+
+@tgd-blue : #8AC6EA;
+@tgd-yellow : #FCC34A;
+@tgd-red : #EA6654;
+@tgd-green : #72BC81;
+
+@color-sky: #e7f4fc;
+@color-link: #1C8CCF;
+@color-footer: #58646B;
+@color-gray-footer: #6f818d;
+@color-gray-license-background: #eee;
+@color-gray-license-shadow: #e4e4e4;
+@color-gray-license: #666;
+@color-dark-gray: #58646B;
+@color-gray: #7d7d7d;
+@color-navy-blue: #095779;
+@color-light-blue : #ECF4F8;
+
+@brown-text: #82734B;
+@navy-blue : #095779;
+@navy-blue-dark : #06445F;
+@dark-gray: #333;
+@light-blue : #ECF4F8;
+@light-yellow : #FAFAF3;
+@very-light-gray: #fbfbfb;
+@light-gray : #EFEFEF;
+@light-gray-off : #BFBFBF;
+@light-yellow: #F6F6E9;
+@gray-social-icons : #6E828D;
+@gray-text : #7D7D7D;
+@gray-text-header : #99ABB5;
+@gray-lines: #eee;
+@gray-lines-darker: #e0e0e0;
+@purple : #8E64BF;
+@block-button : #6E828D;
+@allow-button : #EA6654;
+
+@input-border-color: #DDDECB;
+
+
+@h1-font-size: 20px;
+@button-font-size: 10px;
+@small-font-size: @button-font-size;
+
+@font-regular : ProximaNovaSoft-Regular;
+@font-medium : ProximaNovaSoft-Medium;
+@font-semi-bold: ProximaNovaSoft-Semibold;
+@font-bold: ProximaNovaSoft-Bold;
+
+.tgd-button(@color: #EA6654, @radius: 25px, @hPadding: 32px, @vPadding: 14px){
+    display: table;
+    color: #fff;
+    font-family: @font-regular, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: @radius;
+    background-clip: padding-box;
+    background-color: @color;
+    box-shadow: 0 2px 0 darken(@color, 30%), 0 3px 3px #b8ccd8;
+
+    padding: @vPadding @hPadding;    
+    &:hover{
+        background-color: lighten(saturate(@color,20%),10%);
+    }
+    &:active{
+        box-shadow: none;            
+        margin-top: 2px;
+        margin-bottom: -2px;
+    }
+}

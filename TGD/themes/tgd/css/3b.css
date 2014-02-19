@@ -1,0 +1,284 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 8, 2014, 5:13:17 PM
+    Author     : juan
+*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* 
+    Created on : Jan 4, 2014, 5:53:51 PM
+    Author     : juan
+*/
+.row section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.row section:nth-child(1) {
+  margin-top: 3rem;
+}
+.row [class^=col-]:first-child {
+  padding-left: 0;
+}
+.row [class^=col-]:last-child {
+  padding-right: 0;
+}
+#seniority h2,
+#data-table h2 {
+  font-family: ProximaNovaSoft-Regular;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  margin: 0rem;
+  padding: 1.5rem 1rem 1.2rem 1.5rem;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+#seniority h2 a,
+#data-table h2 a {
+  color: white;
+}
+#seniority .gray,
+#data-table .gray {
+  background-color: #fafafa;
+  color: #7d7d7d;
+}
+#seniority > div {
+  border: 1px solid #eeeeee;
+}
+#seniority > div:last-child {
+  border-top: none;
+}
+#seniority h2 {
+  background-color: #8ac6ea;
+}
+#seniority h2 i {
+  float: right;
+  cursor: pointer;
+}
+#seniority .popover {
+  color: #7d7d7d;
+  font-size: 1.4rem;
+  font-weight: normal;
+  width: 420px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+#seniority .seniority {
+  padding-top: 105px;
+  padding-bottom: 20px;
+  background-position: center 25px;
+  background-image: url("../img/seniority.png");
+  background-repeat: no-repeat;
+}
+#seniority .seniority span {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+#seniority .gray {
+  padding: 1rem;
+  text-align: center;
+  line-height: 1.25em;
+}
+#data-table .nav-tabs ul {
+  border: none;
+}
+#data-table .nav-tabs li {
+  width: 50%;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+#data-table .nav-tabs li a {
+  color: #7d7d7d;
+  font-size: 1.6rem;
+  line-height: 1.76rem;
+  font-weight: bold;
+  padding: 1.5rem 1rem 1.2rem 1rem;
+  margin: 0;
+  border: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+#data-table .nav-tabs li.active a {
+  background-color: #fcc34a;
+  color: white;
+}
+#data-table .table {
+  margin-bottom: 0;
+}
+#data-table .table {
+  border-right: 1px solid #eeeeee;
+  border-left: 1px solid #eeeeee;
+}
+#data-table .table .events {
+  text-align: center;
+}
+#data-table .table td.sensitive-data {
+  text-align: center;
+  color: #efefef;
+}
+#data-table .table td.sensitive-data.checked {
+  color: #ea6654;
+}
+#data-table .table td.sensitive-data.checked span:hover {
+  cursor: pointer;
+  color: #efefef;
+}
+#data-table .table td.sensitive-data span:hover {
+  cursor: pointer;
+  color: #ea6654;
+}
+#data-table .table tr.hidden {
+  display: none;
+}
+#data-table .table tr.visible {
+  display: table-row;
+}
+#data-table .table > thead > tr > th {
+  padding: 5px 10px;
+  border-bottom: 1px solid #eeeeee;
+  background-color: #ecf4f8;
+  color: #7d7d7d;
+  font-weight: normal;
+}
+#data-table .table > thead > tr > th.sensitive-data {
+  text-align: center;
+}
+#data-table .table > thead > tr > td {
+  padding: 5px 10px;
+}
+#data-table .table > tbody > tr.child {
+  display: none;
+  font-size: 1.28rem;
+}
+#data-table .table > tbody > tr.child .query {
+  font-weight: normal;
+  color: #7d7d7d;
+}
+#data-table .table > tbody > tr > th {
+  padding: 5px 10px;
+}
+#data-table .table > tbody > tr > td {
+  color: #7d7d7d;
+  padding: 5px 10px;
+  border-bottom: 1px solid #eeeeee;
+}
+#data-table .table > tbody > tr > td .hanging {
+  padding: 3px;
+  width: 6px;
+  height: 6px;
+  float: left;
+  margin-top: 2px;
+  margin-right: 3px;
+  border-bottom: 1px solid #7d7d7d;
+  border-left: 1px solid #7d7d7d;
+}
+#data-table .table > tbody > tr > td .glyphicon-minus,
+#data-table .table > tbody > tr > td .glyphicon-plus {
+  border: 1px solid #e0e0e0;
+  color: #bfbfbf;
+  font-weight: normal;
+  font-size: 0.8rem;
+  padding: 1px 11px 0 3px;
+  line-height: 1.3rem;
+  width: 0.9rem;
+  top: -1px;
+  margin-left: -23px;
+  cursor: pointer;
+  margin-right: 7px;
+  background-color: white;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#data-table .table > tbody > tr > td.query {
+  font-weight: bold;
+  color: #1c8ccf;
+  padding-left: 15px;
+}
+#data-table .pager {
+  padding: 20px 10px;
+  margin-top: 0;
+  border: 1px solid #eeeeee;
+  border-top: none;
+}
+#data-table .pager .btn-xs {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.6em;
+  padding: 0 0.8rem 0 0.8rem;
+  height: 1.6rem;
+  font-weight: bold;
+}
+#data-table .pager .download {
+  background-color: #1c8ccf;
+  vertical-align: middle;
+}
+#data-table .pager .delete {
+  background-color: #ea6654;
+}
+#data-table .buttons {
+  margin-top: 3rem;
+}
+#data-table .buttons .btn-primary {
+  background-color: #7d7d7d;
+  border-color: #7d7d7d;
+  font-weight: bold;
+  font-size: 1.4rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+#data-table .pagination {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#data-table .pagination li a {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: transparent;
+  border: none;
+  line-height: 1em;
+  font-weight: bold;
+  padding: 0.6rem 0.8rem 0.2rem;
+  margin: 0;
+}
+#data-table .pagination li a:hover {
+  background-color: #efefef;
+}
+#data-table .pagination li.active a {
+  background-color: #1c8ccf;
+  color: white;
+}
+#data-table .pagination li:first-child {
+  font-size: 1rem;
+}
+#data-table .pagination li:first-child a {
+  margin-right: 1rem;
+}
+#data-table .pagination li:last-child {
+  font-size: 1rem;
+}

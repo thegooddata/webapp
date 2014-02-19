@@ -85,7 +85,7 @@ class GiixCrudCode extends CrudCode {
 				|| strtoupper($column->dbType) == 'BOOL'
 				|| strtoupper($column->dbType) == 'BOOLEAN') {
 			return "echo \$form->checkBox(\$model, '{$column->name}')";
-		} else if (strtoupper($column->dbType) == 'DATE') {
+		} else if (strtoupper($column->dbType) == 'DATE' || strtoupper($column->dbType) == 'TIMESTAMP WITH TIME ZONE') {
 			return "\$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model' => \$model,
 			'attribute' => '{$column->name}',

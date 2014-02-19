@@ -1,0 +1,163 @@
+/* 
+    Created on : Jan 8, 2014, 11:52:39 AM
+    Author     : juan
+*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* 
+    Created on : Jan 4, 2014, 5:53:51 PM
+    Author     : juan
+*/
+#secondary-nav{
+    display: none;
+}
+#page-title {
+  background-color: #72bc81;
+  color: white;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+#page-title h2 {
+  font-size: 2.1rem;
+  font-weight: bold;
+  padding: 8px 0;
+  margin-top: 10px;
+}
+#kiva,
+#chango {
+  margin-top: 40px;
+}
+#kiva:nth-child(1),
+#chango:nth-child(1) {
+  padding-left: 0;
+}
+#kiva:nth-child(2),
+#chango:nth-child(2) {
+  padding-right: 0;
+}
+#kiva > div,
+#chango > div {
+  border: 1px solid #eeeeee;
+  padding: 20px;
+  border-top: none;
+}
+#kiva > div.no-bottom,
+#chango > div.no-bottom {
+  border-bottom: none;
+}
+#kiva > div.logo,
+#chango > div.logo {
+  padding-top: 100px;
+}
+#kiva > div.very-light-gray,
+#chango > div.very-light-gray {
+  background-color: #fafafa;
+}
+#kiva > div.very-light-blue,
+#chango > div.very-light-blue {
+  font-weight: bold;
+  padding: 60px;
+  font-size: 1.6rem;
+  background-color: #ecf4f8;
+}
+#kiva h2,
+#chango h2 {
+  font-family: ProximaNovaSoft-Regular;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  margin: 0rem;
+  padding: 1.5rem 1rem 1.2rem 1.5rem;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+#kiva h2 {
+  background-color: #72bc81;
+}
+#kiva .logo {
+  background-image: url("../img/kiva.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#kiva li {
+  padding: 5px;
+  position: relative;
+  list-style: none;
+}
+#kiva li .glyphicon {
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  color: #72bc81;
+}
+#kiva .clearfix {
+  padding: 0;
+  border-bottom: none;
+  border-right: none;
+}
+#kiva .case {
+  padding: 20px;
+}
+#kiva .case:nth-child(1) {
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+#kiva .case:nth-child(2) {
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+#kiva .case:nth-child(3) {
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+#kiva .case:nth-child(4) {
+  border-bottom: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+#kiva .case .subtext {
+  line-height: 1em;
+  position: relative;
+  top: 5px;
+  color: #7d7d7d;
+}
+#kiva .case .name {
+  font-weight: bold;
+}
+#kiva .case .photo {
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 3px 5px 3px 0;
+}
+#kiva .case .flag {
+  margin: 0px 5px;
+  width: auto;
+  vertical-align: baseline;
+  height: auto;
+}
+#chango h2 {
+  background-color: #1c8ccf;
+}
+#chango .logo {
+  background-image: url("../img/chango-magnetic.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#chango li {
+  padding: 5px;
+  position: relative;
+  list-style: none;
+}
+#chango li .glyphicon {
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  color: #fcc34a;
+}

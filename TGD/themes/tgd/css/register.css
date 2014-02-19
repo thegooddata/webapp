@@ -1,0 +1,95 @@
+/* 
+    Created on : Jan 8, 2014, 11:52:39 AM
+    Author     : juan
+*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* 
+    Created on : Jan 4, 2014, 5:53:51 PM
+    Author     : juan
+*/
+#secondary-nav{
+    display: none;
+}
+label {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #7d7d7d;
+}
+#page-title {
+  background-color: #72bc81;
+  color: white;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+#page-title h2 {
+  font-size: 2.1rem;
+  font-weight: bold;
+  padding: 8px 0;
+  margin-top: 10px;
+}
+#page-content .row {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+#page-content .row > div {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#page-content .row > div:first-child {
+  border: 1px solid #eeeeee;
+}
+#page-content .row > div:first-child p,
+#page-content .row > div:first-child .checkbox,
+#page-content .row > div:first-child button[type=submit] {
+  margin-left: 10px;
+}
+#page-content li ol[type=a] {
+  counter-reset: list;
+  padding-top: 15px;
+  padding-left: 20px;
+}
+#page-content li ol[type=a] > li {
+  list-style: none;
+  padding-left: 10px;
+  position: relative;
+}
+#page-content li ol[type=a] > li:before {
+  content: "(" counter(list, lower-alpha) ") ";
+  counter-increment: list;
+  position: absolute;
+  left: -1.4em;
+}
+
+#page-content form .glyphicon{
+    right: 10px;
+}
+#contract {
+  background-color: #fafafa;
+  overflow-y: scroll;
+  border: 1px solid #eeeeee;
+  border-left: none;
+}
+#contract h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2.5rem;
+}
+#contract h3 {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+.has-info {
+  color: #7d7d7d;
+}
+.split-3 {
+  width: 33.3%;
+}

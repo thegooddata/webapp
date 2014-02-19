@@ -32,10 +32,10 @@ class ApiController extends Controller
 			                ->from('tbl_members u')
 			                ->where(array(
 			                            'and',
-			                            '(u.username = :value or u.email = :value)',
+			                            '(UPPER(u.username) = :value or UPPER(u.email) = :value)',
 			                            'u.password = :password'),
 			                    array(
-			                            ':value'=>$value,
+			                            ':value'=>strtoupper($value),
 			                            ':password'=>$password)
 			                    )
 			                ->queryAll();
@@ -629,23 +629,37 @@ class ApiController extends Controller
 			                    )
 			                ->queryAll();
 
-		            if (count($data)==0 && $status){
+           		 	if (count($data)==0 && $status){
 
-		            	$service = Yii::app()->db->createCommand()
-			                ->setFetchMode(PDO::FETCH_OBJ)
-			                ->select('s.id as adtracks_sources_id')
-			                ->from('tbl_adtracks_sources s')
-			                ->where(array(
-			                            'and',
-			                            's.name = :service_name'),
-			                    array(
-			                            ':service_name'=>$service_name)
-			                    )
-			                ->queryAll();
+		            	$services = array();
 
-		                if (count($service)>0){
+		            	if ($service_name == '*')
+		                {
+		                	$service = new stdClass();
+		                	$service->adtracks_sources_id='1';
 
-		                	$adtracks_sources_id = $service[0]->adtracks_sources_id;
+		                	$services[]=$service;
+		                }
+		                else
+		                {
+		                	$services = Yii::app()->db->createCommand()
+				                ->setFetchMode(PDO::FETCH_OBJ)
+				                ->select('s.id as adtracks_sources_id')
+				                ->from('tbl_adtracks_sources s')
+				                ->where(array(
+				                            'and',
+				                            's.name = :service_name'),
+				                    array(
+				                            ':service_name'=>$service_name)
+				                    )
+				                ->queryAll();
+		                }
+		            	
+
+		                if (count($services)>0){
+
+
+		                	$adtracks_sources_id = $services[0]->adtracks_sources_id;
 		                	$model = new Whitelists;
 		                	$model->user_id=$user_id;
 			        	  	$model->member_id=$member_id;
@@ -655,13 +669,14 @@ class ApiController extends Controller
 		        	  		
 			        	  	$model->save();
 			        	  	
+			        	  	
 		                }
 		                else
 		                {
-		              //   	$this->_sendResponse(501, 
-				            //     sprintf('Adtrack source not found <b>%s</b>',
-				            //     $service_name) );
-				            // Yii::app()->end();
+		                 	$this->_sendResponse(501,  
+				                 sprintf($service_name.'-Adtrack source not found <b>%s</b>',
+				                 $service_name) );
+				             Yii::app()->end();
 		                }
 
 		            	

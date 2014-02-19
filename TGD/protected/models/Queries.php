@@ -8,6 +8,29 @@ class Queries extends BaseQueries
 		return parent::model($className);
 	}
 
+	// public function search(array $columns)
+ //    {
+ //        $criteria=new CDbCriteria;
+ 
+ //        // if (isset($_GET['sSearch'])) {
+ //        //     $criteria->compare('created_at',$_GET['sSearch'],true,'OR');
+ //        //     $criteria->compare('rate',$_GET['sSearch'],false,'OR');
+ //        //     //$criteria->compare('currency_id',$_GET['sSearch'],true,'OR');
+ //        // }
+ 
+ //        // $criteria->compare('id',$this->id);
+ //        // $criteria->compare('date',$this->date,true);
+ //        // $criteria->compare('rate',$this->rate);
+ //        // $criteria->compare('currency_id',$this->currency_id);
+ //        // $criteria->compare('precious_metal_id',$this->precious_metal_id);
+ 
+ //        return new CActiveDataProvider($this, array(
+ //            'criteria'=>$criteria,
+ //            'sort'=>new EDTSort(__CLASS__, $columns),
+ //            'pagination'=>new EDTPagination,
+ //        ));
+ //    }
+
 	/* Generate timestamps auto */
 	public function beforeSave() {
 	    if ($this->isNewRecord)
