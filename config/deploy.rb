@@ -8,7 +8,7 @@ set :user, "tgd"
 set :application, "tgd_webapp"
 set :domain,      "thegooddata.org"
 
-set :repository,  "git@github.com:the-good-data/tgd-webapp.git"
+set :repository,  "git@github.com:thegooddata/webapp.git"
 set :scm,         :git
   
 set  :keep_releases,  10
