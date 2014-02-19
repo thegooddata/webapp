@@ -1,12 +1,12 @@
 
-<div id="page-title">
+<div id="tgd-page-title">
     <div class="container">
         <div class="row">
             <h2>Partners</h2>
         </div>
     </div>
 </div> 
-<section id="page-content">
+<section id="tgd-page-content">
     <div class="container">
         <div class="row">
             <section id="kiva" class="tgd-box col-sm-16 col-md-8 col-lg-8">
