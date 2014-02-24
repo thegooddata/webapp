@@ -50,7 +50,7 @@ label {
   border-bottom: none;
 }
 .navbar-fixed-top > div {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 insetSS;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
   background-color: white;
 }
 .navbar-fixed-top .navbar-brand {
@@ -80,15 +80,36 @@ label {
 .navbar-fixed-top .navbar-collapse a:active {
   color: #ea6654;
 }
-.navbar-fixed-top .navbar-collapse .install {
+.navbar-fixed-top .navbar-collapse a.user {
+  padding: 18px 35px 17px 35px;
+}
+.navbar-fixed-top .navbar-collapse a img {
+  margin-right: 5px;
+}
+.navbar-fixed-top .navbar-collapse a img.avatar {
+  width: 3rem;
+  height: 3rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  border-radius: 1.5rem;
+  margin-top: -0.5rem;
+}
+.navbar-fixed-top .navbar-collapse .install,
+.navbar-fixed-top .navbar-collapse .collaborate {
   background-color: #ea6654;
 }
-.navbar-fixed-top .navbar-collapse .install a {
+.navbar-fixed-top .navbar-collapse .install a,
+.navbar-fixed-top .navbar-collapse .collaborate a {
   color: white;
 }
 .navbar-fixed-top .navbar-collapse .install a:hover,
-.navbar-fixed-top .navbar-collapse .install a:active {
+.navbar-fixed-top .navbar-collapse .collaborate a:hover,
+.navbar-fixed-top .navbar-collapse .install a:active,
+.navbar-fixed-top .navbar-collapse .collaborate a:active {
   color: #ea6654;
+}
+.navbar-fixed-top .navbar-collapse .dropdown-menu li {
+  box-shadow: none;
 }
 .navbar-fixed-top .dropdown .dropdown-toggle {
   padding-bottom: 22px;
@@ -144,7 +165,7 @@ footer ul #fifth {
   margin-right: 6%;
 }
 footer ul.social {
-  width: 168px;
+  width: 190px;
   margin: 25px 0 0 0;
 }
 footer ul.social li {
@@ -378,7 +399,7 @@ footer .license ul li p {
   border-radius: 25px;
   background-clip: padding-box;
   background-color: #ea6654;
-  box-shadow: 0 2px 0 #932212, 0 3px 3px #b8ccd8;
+  box-shadow: 0 2px 0 #e43d27, 0 3px 3px #b8ccd8;
   padding: 14px 32px;
 }
 #landing-page section > .container a.tgd-button:hover {
@@ -408,11 +429,14 @@ footer .license ul li p {
   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/land.png', sizingMethod='scale')";
   -ms-behavior: url(../bgsize.htc);
 }
-#intro .container a {
+#intro > .container h1 {
+  margin-bottom: 50px;
+}
+#intro > .container a {
   /*width: 44%;*/
 
 }
-#intro .container a.tgd-button {
+#intro > .container a.tgd-button {
   display: table;
   color: #fff;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -424,16 +448,16 @@ footer .license ul li p {
   border-radius: 25px;
   background-clip: padding-box;
   background-color: #6d818d;
-  box-shadow: 0 2px 0 #2a3237, 0 3px 3px #b8ccd8;
+  box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
   padding: 14px 32px;
   padding: 15px 32px 13px;
   margin-left: auto;
   margin-right: auto;
 }
-#intro .container a.tgd-button:hover {
+#intro > .container a.tgd-button:hover {
   background-color: #749fb9;
 }
-#intro .container a.tgd-button:active {
+#intro > .container a.tgd-button:active {
   box-shadow: none;
   margin-top: 2px;
   margin-bottom: -2px;
@@ -468,7 +492,7 @@ footer .license ul li p {
   border-radius: 25px;
   background-clip: padding-box;
   background-color: #6d818d;
-  box-shadow: 0 2px 0 #2a3237, 0 3px 3px #b8ccd8;
+  box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
   padding: 14px 32px;
 }
 #bag .container .content a.tgd-button:hover {
@@ -566,7 +590,7 @@ footer .license ul li p {
   border-radius: 25px;
   background-clip: padding-box;
   background-color: #6fbd7f;
-  box-shadow: 0 2px 0 #2e6539, 0 3px 3px #b8ccd8;
+  box-shadow: 0 2px 0 #4eab61, 0 3px 3px #b8ccd8;
   padding: 14px 32px;
   float: right;
 }
@@ -614,7 +638,7 @@ footer .license ul li p {
   border-radius: 25px;
   background-clip: padding-box;
   background-color: #6d818d;
-  box-shadow: 0 2px 0 #2a3237, 0 3px 3px #b8ccd8;
+  box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
   padding: 14px 32px;
   margin-left: auto;
   margin-right: auto;
@@ -799,11 +823,38 @@ footer .license ul li p {
   color: white;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 }
-#tgd-page-title h2 {
+#tgd-page-title ul {
+  padding: 0;
+  margin: 0;
+}
+#tgd-page-title ul li {
+  margin: 0;
+  padding: 15px 0;
+  list-style: none;
+  float: left;
+}
+#tgd-page-title ul li:first-child {
+  background-image: url("../img/menu-divider.png");
+  background-position: center right;
+  background-repeat: no-repeat;
+  padding-right: 15px;
+  margin-right: 10px;
+  font-size: 1.928em;
+  line-height: 1em;
+  position: relative;
+}
+#tgd-page-title ul li:first-child a {
+  margin-bottom: -2px;
+}
+#tgd-page-title ul li h2 {
   font-size: 1.5em;
   font-weight: bold;
-  padding: 8px 0;
-  margin-top: 10px;
+  padding: 0;
+  margin: 5px 0;
+  line-height: 1em;
+}
+#tgd-page-title ul li a {
+  color: white;
 }
 #tgd-page-content .row {
   margin-top: 40px;
@@ -870,6 +921,7 @@ footer .license ul li p {
   background-repeat: no-repeat;
   background-position: center center;
   padding-top: 100px;
+  cursor: pointer;
 }
 #kiva h2 {
   background-color: #72bc81;
@@ -886,9 +938,13 @@ footer .license ul li p {
   border-right: none;
 }
 #kiva .cases > div {
-  padding: 20px;
+  padding: 10px;
   border-bottom: 1px solid #eeeeee;
   border-right: 1px solid #eeeeee;
+  cursor: pointer;
+}
+#kiva .cases > div:hover {
+  background: #fef5e1;
 }
 #kiva .cases > div .subtext {
   line-height: 1em;
@@ -913,11 +969,14 @@ footer .license ul li p {
   vertical-align: baseline;
   height: auto;
 }
+#kiva .cases > div a:hover {
+  text-decoration: none;
+}
 #chango h2 {
   background-color: #1c8ccf;
 }
 #chango .logo {
-  background-image: url("../img/chango-magnetic.png");
+  background-image: url("../img/chango.png");
 }
 #chango .glyphicon {
   color: #fcc34a;
@@ -925,23 +984,23 @@ footer .license ul li p {
 /*******************************************************************************
  * Register
  ******************************************************************************/
-#registration-form {
+#registration-form-block {
   padding-top: 20px;
   padding-bottom: 20px;
   border: 1px solid #eeeeee;
 }
-#registration-form p,
-#registration-form .checkbox,
-#registration-form button[type=submit] {
+#registration-form-block p,
+#registration-form-block .checkbox,
+#registration-form-block button[type=submit] {
   margin-left: 10px;
 }
-#registration-form .glyphicon {
+#registration-form-block .glyphicon {
   right: 10px;
 }
-#registration-form .has-info {
+#registration-form-block .has-info {
   color: #7d7d7d;
 }
-#registration-form .split-3 {
+#registration-form-block .split-3 {
   width: 33.3%;
 }
 #contract {
@@ -1074,6 +1133,9 @@ footer .license ul li p {
 #tgd-share-purchase #descriptions > div .button .btn:hover {
   background-color: #58646b;
 }
+#tgd-share-purchase #descriptions > div .button .btn.disabled {
+  background-color: #666;
+}
 #tgd-share-purchase #questions {
   font-weight: bold;
   color: #1c8ccf;
@@ -1100,6 +1162,16 @@ footer .license ul li p {
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+.right-caret {
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
+  border-left: 4px solid #fff;
+  display: inline-block;
+  height: 0;
+  opacity: 0.3;
+  vertical-align: top;
+  width: 0;
+}
 .ir {
   background-color: transparent;
   border: 0;

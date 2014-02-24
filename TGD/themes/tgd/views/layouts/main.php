@@ -40,10 +40,12 @@
                         <?php if (!Yii::app()->user->isGuest){ ?>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="#">Manage the Company</a></li>
-                                <li class="dropdown"><a href="#about" class="dropdown-toggle" data-toggle="dropdown">username<b class="caret"></b></a>
+                                <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/>username<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">account settings</a></li>
+                                        <li><a href="#"><?php echo Yii::app()->controller->id; ?></a></li>
                                         <li class="divider"></li>
                                         <li><a href="#"><span class="glyphicon glyphicon-off"></span> logout</a></li>
                                     </ul>
@@ -207,7 +209,7 @@
                         <li><a id="wordpress" href="#"></a></li>
                         <li><a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a></li>
                         <li class="last"><a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a></li>
-                        <em><a href="http://www.thegooddata.org">thegooddata.org</a></em>
+                        <em><a href="http://www.thegooddata.org">&copy; 2014, thegooddata.org</a></em>
                     </ul>
                 </div> <!-- wrap -->
             </div>
