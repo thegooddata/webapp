@@ -2,9 +2,7 @@
 
 class SiteController extends Controller {
 
-    public $bodyId = "";
-
-    public function init() {
+   public function init() {
         Yii::app()->theme = 'tgd';
         $this->layout = '//layouts/blank';
         Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/bootstrap.min.css');
