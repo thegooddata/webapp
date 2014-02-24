@@ -57,16 +57,12 @@
                                         <li><a href="#">account settings</a></li>
                                         <?php if(Yii::app()->controller->id == 'site'){ ?>
                                         <li class="divider"></li>
-<<<<<<< HEAD
                                         <li><a href="<?php echo Yii::app()->controller->createUrl("/goodData/index");?>">Good data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createUrl("/evilData/index");?>">Evil data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createUrl("/userData/index");?>">User data</a></li>
                                         <?php } ?>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo Yii::app()->controller->createUrl("user/logout");?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
-=======
-                                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/logout"); ?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
->>>>>>> FETCH_HEAD
                                     </ul>
                                 </li>
                             </ul>

@@ -1,4 +1,4 @@
-<form action="<?php echo Yii::app()->controller->createUrl("/user/login");?> method="POST">
+<form action="<?php echo Yii::app()->controller->createUrl("/user/login");?>" method="POST">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Sign in</h4>
