@@ -130,6 +130,7 @@ label {
 #secondary-nav {
   background-color: #ecf4f8;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+  margin-top: 60px;
   display: none;
 }
 #secondary-nav .navbar-nav > li a {
@@ -1042,12 +1043,6 @@ footer .license ul li p {
 /*******************************************************************************
  * Share purchase 
  ******************************************************************************/
-#tgd-share-purchase #tgd-page-content .row > div:first-child {
-  padding-right: 0;
-}
-#tgd-share-purchase #tgd-page-content .row > div:last-child {
-  padding-left: 0;
-}
 #tgd-share-purchase #descriptions {
   border: 1px solid #eeeeee;
   border-right: 4px solid #58646b;
@@ -1059,7 +1054,7 @@ footer .license ul li p {
 }
 #tgd-share-purchase #descriptions p {
   margin-bottom: 0;
-  font-size: 1.5rem;
+  font-size: 1.142em;
 }
 #tgd-share-purchase #descriptions > div {
   padding: 20px;
@@ -1148,16 +1143,49 @@ footer .license ul li p {
   border-left: none;
   overflow: auto;
 }
-#tgd-share-purchase #form h2 {
+#tgd-share-purchase #form button {
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 5px auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  display: block;
+}
+#tgd-share-purchase #form .form-separator {
+  margin: 20px auto 5px;
+  padding: 5px 15px;
+  border-top: 1px solid #7d7d7d;
+  width: 20%;
+  text-align: center;
+}
+#tgd-share-purchase #form .form-separator span {
+  position: relative;
+  top: -15px;
+  background-color: #fbfbfb;
+  text-transform: uppercase;
+}
+#tgd-share-purchase #loan-agreement {
+  display: none;
+}
+#tgd-share-purchase #loan-agreement h2 {
   font-size: 2.3rem;
 }
-#tgd-share-purchase #form ol > li,
-#tgd-share-purchase #form ol h3 {
+#tgd-share-purchase #loan-agreement ol > li,
+#tgd-share-purchase #loan-agreement ol h3 {
   font-size: 2rem;
 }
-#tgd-share-purchase #form ol > li p,
-#tgd-share-purchase #form ol h3 p {
+#tgd-share-purchase #loan-agreement ol > li p,
+#tgd-share-purchase #loan-agreement ol h3 p {
   font-size: 1.4rem;
+}
+#tgd-share-purchase #bitcoin-1p strong {
+  font-size: 1.142em;
+  display: block;
+  margin: 10px 0 10px 0;
+}
+#tgd-share-purchase #bitcoin-1p .row {
+  margin: 10px 0;
 }
 /* ==========================================================================
    Helper classes
