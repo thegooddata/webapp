@@ -5,16 +5,16 @@ class SiteController extends Controller {
    public function init() {
         Yii::app()->theme = 'tgd';
         $this->layout = '//layouts/blank';
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/bootstrap.min.css');
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/font-awesome.min.css');
+//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/bootstrap.min.css');
+//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/font-awesome.min.css');
         //Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/header-and-footer.css');
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/webfonts.css');
+//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/webfonts.css');
         // add css specific for the site controller
-        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/new-main.css');
+//        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/new-main.css');
 
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/sign-in.js', CClientScript::POS_END);
+//        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_END);
+//        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.js', CClientScript::POS_END);
+//        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/sign-in.js', CClientScript::POS_END);
         parent::init();
     }
 
