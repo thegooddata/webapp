@@ -121,6 +121,8 @@
         </header>
  -->
 
+        <?php if ($this->getUniqueId() != "site") { ?>
+
         <div id="secondary-nav">
             <div class="container">
                 <div class="row">
@@ -164,6 +166,8 @@
                 </div>
             </div>
         </div> 
+
+        <?php } ?>
 
         <!-- main content -->
 

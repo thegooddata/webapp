@@ -131,7 +131,6 @@ label {
   background-color: #ecf4f8;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
   margin-top: 60px;
-  display: none;
 }
 #secondary-nav .navbar-nav > li a {
   margin: 13px 13px 13px 0px;
