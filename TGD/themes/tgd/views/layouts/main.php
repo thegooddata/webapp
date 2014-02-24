@@ -202,7 +202,7 @@
                     <ul class="clearfix">
                         <h4>third parties</h4>
                         <li><a href="#">Coder's Program</a></li>
-                        <li><a href="#">Partners</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/partners");?>">Partners</a></li>
                         <li><a href="#">Media</a></li>
                     </ul>
                     <ul class="clearfix">
