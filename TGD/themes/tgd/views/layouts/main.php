@@ -235,6 +235,7 @@
         </footer>
 
     <script type="text/javascript" src="<?php Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js';?>"></script>
-    <script type="text/javascript" src="<?php Yii::app()->theme->baseUrl . '/js/bootstrap.js';?>"></script>
+    <script type="text/javascript" src="<?php Yii::app()->theme->baseUrl . '/js/bootstrap.min.js';?>"></script>
+    <script type="text/javascript" src="<?php Yii::app()->theme->baseUrl . '/js/sign-in.js';?>"></script>
     </body>
 </html>
