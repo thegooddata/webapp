@@ -1,7 +1,11 @@
+
 <div id="tgd-page-title">
     <div class="container">
         <div class="row">
-            <h2>Share purchase</h2>
+            <ul class="clearfix">
+                <li><a href="/"><span class="fa fa-home"></span></a></li>
+                <li><h2>Share purchase</h2></li>
+            </ul>
         </div>
     </div>
 </div> 
@@ -21,7 +25,7 @@
                         that will be cancelled when you end our membership at no cost.
                     </div>
                     <div class="button">
-                        <button class="btn loan">show me the<br> 1p loan</button>
+                        <button class="btn loan disabled">show me the<br> 1p loan</button>
                     </div>
                 </div>
                 <div class="clearfix">

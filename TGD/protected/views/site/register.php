@@ -2,14 +2,17 @@
         <div id="tgd-page-title">
             <div class="container">
                 <div class="row">
-                    <h2>Become a member</h2>
+                    <ul class="clearfix">
+                        <li><a href="/"><span class="fa fa-home"></span></a></li>
+                        <li><h2>Become a member</h2></li>
+                    </ul>
                 </div>
             </div>
         </div> 
         <section id="tgd-page-content">
             <div class="container">
                 <div class="row">
-                    <div id="registration-form" class="col-sm-16 col-md-10 col-lg-10">
+                    <div id="registration-form-block" class="col-sm-16 col-md-10 col-lg-10">
                         <p>You can use TheGoodData extension without registration, 
                             but if you also want to become a Member of TheGoodData
                             Cooperative Ltd., you need to submit your personal 
@@ -22,20 +25,20 @@
                         <p>Note it is vital that you enter correct details, as 
                             it determines your legal rights as cooperative member.
                             You may be required later to send proof of ID.</p>
-                        <form action="" method="POST">
+                        <form action="" method="POST" id="registration-form">
                             <div  class="col-sm-16 col-md-8 col-lg-8">
                                 <div class="form-group">
                                     <label>First name</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName">
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
                                 </div>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Last name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName">
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
                             </div>
                             <div class="form-group col-sm-16 col-md-16 col-lg-16">
                                 <label>Street name</label>
-                                <input id="autocomplete" type="text" class="form-control" name="streetName">
+                                <input id="autocomplete" type="text" class="form-control" name="streetName" required>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Street number</label>
@@ -47,23 +50,23 @@
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>City</label>
-                                <input type="text" class="form-control" id="locality" name="city">
+                                <input type="text" class="form-control" id="locality" name="city" required>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>State/County</label>
-                                <input type="text" class="form-control" id="administrative_area_level_1" name="stateCounty">
+                                <input type="text" class="form-control" id="administrative_area_level_1" name="stateCounty" required>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Country</label>
-                                <input type="text" class="form-control" id="country" name="country">
+                                <input type="text" class="form-control" id="country" name="country" required>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Post code</label>
-                                <input type="text" class="form-control" id="postal_code" name="postCode">
+                                <input type="text" class="form-control" id="postal_code" name="postCode" required>
                             </div>
                             <div class="form-group col-sm-16 split-3">
                                 <label>Birth date</label>
-                                <select  class="form-control" id="dayBirthday" name="dayBirthday">
+                                <select  class="form-control" id="dayBirthday" name="dayBirthday" required>
                                     <option value="0">Day</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -100,7 +103,7 @@
                             </div>
                             <div class="form-group col-sm-16 split-3">
                                 <label>&nbsp;</label>
-                                <select  class="form-control" id="monthBirthday" name="monthBirthday">
+                                <select  class="form-control" id="monthBirthday" name="monthBirthday" required>
                                     <option value="0">Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -118,14 +121,14 @@
                             </div>
                             <div class="form-group col-sm-16 split-3">
                                 <label>&nbsp;</label>
-                                <select  class="form-control" id="yearBirthday" name="yearBirthday">
+                                <select  class="form-control" id="yearBirthday" name="yearBirthday" required>
                                     <option value="0">Year</option>
 
                                 </select>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                                 <label>Username</label>
-                                <input type="text" class="form-control" id="userName" name="userName">
+                                <input type="text" class="form-control" id="userName" name="userName" required>
                                 <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
@@ -135,12 +138,12 @@
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                                 <label>Password</label>
-                                <input type="password" class="form-control"  id="password" name="password">
+                                <input type="password" class="form-control"  id="password" name="password" required>
                                 <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Confirm password</label>
-                                <input type="password" class="form-control"  id="passwordConfirm" name="passwordConfirm">
+                                <input type="password" class="form-control"  id="passwordConfirm" name="passwordConfirm" required>
                             </div>
                             <div class="form-group checkbox col-sm-16 col-md-16 co-lg-16">
                                 <label>
