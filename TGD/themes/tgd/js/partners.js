@@ -9,10 +9,22 @@ $(function() {
         // set heights of 3rd row
         deltaHeight = picturesHeight - emphasisHeight;
         deltaPadding = Math.ceil(deltaHeight / 2);
-        $('#chango .tgd-box-section:nth-child(4)').css({'paddingTop':'+='+deltaPadding,'paddingBottom':'+='+deltaPadding}).innerHeight(picturesHeight);
+        $('#chango .tgd-box-section:nth-child(4)').css({'paddingTop':'+='+deltaPadding,'paddingBottom':'+='+deltaPadding}).innerHeight(picturesHeight-1);
     };
 
+    
     setTimeout(function(){sameSize();},100);
+    $('.logo').click(function(){
+        var url = $(this).data('url');
+        window.open(url, '_blank');
+    });
 
+    // add click handler for kiva stories
+    $('.cases > div').click(function(){
+        var url = $(this).find('a').attr('href');
+        window.open(url, '_blank');
+    }).find('a').click(function(e){
+        e.preventDefault();
+    });
 
 });
