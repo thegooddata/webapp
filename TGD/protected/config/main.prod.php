@@ -26,7 +26,7 @@ return array(
         'ext.CSVExport',
 	),
 
-	'theme'=>'TGD',
+	'theme'=>'tgd',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
