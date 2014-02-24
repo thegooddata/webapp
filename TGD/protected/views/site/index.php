@@ -76,16 +76,4 @@
             </div> <!-- container -->
         </section> <!-- start -->      
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/jquery-1.9.1.min.js"><\/script>');</script>
-
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/main.js"></script>  
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.stellar.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/early-access.js"></script>
-        <!--[if !(lt IE 8)]><!--> 
-           <script type="text/javascript"> 
-             (function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src=document.location.protocol+"//d1agz031tafz8n.cloudfront.net/thedaywefightback.js/widget.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();
-           </script>
-        <!--<![endif]-->        
+     
