@@ -38,7 +38,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="/" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
+                            <a href="<?php echo Yii::app()->controller->createUrl("site/index"); ?>" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
                         </div>
 
                         <?php if (!Yii::app()->user->isGuest){ ?>
@@ -51,7 +51,7 @@
                                         <li><a href="#">account settings</a></li>
                                         <li><a href="#"><?php echo Yii::app()->controller->id; ?></a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-off"></span> logout</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/logout"); ?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
