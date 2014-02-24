@@ -21,8 +21,14 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/new-main.css" type="text/css">
         
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/evil-data.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/good-data.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/user-data.css" type="text/css">
+        
         <!-- Admin -->
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/admin.css" type="text/css">
+        
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js'; ?>"></script>        
     </head>
 
     <body <?php echo ($this->bodyId=='')?'':'id="'.$this->bodyId.'"';?>>
@@ -49,9 +55,14 @@
                                     <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/>username<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">account settings</a></li>
-                                        <li><a href="#"><?php echo Yii::app()->controller->id; ?></a></li>
+                                        <?php if(Yii::app()->controller->id == 'site'){ ?>
                                         <li class="divider"></li>
-                                        <li><a href="#"><span class="glyphicon glyphicon-off"></span> logout</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createUrl("/goodData/index");?>">Good data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createUrl("/evilData/index");?>">Evil data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createUrl("/userData/index");?>">User data</a></li>
+                                        <?php } ?>
+                                        <li class="divider"></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/logout");?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -238,8 +249,10 @@
             </div>
         </footer>
 
-    <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js'; ?>"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/sign-in.js'; ?>"></script>
+    <script>
+        signInUrl = "<?php echo Yii::app()->controller->createUrl("/site/signin");?>";
+    </script>
     </body>
 </html>

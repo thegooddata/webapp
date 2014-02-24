@@ -21,7 +21,7 @@ $(function(){
         e.preventDefault();
         var options = {
             keyboard : true,
-            remote : '/site/signin'
+            remote : window.signInUrl
         };
        $modal.modal(options); 
     });
