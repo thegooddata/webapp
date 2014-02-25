@@ -1,0 +1,111 @@
+/**
+ *  Bootstrap Vertical Tabs Component v1.0.0
+ *  http://github.com/dbtek/bootstrap-vertical-tabs
+ *  © 2013, Ismail Demirbilek
+ *  MIT License
+ */
+
+.tabs-left{
+    border-bottom: none;
+    border: 1px solid #ddd;
+    border-right: none;
+}
+
+.tabs-left>li {
+    float: none;
+    border-bottom: 1px solid #ddd;
+}
+.tabs-left>li.active{
+    border-bottom: 1px solid #ddd;    
+}
+
+.tabs-left>li.active>a, .tabs-left>li.active>a:hover, .tabs-left>li.active>a:focus {
+	color: #fff;
+	font-family: 'ProximaNovaSoft-Bold';
+	font-size: 16px;
+    border: none;
+    /*border-bottom: 1px solid #ddd;*/
+    border: 1px solid #c75242;
+    background-color: #e96553;
+    box-shadow: inset 0 1px 0 rgba(0,0,0,.11);
+}
+.tabs-left>li:last-child a{
+    border-bottom: none;
+}
+
+.tabs-left>li>a {
+	color: #00557b;
+	font-family: "ProximaNovaSoft-Bold";
+	font-size: 16px;
+    margin-right: 0;
+    display:block;
+    border-radius: 0 !important;
+    background-color: #fbfbfb;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+}
+
+/*------- Product Page -------*/
+    
+    .product-tabs ul{
+        border: 0;
+    }
+    .product-tabs ul li{
+        margin-bottom: 0;
+    }
+    .product-tabs ul li,
+    .product-tabs ul li.active{
+        border-bottom: none;
+    }
+
+    .product-tabs ul li a,
+    .product-tabs ul li.active a,
+    .product-tabs ul li.active a:hover,
+    .product-tabs ul li.active a:focus{
+        color: #fff;
+        font-family: "ProximaNovaSoft-Medium";
+        font-size: 27px;
+        line-height: 1;
+        box-shadow: inset -3px 3px 0 rgba(0,0,0,.08);
+        border: none;
+        padding: 40px 80px 40px 40px;
+    }
+
+    .product-tabs ul li:first-child a{
+        background-color: #258dcb;
+    }
+    .product-tabs ul li.active:first-child a,
+    .product-tabs ul li.active:first-child a:hover,
+    .product-tabs ul li.active:first-child a:focus{
+        background-color: #258dcb;
+        box-shadow: none;
+    }
+    .product-tabs ul li:nth-child(2) a{
+        background-color: #e96553;
+    }
+    .product-tabs ul li.active:nth-child(2) a,
+    .product-tabs ul li.active:nth-child(2) a:hover,
+    .product-tabs ul li.active:nth-child(2) a:focus{
+        background-color: #e96553;
+        box-shadow: none;
+    }
+    .product-tabs ul li:nth-child(3) a{
+        background-color: #00557b;
+    }
+    .product-tabs ul li.active:nth-child(3) a,
+    .product-tabs ul li.active:nth-child(3) a:hover,
+    .product-tabs ul li.active:nth-child(3) a:focus{
+        background-color: #00557b;
+        box-shadow: none;
+    }
+    .product-tabs ul li:last-child a{
+        background-color: #71bb81;
+    }
+    .product-tabs ul li.active:last-child a,
+    .product-tabs ul li.active:last-child a:hover,
+    .product-tabs ul li.active:last-child a:focus{
+        background-color: #71bb81;
+        box-shadow: none;
+    }
+
