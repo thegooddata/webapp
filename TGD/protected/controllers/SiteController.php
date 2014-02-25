@@ -129,18 +129,18 @@ class SiteController extends Controller {
     }
     
     
-    public function actionCoders(){
+    public function actionProduct(){
         Yii::app()->theme = 'tgd';
 
         // set title
-        $this->pageTitle = " - Coders";
+        $this->pageTitle = " - Product";
 
         // set body id to #tgd-share-purchase
-        $this->bodyId = "tgd-coders";
+        $this->bodyId = "tgd-product";
         
 
         
-        $this->render('coders');
+        $this->render('product');
     }
     
     public function actionTerms(){

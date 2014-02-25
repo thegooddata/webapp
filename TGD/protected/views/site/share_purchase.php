@@ -11,7 +11,7 @@
 </div> 
 <div id="tgd-page-content" class="container">
     <div class="row">
-        <div class="col-sm-16 col-md-10 col-lg-10">
+        <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-right-padding">
             <section id="descriptions">
                 <div>
                     <h2>Your membership application has been accepted!</h2>
@@ -25,7 +25,7 @@
                         that will be cancelled when you end our membership at no cost.
                     </div>
                     <div class="button">
-                        <button class="btn loan disabled">show me the<br> 1p loan</button>
+                        <button class="btn loan disabled" data-toggle="loan-agreement">show me the<br> 1p loan</button>
                     </div>
                 </div>
                 <div class="clearfix">
@@ -34,7 +34,7 @@
                         You can do it via Bitcoin.
                     </div>
                     <div class="button">
-                        <button class="btn share">buy my share<br>with bitcoins</button>
+                        <button class="btn share" data-toggle="bitcoin-1p">buy my share<br>with bitcoins</button>
                     </div>
                 </div>
                 <div class="clearfix">
@@ -43,7 +43,7 @@
                         to support us with a donation? Don't be shy! We accept credit cards :)
                     </div>
                     <div class="button">
-                        <button class="btn support">support you<br>with a donation</button>
+                        <button class="btn support" data-toggle="donation">support you<br>with a donation</button>
                     </div>
                 </div>
                 <div id="questions">
@@ -51,7 +51,7 @@
                 </div>
             </section>
         </div>
-        <div class="col-sm-16 col-md-6 col-lg-6">
+        <div class="col-sm-16 col-md-6 col-lg-6 tgd-no-left-padding">
             <section id="form">
                 <div id="loan-agreement">
                     <h2>Loan Agreement</h2>
@@ -116,22 +116,60 @@
                     <br>
                     December 19th, 2013
                 </div>
-                <div id="bitcoin-1p">
+                <div id="donation">
+                    <strong>Please choose a payment method</strong>
+                    Are you a generous person that want to take the
+                    opportunity to support us with a donation? don't be shy! 
+                    We accept credit cards.
                     <form id="donate" action="https://bitpay.com/checkout" method="post" onsubmit="return bp.validateMobileCheckoutForm($('#donate'));">
                         <input name="action" type="hidden" value="checkout">
-                        <input name="orderID" type="email" placeholder="Email address (optional)" >
-                        <input name="price" type="number" placeholder="Amount" value="10.00" />
-                        <select name="currency" value="" >
-                            <option value="USD" selected="selected">USD</option>
-                            <option value="BTC">BTC</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                        </select>
-                        <input name="data" type="hidden" value="SRkpL6jTOABpS9wex5zaXvDPAYVN6HG9/cMkuenTVWNxsaBFauhthwbLfsnft9ATvwkLJy5UGlmrLqFeSBvkL0oKmYz0fY/QbGeLC3xiOTAd73hcSRDabVbBd97WWhPN+QjYT30mLJBzvGPqWSTJjO9pOuw1IgBWwMdVn79ZP4NWzDfNdsZvBs4zXnwrdyYNAiKR80tJZRn3CdS37orhSU0QO7SfVYXet+8BcaxA3CwBdqEBiwaKbknIOnH2yGKhaqSzJkKcsHG4UAEeTLc9MYTg/DYBlaJmo/hutkZrz+2hdEyU5byXBkWsrqwWn+8sThJdI752abbanOLzhxEK2a0IE+8Wb7BG6XFy95Yb0OY=">
-                        <input name="submit" type="image" src="https://bitpay.com/img/donate-md.png" border="0" >
+                        <div class="form-group row">
+                            <div class="col-md-8 tgd-no-left-padding">
+                                <input class="form-control" name="price" type="number" placeholder="Amount" value="10.00" />
+                            </div>
+                            <div class="col-md-8 tgd-no-right-padding">
+                                <select class="form-control" name="currency" value="" >
+                                    <option value="USD" selected="selected">USD</option>
+                                    <option value="BTC">BTC</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="data" value="i+8wYLNGk9LIgh913da5SgG/GA7jj8JhA0LTzmCuHJ2A1xPgE/JABmoEwVawN+bsUjzwXKkU5syz/IelMYuZhsb5J6oKZ6n2CQ+hWvueNa4vp3vH7dx9PPgD5/KRTGkqSP568lr7CJ3UecrKSbQpBY0UT6wVK17gIVG98wp8Ld0hEcf0dFKpN/ZFk8T75wsDfnk0dCvnUnDOdEmdWS0aCg52y8OKJJzLNq+o2OaM8Kw=">
+                        <button type="submit" class="btn btn-primary" disabled="disabled">pay with credit card <span class="fa fa-credit-card"></span></button>
+                        <div class="form-separator"><span>or</span></div>
+                        <button type="submit" class="btn btn-primary">pay with bitcoins <span class="fa fa-bitcoin"></span></button>
+                    </form>
+                </div>
+                <div id="bitcoin-1p">
+                    <strong>Make a 1-pence donation</strong>
+                    Upon clicking the button below, you will be redirected to a Bitpay platform page, where you'll be able to complete the donation process 
+                    using your Bitcoin wallet application and scanning a QR code or clicking on a "Pay with Bitcoin" button.
+                    <form action="https://bitpay.com/checkout" method="post" >
+                        <input type="hidden" name="action" value="checkout" />
+                        <input type="hidden" name="posData" value="" />
+                        <input type="hidden" name="data" value="i+8wYLNGk9LIgh913da5SgG/GA7jj8JhA0LTzmCuHJ2A1xPgE/JABmoEwVawN+bsp7DjS+An+ATbMzhpkB6ZHzuuKxHRHnjN2f785x2ENejcv/x1lXq06axFiaAMkw1o8T1uTY7O2UpV1zKo1R7mR5Hds9iiOgRLW9ZItMP7p0wa07EFcardTCTPaxq0Upv5p9eGF8pypHVvrNfvzMjhs3kLI4bf9X9hOwMrA0i898FVHQ+L66xstqBs2+6WDzUH" />
+<!--                        <input type="image" src="https://bitpay.com/img/donate-md.png" border="0" name="submit" alt="BitPay, the easy way to pay with bitcoins." >-->
+                        <button type="submit" class="btn btn-primary">make a 1-pence donation <span class="fa fa-bitcoin"></span></button>
                     </form>
                 </div>
             </section>
         </div>
     </div>
 </div>
+<script>
+    $('#descriptions button').not(':disabled').click(function() {
+        var targetId = '#' + $(this).data('toggle'),
+                $target = $(targetId),
+                $parent = $target.parent();
+
+        if (!$target.is(':visible')) {
+            // hide the rest
+            $parent.children().not(targetId).hide();
+            // show the target
+            $target.show();
+        }
+    });
+</script>
