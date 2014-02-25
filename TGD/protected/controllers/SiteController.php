@@ -100,6 +100,97 @@ class SiteController extends Controller {
         $this->render('partners');
     }
 
+    public function actionFaq(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - FAQ";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-faq";
+        
+
+        
+        $this->render('faq');
+    }
+
+    public function actionCoders(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Coders";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-coders";
+        
+
+        
+        $this->render('coders');
+    }
+    
+    
+    public function actionCoders(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Coders";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-coders";
+        
+
+        
+        $this->render('coders');
+    }
+    
+    public function actionTerms(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Terms of service";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-terms";
+        
+        $this->render('terms');
+    }
+    
+    public function actionPrivacy(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Privacy policy";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-privacy";
+        
+        $this->render('privacy');
+    }
+    
+    public function actionRules(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Company rules";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-rules";
+        
+        $this->render('rules');
+    }
+    
+    public function actionCompany(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - The company";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-company";
+        
+        $this->render('company');
+    }
+    
     public function actionRegister() {
         Yii::app()->theme = 'tgd';
 

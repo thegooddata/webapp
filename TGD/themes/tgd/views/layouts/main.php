@@ -196,18 +196,18 @@
                     <ul class="clearfix">
                         <h4>product</h4>
                         <li><a href="#">Technology</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="#">Support</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>third parties</h4>
-                        <li><a href="#">Coder's Program</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/coders");?>">Coder's Program</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createUrl("/site/partners");?>">Partners</a></li>
                         <li><a href="#">Media</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>company</h4>
-                        <li><a href="#">Your Company</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
                         <li><a href="#" class="red">Donate</a></li>
                     </ul>

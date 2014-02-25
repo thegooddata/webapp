@@ -26,7 +26,7 @@
                 <div class="content clearfix">
                     <h1>You own your data.</h1>
                     <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension blocks<br/>browsing data that would otherwise be used by third party trackers.</p>
-                    <a class="tgd-button" href="#">our product</a>
+                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/site/product");?>">our product</a>
                 </div> <!-- content -->
 
                 <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed3.png" alt="Your Data">
@@ -55,7 +55,7 @@
             <div class="container clearfix">
                 <h1>You don't just own just your data,<br/> You also own TheGoodData.</h1>
                 <p>Winning back data ownership in front of Corporations can only be achieved<br/> with the collaboration of thousands of people like you. That’s why, if you wish,<br/> you can become owner of TheGoodData at no cost. You will be informed of<br/> company progress and can take part on major decisions.</p>
-                <a class="tgd-button" href="#">your company</a>  
+                <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/site/company");?>">your company</a>  
 
                 <div class="sun clearfix">
                     <img id="sun1" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun1.png" alt="">
