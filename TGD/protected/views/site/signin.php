@@ -22,6 +22,7 @@
         </div>
     </div>
     <div class="modal-footer">
+        <a type="button" class="btn btn-default tgd-button tgd-register"  href="<?php echo Yii::app()->controller->createUrl('/site/register');?>">Register</a>
         <button type="button" class="btn btn-default tgd-button tgd-close" data-dismiss="modal">Close</button>
         <button type="submit" name="yt0" class="btn btn-primary tgd-button tgd-send">Sign in</button>
     </div>

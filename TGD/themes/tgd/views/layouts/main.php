@@ -197,13 +197,13 @@
                         <h4>product</h4>
                         <li><a href="#">Technology</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createUrl("/site/faq");?>">FAQs</a></li>
-                        <li><a href="#">Support</a></li>
+                        <li><a href="mailto:support@thegooddata.org">Support</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>third parties</h4>
                         <li><a href="<?php echo Yii::app()->controller->createUrl("/site/coders");?>">Coder's Program</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createUrl("/site/partners");?>">Partners</a></li>
-                        <li><a href="#">Media</a></li>
+                        <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>company</h4>
@@ -219,9 +219,9 @@
                     </ul>
                     <ul id="fifth" class="clearfix">
                         <h4>legal stuff</h4>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Company Rules</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/legal");?>#terms">Terms of Service</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/legal");?>#privacy">Privacy Policy</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/legal");?>#rules">Company Rules</a></li>
                     </ul>        
                     <ul class="social clearfix">
                         <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>

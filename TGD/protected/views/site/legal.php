@@ -1432,6 +1432,7 @@
     </div>
 </section>
 <script>
+
     $(function() {
         // sets the acive tab
         var url = $(location).attr('href'),
@@ -1449,8 +1450,7 @@
                 $('.nav-tabs li').find('[href=' + idInUrl + ']').parent().addClass('active');
                 $(idInUrl).addClass('active');
             }
-        }
-        $(window).scrollTop(0);
+        }      
         
         // scrolls the page to an inner-link 
         $(".inner-link").click(function() {
@@ -1465,7 +1465,9 @@
             }, 1000);
             return false;
         });
-
+        setTimeout(funtion(){
+            window.scrollTo(0,0);
+        },200);
     });
-
+    
 </script>

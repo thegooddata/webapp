@@ -98,9 +98,9 @@ function geolocate() {
 $('#registration-form').validate({
     debug: true,
     rules: {
-        firstname: "required",
-        lastname: "required",
-        username: {
+        firstName: "required",
+        lastName: "required",
+        userName: {
             required: true,
             minlength: 5
         },
@@ -117,16 +117,12 @@ $('#registration-form').validate({
             required: true,
             email: true
         },
-        topic: {
-            required: "#newsletter:checked",
-            minlength: 2
-        },
         agree: "required"
     },
     messages: {
-        firstname: "Please enter your firstname",
-        lastname: "Please enter your lastname",
-        username: {
+        firstnName: "Please enter your firstname",
+        lastName: "Please enter your lastname",
+        userName: {
             required: "Please enter a username",
             minlength: "Your username must consist of at least 2 characters"
         },
@@ -134,7 +130,7 @@ $('#registration-form').validate({
             required: "Please provide a password",
             minlength: "Your password must be at least 5 characters long"
         },
-        confirm_password: {
+        passwordConfirm: {
             required: "Please provide a password",
             minlength: "Your password must be at least 5 characters long",
             equalTo: "Please enter the same password as above"
