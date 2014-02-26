@@ -710,6 +710,8 @@ class ApiController extends Controller
 	
 	public function _viewQueriesblacklist(){
 		$query= $_GET['query'];
+		$lang= $_GET['lang'];
+
 
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
@@ -717,13 +719,15 @@ class ApiController extends Controller
 	                ->from('tbl_queries_blacklist')
 	                ->where(array(
 	                            'and',
-	                            '(midword = :query1 or midword = :query2 or midword = :query3)'
+	                            '(stem = :query1 or stem = :query2 or stem = :query3)',
+	                            'lang = :lang'
 	                            ),
 	                    	array(	
 	                            
 	                            ':query1'=>"/b".$query,
 	                            ':query2'=>"/b".$query."/b",
 	                            ':query3'=>$query."/b",
+	                            ':lang'=>$lang,
 	                            )
                     	)
 	                ->queryAll();
