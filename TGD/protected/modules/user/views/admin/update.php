@@ -9,7 +9,7 @@ if (!UserModule::isAdmin())
 	$this->menu_admin=array();
 	
 $this->menu=array(
-    array('label'=>UserModule::t('Create Member'), 'url'=>array('create')),
+    //array('label'=>UserModule::t('Create Member'), 'url'=>array('create')),
     array('label'=>UserModule::t('View Member'), 'url'=>array('view','id'=>$model->id)),
     array('label'=>UserModule::t('Manage Members'), 'url'=>array('admin')),
     array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('profileField/admin')),
