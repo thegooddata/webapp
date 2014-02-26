@@ -498,6 +498,7 @@ CREATE TABLE tbl_queries (
   lang varchar(128) NOT NULL,
   share varchar(128) DEFAULT 'true', 
   usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  language_support varchar(255) NOT NULL DEFAULT '',
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
