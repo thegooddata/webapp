@@ -28,6 +28,17 @@
 
 --- MEMBERS DATA ---
 
+--DROP TABLE tbl_languages_support;
+CREATE TABLE tbl_languages_support (
+  id SERIAL PRIMARY KEY,
+  lang varchar(128) NOT NULL,
+  support boolean
+);
+
+INSERT INTO tbl_languages_support  (lang, support) VALUES
+('en', true),
+('es', false);
+
 --DROP TABLE tbl_loans_countries;
 CREATE TABLE tbl_countries (
   id SERIAL PRIMARY KEY,
@@ -38,10 +49,269 @@ CREATE TABLE tbl_countries (
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_countries  (name_en, name_es) VALUES
-('United Kingdom', 'Reino Unido'),
-('Spain', 'España'),
-('France', 'Francia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AF', 'Afghanistan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AL', 'Albania');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DZ', 'Algeria');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AS', 'American Samoa');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AD', 'Andorra');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AO', 'Angola');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AI', 'Anguilla');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AQ', 'Antarctica');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AG', 'Antigua and Barbuda');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AR', 'Argentina');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AM', 'Armenia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AW', 'Aruba');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AU', 'Australia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AT', 'Austria');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AZ', 'Azerbaijan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BS', 'Bahamas');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BH', 'Bahrain');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BD', 'Bangladesh');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BB', 'Barbados');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BY', 'Belarus');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BE', 'Belgium');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BZ', 'Belize');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BJ', 'Benin');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BM', 'Bermuda');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BT', 'Bhutan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BO', 'Bolivia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BA', 'Bosnia and Herzegovina');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BW', 'Botswana');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BV', 'Bouvet Island');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BR', 'Brazil');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BQ', 'British Antarctic Territory');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IO', 'British Indian Ocean Territory');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VG', 'British Virgin Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BN', 'Brunei');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BG', 'Bulgaria');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BF', 'Burkina Faso');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BI', 'Burundi');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KH', 'Cambodia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CM', 'Cameroon');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CA', 'Canada');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CT', 'Canton and Enderbury Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CV', 'Cape Verde');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KY', 'Cayman Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CF', 'Central African Republic');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TD', 'Chad');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CL', 'Chile');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CN', 'China');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CX', 'Christmas Island');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CC', 'Cocos [Keeling] Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CO', 'Colombia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KM', 'Comoros');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CG', 'Congo - Brazzaville');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CD', 'Congo - Kinshasa');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CK', 'Cook Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CR', 'Costa Rica');
+INSERT INTO tbl_countries (code, name_en) VALUES ('HR', 'Croatia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CU', 'Cuba');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CY', 'Cyprus');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CZ', 'Czech Republic');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CI', 'Côte d’Ivoire');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DK', 'Denmark');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DJ', 'Djibouti');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DM', 'Dominica');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DO', 'Dominican Republic');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NQ', 'Dronning Maud Land');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DD', 'East Germany');
+INSERT INTO tbl_countries (code, name_en) VALUES ('EC', 'Ecuador');
+INSERT INTO tbl_countries (code, name_en) VALUES ('EG', 'Egypt');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SV', 'El Salvador');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GQ', 'Equatorial Guinea');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ER', 'Eritrea');
+INSERT INTO tbl_countries (code, name_en) VALUES ('EE', 'Estonia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ET', 'Ethiopia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FK', 'Falkland Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FO', 'Faroe Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FJ', 'Fiji');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FI', 'Finland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FR', 'France');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GF', 'French Guiana');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PF', 'French Polynesia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TF', 'French Southern Territories');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FQ', 'French Southern and Antarctic Territories');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GA', 'Gabon');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GM', 'Gambia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GE', 'Georgia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('DE', 'Germany');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GH', 'Ghana');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GI', 'Gibraltar');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GR', 'Greece');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GL', 'Greenland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GD', 'Grenada');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GP', 'Guadeloupe');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GU', 'Guam');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GT', 'Guatemala');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GG', 'Guernsey');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GN', 'Guinea');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GW', 'Guinea-Bissau');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GY', 'Guyana');
+INSERT INTO tbl_countries (code, name_en) VALUES ('HT', 'Haiti');
+INSERT INTO tbl_countries (code, name_en) VALUES ('HM', 'Heard Island and McDonald Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('HN', 'Honduras');
+INSERT INTO tbl_countries (code, name_en) VALUES ('HK', 'Hong Kong SAR China');
+INSERT INTO tbl_countries (code, name_en) VALUES ('HU', 'Hungary');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IS', 'Iceland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IN', 'India');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ID', 'Indonesia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IR', 'Iran');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IQ', 'Iraq');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IE', 'Ireland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IM', 'Isle of Man');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IL', 'Israel');
+INSERT INTO tbl_countries (code, name_en) VALUES ('IT', 'Italy');
+INSERT INTO tbl_countries (code, name_en) VALUES ('JM', 'Jamaica');
+INSERT INTO tbl_countries (code, name_en) VALUES ('JP', 'Japan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('JE', 'Jersey');
+INSERT INTO tbl_countries (code, name_en) VALUES ('JT', 'Johnston Island');
+INSERT INTO tbl_countries (code, name_en) VALUES ('JO', 'Jordan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KZ', 'Kazakhstan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KE', 'Kenya');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KI', 'Kiribati');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KW', 'Kuwait');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KG', 'Kyrgyzstan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LA', 'Laos');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LV', 'Latvia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LB', 'Lebanon');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LS', 'Lesotho');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LR', 'Liberia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LY', 'Libya');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LI', 'Liechtenstein');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LT', 'Lithuania');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LU', 'Luxembourg');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MO', 'Macau SAR China');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MK', 'Macedonia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MG', 'Madagascar');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MW', 'Malawi');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MY', 'Malaysia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MV', 'Maldives');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ML', 'Mali');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MT', 'Malta');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MH', 'Marshall Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MQ', 'Martinique');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MR', 'Mauritania');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MU', 'Mauritius');
+INSERT INTO tbl_countries (code, name_en) VALUES ('YT', 'Mayotte');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FX', 'Metropolitan France');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MX', 'Mexico');
+INSERT INTO tbl_countries (code, name_en) VALUES ('FM', 'Micronesia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MI', 'Midway Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MD', 'Moldova');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MC', 'Monaco');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MN', 'Mongolia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ME', 'Montenegro');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MS', 'Montserrat');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MA', 'Morocco');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MZ', 'Mozambique');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MM', 'Myanmar [Burma]');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NA', 'Namibia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NR', 'Nauru');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NP', 'Nepal');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NL', 'Netherlands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AN', 'Netherlands Antilles');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NT', 'Neutral Zone');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NC', 'New Caledonia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NZ', 'New Zealand');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NI', 'Nicaragua');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NE', 'Niger');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NG', 'Nigeria');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NU', 'Niue');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NF', 'Norfolk Island');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KP', 'North Korea');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VD', 'North Vietnam');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MP', 'Northern Mariana Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('NO', 'Norway');
+INSERT INTO tbl_countries (code, name_en) VALUES ('OM', 'Oman');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PC', 'Pacific Islands Trust Territory');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PK', 'Pakistan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PW', 'Palau');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PS', 'Palestinian Territories');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PA', 'Panama');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PZ', 'Panama Canal Zone');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PG', 'Papua New Guinea');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PY', 'Paraguay');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PE', 'Peru');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PH', 'Philippines');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PN', 'Pitcairn Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PL', 'Poland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PT', 'Portugal');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PR', 'Puerto Rico');
+INSERT INTO tbl_countries (code, name_en) VALUES ('QA', 'Qatar');
+INSERT INTO tbl_countries (code, name_en) VALUES ('RO', 'Romania');
+INSERT INTO tbl_countries (code, name_en) VALUES ('RU', 'Russia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('RW', 'Rwanda');
+INSERT INTO tbl_countries (code, name_en) VALUES ('RE', 'Réunion');
+INSERT INTO tbl_countries (code, name_en) VALUES ('BL', 'Saint Barthélemy');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SH', 'Saint Helena');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KN', 'Saint Kitts and Nevis');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LC', 'Saint Lucia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('MF', 'Saint Martin');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PM', 'Saint Pierre and Miquelon');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VC', 'Saint Vincent and the Grenadines');
+INSERT INTO tbl_countries (code, name_en) VALUES ('WS', 'Samoa');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SM', 'San Marino');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SA', 'Saudi Arabia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SN', 'Senegal');
+INSERT INTO tbl_countries (code, name_en) VALUES ('RS', 'Serbia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CS', 'Serbia and Montenegro');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SC', 'Seychelles');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SL', 'Sierra Leone');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SG', 'Singapore');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SK', 'Slovakia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SI', 'Slovenia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SB', 'Solomon Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SO', 'Somalia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ZA', 'South Africa');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GS', 'South Georgia and the South Sandwich Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('KR', 'South Korea');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ES', 'Spain');
+INSERT INTO tbl_countries (code, name_en) VALUES ('LK', 'Sri Lanka');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SD', 'Sudan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SR', 'Suriname');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SJ', 'Svalbard and Jan Mayen');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SZ', 'Swaziland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SE', 'Sweden');
+INSERT INTO tbl_countries (code, name_en) VALUES ('CH', 'Switzerland');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SY', 'Syria');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ST', 'São Tomé and Príncipe');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TW', 'Taiwan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TJ', 'Tajikistan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TZ', 'Tanzania');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TH', 'Thailand');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TL', 'Timor-Leste');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TG', 'Togo');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TK', 'Tokelau');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TO', 'Tonga');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TT', 'Trinidad and Tobago');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TN', 'Tunisia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TR', 'Turkey');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TM', 'Turkmenistan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TC', 'Turks and Caicos Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('TV', 'Tuvalu');
+INSERT INTO tbl_countries (code, name_en) VALUES ('UM', 'U.S. Minor Outlying Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('PU', 'U.S. Miscellaneous Pacific Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VI', 'U.S. Virgin Islands');
+INSERT INTO tbl_countries (code, name_en) VALUES ('UG', 'Uganda');
+INSERT INTO tbl_countries (code, name_en) VALUES ('UA', 'Ukraine');
+INSERT INTO tbl_countries (code, name_en) VALUES ('SU', 'Union of Soviet Socialist Republics');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AE', 'United Arab Emirates');
+INSERT INTO tbl_countries (code, name_en) VALUES ('GB', 'United Kingdom');
+INSERT INTO tbl_countries (code, name_en) VALUES ('US', 'United States');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ZZ', 'Unknown or Invalid Region');
+INSERT INTO tbl_countries (code, name_en) VALUES ('UY', 'Uruguay');
+INSERT INTO tbl_countries (code, name_en) VALUES ('UZ', 'Uzbekistan');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VU', 'Vanuatu');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VA', 'Vatican City');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VE', 'Venezuela');
+INSERT INTO tbl_countries (code, name_en) VALUES ('VN', 'Vietnam');
+INSERT INTO tbl_countries (code, name_en) VALUES ('WK', 'Wake Island');
+INSERT INTO tbl_countries (code, name_en) VALUES ('WF', 'Wallis and Futuna');
+INSERT INTO tbl_countries (code, name_en) VALUES ('EH', 'Western Sahara');
+INSERT INTO tbl_countries (code, name_en) VALUES ('YE', 'Yemen');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ZM', 'Zambia');
+INSERT INTO tbl_countries (code, name_en) VALUES ('ZW', 'Zimbabwe');
+INSERT INTO tbl_countries (code, name_en) VALUES ('AX', 'Åland Islands');
 
 --DROP TABLE tbl_currencies;
 CREATE TABLE tbl_currencies (
@@ -178,6 +448,7 @@ CREATE TABLE tbl_adtracks (
   url text NOT NULL DEFAULT '',
   usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,  
   status varchar(255) NOT NULL DEFAULT '',
+  languages_support varchar(255) NOT NULL DEFAULT '',
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
