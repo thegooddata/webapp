@@ -208,6 +208,9 @@ footer li a:hover {
 footer li a.red {
   color: #ea6654;
 }
+footer li.pending a {
+  color: black;
+}
 footer h4 {
   color: #6f818d;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
