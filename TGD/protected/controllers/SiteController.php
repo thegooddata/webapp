@@ -179,6 +179,18 @@ class SiteController extends Controller {
         $this->render('rules');
     }
     
+    public function actionLegal(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Legal stuff";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-legal";
+        
+        $this->render('legal');
+    }
+    
     public function actionCompany(){
         Yii::app()->theme = 'tgd';
 
