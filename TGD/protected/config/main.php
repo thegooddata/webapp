@@ -137,6 +137,9 @@ return array(
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        
+		        //Set friendly-url
+		        '/' => 'site/index',
+
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
