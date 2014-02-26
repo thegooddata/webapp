@@ -44,12 +44,13 @@ abstract class BaseIncomes extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('type, currency', 'required'),
-			array('type, currency', 'numerical', 'integerOnly'=>true),
+			array('type, currency, loan_reserved', 'required'),
+			array('type, currency, loan_reserved', 'numerical'),
 			array('source_name', 'length', 'max'=>255),
 			array('gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe'),
 			array('source_name, gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
+
 		);
 	}
 
@@ -68,8 +69,8 @@ abstract class BaseIncomes extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'type' => null,
-			'source_name' => Yii::t('app', 'Source Name'),
+			'type' =>Yii::t('app', 'Type'),
+			'source_name' => Yii::t('app', 'Name'),
 			'gross_amount' => Yii::t('app', 'Gross Amount'),
 			'expenses' => Yii::t('app', 'Expenses'),
 			'income_date' => Yii::t('app', 'Income Date'),

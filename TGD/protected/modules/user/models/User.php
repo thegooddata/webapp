@@ -1,13 +1,19 @@
 <?php
 
 class User extends CActiveRecord
-{
+{	
+	const STATUS_APPLIED = -2;
+	const STATUS_PRE_ACCEPTED = -3;
+	const STATUS_ACCEPT = 1;
+	const STATUS_EXPELLED = -4;
+	const STATUS_LEFT = -5;
+
 	const STATUS_NOACTIVE=0;
 	const STATUS_ACTIVE=1;
 	const STATUS_BANNED=-1;
-	const STATUS_EXPULSED=2;
-	const STATUS_APPLIED=3;
-	const STATUS_LEFT=4;
+	
+	
+
 
 	//TODO: Delete for next version (backward compatibility)
 	const STATUS_BANED=-1;
@@ -122,7 +128,7 @@ class User extends CActiveRecord
                 'condition'=>'status='.self::STATUS_NOACTIVE,
             ),
             'banned'=>array(
-                'condition'=>'status='.self::STATUS_BANNED.' or status='.self::STATUS_EXPULSED,
+                'condition'=>'status='.self::STATUS_BANNED.' or status='.self::STATUS_EXPELLED,
             ),
             'superuser'=>array(
                 'condition'=>'superuser=1',
@@ -140,16 +146,19 @@ class User extends CActiveRecord
             'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.superuser, user.status',
         ));
     }
+
+
 	
 	public static function itemAlias($type,$code=NULL) {
 		$_items = array(
 			'UserStatus' => array(
-				self::STATUS_NOACTIVE => UserModule::t('Not active'),
-				self::STATUS_ACTIVE => UserModule::t('Accepted'),
-				self::STATUS_BANNED => UserModule::t('Rejected'),
-				self::STATUS_EXPULSED => UserModule::t('Expulsed'),
 				self::STATUS_APPLIED => UserModule::t('Applied'),
+				self::STATUS_PRE_ACCEPTED => UserModule::t('Pre-Accepted'),
+				self::STATUS_ACCEPT => UserModule::t('Accept'),
+				self::STATUS_EXPELLED => UserModule::t('Expelled'),
 				self::STATUS_LEFT => UserModule::t('Left'),
+
+
 			),
 			'AdminStatus' => array(
 				'0' => UserModule::t('No'),
