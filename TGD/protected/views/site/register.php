@@ -153,7 +153,7 @@
                             <button type="submit" class="btn btn-primary">Apply for membership</button>
                         </form>
                     </div>
-                    <div id="contract" class="col-sm-16 col-md-6 col-lg-6" style="height: 898px;">
+                    <div id="contract" class="col-sm-16 col-md-6 col-lg-6 legal" style="height: 898px;">
                         <h2>
                             Industrial and Provident Societies Act 1965<br>
                             Rules of<br>
