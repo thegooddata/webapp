@@ -20,9 +20,10 @@
 		<?php echo $form->textField($model, 'member_id'); ?>
 	</div>
 
+	
 	<div class="row">
 		<?php echo $form->label($model, 'adtracks_sources_id'); ?>
-		<?php echo $form->dropDownList($model, 'adtracks_sources_id', GxHtml::listDataEx(AdtracksSources::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
+		<?php echo $form->dropDownList($model, 'adtracks_sources_id', GxHtml::listDataEx(AdtracksSources::model()->findAllAttributes(null, true, array('order'=>'name'))), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
@@ -53,11 +54,6 @@
 	<div class="row">
 		<?php echo $form->label($model, 'status'); ?>
 		<?php echo $form->textField($model, 'status', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'language_support'); ?>
-		<?php echo $form->textField($model, 'language_support', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">

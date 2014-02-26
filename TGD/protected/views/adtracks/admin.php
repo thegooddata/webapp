@@ -55,11 +55,12 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'filter'=>GxHtml::listDataEx(AdtracksSources::model()->findAllAttributes(null, true)),
 				),
 		'domain',
+		'status',
 		'url',
+
 		/*
 		'usertime',
-		'status',
-		'language_support',
+		
 		'created_at',
 		'updated_at',
 		*/
