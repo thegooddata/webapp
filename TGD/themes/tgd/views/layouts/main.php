@@ -195,8 +195,8 @@
                 <div class="container clearfix">
                     <ul class="clearfix">
                         <h4>product</h4>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/faq");?>">FAQs</a></li>
+                        <li class="pending"><a href="#">Technology</a></li>
+                        <li class="pending"><a href="<?php echo Yii::app()->controller->createUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="mailto:support@thegooddata.org">Support</a></li>
                     </ul>
                     <ul class="clearfix">
@@ -209,13 +209,13 @@
                         <h4>company</h4>
                         <li><a href="<?php echo Yii::app()->controller->createUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
-                        <li><a href="#" class="red">Donate</a></li>
+                        <li class="pending"><a href="#" class="red">Donate</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>contact</h4>
                         <li>82 Clerkenwell Road</li>
                         <li>London EC1M 5RF, UK</li>
-                        <li><a href="#">Email Us</a></li>
+                        <li><a href="mailto:info@thegooddata.org">Email Us</a></li>
                     </ul>
                     <ul id="fifth" class="clearfix">
                         <h4>legal stuff</h4>
