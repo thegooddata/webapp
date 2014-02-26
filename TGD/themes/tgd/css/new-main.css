@@ -217,7 +217,7 @@ footer h4 {
 }
 footer .footer {
   background-color: #fbfbfb;
-  box-shadow: inset 0 2px 0 #fff;
+  box-shadow: inset 0 1px 0 #e4e4e4;
   padding: 20px 0 25px 0;
 }
 footer .first {
@@ -400,6 +400,7 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #ea6654;
   box-shadow: 0 2px 0 #e43d27, 0 3px 3px #b8ccd8;
+  border: none;
   padding: 14px 32px;
 }
 #landing-page section > .container a.tgd-button:hover {
@@ -449,6 +450,7 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6d818d;
   box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
+  border: none;
   padding: 14px 32px;
   padding: 15px 32px 13px;
   margin-left: auto;
@@ -493,6 +495,7 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6d818d;
   box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
+  border: none;
   padding: 14px 32px;
 }
 #bag .container .content a.tgd-button:hover {
@@ -591,6 +594,7 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6fbd7f;
   box-shadow: 0 2px 0 #4eab61, 0 3px 3px #b8ccd8;
+  border: none;
   padding: 14px 32px;
   float: right;
 }
@@ -639,6 +643,7 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6d818d;
   box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
+  border: none;
   padding: 14px 32px;
   margin-left: auto;
   margin-right: auto;
@@ -995,45 +1000,52 @@ footer .license ul li p {
   margin-left: 10px;
 }
 #registration-form-block .glyphicon {
-  right: 10px;
+  right: 5px;
+  top: -5px;
 }
 #registration-form-block .has-info {
   color: #7d7d7d;
 }
+#registration-form-block .has-info label {
+  margin-left: 20px;
+}
+#registration-form-block .has-info .form-control-feedback {
+  top: -7px;
+  left: 0px;
+}
 #registration-form-block .split-3 {
   width: 33.3%;
 }
-#contract {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.legal {
+  padding: 20px 10px;
   border: 1px solid #eeeeee;
   background-color: #fbfbfb;
   overflow-y: scroll;
   border-left: none;
 }
-#contract h2 {
+.legal h2 {
   margin-top: 0;
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 2.5rem;
 }
-#contract h3 {
+.legal h3 {
   font-size: 1.3rem;
   line-height: 2rem;
   font-weight: bold;
 }
-#contract li ol[type=a] {
+.legal li ol[type=a] {
   counter-reset: list;
   padding-top: 15px;
   padding-left: 20px;
 }
-#contract li ol[type=a] > li {
+.legal li ol[type=a] > li {
   list-style: none;
   padding-left: 10px;
   position: relative;
 }
-#contract li ol[type=a] > li:before {
+.legal li ol[type=a] > li:before {
   content: "(" counter(list, lower-alpha) ") ";
   counter-increment: list;
   position: absolute;
@@ -1144,12 +1156,21 @@ footer .license ul li p {
 }
 #tgd-share-purchase #form button {
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 0.9em;
+  line-height: 0.7em;
   font-weight: bold;
   margin: 5px auto;
   padding-left: 25px;
   padding-right: 25px;
   display: block;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+#tgd-share-purchase #form button:hover {
+  background-color: #23aafb;
+}
+#tgd-share-purchase #form button:first-of-type {
+  margin-top: 15px;
 }
 #tgd-share-purchase #form .form-separator {
   margin: 20px auto 5px;
@@ -1157,12 +1178,15 @@ footer .license ul li p {
   border-top: 1px solid #7d7d7d;
   width: 20%;
   text-align: center;
+  height: 15px;
 }
 #tgd-share-purchase #form .form-separator span {
   position: relative;
   top: -15px;
   background-color: #fbfbfb;
   text-transform: uppercase;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 #tgd-share-purchase #loan-agreement {
   display: none;
@@ -1178,13 +1202,61 @@ footer .license ul li p {
 #tgd-share-purchase #loan-agreement ol h3 p {
   font-size: 1.4rem;
 }
-#tgd-share-purchase #bitcoin-1p strong {
+#tgd-share-purchase #bitcoin-1p [type=image] {
+  display: block;
+  margin: 10px auto;
+}
+#tgd-share-purchase #bitcoin-1p strong,
+#tgd-share-purchase #donation strong {
   font-size: 1.142em;
   display: block;
   margin: 10px 0 10px 0;
 }
-#tgd-share-purchase #bitcoin-1p .row {
+#tgd-share-purchase #donation {
+  display: none;
+}
+#tgd-share-purchase #donation .row {
   margin: 10px 0;
+}
+/*******************************************************************************
+ * Privacy policy
+ ******************************************************************************/
+#tgd-privacy #contract {
+  padding: 20px;
+  height: 300px;
+}
+#tgd-privacy #contract ol p {
+  margin-left: 0px;
+}
+#tgd-privacy #contract h2 {
+  text-align: left;
+}
+#tgd-privacy #contract p {
+  margin-left: 20px;
+}
+/*******************************************************************************
+ * Company rules
+ ******************************************************************************/
+#tgd-rules #contract {
+  padding: 20px;
+}
+#tgd-rules #contract h2 {
+  text-align: left;
+}
+#tgd-rules #contract p {
+  margin-left: 20px;
+}
+/*******************************************************************************
+ * Terms of service
+ ******************************************************************************/
+#tgd-terms #contract {
+  padding: 20px;
+}
+#tgd-terms #contract h2 {
+  text-align: left;
+}
+#tgd-terms #contract p {
+  margin-left: 20px;
 }
 /* ==========================================================================
    Helper classes
@@ -1317,14 +1389,88 @@ footer .license ul li p {
   padding-bottom: 0;
   padding-top: 0;
 }
-.modal-content .modal-header {
-  padding-bottom: 5px;
+.modal-content {
+  background: white;
 }
-.modal-header h2 {
+.modal-content label {
+  display: none;
+}
+.modal-content .checkbox label {
+  display: inline-block;
+}
+.modal-content .checkbox label input {
+  margin-top: 0;
+}
+.modal-content .checkbox {
+  margin-top: 0;
+}
+.modal-content .form-group:last-child {
+  margin-bottom: 0;
+}
+.modal-content .modal-header {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.modal-content .modal-header h2 {
   margin: 0;
   display: inline-block;
   color: #1D5987;
   line-height: 1em;
+}
+.modal-content .modal-footer {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 5px;
+}
+.modal-content .modal-footer button.tgd-button.tgd-close {
+  display: table;
+  color: #fff;
+  font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 20px;
+  background-clip: padding-box;
+  background-color: #ea6654;
+  box-shadow: 0 2px 0 #e43d27, 0 3px 3px #b8ccd8;
+  border: none;
+  padding: 7px 15px;
+  display: inline-block;
+}
+.modal-content .modal-footer button.tgd-button.tgd-close:hover {
+  background-color: #fe8473;
+}
+.modal-content .modal-footer button.tgd-button.tgd-close:active {
+  box-shadow: none;
+  margin-top: 2px;
+  margin-bottom: -2px;
+}
+.modal-content .modal-footer button.tgd-button.tgd-send {
+  display: table;
+  color: #fff;
+  font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 20px;
+  background-clip: padding-box;
+  background-color: #72bc81;
+  box-shadow: 0 2px 0 #51aa63, 0 3px 3px #b8ccd8;
+  border: none;
+  padding: 7px 15px;
+  display: inline-block;
+}
+.modal-content .modal-footer button.tgd-button.tgd-send:hover {
+  background-color: #85dc97;
+}
+.modal-content .modal-footer button.tgd-button.tgd-send:active {
+  box-shadow: none;
+  margin-top: 2px;
+  margin-bottom: -2px;
 }
 .loading {
   text-align: center;

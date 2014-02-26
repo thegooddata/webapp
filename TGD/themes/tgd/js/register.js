@@ -8,13 +8,13 @@ $(function() {
     }
 
     var sameSize = function() {
-        var formHeight = $('#registration-form').innerHeight();
+        var formHeight = $('#registration-form-block').innerHeight();
         $('#contract').innerHeight(formHeight);
     };
 
     setTimeout(function() {
         sameSize();
-    }, 100);
+    }, 50);
 
     initialize();
 
@@ -95,3 +95,51 @@ function geolocate() {
     }
 }
 
+$('#registration-form').validate({
+    debug: true,
+    rules: {
+        firstname: "required",
+        lastname: "required",
+        username: {
+            required: true,
+            minlength: 5
+        },
+        password: {
+            required: true,
+            minlength: 8
+        },
+        passwordConfirm: {
+            required: true,
+            minlength: 8,
+            equalTo: "#password"
+        },
+        email: {
+            required: true,
+            email: true
+        },
+        topic: {
+            required: "#newsletter:checked",
+            minlength: 2
+        },
+        agree: "required"
+    },
+    messages: {
+        firstname: "Please enter your firstname",
+        lastname: "Please enter your lastname",
+        username: {
+            required: "Please enter a username",
+            minlength: "Your username must consist of at least 2 characters"
+        },
+        password: {
+            required: "Please provide a password",
+            minlength: "Your password must be at least 5 characters long"
+        },
+        confirm_password: {
+            required: "Please provide a password",
+            minlength: "Your password must be at least 5 characters long",
+            equalTo: "Please enter the same password as above"
+        },
+        email: "Please enter a valid email address",
+        agree: "Please accept our policy"
+    }
+});
