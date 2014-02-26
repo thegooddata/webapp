@@ -44,7 +44,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="<?php echo Yii::app()->controller->createUrl("site/index"); ?>" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
+                            <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/index"); ?>" class="navbar-brand"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/>TheGoodData</a>
                         </div>
 
                         <?php if (!Yii::app()->user->isGuest){ ?>
@@ -52,17 +52,17 @@
                             <ul class="nav navbar-nav">
                                 <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/>username<b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/><?php echo Yii::app()->user->username; ?><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">account settings</a></li>
                                         <?php if(Yii::app()->controller->id == 'site'){ ?>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo Yii::app()->controller->createUrl("/goodData/index");?>">Good data</a></li>
-                                        <li><a href="<?php echo Yii::app()->controller->createUrl("/evilData/index");?>">Evil data</a></li>
-                                        <li><a href="<?php echo Yii::app()->controller->createUrl("/userData/index");?>">User data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index");?>">Good data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/evilData/index");?>">Evil data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/userData/index");?>">User data</a></li>
                                         <?php } ?>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/logout");?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/logout");?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -70,7 +70,7 @@
                         <?php } else { ?>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li id="sign-in"><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
+                                <li id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration"); ?>">Sign In</a></li>
                                 <li class="install"><a href="#">Install in chrome</a></li>
                             </ul>
                         </div>
@@ -124,7 +124,7 @@
                 </div>
                 <nav>
                     <ul class="clearfix">
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("user/registration"); ?>">Sign In</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration"); ?>">Sign In</a></li>
                         <li class="install"><a class="active" href="#">Install in chrome</a></li>
                     </ul> 
                 </nav>
@@ -132,7 +132,7 @@
         </header>
  -->
 
-        <?php if ($this->getUniqueId() != "site") { ?>
+        <?php if ($this->getUniqueId() != "site" && $this->getUniqueId() != "user/registration") { ?>
 
         <div id="secondary-nav">
             <div class="container">
@@ -196,18 +196,18 @@
                     <ul class="clearfix">
                         <h4>product</h4>
                         <li class="pending"><a href="#">Technology</a></li>
-                        <li class="pending"><a href="<?php echo Yii::app()->controller->createUrl("/site/faq");?>">FAQs</a></li>
+                        <li class="pending"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="mailto:support@thegooddata.org">Support</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>third parties</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/coders");?>">Coder's Program</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/partners");?>">Partners</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coder's Program</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/partners");?>">Partners</a></li>
                         <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>company</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/company");?>">Your Company</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
                         <li class="pending"><a href="#" class="red">Donate</a></li>
                     </ul>
@@ -219,9 +219,9 @@
                     </ul>
                     <ul id="fifth" class="clearfix">
                         <h4>legal stuff</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/legal");?>#terms">Terms of Service</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/legal");?>#privacy">Privacy Policy</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createUrl("/site/legal");?>#rules">Company Rules</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Service</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy Policy</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#rules">Company Rules</a></li>
                     </ul>        
                     <ul class="social clearfix">
                         <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>
@@ -252,7 +252,7 @@
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/sign-in.js'; ?>"></script>
     <script>
-        signInUrl = "<?php echo Yii::app()->controller->createUrl("/site/signin");?>";
+        signInUrl = "<?php echo Yii::app()->controller->createAbsoluteUrl("/site/signin");?>";
     </script>
     </body>
 </html>

@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <ul class="clearfix">
-                <li><a href="/"><span class="fa fa-home"></span></a></li>
+                <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("site/index"); ?>"><span class="fa fa-home"></span></a></li>
                 <li><h2>Coders program</h2></li>
             </ul>
         </div>
