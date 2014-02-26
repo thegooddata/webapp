@@ -35,7 +35,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Incomes|Incomes', $n);
+		return Yii::t('app', 'Income|Income', $n);
 	}
 
 	public static function representingColumn() {

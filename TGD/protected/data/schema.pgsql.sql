@@ -2658,7 +2658,7 @@ CREATE TABLE tbl_achievements_types (
 
 INSERT INTO tbl_achievements_types  (name_en, name_es,icon) VALUES
 ('Users news', 'Noticias de usuarios','news.png'),
-('Incomes', 'Ingresos','money.png');
+('Income', 'Ingresos','money.png');
 
 
 --DROP TABLE tbl_achievements;
