@@ -208,6 +208,9 @@ footer li a:hover {
 footer li a.red {
   color: #ea6654;
 }
+footer li.pending a {
+  color: black;
+}
 footer h4 {
   color: #6f818d;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -999,6 +1002,9 @@ footer .license ul li p {
 #registration-form-block button[type=submit] {
   margin-left: 10px;
 }
+#registration-form-block form .row {
+  margin: 0;
+}
 #registration-form-block .glyphicon {
   right: 5px;
   top: -5px;
@@ -1015,6 +1021,12 @@ footer .license ul li p {
 }
 #registration-form-block .split-3 {
   width: 33.3%;
+}
+#registration-form-block input.error {
+  border-color: #ea6654;
+}
+#registration-form-block label.error {
+  color: #ea6654;
 }
 .legal {
   padding: 20px 10px;
@@ -1430,7 +1442,36 @@ footer .license ul li p {
   margin-top: 0;
   padding-top: 5px;
 }
-.modal-content .modal-footer button.tgd-button.tgd-close {
+.modal-content .modal-footer button.tgd-button.tgd-register,
+.modal-content .modal-footer a.tgd-button.tgd-register {
+  display: table;
+  color: #fff;
+  font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 20px;
+  background-clip: padding-box;
+  background-color: #fcc34a;
+  box-shadow: 0 2px 0 #fbb218, 0 3px 3px #b8ccd8;
+  border: none;
+  padding: 7px 15px;
+  display: inline-block;
+}
+.modal-content .modal-footer button.tgd-button.tgd-register:hover,
+.modal-content .modal-footer a.tgd-button.tgd-register:hover {
+  background-color: #ffd47a;
+}
+.modal-content .modal-footer button.tgd-button.tgd-register:active,
+.modal-content .modal-footer a.tgd-button.tgd-register:active {
+  box-shadow: none;
+  margin-top: 2px;
+  margin-bottom: -2px;
+}
+.modal-content .modal-footer button.tgd-button.tgd-close,
+.modal-content .modal-footer a.tgd-button.tgd-close {
   display: table;
   color: #fff;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -1447,15 +1488,18 @@ footer .license ul li p {
   padding: 7px 15px;
   display: inline-block;
 }
-.modal-content .modal-footer button.tgd-button.tgd-close:hover {
+.modal-content .modal-footer button.tgd-button.tgd-close:hover,
+.modal-content .modal-footer a.tgd-button.tgd-close:hover {
   background-color: #fe8473;
 }
-.modal-content .modal-footer button.tgd-button.tgd-close:active {
+.modal-content .modal-footer button.tgd-button.tgd-close:active,
+.modal-content .modal-footer a.tgd-button.tgd-close:active {
   box-shadow: none;
   margin-top: 2px;
   margin-bottom: -2px;
 }
-.modal-content .modal-footer button.tgd-button.tgd-send {
+.modal-content .modal-footer button.tgd-button.tgd-send,
+.modal-content .modal-footer a.tgd-button.tgd-send {
   display: table;
   color: #fff;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -1472,10 +1516,12 @@ footer .license ul li p {
   padding: 7px 15px;
   display: inline-block;
 }
-.modal-content .modal-footer button.tgd-button.tgd-send:hover {
+.modal-content .modal-footer button.tgd-button.tgd-send:hover,
+.modal-content .modal-footer a.tgd-button.tgd-send:hover {
   background-color: #85dc97;
 }
-.modal-content .modal-footer button.tgd-button.tgd-send:active {
+.modal-content .modal-footer button.tgd-button.tgd-send:active,
+.modal-content .modal-footer a.tgd-button.tgd-send:active {
   box-shadow: none;
   margin-top: 2px;
   margin-bottom: -2px;
