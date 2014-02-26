@@ -203,26 +203,6 @@ class SiteController extends Controller {
         $this->render('company');
     }
     
-    public function actionRegister() {
-        Yii::app()->theme = 'tgd';
-
-        // set title
-        $this->pageTitle = " - Register";
-
-
-        // add js specific for this page
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.validate.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/additional-methods.min.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/register.js', CClientScript::POS_END);
-        Yii::app()->clientScript->registerScriptFile('https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBIqMM7HGjLXLXHpvBemGUj7sADxe7zEJ0&sensor=false&libraries=places', CClientScript::POS_END);
-        
-        // set body id to #tgd-share-purchase
-        $this->bodyId = "tgd-register";
-
-
-        $this->render('register');
-    }
-
     public function actionPurchase() {
         Yii::app()->theme = 'tgd';
 
