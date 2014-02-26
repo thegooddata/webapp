@@ -10,22 +10,14 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('category')); ?>:
 	<?php echo GxHtml::encode($data->category); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('headword')); ?>:
-	<?php echo GxHtml::encode($data->headword); ?>
-	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('midword')); ?>:
-	<?php echo GxHtml::encode($data->midword); ?>
-	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('action')); ?>:
-	<?php echo GxHtml::encode($data->action); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('stem')); ?>:
+	<?php echo GxHtml::encode($data->stem); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />
-	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
 	<?php echo GxHtml::encode($data->updated_at); ?>
 	<br />
-	*/ ?>
 
 </div>

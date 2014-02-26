@@ -23,20 +23,10 @@
 		<?php echo $form->textField($model, 'category', array('maxlength' => 255)); ?>
 		<?php echo $form->error($model,'category'); ?>
 		</div><!-- row -->
-		<div class="row queriesblacklist_headword headword">
-		<?php echo $form->labelEx($model,'headword'); ?>
-		<?php echo $form->textField($model, 'headword', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'headword'); ?>
-		</div><!-- row -->
-		<div class="row queriesblacklist_midword midword">
-		<?php echo $form->labelEx($model,'midword'); ?>
-		<?php echo $form->textField($model, 'midword', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'midword'); ?>
-		</div><!-- row -->
-		<div class="row queriesblacklist_action action">
-		<?php echo $form->labelEx($model,'action'); ?>
-		<?php echo $form->textField($model, 'action', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'action'); ?>
+		<div class="row queriesblacklist_stem stem">
+		<?php echo $form->labelEx($model,'stem'); ?>
+		<?php echo $form->textField($model, 'stem', array('maxlength' => 255)); ?>
+		<?php echo $form->error($model,'stem'); ?>
 		</div><!-- row -->
 		<div class="row queriesblacklist_created_at created_at">
 		<?php echo $form->labelEx($model,'created_at'); ?>

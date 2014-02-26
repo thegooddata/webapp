@@ -46,13 +46,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'id',
 		'lang',
 		'category',
-		'headword',
-		'midword',
-		'action',
-		/*
+		'stem',
 		'created_at',
 		'updated_at',
-		*/
 		array(
 			'class' => 'CButtonColumn',
 		),

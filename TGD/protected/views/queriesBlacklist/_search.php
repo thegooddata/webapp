@@ -21,18 +21,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'headword'); ?>
-		<?php echo $form->textField($model, 'headword', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'midword'); ?>
-		<?php echo $form->textField($model, 'midword', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'action'); ?>
-		<?php echo $form->textField($model, 'action', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'stem'); ?>
+		<?php echo $form->textField($model, 'stem', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">
