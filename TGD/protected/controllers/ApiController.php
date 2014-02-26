@@ -280,6 +280,11 @@ class ApiController extends Controller
 	       	case 'queriesblacklist':
 	       		$model = $this->_viewQueriesblacklist();
 	       		break;
+       		case 'languagesSupport':
+       			$model = LanguagesSupport::model()->findByAttributes(
+				    array('lang'=>$_GET['query'])
+				);
+				break;
 	            
 	       	default:
 	            $this->_sendResponse(501, sprintf(

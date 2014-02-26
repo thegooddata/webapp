@@ -28,6 +28,7 @@ $this->menu=array(
 'lang',
 'share',
 'usertime',
+'language_support',
 'created_at',
 'updated_at',
 	),

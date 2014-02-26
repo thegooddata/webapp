@@ -29,6 +29,9 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('usertime')); ?>:
 	<?php echo GxHtml::encode($data->usertime); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('language_support')); ?>:
+	<?php echo GxHtml::encode($data->language_support); ?>
+	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />

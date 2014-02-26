@@ -61,6 +61,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'language_support'); ?>
+		<?php echo $form->textField($model, 'language_support', array('maxlength' => 255)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
 		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model' => $model,

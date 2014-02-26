@@ -63,17 +63,15 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
         ),
 		'data',
 		'query',
-
 		/*
 		'lang',
-		
 		'usertime',
+		'language_support',
 		'created_at',
 		'updated_at',
 		*/
 		array(
 			'class' => 'CButtonColumn',
 		),
-
 	),
 )); ?>
