@@ -35,6 +35,7 @@ array(
 'url',
 'usertime',
 'status',
+'language_support',
 'created_at',
 'updated_at',
 	),

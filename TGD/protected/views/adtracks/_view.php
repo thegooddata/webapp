@@ -26,6 +26,9 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('status')); ?>:
 	<?php echo GxHtml::encode($data->status); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('language_support')); ?>:
+	<?php echo GxHtml::encode($data->language_support); ?>
+	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('created_at')); ?>:
 	<?php echo GxHtml::encode($data->created_at); ?>
 	<br />

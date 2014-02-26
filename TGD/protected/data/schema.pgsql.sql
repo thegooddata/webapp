@@ -448,7 +448,7 @@ CREATE TABLE tbl_adtracks (
   url text NOT NULL DEFAULT '',
   usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,  
   status varchar(255) NOT NULL DEFAULT '',
-  languages_support varchar(255) NOT NULL DEFAULT '',
+  language_support varchar(255) NOT NULL DEFAULT '',
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
