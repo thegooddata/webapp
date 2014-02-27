@@ -133,7 +133,7 @@
         </header>
  -->
 
-        <?php if ($this->getUniqueId() != "site" && $this->getUniqueId() != "user/registration") { ?>
+        <?php if ($this->getUniqueId() != "site" && $this->getUniqueId() != "user/registration" && $this->getUniqueId() != "user/profile") { ?>
 
         <div id="secondary-nav">
             <div class="container">
@@ -150,7 +150,7 @@
                             array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
                             
 
-                            array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->id == 1),
+                            array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
 
                             array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),

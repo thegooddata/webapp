@@ -3,7 +3,7 @@
 class ProfileController extends Controller
 {
 	public $defaultAction = 'profile';
-	public $layout='//layouts/column2';
+	public $layout = '//layouts/blank';
 
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
@@ -14,11 +14,42 @@ class ProfileController extends Controller
 	 */
 	public function actionProfile()
 	{
-		$model = $this->loadUser();
+
+		Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Edit profile";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-edit-profile";
+
+
+        $profile_form = array();
+        $error = '';
+        $success = '';
+
+        $user = $this->loadUser();
+
+        if(isset($_POST['ProfileForm'])) {
+            $profile_form=$_POST['ProfileForm'];
+
+            $user->username = $profile_form['username'];
+            $user->email = $profile_form['email'];
+
+            $user->save();
+        }
+        else{
+
+        }
+
+		
+
 	    $this->render('profile',array(
-	    	'model'=>$model,
-			'profile'=>$model->profile,
-	    ));
+	    	'user'=>$user,
+	    	'profile_form'=>$profile_form,
+	    	'error'=>$error,
+        	'success'=>$success,
+		));
 	}
 
 

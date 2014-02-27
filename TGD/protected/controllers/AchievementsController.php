@@ -10,11 +10,16 @@ class AchievementsController extends GxController {
     public function accessRules()
     {
         return array(
-            array('allow', // allow authenticated users to access all actions
-                'users'=>array('admin'),
-            ),
+            // array('allow', // allow authenticated users to access all actions
+            //     'users'=>array('admin'),
+            // ),
+            array('allow',  
+				'expression'=>'Yii::app()->user->isAdmin()',
+			),
             array('deny'),
         );
+
+			
     }
     
 	public function actionView($id) {
