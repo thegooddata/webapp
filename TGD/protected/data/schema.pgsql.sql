@@ -332,21 +332,22 @@ INSERT INTO tbl_currencies  (code, name_en,name_es) VALUES
 
 --DROP TABLE tbl_members_pii;
 CREATE TABLE tbl_members_pii (
-  id SERIAL PRIMARY KEY,
+  	id varchar(128) PRIMARY KEY,
 
-  firstname varchar(128) NOT NULL,
-  surname varchar(128) NOT NULL,
-  streetnumber varchar(128) NOT NULL,
-  street varchar(128) NOT NULL,
-  streetdetails varchar(128) NOT NULL,
-  city varchar(128) NOT NULL,
-  state varchar(128) NOT NULL,
-  zipcode varchar(128) NOT NULL,
-  id_countries int NOT NULL references tbl_countries(id),
-  email varchar(128) NOT NULL,
-  birthdate date NOT NULL,
-  agreerules boolean NOT NULL,
-
+	firstname varchar(256) NOT NULL,
+	lastname varchar(256) NOT NULL,
+	streetname varchar(256) NOT NULL,
+	streetnumber varchar(256) NOT NULL,
+	streetdetails varchar(256) NOT NULL,
+	city varchar(256) NOT NULL,
+	statecounty varchar(256) NOT NULL,
+	country varchar(256) NOT NULL,
+	postcode varchar(256) NOT NULL,
+	daybirthday varchar(256) NOT NULL,
+	monthbirthday varchar(256) NOT NULL,
+	yearbirthday varchar(256) NOT NULL,
+	agree boolean NOT NULL,
+	
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
