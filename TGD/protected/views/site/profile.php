@@ -44,7 +44,7 @@
             </section>
             <section id="description" class="col-sm-16 col-md-7 col-lg-7">
                 <p>In case you want to update your membership details (ie. postal address),
-                    please send us an email to <a href="mailto://membership@thegooddata.org">membership@thegooddata.org</a>
+                    please send us an email to <a href="mailto:membership@thegooddata.org">membership@thegooddata.org</a>
                     including your membership number, full name and a proof of the new data (utility bill).
                 </p>
                 <p>Your personal details are not displayed here since they have been decoupled from you user data to protect your identity.</p>
