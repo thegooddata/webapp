@@ -454,7 +454,7 @@ CREATE TABLE tbl_adtracks (
   adtracks_sources_id int NOT NULL references tbl_adtracks_sources(id),
   domain varchar(255) NOT NULL DEFAULT '',
   url text NOT NULL DEFAULT '',
-  usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,  
+  usertime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  
   status varchar(255) NOT NULL DEFAULT '',
   
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
@@ -485,7 +485,7 @@ CREATE TABLE tbl_browsing (
   user_id varchar(255) DEFAULT '',
   domain varchar(255) NOT NULL DEFAULT '',
   url text NOT NULL DEFAULT '',
-  usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  usertime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
@@ -504,7 +504,7 @@ CREATE TABLE tbl_queries (
   query text NOT NULL,
   lang varchar(128) NOT NULL,
   share varchar(128) DEFAULT 'true', 
-  usertime TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  usertime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   language_support varchar(255) NOT NULL DEFAULT '',
 
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
