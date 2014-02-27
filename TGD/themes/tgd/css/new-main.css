@@ -1303,18 +1303,25 @@ footer .license ul li p {
   color: white;
   font-size: 1.2rem;
 }
+#tgd-edit-profile #form .has-info {
+  color: #7d7d7d;
+}
+#tgd-edit-profile #form .has-info .form-control-feedback {
+  top: -7px;
+  right: 0px;
+}
 #tgd-edit-profile #form .form-control-help {
   color: #7d7d7d;
   position: absolute;
   top: 0px;
-  right: 10px;
+  right: 30px;
   display: block;
 }
 #tgd-edit-profile #form .popover {
   color: #7d7d7d;
 }
 #tgd-edit-profile #change-password {
-  margin: 5px 0 20px 10px;
+  margin: 5px 0 20px;
   text-transform: uppercase;
   font-weight: bold;
   color: #1c8ccf;
@@ -1324,7 +1331,7 @@ footer .license ul li p {
 #tgd-edit-profile #change-password span {
   display: none;
 }
-#tgd-edit-profile #password-form {
+#tgd-edit-profile .password-form {
   display: none;
 }
 #tgd-edit-profile #description {

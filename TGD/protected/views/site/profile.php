@@ -24,22 +24,23 @@
                         <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="Some text regarding the email form field."></span>
                         <span class="form-control-help">optional</span>
                     </div>
-                    <div id="change-password"><span id="dont">Don't </span>Change password</div>
-                    <div id="password-form">
-                        <div  class="form-group col-sm-16 col-md-16 col-lg-16">
+                    
+                        <div  class="password-form form-group col-sm-16 col-md-16 col-lg-16">
                             <label>Current password</label>
                             <input type="text" class="form-control" id="current-password" name="current-password">
                         </div>
-                        <div class="form-group col-sm-16 col-md-16 col-lg-16">
+                        <div class="password-form form-group col-sm-16 col-md-16 col-lg-16">
                             <label>New password</label>
                             <input type="text" class="form-control" id="new-password" name="new-password">
                         </div>
-                        <div class="form-group col-sm-16 col-md-16 col-lg-16">
+                        <div class=" password-form form-group col-sm-16 col-md-16 col-lg-16">
                             <label>Confirm new password</label>
                             <input type="password" class="form-control" id="password-confirm" name="password-confirm">
                         </div>
-                    </div>
+                    
+                    <div class=" form-group col-sm-16 col-md-16 col-lg-16" id="change-password"><span id="dont">Don't </span>Change password</div>
                     <button type="submit" class="btn btn-primary">Submit changes</button>
+                </form>
             </section>
             <section id="description" class="col-sm-16 col-md-7 col-lg-7">
                 <p>In case you want to update your membership details (ie. postal address),
@@ -60,7 +61,6 @@
     $(function() {
         var sameSize = function() {
             var formSectionHeight = $('#form').innerHeight();
-            console.log(formSectionHeight);
             $('#description').innerHeight(formSectionHeight);
         };
 
@@ -69,7 +69,7 @@
         }, 100);
 
         $('#change-password').click(function() {
-            $('#password-form').toggle();
+            $('.password-form').toggle();
             $('#dont').toggle();
             sameSize();
         });
