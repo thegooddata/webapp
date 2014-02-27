@@ -9,6 +9,16 @@
         </div>
     </div>
 </div> 
+
+ <?php if ($success != "") { ?>   
+    <p>SUCCESS : <?php echo $success; ?>
+<?php } ?>
+
+<?php if ($error != "") { ?>   
+    <p>ERROR : <?php echo $error; ?>
+<?php } ?>
+
+
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
@@ -25,59 +35,62 @@
                 <p>Note it is vital that you enter correct details, as 
                     it determines your legal rights as cooperative member.
                     You may be required later to send proof of ID.</p>
-                <form method="POST" id="registration-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/index"); ?>">
+
+
+
+                <form method="POST" id="registration-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration/registration"); ?>">
                     <div class="row">
                         <div  class="col-sm-16 col-md-8 col-lg-8">
                             <div class="form-group">
                                 <label>First name</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" >
+                                <input type="text" class="form-control" id="firstName" name="RegistrationForm[firstName]" value="<?php echo isset($registration_form['firstName']) ? $registration_form['firstName']:''; ?>">
                             </div>
                         </div>
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>Last name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" >
+                            <input type="text" class="form-control" id="lastName" name="RegistrationForm[lastName]" value="<?php echo isset($registration_form['lastName']) ? $registration_form['lastName']:''; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-16 col-md-16 col-lg-16">
                             <label>Street name</label>
-                            <input id="autocomplete" type="text" class="form-control" name="streetName" >
+                            <input id="autocomplete" type="text" class="form-control" name="RegistrationForm[streetName]" value="<?php echo isset($registration_form['streetName']) ? $registration_form['streetName']:''; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>Street number</label>
-                            <input type="text" class="form-control" id="street_number" name="streetNumber">
+                            <input type="text" class="form-control" id="street_number" name="RegistrationForm[streetNumber]" value="<?php echo isset($registration_form['streetNumber']) ? $registration_form['streetNumber']:''; ?>">
                         </div>
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>Street details</label>
-                            <input type="text" class="form-control" id="streetDetails" name="streetDetails">
+                            <input type="text" class="form-control" id="streetDetails" name="RegistrationForm[streetDetails]" value="<?php echo isset($registration_form['streetDetails']) ? $registration_form['streetDetails']:''; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>City</label>
-                            <input type="text" class="form-control" id="locality" name="city" >
+                            <input type="text" class="form-control" id="locality" name="RegistrationForm[city]" value="<?php echo isset($registration_form['city']) ? $registration_form['city']:''; ?>">
                         </div>
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>State/County</label>
-                            <input type="text" class="form-control" id="administrative_area_level_1" name="stateCounty" >
+                            <input type="text" class="form-control" id="administrative_area_level_1" name="RegistrationForm[stateCounty]" value="<?php echo isset($registration_form['stateCounty']) ? $registration_form['stateCounty']:''; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>Country</label>
-                            <input type="text" class="form-control" id="country" name="country" >
+                            <input type="text" class="form-control" id="country" name="RegistrationForm[country]" value="<?php echo isset($registration_form['country']) ? $registration_form['country']:''; ?>">
                         </div>
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>Post code</label>
-                            <input type="text" class="form-control" id="postal_code" name="postCode" >
+                            <input type="text" class="form-control" id="postal_code" name="RegistrationForm[postCode]" value="<?php echo isset($registration_form['postCode']) ? $registration_form['postCode']:''; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-16 split-3">
                             <label>Birth date</label>
-                            <select  class="form-control" id="dayBirthday" name="dayBirthday" >
+                            <select  class="form-control" id="dayBirthday" name="RegistrationForm[dayBirthday]" >
                                 <option value="0">Day</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -114,7 +127,7 @@
                         </div>
                         <div class="form-group col-sm-16 split-3">
                             <label>&nbsp;</label>
-                            <select  class="form-control" id="monthBirthday" name="monthBirthday" >
+                            <select  class="form-control" id="monthBirthday" name="RegistrationForm[monthBirthday]" >
                                 <option value="0">Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
@@ -132,7 +145,7 @@
                         </div>
                         <div class="form-group col-sm-16 split-3">
                             <label>&nbsp;</label>
-                            <select  class="form-control" id="yearBirthday" name="yearBirthday" >
+                            <select  class="form-control" id="yearBirthday" name="RegistrationForm[yearBirthday]" >
                                 <option value="0">Year</option>
 
                             </select>
@@ -141,29 +154,29 @@
                     <div class="row">
                         <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                             <label>Username</label>
-                            <input type="text" class="form-control" id="userName" name="userName" >
+                            <input type="text" class="form-control" id="userName" name="RegistrationForm[userName]" value="<?php echo isset($registration_form['userName']) ? $registration_form['userName']:''; ?>">
                             <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
                         </div>
                         <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                             <label>Email</label>
-                            <input type="email" class="form-control"  id="userEmail" name="userEmail">
+                            <input type="email" class="form-control"  id="userEmail" name="RegistrationForm[userEmail]" value="<?php echo isset($registration_form['userEmail']) ? $registration_form['userEmail']:''; ?>">
                             <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                             <label>Password</label>
-                            <input type="password" class="form-control"  id="password" name="password" >
+                            <input type="password" class="form-control"  id="password" name="RegistrationForm[password]" value="<?php echo isset($registration_form['password']) ? $registration_form['password']:''; ?>">
                             <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
                         </div>
                         <div class="form-group col-sm-16 col-md-8 col-lg-8">
                             <label>Confirm password</label>
-                            <input type="password" class="form-control"  id="passwordConfirm" name="passwordConfirm" >
+                            <input type="password" class="form-control"  id="passwordConfirm" name="RegistrationForm[passwordConfirm]" value="<?php echo isset($registration_form['passwordConfirm']) ? $registration_form['passwordConfirm']:''; ?>">
                         </div>
                     </div>
                     <div class="form-group checkbox col-sm-16 col-md-16 co-lg-16">
                         <label>
-                            <input type="checkbox" id="agree" name="agree" value="agree"> I agree to the Company <a href="#">rules and principles</a>                                        
+                            <input type="checkbox" id="agree" name="RegistrationForm[agree]" value="agree"> I agree to the Company <a href="#">rules and principles</a>                                        
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Apply for membership</button>
@@ -1436,112 +1449,3 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-<!--
-
-<?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Registration");
-$this->breadcrumbs=array(
-	UserModule::t("Registration"),
-);
-?>
-
-<h1><?php echo UserModule::t("Registration"); ?></h1>
-
-<?php if(Yii::app()->user->hasFlash('registration')): ?>
-<div class="success">
-<?php echo Yii::app()->user->getFlash('registration'); ?>
-</div>
-<?php else: ?>
-
-<div class="form">
-<?php $form=$this->beginWidget('UActiveForm', array(
-	'id'=>'registration-form',
-	'enableAjaxValidation'=>true,
-	'disableAjaxValidationAttributes'=>array('RegistrationForm_verifyCode'),
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-	'htmlOptions' => array('enctype'=>'multipart/form-data'),
-)); ?>
-
-	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
-	
-	<?php echo $form->errorSummary(array($model,$profile)); ?>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'username'); ?>
-	<?php echo $form->textField($model,'username'); ?>
-	<?php echo $form->error($model,'username'); ?>
-	</div>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'password'); ?>
-	<?php echo $form->passwordField($model,'password'); ?>
-	<?php echo $form->error($model,'password'); ?>
-	<p class="hint">
-	<?php echo UserModule::t("Minimal password length 4 symbols."); ?>
-	</p>
-	</div>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'verifyPassword'); ?>
-	<?php echo $form->passwordField($model,'verifyPassword'); ?>
-	<?php echo $form->error($model,'verifyPassword'); ?>
-	</div>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'email'); ?>
-	<?php echo $form->textField($model,'email'); ?>
-	<?php echo $form->error($model,'email'); ?>
-	</div>
-	
-<?php 
-		$profileFields=Profile::getFields();
-		if ($profileFields) {
-			foreach($profileFields as $field) {
-			?>
-	<div class="row">
-		<?php echo $form->labelEx($profile,$field->varname); ?>
-		<?php 
-		if ($widgetEdit = $field->widgetEdit($profile)) {
-			echo $widgetEdit;
-		} elseif ($field->range) {
-			echo $form->dropDownList($profile,$field->varname,Profile::range($field->range));
-		} elseif ($field->field_type=="TEXT") {
-			echo$form->textArea($profile,$field->varname,array('rows'=>6, 'cols'=>50));
-		} else {
-			echo $form->textField($profile,$field->varname,array('size'=>60,'maxlength'=>(($field->field_size)?$field->field_size:255)));
-		}
-		 ?>
-		<?php echo $form->error($profile,$field->varname); ?>
-	</div>	
-			<?php
-			}
-		}
-?>
-	<?php if (UserModule::doCaptcha('registration')): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
-		<?php echo $form->error($model,'verifyCode'); ?>
-		
-		<p class="hint"><?php echo UserModule::t("Please enter the letters as they are shown in the image above."); ?>
-		<br/><?php echo UserModule::t("Letters are not case-sensitive."); ?></p>
-	</div>
-	<?php endif; ?>
-	
-	<div class="row submit">
-		<?php echo CHtml::submitButton(UserModule::t("Register")); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-</div>
-<?php endif; ?>
-
--->
