@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/admin.css" type="text/css">
         
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js'; ?>"></script>        
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>
     </head>
 
     <body <?php echo ($this->bodyId=='')?'':'id="'.$this->bodyId.'"';?>>
@@ -249,7 +250,7 @@
             </div>
         </footer>
 
-    <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>
+
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/sign-in.js'; ?>"></script>
     <script>
         signInUrl = "<?php echo Yii::app()->controller->createAbsoluteUrl("/site/signin");?>";
