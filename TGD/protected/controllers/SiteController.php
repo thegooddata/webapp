@@ -100,6 +100,20 @@ class SiteController extends Controller {
         $this->render('partners');
     }
 
+        public function actionProfile() {
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Edit profile";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-edit-profile";
+
+
+
+        $this->render('profile');
+    }
+    
     public function actionFaq(){
         Yii::app()->theme = 'tgd';
 

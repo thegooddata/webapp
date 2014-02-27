@@ -840,6 +840,7 @@ footer .license ul li p {
   padding: 15px 0;
   list-style: none;
   float: left;
+  height: 60px;
 }
 #tgd-page-title ul li:first-child {
   background-image: url("../img/menu-divider.png");
@@ -1277,6 +1278,76 @@ footer .license ul li p {
   height: 500px;
   border-left: 1px solid #e5e5e5;
   padding: 20px;
+}
+/*******************************************************************************
+ * Edit profile
+ ******************************************************************************/
+#tgd-edit-profile #tgd-page-content > .container > .row {
+  margin: 0;
+  margin-bottom: 10px;
+}
+#tgd-edit-profile section {
+  padding: 40px !important;
+  border: 1px solid #eeeeee;
+}
+#tgd-edit-profile #form {
+  border-right: none;
+}
+#tgd-edit-profile #form input {
+  font-size: 1.142em;
+}
+#tgd-edit-profile #form button {
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+#tgd-edit-profile #form .form-control-help {
+  color: #7d7d7d;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  display: block;
+}
+#tgd-edit-profile #form .popover {
+  color: #7d7d7d;
+}
+#tgd-edit-profile #change-password {
+  margin: 5px 0 20px 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #1c8ccf;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+#tgd-edit-profile #change-password span {
+  display: none;
+}
+#tgd-edit-profile #password-form {
+  display: none;
+}
+#tgd-edit-profile #description {
+  background-color: #fbfbfb;
+  font-size: 1.142em;
+}
+#tgd-edit-profile #cancel-account {
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #1c8ccf;
+  font-size: 1.2rem;
+  text-align: right;
+  cursor: pointer;
+}
+#tgd-edit-profile #cancel-account img {
+  vertical-align: middle;
+}
+#tgd-edit-profile .has-info {
+  color: #eeeeee;
+}
+#tgd-edit-profile .split-3 {
+  width: 33.3%;
 }
 /* ==========================================================================
    Helper classes
