@@ -41,6 +41,9 @@ label {
   color: #7d7d7d;
   font-size: 0.857em;
 }
+.popover {
+  z-index: 2000;
+}
 /* ------------------------------------------------------------------- Header */
 /* navigation bar */
 .navbar-toggle .icon-bar {
@@ -154,6 +157,9 @@ label {
   color: white;
 }
 /* ------------------------------------------------------------------- Footer */
+footer {
+  margin-top: 40px;
+}
 footer ul {
   padding: 0;
   margin: 0;
