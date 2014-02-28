@@ -6,7 +6,7 @@
 	<div id="sidebar">
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Entities',
+			'title'=>'Actions',
 		));
 		$this->widget('zii.widgets.CMenu', array(
 			'items'=>$this->menu,
@@ -17,7 +17,7 @@
 
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Admin operations',
+			'title'=>'Entities',
 		));
 		$this->widget('zii.widgets.CMenu', array(
 			'items'=>$this->menu_admin,

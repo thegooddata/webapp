@@ -298,7 +298,7 @@ class UserModule extends CWebModule
 		    $model->password=UserModule::encrypting($model->password);
 		    $model->verifyPassword=UserModule::encrypting($model->verifyPassword);
 		    $model->superuser=0;
-		    $model->status=User::STATUS_ACTIVE; //User::STATUS_NOACTIVE
+		    $model->status=User::STATUS_APPLIED; //User::STATUS_NOACTIVE
 
 		    if ($model->save()) {
 		        $profile->user_id=$model->id;
@@ -335,7 +335,7 @@ class UserModule extends CWebModule
 		else 
 			$profile->validate();
 
-		return null;
+		return $model->getErrors();
 
 		// $model = new RegistrationForm;
   //       $profile=new Profile;

@@ -137,5 +137,8 @@ $('#registration-form').validate({
         },
         email: "Please enter a valid email address",
         agree: "Please accept our policy"
-    }
+    },
+    submitHandler: function(form) {
+        form.submit();
+      }
 });

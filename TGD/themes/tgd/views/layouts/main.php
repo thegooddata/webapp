@@ -55,7 +55,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/><?php echo Yii::app()->user->username; ?><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">account settings</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile");?>">account settings</a></li>
                                         <?php if(Yii::app()->controller->id == 'site'){ ?>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index");?>">Good data</a></li>
@@ -133,7 +133,7 @@
         </header>
  -->
 
-        <?php if ($this->getUniqueId() != "site" && $this->getUniqueId() != "user/registration") { ?>
+        <?php if ($this->getUniqueId() != "site" && $this->getUniqueId() != "user/registration" && $this->getUniqueId() != "user/profile") { ?>
 
         <div id="secondary-nav">
             <div class="container">
@@ -150,7 +150,7 @@
                             array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
                             
 
-                            array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->id == 1),
+                            array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
 
                             array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),

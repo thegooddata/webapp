@@ -2,21 +2,18 @@
 
 class User extends CActiveRecord
 {	
-	const STATUS_APPLIED = -2;
-	const STATUS_PRE_ACCEPTED = -3;
-	const STATUS_ACCEPT = 1;
-	const STATUS_EXPELLED = -4;
-	const STATUS_LEFT = -5;
-
-	const STATUS_NOACTIVE=0;
-	const STATUS_ACTIVE=1;
-	const STATUS_BANNED=-1;
+	const REGEX_SPECIAL_CHARS = '';
 	
-	
+	const STATUS_APPLIED = -1;
+	const STATUS_EXPELLED = -2;
+	const STATUS_DENIED = -3;
+	const STATUS_LEFT = -4;
 
+	const STATUS_PRE_ACCEPTED = 1;
+	const STATUS_ACCEPT = 2;
 
 	//TODO: Delete for next version (backward compatibility)
-	const STATUS_BANED=-1;
+	//const STATUS_BANED=-1;
 	
 	/**
 	 * The followings are the available columns in table 'users':
@@ -56,16 +53,33 @@ class User extends CActiveRecord
 	 */
 	public function rules()
 	{
+		
+		$regularExpressionPattern = '/.*(?=.*\d)(?=.*[a-zA-Z])(?=.*['.(self::REGEX_SPECIAL_CHARS).']).*/';
+
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.CConsoleApplication
 		return ((get_class(Yii::app())=='CConsoleApplication' || (get_class(Yii::app())!='CConsoleApplication' && Yii::app()->getModule('user')->isAdmin()))?array(
 			array('username', 'length', 'max'=>20, 'min' => 3,'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
-			array('password', 'length', 'max'=>128, 'min' => 4,'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
+			array('password', 'length', 'max'=>128, 'min' => 8,'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
+
+			//array('key', 'notsafe'),
+
+        	// array('password', 'match', 'pattern'=>$regularExpressionPattern, 'skipOnError'=>true, 'message'=>'Must have at least one letter, number and one special character out of set ['.self::REGEX_SPECIAL_CHARS.']!'),
+
 			array('email', 'email'),
 			//array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
 			//array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
 			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => UserModule::t("Incorrect symbols (A-z0-9).")),
-			array('status', 'in', 'range'=>array(self::STATUS_NOACTIVE,self::STATUS_ACTIVE,self::STATUS_BANNED)),
+			array('status', 'in', 'range'=>
+				array(
+					self::STATUS_APPLIED,
+					self::STATUS_EXPELLED,
+					self::STATUS_DENIED,
+					self::STATUS_LEFT,
+					self::STATUS_PRE_ACCEPTED,
+					self::STATUS_ACCEPT,
+				)
+			),
 			array('superuser', 'in', 'range'=>array(0,1)),
             array('created_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
             array('lastvisit_at', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
@@ -122,13 +136,13 @@ class User extends CActiveRecord
     {
         return array(
             'active'=>array(
-                'condition'=>'status='.self::STATUS_ACTIVE,
+                'condition'=>'status='.self::STATUS_ACCEPT.' or status='.self::STATUS_PRE_ACCEPTED,
             ),
-            'notactive'=>array(
-                'condition'=>'status='.self::STATUS_NOACTIVE,
-            ),
+            // 'notactive'=>array(
+            //     'condition'=>'status='.self::STATUS_NOACTIVE,
+            // ),
             'banned'=>array(
-                'condition'=>'status='.self::STATUS_BANNED.' or status='.self::STATUS_EXPELLED,
+                'condition'=>'status='.self::STATUS_APPLIED.' or status='.self::STATUS_DENIED.' or status='.self::STATUS_EXPELLED,
             ),
             'superuser'=>array(
                 'condition'=>'superuser=1',
@@ -143,7 +157,7 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.superuser, user.status',
+            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.superuser, user.status, user.key',
         ));
     }
 
@@ -154,6 +168,7 @@ class User extends CActiveRecord
 			'UserStatus' => array(
 				self::STATUS_APPLIED => UserModule::t('Applied'),
 				self::STATUS_PRE_ACCEPTED => UserModule::t('Pre-Accepted'),
+				self::STATUS_DENIED => UserModule::t('Denied'),
 				self::STATUS_ACCEPT => UserModule::t('Accept'),
 				self::STATUS_EXPELLED => UserModule::t('Expelled'),
 				self::STATUS_LEFT => UserModule::t('Left'),
@@ -197,6 +212,7 @@ class User extends CActiveRecord
         $criteria->compare('lastvisit_at',$this->lastvisit_at);
         $criteria->compare('superuser',$this->superuser);
         $criteria->compare('status',$this->status);
+        $criteria->compare('key',$this->key);
 
         return new CActiveDataProvider(get_class($this), array(
             'criteria'=>$criteria,

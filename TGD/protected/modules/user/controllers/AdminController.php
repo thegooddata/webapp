@@ -24,9 +24,8 @@ class AdminController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','create','update','view'),
-				'users'=>UserModule::getAdmins(),
+			array('allow',  
+				'expression'=>'Yii::app()->user->isAdmin()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -64,6 +63,7 @@ class AdminController extends Controller
 	public function actionView()
 	{
 		$model = $this->loadModel();
+
 		$this->render('view',array(
 			'model'=>$model,
 		));
@@ -111,7 +111,14 @@ class AdminController extends Controller
 		$this->performAjaxValidation(array($model,$profile));
 		if(isset($_POST['User']))
 		{
+
+			$previus_status=$model->status;
+
 			$model->attributes=$_POST['User'];
+
+			$new_status=$model->status;
+
+
 			$profile->attributes=((isset($_POST['Profile'])?$_POST['Profile']:array()));;
 			
 			
@@ -123,11 +130,25 @@ class AdminController extends Controller
 				}
 				$model->save();
 				$profile->save();
+
+				if ($previus_status != $new_status &&  $new_status == User::STATUS_PRE_ACCEPTED)
+				{
+					
+					//SEND EMAIL
+					$content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'pre_accepted.html');
+
+                    $message = new YiiMailMessage;
+                    $message->subject = '[TGD] - Changed Status';
+                    $message->setBody($content,'text/html');
+                    $message->addTo(Yii::app()->params['adminEmail']);
+                    $message->from = Yii::app()->params['senderEmail'];
+                    Yii::app()->mail->send($message);
+
+				}
+
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
-
-		//var_dump($model);die;
 
 		$this->render('update',array(
 			'model'=>$model,

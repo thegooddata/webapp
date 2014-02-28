@@ -66,7 +66,7 @@ abstract class BaseWhitelists extends GxActiveRecord {
 			'user_id' => Yii::t('app', 'User'),
 			'member_id' => Yii::t('app', 'Member'),
 			'domain' => Yii::t('app', 'Domain'),
-			'adtracks_sources_id' => null,
+			'adtracks_sources_id' => Yii::t('app', 'Broker'),
 			'status' => Yii::t('app', 'Status'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),

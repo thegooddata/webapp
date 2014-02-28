@@ -8,6 +8,10 @@ $this->breadcrumbs = array(
 $this->menu = array(
 	array('label'=>Yii::t('app', 'Create') . ' ' . Achievements::label(), 'url' => array('create')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . Achievements::label(2), 'url' => array('admin')),
+
+	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Announcement Types', 'url' => array('achievementsTypes/admin')),
+
+
 );
 ?>
 
