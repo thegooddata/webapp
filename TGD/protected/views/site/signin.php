@@ -16,7 +16,7 @@
             <div class="form-group checkbox col-sm-16 col-md-16 co-lg-16">
                 <input id="ytUserLogin_rememberMe" type="hidden" name="UserLogin[rememberMe]" value="0">
                 <label for="UserLogin_rememberMe">
-                    <input type="checkbox" id="UserLogin_rememberMe" name="UserLogin[rememberMe]" value="1"> remember me next time</a>                                        
+                    <input type="checkbox" id="UserLogin_rememberMe" name="UserLogin[rememberMe]" value="1"> remember me                                        
                 </label>
             </div>
         </div>

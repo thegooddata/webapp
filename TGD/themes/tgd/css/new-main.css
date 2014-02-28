@@ -44,6 +44,13 @@ label {
 .popover {
   z-index: 2000;
 }
+.tooltip .tooltip-inner {
+  background-color: #e7f4fc;
+  color: #6f818d;
+}
+.tooltip.right .tooltip-arrow {
+  border-right-color: #e7f4fc;
+}
 /* ------------------------------------------------------------------- Header */
 /* navigation bar */
 .navbar-toggle .icon-bar {

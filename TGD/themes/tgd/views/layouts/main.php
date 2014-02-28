@@ -196,8 +196,8 @@
                 <div class="container clearfix">
                     <ul class="clearfix">
                         <h4>product</h4>
-                        <li class="pending"><a href="#">Technology</a></li>
-                        <li class="pending"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/product");?>">Technology</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="mailto:support@thegooddata.org">Support</a></li>
                     </ul>
                     <ul class="clearfix">

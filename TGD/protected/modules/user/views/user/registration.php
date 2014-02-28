@@ -176,7 +176,7 @@
                     </div>
                     <div class="form-group checkbox col-sm-16 col-md-16 co-lg-16">
                         <label>
-                            <input type="checkbox" id="agree" name="RegistrationForm[agree]" value="agree"> I agree to the Company <a href="#">rules and principles</a>                                        
+                            <input type="checkbox" id="agree" name="RegistrationForm[agree]" value="agree"> I agree to the Company <a id="principles-and-rules" href="#" data-toggle="tooltip" data-placement="right" title="you can read them on the right column &#10137; ">principles and rules</a>                                        
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Apply for membership</button>

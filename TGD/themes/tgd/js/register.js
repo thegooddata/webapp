@@ -1,4 +1,8 @@
 $(function() {
+    $('#principles-and-rules').tooltip().click(function(e){
+        e.preventDefault();
+    });
+    
     var now = new Date().getFullYear(),
             to = now - 18,
             from = now - 100;
@@ -18,7 +22,6 @@ $(function() {
 
     initialize();
 
-});
 
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
@@ -141,4 +144,5 @@ $('#registration-form').validate({
     submitHandler: function(form) {
         form.submit();
       }
+});
 });
