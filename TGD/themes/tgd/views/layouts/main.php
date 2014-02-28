@@ -210,7 +210,7 @@
                         <h4>company</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
-                        <li class="pending"><a href="#" class="red">Donate</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/donate");?>" class="red">Donate</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>contact</h4>
