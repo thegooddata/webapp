@@ -113,6 +113,20 @@ class SiteController extends Controller {
 
     //     $this->render('profile');
     // }
+    public function actionDonate(){
+        Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Donate";
+
+        // set body id to #tgd-donate
+        $this->bodyId = "tgd-donate";
+        
+        // add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/share_purchase.js', CClientScript::POS_END);
+        
+        $this->render('donate');
+    }
     
     public function actionFaq(){
         Yii::app()->theme = 'tgd';

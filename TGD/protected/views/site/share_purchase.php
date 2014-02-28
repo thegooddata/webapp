@@ -11,7 +11,7 @@
 </div> 
 <div id="tgd-page-content" class="container">
     <div class="row">
-        <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-right-padding">
+        <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
             <section id="descriptions">
                 <div>
                     <h2>Your membership application has been accepted!</h2>
@@ -47,11 +47,11 @@
                     </div>
                 </div>
                 <div id="questions">
-                    Have questions?
+                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq")?>">Have questions?</a>
                 </div>
             </section>
         </div>
-        <div class="col-sm-16 col-md-6 col-lg-6 tgd-no-left-padding">
+        <div class="col-sm-16 col-md-6 col-lg-6 tgd-no-horizontal-padding">
             <section id="form">
                 <div id="loan-agreement">
                     <h2>Loan Agreement</h2>

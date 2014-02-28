@@ -1238,6 +1238,141 @@ footer .license ul li p {
   margin: 10px 0;
 }
 /*******************************************************************************
+ * Donate
+ ******************************************************************************/
+#tgd-donate #descriptions {
+  border: 1px solid #eeeeee;
+  border-right: 4px solid #58646b;
+}
+#tgd-donate #descriptions h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: 0;
+}
+#tgd-donate #descriptions p {
+  margin-bottom: 0;
+  font-size: 1.142em;
+}
+#tgd-donate #descriptions > div {
+  padding: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+#tgd-donate #descriptions > div.clearfix {
+  padding-right: 0;
+}
+#tgd-donate #descriptions > div:last-child {
+  border-bottom: none;
+  padding-bottom: 60px;
+}
+#tgd-donate #descriptions > div .text {
+  padding-right: 10px;
+  float: left;
+  width: 65%;
+}
+#tgd-donate #descriptions > div .button {
+  float: right;
+  width: 35%;
+}
+#tgd-donate #descriptions > div .button .btn {
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -1px 0 1px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+  margin-right: -20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-right: 0;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+#tgd-donate #descriptions > div .button .btn.credit-card {
+  background-color: #72bc81;
+  background-image: url('../img/arrow.png');
+  background-repeat: no-repeat;
+  background-position: 155px center;
+}
+#tgd-donate #descriptions > div .button .btn.bitcoin {
+  background-color: #fcc34a;
+  background-image: url('../img/bitcoin.png');
+  background-repeat: no-repeat;
+  background-position: 155px center;
+}
+#tgd-donate #descriptions > div .button .btn:hover {
+  background-color: #58646b;
+}
+#tgd-donate #descriptions > div .button .btn.disabled {
+  background-color: #666;
+}
+#tgd-donate #questions {
+  font-weight: bold;
+  color: #1c8ccf;
+  font-size: 1.5rem;
+}
+#tgd-donate #form {
+  padding: 10px 20px;
+  background-color: #fbfbfb;
+  border: 1px solid #eeeeee;
+  border-left: none;
+  overflow: auto;
+}
+#tgd-donate #form button {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  line-height: 0.7em;
+  font-weight: bold;
+  margin: 5px auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  display: block;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+#tgd-donate #form button:hover {
+  background-color: #23aafb;
+}
+#tgd-donate #form button:first-of-type {
+  margin-top: 15px;
+}
+#tgd-donate #form button span.fa {
+  margin-left: 10px;
+}
+#tgd-donate #bitcoin [type=image] {
+  display: block;
+  margin: 10px auto;
+}
+#tgd-donate #bitcoin strong,
+#tgd-donate #credit-card strong {
+  font-size: 1.142em;
+  display: block;
+  margin: 10px 0 10px 0;
+}
+#tgd-donate #bitcoin .row,
+#tgd-donate #credit-card .row {
+  margin: 10px 0;
+}
+#tgd-donate #credit-card {
+  display: none;
+}
+/*******************************************************************************
  * Privacy policy
  ******************************************************************************/
 #tgd-privacy #contract {
