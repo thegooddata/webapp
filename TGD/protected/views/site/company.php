@@ -47,7 +47,7 @@
                     <a id="our_way" href="#">Our Way</a>
                     <span>
                         <a href="#">
-                            <img src="images/arrow_in_circle.png" alt="">
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/arrow_in_circle.png" alt="">
                             <em>Take a look at our Company Management Dashboard</em>
                         </a>
                     </span>
@@ -58,10 +58,8 @@
                     <p>That's why The Good Data has been incorporated as a UK Industrial and Provident Society. You can apply for membership by using the service and registering online. From there on, you have the right to be informed about company progress and you can take part of major decissions. If there is anything you don't like, change it!</p>
                 </div>
             </section>
-
+                
         </div>
     </div>
 </section>
-</div>
-</div>
-</section>
+

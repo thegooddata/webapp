@@ -21,7 +21,7 @@
         <div class="row">
             <section class="coders col-sm-8 col-md-16 col-lg-16">
                 <div class="col-sm-8 col-md-8 col-lg-8 clearfix">
-                    <img src="<?php echo Yii::app()->theme->baseUrl . '/img/coders_cycle.png' ?>" alt="">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/coders_cycle.png" alt="">
                 </div>
                 <div class="col-sm-7 col-md-7 col-lg-7 pull-right clearfix">
                     <h3>The Good Data Mission can only be achieved with the active participation of the developer community.</h3>
@@ -31,17 +31,17 @@
                 </div>
                 <div class="coding_list col-sm-8 col-md-16 col-lg-16 clearfix">
                     <div class="clearfix">
-                        <img src="<?php echo Yii::app()->theme->baseUrl . '/img/github.png' ?>" alt="">
+                        <img src="<?php echo Yii::app()->theme->baseUrl;?>/img/github.png" alt="">
                         <p>Have a look at the code</p>
                         <a href="http://github.com/thegooddata">http://github.com/thegooddata</a>
                     </div>
                     <div class="clearfix">
-                        <img src="<?php echo Yii::app()->theme->baseUrl . '/img/list.png' ?>" alt="">
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/list.png" alt="">
                         <p>Learn about our proposed development priorities</p>
                         <a href="http://github.com/thegooddata">http://github.com/thegooddata</a>
                     </div>
                     <div class="clearfix">
-                        <img src="<?php echo Yii::app()->theme->baseUrl . '/img/data.png' ?>" alt="">
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/data.png" alt="">
                         <p>Understand rewarding mechanisms in detail</p>
                         <a href="http://github.com/thegooddata">http://github.com/thegooddata</a>
                     </div>
@@ -50,6 +50,7 @@
         </div>
     </div>
 </section>
+
 
 
 
