@@ -2833,7 +2833,7 @@ $total$ LANGUAGE plpgsql;
 --VIEWS
 
 CREATE OR REPLACE VIEW view_loans_countries AS 
-select count(*) as total from tbl_loans group by id_countries;
+select id_countries from tbl_loans group by id_countries;
 
 CREATE OR REPLACE VIEW view_adtracks_sources_members AS 
 select a.member_id,t.name, count(*) 
