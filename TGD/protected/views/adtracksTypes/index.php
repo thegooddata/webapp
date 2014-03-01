@@ -9,7 +9,7 @@ $this->menu = array(
 	array('label'=>Yii::t('app', 'Create') . ' ' . AdtracksTypes::label(), 'url' => array('create')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . AdtracksTypes::label(2), 'url' => array('admin')),
 
-	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Sources', 'url' => array('adtrackssources/admin')),
+	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Sources', 'url' => array('adtracksSources/admin')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Whitelist', 'url' => array('whitelists/admin')),
 );
 ?>
