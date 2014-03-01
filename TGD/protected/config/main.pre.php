@@ -86,10 +86,10 @@ return array(
 	'components'=>array(
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
-			'url' => 'https://www.thegooddata.org:8080',
-			'username' => 'dani',
-			'password' => 'dani',
-			'owners' => '"user1","user2"',
+			'url' => 'https://www.thegooddata.org:81',
+			'username' => 'admin',
+			'password' => 't2NdW!rzB%Qg',
+			'owners' => '"Bryansk","Nerpa","Nautilus","Seahorse","Tireless"',
 			'minimun' => 2,
 			'cert' => "/etc/ssl/certs/thegooddata.org.crt"
 		),

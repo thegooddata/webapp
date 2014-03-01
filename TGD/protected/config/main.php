@@ -93,17 +93,26 @@ return array(
 			'minimun' => 2,
 			'cert' => "/Users/dani/Dev/redoctober/cert/server.crt"
 		),
-
+		
 		'mail' => array(
 		    'class' => 'ext.yii-mail.YiiMail',
 		    'transportType'=>'smtp',
+		    // 'transportOptions'=>array(
+		    //         'host'=>'smtp.zoho.com',
+		    //         'username'=>'info@thegooddata.org',
+		    //         'password'=>'yuT4rh*7kWhJ ',
+		    //        	'port'=>'465',
+			   //     	'encryption'=>'ssl',                    
+		    // ),
 		    'transportOptions'=>array(
-		            'host'=>'host',
-		            'username'=>'username',
-		            'password'=>'password',
-		            'port'=>'25',                       
+		            'host'=>'mail.x3factory.com',
+		            'username'=>'tgd@x3factory.com',
+		            'password'=>'wJeC=zi@3o1a',
+		           	'port'=>'25',                   
 		    ),
-		    'viewPath' => 'application.views.mail',             
+		    'viewPath' => 'application.views.mail',   
+		    'logging' => true,
+    		'dryRun' => false          
 		),
 
 		'user'=>array(
@@ -191,34 +200,9 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'senderEmail'=>'tgd@x3factory.com',
+		//'senderEmail'=>'info@thegooddata.org',
+
+		'adminEmail'=>'danielgarciagomez@gmail.com',
 	),
 );
-
-/*
-
-{
-  "name":<username>,
-  "mail":<email>,
-  "pass":<password>,
-  "status":1,
-  "field_user_display_name":
-  {
-  	"und":
-  	[
-	  	{
-		  	"value":<display name>,
-		  	"format":null,
-		  	"safe_value":<display name>
-		}
-  	]
-  }
-}
-
-http://manage.thegooddata.org/rest/user/create
-
-http://manage.thegooddata.org/rest/user/6.json
-
-http://manage.thegooddata.org/rest/session/token/
-
-*/
