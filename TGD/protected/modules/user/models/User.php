@@ -67,8 +67,8 @@ class User extends CActiveRecord
         	// array('password', 'match', 'pattern'=>$regularExpressionPattern, 'skipOnError'=>true, 'message'=>'Must have at least one letter, number and one special character out of set ['.self::REGEX_SPECIAL_CHARS.']!'),
 
 			array('email', 'email'),
-			//array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
-			//array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
+			array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
+			array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
 			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => UserModule::t("Incorrect symbols (A-z0-9).")),
 			array('status', 'in', 'range'=>
 				array(
