@@ -35,10 +35,57 @@ class ProfileController extends Controller
 
             $user->username = $profile_form['username'];
             $user->email = $profile_form['email'];
+            
+            if ($profile_form['current-password']!=""){
 
-            $user->save();
-        }
-        else{
+            	$identity=new UserIdentity($user->username,$profile_form['current-password']);
+				$identity->authenticate();
+				
+				if ( $identity->errorCode == UserIdentity::ERROR_NONE)
+				{
+
+					if ($profile_form['new-password'] == $profile_form['password-confirm'])
+					{
+						$soucePassword = $profile_form['new-password'];
+
+						if (preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $soucePassword))
+						{
+							$user->activkey=UserModule::encrypting(microtime().$soucePassword);
+						    $user->password=UserModule::encrypting($soucePassword);
+						}
+						else
+						{
+							$error.="Password has to contains at least one letter and one number";
+						    
+						}
+					}
+					else
+					{
+						$error.="Password no coinciden";
+					}
+				}
+				else
+				{
+					$error.="Password anterior no es correcto";
+				}
+
+            }
+
+            if($error=="" && $user->validate())
+            {
+            	$user->save();
+            	Yii::app()->user->username = $user->username;
+            	$success="Actualización realizada con exito";
+            }
+            else
+            {
+            	foreach($user->getErrors() as $key => $value){
+                    $error.="<li>".$value[0]."</li>";
+                }
+            }
+		}
+        else
+        {
 
         }
 
