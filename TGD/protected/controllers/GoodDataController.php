@@ -186,13 +186,13 @@ class GoodDataController extends Controller {
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('SUM(total) as total')
+                ->select('*')
                 ->from('view_loans_countries')
                 ->queryAll();
 
         $total = 0;
         if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            $total = count($datas);
 
         $result['loans_countries'] = $total;
 
