@@ -97,13 +97,22 @@ return array(
 		'mail' => array(
 		    'class' => 'ext.yii-mail.YiiMail',
 		    'transportType'=>'smtp',
+		    // 'transportOptions'=>array(
+		    //         'host'=>'smtp.zoho.com',
+		    //         'username'=>'info@thegooddata.org',
+		    //         'password'=>'yuT4rh*7kWhJ ',
+		    //        	'port'=>'465',
+			   //     	'encryption'=>'ssl',                    
+		    // ),
 		    'transportOptions'=>array(
-		            'host'=>'host',
-		            'username'=>'username',
-		            'password'=>'password',
-		            'port'=>'25',                       
+		            'host'=>'mail.x3factory.com',
+		            'username'=>'tgd@x3factory.com',
+		            'password'=>'wJeC=zi@3o1a',
+		           	'port'=>'25',                   
 		    ),
-		    'viewPath' => 'application.views.mail',             
+		    'viewPath' => 'application.views.mail',   
+		    'logging' => true,
+    		'dryRun' => false          
 		),
 
 		'user'=>array(
@@ -123,9 +132,8 @@ return array(
 				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
 				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
 
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
-
+				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentil/<user_id:[\w-]+>', 'verb'=>'GET'),
+				
 		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
@@ -192,6 +200,9 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'senderEmail'=>'tgd@x3factory.com',
+		//'senderEmail'=>'info@thegooddata.org',
+
+		'adminEmail'=>'danielgarciagomez@gmail.com',
 	),
 );
