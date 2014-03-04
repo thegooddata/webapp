@@ -204,6 +204,6 @@ return array(
 		'senderEmail'=>'tgd@x3factory.com',
 		//'senderEmail'=>'info@thegooddata.org',
 
-		'adminEmail'=>'danielgarciagomez@gmail.com',
+		'adminEmail'=>'marcos@thegooddata.org',
 	),
 );
