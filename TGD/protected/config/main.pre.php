@@ -87,6 +87,7 @@ return array(
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
 			'url' => 'https://www.thegooddata.org:81',
+			'port' => 81,
 			'username' => 'admin',
 			'password' => 't2NdW!rzB%Qg',
 			'owners' => '"Bryansk","Nerpa","Nautilus","Seahorse","Tireless"',

@@ -3,6 +3,7 @@
 class redoctober extends CApplicationComponent
 {
 	public $url = 'https://localhost:8080';
+	public $port = 8080;
 
 	public $username = 'dani';
 	public $password = 'dani';
@@ -25,7 +26,7 @@ class redoctober extends CApplicationComponent
 
 		$tuCurl = curl_init(); 
 		curl_setopt($tuCurl, CURLOPT_URL, $this->url."/decrypt"); 
-		curl_setopt($tuCurl, CURLOPT_PORT , 8080); 
+		curl_setopt($tuCurl, CURLOPT_PORT , $this->port); 
 		curl_setopt($tuCurl, CURLOPT_VERBOSE, 0); 
 		curl_setopt($tuCurl, CURLOPT_HEADER, 0); 
 		curl_setopt($tuCurl, CURLOPT_SSLVERSION, 3); 
@@ -65,7 +66,7 @@ class redoctober extends CApplicationComponent
 
 		$tuCurl = curl_init(); 
 		curl_setopt($tuCurl, CURLOPT_URL, $this->url."/encrypt"); 
-		curl_setopt($tuCurl, CURLOPT_PORT , 8080); 
+		curl_setopt($tuCurl, CURLOPT_PORT , $this->port); 
 		curl_setopt($tuCurl, CURLOPT_VERBOSE, 0); 
 		curl_setopt($tuCurl, CURLOPT_HEADER, 0); 
 		curl_setopt($tuCurl, CURLOPT_SSLVERSION, 3); 
