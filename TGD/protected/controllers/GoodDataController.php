@@ -190,9 +190,7 @@ class GoodDataController extends Controller {
                 ->from('view_loans_countries')
                 ->queryAll();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = count($datas);
+        $total = count($datas);
 
         $result['loans_countries'] = $total;
 
