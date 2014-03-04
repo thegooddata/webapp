@@ -76,7 +76,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 			'income_date' => Yii::t('app', 'Income Date'),
 			'currency' => null,
 			'xrate_usd_spot' => Yii::t('app', 'Xrate Usd Spot'),
-			'loan_reserved' => Yii::t('app', 'Loan Reserved'),
+			'loan_reserved' => Yii::t('app', 'Loan reserve (%)'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
 			'type0' => null,
