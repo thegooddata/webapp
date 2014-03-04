@@ -1,14 +1,3 @@
-<script type="text/javascript">
-    var __cho__ = {"pid":3053};
-    (function() {
-        var c = document.createElement('script');
-        c.type = 'text/javascript';
-        c.async = true;
-        c.src = document.location.protocol + '//cc.chango.com/static/o.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(c, s);
-    })();
-</script>
        
         <div class="slide" id="slide2" data-slide="2" style="overflow: hidden;">
             <section id="intro" class="intro clearfix">       
