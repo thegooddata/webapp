@@ -59,7 +59,7 @@ class RegistrationController extends Controller
 
                 $registration_form=$_POST['RegistrationForm'];
 
-                $pii = new MembersPII();
+                $pii = new MembersPii();
                 $pii->id = uniqid();
                 $pii->firstname =$registration_form['firstName'];
                 $pii->lastname=$registration_form['lastName'];

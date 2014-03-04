@@ -267,7 +267,7 @@ class SiteController extends Controller {
         // //$email='da@da.com'.rand(0,1000);
         // $email='';
         // $member = Yii::app()->getModule('user')->createUser($email,$username,$password,$verifyPassword);
-        // $pii = new MembersPII();
+        // $pii = new MembersPii();
         // $pii->firstname='AAA';
         // $pii->surname='BBB';
         // $pii->streetnumber='CCC';
