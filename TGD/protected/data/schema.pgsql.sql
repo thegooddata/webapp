@@ -325,10 +325,20 @@ CREATE TABLE tbl_currencies (
   name_es varchar(255) DEFAULT ''
 );
 
-INSERT INTO tbl_currencies  (code, name_en,name_es) VALUES
-('USD', 'Dollar', 'Dolar'),
-('EURO', 'Euro', 'Euro');
-
+INSERT INTO tbl_currencies  (code, name_en) VALUES
+('USD US', 'Dollar'),                  
+('PGB', 'Pound Sterling'),         
+('CAD', 'Canadian Dollar'),       
+('EUR', 'Euro'),                           
+('AUD', 'Australian Dollar'),      
+('NZD', 'New Zealand Dollar'), 
+('HKD', 'Hong Kong Dollar'),    
+('ZAR', 'Rand'),                           
+('CHF', 'Swiss Franc'),               
+('SEK', 'Swedish Krona'),          
+('DKK', 'Danish Krone'),            
+('NOK', 'Norwegian Krone'),     
+('JPY', 'Yen');                            
 
 --DROP TABLE tbl_members_pii;
 CREATE TABLE tbl_members_pii (
