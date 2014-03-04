@@ -213,6 +213,13 @@ class UserDataController extends Controller {
         $this->visualizar();
     }
 
+    public function actionDeleteAllQueries(){
+        $member_id = Yii::app()->user->id;
+        Queries::model()->deleteAll('member_id IN (' . $member_id . ')');
+        Browsing::model()->deleteAll('member_id IN (' . $member_id . ')');
+         $this->visualizar();
+    }
+
     public function actionDeleteQueries() {
         $member_id = Yii::app()->user->id;
 

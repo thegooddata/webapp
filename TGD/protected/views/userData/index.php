@@ -70,7 +70,7 @@
                                 <div class="pager gray clearfix">
                                     <div class="pull-left">
                                         <button type="button" class="btn btn-xs download">DOWNLOAD</button>
-                                        <!-- <button type="button" class="btn btn-xs delete">DELETE</button> -->
+                                       <button type="button" class="btn btn-xs delete_one">DELETE</button> 
                                     </div>
                                     <div class="pull-right">
                                         <ul class="pagination">
@@ -193,7 +193,7 @@
                                 <div class="pager gray clearfix">
                                     <div class="pull-left">
                                         <button type="button" class="btn btn-xs download">DOWNLOAD</button>
-                                        <!-- <button type="button" class="btn btn-xs delete">DELETE</button> -->
+                                        <button type="button" class="btn btn-xs delete_one">DELETE</button>
                                     </div>
                                     <div class="pull-right">
                                         <ul class="pagination">
@@ -256,7 +256,15 @@
                         });
 
                         $(document).on('click','.delete_all',function() {
-                            if(!confirm('Are you sure you want to delete this item?')) return false;
+                            if(!confirm('Are you sure you want to delete all this items?')) return false;
+                            
+                            
+                            window.location.href = "<?php echo Yii::app()->createUrl('userData/deleteAllQueries',array('queries_pag' => $queries_pag))?>";
+
+                        });
+
+                        $(document).on('click','.delete_one',function() {
+                            if(!confirm('Are you sure you want to delete all this items?')) return false;
                             
                             if ( $('#queries:visible').length > 0 ){
                                 window.location.href = "<?php echo Yii::app()->createUrl('userData/deleteQueries',array('queries_pag' => $queries_pag))?>";
@@ -267,6 +275,8 @@
 
                         });
 
+                        
+
                         $('.download').click(function(){
 
                             if ( $('#queries:visible').length > 0 ){
@@ -275,7 +285,9 @@
                             else if ( $('#sites:visible').length > 0 ){
                                 window.location.href = "<?php echo Yii::app()->createUrl('userData/exportBrowsing')?>";
                             }
-                        });                    
+                        }); 
+
+                                     
                     });
                         
 
