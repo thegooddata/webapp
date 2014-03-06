@@ -47,7 +47,7 @@ abstract class BaseMembersPii extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('id, firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday, agree', 'required'),
+			array('id, firstname, lastname, streetname, streetnumber, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday, agree', 'required'),
 			array('id', 'length', 'max'=>128),
 			array('firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday', 'length', 'max'=>256),
 			array('created_at, updated_at', 'safe'),
