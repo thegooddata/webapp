@@ -78,7 +78,7 @@ function fillInAddress() {
             }
 
             setTimeout(function() {
-                $('[name=streetName]').val(arguments[0]);
+                $('[id=streetName]').val(arguments[0]);
             }, 200, route);
 
         }
