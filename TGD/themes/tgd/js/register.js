@@ -72,7 +72,7 @@ function fillInAddress() {
             }
 
             setTimeout(function() {
-                $('[id=streetName]').val(arguments[0]);
+                $('[id=autocomplete]').val(arguments[0]);
             }, 200, route);
 
         }
@@ -95,45 +95,45 @@ function geolocate() {
 $('#registration-form').validate({
     debug: true,
     rules: {
-        "regisrationForm[firstName]": "required",
-        "regisrationForm[lastName]": "required",
-        "regisrationForm[userName]": {
+        "RegistrationForm[firstName]": "required",
+        "RegistrationForm[lastName]": "required",
+        "RegistrationForm[userName]": {
             required: true,
             minlength: 5
         },
-        "regisrationForm[password]": {
+        "RegistrationForm[password]": {
             required: true,
             minlength: 8
         },
-        "regisrationForm[passwordConfirm]": {
+        "RegistrationForm[passwordConfirm]": {
             required: true,
             minlength: 8,
             equalTo: "#password"
         },
-        "regisrationForm[email]": {
+        "RegistrationForm[email]": {
             required: true,
             email: true
         },
-        "regisrationForm[agree]": "required"
+        "RegistrationForm[agree]": "required"
     },
     messages: {
-        "regisrationForm[firstnName]": "Please enter your firstname",
-        "regisrationForm[lastName]": "Please enter your lastname",
-        "regisrationForm[userName]": {
+        "RegistrationForm[firstnName]": "Please enter your firstname",
+        "RegistrationForm[lastName]": "Please enter your lastname",
+        "RegistrationForm[userName]": {
             required: "Please enter a username",
             minlength: "Your username must consist of at least 2 characters"
         },
-        "regisrationForm[password]": {
+        "RegistrationForm[password]": {
             required: "Please provide a password",
             minlength: "Your password must be at least 5 characters long"
         },
-        "regisrationForm[passwordConfirm]": {
+        "RegistrationForm[passwordConfirm]": {
             required: "Please provide a password",
             minlength: "Your password must be at least 5 characters long",
             equalTo: "Please enter the same password as above"
         },
-        "regisrationForm[email]": "Please enter a valid email address",
-        "regisrationForm[agree]": "Please accept our policy"
+        "RegistrationForm[email]": "Please enter a valid email address",
+        "RegistrationForm[agree]": "Please accept our policy"
     },
     submitHandler: function(form) {
         form.submit();
