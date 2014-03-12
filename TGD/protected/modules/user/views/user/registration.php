@@ -124,6 +124,11 @@
                                 <option value="30">30</option>
                                 <option value="31">31</option>
                             </select>
+                            <script>
+                                $(document ).ready(function() {
+                                    $('#dayBirthday>option:eq(<?php echo isset($registration_form['dayBirthday']) ? $registration_form['dayBirthday']:'0'; ?>)').attr('selected', true);
+                                });
+                            </script>
                         </div>
                         <div class="form-group col-sm-16 split-3">
                             <label>&nbsp;</label>
@@ -142,6 +147,12 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
+
+                            <script>
+                                $(document ).ready(function() {
+                                    $('#monthBirthday>option:eq(<?php echo isset($registration_form['monthBirthday']) ? $registration_form['monthBirthday']:'0'; ?>)').attr('selected', true);
+                                });
+                            </script>
                         </div>
                         <div class="form-group col-sm-16 split-3">
                             <label>&nbsp;</label>
@@ -149,6 +160,27 @@
                                 <option value="0">Year</option>
 
                             </select>
+
+                            <script>
+                                $(document ).ready(function() {
+
+                                    var now = new Date().getFullYear(),
+                                            to = now - 18,
+                                            from = now - 100;
+
+                                    for (; to > from; to -= 1) {
+                                        if (to == '<?php echo isset($registration_form['yearBirthday']) ? $registration_form['yearBirthday']:'0'; ?>')
+                                        {
+                                             $('<option selected>').appendTo('#yearBirthday').attr('value', to).html(to);
+                                        }
+                                        else
+                                        {
+                                            $('<option>').appendTo('#yearBirthday').attr('value', to).html(to);
+                                        }  
+                                    }
+
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="row">

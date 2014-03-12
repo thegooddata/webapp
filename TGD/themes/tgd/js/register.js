@@ -3,13 +3,7 @@ $(function() {
         e.preventDefault();
     });
     
-    var now = new Date().getFullYear(),
-            to = now - 18,
-            from = now - 100;
-
-    for (; to > from; to -= 1) {
-        $('<option>').appendTo('#yearBirthday').attr('value', to).html(to);
-    }
+    
 
     var sameSize = function() {
         var formHeight = $('#registration-form-block').innerHeight();
