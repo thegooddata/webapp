@@ -11,11 +11,11 @@
 </div> 
 
  <?php if ($success != "") { ?>   
-    <p>SUCCESS : <?php echo $success; ?>
+    <div class="alert alert-success">SUCCESS : <?php echo $success; ?></div>
 <?php } ?>
 
 <?php if ($error != "") { ?>   
-    <p>ERROR : <?php echo $error; ?>
+    <div class="alert alert-danger">ERROR : <?php echo $error; ?></div>
 <?php } ?>
 
 

@@ -95,45 +95,45 @@ function geolocate() {
 $('#registration-form').validate({
     debug: true,
     rules: {
-        firstName: "required",
-        lastName: "required",
-        userName: {
+        "regisrationForm[firstName]": "required",
+        "regisrationForm[lastName]": "required",
+        "regisrationForm[userName]": {
             required: true,
             minlength: 5
         },
-        password: {
+        "regisrationForm[password]": {
             required: true,
             minlength: 8
         },
-        passwordConfirm: {
+        "regisrationForm[passwordConfirm]": {
             required: true,
             minlength: 8,
             equalTo: "#password"
         },
-        email: {
+        "regisrationForm[email]": {
             required: true,
             email: true
         },
-        agree: "required"
+        "regisrationForm[agree]": "required"
     },
     messages: {
-        firstnName: "Please enter your firstname",
-        lastName: "Please enter your lastname",
-        userName: {
+        "regisrationForm[firstnName]": "Please enter your firstname",
+        "regisrationForm[lastName]": "Please enter your lastname",
+        "regisrationForm[userName]": {
             required: "Please enter a username",
             minlength: "Your username must consist of at least 2 characters"
         },
-        password: {
+        "regisrationForm[password]": {
             required: "Please provide a password",
             minlength: "Your password must be at least 5 characters long"
         },
-        passwordConfirm: {
+        "regisrationForm[passwordConfirm]": {
             required: "Please provide a password",
             minlength: "Your password must be at least 5 characters long",
             equalTo: "Please enter the same password as above"
         },
-        email: "Please enter a valid email address",
-        agree: "Please accept our policy"
+        "regisrationForm[email]": "Please enter a valid email address",
+        "regisrationForm[agree]": "Please accept our policy"
     },
     submitHandler: function(form) {
         form.submit();
