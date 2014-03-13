@@ -7,6 +7,13 @@ $this->breadcrumbs=array(
 
 <h1><?php echo UserModule::t("Change password"); ?></h1>
 
+<?php if ($success != "") { ?>   
+    <p>SUCCESS : <?php echo $success; ?>
+<?php } ?>
+
+<?php if ($error != "") { ?>   
+    <p>ERROR : <?php echo $error; ?>
+<?php } ?>
 
 <div class="form">
 <?php echo CHtml::beginForm(); ?>
@@ -17,9 +24,6 @@ $this->breadcrumbs=array(
 	<div class="row">
 	<?php echo CHtml::activeLabelEx($form,'password'); ?>
 	<?php echo CHtml::activePasswordField($form,'password'); ?>
-	<p class="hint">
-	<?php echo UserModule::t("Minimal password length 4 symbols."); ?>
-	</p>
 	</div>
 	
 	<div class="row">
