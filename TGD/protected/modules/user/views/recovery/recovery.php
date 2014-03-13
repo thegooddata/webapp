@@ -7,27 +7,29 @@ $this->breadcrumbs=array(
 
 <h1><?php echo UserModule::t("Restore"); ?></h1>
 
-<?php if(Yii::app()->user->hasFlash('recoveryMessage')): ?>
-<div class="success">
-<?php echo Yii::app()->user->getFlash('recoveryMessage'); ?>
-</div>
-<?php else: ?>
+<?php if ($success != "") { ?>   
+    <p>SUCCESS : <?php echo $success; ?>
+<?php } ?>
+
+<?php if ($error != "") { ?>   
+    <p>ERROR : <?php echo $error; ?>
+<?php } ?>
 
 <div class="form">
+
+	<p>Enter your registered email. If you have not provided us with an email when you registered as a member, please read <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">this</a>.</p>
 <?php echo CHtml::beginForm(); ?>
 
 	<?php echo CHtml::errorSummary($form); ?>
 	
 	<div class="row">
-		<?php echo CHtml::activeLabel($form,'login_or_email'); ?>
+		<?php echo CHtml::activeLabel($form,'email'); ?>
 		<?php echo CHtml::activeTextField($form,'login_or_email') ?>
-		<p class="hint"><?php echo UserModule::t("Please enter your login or email addres."); ?></p>
 	</div>
 	
 	<div class="row submit">
-		<?php echo CHtml::submitButton(UserModule::t("Restore")); ?>
+		<?php echo CHtml::submitButton(UserModule::t("Submit")); ?>
 	</div>
 
 <?php echo CHtml::endForm(); ?>
 </div><!-- form -->
-<?php endif; ?>

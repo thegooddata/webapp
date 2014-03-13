@@ -8,6 +8,10 @@ class RecoveryController extends Controller
 	 * Recovery password
 	 */
 	public function actionRecovery () {
+
+		$error = '';
+        $success = '';
+
 		$form = new UserRecoveryForm;
 		if (Yii::app()->user->id) {
 		    	$this->redirect(Yii::app()->controller->module->returnUrl);
@@ -20,18 +24,33 @@ class RecoveryController extends Controller
 		    		if(isset($find)&&$find->activkey==$activkey) {
 			    		if(isset($_POST['UserChangePassword'])) {
 							$form2->attributes=$_POST['UserChangePassword'];
-							if($form2->validate()) {
+
+							if (strlen($_POST['UserChangePassword']["password"])<8||!preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $_POST['UserChangePassword']["password"]))
+		                    {
+		                        $error.="Password must be 8 to 32 characters long and include at least one letter and one number ";
+		                    }
+		                    else if($form2->validate()) {
 								$find->password = Yii::app()->controller->module->encrypting($form2->password);
 								$find->activkey=Yii::app()->controller->module->encrypting(microtime().$form2->password);
 								if ($find->status==0) {
 									$find->status = 1;
 								}
 								$find->save();
-								Yii::app()->user->setFlash('recoveryMessage',UserModule::t("New password is saved."));
-								$this->redirect(Yii::app()->controller->module->recoveryUrl);
+								$success="New password is saved.";
+								// Yii::app()->user->setFlash('recoveryMessage',UserModule::t("New password is saved."));
+								// $this->redirect(Yii::app()->controller->module->recoveryUrl);
+							}
+							else
+							{
+
 							}
 						} 
-						$this->render('changepassword',array('form'=>$form2));
+						$this->render('changepassword',array(
+							'form'=>$form2,
+							'error'=>$error,
+                			'success'=>$success
+                		));
+
 		    		} else {
 		    			Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Incorrect recovery link."));
 						$this->redirect(Yii::app()->controller->module->recoveryUrl);
@@ -55,11 +74,23 @@ class RecoveryController extends Controller
 							
 			    			UserModule::sendMail($user->email,$subject,$message);
 			    			
-							Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));
+							// Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));
+
+							$success="We have sent you an email with the instructions to restore your password.";
 			    			$this->refresh();
 			    		}
+			    		else
+			    		{
+
+			    			$error="There is no account in our records with this email. If you have not provided us with an email when you registered as a member, please read this";
+			    		}
+
 			    	}
-		    		$this->render('recovery',array('form'=>$form));
+		    		$this->render('recovery',array(
+		    			'form'=>$form,
+		    			'error'=>$error,
+                		'success'=>$success
+                	));
 		    	}
 		    }
 	}
