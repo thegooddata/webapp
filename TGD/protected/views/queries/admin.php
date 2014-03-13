@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 
 $this->menu = array(
 		// array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
-		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Blacklist', 'url' => array('queriesblacklist/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Blacklist', 'url' => array('queriesBlacklist/admin')),
 	);
 
 
