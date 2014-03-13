@@ -55,18 +55,18 @@ class ProfileController extends Controller
 						}
 						else
 						{
-							$error.="Password has to contains at least one letter and one number";
+							$error.="Password must be 8 to 32 characters long and include at least one letter and one number";
 						    
 						}
 					}
 					else
 					{
-						$error.="Password no coinciden";
+						$error.="Passwords do not match";
 					}
 				}
 				else
 				{
-					$error.="Password anterior no es correcto";
+					$error.="Current password is not correct";
 				}
 
             }
@@ -75,7 +75,7 @@ class ProfileController extends Controller
             {
             	$user->save();
             	Yii::app()->user->username = $user->username;
-            	$success="Actualización realizada con exito";
+            	$success="Changes have been made successfully";
             }
             else
             {

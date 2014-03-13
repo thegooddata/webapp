@@ -83,9 +83,9 @@ class RegistrationController extends Controller
                     $verifyPassword=$registration_form['passwordConfirm'];
                     $email=$registration_form['userEmail'];
                     
-                    if (!preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $password))
+                    if (strlen($password)<8||!preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $password))
                     {
-                        $error.="Password has to contains at least one letter and one number";
+                        $error.="Password must be 8 to 32 characters long and include at least one letter and one number ";
                     }
                     else
                     {
@@ -99,22 +99,20 @@ class RegistrationController extends Controller
                             $member->key=$mensaje;
                             $member->save();
 
-                            $success="Registro realizado con exito";
+                            $success="Membership application has been done successfully";
 
                             $registration_form = array();
 
-                            //SEND EMAIL
-                            $message = new YiiMailMessage;
-                            $message->subject = '[TGD] - New User';
-                            $message->setBody(
-                                '<pre>'.print_r($pii->attributes,true).'</pre>'.
+                            $message = '<pre>'.print_r($pii->attributes,true).'</pre>'.
                                 '<hr>'.
-                                '<pre>'.print_r($member->attributes,true).'</pre>',
-                                
-                            'text/html');
-                            $message->addTo(Yii::app()->params['adminEmail']);
-                            $message->from = Yii::app()->params['senderEmail'];
-                            Yii::app()->mail->send($message);
+                                '<pre>'.print_r($member->attributes,true).'</pre>';
+
+                            UserModule::sendMail(
+                                Yii::app()->params['adminEmail'],
+                                '[TGD] - New User',
+                                $message
+                            );
+
 
                         }
                         else
