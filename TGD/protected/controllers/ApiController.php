@@ -43,10 +43,44 @@ class ApiController extends Controller
 		if(empty($user)) {
 	         $this->_sendResponse(404, 'No user found with username: '.$_GET['username']);
 	    } else {
+	    	$objUser = User::model()->findByPk($user[0]->id);
+			$objUser->lastvisit_at = date('Y-m-d H:i:s');
+			$objUser->save();
+	    	
 	        $this->_sendResponse(200, CJSON::encode($user),'application/json');
 	    }             
     }
  	
+ 	// Actions
+    public function actionDeleteQueries()
+	{
+		$user_id=$_GET['user_id'];
+		$member_id=$_GET['user_id'];
+
+		if (!is_numeric($_GET['user_id'])){
+			$member_id=0;
+		}
+
+		if ($member_id!=0)
+		{
+
+			$query = "delete from tbl_queries  where member_id = :member_id";
+			$command = Yii::app()->db->createCommand($query);
+			$resultado=$command->execute(array('member_id' => $member_id));
+
+			$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+		}
+		else
+		{
+			$query = "delete from tbl_queries  where user_id = :user_id";
+			$command = Yii::app()->db->createCommand($query);
+			$resultado=$command->execute(array('user_id' => $user_id));
+
+			$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+		}
+
+	}
+
  	// Actions
     public function actionCount()
 	{

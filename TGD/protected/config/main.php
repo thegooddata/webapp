@@ -130,6 +130,9 @@ return array(
 			'rules'=>array(
 
 				// REST patterns
+				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
+				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
+
 				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
 				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
 
