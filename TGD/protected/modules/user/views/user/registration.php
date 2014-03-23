@@ -40,7 +40,7 @@
 
                 <form method="POST" id="registration-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration/registration"); ?>">
                     <div class="row">
-                        <div  class="col-sm-16 col-md-8 col-lg-8">
+                        <div  class="form-group col-sm-16 col-md-8 col-lg-8">
                             <div class="form-group">
                                 <label>First name</label>
                                 <input type="text" class="form-control" id="firstName" name="RegistrationForm[firstName]" value="<?php echo isset($registration_form['firstName']) ? $registration_form['firstName']:''; ?>">
