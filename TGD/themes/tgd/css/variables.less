@@ -83,11 +83,11 @@
     border-radius: @radius;
     background-clip: padding-box;
     background-color: @color;
-    box-shadow: 0 2px 0 darken(@color, 30%), 0 3px 3px #b8ccd8;
+    box-shadow: 0 2px 0 darken(@color, 10%), 0 3px 3px #b8ccd8;
 
     padding: @vPadding @hPadding;    
     &:hover{
-        background-color: lighten(saturate(@color,20%),10%);
+        background-color: lighten(saturate(@color,10%),5%);
     }
     &:active{
         box-shadow: none;            
