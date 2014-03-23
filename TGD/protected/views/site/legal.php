@@ -1465,7 +1465,7 @@
             }, 1000);
             return false;
         });
-        setTimeout(funtion(){
+        setTimeout(function(){
             window.scrollTo(0,0);
         },200);
     });
