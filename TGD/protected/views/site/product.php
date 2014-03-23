@@ -58,17 +58,17 @@
                             <li>
                                 <h3>Security Rules</h3>
                                 <p>We make everything that is in our hands to avoid unauthorised access to your data by hackers, companies or public entities. We will implement all commercially feasible rules, processes and technologies to do so.</p>
-                                <img src="images/secure_sheild.png" alt="">
+                                <img src="<?php echo Yii::app()->theme->baseUrl . '/img/secure_sheild.png';?>" alt="">
                             </li>
                             <li>
                                 <h3>Best Encryption Practices</h3>
                                 <p>We have implemented most demanding encription measures including 256 bit AES , https, hsts and foward secrecy <a href="#">A rating from independent provider</a></p>
-                                <img src="images/encrypted_key.png" alt="">
+                                <img src="<?php echo Yii::app()->theme->baseUrl . '/img/encrypted_key.png';?>" alt="">
                             </li>
                             <li>
                                 <h3>Always Anonymous</h3>
                                 <p>In case you provide us any Personally Identifiable Information it will be decoupled from your comercial usage data and using <a href="#">military two-man encryption techniques</a></p>
-                                <img src="images/anonymous.png" alt="">
+                                <img src="<?php echo Yii::app()->theme->baseUrl . '/img/anonymous.png';?>" alt="">
                             </li>
                         </ul>
                     </div>
