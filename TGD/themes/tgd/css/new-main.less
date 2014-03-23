@@ -12,6 +12,7 @@
  * Common rules for every page
  ******************************************************************************/
 
+
 *{
     font-family: @font-regular, Arial, sans-serif;
 }
@@ -45,7 +46,7 @@ label{
     border-bottom: none;
 
     > div{
-        box-shadow:0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 insetSS;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
         background-color: white;
     }
 
@@ -53,7 +54,8 @@ label{
         color: @color-navy-blue;
         font-family: @font-semi-bold;
         font-size: 2.1rem;
-        padding: 10px 0px;
+        margin-top: 9px;
+        padding: 0;
         img{
             margin-right: 5px;
         }
@@ -61,33 +63,55 @@ label{
 
     .navbar-collapse{
         float: right;
-        li{
-            box-shadow: 1px 0 0 #E9E9E9, 1px 0 0 #EAEAEA inset;
-        }
-        a{
-            font-weight: bold;
-            font-size: 1.150em;
-            padding: 20px 35px;
-            color: @color-gray;
-            .transition(all 0.2s ease-out);
-            &:hover, &:active{
-                color: @tgd-red; 
+        > .navbar-nav{
+           > li{
+                box-shadow: 1px 0 0 #E9E9E9, 1px 0 0 #EAEAEA inset;
+                > a{
+                    font-weight: bold;
+                    font-size: 1.150em;
+                    line-height: 22.5px;
+                    padding: 20px 35px;
+                    color: @color-gray;
+                    .transition(all 0.2s ease-out);
+                    &:hover, &:active{
+                        color: @tgd-red; 
+                    }
+                    &.user{
+                        padding: 20px 35px 19px 35px;
+                    }
+                    img{
+                        margin-right: 5px;
+                        &.avatar{
+                            width: 3rem;
+                            height: 3rem;
+                            .rounded(1.5rem);
+                            margin-top: -0.6rem;
+                        }
+                    }
+                }
+                
+                // <li class="install"> element with red background
+                // and white font
+                &.install, &.collaborate{
+                    background-color: @tgd-red;
+                    > a{
+                        color: white;
+                        &:hover,&:active{
+                            color: @tgd-red;
+                        }
+                    }    
+                }
             }
         }
+        
+        
 
-        // <li class="install"> element with red background
-        // and white font
-        .install{
-            background-color: @tgd-red;
-            a{
-                color: white;
-                &:hover,&:active{
-                    color: @tgd-red;
-                }
-            }    
-
+        .dropdown-menu{
+            margin-top: -1px;
+            li{
+                box-shadow: none;
+            }
         }
-
     }
 
     .dropdown{
@@ -118,7 +142,7 @@ label{
 #secondary-nav{
     background-color: @light-blue;
     box-shadow:0 -1px 0 rgba(0, 0, 0, 0.05) inset;
-    display: none;
+    margin-top: 63px;
 
     .navbar-nav{
         > li{
@@ -149,6 +173,7 @@ label{
 /* ------------------------------------------------------------------- Footer */
 
 footer{
+    border-top: 1px solid #eee;
     ul{
         padding:0;
         margin: 0;
@@ -158,7 +183,7 @@ footer{
             margin-right: 6%;
         }
         &.social{
-            width: 168px;
+            width: 190px;
             margin: 25px 0 0 0;
             li{
                 float:left;
@@ -213,7 +238,7 @@ footer{
     }
     .footer{
         background-color: @very-light-gray;
-        box-shadow: inset 0 2px 0 #fff;
+        box-shadow: inset 0 1px 0 #fff;
         padding: 20px 0 25px 0;
     }
     .first{
@@ -264,10 +289,13 @@ footer{
                     margin-top: 5px;
                     border-left: 1px solid #ddd;
                 }
-                > img{
+                img{
                     float: left;
                     margin-top: 5px;
                     cursor: pointer;
+                    &[alt=Timeless]{
+                        margin-top:0;
+                    }
                 }
                 p{
                     color: @color-gray-license;
@@ -428,7 +456,7 @@ footer{
 
 /*--------------------------------------------------------------------- Intro */
 
-#intro{
+section#intro{
     position: relative;
     background: url(../img/land.png) no-repeat center bottom @color-sky;
     background-size: 100% 15%;
@@ -438,15 +466,21 @@ footer{
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/land.png', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/land.png', sizingMethod='scale')";
     -ms-behavior: url(../bgsize.htc);    
-    .container{
+    > .container{
+       > h1{
+            margin-bottom: 50px;
+        }
         a{
             /*width: 44%;*/
             &.tgd-button{
-                .tgd-button(#6d818d);
+                .tgd-button(#ea6654);
                 padding: 15px 32px 13px;
                 margin-left: auto;
                 margin-right: auto;   
             }
+        }
+        p{
+            margin-top: 15.75px;
         }
 
     }    
@@ -459,10 +493,17 @@ footer{
     padding: 6.25em 0;
     .container{
         position: relative;
+        padding: 0;
         .content{
             float: right;
             margin-right: 50px;
-            h1, p{
+            > h1{
+                margin-bottom: 10px;
+                text-align: left;
+            }
+            > p{
+                margin-top: 15px;
+                margin-bottom: 30px;
                 text-align: left;
             }
             a{
@@ -540,20 +581,28 @@ footer{
     box-shadow: inset 0 2px 1px rgba(241,234,221,.7);
     padding: 5em 0 0 0;
     > .container{
-        .content{
+        padding: 0;
+        > .content{
             float: left;
             margin: 0;
             padding-bottom: 90px;
-            h1{
+            text-align: left;
+            > h1{
+                margin-top: 30px;
+                margin-bottom: 10px;
+                text-align: left;
                 color: #837347;        
             }
-            p{
+            > p{
+                margin-top:15px;
+                margin-bottom: 30px;
+                text-align: left;
                 color: #99927e;    
             }
             a{
                 &.tgd-button{
                     .tgd-button( #6fbd7f);
-                    float: right;   
+                    //float: right;   
                 }
             }
         }
@@ -578,20 +627,30 @@ footer{
 
 /*-------------------------------------------------------------- Your company */
 
-#your_company{
+section#your_company{
     position: relative;
     background-color: #e7f3fb;
     box-shadow: inset 0 2px 1px rgba(209,224,233,.6);
     padding: 6.25em 0 0em 0;
     overflow: hidden;
-    .container{
+    > .container{
         position: relative;    
         z-index: 1;
-        a{
-            .tgd-button(#6d818d);
-            margin-left: auto;
-            margin-right: auto;
+        
+        > h1{
+            margin: 30px 0 20px 0;
         }
+        > p {
+            margin: 15px 0 30px 0;
+        }
+        > a{
+            &.tgd-button{             
+                .tgd-button(#6d818d);
+                margin-left: auto;
+                margin-right: auto;   
+            }
+        }
+
     }
 
     .cloud{
@@ -658,6 +717,7 @@ footer{
         border-radius: 0;
         padding: 0px;
         margin: 0;
+        color: #fff;
         &:hover{
             background-color: transparent;
             h2{
@@ -777,7 +837,6 @@ footer{
 
 
 
-
 /*******************************************************************************
  * TGD classes and IDs
  ******************************************************************************/
@@ -787,11 +846,46 @@ footer{
     background-color: #72bc81;
     color: white;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-    h2 {
-        font-size: @font-size-large-h2;
-        font-weight: bold;
-        padding: 8px 0;
-        margin-top: 10px;
+    ul{
+        padding: 0;
+        margin: 0;
+        li{
+            margin: 0;
+            padding: 15px 0;
+            list-style: none;
+            float: left;
+            height: 60px;
+
+            &:first-child{
+                background-image: url("../img/menu-divider.png");
+                background-position: center right;
+                background-repeat: no-repeat;
+                padding-right: 15px;
+                margin-right: 10px;
+                font-size: @font-size-xxlarge;
+                line-height: 1em;
+                position: relative;
+                a{
+                    margin-bottom: -2px
+                }
+            }
+            h2 {
+                font-size: @font-size-large-h2;
+                font-weight: bold;
+                padding: 0;
+                margin: 5px 0;
+                line-height: 1em;
+            }
+            a{
+                color: white;
+                // &:after{
+                //     content: url("../images/menu-divider.png");
+                //     width: 10px;
+                //     height: 42px;
+                //     display: inline-block;
+                // }
+            }
+        }
     }
 }
 
@@ -875,7 +969,7 @@ footer{
         background-repeat: no-repeat;
         background-position: center center;
         padding-top:100px;
-
+        cursor: pointer;
     }
 }
 
@@ -896,10 +990,14 @@ footer{
         border-bottom: none;
         border-right: none;
         > div{        
-            padding: 20px;
+            padding: 10px;
             border-bottom: 1px solid @gray-lines;
             border-right: 1px solid @gray-lines;
+            cursor:pointer;
 
+            &:hover{
+                background: lighten(@tgd-yellow,30%);
+            }
             .subtext{
                 line-height: 1em;
                 position: relative;
@@ -921,6 +1019,9 @@ footer{
                 vertical-align: baseline;
                 height: auto;
             }
+            a:hover{
+                text-decoration: none;
+            }
         }
     }
 }
@@ -930,7 +1031,7 @@ footer{
         background-color: @color-link;
     }
     .logo{
-        background-image: url("../img/chango-magnetic.png");
+        background-image: url("../img/chango.png");
     }
 
     .glyphicon{
@@ -948,32 +1049,56 @@ footer{
  ******************************************************************************/
 
 
-#registration-form{
+#registration-form-block{
     padding-top: 20px;
     padding-bottom: 20px;
     border: 1px solid @gray-lines;
     p, .checkbox, button[type=submit]{
         margin-left: 10px;
     }
+    form{
+        .row{
+            margin:0;
+        }
+    }
     .glyphicon{
-        right: 10px;
+        right: 5px;
+        top: -5px;
     }
     .has-info{
         color: @gray-text;
+        label{
+            margin-left: 20px;
+        }
+        .form-control-feedback{
+            top: -7px;
+            left: 0px;
+        }
     }
     .split-3{
         width: 33.3%;
     }
 
+    input{
+        &.error{
+            border-color: @tgd-red;  
+        }
+    }
+    label{
+        &.error{
+            color: @tgd-red;
+        }
+    }
+
 }
 
-#contract{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.legal{
+    padding: 20px 10px;
     border: 1px solid @gray-lines;
     background-color: @very-light-gray;
     overflow-y: scroll;
     border-left:none;
+
 
     h2{
         margin-top: 0;
@@ -1012,7 +1137,6 @@ footer{
 
 
 
-
 /*******************************************************************************
  * Share purchase 
  ******************************************************************************/
@@ -1020,19 +1144,6 @@ footer{
 
 #tgd-share-purchase{
 
-    #tgd-page-content{
-
-        .row{
-            > div{
-                &:first-child{
-                    padding-right:0;
-                }
-                &:last-child{
-                    padding-left:0;
-                }
-            }
-        }
-    }
 
     #descriptions{
         border: 1px solid @gray-lines;
@@ -1045,7 +1156,7 @@ footer{
         }
         p{
             margin-bottom: 0;
-            font-size: 1.5rem;
+            font-size: @font-size-large;
         }
         > div{
             padding: 20px;
@@ -1101,6 +1212,9 @@ footer{
                     &:hover{
                         background-color:@color-dark-gray;
                     }
+                    &.disabled{
+                        background-color: #666;
+                    }
                 }
             }
         }
@@ -1112,12 +1226,50 @@ footer{
         color: @color-link;
         font-size: 1.5rem;
     }
+
     #form{
         padding: 10px 20px;
         background-color: @very-light-gray;
         border: 1px solid @gray-lines;
         border-left: none;
         overflow: auto;    
+
+        button{
+            text-transform: uppercase;
+            font-size: 0.9em;
+            line-height: 0.7em;
+            font-weight: bold;
+            margin: 5px auto;
+            padding-left: 25px; 
+            padding-right: 25px;
+            display: block;
+            .transition(all 0.2s ease-out);
+            &:hover{
+                background-color: lighten(saturate(@color-link,20%),10%);
+            }
+            &:first-of-type{
+                margin-top: 15px;
+            }
+        }
+        .form-separator{
+            margin: 20px auto 5px;
+            padding: 5px 15px;
+            border-top: 1px solid @gray-text;
+            width: 20%;
+            text-align: center;
+            height: 15px;  
+            span{
+                position: relative;
+                top: -15px;
+                background-color: @very-light-gray;
+                text-transform: uppercase;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+    #loan-agreement{
+        display: none;
         h2{
             font-size: 2.3rem;
         }
@@ -1131,12 +1283,332 @@ footer{
             }
         }
     }
+
+    #bitcoin-1p{
+        [type=image]{
+            display: block;
+            margin: 10px auto;
+        }
+    }
+
+    #bitcoin-1p, #donation{
+        strong{
+            font-size: @font-size-large;
+            display: block;
+            margin: 10px 0 10px 0;
+        }
+    }
+
+    #donation{
+        display: none;
+        .row{
+            margin: 10px 0;
+        }
+    }
+}
+
+/*******************************************************************************
+ * Donate
+ ******************************************************************************/
+
+
+#tgd-donate{
+
+
+    #descriptions{
+        border: 1px solid @gray-lines;
+        border-right: 4px solid @color-dark-gray;
+
+        h2{
+            font-weight: bold;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+        p{
+            margin-bottom: 0;
+            font-size: @font-size-large;
+        }
+        > div{
+            padding: 20px;
+            border-bottom: 1px solid @gray-lines;
+            &.clearfix{
+                padding-right: 0;
+            }
+            &:last-child{
+                border-bottom: none;
+                padding-bottom: 60px;
+            }
+            .text{
+                padding-right: 10px;
+                float:left;
+                width: 65%
+            }
+            .button{
+                float: right;
+                width: 35%;
+                .btn{
+                    .border-radius(0, 0, 4px, 4px);
+                    .inner-shadow(-1px, 0, 1px, 0.4);
+                    width: 100%;
+                    color: white;
+                    font-weight: bold;
+                    text-align: left;
+                    text-transform: uppercase;
+                    margin-right: -20px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    border-right: 0;
+                    .transition(all 0.2s ease-out);
+                    &.credit-card{
+                        background-color: @tgd-green;
+                        background-image: url('../img/arrow.png');
+                        background-repeat:  no-repeat;
+                        background-position: 155px center;
+
+                    }
+                    &.bitcoin{
+                        background-color: @tgd-yellow;
+                        background-image: url('../img/bitcoin.png');
+                        background-repeat:  no-repeat;
+                        background-position: 155px center;
+                    }
+                    &:hover{
+                        background-color:@color-dark-gray;
+                    }
+                    &.disabled{
+                        background-color: #666;
+                    }
+                }
+            }
+        }
+    }
+
+
+    #questions{
+        font-weight: bold;
+        color: @color-link;
+        font-size: 1.5rem;
+    }
+
+    #form{
+        padding: 10px 20px;
+        background-color: @very-light-gray;
+        border: 1px solid @gray-lines;
+        border-left: none;
+        overflow: auto;    
+
+        button{
+            text-transform: uppercase;
+            font-size: 0.9em;
+            line-height: 0.7em;
+            font-weight: bold;
+            margin: 5px auto;
+            padding-left: 25px; 
+            padding-right: 25px;
+            display: block;
+            .transition(all 0.2s ease-out);
+            &:hover{
+                background-color: lighten(saturate(@color-link,20%),10%);
+            }
+            &:first-of-type{
+                margin-top: 15px;
+            }
+            span{
+                &.fa{
+                    margin-left:10px;
+                }
+            }
+        }
+    }
+
+    #bitcoin{
+        [type=image]{
+            display: block;
+            margin: 10px auto;
+        }
+    }
+
+    #bitcoin, #credit-card{
+        strong{
+            font-size: @font-size-large;
+            display: block;
+            margin: 10px 0 10px 0;
+        }
+        .row{
+            margin: 10px 0;
+        }
+    }
+
+    #credit-card{
+        display: none;
+    }
+}
+/*******************************************************************************
+ * Privacy policy
+ ******************************************************************************/
+#tgd-privacy{
+    #contract{
+        padding: 20px;
+        height: 300px;
+        ol{
+            p{
+                margin-left: 0px;
+            }
+        }
+        h2{
+            text-align: left;
+        }
+        p{
+            margin-left: 20px;
+        }
+
+    }
+}
+
+/*******************************************************************************
+ * Company rules
+ ******************************************************************************/
+#tgd-rules{
+    #contract{
+        padding: 20px;
+        h2{
+            text-align: left;
+        }
+        p{
+            margin-left: 20px;
+        }
+
+    }
+}
+/*******************************************************************************
+ * Terms of service
+ ******************************************************************************/
+
+#tgd-terms{
+    #contract{
+        padding: 20px;
+        h2{
+            text-align: left;
+        }
+        p{
+            margin-left: 20px;
+        }
+
+    }
+}
+
+/*******************************************************************************
+ * Legal
+ ******************************************************************************/
+#tgd-legal{
+    .tab-pane{
+        height:500px;
+        border-left: 1px solid #e5e5e5;
+        padding: 20px;
+    }
+}
+
+
+/*******************************************************************************
+ * Edit profile
+ ******************************************************************************/
+#tgd-edit-profile{
+    #tgd-page-content{
+        > .container{
+            > .row{
+                margin:0;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    section{
+        padding: 40px !important;
+        border: 1px solid @gray-lines;
+    }
+    #form{
+        border-right: none;
+        input{
+            font-size: @font-size-large;
+        }
+        button{
+            margin-left: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;       
+        }
+        .has-info{
+            color: @gray-text;
+
+            .form-control-feedback{
+                top: -7px;
+                right: 0px;
+            }
+        }
+        .form-control-help{
+            color: @gray-text;
+            position:absolute;
+            top: 0px;
+            right: 30px;
+            display: block;
+
+        }
+        .popover{
+            color: @gray-text;
+        }
+    }
+    #change-password{
+        margin: 5px 0 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: @color-link;
+        font-size: 1.2rem;
+        cursor:pointer;
+        span{
+            display: none;
+        }
+    }
+    .password-form{
+        display: none;
+    }
+    #description{
+        background-color: @very-light-gray;
+        font-size: @font-size-large;
+    }
+    #cancel-account{
+        margin-top: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: @color-link;
+        font-size: 1.2rem;
+        text-align: right;
+        cursor: pointer;
+        img{
+            vertical-align: middle;
+        }
+    }
+    .has-info{
+        color: @gray-lines;
+    }
+    .split-3{
+        width: 33.3%;
+    }
 }
 
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+.right-caret {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #fff;
+    display: inline-block;
+    height: 0;
+    opacity: 0.3;
+    vertical-align: top;
+    width: 0;
+}
 
 .ir {
     background-color: transparent;
@@ -1277,16 +1749,66 @@ footer{
     padding-top: 0;
 }
 
-.modal-content .modal-header {
-    padding-bottom: 5px;
+.modal-content{
+    background: white;
+    label{
+        display: none;
+    }
+    .checkbox{
+        label{
+            display: inline-block;
+            input{
+                margin-top: 0;
+            }
+        }
+    }
+    .checkbox{
+        margin-top: 0;
+    }
+
+    .form-group{
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    .modal-header {
+        padding-bottom: 0;
+        border-bottom: none;
+
+        h2{
+            margin: 0;
+            display: inline-block;
+            color: #1D5987;
+            line-height: 1em;
+        }
+    }
+    .modal-body{
+
+    }
+    .modal-footer{
+        border-top: none;
+        margin-top: 20px;
+        padding-top: 5px;
+        button,a{
+            border: none;
+            &.tgd-button{
+                &.tgd-register{
+                    .tgd-button(@tgd-yellow, 20px, 15px, 7px);
+                    display:inline-block;
+                }
+                &.tgd-close{
+                    .tgd-button(@tgd-red, 20px, 15px, 7px);
+                    display:inline-block;
+                }
+                &.tgd-send{
+                    .tgd-button(@tgd-green, 20px, 15px, 7px);
+                    display:inline-block;
+                }
+            }
+        }
+    }
 }
-.modal-header h2{
-    margin: 0;
-    display: inline-block;
-    color: #1D5987;
-    line-height: 1em;
-}
+
 .loading{
     text-align: center;
 }
-

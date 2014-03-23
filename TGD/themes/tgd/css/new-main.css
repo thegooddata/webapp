@@ -41,16 +41,6 @@ label {
   color: #7d7d7d;
   font-size: 0.857em;
 }
-.popover {
-  z-index: 2000;
-}
-.tooltip .tooltip-inner {
-  background-color: #e7f4fc;
-  color: #6f818d;
-}
-.tooltip.right .tooltip-arrow {
-  border-right-color: #e7f4fc;
-}
 /* ------------------------------------------------------------------- Header */
 /* navigation bar */
 .navbar-toggle .icon-bar {
@@ -67,7 +57,8 @@ label {
   color: #095779;
   font-family: ProximaNovaSoft-Semibold;
   font-size: 2.1rem;
-  padding: 10px 0px;
+  margin-top: 9px;
+  padding: 0;
 }
 .navbar-fixed-top .navbar-brand img {
   margin-right: 5px;
@@ -75,48 +66,52 @@ label {
 .navbar-fixed-top .navbar-collapse {
   float: right;
 }
-.navbar-fixed-top .navbar-collapse li {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li {
   box-shadow: 1px 0 0 #E9E9E9, 1px 0 0 #EAEAEA inset;
 }
-.navbar-fixed-top .navbar-collapse a {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li > a {
   font-weight: bold;
   font-size: 1.150em;
+  line-height: 22.5px;
   padding: 20px 35px;
   color: #7d7d7d;
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-.navbar-fixed-top .navbar-collapse a:hover,
-.navbar-fixed-top .navbar-collapse a:active {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li > a:hover,
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li > a:active {
   color: #ea6654;
 }
-.navbar-fixed-top .navbar-collapse a.user {
-  padding: 18px 35px 17px 35px;
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li > a.user {
+  padding: 20px 35px 19px 35px;
 }
-.navbar-fixed-top .navbar-collapse a img {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li > a img {
   margin-right: 5px;
 }
-.navbar-fixed-top .navbar-collapse a img.avatar {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li > a img.avatar {
   width: 3rem;
   height: 3rem;
   -webkit-border-radius: 1.5rem;
   -moz-border-radius: 1.5rem;
   border-radius: 1.5rem;
-  margin-top: -0.5rem;
+  margin-top: -0.6rem;
 }
-.navbar-fixed-top .navbar-collapse .install,
-.navbar-fixed-top .navbar-collapse .collaborate {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.install,
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.collaborate {
   background-color: #ea6654;
 }
-.navbar-fixed-top .navbar-collapse .install a,
-.navbar-fixed-top .navbar-collapse .collaborate a {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.install > a,
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.collaborate > a {
   color: white;
 }
-.navbar-fixed-top .navbar-collapse .install a:hover,
-.navbar-fixed-top .navbar-collapse .collaborate a:hover,
-.navbar-fixed-top .navbar-collapse .install a:active,
-.navbar-fixed-top .navbar-collapse .collaborate a:active {
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.install > a:hover,
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.collaborate > a:hover,
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.install > a:active,
+.navbar-fixed-top .navbar-collapse > .navbar-nav > li.collaborate > a:active {
   color: #ea6654;
+}
+.navbar-fixed-top .navbar-collapse .dropdown-menu {
+  margin-top: -1px;
 }
 .navbar-fixed-top .navbar-collapse .dropdown-menu li {
   box-shadow: none;
@@ -140,7 +135,7 @@ label {
 #secondary-nav {
   background-color: #ecf4f8;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
-  margin-top: 60px;
+  margin-top: 63px;
 }
 #secondary-nav .navbar-nav > li a {
   margin: 13px 13px 13px 0px;
@@ -165,7 +160,7 @@ label {
 }
 /* ------------------------------------------------------------------- Footer */
 footer {
-  margin-top: 40px;
+  border-top: 1px solid #eee;
 }
 footer ul {
   padding: 0;
@@ -221,9 +216,6 @@ footer li a:hover {
 footer li a.red {
   color: #ea6654;
 }
-footer li.pending a {
-  color: black;
-}
 footer h4 {
   color: #6f818d;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -233,7 +225,7 @@ footer h4 {
 }
 footer .footer {
   background-color: #fbfbfb;
-  box-shadow: inset 0 1px 0 #e4e4e4;
+  box-shadow: inset 0 1px 0 #fff;
   padding: 20px 0 25px 0;
 }
 footer .first {
@@ -285,10 +277,13 @@ footer .license ul li:last-child {
   margin-top: 5px;
   border-left: 1px solid #ddd;
 }
-footer .license ul li > img {
+footer .license ul li img {
   float: left;
   margin-top: 5px;
   cursor: pointer;
+}
+footer .license ul li img[alt=Timeless] {
+  margin-top: 0;
 }
 footer .license ul li p {
   color: #666666;
@@ -416,11 +411,10 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #ea6654;
   box-shadow: 0 2px 0 #e43d27, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 14px 32px;
 }
 #landing-page section > .container a.tgd-button:hover {
-  background-color: #fe8473;
+  background-color: #f57462;
 }
 #landing-page section > .container a.tgd-button:active {
   box-shadow: none;
@@ -435,7 +429,7 @@ footer .license ul li p {
   margin: 20px auto;
 }
 /*--------------------------------------------------------------------- Intro */
-#intro {
+section#intro {
   position: relative;
   background: url(../img/land.png) no-repeat center bottom #e7f4fc;
   background-size: 100% 15%;
@@ -446,14 +440,14 @@ footer .license ul li p {
   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/land.png', sizingMethod='scale')";
   -ms-behavior: url(../bgsize.htc);
 }
-#intro > .container h1 {
+section#intro > .container > h1 {
   margin-bottom: 50px;
 }
-#intro > .container a {
+section#intro > .container a {
   /*width: 44%;*/
 
 }
-#intro > .container a.tgd-button {
+section#intro > .container a.tgd-button {
   display: table;
   color: #fff;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -464,21 +458,23 @@ footer .license ul li p {
   text-align: center;
   border-radius: 25px;
   background-clip: padding-box;
-  background-color: #6d818d;
-  box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
-  border: none;
+  background-color: #ea6654;
+  box-shadow: 0 2px 0 #e43d27, 0 3px 3px #b8ccd8;
   padding: 14px 32px;
   padding: 15px 32px 13px;
   margin-left: auto;
   margin-right: auto;
 }
-#intro > .container a.tgd-button:hover {
-  background-color: #749fb9;
+section#intro > .container a.tgd-button:hover {
+  background-color: #f57462;
 }
-#intro > .container a.tgd-button:active {
+section#intro > .container a.tgd-button:active {
   box-shadow: none;
   margin-top: 2px;
   margin-bottom: -2px;
+}
+section#intro > .container p {
+  margin-top: 15.75px;
 }
 /*--------------------------------------------------------------- Our Product */
 #bag {
@@ -486,13 +482,19 @@ footer .license ul li p {
 }
 #bag .container {
   position: relative;
+  padding: 0;
 }
 #bag .container .content {
   float: right;
   margin-right: 50px;
 }
-#bag .container .content h1,
-#bag .container .content p {
+#bag .container .content > h1 {
+  margin-bottom: 10px;
+  text-align: left;
+}
+#bag .container .content > p {
+  margin-top: 15px;
+  margin-bottom: 30px;
   text-align: left;
 }
 #bag .container .content a.tgd-button {
@@ -511,11 +513,10 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6d818d;
   box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 14px 32px;
 }
 #bag .container .content a.tgd-button:hover {
-  background-color: #749fb9;
+  background-color: #6f90a4;
 }
 #bag .container .content a.tgd-button:active {
   box-shadow: none;
@@ -586,18 +587,28 @@ footer .license ul li p {
   box-shadow: inset 0 2px 1px rgba(241, 234, 221, 0.7);
   padding: 5em 0 0 0;
 }
-#hand > .container .content {
+#hand > .container {
+  padding: 0;
+}
+#hand > .container > .content {
   float: left;
   margin: 0;
   padding-bottom: 90px;
+  text-align: left;
 }
-#hand > .container .content h1 {
+#hand > .container > .content > h1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: left;
   color: #837347;
 }
-#hand > .container .content p {
+#hand > .container > .content > p {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  text-align: left;
   color: #99927e;
 }
-#hand > .container .content a.tgd-button {
+#hand > .container > .content a.tgd-button {
   display: table;
   color: #fff;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -610,14 +621,12 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6fbd7f;
   box-shadow: 0 2px 0 #4eab61, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 14px 32px;
-  float: right;
 }
-#hand > .container .content a.tgd-button:hover {
-  background-color: #82dd95;
+#hand > .container > .content a.tgd-button:hover {
+  background-color: #77ce89;
 }
-#hand > .container .content a.tgd-button:active {
+#hand > .container > .content a.tgd-button:active {
   box-shadow: none;
   margin-top: 2px;
   margin-bottom: -2px;
@@ -635,18 +644,24 @@ footer .license ul li p {
   transition: all 0.6s ease-out;
 }
 /*-------------------------------------------------------------- Your company */
-#your_company {
+section#your_company {
   position: relative;
   background-color: #e7f3fb;
   box-shadow: inset 0 2px 1px rgba(209, 224, 233, 0.6);
   padding: 6.25em 0 0em 0;
   overflow: hidden;
 }
-#your_company .container {
+section#your_company > .container {
   position: relative;
   z-index: 1;
 }
-#your_company .container a {
+section#your_company > .container > h1 {
+  margin: 30px 0 20px 0;
+}
+section#your_company > .container > p {
+  margin: 15px 0 30px 0;
+}
+section#your_company > .container > a.tgd-button {
   display: table;
   color: #fff;
   font-family: ProximaNovaSoft-Regular, Arial, sans-serif;
@@ -659,20 +674,19 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #6d818d;
   box-shadow: 0 2px 0 #576770, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 14px 32px;
   margin-left: auto;
   margin-right: auto;
 }
-#your_company .container a:hover {
-  background-color: #749fb9;
+section#your_company > .container > a.tgd-button:hover {
+  background-color: #6f90a4;
 }
-#your_company .container a:active {
+section#your_company > .container > a.tgd-button:active {
   box-shadow: none;
   margin-top: 2px;
   margin-bottom: -2px;
 }
-#your_company .cloud {
+section#your_company .cloud {
   position: absolute;
   top: 0;
   left: 0;
@@ -680,39 +694,39 @@ footer .license ul li p {
   height: 100%;
   overflow: hidden;
 }
-#your_company .cloud #cloud1,
-#your_company .cloud #cloud2 {
+section#your_company .cloud #cloud1,
+section#your_company .cloud #cloud2 {
   height: 160px;
   margin-top: 50px;
 }
-#your_company .cloud #cloud1 {
+section#your_company .cloud #cloud1 {
   background: url(../img/cloud11.png) repeat-x 460px 0px;
 }
-#your_company .cloud #cloud2 {
+section#your_company .cloud #cloud2 {
   background: url(../img/cloud22.png) repeat-x 0px 0px;
 }
-#your_company .sun #sun1,
-#your_company .sun #sun2,
-#your_company .sun #sun3 {
+section#your_company .sun #sun1,
+section#your_company .sun #sun2,
+section#your_company .sun #sun3 {
   position: absolute;
 }
-#your_company .sun #sun1 {
+section#your_company .sun #sun1 {
   z-index: 2;
   right: 43px;
   bottom: -76.3%;
 }
-#your_company .sun #sun2 {
+section#your_company .sun #sun2 {
   z-index: 1;
   right: 0px;
   bottom: -90%;
 }
-#your_company .sun #sun3 {
+section#your_company .sun #sun3 {
   z-index: 0;
   right: -39px;
   bottom: -102%;
 }
-#your_company > img:last-child,
-#your_company #fields {
+section#your_company > img:last-child,
+section#your_company #fields {
   position: relative;
   display: block;
   width: 100%;
@@ -735,6 +749,7 @@ footer .license ul li p {
   border-radius: 0;
   padding: 0px;
   margin: 0;
+  color: #fff;
 }
 #start a:hover {
   background-color: transparent;
@@ -861,7 +876,7 @@ footer .license ul li p {
   background-repeat: no-repeat;
   padding-right: 15px;
   margin-right: 10px;
-  font-size: 1.928em;
+  font-size: 3.4rem;
   line-height: 1em;
   position: relative;
 }
@@ -1665,8 +1680,12 @@ footer .license ul li p {
 }
 .modal-content .modal-footer {
   border-top: none;
-  margin-top: 0;
+  margin-top: 20px;
   padding-top: 5px;
+}
+.modal-content .modal-footer button,
+.modal-content .modal-footer a {
+  border: none;
 }
 .modal-content .modal-footer button.tgd-button.tgd-register,
 .modal-content .modal-footer a.tgd-button.tgd-register {
@@ -1682,13 +1701,12 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #fcc34a;
   box-shadow: 0 2px 0 #fbb218, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 7px 15px;
   display: inline-block;
 }
 .modal-content .modal-footer button.tgd-button.tgd-register:hover,
 .modal-content .modal-footer a.tgd-button.tgd-register:hover {
-  background-color: #ffd47a;
+  background-color: #ffcc61;
 }
 .modal-content .modal-footer button.tgd-button.tgd-register:active,
 .modal-content .modal-footer a.tgd-button.tgd-register:active {
@@ -1710,13 +1728,12 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #ea6654;
   box-shadow: 0 2px 0 #e43d27, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 7px 15px;
   display: inline-block;
 }
 .modal-content .modal-footer button.tgd-button.tgd-close:hover,
 .modal-content .modal-footer a.tgd-button.tgd-close:hover {
-  background-color: #fe8473;
+  background-color: #f57462;
 }
 .modal-content .modal-footer button.tgd-button.tgd-close:active,
 .modal-content .modal-footer a.tgd-button.tgd-close:active {
@@ -1738,13 +1755,12 @@ footer .license ul li p {
   background-clip: padding-box;
   background-color: #72bc81;
   box-shadow: 0 2px 0 #51aa63, 0 3px 3px #b8ccd8;
-  border: none;
   padding: 7px 15px;
   display: inline-block;
 }
 .modal-content .modal-footer button.tgd-button.tgd-send:hover,
 .modal-content .modal-footer a.tgd-button.tgd-send:hover {
-  background-color: #85dc97;
+  background-color: #7acd8b;
 }
 .modal-content .modal-footer button.tgd-button.tgd-send:active,
 .modal-content .modal-footer a.tgd-button.tgd-send:active {
