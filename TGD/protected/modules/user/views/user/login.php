@@ -10,18 +10,24 @@ $this->breadcrumbs=array(
             <section id="form" class="col-sm-16">
                 <h1><?php echo UserModule::t("Sign in to TheGoodData"); ?></h1><!-- TODO: translate -->
 
-                <?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
 
-                <div class="success">
-                    <?php echo Yii::app()->user->getFlash('loginMessage'); ?>
+                <?php if(Yii::app()->user->hasFlash('loginMessage')) { ?> 
+                <div class="clearfix">
+                    <div class="col-sm-7 cl-sm-offset-1 alert alert-success"><?php echo Yii::app()->user->getFlash('loginMessage'); ?></div>
+                </div>  
+                <?php } ?>
+
+                <?php if (CHtml::errorSummary($model) != "") { ?>   
+                <div class="clearfix">
+                    <div class="col-sm-7 col-sm-offset-1 alert alert-danger">
+                    <?php echo CHtml::errorSummary($model); ?>
+                    </div>
                 </div>
-
-                <?php endif; ?>
-            <?php echo CHtml::beginForm(); ?>
+                <?php } ?>
 
                 <!-- <p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p> -->
-                
-                <?php echo CHtml::errorSummary($model); ?>
+                <?php echo CHtml::beginForm(); ?>
+
                 <div class="form-group clearfix">
                     <div class="col-sm-7 col-sm-offset-1">
                         <label for="UserLogin_username" class="required">username or email</label>
@@ -54,12 +60,6 @@ $this->breadcrumbs=array(
         </div>
     </div>    
 </section>
-
-<!-- <p><?php echo UserModule::t("Please fill out the following form with your login credentials:"); ?></p> -->
-
-<div class="form">
-</div><!-- form -->
-
 
 <?php
 $form = new CForm(array(

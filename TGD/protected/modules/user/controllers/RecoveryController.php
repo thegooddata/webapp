@@ -3,6 +3,8 @@
 class RecoveryController extends Controller
 {
 	public $defaultAction = 'recovery';
+	public $layout='//layouts/main';
+	
 	
 	/**
 	 * Recovery password
@@ -11,6 +13,12 @@ class RecoveryController extends Controller
 
 		$error = '';
         $success = '';
+        
+		// set title
+		$this->pageTitle = " - Password recovery"; // TODO: translate
+
+		// set body id to #tgd-share-purchase
+		$this->bodyId = "tgd-password-recovery";
 
 		$form = new UserRecoveryForm;
 		if (Yii::app()->user->id) {
@@ -82,7 +90,7 @@ class RecoveryController extends Controller
 			    		else
 			    		{
 
-			    			$error="There is no account in our records with this email. If you have not provided us with an email when you registered as a member, please read this";
+			    			$error="There is no account in our records with this username or email.";
 			    		}
 
 			    	}

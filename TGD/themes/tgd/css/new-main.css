@@ -180,21 +180,22 @@ section#your_company>img:last-child,section#your_company #fields{position:relati
 #tgd-edit-profile #cancel-account{margin-top:10px;text-transform:uppercase;font-weight:bold;color:#1c8ccf;font-size:1.2rem;text-align:right;cursor:pointer}#tgd-edit-profile #cancel-account img{vertical-align:middle}
 #tgd-edit-profile .has-info{color:#eee}
 #tgd-edit-profile .split-3{width:33.3%}
-#tgd-user-login{background-color:#eee}#tgd-user-login #secondary-nav{display:none}
-#tgd-user-login #tgd-page-content{background-color:#fff}#tgd-user-login #tgd-page-content>.container{margin-top:63px}#tgd-user-login #tgd-page-content>.container>.row{margin:0;margin-bottom:10px}#tgd-user-login #tgd-page-content>.container>.row section{padding:40px !important;margin:0}
-#tgd-user-login h1{margin-top:0}
-#tgd-user-login #form{border-right:none}#tgd-user-login #form label{display:none}
-#tgd-user-login #form #becomeAMember{-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;padding:8px;background-color:#eee;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
-#tgd-user-login #form #rememberMe label{display:inline-block;text-transform:none;font-size:1em}
-#tgd-user-login #form #rememberMe label,#tgd-user-login #form #rememberMe a{vertical-align:top}
-#tgd-user-login #form #rememberMe input[type=checkbox]{margin:0}
-#tgd-user-login #form input{font-size:1.142em}
-#tgd-user-login #form button{margin-left:10px;text-transform:uppercase;font-weight:bold;color:#fff;font-size:1.2rem}
-#tgd-user-login #form .has-info{color:#7d7d7d}#tgd-user-login #form .has-info .form-control-feedback{top:-7px;right:0}
-#tgd-user-login #form .form-control-help{color:#7d7d7d;position:absolute;top:0;right:30px;display:block}
-#tgd-user-login #form .popover{color:#7d7d7d}
-#tgd-user-login #form .hint{padding-top:8px;margin-left:5px;margin-bottom:0}
-#tgd-user-login .has-info{color:#eee}
+#tgd-user-login,#tgd-password-recovery{background-color:#eee}#tgd-user-login #secondary-nav,#tgd-password-recovery #secondary-nav{display:none}
+#tgd-user-login #tgd-page-content,#tgd-password-recovery #tgd-page-content{background-color:#fff}#tgd-user-login #tgd-page-content>.container,#tgd-password-recovery #tgd-page-content>.container{margin-top:63px}#tgd-user-login #tgd-page-content>.container>.row,#tgd-password-recovery #tgd-page-content>.container>.row{margin:0;margin-bottom:10px}#tgd-user-login #tgd-page-content>.container>.row section,#tgd-password-recovery #tgd-page-content>.container>.row section{padding:40px !important;margin:0}
+#tgd-user-login h1,#tgd-password-recovery h1{margin-top:0}
+#tgd-user-login .alert,#tgd-password-recovery .alert{-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;padding:15px}
+#tgd-user-login #form,#tgd-password-recovery #form{border-right:none}#tgd-user-login #form label,#tgd-password-recovery #form label{display:none}
+#tgd-user-login #form #becomeAMember,#tgd-password-recovery #form #becomeAMember{-ms-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;padding:8px;background-color:#eee;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
+#tgd-user-login #form #rememberMe label,#tgd-password-recovery #form #rememberMe label{display:inline-block;text-transform:none;font-size:1em}
+#tgd-user-login #form #rememberMe label,#tgd-password-recovery #form #rememberMe label,#tgd-user-login #form #rememberMe a,#tgd-password-recovery #form #rememberMe a{vertical-align:top}
+#tgd-user-login #form #rememberMe input[type=checkbox],#tgd-password-recovery #form #rememberMe input[type=checkbox]{margin:0}
+#tgd-user-login #form input,#tgd-password-recovery #form input{font-size:1.142em}
+#tgd-user-login #form button,#tgd-password-recovery #form button{margin-left:10px;text-transform:uppercase;font-weight:bold;color:#fff;font-size:1.2rem}
+#tgd-user-login #form .has-info,#tgd-password-recovery #form .has-info{color:#7d7d7d}#tgd-user-login #form .has-info .form-control-feedback,#tgd-password-recovery #form .has-info .form-control-feedback{top:-7px;right:0}
+#tgd-user-login #form .form-control-help,#tgd-password-recovery #form .form-control-help{color:#7d7d7d;position:absolute;top:0;right:30px;display:block}
+#tgd-user-login #form .popover,#tgd-password-recovery #form .popover{color:#7d7d7d}
+#tgd-user-login #form .hint,#tgd-password-recovery #form .hint{padding-top:8px;margin-left:5px;margin-bottom:0}
+#tgd-user-login .has-info,#tgd-password-recovery .has-info{color:#eee}
 .right-caret{border-bottom:4px solid transparent;border-top:4px solid transparent;border-left:4px solid #fff;display:inline-block;height:0;opacity:.3;vertical-align:top;width:0}
 .ir{background-color:transparent;border:0;overflow:hidden;*text-indent:-9999px}
 .ir:before{content:"";display:block;width:0;height:150%}

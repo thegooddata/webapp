@@ -1603,7 +1603,7 @@ section#your_company{
 /*******************************************************************************
  * User login
  ******************************************************************************/
-#tgd-user-login{
+#tgd-user-login, #tgd-password-recovery{
     background-color: @gray-lines;
     #secondary-nav{
         display: none;
@@ -1624,6 +1624,10 @@ section#your_company{
     }
     h1{
         margin-top: 0;
+    }
+    .alert{
+        .box-sizing();
+        padding:15px;
     }
     #form{
         border-right: none;
