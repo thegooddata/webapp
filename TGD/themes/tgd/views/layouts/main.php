@@ -71,7 +71,7 @@
                         <?php } else { ?>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration"); ?>">Sign In</a></li>
+                                <li id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/login"); ?>">Sign In</a></li>
                                 <li class="install"><a href="#">Install in chrome</a></li>
                             </ul>
                         </div>
@@ -249,11 +249,5 @@
                 </div>
             </div>
         </footer>
-
-
-    <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/sign-in.js'; ?>"></script>
-    <script>
-        signInUrl = "<?php echo Yii::app()->controller->createAbsoluteUrl("/site/signin");?>";
-    </script>
     </body>
 </html>
