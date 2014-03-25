@@ -21,9 +21,11 @@
             <div class="col-xs-6 tgd-no-horizontal-padding" style="padding-right: 0;"> <!-- required for floating -->
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
-                    <li class="active"><a href="#privacy" data-toggle="tab">Privacy policy</a></li>
-                    <li><a href="#terms" data-toggle="tab">Terms of service</a></li>
+                    <li class="active"><a href="#terms" data-toggle="tab">Terms of service</a></li>
+                    <li><a href="#privacy" data-toggle="tab">Privacy policy</a></li>                    
                     <li><a href="#rules" data-toggle="tab">Company rules</a></li>
+                    <li><a href="#secondary" data-toggle="tab">Secondary rules</a></li>
+                    <li><a href="#principles" data-toggle="tab">Company principles</a></li>
                 </ul>
             </div>
 
@@ -1425,6 +1427,12 @@
                                 fund or employees’ share scheme of the Co-operative.
                             </li>
                         </ol>
+                    </div>
+                    <div class="tab-pane legal" id="secondary">
+                        TBD
+                    </div>
+                    <div class="tab-pane legal" id="principles">
+                        TBD
                     </div>
                 </div>
             </div>
