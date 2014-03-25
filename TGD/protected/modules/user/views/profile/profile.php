@@ -30,7 +30,6 @@
                         <label>Email</label>
                         <input type="text" class="form-control" id="email" name="ProfileForm[email]" value="<?php echo $user->email; ?>">
                         <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="Some text regarding the email form field."></span>
-                        <span class="form-control-help">optional</span>
                     </div>
                     
                         <div  class="password-form form-group col-sm-16 col-md-16 col-lg-16">
