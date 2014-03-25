@@ -3,13 +3,20 @@
 class LoginController extends Controller
 {
 	public $defaultAction = 'login';
-
+	public $layout='//layouts/main';
 	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
 	{
 		if (Yii::app()->user->isGuest) {
+			
+			// set title
+			$this->pageTitle = " - Sign in to TheGoodData"; // TODO: translate
+
+			// set body id to #tgd-share-purchase
+			$this->bodyId = "tgd-user-login";
+			
 			$model=new UserLogin;
 			// collect user input data
 			if(isset($_POST['UserLogin']))
