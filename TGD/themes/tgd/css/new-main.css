@@ -4,7 +4,7 @@ a{text-decoration:none}
 body{padding-top:0}
 label{text-transform:uppercase;font-weight:normal;color:#7d7d7d;font-size:.857em}
 .navbar-toggle .icon-bar{background-color:#eee}
-.navbar-fixed-top{border-bottom:none}.navbar-fixed-top>div{box-shadow:0 1px 1px rgba(0,0,0,0.05),0 -1px 0 #e7e7e7 inset;background-color:#fff}
+.navbar-fixed-top{border-bottom:none;box-shadow:0 1px 0 rgba(0,0,0,0.1)}.navbar-fixed-top>div{background-color:#fff}
 .navbar-fixed-top .navbar-brand{color:#095779;font-family:ProximaNovaSoft-Semibold;font-size:2.1rem;margin-top:9px;padding:0}.navbar-fixed-top .navbar-brand img{margin-right:5px}
 .navbar-fixed-top .navbar-collapse{float:right}.navbar-fixed-top .navbar-collapse>.navbar-nav>li{box-shadow:1px 0 0 #e9e9e9,1px 0 0 #eaeaea inset}.navbar-fixed-top .navbar-collapse>.navbar-nav>li>a{font-weight:bold;font-size:1.15em;line-height:22.5px;padding:20px 35px;color:#7d7d7d;-webkit-transition:all .2s ease-out;transition:all .2s ease-out}.navbar-fixed-top .navbar-collapse>.navbar-nav>li>a:hover,.navbar-fixed-top .navbar-collapse>.navbar-nav>li>a:active{color:#ea6654}
 .navbar-fixed-top .navbar-collapse>.navbar-nav>li>a.user{padding:20px 35px 19px 35px}
@@ -14,8 +14,8 @@ label{text-transform:uppercase;font-weight:normal;color:#7d7d7d;font-size:.857em
 .navbar-fixed-top .dropdown .dropdown-toggle{padding-bottom:22px}
 .navbar-fixed-top .dropdown .caret{margin-left:.5rem}
 .navbar-fixed-top .dropdown-menu{width:20.8rem}.navbar-fixed-top .dropdown-menu li a{padding:.5rem 1rem}.navbar-fixed-top .dropdown-menu li a .glyphicon{font-size:smaller}
-#secondary-nav{background-color:#ecf4f8;box-shadow:0 -1px 0 rgba(0,0,0,0.05) inset;margin-top:63px}#secondary-nav .navbar-nav>li a{margin:13px 13px 13px 0;padding:7px 15px;color:#095779;font-family:ProximaNovaSoft-Bold;font-size:1.25rem;line-height:1em;vertical-align:middle;-webkit-border-radius:17px;-moz-border-radius:17px;border-radius:17px;-webkit-transition:all .2s ease-out;transition:all .2s ease-out}#secondary-nav .navbar-nav>li a:hover{background-color:#8ac6ea}
-#secondary-nav .navbar-nav>li.active a{background-color:#095779;color:#fff}
+#secondary-nav{background-color:#e7f4fb;box-shadow:0 -1px 0 rgba(0,0,0,0.05) inset;margin-top:63px}#secondary-nav .navbar-nav>li a{margin:13px 13px 13px 0;padding:7px 15px 8px 15px;color:#095779;font-size:1.25rem;font-family:ProximaNovaSoft-Semibold;line-height:1em;vertical-align:middle;-webkit-border-radius:17px;-moz-border-radius:17px;border-radius:17px;-webkit-transition:all .2s ease-out;transition:all .2s ease-out}#secondary-nav .navbar-nav>li a:hover{background-color:#8ac6ea}
+#secondary-nav .navbar-nav>li.active a{font-family:ProximaNovaSoft-Bold;background-color:#095779;color:#fff;padding:7px 15px}
 footer{border-top:1px solid #eee}footer ul{padding:0;margin:0;float:left;margin-right:6%}footer ul:nth-child(5),footer ul #fifth{margin-right:6%}
 footer ul.social{width:190px;margin:25px 0 0 0}footer ul.social li{float:left;margin:0 4px}footer ul.social li:last-child{margin-right:0}
 footer ul.social li a{padding:13px 17px;transition:background .25s ease-out}
@@ -94,7 +94,7 @@ section#your_company>img:last-child,section#your_company #fields{position:relati
 .tgd-box>h2{font-size:1.15em;font-family:ProximaNovaSoft-Regular;font-weight:bold;color:#fff;margin:0;padding:1.5rem 1rem 1.2rem 1.5rem;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.3);box-shadow:inset 0 1px 1px rgba(0,0,0,0.3)}
 .tgd-box .tgd-box-section{border:1px solid #eee;padding:1.429em;border-top:none}.tgd-box .tgd-box-section:first-of-type{border-top:1px solid #eee}
 .tgd-box .tgd-box-section.very-light-gray{background-color:#fbfbfb}
-.tgd-box .tgd-box-section.very-light-blue{background-color:#ecf4f8}
+.tgd-box .tgd-box-section.very-light-blue{background-color:#e7f4fb}
 .tgd-box .tgd-box-section.tgd-emphasis{font-weight:bold;padding:3.754em;font-size:1.142em}
 .row [class^=col-].tgd-no-left-padding{padding-left:0}
 .row [class^=col-].tgd-no-right-padding{padding-right:0}
@@ -121,9 +121,13 @@ section#your_company>img:last-child,section#your_company #fields{position:relati
 #registration-form-block .split-3{width:33.3%}
 #registration-form-block input.error{border-color:#ea6654}
 #registration-form-block label.error{color:#ea6654}
-.legal{padding:20px 10px;border:1px solid #eee;background-color:#fbfbfb;overflow-y:scroll;border-left:none}.legal h2{margin-top:0;text-align:center;font-size:1.5rem;font-weight:bold;line-height:2.5rem}
+.legal{padding:20px 10px;border:1px solid #eee;background-color:#fbfbfb;overflow-y:scroll;border-left:none}.legal table{width:100%;margin:10px auto}.legal table tr:first-child td{font-weight:bold}
+.legal table td{padding:3px;font-size:12px;text-align:center;border:1px solid #7d7d7d}.legal table td p{margin-bottom:0}
+.legal h2{margin-top:0;text-align:center;font-size:1.5rem;font-weight:bold;line-height:2.5rem}
 .legal h3{font-size:1.3rem;line-height:2rem;font-weight:bold}
 .legal li ol[type=a]{counter-reset:list;padding-top:15px;padding-left:20px}.legal li ol[type=a]>li{list-style:none;padding-left:10px;position:relative}.legal li ol[type=a]>li:before{content:"(" counter(list, lower-alpha) ") ";counter-increment:list;position:absolute;left:-1.4em}
+.legal .row .title{width:25%;float:left;font-weight:bold}
+.legal .row .description{width:75%;float:left}
 #tgd-share-purchase #descriptions{border:1px solid #eee;border-right:4px solid #58646b}#tgd-share-purchase #descriptions h2{font-weight:bold;font-size:2rem;margin-top:0}
 #tgd-share-purchase #descriptions p{margin-bottom:0;font-size:1.142em}
 #tgd-share-purchase #descriptions>div{padding:20px;border-bottom:1px solid #eee}#tgd-share-purchase #descriptions>div.clearfix{padding-right:0}

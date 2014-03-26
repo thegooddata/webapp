@@ -33,77 +33,98 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active legal" id="privacy">
-                        <h2>Who we are</h2>
-
-                        <p>We are The Good Data Cooperative Limited, an Industrial and Provident Society registered in England and Wales under registered number XXXX whose registered office is at Unit 1, 82 Clerkenwell Road, London EC1M 5RF.<
-                        <p>In this website we provide data management services once users have installed Our browser extension (&quot;Services&quot;). </p>
-                        <p>We have notified the Information Commissioner&#39;s Office and are registered on the Data Protection Register under registration number XXXX.</p>
+                        <h1>ThGoodData Privacy and Cookie Policy</h1>
+                        <p>We are committed to protecting your privacy. Please read this Privacy and Cookie Policy carefully. It explains how we obtain, uses and keeps your information safe. By using this website and any Services we offer via this website, you are agreeing to be bound by this Policy in respect of the information collected about you. The Good Data Cooperative Limited has notified the existence of its personal data files to the Information Commissioner's Office and are registered on the Data Protection Register under number XXXX.</p>
+                        
                         <h2>Guidelines</h2>
                         <p>Our Privacy Policy develops the following guidelines:</p>
                         <ol start="1">
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users or store any cookies.</a></li>
-                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-2">Anonymous data will only be stored with your permission.</a></li>
+                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-2">Anonymous data will only be stored with your permission and for a limited time.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-3">Anonymous data will only be traded with third parties if you provide an additional and limited permission to do so.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-4">Only if you request to become a cooperative Member, we will have to store as minimum PII as possible.</a></li>
-                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-5">We will always do our best effort to avoid unwanted access to your data by third parties.</a></li>
-                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-6">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at any time without delay.</a></li>
+                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-5">To improve the Service we use non-identifying browser cookies.</a></li>
+                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-6">We will always do our best effort to avoid unwanted access to your data by third parties.</a></li>
+                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-7">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at any time without delay.</a></li>
                         </ol>
                         <ol start="1">
-                            <li><h3 id="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users or store any cookies.</h3>
+                            <li><h3 id="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users.</h3>
                                 <p>&ldquo;Personally identifiable information&rdquo; (PII) &nbsp;is data that can be used to identify a particular person. Aggregate or Anonymous data aren&rsquo;t considered PII. Service Users are those individuals that install our browser extension and enjoy any of our services, as described in our Terms of Use.</p>
                                 <p>Unlike most websites, our site doesn&rsquo;t install any type of browser cookies or stores any IP data that could be used to identify our users. We will only keep the minimum of logs and debug information necessary to ensure that we can improve the service and resolve issues that may have occurred. These logs will be kept for a maximum of 15 days.</p>
                             </li>
                         </ol>
 
                         <ol start="2">
-                            <li><h3 id="item-2">Anonymous data will be stored only with your permission.</h3>
-                                <p>Being a data cooperative, we aim to gather Anonymous/non-PII data that you produce in order to help you enjoy the value of it. At this time, this data consists of behavioural and interest data such as browsing history and search queries.</p>
+                            <li><h3 id="item-2">Anonymous data will be stored only with your permission and for a limited time.</h3>
+                                <p>Being a data cooperative, we aim to gather Anonymous Service data that you produce in order to help you enjoy the value of it. At this time, this data consists of online behavioural and interest data such as browsing history and search queries.</p>
                                 <p>This data will only be stored if you provide us with your permission. You will be able to enjoy our services regardless of your decision to let us store this data or not.</p>
+                                <p>Raw online behavioural data will be automatically deleted if older than 3 months. Estimated and aggregated behavioural and interest data may be kept for longer only if it remains valid and commercially valuable.</p>
                             </li>
                         </ol>
 
                         <ol start="3">
                             <li><h3 id="item-3">Anonymous data will only be traded with third parties if you provide an additional and limited permission to do so.</h3>
-                                <p>In case we find a third party interested on your anonymized data, we will only give access to it provided that you have previously given us permission to do so. This permission will be limited to a certain and known type of data, for a limited time period and for a type of third party. This permission may contain as well certain terms limits (minimum benefit expected, etc). Data traded will not include PII data.</p>
+                                <p>In case we find a third party interested on your Anonymous data, we will only give access to it provided that you have previously given us permission to do so. This permission will be limited to a certain type of data, for a limited time period and for a type of third party. This permission may contain as well certain terms limits (minimum benefit expected, etc). Data traded will not include PII data.</p>
                             </li>
                         </ol>
 
                         <ol start="4">
                             <li><h3 id="item-4">Only if you request to become a cooperative Member, we will store as minimum PII as possible. </h3>
-                                <p>In case you request to become a cooperative Member, we will request as minimum PII as required by law in order to identify and register you as a Member. Once your request has been accepted, we will encrypt the link between your PII and your Service usage data with two-man rule techniques so only our Membership Committee will be able to deanonymise your usage data (ie. we will know that someone has visited certain website, but will not be able to know its personal details). Thats the reason why from then on we will address you by your username.</p>
-                                <p>Only if you Terminate or you are Expulsed as a Member, this data will be de-encrypted by our Membership Committee from our files prior immediate deletion. Termination and Membership Expulsion events are described in the Company Rules and Secondary Rules.</p>
-                                <p>Optionally, you may provide your email address. It will be used both for password recovery as well as to receive company communications. This is the only PII that for operative purposes cannot be encrypted, therefore we recommend you that if you decide to provide it, to use a non-traceable email address.</p>
+                                <p>In case you apply to become a cooperative Member, we will request as minimum PII as required by law in order to identify and register you as a Member. Once you become a Member, we will encrypt the link between your PII and your Service data with two-man rule techniques. That means that we will know that someone has visited certain website, but will not be able to know its personal details. That is the reason why from then on we will address you by your username.</p>
+                                <p>Only our Membership Committee will be able to deanonymise your Service data if we are legally forced or if you terminate your Membership or you are expulsed as a Member. On these two last cases all your data will be immediately deleted after de-encrypted.</p>
+                                <p>Only email will remain attached to your Service data. It will be used both for password recovery as well as to send you company announcements. This is the only PII that for operative purposes cannot be detached from your Service data, so if you are worried about your anonymity, we recommend you to use a non personally identifiable email address.</p>
+                                <p>We may use MailChimp to manage some of our email communications with cooperative Members. There’s no third-party tracking in messages we send through MailChimp besides MailChimp’s own analytics, which may aggregate how many subscribers open a message or click the links inside. MailChimp’s privacy policy is available at http://mailchimp.com/legal/privacy.</p>
                             </li>
                         </ol>
 
                         <ol start="5">
-                            <li><h3 id="item-5">We will always do our best effort to avoid unwanted access to your data by third parties.</h3>
+                            <li>
+                                <h3 id="item-5">To improve our Service we use non-identifying browser cookies</h3>
+                                <p>The table below explains the cookies we use on our website and why.</p>
+                                <table>
+                                    <tr>
+                                        <td>Cookie</td><td>Name</td><td>Purpose</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Session cookie</td><td></td><td>These are temporary cookies, which only exist until you close the browser after accessing the website. Session cookies help us remember what you chose on the previous page, therefore avoiding the need to re-enter information and improve your experience whilst using the site. These cookies do not contain personal information and cannot be used to identify you.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Persistent cookie</td><td></td><td>These are cookies, which remain on your device after you have visited our website. Persistent cookies help us identify you as a unique visitor, they do not contain information that could be used to identify you to another person.</td>
+                                    </tr>
+                                </table>
+                                <p>We do not use cookies to track your use of the internet after you leave our sites, nor do we store any personal information in them that could identify you to other people. The length of time a cookie will remain on your device will depend on the type of cookie.</p>
+                                <p>Besides using a browser extension like ours, most web browsers allow some control of most cookies through the browser settings. To find out more about how to set them, please visit www.aboutcookies.org</p>
+                            </li>
+                        </ol>
+                        <ol start="6">
+                            <li><h3 id="item-6">We will always do our best effort to avoid unwanted access to your data by third parties.</h3>
                                 <p>We will always implement the most robust legal, procedural, physical and technical measures that are at our reach in order to ensure your anonymity and avoid unwanted access to your data by other individuals, corporations and administrations. Unwanted access refers to access to your data without your express permission.</p>
                                 <p>No data transmissions over the Internet can be guaranteed to be 100% secure though. Consequently, we cannot ensure or warrant the security of any information you transmit to us. You do so at your own risk.</p>
-                                <p>If we should ever file for bankruptcy, or have any of our assets sold to or merged with another entity, data that we have about you will never be transferred, nor will be the browser extensions that we have available in the different app stores.</p>
+                                <p>As stated in our Secondary Rules, if we should ever file for bankruptcy, or have any of our assets sold to or merged with another entity, data that we have about you will never be transferred, nor will be the browser extensions that we have published in the different app stores.</p>
                             </li>
                         </ol>
 
-                        <ol start="6">
-                            <li><h3 id="item-6">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at anytime without delay.</h3>
+                        <ol start="7">
+                            <li><h3 id="item-7">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at anytime without delay.</h3>
                                 <p>In our website you will always have access to the data we have gathered, processed or inferred about yourself, as well as the possibility to download it or delete it from our servers at any time.</p>
                                 <p>You may ask us to correct information you think is inaccurate by contacting us at info@thegooddata.org.</p>
-                                <p>Data about terminated or expulsed members as well as from inactive users will be automatically deleted from our records with a delay no longer than one month. As inactive users we refer to individuals that have not used our services for 3 months or more.</p>
+                                <p>Data about terminated or expulsed members as well as from inactive users will be automatically deleted from our records with a delay no longer than one month. As inactive users we refer to individuals that have not used our Services for 3 months or more.</p>
                             </li>
                         </ol>
 
                         <h2>Changes to this Policy</h2>
-                        <p>We are proud of our commitment to continuously work for your data ownership rights in an open and collaborative way. Therefore, we will provide any substantial future revisions of this Policy to the community for comment at least thirty 30 days before their application. For changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three 3 days&#39; notice.</p>
-                        <p>Substantial revisions of this Policy will be notified by email in case you provided it, as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member&rsquo;s forum.</p>
-                        <p>You are welcome to comment current Policy or substantial future revisions in <span><a href="https://manage.thegooddata.org/corporate/documents/privacy-policy">https://manage.thegooddata.org/corporate/documents/privacy-policy</a>.</p>
-                        <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Policy. If you don&rsquo;t agree to the revised Policy, please stop using the Services.</p><h2>Contact</h2><p>You can contact us at <span><a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about this Policy.
+                        <p>We are proud of our commitment to continuously work for your data ownership rights in an open and collaborative way. Therefore, we will provide any substantial future revisions of this Policy to the community for comment at least thirty 30 days before their application. For changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three 3 days' notice.</p>
+                        <p>Substantial revisions of this Policy will be notified by email in case you provided it, as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member’s forum.</p>
+                        <p>You are welcome to comment current Policy or substantial future revisions in <span><a href="https://collaborate.thegooddata.org/corporate/documents/privacy-policy">https://collaborate.thegooddata.org/corporate/documents/privacy-policy</a>.</p>
+                        <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Policy. If you don&rsquo;t agree to the revised Policy, please stop using the Services.</p>
+                        <h2>Contact</h2><p>You can contact us at <span><a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about this Policy.
                         </p>
 
                         <p>
                             First drafted - December 2013
                         </p>
                         <p>
-                            Latest revision &ndash; December 2013 
+                            Latest revision &ndash; March 2014
                         </p>
                     </div>
                     <div class="tab-pane legal" id="terms">
@@ -151,12 +172,12 @@
                         <p>We believe that community input is essential for these Terms to properly serve our users. It is also essential for a fair contract. Therefore, we will provide any substantial future revisions of these Terms to the community for comment at least thirty 30 days before their application. For changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three 3 days&#39; notice.</p>
                         <p>Substantial revisions of these Terms&nbsp;will be notified by email in case you provided it, as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member&rsquo;s forum.</p>
 
-                        <p>You are welcome to comment current Terms or substantial future revisions in our management platform <a href="http://manage.thegooddata.org/corporate/documents/terms-of-use">http://manage.thegooddata.org/corporate/documents/terms-of-use</a>.</p>
+                        <p>You are welcome to comment current Terms or substantial future revisions in our management platform <a href="http://collaborate.thegooddata.org/corporate/documents/terms-of-use">http://collaborate.thegooddata.org/corporate/documents/terms-of-use</a>.</p>
 
                         <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Terms. If you don&rsquo;t agree to the revised Terms, please stop using the Services.</p>
                         <h2>Contact</h2>
                         <p>You can contact us at <a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about these Terms.</p>
-                        <p></p>
+                        
                         <p>First drafted - December 2013</p>
                         <p>Latest revision &ndash; December 2013 </p>
 
@@ -1429,19 +1450,203 @@
                         </ol>
                     </div>
                     <div class="tab-pane legal" id="secondary">
-                        TBD
+                         <h1 > The Good Data Cooperative Ltd Secondary Rules</h1>
+                            <h2 > Structure</h2>
+
+                            <p>This agreement (our secondary rules) sets out the commitment between The Good Data Cooperative Ltd (&ldquo;TheGoodData&rdquo;) and you &ndash; the Members. These should be read in addition to our Company Principles and our Company Rules as an Industrial and Provident Society, Cooperative Consortia. Both are available on our website. TheGoodData is a learning organisation and aims for an ongoing increase in collaboration of Members and therefore these rules will evolve over time through consultation with them.</p>
+
+                            <p>TheGoodData is a cooperative of Customers that aim to help its Members to regain ownership over the data that they produce. That implies supporting them identifying, gathering, producing, securing and/or processing the data that they directly or indirectly collaborate to generate, as well as supporting them keeping it private if they want, or trading with it or setting up services that trade with it in front of Corporations, Administrations or other Customers in exchange of a financial benefit and/or any other tangible or intangible benefit.</p>
+
+                            <p>By regaining data ownership, Customers will have more freedom of choice, more negotiation power and ultimately will be more satisfied and happier in their relationships with Corporations.</p>
+
+                            <h2 > Membership</h2>
+
+                            <ol>
+                                <li value="1">Members of TheGoodData share responsibility for the achievement of TheGoodData goals.
+                                    <ol type="a">
+                                        <li>On joining Members agree to the following:
+                                            <ul>
+                                                <li >To support the primary and secondary rules as well as the values and principles of TheGoodData.</li>
+                                                <li >To use and promote the use of the service among other Customers.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Members will receive the following benefits:
+                                            <ul>
+                                                <li >Members will enjoy tools and agreements developed in order to let them securely harvest, process and trade their own data in the way that better suits with their personal interests, as well as avoiding other unauthorised third parties from having access to it.</li>
+                                                <li >Members will receive continuous information about the best services and practices in the market to improve data privacy as well as to increase the benefits in exchange of sharing their data.</li>
+                                                <li >Members can take part in running the TheGoodData, by being part of the Board, or any Subcommittee or voting at Annual General Meeting.</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                            
+                            <ol>
+                                <li value="2">Members are encouraged to contribute to the further growth of the TheGoodData in whatever way they choose, although this is not a condition of Membership. TheGoodData will set up an online Management Platform in order to provide the means for the Members to contribute providing feedback, ideas and requirements, participating in functional areas or projects, answering polls, voting and becoming a member of Subcommittees or the Board, coding or reviewing the code, facilitating deals with data providers, data buyers or any other partner, as well as carrying out any other action for the benefit of TheGoodData. Multiple online communication means will as well be used to keep Members informed of developments and current issues. These means include TheGoodData blog, twitter, email and website among others.</li>
+
+                                <li value="3">Only people that have used the service in the past 3 months and that are at least 16 years old are eligible for membership. Fail to use the service in that period is a cause of Membership termination.</li>
+
+                                <li value="4">Applicants will be required to fill out a form with their personal details. TheGoodData may require, at the time of application or at any other later stage, some proof of identity to validate those personal details. Submittance of false or substantially incomplete details, or in behalf of a third person, is forbidden and will be a cause of application denial or membership expulsion.</p><p>5. In order to facilitate application for Membership, TheGoodData will offer to those that are interested, a 0 interest loan with the sole purpose of purchasing one Membership share. That loan will be automatically cancelled upon termination or expulsion from Membership.</li>
+    
+                            </ol>
+                            
+                            <h2 > Board of Directors</h2>
+
+                            <ol>
+                                <li value="6">TheGoodData is managed by a Board of Directors elected from the Membership, which carries out day- to-day administration and planning on behalf of all Members.
+                                    <ol type="a">
+                                        <li>The Board is made up of between 3 and 5 Directors. We aim for the Board to be representative of the different Company Areas ideally including users, coders and data experts.</li>
+                                        <li>Any Member of TheGoodData may stand for election to the Board if proposed and seconded by two other Members. Membership is required to become Director.</li>
+                                        <li>Directors will be elected each year at the Annual General Meeting and their names will appear on the TheGoodData register of Directors.</li>
+                                        <li>Directors may co-opt Members without them being elected at an Annual General Meeting. Co-opted Members then have to stand for re-election at the Annual General meeting. Provided that at any one time no more than one third of Directors can be co-opted.</li>
+                                        <li>The Annual General Meeting can elect the Board if there is at least 15% of Members Quorum. Quorum should consider physical and electronical presence, advanced and proxy votes.</li>
+                                        <li>Directors may be rewarded for their work. Rewarding schemes and levels have to be approved at the Annual General Meeting by the majority of Members.</li>
+                                        <li>Major decisions excluding primary rule changes can only be made at Board meetings made up of at least 3 Directors.</li>
+                                        <li>The Board can spend up to &pound;20 000 per item without approval from the Membership. The Board will not borrow more than &pound;100 000 without first consulting Members.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                            <ol>
+                                <li value="7">These are the names of the current Directors. Please contact any of them if you would like more details or if you would like to attend a Board meeting:
+                                <table cellpadding="0" cellspacing="0" >
+                                    <tbody>
+                                        <tr >
+                                            <td >
+                                                <p>Name</p>
+                                            </td>
+                                            <td >
+                                                <p>email</p>
+                                            </td>
+                                            <td >
+                                                <p>Instant messenger (Google Hangout)</p>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td >
+                                                <p>Marcos Menendez</p></td>
+                                            <td >
+                                                <p>marcos@thegooddata.org</p>
+                                            </td>
+                                            <td >
+                                                <p>marcosmenendez@yahoo.com</p>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td >
+                                                <p>Raimon Malatesta</p>
+                                            </td>
+                                            <td >
+                                                <p>raimon@thegooddata.org</p>
+                                            </td>
+                                            <td >
+                                                <p>graimon@gmail.com</p>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td >
+                                                <p>Daniel Gomez</p>
+                                            </td>
+                                            <td >
+                                                <p>daniel@thegooddata.org</p>
+                                            </td>
+                                            <td >
+                                                <p>dgarmez@gmail.com</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ol>
+
+                        <h2>Company Areas, Subcommittees and Nodes</h2>
+
+                        <ol>
+                            <li value="8">TheGoodData is divided in 4 major Areas of responsibility: Corporate (strategy, finance, legal &amp; brand), Product (development of different projects and operations), Data (harvesting, securing, processing and trading) and People (users, members, collaborators and social impact). Each of the Areas will be lead by a Director. Major decisions of each Area will be raised to the Board of Directors for approval. </li>
+                            <li>Directors may decide to appoint an Area Subcommittee to provide support on its day-to-day duties. Subcommittees are made-up of 3 people and shall comprise one Director or Director elected Officer and two other Members for a duration of 1 year. At least 2 of them should participate of major decisions.</li>
+                            <li>The proceedings of Subcommittee meetings are to be reported to the Board of Directors. Subcommittee meetings may make decisions on affairs relating to the work of the Area, but issues of direct importance to the TheGoodData as a whole should be taken, as a proposal or item for discussion, to the Board of Directors. The Directors may open for discussion decisions made at Subcommittee meetings if it is deemed that they are of direct importance to the TheGoodData as a whole.</li>
+                            <li>The Membership Subcommittee will be in charge among other duties of accepting Membership applications, as well as of dealing with Member claims, evaluating Member&rsquo;s expulsion cases or disclosing any Member&rsquo;s data if requested by Authorities.
+                                <ol type="a">
+                                    <li>Subcommittee Members aside from Director or elected Officer will be elected by the rest of the Members. Preferably on the Annual General Meeting</li>
+                                    <li>If the Board consider that the volume of work, or language diversity, so justifies, they are empowered to establish more than one Membership Subcommittee.</li>
+                                    <li>Membership applications and claims can be dealt by one single Subcommittee Member.</li> 
+                                    <li>In case of unresolved claims then the Member should raise the matter with the designated Board Member. If the matter is not resolved informally then the Member should write to the Board so that the matter can be raised at the next Board meeting.</li>
+                                    <li>Member expulsion decisions will only be made after inviting the Member for written comments about the case.</li>
+                                    <li>Disclosure to Authorities of Membership Data can only be done upon approval of the majority of Subcommittee Members. Subcommittee will only attend requests of legitimate UK and European authorities.</li>
+                                    <li>Subcommittee Members shall, before acceptance of its duties, read and accept TheGoodData Privacy Policy and commit to enforce it at all times.</li>
+                                </ol>
+                            <li>Subcommittees for the other Areas can be appointed at any time by the Area Director who will determine their membership.</li>
+                            <li>Ad hoc working &ldquo;Nodes&rdquo; may be appointed by the Board of Directors at any time to deal with cross-area projects like the development of a new service or business line.</li>
+                        </ol>
+
+                        <h2> Conduct of Meetings</h2>
+                        <ol>
+                            <li value="14">The following rules apply to day-to-day meetings including Board Meetings, Subcommittee and Node Meetings. Provision and Procedure for General Meetings is outlined in the Company Rules.</li>
+                            <li>All meetings should have an agenda and a determined duration. The date of the next meeting shall be agreed at each meeting.</li>
+                            <li>Meetings should always be minuted mentioning attendants, major decisions made, actions identified, owners and deadlines. Minutes will be distributed among attendants prior next meeting and shall be made available online to all members - excluding parts subject to TheGoodData Privacy Policy - unless the Board of Directors declare it confidential.</li>
+                            <li>Members who are absent from a meeting may, by a proxy Member, voice an opinion, and cast a vote on any or all of the items on the Agenda.</li>
+                            <li>An unjustified absence of two consecutive meetings, or a justified absence of over 50% of meetings over a three-month period but without extraordinary circumstances, may be held by the rest of the meeting Members to elect a substitutor.</li>
+                            <li>Decisions are to be made by majority.</li>
+                            <li>Volunteers, and any such person as the Members of the meeting wish to invite, in an advisory or observational role, may attend meetings. Members who wish to attend should contact any meeting Member in advance, and be granted permission unless their attendance is deemed inappropriate. Meeting attendees may speak by request/with the permission of any of the meeting Members.</li>
+                            <li>Both day-to-day and General Meetings as well as any other communication between TheGoodData and its Members including calls for meetings and circulation of meeting minutes will be done electronically.</li>
+                        </ol>
+
+                        <h2 > Application of income and surplus</h2>
+                        <ol>
+                            <li value="22">A share of revenues not lower than 10% will be invested in support of not-for-profit organisations unless TheGoodData viability is put in danger due to this investment.</li>
+                            <li>Starting from second year of TheGoodData operations, one sixth of revenues will be given to external developers that have collaborated in building TheGoodData systems, code and algoritmia during the previous six years. Sharing criteria will be decided by the Product Area Director or Product Subcommittee and will consider level of effort (ie. lines of code), quality of the output and strategic importance of the development.</li>
+                            <li>Our Company Rules allow us to distribute surplus to Members as dividends, but we have chosen at present not to exercise this option, since we seek to strengthen the long-term viability of our organisation and further our social impact.</li>
+                        </ol>
+                        <h2 > Data asset lock</h2>
+                        <ol>
+                            <li value="25">If we should ever file for bankruptcy, or have any of our assets sold to or merged with another entity, data that we have harvested or processed of our users will never be transferred, nor will be the browser extensions that we have available in the different app stores.</li>
+                        </ol>
+
+                        <h2 > Changes to these rules</h2>
+                        <ol>
+                            <li value="26">These Secondary Rules are evolving and may be changed by the Board as long as they are not in conflict with the Company Rules. Any agreed changes need to be confirmed at a General Meeting and agreed by the majority of Members.</li>
+                        </ol>
+                        
+                        
+                        <p>First drafted - December 2013</p>
+                        <p>Latest revision &ndash; December 2013 </p>
                     </div>
                     <div class="tab-pane legal" id="principles">
-                        TBD
+                        <h2>Principles of TheGoodData Cooperative Limited</h2>
+                        <div class="row">
+                            <div class="title">Data Ownership</div>
+                            <div class="description">People are the only owners of the data they produce. That means that they must be aware of its existence, that they can freely decide who should have access to it, and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and meaningful way. </div>
+                        </div>
+                        <div class="row">
+                            <div class="title">Optimism</div>
+                            <div class="description">By ensuring Data ownership, Customers will be happier. They will gain freedom of choice, a more balanced position when dealing with Corporations, and a higher value in exchange of the Data they decide to share, if any. Data can be Good for Customers.</div>
+                        </div>
+                        <div class="row">
+                            <div class="title">Collaboration</div>
+                            <div class="description">Collaboration among customers is the only way to fully achieve Data ownership since Corporations and Administrations have many times colliding interests. TheGoodData is an expression of this collaboration. </div>
+                        </div>
+                        <div class="row">
+                            <div class="title">Openness</div>
+                            <div class="description">Openness facilitates collaboration of both Customers and Coders, and therefore the development of more and better products. TheGoodData will make its best effort to ensure that all its actions, decisions and assets are visible and open for participation.</div>
+                        </div>
+                        <div class="row">
+                            <div class="title">Individual choice</div>
+                            <div class="description">While being a collaborative initiative it's always upon the Customerto decide what to do as an individual with its own data. Individuals should therefore be always entitled to cease all relationship with TGD,export the data created and eliminate it from TheGoodData databases.</div>
+                        </div>
+                        <div class="row">
+                            <div class="title">Protection</div>
+                            <div class="description">Data ownership can only be assured with full Data protection. TheGoodData will always implement most robust legal and technical measures to ensure anonymity and avoid unwanted access to data by individuals, Corporations and Administration. TheGoodData expectsthat its Users and Members are diligent as well in this regard. </div>
+                        </div>
+                        <div class="row">
+                            <div class="title">Social Good</div>
+                            <div class="description">TheGoodData believes that its Mission can be achieved while doing some Good for the Society. Thus, it will always take intoconsideration the social impact of its actions.</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<script>
-
-    $(function() {
+<script>    $(function() {
         // sets the acive tab
         var url = $(location).attr('href'),
         indexOfHash = url.lastIndexOf('#'),

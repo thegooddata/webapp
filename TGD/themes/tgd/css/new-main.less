@@ -44,9 +44,8 @@ label{
 
 .navbar-fixed-top{
     border-bottom: none;
-
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     > div{
-        box-shadow:0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 #e7e7e7 inset;
         background-color: white;
     }
 
@@ -148,10 +147,10 @@ label{
         > li{
             a{
                 margin: 13px 13px 13px 0px;
-                padding: 7px 15px;
+                padding: 7px 15px 8px 15px;
                 color: @color-navy-blue;
-                font-family: @font-bold;
                 font-size: @font-size-xsmall;
+                font-family: @font-semi-bold;
                 line-height: 1em;
                 vertical-align: middle;
                 .rounded(17px);
@@ -162,8 +161,10 @@ label{
             }
             &.active{
                 a{
+                    font-family: @font-bold;
                     background-color: @color-navy-blue;
                     color: white;
+                    padding: 7px 15px;
                 }
             }
         }
@@ -1099,6 +1100,24 @@ section#your_company{
     overflow-y: scroll;
     border-left:none;
 
+    table{
+        width: 100%;
+        margin: 10px auto;
+        tr:first-child{
+            td{
+                font-weight: bold;
+            }
+        }
+        td{
+            padding: 3px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid @gray-text;
+            p{
+                margin-bottom: 0;
+            }
+        }
+    }
 
     h2{
         margin-top: 0;
@@ -1129,6 +1148,17 @@ section#your_company{
                     left: -1.4em;
                 }
             }
+        }
+    }
+    .row{
+        .title{
+            width: 25%;
+            float:left;
+            font-weight: bold;
+        }
+        .description{
+            width: 75%;
+            float: left;
         }
     }
 }
