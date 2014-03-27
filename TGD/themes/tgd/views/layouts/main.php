@@ -220,9 +220,11 @@
                     </ul>
                     <ul id="fifth" class="clearfix">
                         <h4>legal stuff</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Service</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy Policy</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Use</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy & Cookies</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#rules">Company Rules</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#secondary">Secondary Rules</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#principles">Company Principles</a></li>
                     </ul>        
                     <ul class="social clearfix">
                         <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>

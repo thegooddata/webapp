@@ -21,8 +21,8 @@
             <div class="col-xs-6 tgd-no-horizontal-padding" style="padding-right: 0;"> <!-- required for floating -->
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
-                    <li class="active"><a href="#terms" data-toggle="tab">Terms of service</a></li>
-                    <li><a href="#privacy" data-toggle="tab">Privacy policy</a></li>                    
+                    <li class="active"><a href="#terms" data-toggle="tab">Terms of use</a></li>
+                    <li><a href="#privacy" data-toggle="tab">Privacy & cookie policy</a></li>                    
                     <li><a href="#rules" data-toggle="tab">Company rules</a></li>
                     <li><a href="#secondary" data-toggle="tab">Secondary rules</a></li>
                     <li><a href="#principles" data-toggle="tab">Company principles</a></li>
@@ -32,32 +32,32 @@
             <div class="col-xs-10 tgd-no-horizontal-padding">
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div class="tab-pane active legal" id="privacy">
-                        <h1>ThGoodData Privacy and Cookie Policy</h1>
-                        <p>We are committed to protecting your privacy. Please read this Privacy and Cookie Policy carefully. It explains how we obtain, uses and keeps your information safe. By using this website and any Services we offer via this website, you are agreeing to be bound by this Policy in respect of the information collected about you. The Good Data Cooperative Limited has notified the existence of its personal data files to the Information Commissioner's Office and are registered on the Data Protection Register under number XXXX.</p>
+                    <div class="tab-pane legal" id="privacy">
+                        <h1>TheGoodData Privacy and Cookie Policy</h1>
+                        <p>We are committed to protecting your privacy. Please read this Privacy and Cookie Policy carefully. It explains how we obtain, use and keep your information safe. By using this website and any Services we offer via this website, you are agreeing to be bound by this Policy in respect of the information collected about you. The Good Data Cooperative Limited is registered with the Information Commissioner's Office under registration ZA048113.</p>
                         
                         <h2>Guidelines</h2>
-                        <p>Our Privacy Policy develops the following guidelines:</p>
+                        <p>Our Privacy and Cookie Policy develops the following guidelines:</p>
                         <ol start="1">
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users or store any cookies.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-2">Anonymous data will only be stored with your permission and for a limited time.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-3">Anonymous data will only be traded with third parties if you provide an additional and limited permission to do so.</a></li>
-                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-4">Only if you request to become a cooperative Member, we will have to store as minimum PII as possible.</a></li>
+                            <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-4">Only if you request to become a cooperative Member, we will store as minimum PII as possible.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-5">To improve the Service we use non-identifying browser cookies.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-6">We will always do our best effort to avoid unwanted access to your data by third parties.</a></li>
                             <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-7">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at any time without delay.</a></li>
                         </ol>
                         <ol start="1">
                             <li><h3 id="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users.</h3>
-                                <p>&ldquo;Personally identifiable information&rdquo; (PII) &nbsp;is data that can be used to identify a particular person. Aggregate or Anonymous data aren&rsquo;t considered PII. Service Users are those individuals that install our browser extension and enjoy any of our services, as described in our Terms of Use.</p>
-                                <p>Unlike most websites, our site doesn&rsquo;t install any type of browser cookies or stores any IP data that could be used to identify our users. We will only keep the minimum of logs and debug information necessary to ensure that we can improve the service and resolve issues that may have occurred. These logs will be kept for a maximum of 15 days.</p>
+                                <p>&ldquo;Personally identifiable information&rdquo; (PII) &nbsp;is data that can be used to identify a particular person. Aggregate or Anonymous data aren&rsquo;t considered PII. Service Users are those individuals that install our browser extension and enjoy any of our Services, as described in our Terms of Use.</p>
+                                <p>Unlike most websites, our site doesn&rsquo;t install any type of browser cookies or stores any IP data that could be used to identify our users. We will only keep the minimum of logs and debug information necessary to ensure that we can improve the Service and resolve issues that may have occurred. These logs will be kept for a maximum of 15 days.</p>
                             </li>
                         </ol>
 
                         <ol start="2">
                             <li><h3 id="item-2">Anonymous data will be stored only with your permission and for a limited time.</h3>
                                 <p>Being a data cooperative, we aim to gather Anonymous Service data that you produce in order to help you enjoy the value of it. At this time, this data consists of online behavioural and interest data such as browsing history and search queries.</p>
-                                <p>This data will only be stored if you provide us with your permission. You will be able to enjoy our services regardless of your decision to let us store this data or not.</p>
+                                <p>This data will only be stored if you provide us with your permission. You will be able to enjoy our Services regardless of your decision to let us store this data or not.</p>
                                 <p>Raw online behavioural data will be automatically deleted if older than 3 months. Estimated and aggregated behavioural and interest data may be kept for longer only if it remains valid and commercially valuable.</p>
                             </li>
                         </ol>
@@ -117,7 +117,7 @@
                         <p>Substantial revisions of this Policy will be notified by email in case you provided it, as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member’s forum.</p>
                         <p>You are welcome to comment current Policy or substantial future revisions in <span><a href="https://collaborate.thegooddata.org/corporate/documents/privacy-policy">https://collaborate.thegooddata.org/corporate/documents/privacy-policy</a>.</p>
                         <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Policy. If you don&rsquo;t agree to the revised Policy, please stop using the Services.</p>
-                        <h2>Contact</h2><p>You can contact us at <span><a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about this Policy.
+                        <h2>Contact</h2><p>You can contact us at <span><a href="mailto:support@thegooddata.org">support@thegooddata.org</a>&nbsp;if you have any questions about this Policy.
                         </p>
 
                         <p>
@@ -127,11 +127,11 @@
                             Latest revision &ndash; March 2014
                         </p>
                     </div>
-                    <div class="tab-pane legal" id="terms">
-
+                    <div class="tab-pane active legal" id="terms">
+                        <h1>TheGoodData Terms of Use</h1>
                         <p>Thank you for using TheGoodData. These terms of use &mdash; referred to as &ldquo;Terms&rdquo; &mdash; apply to your use of TheGoodData&rsquo;s software and services &mdash; referred to as &ldquo;Services&rdquo;. Your use of the Services indicates you agree to the Terms, so please read carefully.</p>
                         <h2>Who we are</h2>
-                        <p>We are The Good Data Cooperative Limited, an Industrial and Provident Society registered in England and Wales under registered number xxxx whose registered office is at Unit 1, 82 Clerkenwell Road, London EC1M 5RF.</p>
+                        <p>We are The Good Data Cooperative Limited, an Industrial and Provident Society Registered in England under number 32340R. Our registered office is at Unit 1, 82 Clerkenwell Road, London EC1M 5RF.</p>
                         <p>In this website we provide data management services once users have installed Our browser extension (&quot;Services&quot;). </p>
                         <h2>Privacy Policy</h2>
                         <p>We ask that you review our <a href="https://docs.google.com/document/d/1G8FlTNyBK_abHORyr3lvwsq0Xp4y6zPCewcA5RkFics/">Privacy Policy</a>, so that you are aware of how we collect and use your data, as well as the rights you have to access or cancel it at any time. Because our Services are used by people all over the world, personal information that we collect may be stored and processed in the United Kingdom or any other country. By using our services, you consent to any such transfer of information outside your country.</p>
@@ -172,24 +172,22 @@
                         <p>We believe that community input is essential for these Terms to properly serve our users. It is also essential for a fair contract. Therefore, we will provide any substantial future revisions of these Terms to the community for comment at least thirty 30 days before their application. For changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three 3 days&#39; notice.</p>
                         <p>Substantial revisions of these Terms&nbsp;will be notified by email in case you provided it, as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member&rsquo;s forum.</p>
 
-                        <p>You are welcome to comment current Terms or substantial future revisions in our management platform <a href="http://collaborate.thegooddata.org/corporate/documents/terms-of-use">http://collaborate.thegooddata.org/corporate/documents/terms-of-use</a>.</p>
+                        <p>You are welcome to comment current Terms or substantial future revisions in our management platform <a href="https://collaborate.thegooddata.org/corporate/documents/terms-of-use">https://collaborate.thegooddata.org/corporate/documents/terms-of-use</a>.</p>
 
                         <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Terms. If you don&rsquo;t agree to the revised Terms, please stop using the Services.</p>
                         <h2>Contact</h2>
-                        <p>You can contact us at <a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about these Terms.</p>
+                        <p>You can contact us at <a href="mailto:support@thegooddata.org">support@thegooddata.org</a>&nbsp;if you have any questions about these Terms.</p>
                         
                         <p>First drafted - December 2013</p>
-                        <p>Latest revision &ndash; December 2013 </p>
+                        <p>Latest revision &ndash; March 2014 </p>
 
 
                     </div>
                     <div class="tab-pane legal" id="rules">
-
-
-                        <h2>
+                        <h1>
                             Industrial and Provident Societies Act 1965<br>
                             Rules of<br>
-                            The Good Data Cooperative Limited</h2>
+                            The Good Data Cooperative Limited</h1>
                         <h3>NAME</h3>
 
                         <ol>
@@ -1450,7 +1448,7 @@
                         </ol>
                     </div>
                     <div class="tab-pane legal" id="secondary">
-                         <h1 > The Good Data Cooperative Ltd Secondary Rules</h1>
+                         <h1> The Good Data Cooperative Ltd Secondary Rules</h1>
                             <h2 > Structure</h2>
 
                             <p>This agreement (our secondary rules) sets out the commitment between The Good Data Cooperative Ltd (&ldquo;TheGoodData&rdquo;) and you &ndash; the Members. These should be read in addition to our Company Principles and our Company Rules as an Industrial and Provident Society, Cooperative Consortia. Both are available on our website. TheGoodData is a learning organisation and aims for an ongoing increase in collaboration of Members and therefore these rules will evolve over time through consultation with them.</p>
@@ -1611,7 +1609,7 @@
                         <p>Latest revision &ndash; December 2013 </p>
                     </div>
                     <div class="tab-pane legal" id="principles">
-                        <h2>Principles of TheGoodData Cooperative Limited</h2>
+                        <h1>Principles of TheGoodData Cooperative Limited</h1>
                         <div class="row">
                             <div class="title">Data Ownership</div>
                             <div class="description">People are the only owners of the data they produce. That means that they must be aware of its existence, that they can freely decide who should have access to it, and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and meaningful way. </div>
