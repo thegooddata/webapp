@@ -15,7 +15,7 @@
 </div> 
 <section id="tgd-page-content">
     <div class="container">
-        <div class="row">
+        <div class="row product-container">
             <div class="col-xs-8 product-tabs" style="padding: 0;"> <!-- required for floating -->
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
@@ -67,7 +67,7 @@
                             </li>
                             <li>
                                 <h3>Always Anonymous</h3>
-                                <p>In case you provide us any Personally Identifiable Information it will be decoupled from your comercial usage data and using <a href="#">military two-man encryption techniques</a></p>
+                                <p>In case you provide us any Personally Identifiable Information it will be decoupled from your comercial usage data and using <a href="https://github.com/cloudflare/redoctober">military two-man encryption techniques</a></p>
                                 <img src="<?php echo Yii::app()->theme->baseUrl . '/img/anonymous.png';?>" alt="">
                             </li>
                         </ul>

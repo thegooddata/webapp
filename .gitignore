@@ -1,6 +1,11 @@
+.gitignore
 assets/
 TGD/protected/runtime/
 TGD/protected/runtime/application.log
 application.log
 application.log.*
 /nbproject
+.DS_Store
+TGD/protected/config/local_config.php
+TGD/.htaccess
+postgres.log

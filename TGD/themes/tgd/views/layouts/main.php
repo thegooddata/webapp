@@ -195,15 +195,15 @@
             <div class="footer clearfix">
                 <div class="container clearfix">
                     <ul class="clearfix">
-                        <h4>product</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/product");?>">Technology</a></li>
+                        <h4>service</h4>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/product");?>">Product</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="mailto:support@thegooddata.org">Support</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>third parties</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coder's Program</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/partners");?>">Partners</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
                         <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>
                     <ul class="clearfix">

@@ -13,6 +13,17 @@ and open the template in the editor.
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+/*.transition(@duration:0.2s, @ease:ease-out) {
+  -webkit-transition: all @duration @ease;
+  -moz-transition: all @duration @ease;
+  -o-transition: all @duration @ease;
+  transition: all @duration @ease;
+}*/
+/*.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}*/
 /* 
     Created on : Jan 4, 2014, 5:53:51 PM
     Author     : juan
@@ -74,7 +85,7 @@ and open the template in the editor.
 #threats-ranking h2,
 #mix-threats h2 {
   font-family: ProximaNovaSoft-Regular;
-  font-size: 1.6rem;
+  font-size: 1.142em;
   font-weight: bold;
   color: white;
   margin: 0rem;
@@ -95,14 +106,14 @@ and open the template in the editor.
 #risk-profile .amount.small,
 #threats-ranking .amount.small,
 #mix-threats .amount.small {
-  font-size: 1.6rem;
+  font-size: 1.142em;
   font-weight: bold;
 }
 #threats-identified .subtext,
 #risk-profile .subtext,
 #threats-ranking .subtext,
 #mix-threats .subtext {
-  font-size: 1.4rem;
+  font-size: 1em;
   display: block;
   color: #7d7d7d;
   line-height: 1em;
@@ -111,7 +122,7 @@ and open the template in the editor.
   background-color: #1c8ccf;
 }
 #threats-identified h2 + div {
-  background-color: #fafafa;
+  background-color: #fbfbfb;
 }
 #threats-identified canvas {
   margin: 0px 10px;
@@ -137,12 +148,12 @@ and open the template in the editor.
 }
 #threats-identified .nav-tabs {
   width: 100%;
-  background-color: #fafafa;
+  background-color: #fbfbfb;
   border-bottom: 1px solid #eeeeee;
 }
 #threats-identified .nav-tabs li {
   font-size: 1.2rem;
-  background-color: #fafafa;
+  background-color: #fbfbfb;
   border-bottom: 1px solid #eeeeee;
   border-right: 1px solid #eeeeee;
   border-top: 1px solid #eeeeee;
@@ -211,7 +222,7 @@ and open the template in the editor.
 }
 #risk-profile .row:last-child {
   border: none;
-  background-color: #fafafa;
+  background-color: #fbfbfb;
 }
 #risk-profile .row > div:last-child {
   text-align: center;
@@ -281,7 +292,7 @@ and open the template in the editor.
 #threats-ranking .table > thead > tr > th {
   padding: 5px 10px;
   border-bottom: 1px solid #ddd;
-  background-color: #fafafa;
+  background-color: #fbfbfb;
 }
 #threats-ranking .table > thead > tr > td {
   padding: 5px 10px;
@@ -300,7 +311,7 @@ and open the template in the editor.
   background-color: #8ac6ea;
 }
 #mix-threats .legend {
-  background-color: #fafafa;
+  background-color: #fbfbfb;
   padding: 2rem 1rem;
 }
 #mix-threats .legend div {
@@ -323,15 +334,15 @@ and open the template in the editor.
 #mix-threats .legend .social span {
   background-color: #ea6654;
 }
-#mix-threats .legend .others span {
+#mix-threats .legend .cookies span {
   background-color: #fcc34a;
 }
-#mix-threats .legend .analytics span {
+#mix-threats .legend .beacons span {
   background-color: #72bc81;
 }
-/*#mix-threats .legend .others span {
+#mix-threats .legend .others span {
   background-color: #095779;
-}*/
+}
 #mix-threats .chart {
   position: relative;
   border-bottom: none;

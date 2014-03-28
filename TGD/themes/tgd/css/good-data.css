@@ -8,6 +8,17 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+/*.transition(@duration:0.2s, @ease:ease-out) {
+  -webkit-transition: all @duration @ease;
+  -moz-transition: all @duration @ease;
+  -o-transition: all @duration @ease;
+  transition: all @duration @ease;
+}*/
+/*.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}*/
 /* 
     Created on : Jan 4, 2014, 5:53:51 PM
     Author     : juan
@@ -52,12 +63,12 @@
 }
 #overview .item .subtext {
   font-family: ProximaNovaSoft-Regular;
-  font-size: 1.4rem;
+  font-size: 1em;
   line-height: 1em;
   color: #7d7d7d;
 }
 #overview h2 {
-  font-size: 1.6rem;
+  font-size: 1.142em;
   font-weight: bold;
   letter-spacing: -1px;
 }
@@ -88,7 +99,7 @@
   margin-top: 10px;
 }
 #table-header {
-  background-color: #ecf4f8;
+  background-color: #e7f4fb;
 }
 #table-header div {
   color: #7d7d7d;
@@ -103,7 +114,7 @@
   float: left;
   line-height: 1.1em;
   padding-top: 3px;
-  font-size: 1.4rem;
+  font-size: 1em;
   font-family: ProximaNovaSoft-Semibold;
 }
 #table-header div.col-1,
@@ -148,12 +159,12 @@
   color: #7d7d7d;
 }
 #table-content .subtext.partner {
-  font-size: 1.28rem;
+  font-size: 0.857em;
   color: #1c8ccf;
 }
 #table-content .col-1 a {
   font-family: ProximaNovaSoft-Bold;
-  font-size: 1.4rem;
+  font-size: 1em;
   color: #1c8ccf;
 }
 #table-content img {

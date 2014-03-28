@@ -4,7 +4,7 @@
 
                 <div class="container clearfix">
                     <h1>Browse the web anonymously<br/> while doing some good.</h1>
-                    <a class="tgd-button" href="#">install in chrome</a>
+                    <a class="tgd-button" href="#">Get TheGoodData</a>
                     <p>TheGoodData helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
 
                     <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/yellow_small.png" data-stellar-ratio="-3" alt="">

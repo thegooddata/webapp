@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <section id="kiva" class="tgd-box col-sm-16 col-md-8 col-lg-8">
-                <h2>Use of funds partner</h2>
+                <h2>Use of funds</h2>
                 <div class="tgd-box-section logo kiva" data-url="http://www.kiva.org"></div>
                 <div class="tgd-box-section  very-light-gray">
                     <ul>
@@ -47,7 +47,7 @@
                 </div>
             </section>
             <section id="chango" class="tgd-box col-sm-16 col-md-8 col-lg-8">
-                <h2>Source of funds partner</h2>
+                <h2>Source of funds</h2>
                 <div class="tgd-box-section logo" data-url="http://www.chango.com"></div>
                 <div class="tgd-box-section very-light-gray">
                     <ul>

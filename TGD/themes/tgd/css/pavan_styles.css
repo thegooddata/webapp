@@ -201,6 +201,9 @@ section.coders div.coding_list{
 }
 
 /*------- Product Page -------*/
+.product-container {
+	/*min-height: 496px;*/
+}
 
 .product-tabs{
 	/*border-right: 5px solid #268dcc;*/
@@ -209,8 +212,7 @@ section.coders div.coding_list{
 .product-content{
 	border-left: 5px solid #268dcc;
 	padding: 25px 30px 25px 0;
-	/*min-height: 536px;*/
-	min-height: 536px;
+	min-height: 496px;
 }
 
 .product-content ul li:before{
