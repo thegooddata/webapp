@@ -162,7 +162,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=public',
+		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=tgd',
 		    'username'=>'postgres',
 		    'password'=>'perrovaca',
 		    'charset'=>'UTF8',

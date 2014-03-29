@@ -370,7 +370,6 @@ footer .license ul li p {
   footer .license li:last-child {
     width: 50%;
     /*margin-left: 70px;*/
-  
   }
 }
 @media only screen and (max-width: 355px) {
@@ -447,7 +446,6 @@ section#intro > .container > h1 {
 }
 section#intro > .container a {
   /*width: 44%;*/
-
 }
 section#intro > .container a.tgd-button {
   display: table;
@@ -501,7 +499,6 @@ section#intro > .container p {
 }
 #bag .container .content a.tgd-button {
   /*width: 44%;*/
-
   float: left;
   display: table;
   color: #fff;
@@ -529,7 +526,6 @@ section#intro > .container p {
   float: left;
   margin-left: 40px;
   /*padding: 0 52px;*/
-
   background-size: 70%;
   -ms-behavior: url(../bgsize.htc);
   background-position: 0 10px;
@@ -537,7 +533,6 @@ section#intro > .container p {
 }
 #bag img.show_seeds {
   /*background: url(../img/seeds.png) no-repeat 0 bottom;*/
-
   background-size: 99%;
   -ms-behavior: url(../bgsize.htc);
   transition: background 0.8s ease-out;
@@ -846,12 +841,6 @@ section#your_company #fields {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
-@media only screen and (min-width: 35em) {
-  
-}
-@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-  
-}
 /*******************************************************************************
  * TGD classes and IDs
  ******************************************************************************/
@@ -1018,7 +1007,7 @@ section#your_company #fields {
   background-image: url("../img/chango.png");
 }
 #chango .glyphicon {
-  color: #fcc34a;
+  color: #8ac6ea;
 }
 /*******************************************************************************
  * Register
@@ -1043,12 +1032,9 @@ section#your_company #fields {
 #registration-form-block .has-info {
   color: #7d7d7d;
 }
-#registration-form-block .has-info label {
-  margin-left: 20px;
-}
 #registration-form-block .has-info .form-control-feedback {
   top: -7px;
-  left: 0px;
+  right: 0px;
 }
 #registration-form-block .split-3 {
   width: 33.3%;
@@ -1747,7 +1733,6 @@ section#your_company #fields {
     background: transparent !important;
     color: #000 !important;
     /* Black prints faster: h5bp.com/s */
-  
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -1762,8 +1747,8 @@ section#your_company #fields {
     content: " (" attr(title) ")";
   }
   /*
-       * Don't show links for img, or javascript/internal links
-       */
+     * Don't show links for img, or javascript/internal links
+     */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
@@ -1777,7 +1762,6 @@ section#your_company #fields {
   thead {
     display: table-header-group;
     /* h5bp.com/t */
-  
   }
   tr,
   img {
@@ -1786,7 +1770,7 @@ section#your_company #fields {
   img {
     max-width: 100% !important;
   }
-  @page  {
+  @page {
     margin: 0.5cm;
   }
   p,

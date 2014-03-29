@@ -48,7 +48,7 @@
                     <span>
                         <a href="#">
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/arrow_in_circle.png" alt="">
-                            <em>Take a look at our Company Management Dashboard</em>
+                            <em>Take a look at our Company Collaboration Dashboard</em>
                         </a>
                     </span>
                 </div>

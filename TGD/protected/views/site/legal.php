@@ -18,7 +18,7 @@
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 tgd-no-horizontal-padding" style="padding-right: 0;"> <!-- required for floating -->
+            <div class="col-xs-4 tgd-no-horizontal-padding" style="padding-right: 0;"> <!-- required for floating -->
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
                     <li class="active"><a href="#terms" data-toggle="tab">Terms of use</a></li>
@@ -29,7 +29,7 @@
                 </ul>
             </div>
 
-            <div class="col-xs-10 tgd-no-horizontal-padding">
+            <div class="col-xs-12 tgd-no-horizontal-padding">
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane legal" id="privacy">

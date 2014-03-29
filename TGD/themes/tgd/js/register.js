@@ -1,5 +1,5 @@
 $(function() {
-    $('#principles-and-rules').tooltip().click(function(e){
+    $('.tooltiped').tooltip().click(function(e){
         e.preventDefault();
     });
     

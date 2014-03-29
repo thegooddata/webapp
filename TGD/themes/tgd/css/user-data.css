@@ -35,6 +35,12 @@ and open the template in the editor.
 .row section:nth-child(1) {
   margin-top: 3rem;
 }
+.row section:nth-child(1).mission {
+  margin-top: 2rem;
+}
+.row section#kiva {
+  margin-top: 2rem;
+}
 .row [class^=col-]:first-child {
   padding-left: 0;
 }
