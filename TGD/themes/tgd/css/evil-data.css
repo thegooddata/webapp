@@ -119,7 +119,7 @@ and open the template in the editor.
   line-height: 1em;
 }
 #threats-identified h2 {
-  background-color: #1c8ccf;
+  background-color: #8ac6ea;
 }
 #threats-identified h2 + div {
   background-color: #fbfbfb;
@@ -213,7 +213,7 @@ and open the template in the editor.
   text-align: right;
 }
 #risk-profile h2 {
-  background-color: #72bc81;
+  background-color: #ea6654;
 }
 #risk-profile .row {
   border-bottom: 1px solid #eeeeee;
@@ -281,7 +281,7 @@ and open the template in the editor.
   background-image: url("../img/risk_lover.png");
 }
 #threats-ranking h2 {
-  background-color: #ea6654;
+  background-color: #fcc34a;
 }
 #threats-ranking .table {
   margin-bottom: 0;
@@ -308,7 +308,7 @@ and open the template in the editor.
   text-align: center;
 }
 #mix-threats h2 {
-  background-color: #8ac6ea;
+  background-color: #72bc81;
 }
 #mix-threats .legend {
   background-color: #fbfbfb;

@@ -45,7 +45,7 @@
                         </div>
                         <div class="item">
                             <div class="amount money_reserved">$0</div>
-                            <div class="subtext">Money Reserved for Kiva</div>
+                            <div class="subtext">Money available for microloans</div>
                         </div>
                         <div class="item">
                             <div class="amount money_lent">$0</div>
