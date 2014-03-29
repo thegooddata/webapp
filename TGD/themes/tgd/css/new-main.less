@@ -1091,12 +1091,23 @@ section#your_company{
 }
 
 .legal{
-    padding: 20px 10px;
-    border: 1px solid @gray-lines;
-    background-color: @very-light-gray;
+    h2.tgd-box-like{
+        font-size: @font-size-medium-h2;
+        font-family: @font-regular;
+        font-weight: bold;
+        color: white;
+        background-color: @color-link;
+        margin:0rem;
+        padding: 1.5rem 1rem 1.2rem 1.5rem;
+        .inner-shadow(0, 1px, 1px, 0.3);
+    }
     overflow-y: scroll;
-    border-left:none;
-
+    .contract-container{
+        padding: 20px 10px;
+        border: 1px solid @gray-lines;
+        background-color: @very-light-gray;
+        border-left:none;
+    }
     
     table{
         width: 100%;

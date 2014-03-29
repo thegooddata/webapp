@@ -1046,10 +1046,24 @@ section#your_company #fields {
   color: #ea6654;
 }
 .legal {
+  overflow-y: scroll;
+}
+.legal h2.tgd-box-like {
+  font-size: 1.15em;
+  font-family: ProximaNovaSoft-Regular;
+  font-weight: bold;
+  color: white;
+  background-color: #1c8ccf;
+  margin: 0rem;
+  padding: 1.5rem 1rem 1.2rem 1.5rem;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.legal .contract-container {
   padding: 20px 10px;
   border: 1px solid #eeeeee;
   background-color: #fbfbfb;
-  overflow-y: scroll;
   border-left: none;
 }
 .legal table {
