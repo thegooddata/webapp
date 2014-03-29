@@ -6,13 +6,13 @@
 
                     <section id="seniority">
 
-                        <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are 5 levels of seniority based on data shared, ownership status and particiation on company forums: Apprentice, Journeyman, Owner, Expert owner, Manager." data-placement="top" data-toggle="popover"></i></h2>
+                        <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are 5 levels of seniority based on data shared, ownership status and particiation on company forums: Apprentice, Journeyman, Owner, Expert owner, Manager." data-placement="right" data-toggle="popover"></i></h2>
 
                         <div class="seniority apprentice">
                             <span><?php echo $queries_percentile_text;?></span>
                         </div>                                      
 
-                        <div class="gray">You have contributed with less than <?php echo $queries_count; ?> data points</div>
+                        <div class="gray"><b>You have contributed with <span class="green"><?php echo $queries_count; ?></span> pieces of data this month</b></div>
 
                     </section>
 
@@ -50,7 +50,7 @@
                                             <th class="engine">Engine</th>
                                             <th class="date">Date</th>
                                             <!-- <th class="events">Events</th> -->
-                                            <th class="sensitive-data">Sensitive data</th>
+                                            <th class="sensitive-data">Is it sensitive?</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -233,7 +233,7 @@
                         </div><!-- tab-content -->
                         <!-- row -->
 
-                        <div class="buttons">
+                        <div class="buttons clearfix">
                             <a href="#" class="btn btn-primary pull-right delete_all">DELETE ALL DATA</a>
                         </div>
                     </section>

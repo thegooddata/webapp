@@ -17,10 +17,9 @@ and open the template in the editor.
         margin-top: 2rem;
         margin-bottom: 2rem;
         &:nth-child(1){
-            margin-top: 3rem;
             &.mission{margin-top: 2rem}
         }
-        &#kiva{margin-top: 2rem;}
+
     }
     [class^=col-]{
         &:first-child{
@@ -103,6 +102,9 @@ and open the template in the editor.
         padding: 1rem;
         text-align: center;
         line-height: 1.25em;
+        .green{
+            color: @tgd-green;
+        }
     }
 }
 
@@ -255,7 +257,7 @@ and open the template in the editor.
         .btn-xs{
             color: white;
             font-size: 1rem;
-            line-height: 1.6em;
+            line-height: 1rem;
             padding: 0 0.8rem 0 0.8rem;
             height: 1.6rem;
             font-weight: bold;
@@ -266,7 +268,7 @@ and open the template in the editor.
             vertical-align: middle;
         }
         .delete{
-            background-color: @tgd-red;
+            background-color: @tgd-blue;
         }
     }
     .buttons{

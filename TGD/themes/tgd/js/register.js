@@ -3,8 +3,6 @@ $(function() {
         e.preventDefault();
     });
     
-    
-
     var sameSize = function() {
         var formHeight = $('#registration-form-block').innerHeight();
         $('#contract').innerHeight(formHeight);

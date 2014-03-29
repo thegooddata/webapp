@@ -104,7 +104,7 @@
                             <thead>
                                 <tr>
                                     <th>Website</th>
-                                    <th>Threats</th>
+                                    <th>Avg.threats</th>
                                     <th>Visits</th>
                                     <th>Total</th>
                                 </tr>
@@ -165,13 +165,13 @@
             var canvasSide = availableWidth - paddingHorizontal;
 
             canvasTargetWeek.after('<canvas id="chart-threats-week"></canvas>');
-            $('#chart-threats-week').attr('width', canvasSide).attr('height', '230px');
+            $('#chart-threats-week').attr('width', canvasSide).attr('height', '186px');
 
             canvasTargetMonth.after('<canvas id="chart-threats-month"></canvas>');
-            $('#chart-threats-month').attr('width', canvasSide).attr('height', '230px');
+            $('#chart-threats-month').attr('width', canvasSide).attr('height', '186px');
 
             canvasTargetYear.after('<canvas id="chart-threats-year"></canvas>');
-            $('#chart-threats-year').attr('width', canvasSide).attr('height', '230px');
+            $('#chart-threats-year').attr('width', canvasSide).attr('height', '186px');
 
             // Charts data
             var optionsThreats = {

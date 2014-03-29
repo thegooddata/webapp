@@ -56,12 +56,12 @@
                                     <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/><?php echo Yii::app()->user->username; ?><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile");?>">account settings</a></li>
-                                        <?php if(Yii::app()->controller->id == 'site'){ ?>
+
                                         <li class="divider"></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index");?>">Good data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/evilData/index");?>">Evil data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/userData/index");?>">User data</a></li>
-                                        <?php } ?>
+
                                         <li class="divider"></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/logout");?>"><span class="glyphicon glyphicon-off"></span> logout</a></li>
                                     </ul>

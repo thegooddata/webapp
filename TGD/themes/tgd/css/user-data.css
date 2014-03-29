@@ -32,13 +32,7 @@ and open the template in the editor.
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.row section:nth-child(1) {
-  margin-top: 3rem;
-}
 .row section:nth-child(1).mission {
-  margin-top: 2rem;
-}
-.row section#kiva {
   margin-top: 2rem;
 }
 .row [class^=col-]:first-child {
@@ -114,6 +108,9 @@ and open the template in the editor.
   padding: 1rem;
   text-align: center;
   line-height: 1.25em;
+}
+#seniority .gray .green {
+  color: #72bc81;
 }
 #warrant-canary .canary {
   padding-top: 115px;
@@ -242,7 +239,7 @@ and open the template in the editor.
 #data-table .pager .btn-xs {
   color: white;
   font-size: 1rem;
-  line-height: 1.6em;
+  line-height: 1rem;
   padding: 0 0.8rem 0 0.8rem;
   height: 1.6rem;
   font-weight: bold;
@@ -252,7 +249,7 @@ and open the template in the editor.
   vertical-align: middle;
 }
 #data-table .pager .delete {
-  background-color: #ea6654;
+  background-color: #8ac6ea;
 }
 #data-table .buttons {
   margin-top: 3rem;
