@@ -19,6 +19,9 @@
 
 a{
     text-decoration: none;
+    &:focus, &:hover{
+        outline: none;
+    }
 }
 
 body{
@@ -323,6 +326,19 @@ footer{
             .checkbox{
                 padding-left:30px;
             }
+        }
+    }
+}
+/* ------------------------------------------------------------ No chrome modal */
+
+#chromeModal{
+    .modal-dialog{
+        width: 450px;
+        .modal-body{
+            padding-bottom:0;
+        }
+        .modal-footer{
+            margin-top: 5px;
         }
     }
 }

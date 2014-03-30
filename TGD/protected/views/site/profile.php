@@ -21,7 +21,7 @@
                     <div class="form-group col-sm-16 col-md-16 col-lg-16 has-info has-feedback">
                         <label>Email</label>
                         <input type="text" class="form-control" id="email" name="email">
-                        <span class="glyphicon glyphicon-question-sign form-control-feedback tooltiped" data-toggle="popover" data-placement="top" data-content="Used for password recovery and infrequent legal communications as a company Member"></span>
+                        <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="Used for password recovery and infrequent legal communications as a company Member"></span>
                         <span class="form-control-help">optional</span>
                     </div>
                     
@@ -82,7 +82,7 @@
             }
         });
 
-        $('.form-control-feedback').popover();
+        $('.form-control-feedback').popover({'trigger': 'hover'});
         $('.form-control-feedback').on('shown.bs.popover', function() {
             var $popover = $(this).parent().find('.popover');
 

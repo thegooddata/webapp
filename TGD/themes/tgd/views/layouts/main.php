@@ -30,6 +30,8 @@
         
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js'; ?>"></script>        
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/common.js'; ?>"></script>
+
     </head>
 
     <body <?php echo ($this->bodyId=='')?'':'id="'.$this->bodyId.'"';?>>
@@ -72,7 +74,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/login"); ?>">Sign In</a></li>
-                                <li class="install"><a href="#">Install in chrome</a></li>
+                                <li class="install"><a href="#">Get TheGoodData</a></li>
                             </ul>
                         </div>
                         <?php } ?>
@@ -126,7 +128,7 @@
                 <nav>
                     <ul class="clearfix">
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration"); ?>">Sign In</a></li>
-                        <li class="install"><a class="active" href="#">Install in chrome</a></li>
+                        <li class="install"><a class="active" href="#">Get TheGoodData</a></li>
                     </ul> 
                 </nav>
             </div>
@@ -181,6 +183,30 @@
 
         <?php } ?>
 
+        <!-- modal chrome only install -->
+        <div id="chromeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Browser not supported</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-sm-16">
+                                We only support Chrome for the time being. We would appreciate your help to extend our service to other browsers either by collaborating in our 
+                                <a href="https://collaborate.thegooddata.org/">open source developments</a> or 
+                                <a href=""<?php echo Yii::app()->controller->createAbsoluteUrl("/site/donate");?>"">giving us a donation.</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-default tgd-button tgd-send" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/donate");?>">Continue</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <!-- main content -->
 
         <?php echo $content; ?>

@@ -29,7 +29,7 @@
                     <div class="form-group col-sm-16 col-md-16 col-lg-16 has-info has-feedback">
                         <label>Email</label>
                         <input type="text" class="form-control" id="email" name="ProfileForm[email]" value="<?php echo $user->email; ?>">
-                        <span class="glyphicon glyphicon-question-sign form-control-feedback tooltiped" data-toggle="popover" data-placement="top" data-content="Used for password recovery and infrequent legal communications as a company Member"></span>
+                        <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="Used for password recovery and infrequent legal communications as a company Member"></span>
                     </div>
                     
                         <div  class="password-form form-group col-sm-16 col-md-16 col-lg-16">
@@ -89,12 +89,12 @@
             // }
         });
 
-        $('.form-control-feedback').popover();
-        $('.form-control-feedback').on('shown.bs.popover', function() {
-            var $popover = $(this).parent().find('.popover');
+        $('.form-control-feedback').popover({'trigger': 'hover'});
+        // $('.form-control-feedback').on('shown.bs.popover', function() {
+        //     var $popover = $(this).parent().find('.popover');
 
-            $popover.width(300);
-            $popover.find('.arrow').css('left', '50%');
-        })
+        //     $popover.width(300);
+        //     $popover.find('.arrow').css('left', '50%');
+        // })
     });
 </script>

@@ -32,6 +32,10 @@
 a {
   text-decoration: none;
 }
+a:focus,
+a:hover {
+  outline: none;
+}
 body {
   padding-top: 0;
 }
@@ -306,6 +310,16 @@ footer .license ul li p {
 }
 #signInModal .modal-dialog .modal-body .checkbox {
   padding-left: 30px;
+}
+/* ------------------------------------------------------------ No chrome modal */
+#chromeModal .modal-dialog {
+  width: 450px;
+}
+#chromeModal .modal-dialog .modal-body {
+  padding-bottom: 0;
+}
+#chromeModal .modal-dialog .modal-footer {
+  margin-top: 5px;
 }
 /*******************************************************************************
  * Media queries (footer)
