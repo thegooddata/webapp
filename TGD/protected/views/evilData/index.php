@@ -85,9 +85,9 @@
                         <h2>Mix of threats</h2>
                         <div class="legend clearfix">
                             <div class="advertising"><span></span>Advertising</div>
-                            <div class="social"><span></span>Social Widgets</div>
                             <div class="analytics"><span></span>Analytics</div>
-                            <div class="others"><span></span>Others</div>
+                            <div class="social"><span></span>Social Widgets</div>
+                            <div class="others"><span></span>Content</div>
                         </div>
                         <div class="chart clearfix">
                             <div>You</div>

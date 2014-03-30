@@ -9,17 +9,16 @@
     </div>
 </div> 
 
- <?php if ($success != "") { ?>   
-    <p>SUCCESS : <?php echo $success; ?>
-<?php } ?>
-
-<?php if ($error != "") { ?>   
-    <p>ERROR : <?php echo $error; ?>
-<?php } ?>
-
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
+            <?php if ($success != "") { ?>   
+                <p class="alert alert-success">SUCCESS : <?php echo $success; ?>
+            <?php } ?>
+
+            <?php if ($error != "") { ?>   
+                <p class="alert alert-danger">ERROR : <?php echo $error; ?>
+            <?php } ?>
             <section id="form" class="col-sm-16 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
                 <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile/profile"); ?>" method="POST">
                     <div  class="form-group col-sm-16 col-md-16 col-lg-16">

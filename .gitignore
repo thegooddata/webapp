@@ -9,3 +9,4 @@ application.log.*
 TGD/protected/config/local_config.php
 TGD/.htaccess
 postgres.log
+*.codekit

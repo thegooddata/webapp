@@ -12,7 +12,12 @@
                             <span><?php echo $queries_percentile_text;?></span>
                         </div>                                      
 
-                        <div class="gray"><b>You have contributed with <span class="green"><?php echo $queries_count; ?></span> pieces of data this month</b></div>
+                        <div class="gray">
+                            <p><b>You have contributed with <span class="green"><?php echo $queries_count; ?></span> pieces of data this month.</b></p>
+                            <?php if ($queries_count==0) { ?>
+                                <a class="" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq#search_query_trade");?>">Why the extension does not trade the search queries I'm doing?</a>
+                            <?php } ?>
+                        </div>
 
                     </section>
 

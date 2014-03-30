@@ -137,6 +137,9 @@ class SiteController extends Controller {
         // set body id to #tgd-share-purchase
         $this->bodyId = "tgd-faq";
         
+         // add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/faq.js', CClientScript::POS_END);
+        
 
         
         $this->render('faq');

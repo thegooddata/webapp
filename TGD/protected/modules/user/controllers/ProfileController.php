@@ -20,9 +20,6 @@ class ProfileController extends Controller
         // set title
         $this->pageTitle = " - Edit profile";
 
-        //add js
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/profile.js', CClientScript::POS_END);
-
         // set body id to #tgd-share-purchase
         $this->bodyId = "tgd-edit-profile";
 

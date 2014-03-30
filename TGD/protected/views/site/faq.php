@@ -17,7 +17,7 @@
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6" style="padding-right: 0;"> <!-- required for floating -->
+            <div class="col-xs-6 faq-index" style="padding-right: 0;"> <!-- required for floating -->
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
                   <li class="active"><a href="#home" data-toggle="tab">TheGoodData company</a></li>
@@ -129,6 +129,21 @@
                             <li>
                                 <em>What are the “Store” and “Share” extension features?</em>
                                 <p>In case you don’t want to store your browsing history and your non-sensitive queries in our servers you can change that setting in the extension at any time. You can decide as well not to sell any of your search data. No matter what you decide about these two settings, you will always enjoy TheGoodData threat detection service.</p>
+                            </li>
+                            <li id="search_query_trade">
+                                <em>Why the extension does not trade the search queries that I’m doing?</em>
+                                <p>TheGoodData extension only trade queries if the following criteria is met: </p>
+                                <ul class="clearfix">
+                                    <li>
+                                        <p>You have performed the query in the Chrome browser, with the extension enabled, and using either Google, Bing or Yahoo search engine.</p>
+                                    </li>
+                                    <li>
+                                        <p>The query does not contain any sensitive term. To be on the safe side we may discard queries that have a minor risk of containing sensitive terms, but they are not.</p>
+                                    </li>
+                                    <li>
+                                        <p>The query is written in English. At this early stage we are guessing the query language based on browser default language. It might well be that you have written your query in English but we have discarded it because browser language is a different one. We will improve this feature in the future.</p>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <em>Why do you store information in TheGoodData servers?</em>
