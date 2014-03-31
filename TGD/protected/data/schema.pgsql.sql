@@ -1,32 +1,19 @@
--- delete from tbl_adtracks;
--- delete from tbl_queries;
--- delete from tbl_browsing;
-
---- EVENTS DATA ---
-
---DROP TABLE tbl_events;
--- CREATE TABLE tbl_events (
---   id SERIAL PRIMARY KEY,
---   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
-
---   member_id int references tbl_members(id),
---   user_id varchar(128),
-
---   action (browse, search, share, like, threat_detect, threat_whitelist_add, threat_whitelist_remove, install, uninstall)
-
---   object (id -> dato )
---   type
-
---   source (chrome|safari|facebookapp)
-  
---   --misce
---   value,
---   message,
---   status,
--- );
-
-
 --- MEMBERS DATA ---
+
+--DROP TABLE tbl_transactions;
+CREATE TABLE tbl_transactions (
+  id SERIAL PRIMARY KEY,
+  
+  transaction_id varchar(128) NOT NULL,
+  type  varchar(128) NOT NULL,
+  status varchar(128) NOT NULL,
+  currency varchar(128) NOT NULL,
+  amount varchar(128) NOT NULL,
+  member_id int,
+  
+  created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
+);
 
 --DROP TABLE tbl_languages_support;
 CREATE TABLE tbl_languages_support (
@@ -326,7 +313,7 @@ CREATE TABLE tbl_currencies (
 );
 
 INSERT INTO tbl_currencies  (code, name_en) VALUES
-('USD US', 'Dollar'),                  
+('USD', 'US Dollar'),                  
 ('PGB', 'Pound Sterling'),         
 ('CAD', 'Canadian Dollar'),       
 ('EUR', 'Euro'),                           
@@ -342,7 +329,7 @@ INSERT INTO tbl_currencies  (code, name_en) VALUES
 
 --DROP TABLE tbl_members_pii;
 CREATE TABLE tbl_members_pii (
-  	id varchar(128) PRIMARY KEY,
+  id int PRIMARY KEY,
 
 	firstname varchar(256) NOT NULL,
 	lastname varchar(256) NOT NULL,
@@ -357,6 +344,8 @@ CREATE TABLE tbl_members_pii (
 	monthbirthday varchar(256) NOT NULL,
 	yearbirthday varchar(256) NOT NULL,
 	agree boolean NOT NULL,
+
+	member_id int,
 	
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
@@ -503,6 +492,22 @@ CREATE TABLE tbl_browsing (
 );
 
 --- QUERIES DATA ---
+
+--DROP TABLE tbl_queries_flagged;
+CREATE TABLE tbl_queries_flagged (
+  id SERIAL PRIMARY KEY,
+
+  provider varchar(128) NOT NULL,
+  data varchar(256) NOT NULL,
+  query text NOT NULL,
+  lang varchar(128) NOT NULL,
+  share varchar(128) DEFAULT 'true', 
+  usertime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  language_support varchar(255) NOT NULL DEFAULT '',
+
+  created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
+);
 
 --DROP TABLE tbl_queries;
 CREATE TABLE tbl_queries (
