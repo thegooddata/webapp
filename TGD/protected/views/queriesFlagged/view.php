@@ -6,12 +6,12 @@ $this->breadcrumbs = array(
 );
 
 $this->menu=array(
-	// array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+	array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	array('label'=>Yii::t('app', 'Update') . ' ' . $model->label(), 'url'=>array('update', 'id' => $model->id)),
 	array('label'=>Yii::t('app', 'Delete') . ' ' . $model->label(), 'url'=>'#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . $model->label(2), 'url'=>array('admin')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Blacklist', 'url' => array('queriesBlacklist/admin')),
-	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Flagged', 'url' => array('queriesFlagged/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries', 'url' => array('queries/admin')),
 );
 ?>
 
@@ -21,8 +21,6 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
-'member_id',
-'user_id',
 'provider',
 'data',
 'query',

@@ -6,13 +6,11 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		// array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+
 		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Blacklist', 'url' => array('queriesBlacklist/admin')),
-		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Flagged', 'url' => array('queriesFlagged/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries', 'url' => array('queries/admin')),
 	);
-
-
-Yii::app()->clientScript->registerCoreScript('bbq');
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -20,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('queries-grid', {
+	$.fn.yiiGridView.update('queries-flagged-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -42,30 +40,17 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id' => 'queries-grid',
+	'id' => 'queries-flagged-grid',
 	'dataProvider' => $model->search(),
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'member_id',
-		'user_id',
 		'provider',
-		// array(            // display 'author.username' using an expression
-		// 	'header' => 'share',
-  //           'name'=>'share',
-  //           'type' => 'raw',
-  //           'value'=>'CHtml::link(CHtml::encode($data->share))',
-  //       ),
-        array(
-            'name'=>'share',
-            'type'=>'html',
-            'value'=>'($data->share=="true")?CHtml::image("http://static.freepik.com/foto-gratis/ok-icono_17-1009133509.jpg","",array("style"=>"width:20px;height:20px;")):CHtml::image("http://2.bp.blogspot.com/_NU3sjv3wbj8/TN9tsnciSQI/AAAAAAAACuQ/r0J9Q2VbyXA/s320/psicologo.png","",array("style"=>"width:20px;height:20px;"))'
- 
-        ),
 		'data',
 		'query',
-		/*
 		'lang',
+		'share',
+		/*
 		'usertime',
 		'language_support',
 		'created_at',

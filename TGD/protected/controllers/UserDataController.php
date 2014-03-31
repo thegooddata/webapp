@@ -204,7 +204,19 @@ class UserDataController extends Controller {
         $model = Queries::model()->findByPk($id_query);
 
         if ($model != null)
+        {
+            $flagger=new QueriesFlagged();
+            $flagger->provider = $model->provider;
+            $flagger->data= $model->data;
+            $flagger->query= $model->query;
+            $flagger->lang= $model->lang;
+            $flagger->share= $model->share;
+            $flagger->usertime= $model->usertime;
+            $flagger->language_support= $model->language_support;
+            $flagger->save();
+
             $model->delete();
+        }
 
         $this->visualizar();
     }

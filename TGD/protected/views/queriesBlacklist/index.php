@@ -8,6 +8,7 @@ $this->breadcrumbs = array(
 $this->menu = array(
 	array('label'=>Yii::t('app', 'Create') . ' ' . QueriesBlacklist::label(), 'url' => array('create')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . QueriesBlacklist::label(2), 'url' => array('admin')),
+	
 );
 ?>
 
