@@ -113,6 +113,11 @@
 ; ?>
 		<?php echo $form->error($model,'updated_at'); ?>
 		</div><!-- row -->
+		<div class="row memberspii_member_id member_id">
+		<?php echo $form->labelEx($model,'member_id'); ?>
+		<?php echo $form->textField($model, 'member_id'); ?>
+		<?php echo $form->error($model,'member_id'); ?>
+		</div><!-- row -->
 
 
 <?php

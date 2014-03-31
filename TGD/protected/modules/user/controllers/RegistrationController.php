@@ -60,7 +60,7 @@ class RegistrationController extends Controller
                 $registration_form=$_POST['RegistrationForm'];
 
                 $pii = new MembersPii();
-                $pii->id = uniqid();
+                $pii->id = rand (1111111 , 9999999 );
                 $pii->firstname =$registration_form['firstName'];
                 $pii->lastname=$registration_form['lastName'];
                 $pii->streetname=$registration_form['streetName'];
@@ -93,6 +93,7 @@ class RegistrationController extends Controller
                         $member = Yii::app()->getModule('user')->createUser($email,$username,$password,$verifyPassword);
 
                         if (isset($member->id)){
+                            $pii->member_id = $member->id;
                             $pii->save();
 
                             $mensaje = Yii::app()->redoctober->encrypt($pii->id);

@@ -50,6 +50,9 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('updated_at')); ?>:
 	<?php echo GxHtml::encode($data->updated_at); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('member_id')); ?>:
+	<?php echo GxHtml::encode($data->member_id); ?>
+	<br />
 	*/ ?>
 
 </div>

@@ -105,6 +105,11 @@
 ; ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model, 'member_id'); ?>
+		<?php echo $form->textField($model, 'member_id'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo GxHtml::submitButton(Yii::t('app', 'Search')); ?>
 	</div>

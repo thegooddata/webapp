@@ -62,6 +62,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 					),
 		'created_at',
 		'updated_at',
+		'member_id',
 		*/
 		array(
 			'class' => 'CButtonColumn',

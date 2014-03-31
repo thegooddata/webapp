@@ -34,6 +34,7 @@ $this->menu=array(
 'agree:boolean',
 'created_at',
 'updated_at',
+'member_id',
 	),
 )); ?>
 
