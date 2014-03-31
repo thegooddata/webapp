@@ -25,6 +25,7 @@
  * @property boolean $agree
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $member_id
  *
  */
 abstract class BaseMembersPii extends GxActiveRecord {
@@ -106,6 +107,7 @@ abstract class BaseMembersPii extends GxActiveRecord {
 		$criteria->compare('agree', $this->agree);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
+		$criteria->compare('member_id', $this->member_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
