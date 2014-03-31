@@ -41,6 +41,8 @@ class Controller extends CController
 		array('label'=>'Manage Countries', 'url'=>array('/countries/admin')),
 		
 		array('label'=>'Manage Announcements', 'url'=>array('/achievements/admin')),
+
+		array('label'=>'Manage Transactions', 'url'=>array('/transactions/admin')),
 		//array('label'=>'Manage Achievement Types', 'url'=>array('/achievementsTypes/admin')),
 		
 	);
