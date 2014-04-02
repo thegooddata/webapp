@@ -51,6 +51,8 @@
                         </div>
 
                         <?php if (!Yii::app()->user->isGuest){ ?>
+
+
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
@@ -135,7 +137,18 @@
         </header>
  -->
 
-        <?php if ($this->getUniqueId() != "site" && $this->getUniqueId() != "user/registration" && $this->getUniqueId() != "user/profile") { ?>
+        <?php if (
+            $this->getUniqueId() != "site" && 
+            $this->getUniqueId() != "user/registration" && 
+            $this->getUniqueId() != "user/profile" &&
+            $this->getUniqueId() != "purchase" &&
+            $this->getUniqueId() != "donate") { ?>
+
+        <?php 
+        $user = User::model()->findByPk(Yii::app()->user->id); 
+        $user_id_token = base64_encode(Yii::app()->user->id);
+
+        ?>
 
         <div id="secondary-nav">
             <div class="container">
@@ -158,6 +171,9 @@
                             array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest),
 
+                            array('label'=>'PURCHASE SHARES', 'url'=>array('/user/purchase/'.$user_id_token), 'visible'=>$user!=null? $user->status == User::STATUS_PRE_ACCEPTED: false),
+
+                            
                             /*
                             array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout"), 'visible'=>!Yii::app()->user->isGuest),
                             */
@@ -171,6 +187,8 @@
                             'class' => '',
                         )
                     )); 
+
+
                     ?>
                    <!--  <ul class="nav navbar-nav">
                         <li><a href="#">GOOD DATA</a></li>
@@ -196,17 +214,18 @@
                             <div class="form-group col-sm-16">
                                 We only support Chrome for the time being. We would appreciate your help to extend our service to other browsers either by collaborating in our 
                                 <a href="https://collaborate.thegooddata.org/">open source developments</a> or 
-                                <a href=""<?php echo Yii::app()->controller->createAbsoluteUrl("/site/donate");?>"">giving us a donation.</a>
+                                <a href=""<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>"">giving us a donation.</a>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-default tgd-button tgd-send" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/donate");?>">Continue</a>
+                        <a type="button" class="btn btn-default tgd-button tgd-send" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>">Continue</a>
                     </div>
                 </div>
             </div>
 
         </div>
+
         <!-- main content -->
 
         <?php echo $content; ?>
@@ -236,7 +255,7 @@
                         <h4>company</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/donate");?>" class="red">Donate</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>" class="red">Donate</a></li>
                     </ul>
                     <ul class="clearfix">
                         <h4>contact</h4>
