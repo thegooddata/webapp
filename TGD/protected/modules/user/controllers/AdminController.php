@@ -137,8 +137,13 @@ class AdminController extends Controller
 					//SEND EMAIL
 					$content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'pre_accepted.html');
 
+					$user = User::model()->findByPk($model->id); 
+			        $user_id_token = base64_encode($model->id);
+			        $buy=Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token);
+			        $content =str_replace("[BUY]",$buy,$content);
+
                     $message = new YiiMailMessage;
-                    $message->subject = '[TGD] - Changed Status';
+                    $message->subject = '[TGD] - Accepted User';
                     $message->setBody($content,'text/html');
                     $message->addTo(Yii::app()->params['adminEmail']);
                     $message->from = Yii::app()->params['senderEmail'];
