@@ -335,9 +335,9 @@ CREATE TABLE tbl_members_pii (
 	lastname varchar(256) NOT NULL,
 	streetname varchar(256) NOT NULL,
 	streetnumber varchar(256) NOT NULL,
-	streetdetails varchar(256) NOT NULL,
+	streetdetails varchar(256),
 	city varchar(256) NOT NULL,
-	statecounty varchar(256) NOT NULL,
+	statecounty varchar(256),
 	country varchar(256) NOT NULL,
 	postcode varchar(256) NOT NULL,
 	daybirthday varchar(256) NOT NULL,
@@ -350,6 +350,16 @@ CREATE TABLE tbl_members_pii (
   created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+INSERT INTO tbl_members_pii (id, firstname, lastname, streetname, streetnumber, city, statecounty, country,postcode,daybirthday,monthbirthday,yearbirthday,agree,member_id) VALUES
+(111111111, 'Admin', 'Admin', 'Avenda de la libertada', '2', 'Palma de Mallorca', '', 'España','0700','1','1','1980',true,1),
+(111111112, 'Marcos', 'Doe', 'Avenda de la libertada', '2', 'Palma de Mallorca', '', 'España','0700','1','1','1980',true,2),
+(111111113, 'Daniel', 'Doe', 'Avenda de la libertada', '2', 'Palma de Mallorca', '', 'España','0700','1','1','1980',true,3);
+
+
+
 
 
 --DROP TABLE tbl_members;
@@ -370,9 +380,9 @@ CREATE TABLE tbl_members (
 );
 
 INSERT INTO tbl_members (username, password, email, activkey, superuser, status) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 1),
-('marcos', '01002abbbe2f5265c0edcde6c733906c', '', '7a2663c55b9980dfa13cefebba8e1fa1', 1, 1),
-('tsunamix', 'e868e672a0b91a85bd404ba2c9c033dd', '', 'b3f6a426721ab658060a6afdb73781c4', 1, 1);
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1, 2),
+('marcos', '01002abbbe2f5265c0edcde6c733906c', '', '7a2663c55b9980dfa13cefebba8e1fa1', 1, 2),
+('tsunamix', 'e868e672a0b91a85bd404ba2c9c033dd', '', 'b3f6a426721ab658060a6afdb73781c4', 1, 2);
 
 
 --DROP TABLE tbl_profiles;
