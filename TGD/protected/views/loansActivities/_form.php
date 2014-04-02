@@ -24,9 +24,10 @@
 		<?php echo $form->error($model,'name_es'); ?>
 		</div><!-- row -->
 
+		<!--
 		<label><?php echo GxHtml::encode($model->getRelationLabel('loans')); ?></label>
 		<?php echo $form->checkBoxList($model, 'loans', GxHtml::encodeEx(GxHtml::listDataEx(Loans::model()->findAllAttributes(null, true)), false, true)); ?>
-
+		-->
 <?php
 echo GxHtml::submitButton(Yii::t('app', 'Save'));
 $this->endWidget();
