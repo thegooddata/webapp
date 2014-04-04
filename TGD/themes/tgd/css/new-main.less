@@ -26,6 +26,10 @@ a{
 
 body{
     padding-top: 0;
+    background-color: @color-gray-license-background;
+    > .wrapper{
+        background-color: white;
+    }
 }
 
 
@@ -69,6 +73,8 @@ label{
            > li{
                 box-shadow: 1px 0 0 #E9E9E9, 1px 0 0 #EAEAEA inset;
                 > a{
+                    .box-sizing();
+                    height: 63px;
                     font-weight: bold;
                     font-size: 1.150em;
                     line-height: 22.5px;
@@ -187,7 +193,7 @@ footer{
             margin-right: 6%;
         }
         &.social{
-            width: 190px;
+            width: 220px;
             margin: 25px 0 0 0;
             li{
                 float:left;
@@ -1369,6 +1375,11 @@ section#your_company{
     }
 }
 
+.thanks{
+    p{
+        padding-left: 60px;
+    }
+}
 /*******************************************************************************
  * Donate
  ******************************************************************************/
