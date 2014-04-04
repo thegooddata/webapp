@@ -1,3 +1,4 @@
+    <div class="wrapper">
 		<div class="container">
             <div class="row block-row">
 
@@ -146,7 +147,8 @@
                 </section>
             </div>
         </div>
-
+    </div>
+    
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

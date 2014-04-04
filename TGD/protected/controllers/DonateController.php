@@ -111,10 +111,11 @@ class DonateController extends Controller {
                 'state' => DonateController::INIT
                 )
             );
-
         }
+    }
 
-        
+    public function actionThanks() {
+         $this->render('thanks');
     }
 
 }

@@ -1,3 +1,4 @@
+    <div class="wrapper">
         <section id="notice">
             <div class="container">
                 <div class="row">
@@ -141,7 +142,7 @@
                 </div>
             </div> -->
         </section>
-        
+    </div>       
         <script>
         $.get( "<?php echo Yii::app()->createUrl('goodData/CompanyAchievementsData')?>", function( result ) {
 

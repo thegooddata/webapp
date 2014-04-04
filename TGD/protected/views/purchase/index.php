@@ -18,6 +18,7 @@
     <div class="alert alert-danger">ERROR</div>
 <?php } ?>
 
+<div class="wrapper">
 <div id="tgd-page-content" class="container">
     <div class="row">
         <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
@@ -258,6 +259,7 @@
             </section>
         </div>
     </div>
+</div>
 </div>
 <script>
     $('#descriptions button').not(':disabled').click(function() {

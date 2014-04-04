@@ -175,4 +175,8 @@ class PurchaseController extends Controller {
         
     }
 
+    public function actionThanks() {
+        $this -> render('thanks');
+    }
+
 }
