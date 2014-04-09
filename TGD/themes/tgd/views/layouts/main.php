@@ -161,8 +161,18 @@
                             array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
                             array('label'=>'Contact', 'url'=>array('/site/contact')),
                             */
-                            array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("LOGIN"), 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
+                            // array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("LOGIN"), 'visible'=>Yii::app()->user->isGuest),
+                            // array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
+                            
+                            array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>array('/site/product'), 'label'=>'PRODUCT', 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>'#', 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
+                            array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
+
+                            
                             
 
                             array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
