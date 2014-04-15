@@ -104,15 +104,31 @@ class RegistrationController extends Controller
 
                             $registration_form = array();
 
-                            $message = '<pre>'.print_r($pii->attributes,true).'</pre>'.
-                                '<hr>'.
-                                '<pre>'.print_r($member->attributes,true).'</pre>';
+                            //SEND EMAIL
+                            $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
 
-                            UserModule::sendMail(
-                                Yii::app()->params['adminEmail'],
-                                '[TGD] - New User',
-                                $message
-                            );
+                            $content = str_replace('[NAME]',$pii->firstname,      $content);
+                            $content = str_replace('[SURNAME]',$pii->lastname, $content);
+                            $content = str_replace('[STREET]',$pii->streetname, $content);
+                            $content = str_replace('[STREET_DETAILS]',$pii->streetdetails, $content);
+                            $content = str_replace('[CITY]',$pii->city, $content);
+                            $content = str_replace('[STATE]',$pii->statecounty, $content);
+                            $content = str_replace('[ZIP]',$pii->postcode, $content);
+                            $content = str_replace('[COUNTRY]',$pii->country, $content);
+                            $content = str_replace('[BIRTH_DATE]',$pii->monthbirthday.'/'.$pii->daybirthday.'/'.$pii->yearbirthday,       $content);
+                            $content = str_replace('[USER_CREATED]',date('Y-m-d H:i:s'), $content);
+
+                            $subject = '[NAME] [SURNAME] has applied for Membership';
+                            $subject = str_replace('[NAME]',$pii->firstname,  $subject);
+                            $subject = str_replace('[SURNAME]',$pii->lastname, $subject);
+                            
+                            $message = new YiiMailMessage;
+                            $message->subject = $subject;
+                            $message->setBody($content,'text/html');
+                            $message->addTo(Yii::app()->params['adminEmail']);
+                            $message->from = Yii::app()->params['senderEmail'];
+                            Yii::app()->mail->send($message);
+
 
 
                         }

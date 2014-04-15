@@ -70,27 +70,27 @@ class RecoveryController extends Controller
 			    			$user = User::model()->notsafe()->findbyPk($form->user_id);
 							$activation_url = 'http://' . $_SERVER['HTTP_HOST'].$this->createUrl(implode(Yii::app()->controller->module->recoveryUrl),array("activkey" => $user->activkey, "email" => $user->email));
 							
-							$subject = UserModule::t("You have requested the password recovery site {site_name}",
-			    					array(
-			    						'{site_name}'=>Yii::app()->name,
-			    					));
-			    			$message = UserModule::t("You have requested the password recovery site {site_name}. To receive a new password, go to {activation_url}.",
-			    					array(
-			    						'{site_name}'=>Yii::app()->name,
-			    						'{activation_url}'=>$activation_url,
-			    					));
-							
-			    			UserModule::sendMail($user->email,$subject,$message);
-			    			
-							// Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));
+							//SEND EMAIL
+			                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'reset.html');
+
+			                $content = str_replace('[URL]',$activation_url,  $content);
+
+
+			                $message = new YiiMailMessage;
+			                $message->subject = 'Password reset on TheGoodData';
+			                $message->setBody($content,'text/html');
+			                $message->addTo($user->email);
+			                $message->from = Yii::app()->params['senderEmail'];
+			                Yii::app()->mail->send($message);
+			                
+							Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));
 
 							$success="We have sent you an email with the instructions to restore your password.";
 			    			$this->refresh();
 			    		}
 			    		else
 			    		{
-
-			    			$error="There is no account in our records with this username or email.";
+							$error="There is no account in our records with this username or email.";
 			    		}
 
 			    	}

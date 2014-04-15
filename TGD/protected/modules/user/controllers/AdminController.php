@@ -134,20 +134,57 @@ class AdminController extends Controller
 				if ($previus_status != $new_status &&  $new_status == User::STATUS_PRE_ACCEPTED)
 				{
 					
+					
+
+					$memberObj = Yii::app()->db->createCommand()
+                                ->setFetchMode(PDO::FETCH_OBJ)
+                                ->select('*')
+                                ->from('tbl_members_pii u')
+                                ->where(array(
+                                            'and',
+                                            'u.member_id = :user_id',
+                                            ),
+                                    array(
+                                            ':user_id'=>$model->id
+                                            )
+                                    )
+                                ->queryAll();
+                	$memberObj = $memberObj[0];
+
+
 					//SEND EMAIL
-					$content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'pre_accepted.html');
+	                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'application_approval.html');
 
-					$user = User::model()->findByPk($model->id); 
-			        $user_id_token = base64_encode($model->id);
-			        $buy=Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token);
-			        $content =str_replace("[BUY]",$buy,$content);
+	                $content = str_replace('[FIRST_NAME]',$memberObj->firstname . ' ' .$memberObj->lastname,  $content);
+	                
+	                $user_id_token = base64_encode($model->id);
+	                $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token),  $content);
 
-                    $message = new YiiMailMessage;
-                    $message->subject = '[TGD] - Accepted User';
-                    $message->setBody($content,'text/html');
-                    $message->addTo(Yii::app()->params['adminEmail']);
-                    $message->from = Yii::app()->params['senderEmail'];
-                    Yii::app()->mail->send($message);
+	                $message = new YiiMailMessage;
+	                $message->subject = 'Your Membership application has been approved';
+	                $message->setBody($content,'text/html');
+	                $message->addTo($model->email);
+	                $message->from = Yii::app()->params['senderEmail'];
+	                Yii::app()->mail->send($message);
+
+
+
+
+
+					// //SEND EMAIL
+					// $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'pre_accepted.html');
+
+					// $user = User::model()->findByPk($model->id); 
+			  //       $user_id_token = base64_encode($model->id);
+			  //       $buy=Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token);
+			  //       $content =str_replace("[BUY]",$buy,$content);
+
+     //                $message = new YiiMailMessage;
+     //                $message->subject = '[TGD] - Accepted User';
+     //                $message->setBody($content,'text/html');
+     //                $message->addTo(Yii::app()->params['adminEmail']);
+     //                $message->from = Yii::app()->params['senderEmail'];
+     //                Yii::app()->mail->send($message);
 
 				}
 

@@ -101,16 +101,19 @@ class PurchaseController extends Controller {
                 
                 //Remove link to memberPii
                 $memberObj=MembersPii::model()->findByPk($user[0]->id);
+                $oldMemberId = $memberObj->member_id;
                 $memberObj->member_id=0;
                 $memberObj->save();
 
                 //SEND EMAIL
-                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'accepted.html');
+                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'membership_acceptance.html');
+                $content = str_replace('[MEMBER_ID]',$oldMemberId,  $content);
+                $content = str_replace('[USERNAME]',$userObj->username,  $content);
 
                 $message = new YiiMailMessage;
-                $message->subject = '[TGD] - Changed Status';
+                $message->subject = 'Your are now a Member of TheGoodData';
                 $message->setBody($content,'text/html');
-                $message->addTo(Yii::app()->params['adminEmail']);
+                $message->addTo($userObj->email);
                 $message->from = Yii::app()->params['senderEmail'];
                 Yii::app()->mail->send($message);
 
