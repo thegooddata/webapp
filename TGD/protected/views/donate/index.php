@@ -64,7 +64,6 @@
                                 <div class="col-md-8 tgd-no-right-padding">
                                     <select class="form-control" name="currency" value="" >
                                         <option value="USD" selected="selected">USD</option>
-                                        <option value="BTC">BTC</option>
                                         <option value="EUR">EUR</option>
                                         <option value="GBP">GBP</option>
                                     </select>
