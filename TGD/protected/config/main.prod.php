@@ -144,6 +144,25 @@ return array(
 		        
 		        //Set friendly-url
 		        '/' => 'site/index',
+		        '/good-data' => 'goodData/index',
+		        'apply'=>'/user/registration',
+		        'share'=>'/site/purchase',
+		        'share/thanks'=>'/purchase/thanks',
+		        'sign-in'=>'/user/login',
+		        'recover'=>'/user/recovery',
+		        'good-data'=>'/goodData/index',
+		        'evil-data'=>'/evilData/index',
+		        'user-data'=>'/userData/index',
+		        'membership'=>'/user/profile',
+		        'product'=>'/site/product',
+		        'partners'=>'/site/partners',
+		        'your-company'=>'/site/company',
+		        'support-us'=>'/donate',
+		        'support-us/thanks'=>'/donate/thanks',
+		        'coders'=>'/site/coders',
+		        'faq'=>'/site/faq',
+		        'legal'=>'/site/legal',	
+
 		        
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
