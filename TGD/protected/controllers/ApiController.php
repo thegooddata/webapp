@@ -68,7 +68,11 @@ class ApiController extends Controller
 			$command = Yii::app()->db->createCommand($query);
 			$resultado=$command->execute(array('member_id' => $member_id));
 
-			$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+			if ($resultado==0)
+				$this->_sendResponse(200, CJSON::encode('0'),'application/json');
+			else
+				$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+			
 		}
 		else
 		{
@@ -76,8 +80,13 @@ class ApiController extends Controller
 			$command = Yii::app()->db->createCommand($query);
 			$resultado=$command->execute(array('user_id' => $user_id));
 
-			$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+			if ($resultado==0)
+				$this->_sendResponse(200, CJSON::encode('0'),'application/json');
+			else
+				$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
 		}
+
+
 
 	}
 
@@ -124,10 +133,8 @@ class ApiController extends Controller
 		$member_id=$_GET['user_id'];
 
 		if (!is_numeric($_GET['user_id'])){
-			$member_id=0;
+			$member_id=-1;
 		}
-
-
 
 		$datas = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
@@ -747,13 +754,14 @@ class ApiController extends Controller
 		$lang= $_GET['lang'];
 
 
+
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('id')
 	                ->from('tbl_queries_blacklist')
 	                ->where(array(
 	                            'and',
-	                            '(stem = :query1 or stem = :query2 or stem = :query3)',
+	                            '(stem = :query1 or stem = :query2 or stem = :query3 or stem = :query4)',
 	                            'lang = :lang'
 	                            ),
 	                    	array(	
@@ -761,6 +769,7 @@ class ApiController extends Controller
 	                            ':query1'=>"/b".$query,
 	                            ':query2'=>"/b".$query."/b",
 	                            ':query3'=>$query."/b",
+	                            ':query4'=>$query,
 	                            ':lang'=>$lang,
 	                            )
                     	)
