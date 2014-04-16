@@ -1076,7 +1076,7 @@ section#your_company{
     padding-top: 20px;
     padding-bottom: 20px;
     border: 1px solid @gray-lines;
-    p, .checkbox, button[type=submit]{
+    p, .checkbox, button[type=submit], .alert{
         margin-left: 10px;
     }
     form{
@@ -1121,11 +1121,14 @@ section#your_company{
         font-family: @font-regular;
         font-weight: bold;
         color: white;
-        background-color: @color-link;
         margin:0rem;
+        margin-left: -10px;
+        background-color: @color-link;
         padding: 1.5rem 1rem 1.2rem 1.5rem;
         .inner-shadow(0, 1px, 1px, 0.3);
     }
+    border: 1px solid @gray-lines;
+    border-left: none;
     overflow-y: scroll;
     .contract-container{
         padding: 20px 10px;
