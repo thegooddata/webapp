@@ -122,6 +122,7 @@ section#your_company>img:last-child,section#your_company #fields{position:relati
 #registration-form-block .split-3{width:33.3%}
 #registration-form-block input.error{border-color:#ea6654}
 #registration-form-block label.error{color:#ea6654}
+#registration-form-block .popover-content{font-size:12px}
 .legal{overflow-y:scroll}.legal h2.tgd-box-like{font-size:1.15em;font-family:ProximaNovaSoft-Regular;font-weight:bold;color:#fff;background-color:#1c8ccf;margin:0;padding:1.5rem 1rem 1.2rem 1.5rem;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.3);box-shadow:inset 0 1px 1px rgba(0,0,0,0.3)}
 .legal .contract-container{padding:20px 10px;border:1px solid #eee;background-color:#fbfbfb;border-left:none}
 .legal table{width:100%;margin:10px auto}.legal table tr:first-child td{font-weight:bold}

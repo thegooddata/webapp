@@ -1,5 +1,5 @@
 $(function() {
-    $('.tooltiped').tooltip().click(function(e){
+    $('.with-popover').popover({trigger: 'hover'}).click(function(e){
         e.preventDefault();
     });
     
@@ -95,17 +95,22 @@ $('#registration-form').validate({
     rules: {
         "RegistrationForm[firstName]": "required",
         "RegistrationForm[lastName]": "required",
+        "RegistrationForm[streetName]": "required",
+        "RegistrationForm[streetNumber]": "required",
+        "RegistrationForm[city]": "required",
+        "RegistrationForm[country]": "required",
+        "RegistrationForm[postCode]": "required",
         "RegistrationForm[userName]": {
             required: true,
-            minlength: 5
+            minlength: 2
         },
         "RegistrationForm[password]": {
             required: true,
-            minlength: 8
+            minlength: 8,
+            maxlength: 32,
+            pattern: /.*([0-9][a-z]|[a-z][0-9]).*/i
         },
         "RegistrationForm[passwordConfirm]": {
-            required: true,
-            minlength: 8,
             equalTo: "#password"
         },
         "RegistrationForm[email]": {
@@ -115,20 +120,25 @@ $('#registration-form').validate({
         "RegistrationForm[agree]": "required"
     },
     messages: {
-        "RegistrationForm[firstnName]": "Please enter your firstname",
-        "RegistrationForm[lastName]": "Please enter your lastname",
+        "RegistrationForm[firstName]": "Please, enter your firstname",
+        "RegistrationForm[lastName]": "Please, enter your lastname",
         "RegistrationForm[userName]": {
-            required: "Please enter a username",
+            required: "Please, enter a username",
             minlength: "Your username must consist of at least 2 characters"
         },
+        "RegistrationForm[streetName]": "Please, enter your street name",
+        "RegistrationForm[streetNumber]": "Please, enter your street number",
+        "RegistrationForm[city]": "Please, enter your city",
+        "RegistrationForm[country]": "Please, enter your country",
+        "RegistrationForm[postCode]": "Please, enter a zip code",
         "RegistrationForm[password]": {
             required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long"
+            minlength: "Password must be between 8 and 32 characters long, and include at least a letter and a digit",
+            maxlength: "Password must be between 8 and 32 characters long, and include at least a letter and a digit",
+            pattern: "Password must be between 8 and 32 characters long, and include at least a letter and a digit"
         },
         "RegistrationForm[passwordConfirm]": {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long",
-            equalTo: "Please enter the same password as above"
+            equalTo: "Please enter the same password"
         },
         "RegistrationForm[email]": "Please enter a valid email address",
         "RegistrationForm[agree]": "Please accept our policy"
