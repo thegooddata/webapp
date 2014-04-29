@@ -50,7 +50,11 @@ class RecoveryController extends Controller
 							}
 							else
 							{
-
+								$this->render('changepassword',array(
+									'form'=>$form2,
+									'error'=>$error,
+		                			'success'=>$success
+		                		));
 							}
 						} 
 						$this->render('changepassword',array(
@@ -83,10 +87,10 @@ class RecoveryController extends Controller
 			                $message->from = Yii::app()->params['senderEmail'];
 			                Yii::app()->mail->send($message);
 			                
-							Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));
+							// Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));
 
 							$success="We have sent you an email with the instructions to restore your password.";
-			    			$this->refresh();
+			    			//$this->refresh();
 			    		}
 			    		else
 			    		{
