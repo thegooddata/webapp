@@ -55,12 +55,12 @@
                         <ul>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>Our data trading partner use our processed data in order to display ads in line with your interests.</li>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>We take care that this partner receive that data in an anonymized form and rewarding the cooperative accordingly.</li>
-                            <li><span class="glyphicon glyphicon-ok-sign"></span>Without TheGoodData participation, some of those players would have got access to that data without you express consent.</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>Without TheGoodData participation, similar players would have got access to that data without your knowledge and consent.</li>
                         </ul>
                     </div>
                     <div class="tgd-box-section tgd-emphasis very-light-blue">
                         If you are interested in having access to our users data
-                        in a respectful, anonimized, consented and rewarded way you can contact us at
+                        in a respectful, anonimized and consented way you can contact us at
                         <a mailto="data@thegooddata.org">data@thegooddata.org</a>
                     </div>
                 </section>

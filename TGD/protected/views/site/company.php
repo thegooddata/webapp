@@ -37,7 +37,7 @@
                     </div>  
 
                     <div class="title_desc">
-                        <p>TheGoodData is not about helping you earn some pennies with your data, but about ensuring that the value of data returns to the society.</p>
+                        <p>TheGoodData is not about helping you earn some pennies with your data, but about ensuring that you execise your rights as data owner and that its value returns to the society.</p>
                         <p>Our Mission is so challenging that the only way to make it happen is with the power of crowds. The collaboration of Customers and coders.</p>
                         <p>This is being done in a transparent, open way. You have access to all code and company info.</p>
                     </div>                
@@ -47,16 +47,16 @@
                     <div class="our_way tgd-box col-sm-16 col-md-8 col-lg-8">
                         <a id="our_way" href="#">Our Way</a>
                         <span>
-                            <a href="#">
+                            <a href="https://collaborate.thegooddata.org">
                                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/arrow_in_circle.png" alt="">
                                 <em>Take a look at our Company Collaboration Dashboard</em>
                             </a>
                         </span>
                     </div>
                     <div class="our_way_desc tgd-box col-sm-16 col-md-8 col-lg-8">
-                        <h4>The best way to boost your collaboration and guarantee company openess is by making you the majority owners of the company. By doing so, TheGoodData interests will be aligned to yours'. Moreover, this will ensure that you keep control of the wealth generated with your own data.</h4>
+                        <h4>The best way to boost your collaboration and guarantee company openess is by making you the majority owners of the company. By doing so, TheGoodData interests will be aligned to yours'. Moreover, this will ensure that no company acquires our company and therefore your data.</h4>
 
-                        <p>That's why The Good Data has been incorporated as a UK Industrial and Provident Society. You can apply for membership by using the service and registering online. From there on, you have the right to be informed about company progress and you can take part of major decissions. If there is anything you don't like, change it!</p>
+                        <p>That's why The Good Data has been incorporated as an English Industrial and Provident Society. You can apply for membership by using the service and registering online. From there on, you have the right to be informed about company progress and you can take part of major decissions. If there is anything you don't like, change it!</p>
                     </div>
                 </section>
                     

@@ -194,16 +194,19 @@ footer{
         }
         &.social{
             width: 220px;
-            margin: 25px 0 0 0;
+            margin: 5px 0 0 0;
+            text-align: right;
             li{
-                float:left;
+                display: inline-block;
+                vertical-align: top;
                 margin: 0 4px;
                 &:last-child{
                     margin-right: 0;
                 }
                 a{
-                    padding: 13px 17px;
-                    transition: background 0.25s ease-out;
+                    display: block;
+                    width: 32px;
+                    height: 32px;
                 }
             }
             em{
@@ -215,8 +218,8 @@ footer{
                     font-weight: 700;
                     text-transform: uppercase;
                     font-style: normal;
-                    letter-spacing: 2px;
-                    margin-top: 40px;    
+                    text-align: right;
+                    margin-top: 10px;    
                     margin-left: 4px;                        
                 }
             }
@@ -259,27 +262,27 @@ footer{
     }
     a{
         &#reddit{
-            background: url(../img/social_icons.png) no-repeat -81px 1px;
+            background: url(../img/social_icons.png) no-repeat -81px 0px;
             &:hover{
-                background-image: url("../img/social_icons_hover.png");
+                background-position: -81px -32px;
             }
         }
         &#twitter{
-            background: url(../img/social_icons.png) no-repeat -122px 1px;
+            background: url(../img/social_icons.png) no-repeat -122px 0px;
             &:hover{
-                background-image: url("../img/social_icons_hover.png");
+                background-position: -122px -32px;
             }
         }
         &#wordpress{
-            background: url(../img/social_icons.png) no-repeat -41px 1px;
+            background: url(../img/social_icons.png) no-repeat -41px 0px;
             &:hover{
-                background-image: url("../img/social_icons_hover.png");
+                background-position: -41px -32px;
             }
         }
         &#gooddata{
-            background: url(../img/social_icons.png) no-repeat -0px 1px;
+            background: url(../img/social_icons.png) no-repeat -0px 0px;
             &:hover{
-                background-image: url("../img/social_icons_hover.png");
+                background-position: 0px -32px;
             }
         }
     }

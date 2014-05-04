@@ -215,7 +215,7 @@
                                     <p>In case you want to build any kind of new service functionality leveraging on our assets, you are welcome to join our Coder’s Program. One sixth of company revenues will be reserved for all coders during the six years that follow their contribution.</p>
                                     <p>Please contact any of our Directors or write to <a href="mailto:coders@thegooddata.org">coders@thegooddata.org</a> describing your idea, the expected level of effort needed and a cv outline to get a strategic priority evaluation. </p>
                                 </li>
-                                <li>
+                                <li id="rewards_calculation">
                                     <em>How are rewards calculated?</em>
                                     <p>In a given year, code released during the previous six years will be rewarded with one sixth of company revenues. They will all be rewarded proportionally considering:</p>
                                     <ul class="clearfix">

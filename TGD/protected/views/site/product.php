@@ -39,7 +39,7 @@
                                     <p>The extension lets you whitelist certain trackers in case they are needed to properly see the site</p>
                                 </li>
                                 <li>
-                                    <p>Technology has been built based on open-source <a href="#">disconnect.me</a></p>
+                                    <p>Technology has been built based on open-source <a href="https://github.com/disconnectme" target="_blank">disconnect.me</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -63,7 +63,9 @@
                                 </li>
                                 <li>
                                     <h3>Best Encryption Practices</h3>
-                                    <p>We have implemented most demanding encription measures including 256 bit AES , https, hsts and foward secrecy <a href="#">A rating from independent provider</a></p>
+                                    <p>We have implemented most demanding encription measures including 256 bit AES , https, HSTS and foward secrecy in order to achieve an
+                                        <a href="http://ssllabs.com/ssltest/analyze.html?d=thegooddata.org" target="_blank">A rate</a>
+                                    </p>
                                     <img src="<?php echo Yii::app()->theme->baseUrl . '/img/encrypted_key.png';?>" alt="">
                                 </li>
                                 <li>
@@ -76,7 +78,7 @@
                         <div class="tab-pane dark_blue_drop_list" id="messages">
                             <ul class="clearfix">
                                 <li>
-                                    <p>This processed information is sold to retargeting networks that will show you ads based on your recent queries/interests</p>
+                                    <p>This processed information is sold to retargeting networks that will show you ads based on your recent queries</p>
                                 </li>
                                 <li>
                                     <p>Buyers of that info pay us some money that would have usually been earned by third parties</p>
@@ -86,10 +88,10 @@
                         <div class="tab-pane green_drop_list" id="settings">
                             <ul class="clearfix">
                                 <li>
-                                    <p>50% on microprojects on developing countries via Kiva</p>
+                                    <p>50% of revenues are invested on projects in developing countries via Kiva, the online microcredit leader</p>
                                 </li>
                                 <li>
-                                    <p>The other half, in making The Good Data Mission come true: help you effectively own your data</p>
+                                    <p>The other half, is reinvested in developing new features for TheGoodData in order to make its Mission come true</p>
                                 </li>                           
                             </ul>
                         </div>

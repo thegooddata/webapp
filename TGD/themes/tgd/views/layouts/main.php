@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/favicon.ico">
 
-        <title>TheGoodData | Enjoy your data <?php echo $this->pageTitle; ?></title>
+        <title>TheGoodData | Enjoy your data</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -57,7 +57,11 @@
                             <ul class="nav navbar-nav">
                                 <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/><?php echo Yii::app()->user->username; ?><b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
+                                        <!-- <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/> Commented until added on the form -->
+                                        <?php echo Yii::app()->user->username; ?>
+                                        <b class="caret"></b>
+                                    </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile");?>">account settings</a></li>
 
@@ -223,8 +227,8 @@
                         <div class="row">
                             <div class="form-group col-sm-16">
                                 We only support Chrome for the time being. We would appreciate your help to extend our service to other browsers either by collaborating in our 
-                                <a href="https://collaborate.thegooddata.org/">open source developments</a> or 
-                                <a href=""<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>"">giving us a donation.</a>
+                                <a href="https://github.com/thegooddata">open source developments</a> or 
+                                <a href="<?php echo Yii::app()->controller->createAbsoluteUrl('/donate');?>">giving us a donation.</a>
                             </div>
                         </div>
                     </div>
@@ -246,50 +250,57 @@
         <!-- END main content -->
       
 
-        <footer class="clearfix">
-            <div class="footer clearfix">
+        <footer>
+            <div class="footer">
                 <div class="container clearfix">
-                    <ul class="clearfix">
+                    <ul>
                         <h4>service</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/product");?>">Product</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="mailto:support@thegooddata.org">Support</a></li>
                     </ul>
-                    <ul class="clearfix">
+                    <ul>
                         <h4>third parties</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/partners");?>">Partners</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
                         <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>
-                    <ul class="clearfix">
+                    <ul>
                         <h4>company</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>" class="red">Donate</a></li>
                     </ul>
-                    <ul class="clearfix">
+                    <ul>
                         <h4>contact</h4>
                         <li>82 Clerkenwell Road</li>
                         <li>London EC1M 5RF, UK</li>
                         <li><a href="mailto:info@thegooddata.org">Email Us</a></li>
                     </ul>
-                    <ul id="fifth" class="clearfix">
+                    <ul id="fifth">
                         <h4>legal stuff</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Use</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy & Cookies</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#rules">Company Rules</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#secondary">Secondary Rules</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#principles">Company Principles</a></li>
                     </ul>        
-                    <ul class="social clearfix">
-                        <li class="first"><a id="gooddata" href="//manage.thegooddata.org" class="exclude"></a></li>
-                        <li><a id="wordpress" href="#"></a></li>
-                        <li><a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a></li>
-                        <li class="last"><a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a></li>
+                    <ul class="social">
+                        <li class="first">
+                            <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
+                        </li>
+                        <li>
+                            <a id="wordpress" href="//news.thegooddata.org"></a>
+                        </li>
+                        <li>
+                            <a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a>
+                        </li>
+                        <li class="last">
+                            <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
+                        </li>
                         <em><a href="http://www.thegooddata.org">&copy; 2014, thegooddata.org</a></em>
                     </ul>
                 </div> <!-- wrap -->
             </div>
+
             <div class="license clearfix">
                 <div class="wrap clearfix">
                     <ul class="clearfix">
