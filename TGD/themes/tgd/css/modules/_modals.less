@@ -1,14 +1,14 @@
 /* ------------------------------------------------------------ Sign in modal */
 
-#signInModal{
-    .modal-dialog{
+#signInModal {
+    .modal-dialog {
         width: 370px;
-        .modal-body{
+        .modal-body {
             padding-bottom:0;
-            label{
+            label {
                 font-weight: normal;
             }
-            .checkbox{
+            .checkbox {
                 padding-left:30px;
             }
         }
@@ -16,80 +16,76 @@
 }
 /* ------------------------------------------------------------ No chrome modal */
 
-#chromeModal{
-    .modal-dialog{
+#chromeModal {
+    .modal-dialog {
         width: 450px;
-        .modal-body{
+        .modal-body {
             padding-bottom:0;
         }
-        .modal-footer{
+        .modal-footer {
             margin-top: 5px;
         }
     }
 }
 
 /* adjustments for the modal*/
-#templateContainer{
+#templateContainer {
   margin-bottom: 0;
 }
 
-#templateBody{
+#templateBody {
   padding-bottom: 0;
   padding-top: 0;
 }
 
-.modal-content{
+.modal-content {
   background: white;
-  label{
+  label {
     display: none;
   }
-  .checkbox{
-    label{
+  .checkbox {
+    margin-top: 0;
+    label {
       display: inline-block;
-      input{
+      input {
         margin-top: 0;
       }
     }
   }
-  .checkbox{
-    margin-top: 0;
-  }
 
-  .form-group{
-    &:last-child{
+
+  .form-group {
+    &:last-child {
       margin-bottom: 0;
     }
   }
-  .modal-header {
+  .modal-header  {
     padding-bottom: 0;
     border-bottom: none;
 
-    h2{
+    h2 {
       margin: 0;
       display: inline-block;
       color: #1D5987;
       line-height: 1em;
     }
   }
-  .modal-body{
-
-  }
-  .modal-footer{
+  .modal-footer {
     border-top: none;
     margin-top: 20px;
     padding-top: 5px;
-    button,a{
+    button,a {
       border: none;
-      &.tgd-button{
-        &.tgd-register{
+      &.tgd-button {
+        &.tgd-register {
           .tgd-button(@tgd-yellow, 20px, 15px, 7px);
           display:inline-block;
         }
-        &.tgd-close{
+        &.tgd-close {
           .tgd-button(@tgd-red, 20px, 15px, 7px);
           display:inline-block;
         }
-        &.tgd-send{
+        &.tgd-send {
           .tgd-button(@tgd-green, 20px, 15px, 7px);
           display:inline-block;
         }

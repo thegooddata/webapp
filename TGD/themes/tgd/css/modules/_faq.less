@@ -1,53 +1,61 @@
 /*------- FAQ Page -------*/
 
-.faq{
+.faq {
   border: 1px solid #eee;
   padding: 20px 0;
-}
+  ul li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 15px;
+    em {
+      color: #268dcb;
+      font-family: @font-semi-bold;
+      font-size: 18px;
+      font-style: normal;
+      cursor: pointer;
+    }
+    &.active em {
+      color: @dark-text;
+    }
+    p {
+      color: @dark-text;
+      font-family: @font-regular;
+      font-size: 16px;
+      margin: 6px 0;
+    }
+  }
 
-.faq ul li{
-  position: relative;
-  list-style: none;
-  margin-bottom: 15px;
+  .tab-pane>ul>li {
+    &:before {
+      content: "";
+      width: 10px;
+      position: absolute;
+      top: 6px;
+      left: -20px;
+      border-left: 8px solid #268dcb;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+    &.active:before {
+      border-top: 8px solid #b1b1b1;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+    }
+    ul>li:before{
+      display: block;
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 8px;
+      left: -20px;
+      background: url(../img/blue_drop_list_icon.png) no-repeat;  
+    }
+  }
 }
-.faq .tab-pane>ul>li:before{
-  content: "";
-  width: 10px;
-  position: absolute;
-  top: 6px;
-  left: -20px;
-  border-left: 8px solid #268dcb;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-}
-.faq .tab-pane>ul>li.active:before{ 
-  border-top: 8px solid #b1b1b1;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-}
-.faq .tab-pane>ul>li ul>li:before{
-  display: block;
-  content: "";
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 8px;
-  left: -20px;
-  background: url(../img/blue_drop_list_icon.png) no-repeat;  
-}
-.faq ul li em{
-  color: #268dcb;
-  font-family: "ProximaNovaSoft-Semibold";
-  font-size: 18px;
-  font-style: normal;
-  cursor: pointer;
-}
-.faq ul li.active em{
-  color: #4b4b4b;
-}
-.faq ul li p{
-  color: #4b4b4b;
-  font-family: "ProximaNovaSoft-Regular";
-  font-size: 16px;
-  margin: 6px 0;
+.last_edit {
+  margin: 25px 0;
+  text-align: left;
+  font-size: @font-size-xsmall;
+  color: @gray-text;
 }

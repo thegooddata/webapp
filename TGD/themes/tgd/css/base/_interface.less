@@ -160,12 +160,12 @@
   background-clip: @argument;
 }
 .tgd-button(@color: #EA6654, @radius: 25px, @hPadding: 32px, @vPadding: 14px){
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: table;
   color: #fff;
-  font-family: @font-regular, Arial, sans-serif;
-  font-size: 1em;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family: @font-bold, Arial, sans-serif;
+  font-size: @font-size-large;
   text-transform: uppercase;
   text-align: center;
   border-radius: @radius;

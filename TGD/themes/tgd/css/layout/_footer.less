@@ -2,14 +2,30 @@
 
 footer {
   border-top: 1px solid #eee;
+
   ul {
     padding:0;
     margin: 0;
     float: left;
     margin-right: 6%;
-    &:nth-child(5), #fifth {
-      margin-right: 6%;
+
+    li {
+      list-style: none;
+      color: @color-gray-footer;
+      font-family: @font-regular,Arial;
+      font-size: 0.875em;  
+      a {
+        color: @color-gray-footer;
+        font-size: .99em;
+        &:hover {
+          color:@tgd-blue;
+        }
+        &.red {
+          color: @tgd-red;
+        }
+      }
     }
+
     &.social {
       width: 220px;
       margin: 5px 0 0 0;
@@ -18,13 +34,36 @@ footer {
         display: inline-block;
         vertical-align: top;
         margin: 0 4px;
-        &:last-child {
-          margin-right: 0;
-        }
         a {
           display: block;
           width: 32px;
           height: 32px;
+          transition: opacity 0.5s;
+
+          &#reddit {
+            background: url(../img/social_icons.png) no-repeat -81px 0px;
+            &:hover {
+              background-position: -81px -32px;
+            }
+          }
+          &#twitter {
+            background: url(../img/social_icons.png) no-repeat -122px 0px;
+            &:hover {
+              background-position: -122px -32px;
+            }
+          }
+          &#wordpress {
+            background: url(../img/social_icons.png) no-repeat -41px 0px;
+            &:hover {
+              background-position: -41px -32px;
+            }
+          }
+          &#gooddata {
+            background: url(../img/social_icons.png) no-repeat -0px 0px;
+            &:hover {
+              background-position: 0px -32px;
+            }
+          }
         }
       }
       em {
@@ -43,23 +82,7 @@ footer {
       }
     }
   }
-  li {
-    list-style: none;
-    color: @color-gray-footer;
-    font-family: @font-regular,Arial;
-    font-size: 0.875em;  
-    a {
-      color: @color-gray-footer;
-      font-family: @font-regular,Arial;
-      font-size: .99em;
-      &:hover {
-        color:@tgd-blue;
-      }
-      &.red {
-        color: @tgd-red;
-      }
-    }
-  }
+
   h4 {
     color: @color-gray-footer;
     font-family: @font-regular, Arial, sans-serif;
@@ -72,38 +95,7 @@ footer {
     box-shadow: inset 0 1px 0 #fff;
     padding: 20px 0 25px 0;
   }
-  .first {
-    margin-left:0;
-  }
-  .last {
-    margin-right: 0;
-  }
-  a {
-    &#reddit {
-      background: url(../img/social_icons.png) no-repeat -81px 0px;
-      &:hover {
-        background-position: -81px -32px;
-      }
-    }
-    &#twitter {
-      background: url(../img/social_icons.png) no-repeat -122px 0px;
-      &:hover {
-        background-position: -122px -32px;
-      }
-    }
-    &#wordpress {
-      background: url(../img/social_icons.png) no-repeat -41px 0px;
-      &:hover {
-        background-position: -41px -32px;
-      }
-    }
-    &#gooddata {
-      background: url(../img/social_icons.png) no-repeat -0px 0px;
-      &:hover {
-        background-position: 0px -32px;
-      }
-    }
-  }
+
   .license {
     background-color: @color-gray-license-background;
     box-shadow: inset 0 2px 0 @color-gray-license-shadow;

@@ -1,0 +1,17 @@
+/*---------------------------------------------------
+  LESS Elements 0.9
+  ---------------------------------------------------
+  A set of useful LESS mixins
+  More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/*.transition(@duration:0.2s, @ease:ease-out) {
+  -webkit-transition: all @duration @ease;
+  -moz-transition: all @duration @ease;
+  -o-transition: all @duration @ease;
+  transition: all @duration @ease;
+}*/
+/*.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}*/
