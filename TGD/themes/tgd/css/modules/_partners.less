@@ -1,0 +1,90 @@
+
+/*******************************************************************************
+ * Our partners
+ ******************************************************************************/
+
+#kiva, #chango{
+  li{
+    padding: 5px;
+    position: relative;
+    list-style: none;
+    .glyphicon{
+      position: absolute;
+      top:10px;
+      left: -20px;
+    }
+  }
+  .logo{
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-top:100px;
+    cursor: pointer;
+  }
+}
+
+#kiva{
+  h2{
+    background-color: @tgd-green;
+  }
+  .logo{
+    background-image: url("../img/kiva.png");
+  }
+
+  .glyphicon{
+    color: @tgd-green;
+  }
+
+  .cases{
+    padding: 0;
+    border-bottom: none;
+    border-right: none;
+    > div{    
+      padding: 10px;
+      border-bottom: 1px solid @gray-lines;
+      border-right: 1px solid @gray-lines;
+      cursor:pointer;
+
+      &:hover{
+        background: lighten(@tgd-yellow,30%);
+      }
+      .subtext{
+        line-height: 1em;
+        position: relative;
+        top: 5px;
+        color: @gray-text;
+        font-size: @font-size-small;
+      }
+      .name{
+        font-weight: bold;
+      }
+      .photo{
+        float: left;
+        .rounded(3px);
+        margin: 3px 5px 3px 0
+      }
+      .flag{
+        margin: 0px 5px;
+        width: auto;
+        vertical-align: baseline;
+        height: auto;
+      }
+      a:hover{
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#chango{
+  h2{
+    background-color: @color-link;
+  }
+  .logo{
+    background-image: url("../img/chango.png");
+  }
+
+  .glyphicon{
+    color: @tgd-blue;
+  }
+}
+

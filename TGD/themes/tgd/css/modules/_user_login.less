@@ -1,0 +1,94 @@
+
+/*******************************************************************************
+ * User login
+ ******************************************************************************/
+#tgd-user-login, #tgd-password-recovery{
+  background-color: @gray-lines;
+  #secondary-nav{
+    display: none;
+  }
+  #tgd-page-content{
+    background-color: white;
+    > .container{
+      margin-top: 63px;
+      > .row{
+        margin:0;
+        margin-bottom: 10px;
+        section{
+          padding: 40px !important;
+          margin: 0;
+        }
+      }
+    }
+  }
+  h1{
+    margin-top: 0;
+  }
+  .alert{
+    .box-sizing();
+    padding:15px;
+  }
+  #form{
+    border-right: none;
+    label{
+      display: none;
+    }
+    #becomeAMember{
+      .box-sizing();
+      padding: 8px;
+      background-color: #eee;
+      .rounded(3px);
+    }
+    #rememberMe{
+
+      label{
+        display: inline-block;
+        text-transform: none;
+        font-size: 1em;
+      }
+      label,a{
+        vertical-align: top;
+      }
+      input[type=checkbox]{
+        margin: 0;
+      }
+    }
+    input{
+      font-size: @font-size-large;
+    }
+    button{
+      margin-left: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: white;
+      font-size: 1.2rem;     
+    }
+    .has-info{
+      color: @gray-text;
+
+      .form-control-feedback{
+        top: -7px;
+        right: 0px;
+      }
+    }
+    .form-control-help{
+      color: @gray-text;
+      position:absolute;
+      top: 0px;
+      right: 30px;
+      display: block;
+
+    }
+    .popover{
+      color: @gray-text;
+    }
+    .hint{
+      padding-top: 8px;
+      margin-left: 5px;
+      margin-bottom: 0;
+    }
+  }
+  .has-info{
+    color: @gray-lines;
+  }
+}

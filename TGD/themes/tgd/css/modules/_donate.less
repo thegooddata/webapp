@@ -1,0 +1,137 @@
+
+/*******************************************************************************
+ * Donate
+ ******************************************************************************/
+
+
+#tgd-donate{
+
+
+  #descriptions{
+    border: 1px solid @gray-lines;
+    border-right: 4px solid @color-dark-gray;
+
+    h2{
+      font-weight: bold;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+    p{
+      margin-bottom: 0;
+      font-size: @font-size-large;
+    }
+    > div{
+      padding: 20px;
+      border-bottom: 1px solid @gray-lines;
+      &.clearfix{
+        padding-right: 0;
+      }
+      &:last-child{
+        border-bottom: none;
+        padding-bottom: 60px;
+      }
+      .text{
+        padding-right: 10px;
+        float:left;
+        width: 65%
+      }
+      .button{
+        float: right;
+        width: 35%;
+        .btn{
+          .border-radius(0, 0, 4px, 4px);
+          .inner-shadow(-1px, 0, 1px, 0.4);
+          width: 100%;
+          color: white;
+          font-weight: bold;
+          text-align: left;
+          text-transform: uppercase;
+          margin-right: -20px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-right: 0;
+          .transition(all 0.2s ease-out);
+          &.credit-card{
+            background-color: @tgd-green;
+            background-image: url('../img/credit-card.png');
+            background-repeat:  no-repeat;
+            background-position: 155px center;
+
+          }
+          &.bitcoin{
+            background-color: @tgd-yellow;
+            background-image: url('../img/bitcoin.png');
+            background-repeat:  no-repeat;
+            background-position: 155px center;
+          }
+          &:hover{
+            background-color:@color-dark-gray;
+          }
+          &.disabled{
+            background-color: #666;
+          }
+        }
+      }
+    }
+  }
+
+
+  #questions{
+    font-weight: bold;
+    color: @color-link;
+    font-size: 1.5rem;
+  }
+
+  #form{
+    padding: 10px 20px;
+    background-color: @very-light-gray;
+    border: 1px solid @gray-lines;
+    border-left: none;
+    overflow: auto;  
+
+    button{
+      text-transform: uppercase;
+      font-size: 0.9em;
+      line-height: 0.7em;
+      font-weight: bold;
+      margin: 5px auto;
+      padding-left: 25px; 
+      padding-right: 25px;
+      display: block;
+      .transition(all 0.2s ease-out);
+      &:hover{
+        background-color: lighten(saturate(@color-link,20%),10%);
+      }
+      &:first-of-type{
+        margin-top: 15px;
+      }
+      span{
+        &.fa{
+          margin-left:10px;
+        }
+      }
+    }
+  }
+
+  #bitcoin{
+    [type=image]{
+      display: block;
+      margin: 10px auto;
+    }
+  }
+
+  #bitcoin, #credit-card{
+    strong{
+      font-size: @font-size-large;
+      display: block;
+      margin: 10px 0 10px 0;
+    }
+    .row{
+      margin: 10px 0;
+    }
+  }
+
+  #credit-card{
+    display: none;
+  }
+}

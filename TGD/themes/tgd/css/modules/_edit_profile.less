@@ -1,0 +1,91 @@
+
+/*******************************************************************************
+ * Edit profile
+ ******************************************************************************/
+#tgd-edit-profile{
+  #tgd-page-content{
+    padding: 40px 0;
+    > .container{
+      > .row{
+        margin:0;
+        margin-bottom: 10px;
+        section{
+          padding: 40px !important;
+          border: 1px solid @gray-lines;
+          margin-top: 2%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  #form{
+    border-right: none;
+    input{
+      font-size: @font-size-large;
+    }
+    button{
+      margin-left: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: white;
+      font-size: 1.2rem;     
+    }
+    .has-info{
+      color: @gray-text;
+
+      .form-control-feedback{
+        top: -7px;
+        right: 0px;
+      }
+    }
+    .form-control-help{
+      color: @gray-text;
+      position:absolute;
+      top: 0px;
+      right: 30px;
+      display: block;
+
+    }
+    .popover{
+      color: @gray-text;
+    }
+  }
+  #change-password{
+    margin: 5px 0 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: @color-link;
+    font-size: 1.2rem;
+    cursor:pointer;
+    span{
+      display: none;
+    }
+  }
+  .password-form{
+    display: none;
+  }
+  #description{
+    background-color: @very-light-gray;
+    font-size: @font-size-large;
+  }
+  #cancel-account{
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: @color-link;
+    font-size: 1.2rem;
+    text-align: right;
+    cursor: pointer;
+    img{
+      vertical-align: middle;
+    }
+  }
+  .has-info{
+    color: @gray-lines;
+  }
+  .split-3{
+    width: 33.3%;
+  }
+}
+

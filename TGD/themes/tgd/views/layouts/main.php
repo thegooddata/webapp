@@ -11,22 +11,14 @@
 
         <title>TheGoodData | Enjoy your data</title>
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/webfonts.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/new-main.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" type="text/css">
         
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/evil-data.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/good-data.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/user-data.css" type="text/css">
-        
-        <!-- Admin -->
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/admin.css" type="text/css">
         
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js'; ?>"></script>        
         <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>

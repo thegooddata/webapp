@@ -21,10 +21,10 @@
                 <div class="col-xs-6 faq-index" style="padding-right: 0;"> <!-- required for floating -->
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
-                      <li class="active"><a href="#home" data-toggle="tab">TheGoodData company</a></li>
-                      <li><a href="#profile" data-toggle="tab">TheGoodData service</a></li>
-                      <li><a href="#messages" data-toggle="tab">TheGoodData Membership</a></li>
-                      <li><a href="#settings" data-toggle="tab">TheGoodData Collaborators</a></li>
+                      <li class="active"><a href="#home" data-toggle="tab">Company</a></li>
+                      <li><a href="#profile" data-toggle="tab">Service</a></li>
+                      <li><a href="#messages" data-toggle="tab">Membership</a></li>
+                      <li><a href="#settings" data-toggle="tab">Collaborators</a></li>
                     </ul>
                 </div>
 
@@ -229,14 +229,15 @@
                                             <p>The output quality evaluated by other coders participating in the program</p>
                                         </li>
                                     </ul>
-                                    <p>First drafted - January 2014</p>
-                                    <p>Latest revision – January 2014 </p>
                                 </li>
                             </ul>
                       </div>
                     </div>
-                </div>            
-                    
+                </div>
+                <div class="last_edit">
+                    <p>First drafted - January 2014. Latest revision – January 2014 </p>
+                    <p>If you have a question that’s not answered above, please email us." con el email us apuntando a <a href="mailto:support@thegooddata.org">support@thegooddata.org</a></p>
+                </div>
             </div>
         </div>
     </section>

@@ -1,0 +1,139 @@
+/*******************************************************************************
+ * Register
+ ******************************************************************************/
+
+
+#registration-form-block{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid @gray-lines;
+  p, .checkbox, button[type=submit], .alert{
+    margin-left: 10px;
+  }
+  form{
+    .row{
+      margin:0;
+    }
+  }
+  .glyphicon{
+    right: 5px;
+    top: -5px;
+  }
+  .has-info{
+    color: @gray-text;
+    .form-control-feedback{
+      top: -7px;
+      right: 0px;
+    }
+  }
+  .split-3{
+    width: 33.3%;
+  }
+
+  input{
+    &.error{
+      border-color: @tgd-red;  
+    }
+  }
+  label{
+    &.error{
+      color: @tgd-red;
+    }
+  }
+  .popover-content{
+    font-size: 12px;
+  }
+
+}
+
+.legal{
+  h2.tgd-box-like{
+    font-size: @font-size-medium-h2;
+    font-family: @font-regular;
+    font-weight: bold;
+    color: white;
+    margin:0rem;
+    margin-left: -10px;
+    background-color: @color-link;
+    padding: 1.5rem 1rem 1.2rem 1.5rem;
+    .inner-shadow(0, 1px, 1px, 0.3);
+  }
+  border: 1px solid @gray-lines;
+  border-left: none;
+  overflow-y: scroll;
+  .contract-container{
+    padding: 20px 10px;
+    border: 1px solid @gray-lines;
+    background-color: @very-light-gray;
+    border-left:none;
+  }
+  
+  table{
+    width: 100%;
+    margin: 10px auto;
+    tr:first-child{
+      td{
+        font-weight: bold;
+      }
+    }
+    td{
+      padding: 3px;
+      font-size: 12px;
+      text-align: center;
+      border: 1px solid @gray-text;
+      p{
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  h1{
+    margin-top:0;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  h2{
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 2.5rem;
+  }
+
+  h3{
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+  li{
+    ol[type=a]{
+      counter-reset: list;
+      padding-top: 15px;
+      padding-left: 20px;
+      > li{
+        list-style: none;
+        padding-left: 10px;
+        position: relative;
+        &:before{
+          content: "(" counter(list, lower-alpha) ") ";
+          counter-increment: list;
+          position: absolute;
+          left: -1.4em;
+        }
+      }
+    }
+  }
+  .row{
+    .title{
+      width: 25%;
+      float:left;
+      font-weight: bold;
+    }
+    .description{
+      width: 75%;
+      float: left;
+    }
+  }
+}

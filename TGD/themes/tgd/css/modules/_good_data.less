@@ -1,0 +1,190 @@
+#notice{
+    .alert{
+        border-top: none;
+        .border-radius(0, 0.3rem, 0.3rem, 0);
+    }
+    img{
+        float: left;
+        margin: 0 1rem;
+    }
+}
+
+#overview{
+    padding-bottom: 50px;
+
+    .item,.title{
+        border-bottom: 1px solid @gray-lines;
+    }
+    .item{
+        padding: 10px 0;
+        color: @dark-gray;
+        .amount{
+            font-family: @font-regular;
+            font-size: @font-size-xxlarge;
+            line-height: 1em;
+        }
+        .subtext{
+            font-family: @font-regular;
+            font-size: @font-size-medium;
+            line-height: 1em;
+            color: @gray-text;
+        }
+    }
+    h2{
+        font-size: @font-size-large;
+        font-weight: bold;
+        letter-spacing: -1px;
+    }
+
+    #achievements {
+        padding-left: 0px;
+        .title{
+            color: @tgd-red;
+        }
+
+    }
+
+    #investments{
+        .title{
+            color: @tgd-yellow;
+        }
+    }
+
+    #projects{
+        padding-right: 0px;
+        .title{        
+            color:@tgd-green;
+        }
+    }
+}
+
+#details{
+    .section-title{
+        background-color: @tgd-green;
+        color: white;
+        .inner-shadow();
+        h2{
+            font-size: @font-size-xxlarge;
+            margin-top: 10px;
+        }            
+    }
+}
+
+#table-header{
+    background-color: @light-blue;
+
+    div{
+
+        color: @gray-text;
+        font-family: @font-semi-bold;
+
+    }
+}
+
+#table-header, #table-content{
+    .row{
+        padding: 10px 5px;
+    }
+    div{
+        [class^=col-]{
+            float:left;
+            line-height: 1.1em;
+            padding-top:3px;
+            font-size: @font-size-medium;
+            font-family: @font-semi-bold;
+        }
+        &.col-1{
+            width: 20%;
+        }
+        &.col-2{
+            width: 15%;
+        }
+        &.col-3{
+            width:15%;
+        }
+        &.col-4{
+            width:12%;
+        }
+        &.col-5{
+            width: 12%;
+        }
+        &.col-6{
+            width: 12%;
+        }
+        &.col-7{
+            width: 12%;
+        }
+    }
+}
+
+#table-content{
+
+    > div{
+        border-bottom: 1px solid @gray-lines;
+        &:nth-child(odd){
+            background-color: white;
+        }
+        &:nth-child(even){
+            background-color: #fcfcfc;
+        }
+    } 
+
+    .subtext{
+        font-size: @font-size-xxsmall;
+        color: @gray-text;
+        &.partner{
+            font-size: @font-size-small;
+            color: @color-link;
+        }
+    }
+
+    .col-1{
+        a{
+            font-family: @font-bold;
+            font-size: @font-size-medium;
+            color: @color-link;
+        }
+    }
+
+    img{
+        float:left;
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+        .rounded(3px);
+
+        &.flag{
+            margin: 1px 5px 0px 0px;
+            width: auto;
+            height: auto;
+            .rounded(0px);
+        }
+        &.avatar{
+            margin-top: -5px;
+        }
+    }
+    .partner{
+        display: block;
+    }
+}
+
+.pager{
+    li{
+        > a{
+            border-width: 2px;
+            border-color: @color-link;
+            font-weight: bold; 
+            padding-top: 0;
+            padding-bottom: 0;
+            height:3rem;
+            line-height: 3rem;
+            vertical-align: middle;
+        }
+        &.disabled{
+            > a{
+                border-color: @gray-text;            
+            }
+        }
+
+    }
+}
