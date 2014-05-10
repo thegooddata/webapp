@@ -1,309 +1,293 @@
 #tgd-user-data {
   .row {
-      section {
-          margin-top: 2rem;
-          margin-bottom: 2rem;
-          &:nth-child(1) {
-              &.mission {margin-top: 2rem}
-          }
-
+    section {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      &:nth-child(1) {
+        &.mission {margin-top: 2rem}
       }
-      [class^=col-] {
-          &:first-child {
-              padding-left: 0;
-          }
-          &:last-child {
-              padding-right: 0;
-          }
+    }
+    [class^=col-] {
+      &:first-child {
+        padding-left: 0;
       }
-      
+      &:last-child {
+        padding-right: 0;
+      }
+    }
   }
 
-  #seniority, #warrant-canary, #data-table {
-
-      h2 {
-          font-family: @font-regular;
-          font-size: @font-size-large;
-          font-weight: bold;
-          color: white;
-          margin:0rem;
-          padding: 1.5rem 1rem 1.2rem 1.5rem;
-          .inner-shadow(0, 1px, 1px, 0.3);
-          a {
-              color: white;
-          }
+  #seniority,
+  #warrant-canary,
+  #data-table {
+    h2 {
+      font-family: @font-regular;
+      font-size: @font-size-large;
+      font-weight: bold;
+      color: white;
+      margin:0rem;
+      padding: 3px 5px;
+      .inner-shadow(0, 1px, 1px, 0.3);
+      a {
+        color: white;
       }
+    }
 
-      .gray {
-          background-color: @very-light-gray;
-          color: @gray-text;
-      }
+    .gray {
+      background-color: @very-light-gray;
+      color: @gray-text;
+    }
 
   }
 
-  #seniority, #warrant-canary {
-
-      > div  {
-          border: 1px solid @gray-lines;
-          &:last-child {
-              border-top: none;
-          }
+  #seniority,
+  #warrant-canary {
+    > div {
+      border: 1px solid @gray-lines;
+      &:last-child {
+        border-top: none;
       }
-
-      h2 {
-          background-color: @tgd-blue;        
-      }
+    }
+    h2 {
+      background-color: @tgd-blue;    
+    }
   }
 
   #seniority {
-      h2 {
-          i {
-              float: right;
-              cursor: pointer;
-          }
+    h2 {
+      i {
+        float: right;
+        cursor: pointer;
       }
-      .popover {
-          color: @gray-text;
-          font-size: @font-size-medium;
-          font-weight: normal;
-          width: 420px;
-          .rounded(2px);
+    }
+    .popover {
+      color: @gray-text;
+      font-size: @font-size-medium;
+      font-weight: normal;
+      width: 420px;
+      .rounded(2px);
+    }
+    .seniority {
+      padding-top: 105px;
+      padding-bottom: 20px;
+      background-position: center 25px;
+      background-image: url("../img/seniority.png");
+      background-repeat: no-repeat;
+      span {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-size: @font-size-large;
+        font-weight: bold;
       }
-      .seniority {
-          padding-top: 105px;
-          padding-bottom: 20px;
-          background-position: center 25px;
-          background-image: url("../img/seniority.png");
-          background-repeat: no-repeat;
-          span {
-              display: block;
-              text-align: center;
-              margin-top: 20px;
-              font-size: @font-size-large;
-              font-weight: bold;
-          }
+    }
 
+    .gray {
+      padding: 1rem;
+      text-align: center;
+      line-height: 1.25em;
+      .green {
+        color: @tgd-green;
       }
-
-      .gray {
-          padding: 1rem;
-          text-align: center;
-          line-height: 1.25em;
-          .green {
-              color: @tgd-green;
-          }
-      }
+    }
   }
 
   #warrant-canary {
-      .canary {
-          padding-top: 115px;
-          padding-bottom: 25px;
-          background-position: center center;
-          background-image: url("../img/warrant_canary.png");
-          background-repeat: no-repeat;
-      }
-
-      .gray {
-          padding: 1rem;        
-          line-height: 1.25em;
-      }
+    .canary {
+      padding-top: 115px;
+      padding-bottom: 25px;
+      background-position: center center;
+      background-image: url("../img/warrant_canary.png");
+      background-repeat: no-repeat;
+    }
+    .gray {
+      padding: 1rem;    
+      line-height: 1.25em;
+    }
   }
 
-
   #data-table {
-      .nav-tabs {
-          ul {
-              border: none;
-          }
-          li {
-              width: 50%;
-              background-color: @very-light-gray;
-              margin: 0;
-              padding: 0;
-              border: none;
-
-              a {
-                  color: @gray-text;
-                  font-size: @font-size-large;
-                  line-height: 1.76rem;
-                  font-weight: bold;
-                  padding:1.5rem 1rem 1.2rem 1rem;
-                  margin: 0;
-                  border: none;
-                  .rounded(0px);
-                  .inner-shadow(0px, 1px, 1px, 0.2 );
-              }
-
-              &.active {
-            
-                  a {
-                      background-color: @tgd-yellow;
-                      color: white;  
-                  }
-
-              }
-          }
+    .nav-tabs {
+      ul {
+        border: none;
       }
-
-      .table {
-          margin-bottom: 0;
+      li {
+        width: 50%;
+        background-color: @very-light-gray;
+        margin: 0;
+        padding: 0;
+        border: none;
+        a {
+          color: @gray-text;
+          font-size: @font-size-large;
+          line-height: 1.76rem;
+          font-weight: bold;
+          padding:1.5rem 1rem 1.2rem 1rem;
+          margin: 0;
+          border: none;
+          .rounded(0px);
+          .inner-shadow(0px, 1px, 1px, 0.2 );
+        }
+        &.active {
+          a {
+            background-color: @tgd-yellow;
+            color: white;  
+          }
+        }
       }
-
-      .table {
-          border-right: 1px solid @gray-lines;
-          border-left: 1px solid @gray-lines;
-          .events {
-              text-align: center;
-          }
-
-          .sensitive-data {
-              text-align: center;
-          }
-
-          tr {
-              &.hidden {
-                  display: none;
-              }
-              &.visible {
-                  display:table-row;
-              }
-          }
-          > thead  {
-              > tr {
-                  > th {
-                      padding: 5px 10px;
-                      border-bottom: 1px solid @gray-lines;
-                      background-color: @light-blue;
-                      color: @gray-text;
-                      font-weight: normal;
-                  }
-                  > td {
-                      padding: 5px 10px;
-                  }
-              }
-          }
-          > tbody {
-              > tr {
-                  &.child {
-                      display: none;
-                      font-size: @font-size-small;
-                      .query {
-                          font-weight: normal;
-                          color: @gray-text;
-                      }
-
-                  }
-                  > th {
-                      padding: 5px 10px;
-                  }
-                  > td {
-                      color: @gray-text;
-                      padding: 5px 10px;
-                      border-bottom: 1px solid @gray-lines;
-                      .hanging {
-                          padding: 3px;
-                          width: 6px;
-                          height: 6px;
-                          float: left;
-                          margin-top: 2px;
-                          margin-right: 3px;
-                          border-bottom: 1px solid @gray-text;
-                          border-left: 1px solid @gray-text;
-                      }
-                      .glyphicon-minus,.glyphicon-plus {
-                          border: 1px solid @gray-lines-darker;
-                          color: #bfbfbf;
-                          font-weight: normal;
-                          font-size: 0.8rem;
-                          padding: 0px 3px;
-                          line-height: 1.2rem;
-                          top: -1px;
-                          margin-left: -23px;
-                          cursor: pointer;
-                          margin-right: 7px;
-                          background-color: white;
-                          vertical-align: middle;
-                          .rounded(3px);
-                      }
-                      &.query {
-                          font-weight: bold;
-                          color: @color-link;
-                          padding-left: 15px;
-                      }                   
-                  }
-              }
-          }
+    }
+    .table {
+      margin-bottom: 0;
+      border-right: 1px solid @gray-lines;
+      border-left: 1px solid @gray-lines;
+      .events {
+        text-align: center;
       }
-
-      .pager {
-          padding: 20px 10px;
-          margin-top: 0;
-          border: 1px solid @gray-lines;
-          border-top: none;
-          .btn-xs {
-              color: white;
-              font-size: 1rem;
-              line-height: 1rem;
-              padding: 0 0.8rem 0 0.8rem;
-              height: 1.6rem;
-              font-weight: bold;
+      .sensitive-data {
+        text-align: center;
+      }
+      tr {
+        &.hidden {
+          display: none;
+        }
+        &.visible {
+          display:table-row;
+        }
+      }
+      > thead  {
+        > tr {
+          > th {
+            padding: 5px 10px;
+            border-bottom: 1px solid @gray-lines;
+            background-color: @light-blue;
+            color: @gray-text;
+            font-weight: normal;
           }
+          > td {
+            padding: 5px 10px;
+          }
+        }
+      }
+      > tbody {
+        > tr {
+          &.child {
+            display: none;
+            font-size: @font-size-small;
+            .query {
+              font-weight: normal;
+              color: @gray-text;
+            }
 
-          .download {
-              background-color: @color-link;
+          }
+          > th {
+            padding: 5px 10px;
+          }
+          > td {
+            color: @gray-text;
+            padding: 5px 10px;
+            border-bottom: 1px solid @gray-lines;
+            .hanging {
+              padding: 3px;
+              width: 6px;
+              height: 6px;
+              float: left;
+              margin-top: 2px;
+              margin-right: 3px;
+              border-bottom: 1px solid @gray-text;
+              border-left: 1px solid @gray-text;
+            }
+            .glyphicon-minus,.glyphicon-plus {
+              border: 1px solid @gray-lines-darker;
+              color: #bfbfbf;
+              font-weight: normal;
+              font-size: 0.8rem;
+              padding: 0px 3px;
+              line-height: 1.2rem;
+              top: -1px;
+              margin-left: -23px;
+              cursor: pointer;
+              margin-right: 7px;
+              background-color: white;
               vertical-align: middle;
-          }
-          .delete {
-              background-color: @tgd-blue;
-          }
-      }
-      .buttons {
-          margin-top: 3rem;
-          .btn-primary {
-              background-color: @gray-text;
-              border-color: @gray-text;
+              .rounded(3px);
+            }
+            &.query {
               font-weight: bold;
-              font-size: @font-size-medium;
-              height: 2.8rem;
-              line-height: 2.8rem;
-              padding-top: 0;
-              padding-bottom: 0;
-              vertical-align: middle;
+              color: @color-link;
+              padding-left: 15px;
+            }           
           }
+        }
       }
-      
-      .pagination {
-          margin-top: 0;
-          li {
-              a {
-                  background-color: transparent;
-                  border: none;
-                  line-height: 1em;
-                  font-weight: bold;
-                  padding: 0.6rem 0.8rem 0.2rem;
-                  margin: 0;
-                  
-              }
-              &.active {
-                  a {
-                      .rounded(3px);
-                      background-color: @color-link;
-                      color: white;
-                  }
-              }
-              &:first-child {
-                      font-size: 1rem;
-                      a {
-                      margin-right: 1rem;
-                          
-                      }
-              }
-              &:last-child {
-                  font-size: 1rem;
-              }
+    }
+
+    .pager {
+      padding: 20px 10px;
+      margin-top: 0;
+      border: 1px solid @gray-lines;
+      border-top: none;
+      .btn-xs {
+        color: white;
+        font-size: 1rem;
+        line-height: 1rem;
+        padding: 0 0.8rem 0 0.8rem;
+        height: 1.6rem;
+        font-weight: bold;
+      }
+
+      .download {
+        background-color: @color-link;
+        vertical-align: middle;
+      }
+      .delete {
+        background-color: @tgd-blue;
+      }
+    }
+    .buttons {
+      margin-top: 3rem;
+      .btn-primary {
+        background-color: @gray-text;
+        border-color: @gray-text;
+        font-weight: bold;
+        font-size: @font-size-medium;
+        height: 2.8rem;
+        line-height: 2.8rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        vertical-align: middle;
+      }
+    }
+    
+    .pagination {
+      margin-top: 0;
+      li {
+        a {
+          background-color: transparent;
+          border: none;
+          line-height: 1em;
+          font-weight: bold;
+          padding: 0.6rem 0.8rem 0.2rem;
+          margin: 0;
+          
+        }
+        &.active {
+          a {
+            .rounded(3px);
+            background-color: @color-link;
+            color: white;
+          }
+        }
+        // &:first-child {
+        //     font-size: 1rem;
+        //     a {
+        //     margin-right: 1rem;
               
-          }
+        //     }
+        // }
+        // &:last-child {
+        //   font-size: 1rem;
+        // }
       }
+    }
   }
 }
