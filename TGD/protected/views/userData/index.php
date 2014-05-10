@@ -304,32 +304,6 @@
     // Add "hanging" lines  
     $('<div class="hanging"></div>').prependTo("tr.child > td:first-child");
 
-    // Expand / collapse behaviour
-    $('<span class="glyphicon glyphicon-plus"></span>').prependTo('table .collapsed').click(function() {
-        // change +/- label
-        $(this).toggleClass("glyphicon-plus glyphicon-minus");
-        // get parent tr
-        var $parentTr = $(this).parents("tr");
-        // handle lines visibility between rows
-        if ($(this).hasClass('glyphicon-plus')) {
-            $parentTr.find('td').removeAttr('style');
-        } else {
-            $parentTr.find('td').css({'border-bottom-color': 'white'});
-        }
-        // get next consecutive <tr>s with class "child"
-        var $children = getChildren($parentTr);
-        $children.fadeToggle().slice(0, -1).find('td').css({'border-bottom-color': 'white'});
-
-        function getChildren($parent) {
-            var $return = $();
-            var $currentTr = $parent;
-            var i = 0;
-            while ($currentTr.next().hasClass("child")) {
-                $return = $return.add($currentTr.next());
-                $currentTr = $currentTr.next();
-            }
-            return $return;
-        }
     });
 </script>
 
