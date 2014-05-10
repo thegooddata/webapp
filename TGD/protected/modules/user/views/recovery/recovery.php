@@ -36,7 +36,7 @@ $this->breadcrumbs=array(
 	                    </div>
 	                </div>
 					<div class="form-group clearfix">
-						<p class="col-sm-7 col-sm-offset-1">We will send you an email with instructions to reset your password.</p>					
+						<p class="col-sm-7 col-sm-offset-1">We will send you an email to reset your password.</p>					
 					</div>
 	                <div class="form-group clearfix">
 	                    <?php echo CHtml::submitButton(UserModule::t("Send")/*TODO: <- translate this*/, array('class'=>'btn btn-primary col-sm-2 col-sm-offset-1')); ?>

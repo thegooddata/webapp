@@ -124,7 +124,7 @@ class SiteController extends Controller {
         $this->bodyId = "tgd-faq";
         
          // add js specific for this page
-        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/faq.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/tree_navigator.js', CClientScript::POS_END);
         
 
         
@@ -204,6 +204,9 @@ class SiteController extends Controller {
 
         // set body id to #tgd-share-purchase
         $this->bodyId = "tgd-legal";
+
+         // add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/tree_navigator.js', CClientScript::POS_END);
         
         $this->render('legal');
     }

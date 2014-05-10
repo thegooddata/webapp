@@ -40,53 +40,53 @@
                     <form method="POST" id="registration-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration/registration"); ?>">
                         <div class="row">
                             <div  class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>First name *</label>
+                                <label>First name</label>
                                 <input type="text" class="form-control" id="firstName" name="RegistrationForm[firstName]" value="<?php echo isset($registration_form['firstName']) ? $registration_form['firstName']:''; ?>">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>Last name *</label>
+                                <label>Last name</label>
                                 <input type="text" class="form-control" id="lastName" name="RegistrationForm[lastName]" value="<?php echo isset($registration_form['lastName']) ? $registration_form['lastName']:''; ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-16 col-lg-16">
-                                <label>Street name *</label>
+                                <label>Street name</label>
                                 <input id="autocomplete" type="text" class="form-control" name="RegistrationForm[streetName]" value="<?php echo isset($registration_form['streetName']) ? $registration_form['streetName']:''; ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>Street number *</label>
+                                <label>Street number</label>
                                 <input type="text" class="form-control" id="street_number" name="RegistrationForm[streetNumber]" value="<?php echo isset($registration_form['streetNumber']) ? $registration_form['streetNumber']:''; ?>">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>Street details</label>
+                                <label>Street details </label><span class="pull-right">(optional)</span>
                                 <input type="text" class="form-control" id="streetDetails" name="RegistrationForm[streetDetails]" value="<?php echo isset($registration_form['streetDetails']) ? $registration_form['streetDetails']:''; ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>City *</label>
+                                <label>City</label>
                                 <input type="text" class="form-control" id="locality" name="RegistrationForm[city]" value="<?php echo isset($registration_form['city']) ? $registration_form['city']:''; ?>">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>State/County </label>
+                                <label>State/County  </label><span class="pull-right">(optional)</span>
                                 <input type="text" class="form-control" id="administrative_area_level_1" name="RegistrationForm[stateCounty]" value="<?php echo isset($registration_form['stateCounty']) ? $registration_form['stateCounty']:''; ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>Country *</label>
+                                <label>Country</label>
                                 <input type="text" class="form-control" id="country" name="RegistrationForm[country]" value="<?php echo isset($registration_form['country']) ? $registration_form['country']:''; ?>">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>Post code *</label>
+                                <label>Post code</label>
                                 <input type="text" class="form-control" id="postal_code" name="RegistrationForm[postCode]" value="<?php echo isset($registration_form['postCode']) ? $registration_form['postCode']:''; ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 split-3">
-                                <label>Birth date *</label>
+                                <label>Birth date</label>
                                 <select  class="form-control" id="dayBirthday" name="RegistrationForm[dayBirthday]" >
                                     <option value="0">Day</option>
                                     <option value="1">1</option>
@@ -182,24 +182,24 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
-                                <label>Username *</label>
+                                <label>Username</label>
                                 <input type="text" class="form-control" id="userName" name="RegistrationForm[userName]" value="<?php echo isset($registration_form['userName']) ? $registration_form['userName']:''; ?>">
                                 <span class="glyphicon glyphicon-question-sign form-control-feedback with-popover" data-toggle="popover" data-placement="top" data-content= "Once we register your personal details on our Membership Book, we will delete them from your account. From then on you will be treated by your username."></span>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
-                                <label>Email *</label>
+                                <label>Email</label>
                                 <input type="email" class="form-control"  id="userEmail" name="RegistrationForm[userEmail]" value="<?php echo isset($registration_form['userEmail']) ? $registration_form['userEmail']:''; ?>">
                                 <span class="glyphicon glyphicon-question-sign form-control-feedback with-popover" data-toggle="popover" data-placement="top" data-content= "Used for password recovery and infrequent legal communications as a company Member"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
-                                <label>Password *</label>
+                                <label>Password</label>
                                 <input type="password" class="form-control"  id="password" name="RegistrationForm[password]" value="<?php echo isset($registration_form['password']) ? $registration_form['password']:''; ?>">
                                 <span class="glyphicon glyphicon-question-sign form-control-feedback with-popover" data-toggle="popover" data-placement="top" data-content= "Password must be 8 to 32 characters long and include at least one letter and one number"></span>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
-                                <label>Confirm password *</label>
+                                <label>Confirm password</label>
                                 <input type="password" class="form-control"  id="passwordConfirm" name="RegistrationForm[passwordConfirm]" value="<?php echo isset($registration_form['passwordConfirm']) ? $registration_form['passwordConfirm']:''; ?>">
                             </div>
                         </div>
@@ -209,9 +209,6 @@
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary">Apply for membership</button>
-                        <div class="col-sm-16 col-md-16 co-lg-16">
-                            <label class="pull-right">* compulsory fields</label>
-                        </div>
                     </form>
                 </div>
                 <div id="contract" class="col-sm-16 col-md-6 col-lg-8 legal" style="height: 898px;">
