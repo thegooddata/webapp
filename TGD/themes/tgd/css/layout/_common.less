@@ -7,6 +7,19 @@
   font-family: @font-regular, Arial, sans-serif;
 }
 
+html{
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin: 0 0 208px; /* bottom = footer height */
+  padding-top: 0;
+  > .wrapper {
+    background-color: white;
+  }
+}
+
 a {
   text-decoration: none;
   &:focus, &:hover {
@@ -14,12 +27,7 @@ a {
   }
 }
 
-body {
-  padding-top: 0;
-  > .wrapper {
-    background-color: white;
-  }
-}
+
 
 
 label {
@@ -169,10 +177,8 @@ label {
 }
 
 #tgd-page-content {
-  .row {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
+  margin-top: 54px;
+  margin-bottom: 80px;
 }
 
 .tgd-box {
@@ -219,5 +225,14 @@ label {
       padding-left: 0;
       padding-right: 0;
     }  
+  }
+}
+div.popover {
+  color: @gray-text;
+  font-weight: normal;
+  width: 420px;
+  .rounded(2px);
+  .popover-content {
+    font-size: @font-size-medium!important;
   }
 }

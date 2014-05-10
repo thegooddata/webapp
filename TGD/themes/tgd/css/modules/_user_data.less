@@ -26,7 +26,7 @@
       font-weight: bold;
       color: white;
       margin:0rem;
-      padding: 3px 5px;
+      padding: 1.5rem 1rem 1.2rem 1.5rem;
       .inner-shadow(0, 1px, 1px, 0.3);
       a {
         color: white;
@@ -59,13 +59,9 @@
         float: right;
         cursor: pointer;
       }
-    }
-    .popover {
-      color: @gray-text;
-      font-size: @font-size-medium;
-      font-weight: normal;
-      width: 420px;
-      .rounded(2px);
+      .popover {
+        font-size: 14px!important;
+      }
     }
     .seniority {
       padding-top: 105px;
@@ -110,6 +106,9 @@
     .nav-tabs {
       ul {
         border: none;
+        &.pagination a {
+          padding: 3px 5px;
+        }
       }
       li {
         width: 50%;

@@ -184,7 +184,7 @@
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                                 <label>Username *</label>
                                 <input type="text" class="form-control" id="userName" name="RegistrationForm[userName]" value="<?php echo isset($registration_form['userName']) ? $registration_form['userName']:''; ?>">
-                                <span class="glyphicon glyphicon-question-sign form-control-feedback with-popover" data-toggle="popover" data-placement="top" data-content= "Once we register your personal details on our Membership Book, we will delete them from your account. From then on you will be treated by your username. You can choose whatever you want as your nick"></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-feedback with-popover" data-toggle="popover" data-placement="top" data-content= "Once we register your personal details on our Membership Book, we will delete them from your account. From then on you will be treated by your username."></span>
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8 has-info has-feedback">
                                 <label>Email *</label>
@@ -215,8 +215,6 @@
                     </form>
                 </div>
                 <div id="contract" class="col-sm-16 col-md-6 col-lg-8 legal" style="height: 898px;">
-                    <h2 class="tgd-box-like">Company Rules and Principles</h2>
-
                     <div class="contract-container">
                         <h2>
                         Industrial and Provident Societies Act 1965<br>

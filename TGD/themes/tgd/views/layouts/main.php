@@ -142,11 +142,6 @@
 
 
                     ?>
-                   <!--  <ul class="nav navbar-nav">
-                        <li><a href="#">GOOD DATA</a></li>
-                        <li><a href="#about">EVIL DATA</a></li>
-                        <li class="active"><a href="#contact">YOUR DATA</a></li>
-                    </ul> -->
                 </div>
             </div>
         </div> 
