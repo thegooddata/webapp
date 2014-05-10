@@ -193,19 +193,7 @@
                 </li>
                 <li>
                   <em>Can I contact company Directors directly?</em>
-                  <p>penness means direct communication as well. You can write directly any of the 3 company Directors if you have some kind of idea or expertise that can be useful to us.</p>
-                  <p>Here are their emails:</p>
-                  <ul class="clearfix">
-                    <li>
-                      <p>Marcos at <a href="mailto:marcos@thegooddata.org">marcos@thegooddata.org</a> (contact him by hangout call if you prefer)</p>
-                    </li>
-                    <li>
-                      <p>Ray at <a href="mailto:ray@thegooddata.org">ray@thegooddata.org</a></p>
-                    </li>
-                    <li>
-                      <p>Daniel at <a href="mailto:daniel@thegooddata.org">daniel@thegooddata.org</a></p>
-                    </li>
-                  </ul>
+                  <p>Openness means direct communication as well. In case you have any improvement idea or expertise that can be useful to us, you can email or make a hangout call with our company Director Marcos Menendez at <a href="mailto:marcos@thegooddata.org">marcos@thegooddata.org</a></p>
                 </li>
                 <li>
                   <em>Are coders rewarded?</em>
@@ -234,7 +222,11 @@
       </div>
 
       <div class="last_edit">
-        <p>First drafted - January 2014. Latest revision – January 2014. If you have a question that’s not answered above, please email us.<a href="mailto:support@thegooddata.org">support@thegooddata.org</a></p>
+        <p>
+          First drafted - January 2014. Latest revision – January 2014.</br>
+          If you have a question that’s not answered above, please email us </br>
+          <a href="mailto:support@thegooddata.org">support@thegooddata.org</a>
+        </p>
       </div>
 
     </div>
