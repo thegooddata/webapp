@@ -135,7 +135,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_repaid'] = $total;
+        $result['outstanding_portfolio'] = $total;
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -153,7 +153,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_lost'] = $total;
+        $result['money_repaid'] = $total;
 
 
 
@@ -174,7 +174,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['outstanding_portfolio'] = $total;
+        $result['money_lost'] = $total;
 
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
