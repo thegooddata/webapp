@@ -74,7 +74,7 @@ return array(
             'loginUrl' => array('/user/login'),
 
             # page after login
-            'returnUrl' => array('/user/profile'),
+            'returnUrl' => array('/userData/index'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
@@ -212,9 +212,9 @@ return array(
 	),
 
 	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'senderEmail'=>'tgd@x3factory.com',
+		'adminEmail'=>'marcos@thegooddata.org',
 	),
 );
