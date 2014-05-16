@@ -58,6 +58,7 @@
         </div>
         <div id="cancel-account" class="row">
             <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16"><img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">Resign my Membership</div>
+            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16  alert alert-success alert-dismissable hidden">SUCCESS: We have sent you an email to confirm your resignation and explain the next steps to sell us back your share</div>
         </div>
     </div>
 
