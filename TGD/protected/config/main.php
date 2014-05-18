@@ -1,10 +1,7 @@
 <?php
-
-// uncomment the following to define a path alias
-// Yii::setPathOfAlias('local','path/to/local-folder');
-
-// This is the main Web application configuration. Any writable
-// CWebApplication properties can be configured here.
+include '/Users/dani/Dev/TGD/src/config.php';
+?>
+<?php
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'The Good Data',
@@ -86,31 +83,18 @@ return array(
 	'components'=>array(
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
-			'url' => 'https://localhost:8080',
-			'port' => 8080,
-			'username' => 'dani',
-			'password' => 'dani',
-			'owners' => '"user1","user2"',
-			'minimun' => 2,
-			'cert' => "/Users/dani/Dev/redoctober/cert/server.crt"
+			'url' => REDOCTOBER_URL,
+			'port' => REDOCTOBER_PORT,
+			'username' => REDOCTOBER_USERNAME,
+			'password' => REDOCTOBER_PASSWORD,
+			'owners' => REDOCTOBER_OWNERS,
+			'minimun' => REDOCTOBER_MIN,
+			'cert' => REDOCTOBER_CERT
 		),
 		
 		'mail' => array(
 		    'class' => 'ext.yii-mail.YiiMail',
 		    'transportType'=>'smtp',
-		    // 'transportOptions'=>array(
-		    //         'host'=>'smtp.zoho.com',
-		    //         'username'=>'info@thegooddata.org',
-		    //         'password'=>'yuT4rh*7kWhJ ',
-		    //        	'port'=>'465',
-			   //     	'encryption'=>'ssl',                    
-		    // ),
-		    'transportOptions'=>array(
-		            'host'=>'mail.x3factory.com',
-		            'username'=>'tgd@x3factory.com',
-		            'password'=>'wJeC=zi@3o1a',
-		           	'port'=>'25',                   
-		    ),
 		    'viewPath' => 'application.views.mail',   
 		    'logging' => true,
     		'dryRun' => false          
@@ -178,36 +162,19 @@ return array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			
 
-				
-		       
 			),
 	
 		),
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-	    	'connectionString' => 'pgsql:host=localhost;port=5432;dbname=tgd2',
-		    'username'=>'postgres',
-		    'password'=>'perrovaca',
+	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME,
+		    'username'=>BD_USERNAME,
+		    'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',
-
-
 		),
-		// 'db'=>array(
-		// 	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		// ),
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
-		*/
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -219,12 +186,6 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
 			),
 		),
 	),
@@ -232,7 +193,8 @@ return array(
 	// application-level parameters that can be accessed
 	'params'=>array(
 		// this is used in contact page
-		'senderEmail'=>'tgd@x3factory.com',
-		'adminEmail'=>'danielgarciagomez@gmail.com',
+		'senderGenericEmail'=>EMAIL_GENERIC_FROM,
+		'senderPersonalEmail'=>EMAIL_PERSONAL_FROM,
+		'adminEmail'=>EMAIL_ADMIN,
 	),
 );
