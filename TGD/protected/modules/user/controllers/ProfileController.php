@@ -189,4 +189,33 @@ class ProfileController extends Controller
 		// var_dump($this->_model);die;
 		return $this->_model;
 	}
+
+	public function actionSendEmail() {
+
+		if(Yii::app()->user->id){
+			$model=Yii::app()->controller->module->user();
+		
+			if ($model->email != ""){
+					//SEND EMAIL
+		        $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'resignation.html');
+
+		        $url=Yii::app()->createAbsoluteUrl('/resignation?user_id='.base64_encode(Yii::app()->user->id));
+
+		        $content = str_replace('[RESIGNATION_LINK]',$url,  $content);
+		        
+		        $message = new YiiMailMessage;
+		        $message->subject = 'Please confirm your resignation of membership of TheGoodData';
+		        $message->setBody($content,'text/html');
+
+		        $message->addTo($model->email);
+		        $message->from = Yii::app()->params['senderGenericEmail'];
+		        
+		        Yii::app()->mail->send($message);
+
+			}
+			
+		}	
+
+        return "";
+    }
 }
