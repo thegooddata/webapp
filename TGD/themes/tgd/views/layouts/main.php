@@ -80,6 +80,7 @@
         </header>
 
         <?php if (
+            $this->getUniqueId() != "resignation" && 
             $this->getUniqueId() != "site" && 
             $this->getUniqueId() != "user/registration" && 
             $this->getUniqueId() != "user/profile" &&
