@@ -1,3 +1,5 @@
+<!-- Rename this file to config.php -->
+
 <?php
 
 CONST REDOCTOBER_URL = 'https://localhost:8080';
