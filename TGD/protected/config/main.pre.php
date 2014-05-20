@@ -1,5 +1,5 @@
 <?php
-include '/usr/share/nginx/webapp_pre/releases/config.pre.php';
+include 'config.php';
 ?>
 <?php
 return array(

@@ -1,5 +1,5 @@
 <?php
-include '/Users/dani/Dev/TGD/src/config.php';
+include 'config.php';
 ?>
 <?php
 return array(
