@@ -45,7 +45,6 @@ namespace :deploy do
   end
   
   task :move_TGD_to_current do
-    run "mv #{release_path}/TGD/css #{release_path}/css"
     run "mv #{release_path}/TGD/protected #{release_path}/protected"
     run "mv #{release_path}/TGD/themes #{release_path}/themes"
     run "mv #{release_path}/TGD/.htaccess #{release_path}/"
