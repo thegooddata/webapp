@@ -71,7 +71,7 @@
 
         <section id="start" class="start clearfix">
             <div class="container clearfix">
-                <a class="button" href="#"><h2>start enjoying your data now</h2></a>            
+                <a class="button modal-trigger" href="#"><h2>start enjoying your data now</h2></a>            
             </div> <!-- container -->
         </section> <!-- start -->      
 

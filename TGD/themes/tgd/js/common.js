@@ -3,21 +3,21 @@ jQuery(document).ready(function ($) {
   var isChromium = window.chrome,
   vendorName = window.navigator.vendor;
 
-  $('.install a, .modal-trigger').click( function(e){
+  $('.install a, .modal-trigger').click(function(e){
+    e.preventDefault();
 
-    if( isChromium !== null && vendorName === "Google Inc." ) {
+    if(isChromium !== null && vendorName === "Google Inc.") {
       // is Google chrome
-
-      $('#earlyAccessModal').modal({'keyboard': true});
+      var modal = $('#earlyAccessModal').modal({'keyboard': true});
 
     } else {
-
+      
       var options = {
           keyboard : true,
           remote : window.signInUrl
       };
 
-      $('#chromeModal').modal(options); 
+     $('#chromeModal').modal(options); 
 
     }
 
