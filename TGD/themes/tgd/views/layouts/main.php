@@ -80,7 +80,7 @@
         </header>
 
         <?php if (
-            $this->getUniqueId() != "site" && 
+            // $this->getUniqueId() != "site" && 
             $this->getUniqueId() != "user/registration" && 
             $this->getUniqueId() != "user/profile" &&
             $this->getUniqueId() != "purchase" &&

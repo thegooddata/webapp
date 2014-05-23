@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl . '/css/bootstrap_vertical_tabs.css' ?>" type="text/css"/>
-<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl . '/css/pavan_styles.css' ?>" type="text/css" />
-
 <!-- main content -->
 
 <div id="tgd-page-title">
