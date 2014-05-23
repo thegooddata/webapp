@@ -67,7 +67,7 @@
                                 </li>
                                 <li>
                                     <h3>Always Anonymous</h3>
-                                    <p>In case you provide us any Personally Identifiable Information it will be decoupled from your comercial usage data and using <a href="https://github.com/cloudflare/redoctober">military two-man encryption techniques</a></p>
+                                    <p>In case you provide us any Personally Identifiable Information it will be decoupled from your comercial usage data and using <a target="_blank" href="https://github.com/cloudflare/redoctober">military two-man encryption techniques</a></p>
                                     <img src="<?php echo Yii::app()->theme->baseUrl . '/img/anonymous.png';?>" alt="">
                                 </li>
                             </ul>
