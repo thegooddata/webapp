@@ -3,7 +3,7 @@
         <div class="row">
             <ul class="clearfix">
                 <li><a href="/"><span class="fa fa-home"></span></a></li>
-                <li><h2>Edit your profile</h2></li>
+                <li><h2>Membership details</h2></li>
             </ul>
         </div>
     </div>
