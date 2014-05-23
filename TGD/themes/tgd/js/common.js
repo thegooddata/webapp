@@ -5,20 +5,16 @@ jQuery(document).ready(function ($) {
 
   $('.install a, .modal-trigger').click(function(e){
     e.preventDefault();
-
     if(isChromium !== null && vendorName === "Google Inc.") {
       // is Google chrome
-      var modal = $('#earlyAccessModal').modal({'keyboard': true});
+      $('#earlyAccessModal').modal({'keyboard': true});
 
     } else {
-      
       var options = {
           keyboard : true,
           remote : window.signInUrl
       };
-
      $('#chromeModal').modal(options); 
-
     }
 
   });
