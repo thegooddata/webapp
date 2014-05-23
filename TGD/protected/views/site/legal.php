@@ -118,10 +118,10 @@
                             </p>
 
                             <p>
-                                First drafted - December 2013
+                                First drafted - May 2014
                             </p>
                             <p>
-                                Latest revision &ndash; March 2014
+                                Latest revision &ndash; May 2014
                             </p>
                         </div>
                         <div class="tab-pane active legal" id="terms">
@@ -175,8 +175,8 @@
                             <h2>Contact</h2>
                             <p>You can contact us at <a href="mailto:support@thegooddata.org">support@thegooddata.org</a>&nbsp;if you have any questions about these Terms.</p>
                             
-                            <p>First drafted - December 2013</p>
-                            <p>Latest revision &ndash; March 2014 </p>
+                            <p>First drafted - May 2014</p>
+                            <p>Latest revision &ndash; May 2014 </p>
 
 
                         </div>
@@ -1602,8 +1602,8 @@
                             </ol>
                             
                             
-                            <p>First drafted - December 2013</p>
-                            <p>Latest revision &ndash; December 2013 </p>
+                            <p>First drafted - May 2014</p>
+                            <p>Latest revision &ndash; May 2014 </p>
                         </div>
                         <div class="tab-pane legal" id="principles">
                             <h1>Principles of TheGoodData Cooperative Limited</h1>

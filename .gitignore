@@ -8,6 +8,7 @@ application.log.*
 .DS_Store
 TGD/protected/config/local_config.php
 TGD/protected/config/config.php
+TGD/protected/config/main.php
 TGD/.htaccess
 postgres.log
 *.codekit

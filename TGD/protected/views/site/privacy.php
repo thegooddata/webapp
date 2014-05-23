@@ -84,10 +84,10 @@
                 </p>
 
                 <p>
-                    First drafted - December 2013
+                    First drafted - May 2014
                 </p>
                 <p>
-                    Latest revision &ndash; December 2013 
+                    Latest revision &ndash; May 2014
                 </p>
             </div>
         </div>

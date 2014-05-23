@@ -67,8 +67,8 @@
                 <h2>Contact</h2>
                 <p>You can contact us at <a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about these Terms.</p>
                 <p></p>
-                <p>First drafted - December 2013</p>
-                <p>Latest revision &ndash; December 2013 </p>
+                <p>First drafted - May 2014</p>
+                <p>Latest revision &ndash; May 2014 </p>
 
             </div>
         </div>

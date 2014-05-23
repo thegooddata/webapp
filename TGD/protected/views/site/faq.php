@@ -223,7 +223,7 @@
 
       <div class="last_edit">
         <p>
-          First drafted - January 2014. Latest revision – January 2014.</br>
+          First drafted - May 2014. Latest revision – May 2014.</br>
           If you have a question that’s not answered above, please email us </br>
           <a href="mailto:support@thegooddata.org">support@thegooddata.org</a>
         </p>
