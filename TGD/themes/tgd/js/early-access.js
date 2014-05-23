@@ -1,5 +1,5 @@
 // save original content
-var content = $('#myModal .modal-dialog').html();
+var content = $('#earlyAccessModal .modal-dialog').html();
 
 // once the modal is visible and the content is loaded, deal with
 // the form submission
