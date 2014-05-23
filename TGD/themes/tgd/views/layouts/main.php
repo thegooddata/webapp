@@ -222,7 +222,7 @@
                             <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
                         </li>
                         <li>
-                            <a id="wordpress" href="//news.thegooddata.org"></a>
+                            <a id="wordpress" href="//blog.thegooddata.org"></a>
                         </li>
                         <li>
                             <a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a>
