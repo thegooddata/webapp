@@ -223,9 +223,8 @@
 
       <div class="last_edit">
         <p>
-          First drafted - May 2014. Latest revision – May 2014.</br>
-          If you have a question that’s not answered above, please email us </br>
-          <a href="mailto:support@thegooddata.org">support@thegooddata.org</a>
+          Last edit – May 2014.</br>
+          If you have a question that’s not answered above, please <a href="mailto:info@thegooddata.org?subject=Question reported from TheGoodData webpage">email us</a>
         </p>
       </div>
 
