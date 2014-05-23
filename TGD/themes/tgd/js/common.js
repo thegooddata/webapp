@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
     if( isChromium !== null && vendorName === "Google Inc." ) {
       // is Google chrome
 
-      $('#myModal').modal({'keyboard': true});
+      $('#earlyAccessModal').modal({'keyboard': true});
 
     } else {
 
@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
           remote : window.signInUrl
       };
 
-     // $('#chromeModal').modal(options); 
+      $('#chromeModal').modal(options); 
 
     }
 

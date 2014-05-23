@@ -3,7 +3,7 @@ var content = $('#myModal .modal-dialog').html();
 
 // once the modal is visible and the content is loaded, deal with
 // the form submission
-$('#myModal').on('shown.bs.modal', function(e) {
+$('#earlyAccessModal').on('shown.bs.modal', function(e) {
     $(this).find('form').submit(function(e) {
         // prevent form submission
         e.preventDefault();
@@ -40,15 +40,15 @@ $('#myModal').on('shown.bs.modal', function(e) {
                 'html' // data type expected from the server
                 ).error(function() {
             $('.modal-header h2').html('Error');
-            $('.modal-body').empty().append('Something went wrong while processing your request').height(modalBodyHeight).css('text-align', 'center');
-            $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
+            $('.modal-body').empty().append('Something went wrong while processing your request').css('text-align', 'center');
+            $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').toggleClass('loading').find('.btn').css('width', 'auto');
         });
     });
 });
 // This handler restores the modal to a clean state everytime the
 // user closes it. Without it, the modal would reflect the same
 // state it had before being closed the last time.
-$('#myModal').on('hidden.bs.modal', function(e) {
+$('#earlyAccessModal').on('hidden.bs.modal', function(e) {
     // delete model content
     $('.modal-content').remove();
     // restore original content
