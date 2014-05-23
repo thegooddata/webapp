@@ -235,12 +235,16 @@
                 </div> <!-- wrap -->
             </div>
 
-            <div class="license clearfix">
-                <div class="wrap clearfix">
+            <div class="license">
+                <div class="wrap">
                     <ul class="clearfix">
                         <li>
-                            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International"><img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
-                                <p>Except where otherwise noted, content<br/> on this site is licensed under a Creative<br/> Commons Attribution 4.0 License.</p></a>
+                            <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
+                            <p>Except where otherwise noted, content on this site is licensed under a 
+                                <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
+                                    Creative Commons Attribution 4.0 International License.
+                                </a>
+                            </p>
                         </li>
                         <li>
                             <a href="http://timeless.co" title="Designed by Timeless">

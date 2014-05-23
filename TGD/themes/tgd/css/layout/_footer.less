@@ -112,15 +112,18 @@ footer {
       li {
         display: block;
         float: left;
+        &:first-child{
+          width: 348px;
+        }
         &:last-child {
           padding: 2px 0 5px 18px;
           margin-top: 5px;
           border-left: 1px solid #ddd;
         }
         img {
-          float: left;
+          display: inline-block;
           margin-top: 5px;
-          cursor: pointer;
+          vertical-align: top;
           &[alt=Timeless] {
             margin-top:0;
           }
@@ -129,8 +132,9 @@ footer {
           color: @color-gray-license;
           font-family: @font-regular, Arial, sans-serif;
           font-size: 0.85em;
-          float: left;
-          margin: 0 25px 0 20px;
+          display: inline-block;
+          width: 215px;
+          margin: 0 24px 0 17px;
         }
       }
     }
