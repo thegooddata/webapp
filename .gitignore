@@ -7,6 +7,7 @@ application.log.*
 /nbproject
 .DS_Store
 TGD/protected/config/local_config.php
+TGD/protected/config/config.php
 TGD/.htaccess
 postgres.log
 *.codekit

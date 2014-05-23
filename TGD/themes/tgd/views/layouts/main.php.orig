@@ -80,8 +80,12 @@
         </header>
 
         <?php if (
+<<<<<<< HEAD
+            // $this->getUniqueId() != "site" && 
+=======
             $this->getUniqueId() != "resignation" && 
             $this->getUniqueId() != "site" && 
+>>>>>>> a976a08b0e1272b17cdb4b44e47c47dd4fc88773
             $this->getUniqueId() != "user/registration" && 
             $this->getUniqueId() != "user/profile" &&
             $this->getUniqueId() != "purchase" &&

@@ -45,6 +45,8 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_STATUS_NOTACTIV;
 		else if($user->status==-1)
 			$this->errorCode=self::ERROR_STATUS_BAN;
+		else if($user->status==-4)
+			$this->errorCode=self::ERROR_STATUS_BAN;
 		else 
 		{
 			$this->_id=$user->id;

@@ -235,7 +235,7 @@ class UserModule extends CWebModule
 	    $message->subject = $subject;
 	    $message->setBody($body,'text/html');
 	    $message->addTo($email);
-	    $message->from = Yii::app()->params['senderEmail'];
+	    $message->from = Yii::app()->params['senderGenericEmail'];
 	    Yii::app()->mail->send($message);
 	}
 

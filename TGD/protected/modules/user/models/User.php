@@ -138,11 +138,11 @@ class User extends CActiveRecord
             'active'=>array(
                 'condition'=>'status='.self::STATUS_ACCEPT.' or status='.self::STATUS_PRE_ACCEPTED,
             ),
-            // 'notactive'=>array(
-            //     'condition'=>'status='.self::STATUS_NOACTIVE,
-            // ),
+            'notactive'=>array(
+                'condition'=>'status='.self::STATUS_LEFT,
+            ),
             'banned'=>array(
-                'condition'=>'status='.self::STATUS_APPLIED.' or status='.self::STATUS_DENIED.' or status='.self::STATUS_EXPELLED,
+                'condition'=>'status='.self::STATUS_APPLIED.' or status='.self::STATUS_DENIED.' or status='.self::STATUS_EXPELLED.' or status='.self::STATUS_LEFT,
             ),
             'superuser'=>array(
                 'condition'=>'superuser=1',

@@ -42,10 +42,10 @@ namespace :deploy do
   task :rename_main_file do
     run "mv #{release_path}/protected/config/main.#{env_sufix}.php #{release_path}/protected/config/main.php"
     run "mv #{release_path}/protected/config/local_config.#{env_sufix}.php #{release_path}/protected/config/local_config.php"
+    run "ln -nfs #{shared_path}/config.php #{release_path}/protected/config/"
   end
   
   task :move_TGD_to_current do
-    run "mv #{release_path}/TGD/css #{release_path}/css"
     run "mv #{release_path}/TGD/protected #{release_path}/protected"
     run "mv #{release_path}/TGD/themes #{release_path}/themes"
     run "mv #{release_path}/TGD/.htaccess #{release_path}/"

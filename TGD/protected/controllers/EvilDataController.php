@@ -28,7 +28,8 @@ class EvilDataController extends Controller {
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('a.member_id,a.domain, sum(a.adtracks) as adtracks, sum(b.visited) as visited, sum(a.adtracks) * sum(b.visited) as total')
+                // ->select('a.member_id,a.domain, sum(a.adtracks) as adtracks, sum(b.visited) as visited, sum(a.adtracks) * sum(b.visited) as total')
+                ->select('a.member_id,a.domain, ROUND( sum(a.adtracks)/sum(b.visited) , 2)  as adtracks, sum(b.visited) as visited, sum(a.adtracks) as total ')
                 ->from('view_adtracks_members a,view_browsing_members b')
                 ->where(array(
                     'and',
