@@ -1,13 +1,6 @@
 // save original content
-var content = $('.modal-dialog').html();
-// bind a modal pop-up to the click event on any link in this page
-// $('a').not('.exclude').click(function(e) {
-//     e.preventDefault();
-//     var modal = $('#myModal').modal({'keyboard': true});
-// });
-$('footer img[alt=License]').click(function(e){
-    var modal = $('#myModal').modal({'keyboard': true});
-});
+var content = $('#myModal .modal-dialog').html();
+
 // once the modal is visible and the content is loaded, deal with
 // the form submission
 $('#myModal').on('shown.bs.modal', function(e) {

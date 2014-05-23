@@ -150,7 +150,7 @@
         <?php } ?>
 
         <!-- modal chrome only install -->
-        <div id="chromeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+        <div id="chromeModal" tabindex="-1" role="dialog" aria-labelledby="chromeModal" aria-hidden="true" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -173,6 +173,38 @@
             </div>
 
         </div>
+         <!-- Early Access modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="accessModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Early access</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- welcome message -->
+                        <div id="subscribeFormWelcome">
+                            <span>Enjoy your data!&nbsp;We are in private beta right now. Please submit your email and we will contact you shortly about joining the beta.</span><br>
+                            <br>
+                            <span>For frequent updates, follow us&nbsp;</span><a href="https://twitter.com/thegooddata" target="blank">@thegooddata</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="<?php echo Yii::app()->controller->createUrl("site/subscribelist"); ?>" method="POST" class="form-inline" role="form">
+                            <!-- form -->
+                            <input type="hidden" name="u" value="c536df10462fb6afe72117895">
+                            <input type="hidden" name="id" value="b5320da781">
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="MERGE0" id="MERGE0" size="25" placeholder="Enter email">
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="submit">Send</button>
+                            <!-- real people should not fill this in and expect good things -->
+                            <div style="position: absolute; left: -5000px;"><input type="text" name="b_c536df10462fb6afe72117895_b5320da781" value=""></div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <!-- main content -->
 

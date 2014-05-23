@@ -1,17 +1,26 @@
 jQuery(document).ready(function ($) { 
-    // MODAL FOR NON CHROME BROWSER
-    var isChromium = window.chrome,
-    vendorName = window.navigator.vendor;
-    if(isChromium !== null && vendorName === "Google Inc.") {
-      // is Google chrome 
+  // MODAL FOR NON CHROME BROWSER
+  var isChromium = window.chrome,
+  vendorName = window.navigator.vendor;
+
+  $('.install a, .modal-trigger').click( function(e){
+
+    if( isChromium !== null && vendorName === "Google Inc." ) {
+      // is Google chrome
+
+      $('#myModal').modal({'keyboard': true});
+
     } else {
-      $('.install a').click(function(e){
-          e.preventDefault();
-          var options = {
-              keyboard : true,
-              remote : window.signInUrl
-          };
-         $('#chromeModal').modal(options); 
-      });
+
+      var options = {
+          keyboard : true,
+          remote : window.signInUrl
+      };
+
+     // $('#chromeModal').modal(options); 
+
     }
+
+  });
+
 })
