@@ -14,13 +14,13 @@ $this->breadcrumbs=array(
 
 							<?php if ($success != "") { ?> 
 							<div class="clearfix">
-							    <div class="col-sm-7 cl-sm-offset-1 alert alert-success">SUCCESS : <?php echo $success; ?></div>
+							    <div class="col-sm-7 alert alert-success">SUCCESS : <?php echo $success; ?></div>
 							</div>  
 							<?php } ?>
 
 							<?php if ($error != "") { ?>   
 							<div class="clearfix">
-							    <div class="col-sm-7 col-sm-offset-1 alert alert-danger"><?php echo $error; ?>
+							    <div class="col-sm-7  alert alert-danger"><?php echo $error; ?>
 							    <?php echo CHtml::errorSummary($form); ?>
 							    </div>
 							</div>
@@ -29,7 +29,7 @@ $this->breadcrumbs=array(
 							<?php echo CHtml::beginForm(); ?>
 
 								<div class="form-group clearfix">
-	                <div class="col-sm-7 col-sm-offset-1">
+	                <div class="col-sm-7 nopadding">
 	                    <?php echo CHtml::activeLabelEx($form,'password'); ?>
 											<?php echo CHtml::activePasswordField($form,'password',array('placeholder'=>'password', 'class'=>'form-control')); ?>
                   </div>
@@ -37,7 +37,7 @@ $this->breadcrumbs=array(
 
 
 								<div class="form-group clearfix">
-	                <div class="col-sm-7 col-sm-offset-1">
+	                <div class="col-sm-7 nopadding">
 										<?php echo CHtml::activeLabelEx($form,'verifyPassword'); ?>
 										<?php echo CHtml::activePasswordField($form,'verifyPassword',array('placeholder'=>'verify password', 'class'=>'form-control')); ?>
                   </div>

@@ -19,7 +19,7 @@ $this->breadcrumbs=array(
 
                 <?php if (CHtml::errorSummary($model) != "") { ?>   
                 <div class="clearfix">
-                    <div class="col-sm-7 col-sm-offset-1 alert alert-danger">
+                    <div class="col-sm-7 alert alert-danger">
                     <?php echo CHtml::errorSummary($model); ?>
                     </div>
                 </div>
@@ -29,20 +29,20 @@ $this->breadcrumbs=array(
                 <?php echo CHtml::beginForm(); ?>
 
                 <div class="form-group clearfix">
-                    <div class="col-sm-7 col-sm-offset-1">
+                    <div class="col-sm-7 nopadding">
                         <label for="UserLogin_username" class="required">username or email</label>
                         <?php echo CHtml::activeTextField($model,'username',array('placeholder'=>'username', 'class'=>'form-control')) ?>
                     </div>
                 </div>
                 <div class="form-group clearfix">
-                    <div class="col-sm-7 col-sm-offset-1">
+                    <div class="col-sm-7 nopadding">
                         <label for="UserLogin_password" class="required">password</label>
                         <?php echo CHtml::activePasswordField($model,'password',array('placeholder'=>'password', 'class'=>'form-control')) ?>
                     </div>
                 </div>
 
                 <div class="form-group clearfix">
-                    <?php echo CHtml::submitButton(UserModule::t("Sign in")/*TODO: <- translate this*/, array('class'=>'btn btn-primary col-sm-2 col-sm-offset-1')); ?>
+                    <?php echo CHtml::submitButton(UserModule::t("Sign in")/*TODO: <- translate this*/, array('class'=>'btn btn-primary col-sm-2')); ?>
                     <p class="hint col-sm-5" id="rememberMe">
                     <?php echo CHtml::activeCheckBox($model,'rememberMe'); ?>
                     <?php echo CHtml::activeLabelEx($model,'rememberMe'); ?>
@@ -51,7 +51,7 @@ $this->breadcrumbs=array(
                 </div>
                 
                  <div class="form-group">
-                    <p class="col-sm-7 col-sm-offset-1" id="becomeAMember"><?php echo UserModule::t("Do you want to collaborate with us? ")/*TODO: <- translate this*/. CHtml::link(UserModule::t("Become a member"),Yii::app()->getModule('user')->registrationUrl); ?></p>
+                    <p class="col-sm-7" id="becomeAMember"><?php echo UserModule::t("Do you want to collaborate with us? ")/*TODO: <- translate this*/. CHtml::link(UserModule::t("Become a member"),Yii::app()->getModule('user')->registrationUrl); ?></p>
                 </div> 
 
             <?php echo CHtml::endForm(); ?>

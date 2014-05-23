@@ -14,13 +14,13 @@ $this->breadcrumbs=array(
 
 							<?php if ($success != "") { ?> 
 							<div class="clearfix">
-							    <div class="col-sm-7 cl-sm-offset-1 alert alert-success">SUCCESS : <?php echo $success; ?></div>
+							    <div class="col-sm-7 alert alert-success">SUCCESS : <?php echo $success; ?></div>
 							</div>  
 							<?php } ?>
 
 							<?php if ($error != "") { ?>   
 							<div class="clearfix">
-							    <div class="col-sm-7 col-sm-offset-1 alert alert-danger"><?php echo $error; ?>
+							    <div class="col-sm-7 alert alert-danger"><?php echo $error; ?>
 							    <?php echo CHtml::errorSummary($form); ?>
 							    </div>
 							</div>
@@ -30,14 +30,14 @@ $this->breadcrumbs=array(
 
 								
 								<div class="form-group clearfix">
-	                <div class="col-sm-7 col-sm-offset-1">
+	                <div class="col-sm-7 nopadding">
 	                    <label for="UserLogin_username" class="required">username or email</label>
                         <?php echo CHtml::activeTextField($form,'login_or_email',array('placeholder'=>'username or email', 'class'=>'form-control'));// TODO <- translate this ?>
                   </div>
                 </div>
 
 								<div class="form-group clearfix">
-									<p class="col-sm-7 col-sm-offset-1">We will send you an email to reset your password.</p>					
+									<p class="col-sm-7 nopadding">We will send you an email to restore your password.</p>					
 								</div>
 								
                 <div class="form-group clearfix">
