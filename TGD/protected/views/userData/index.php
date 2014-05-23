@@ -158,7 +158,7 @@
                             <th class="query">Domain</th>
                             <th class="engine">URL</th>
                             <th class="date">Date</th>
-                            <th class="events">Events</th>
+                            <th class="events">Visits</th>
                         </tr>
                     </thead>
                     <tbody>
