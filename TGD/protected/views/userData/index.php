@@ -253,12 +253,12 @@
 
 
         $(document).on('click','.delete',function() {
-            if(!confirm('Are you sure you want to delete this item?')) return false;
+            if(!confirm('Are you sure that you want to delete this item?')) return false;
             return true;
         });
 
         $(document).on('click','.delete_all',function() {
-            if(!confirm('Are you sure you want to delete all this items?')) return false;
+            if(!confirm('Are you sure that you want to delete all these items?')) return false;
             
             
             window.location.href = "<?php echo Yii::app()->createUrl('userData/deleteAllQueries',array('queries_pag' => $queries_pag))?>";
@@ -266,7 +266,7 @@
         });
 
         $(document).on('click','.delete_one',function() {
-            if(!confirm('Are you sure you want to delete all this items?')) return false;
+            if(!confirm('Are you sure that you want to delete all these items?')) return false;
             
             if ( $('#queries:visible').length > 0 ){
                 window.location.href = "<?php echo Yii::app()->createUrl('userData/deleteQueries',array('queries_pag' => $queries_pag))?>";
