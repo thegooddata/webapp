@@ -19,8 +19,8 @@
                             <div class="tab-pane active chart clearfix" id="last-week">
                                 <div class="clearfix no-bottom">
                                     <div class="item">
-                                        <span class="amount adtracks">0</span>
                                         <span class="subtext">Total</span>
+                                        <span class="amount adtracks">0</span>
                                     </div>
                                     <div class="item">
                                         <span class="amount small top">Top 5%</span>
@@ -38,8 +38,8 @@
                             <div class="tab-pane chart clearfix" id="last-month">
                                 <div class="clearfix no-bottom">
                                     <div class="item">
-                                        <span class="amount adtracks">0</span>
                                         <span class="subtext">Total</span>
+                                        <span class="amount adtracks">0</span>
                                     </div>
                                     <div class="item">
                                         <span class="amount small top">Top 15%</span>
@@ -57,8 +57,8 @@
                             <div class="tab-pane chart clearfix" id="last-year">
                                 <div class="clearfix no-bottom">
                                     <div class="item">
-                                        <span class="amount adtracks">0</span>
                                         <span class="subtext">Total</span>
+                                        <span class="amount adtracks">0</span>
                                     </div>
                                     <div class="item">
                                         <span class="amount small top">Top 20%</span>
