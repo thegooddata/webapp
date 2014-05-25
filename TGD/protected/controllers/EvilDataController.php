@@ -259,7 +259,7 @@ class EvilDataController extends Controller {
                 ->from('tbl_members')
                 ->queryAll();
 
-        $result['risk_ratio_you'] = number_format($adtracks[0]->risk);
+        $result['risk_ratio_you'] = number_format($adtracks[0]->risk, 2, '.', '');
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -267,7 +267,7 @@ class EvilDataController extends Controller {
                 ->from('tbl_members')
                 ->queryAll();
 
-        $result['risk_ratio_average'] = number_format($adtracks[0]->risk);
+        $result['risk_ratio_average'] = number_format($adtracks[0]->risk, 2, '.', '');
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
