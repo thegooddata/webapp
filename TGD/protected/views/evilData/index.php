@@ -137,7 +137,7 @@
                             <div class="col-md-4 col-lg-4 risk-meter mid-risk">Risk Lover</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-20px.png"/><br/>Average</div></div>
+                            <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/></div></div>
                             <div class="col-md-4 col-lg-4"><span class="amount risk average">0</span><span class="subtext">Threats per page visited</span></div>
                             <div class="col-md-4 col-lg-4"><span class="amount ratio average">0</span><span class="subtext">Percentage of threats allowed</span></div>
                             <div class="col-md-4 col-lg-4"></div>
@@ -263,8 +263,7 @@
             }, "json" );
             
             $.get( "<?php echo Yii::app()->createUrl('evilData/RiskRatios')?>", function( result ) {
-                console.warn("hola");
-                console.log(result);
+
                $('#risk-profile .amount.risk.you').html(result.risk_you);
                // $('#risk-profile .risk-meter');
                $('#risk-profile .amount.risk.average').html(result.risk_average);
