@@ -121,8 +121,7 @@
                     <div class="container">
                         <?php foreach ($loans as $loan) { ?>
                         <div class="row">
-                            $<?php echo $loan ?>
-                            <div class="col-1"><a href="#"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo $loan->image; ?>" class="avatar"/><?php echo $loan->title_en; ?></a><div class="subtext"><?php echo $loan->activity; ?></div></div>
+                            <div class="col-1"><a href="$<?php echo $loan->loan_url; ?>"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo $loan->image; ?>" class="avatar"/><?php echo $loan->title_en; ?></a><div class="subtext"><?php echo $loan->activity; ?></div></div>
                             <div class="col-2"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/flags/<?php echo strtolower($loan->code); ?>.png" class="flag"/><?php echo $loan->country; ?><div class="subtext"><?php echo $loan->partner; ?></div></div>
                             <div class="col-3">$<?php echo $loan->amount; ?></div>
                             <div class="col-4"><?php echo $loan->term; ?> months</div>
