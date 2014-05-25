@@ -775,6 +775,35 @@ class ApiController extends Controller
                     	)
 	                ->queryAll();
 
+        if (count($data) == 0){
+
+        	$blackExpresion = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('stem')
+	                ->from('tbl_queries_blacklist')
+	                ->where(array(
+	                            'and',	                          
+	                            'lang = :lang'
+	                            ),
+	                    	array(	
+	                            ':lang'=>$lang
+	                            )
+                    	)
+	                ->queryAll();
+            
+
+
+            foreach ( $blackExpresion as $black)
+            {
+            	$stem = str_replace("/b", "", $black->stem);
+            	
+            	if (strpos($query,$stem) !== false) {
+				    $data[]=$black;
+				    break;
+				}
+            }
+        }
+
 		return $data;
 	}
 
