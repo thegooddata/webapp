@@ -26,7 +26,7 @@
                             that will be cancelled when you end our membership at no cost.
                         </div>
                         <div class="button">
-                            <button class="btn loan disabled" data-toggle="loan-agreement">show me the<br> 1p loan</button>
+                            <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1p loan</button>
                         </div>
                     </div>
                     <div class="clearfix">
