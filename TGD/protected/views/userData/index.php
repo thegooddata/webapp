@@ -301,9 +301,6 @@
         e.preventDefault();
         $(this).tab('show');
     });
-    // Add "hanging" lines  
-    $('<div class="hanging"></div>').prependTo("tr.child > td:first-child");
 
-    });
 </script>
 
