@@ -44,9 +44,6 @@
                             <button class="btn bitcoin" data-toggle="bitcoin">Donate with<br> bitcoins</button>
                         </div>
                     </div>
-                    <div id="questions">
-                        <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq") ?>">Have questions?</a>
-                    </div>
                 </section>
             </div>
             <div class="col-sm-16 col-md-6 col-lg-6 tgd-no-horizontal-padding">
@@ -148,17 +145,3 @@
         </div>
     </div>
 </div>
-<script>
-    $('#descriptions button').not(':disabled').click(function() {
-        var targetId = '#' + $(this).data('toggle'),
-                $target = $(targetId),
-                $parent = $target.parent();
-
-        if (!$target.is(':visible')) {
-            // hide the rest
-            $parent.children().not(targetId).hide();
-            // show the target
-            $target.show();
-        }
-    });
-</script>

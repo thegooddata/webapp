@@ -10,6 +10,13 @@
   #descriptions{
     border: 1px solid @gray-lines;
     border-right: 4px solid @color-dark-gray;
+    &.credit-card{
+      border-right-color: @tgd-green;
+    }
+    
+    &.bitcoin{
+      border-right-color: @tgd-yellow;
+    }
 
     h2{
       font-weight: bold;
@@ -40,7 +47,6 @@
         width: 35%;
         .btn{
           .border-radius(0, 0, 4px, 4px);
-          .inner-shadow(-1px, 0, 1px, 0.4);
           width: 100%;
           color: white;
           font-weight: bold;
