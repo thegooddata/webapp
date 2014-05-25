@@ -83,10 +83,10 @@
                                             <td>Cookie</td><td>Name</td><td>Purpose</td>
                                         </tr>
                                         <tr>
-                                            <td>Session cookie</td><td></td><td>These are temporary cookies, which only exist until you close the browser after accessing the website. Session cookies help us remember what you chose on the previous page, therefore avoiding the need to re-enter information and improve your experience whilst using the site. These cookies do not contain personal information and cannot be used to identify you.</td>
+                                            <td>Session cookie</td><td>PHPSESSID, has_js</td><td>These are temporary cookies, which only exist until you close the browser after accessing the website. Session cookies help us remember what you chose on the previous page, therefore avoiding the need to re-enter information and improve your experience whilst using the site. These cookies do not contain personal information and cannot be used to identify you.</td>
                                         </tr>
                                         <tr>
-                                            <td>Persistent cookie</td><td></td><td>These are cookies, which remain on your device after you have visited our website. Persistent cookies help us identify you as a unique visitor, they do not contain information that could be used to identify you to another person.</td>
+                                            <td>Persistent cookie</td><td>variable</td><td>These are cookies, which remain on your device after you have visited our website. Persistent cookies help us identify you as a unique visitor, they do not contain information that could be used to identify you to another person.</td>
                                         </tr>
                                     </table>
                                     <p>We do not use cookies to track your use of the internet after you leave our sites, nor do we store any personal information in them that could identify you to other people. The length of time a cookie will remain on your device will depend on the type of cookie.</p>
