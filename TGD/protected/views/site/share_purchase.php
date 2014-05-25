@@ -145,15 +145,15 @@
                         </form>
                     </div>
                     <div id="bitcoin-1p">
-                        <strong>Make a 1-pence donation</strong>
-                        Upon clicking the button below, you will be redirected to a Bitpay platform page, where you'll be able to complete the donation process 
+                        <strong>Make a 1-pence payment/strong>
+                        Upon clicking the button below, you will be redirected to a Bitpay platform page, where you'll be able to complete the paryment process 
                         using your Bitcoin wallet application and scanning a QR code or clicking on a "Pay with Bitcoin" button.
                         <form action="https://bitpay.com/checkout" method="post" >
                             <input type="hidden" name="action" value="checkout" />
                             <input type="hidden" name="posData" value="" />
                             <input type="hidden" name="data" value="i+8wYLNGk9LIgh913da5SgG/GA7jj8JhA0LTzmCuHJ2A1xPgE/JABmoEwVawN+bsp7DjS+An+ATbMzhpkB6ZHzuuKxHRHnjN2f785x2ENejcv/x1lXq06axFiaAMkw1o8T1uTY7O2UpV1zKo1R7mR5Hds9iiOgRLW9ZItMP7p0wa07EFcardTCTPaxq0Upv5p9eGF8pypHVvrNfvzMjhs3kLI4bf9X9hOwMrA0i898FVHQ+L66xstqBs2+6WDzUH" />
     <!--                        <input type="image" src="https://bitpay.com/img/donate-md.png" border="0" name="submit" alt="BitPay, the easy way to pay with bitcoins." >-->
-                            <button type="submit" class="btn btn-primary">make a 1-pence donation <span class="fa fa-bitcoin"></span></button>
+                            <button type="submit" class="btn btn-primary">Pay with Bitcoins <span class="fa fa-bitcoin"></span></button>
                         </form>
                     </div>
                 </section>
