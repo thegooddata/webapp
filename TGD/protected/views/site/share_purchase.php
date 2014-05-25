@@ -161,17 +161,4 @@
         </div>
     </div>
 </div>
-<script>
-    $('#descriptions button').not(':disabled').click(function() {
-        var targetId = '#' + $(this).data('toggle'),
-                $target = $(targetId),
-                $parent = $target.parent();
 
-        if (!$target.is(':visible')) {
-            // hide the rest
-            $parent.children().not(targetId).hide();
-            // show the target
-            $target.show();
-        }
-    });
-</script>

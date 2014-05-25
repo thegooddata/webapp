@@ -9,10 +9,22 @@ $(function() {
 });
 
 $(document).ready(function(){
-  $('#descriptions .btn').click( function( e ){
-    var dataToggle = $(this).data('toggle');
-    console.log(dataToggle);
-    $('#descriptions').addClass( dataToggle );
+
+  $('#descriptions button').not(':disabled').click(function() {
+      var targetId     = '#' + $(this).data('toggle'),    
+           $target     = $(targetId),
+           $parent     = $target.parent();
+           $dataToggle = $(this).data('toggle');
+;
+      if (!$target.is(':visible')) {
+          // hide the rest
+          $parent.children().not(targetId).hide();
+          // show the target
+          $target.show();
+          // console.log $dataToggle
+          $('#descriptions').removeClass()
+                            .addClass( $dataToggle );
+      }
   });
 
 });
