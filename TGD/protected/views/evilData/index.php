@@ -263,6 +263,7 @@
             }, "json" );
             
             $.get( "<?php echo Yii::app()->createUrl('evilData/RiskRatios')?>", function( result ) {
+                console.warn("hola");
                 console.log(result);
                $('#risk-profile .amount.risk.you').html(result.risk_you);
                // $('#risk-profile .risk-meter');
