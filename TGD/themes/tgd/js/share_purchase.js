@@ -11,11 +11,13 @@ $(function() {
 $(document).ready(function(){
 
   $('#descriptions button').not(':disabled').click(function() {
+
       var targetId     = '#' + $(this).data('toggle'),    
            $target     = $(targetId),
            $parent     = $target.parent();
            $dataToggle = $(this).data('toggle');
-;
+
+      console.log($target);
       if (!$target.is(':visible')) {
           // hide the rest
           $parent.children().not(targetId).hide();
