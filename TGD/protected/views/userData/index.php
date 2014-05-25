@@ -7,7 +7,7 @@
 
         <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are 5 levels of seniority based on data shared, ownership status and particiation on company forums: Apprentice, Journeyman, Owner, Expert owner, Manager." data-placement="right" data-toggle="popover"></i></h2>
 
-        <div class="seniority <?php echo strtolower( $queries_percentile_text); ?>">
+        <div class="seniority <?php echo strtolower( $queries_percentile_text );?>">
             <span><?php echo $queries_percentile_text;?></span>
         </div>                                      
 
