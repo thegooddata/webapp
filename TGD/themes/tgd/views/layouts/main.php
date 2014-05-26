@@ -112,7 +112,7 @@
                                 array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
                                 array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
                                 array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>array('/site/support-us'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/support-us'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
                                 array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
 
                                 
