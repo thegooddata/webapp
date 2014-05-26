@@ -3,6 +3,8 @@
 class GoodDataController extends Controller {
 
     public $bodyId = 'tgd-good-data';
+    
+    public $displayMenu = true;
 
     public function filters() {
         //return array('accessControl'); // perform access control for CRUD operations
