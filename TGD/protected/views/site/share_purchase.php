@@ -2,10 +2,7 @@
 <div id="tgd-page-title">
     <div class="container">
         <div class="row">
-            <ul class="clearfix">
-                <li><a href="/"><span class="fa fa-home"></span></a></li>
-                <li><h2>Share purchase</h2></li>
-            </ul>
+            <h2>Share purchase</h2>
         </div>
     </div>
 </div> 

@@ -2,10 +2,7 @@
 <div id="tgd-page-title">
     <div class="container">
         <div class="row">
-            <ul class="clearfix">
-                <li><a href="/"><span class="fa fa-home"></span></a></li>
-                <li><h2>Resignation successful</h2></li>
-            </ul>
+            <h2>Resignation successful</h2>
         </div>
     </div>
 </div> 

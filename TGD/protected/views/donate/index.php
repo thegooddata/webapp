@@ -1,5 +1,5 @@
 
-<div id="tgd-page-title">
+<!-- <div id="tgd-page-title">
     <div class="container">
         <div class="row">
             <ul class="clearfix">
@@ -8,7 +8,7 @@
             </ul>
         </div>
     </div>
-</div> 
+</div>  -->
 
 <?php if ($state == DonateController::RETURN_FROM_GATEWAY && $status == DonateController::TRANSACTION_OK) { ?>   
     <div class="alert alert-success">SUCCESS</div>

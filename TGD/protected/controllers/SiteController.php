@@ -2,6 +2,8 @@
 
 class SiteController extends Controller {
 
+   public $displayMenu = true;
+
    public function init() {
         Yii::app()->theme = 'tgd';
         $this->layout = '//layouts/blank';
@@ -120,6 +122,9 @@ class SiteController extends Controller {
         // set title
         $this->pageTitle = " - FAQ";
 
+        // dont display menu
+        $this->displayMenu = false;
+
         // set body id to #tgd-share-purchase
         $this->bodyId = "tgd-faq";
         
@@ -136,6 +141,9 @@ class SiteController extends Controller {
 
         // set title
         $this->pageTitle = " - Coders";
+
+        // dont display menu
+        $this->displayMenu = false;
 
         // set body id to #tgd-share-purchase
         $this->bodyId = "tgd-coders";
@@ -205,6 +213,9 @@ class SiteController extends Controller {
         // set body id to #tgd-share-purchase
         $this->bodyId = "tgd-legal";
 
+        // dont display menu
+        $this->displayMenu = false;
+
          // add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/tree_navigator.js', CClientScript::POS_END);
         
@@ -229,6 +240,9 @@ class SiteController extends Controller {
         // set title
         $this->pageTitle = " - Share Purchase";
 
+        // dont display menu
+        $this->displayMenu = false;
+
         // add css specific for this page
 //        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/share_purchase.css');
 
@@ -239,6 +253,7 @@ class SiteController extends Controller {
         $this->bodyId = "tgd-share-purchase";
 
         $this->render('share_purchase');
+
     }
 
     public function actionIndex() {
@@ -252,6 +267,9 @@ class SiteController extends Controller {
 
         // set body id to #landing-page
         $this->bodyId = "landing-page";
+
+        // dont display menu
+        $this->displayMenu = false;
 
         // //CREACION DE UN USUARIO
         // $username='daniel'.rand(0,1000);

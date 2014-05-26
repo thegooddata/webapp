@@ -18,6 +18,8 @@ class DonateController extends Controller {
     public $status ='';
     public $currency='';
     public $amount='';
+    
+    public $displayMenu = true;
 
     public $bodyId = 'tgd-user-data';
 

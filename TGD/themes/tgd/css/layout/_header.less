@@ -136,4 +136,26 @@
       }
     }
   }
+  &.public {
+    background-color: @tgd-green;
+    .navbar-nav{
+      > li{
+        a{
+          color: white;
+          &:hover{
+            background-color: @dark-green;
+          }   
+        } 
+        &.active{
+          a{
+            font-family: @font-bold;
+            background-color: @dark-green;
+            color: white;
+          }
+      }
+      }
+      color: @tgd-green;
+    }
+
+  }
 }

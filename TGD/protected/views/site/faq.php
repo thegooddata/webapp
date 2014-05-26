@@ -3,10 +3,7 @@
 <div id="tgd-page-title">
   <div class="container">
     <div class="row">
-      <ul class="clearfix">
-        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/index"); ?>"><span class="fa fa-home"></span></a></li>
-        <li><h2>Frequently Asked Questions</h2></li>
-      </ul>
+      <h2>Frequently Asked Questions</h2>
     </div>
   </div>
 </div> 

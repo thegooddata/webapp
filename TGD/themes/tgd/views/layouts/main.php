@@ -81,11 +81,11 @@
 
         <?php if (
             $this->getUniqueId() != "resignation" && 
-            $this->getUniqueId() != "site" && 
+            // $this->getUniqueId() != "site" && 
             $this->getUniqueId() != "user/registration" && 
             $this->getUniqueId() != "user/profile" &&
             $this->getUniqueId() != "purchase" &&
-            $this->getUniqueId() != "donate") { ?>
+            $this->displayMenu   != false ) { ?>
 
         <?php 
         $user = User::model()->findByPk(Yii::app()->user->id); 
@@ -93,59 +93,59 @@
 
         ?>
 
-        <div id="secondary-nav">
-            <div class="container">
-                <div class="row">
+            <div id="secondary-nav" <?php if (Yii::app()->user->isGuest){ ?> class="public" <?php } ?> >
+                <div class="container">
+                    <div class="row">
 
-                    <?php $this->widget('zii.widgets.CMenu',array(
-                        'items'=>array(
-                            /*
-                            array('label'=>'Home', 'url'=>array('/site/index')),
-                            array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                            array('label'=>'Contact', 'url'=>array('/site/contact')),
-                            */
-                            // array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("LOGIN"), 'visible'=>Yii::app()->user->isGuest),
-                            // array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
-                            
-                            array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>array('/site/product'), 'label'=>'PRODUCT', 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>'#', 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
-                            array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
+                        <?php $this->widget('zii.widgets.CMenu',array(
+                            'items'=>array(
+                                /*
+                                array('label'=>'Home', 'url'=>array('/site/index')),
+                                array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+                                array('label'=>'Contact', 'url'=>array('/site/contact')),
+                                */
+                                // array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("LOGIN"), 'visible'=>Yii::app()->user->isGuest),
+                                // array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
+                                
+                                array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/site/product'), 'label'=>'PRODUCT', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>array('/site/donate'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
+                                array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
 
-                            
-                            
+                                
+                                
 
-                            array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
+                                array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
 
-                            array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
-                            array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),
-                            array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest),
 
-                            array('label'=>'PURCHASE SHARES', 'url'=>array('/user/purchase/'.$user_id_token), 'visible'=>$user!=null? $user->status == User::STATUS_PRE_ACCEPTED: false),
+                                array('label'=>'PURCHASE SHARES', 'url'=>array('/user/purchase/'.$user_id_token), 'visible'=>$user!=null? $user->status == User::STATUS_PRE_ACCEPTED: false),
 
-                            
-                            /*
-                            array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout"), 'visible'=>!Yii::app()->user->isGuest),
-                            */
-                            
+                                
+                                /*
+                                array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout"), 'visible'=>!Yii::app()->user->isGuest),
+                                */
+                                
 
+                                ),
+                            'htmlOptions' => array(
+                                'class'=>'nav navbar-nav',
                             ),
-                        'htmlOptions' => array(
-                            'class'=>'nav navbar-nav',
-                        ),
-                        'submenuHtmlOptions' => array(
-                            'class' => '',
-                        )
-                    )); 
+                            'submenuHtmlOptions' => array(
+                                'class' => '',
+                            )
+                        )); 
 
 
-                    ?>
+                        ?>
+                    </div>
                 </div>
-            </div>
-        </div> 
+            </div> 
 
         <?php } ?>
 
