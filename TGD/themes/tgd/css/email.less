@@ -1,0 +1,53 @@
+@import "base/_fonts.less";
+
+*{
+    font-family: @font-regular, Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    &:focus, &:hover{
+        outline: none;
+    }
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+body{
+    padding-top: 0;
+    background-color: white;
+}
+
+h1{
+    color: rgb(0, 82, 113);
+    font-size: 1.3em;
+}
+
+#details{
+    li{
+        list-style: none;
+    }
+}
+
+.reasons{
+    li{
+        display: none;
+        // e
+    }
+    &.expulsion{
+        li.expulsion{
+            display: list-item;
+        }
+    }
+    &.wrong-details{
+        li.wrong-details{
+            display: list-item;
+        }
+    }
+    &.not-used{
+        li.not-used{
+            display: list-item;
+        }
+    }
+}

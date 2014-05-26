@@ -7,25 +7,26 @@
  * property or method in class "MembersPii".
  *
  * Columns in table "{{members_pii}}" available as properties of the model,
- * followed by relations of table "{{members_pii}}" available as properties of the model.
+ * and there are no model relations.
  *
- * @property integer $id
+ * @property string $id
  * @property string $firstname
- * @property string $surname
+ * @property string $lastname
+ * @property string $streetname
  * @property string $streetnumber
- * @property string $street
  * @property string $streetdetails
  * @property string $city
- * @property string $state
- * @property string $zipcode
- * @property integer $id_countries
- * @property string $email
- * @property string $birthdate
- * @property boolean $agreerules
+ * @property string $statecounty
+ * @property string $country
+ * @property string $postcode
+ * @property string $daybirthday
+ * @property string $monthbirthday
+ * @property string $yearbirthday
+ * @property boolean $agree
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $member_id
  *
- * @property Countries $idCountries
  */
 abstract class BaseMembersPii extends GxActiveRecord {
 
@@ -47,18 +48,17 @@ abstract class BaseMembersPii extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('firstname, surname, streetnumber, street, streetdetails, city, state, zipcode, id_countries, email, birthdate, agreerules', 'required'),
-			array('id_countries', 'numerical', 'integerOnly'=>true),
-			array('firstname, surname, streetnumber, street, streetdetails, city, state, zipcode, email', 'length', 'max'=>128),
+			array('id, firstname, lastname, streetname, streetnumber, city, country, postcode, daybirthday, monthbirthday, yearbirthday, agree', 'required'),
+			array('id', 'length', 'max'=>128),
+			array('firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday', 'length', 'max'=>256),
 			array('created_at, updated_at', 'safe'),
 			array('created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, firstname, surname, streetnumber, street, streetdetails, city, state, zipcode, id_countries, email, birthdate, agreerules, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday, agree, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
-			'idCountries' => array(self::BELONGS_TO, 'Countries', 'id_countries'),
 		);
 	}
 
@@ -71,41 +71,43 @@ abstract class BaseMembersPii extends GxActiveRecord {
 		return array(
 			'id' => Yii::t('app', 'ID'),
 			'firstname' => Yii::t('app', 'Firstname'),
-			'surname' => Yii::t('app', 'Surname'),
-			'streetnumber' => Yii::t('app', 'Streetnumber'),
-			'street' => Yii::t('app', 'Street'),
-			'streetdetails' => Yii::t('app', 'Streetdetails'),
+			'lastname' => Yii::t('app', 'Lastname'),
+			'streetname' => Yii::t('app', 'Streetname'),
+			'streetnumber' => Yii::t('app', 'Street number'),
+			'streetdetails' => Yii::t('app', 'Street details'),
 			'city' => Yii::t('app', 'City'),
-			'state' => Yii::t('app', 'State'),
-			'zipcode' => Yii::t('app', 'Zipcode'),
-			'id_countries' => null,
-			'email' => Yii::t('app', 'Email'),
-			'birthdate' => Yii::t('app', 'Birthdate'),
-			'agreerules' => Yii::t('app', 'Agreerules'),
+			'statecounty' => Yii::t('app', 'State/county'),
+			'country' => Yii::t('app', 'Country'),
+			'postcode' => Yii::t('app', 'Postcode'),
+			'daybirthday' => Yii::t('app', 'Day birthday'),
+			'monthbirthday' => Yii::t('app', 'Month birthday'),
+			'yearbirthday' => Yii::t('app', 'Year birthday'),
+			'agree' => Yii::t('app', 'Agree'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
-			'idCountries' => null,
 		);
 	}
 
 	public function search() {
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id);
+		$criteria->compare('id', $this->id, true);
 		$criteria->compare('firstname', $this->firstname, true);
-		$criteria->compare('surname', $this->surname, true);
+		$criteria->compare('lastname', $this->lastname, true);
+		$criteria->compare('streetname', $this->streetname, true);
 		$criteria->compare('streetnumber', $this->streetnumber, true);
-		$criteria->compare('street', $this->street, true);
 		$criteria->compare('streetdetails', $this->streetdetails, true);
 		$criteria->compare('city', $this->city, true);
-		$criteria->compare('state', $this->state, true);
-		$criteria->compare('zipcode', $this->zipcode, true);
-		$criteria->compare('id_countries', $this->id_countries);
-		$criteria->compare('email', $this->email, true);
-		$criteria->compare('birthdate', $this->birthdate, true);
-		$criteria->compare('agreerules', $this->agreerules);
+		$criteria->compare('statecounty', $this->statecounty, true);
+		$criteria->compare('country', $this->country, true);
+		$criteria->compare('postcode', $this->postcode, true);
+		$criteria->compare('daybirthday', $this->daybirthday, true);
+		$criteria->compare('monthbirthday', $this->monthbirthday, true);
+		$criteria->compare('yearbirthday', $this->yearbirthday, true);
+		$criteria->compare('agree', $this->agree);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
+		$criteria->compare('member_id', $this->member_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

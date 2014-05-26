@@ -1,0 +1,206 @@
+
+/*******************************************************************************
+ * Common rules for every page
+ ******************************************************************************/
+
+* {
+  font-family: @font-regular, Arial, sans-serif;
+}
+
+html{
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin: 0 0 208px; /* bottom = footer height */
+  padding-top: 0;
+  > .wrapper {
+    background-color: white;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:focus, &:hover {
+    outline: none;
+  }
+}
+
+label {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: @gray-text;
+  font-size: @font-size-small;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+   .right-caret {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #fff;
+    display: inline-block;
+    height: 0;
+    opacity: 0.3;
+    vertical-align: top;
+    width: 0;
+  }
+
+  .ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+  }
+
+  .ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+
+  .hidden {
+    display: none !important;
+    visibility: hidden;
+  }
+
+  .visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .visuallyhidden.focusable:active,
+  .visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+ // CLEARFIX
+ .clearfix:before,
+ .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.loading {
+  text-align: center;
+}
+
+.created_at {
+  display:none;
+}
+
+.updated_at {
+  display:none;
+}
+.nopadding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/*******************************************************************************
+ * TGD classes and IDs
+ ******************************************************************************/
+
+ #tgd-page-title {
+  margin-top: 60px;
+  background-color: #72bc81;
+  text-transform: uppercase;
+  color: white;
+  h2 {
+    font-size: @font-size-medium-h2;
+    font-family:@font-semi-bold;
+    margin-bottom: 15px;
+  }
+  a {
+    color: white;
+  }
+}
+
+#tgd-page-content {
+  margin-top: 54px;
+  padding-bottom: 80px;
+}
+
+.tgd-box {
+  > h2 {
+    font-size: @font-size-medium-h2;
+    font-family: @font-regular;
+    font-weight: bold;
+    color: white;
+    margin:0rem;
+    padding: 1.5rem 1rem 1.2rem 1.5rem;
+    .inner-shadow(0, 1px, 1px, 0.3);
+  }
+  .tgd-box-section {
+    border: 1px solid @gray-lines;
+    padding: 1.429em;
+    border-top: none;
+    &:first-of-type {
+      border-top: 1px solid @gray-lines;;
+    }  
+    &.very-light-gray {
+      background-color: @very-light-gray;
+    }
+    &.very-light-blue {
+      background-color: @light-blue;
+    }
+    &.tgd-emphasis {
+      font-weight: bold;
+      padding: 3.754em;
+      font-size: @font-size-large;
+    }
+  }
+}
+
+/* Helper class to eliminate the padding in bootstrap's grid elements */
+.row {
+  [class^=col-] {
+    &.tgd-no-left-padding {
+      padding-left: 0;
+    }
+    &.tgd-no-right-padding {
+      padding-right: 0;
+    }
+    &.tgd-no-horizontal-padding {
+      padding-left: 0;
+      padding-right: 0;
+    }  
+  }
+}
+div.popover {
+  color: @gray-text;
+  font-weight: normal;
+  max-width: 400px;
+  .rounded(2px);
+  .popover-content {
+    width: 400px;
+    font-size: @font-size-medium!important;
+  }
+}

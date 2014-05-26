@@ -6,8 +6,9 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Announcement Types', 'url' => array('achievementsTypes/admin')),
 	);
 
 Yii::app()->clientScript->registerScript('search', "
@@ -48,13 +49,11 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'value'=>'GxHtml::valueEx($data->achievementType)',
 				'filter'=>GxHtml::listDataEx(AchievementsTypes::model()->findAllAttributes(null, true)),
 				),
-		'title_en_us',
-		'title_es',
-		'link_en_us',
+		'link_en',
 		'link_es',
-		/*
-		'text_en_us',
+		'text_en',
 		'text_es',
+		/*
 		'achievements_start',
 		'achievements_finish',
 		'created_at',

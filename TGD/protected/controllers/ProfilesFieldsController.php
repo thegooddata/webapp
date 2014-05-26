@@ -2,7 +2,21 @@
 
 class ProfilesFieldsController extends GxController {
 
-
+	public function filters()
+    {
+        return array( 'accessControl' ); // perform access control for CRUD operations
+    }
+ 
+    public function accessRules()
+    {
+        return array(
+            array('allow',  
+				'expression'=>'Yii::app()->user->isAdmin()',
+			),
+            array('deny'),
+        );
+    }
+    
 	public function actionView($id) {
 		$this->render('view', array(
 			'model' => $this->loadModel($id, 'ProfilesFields'),
@@ -45,13 +59,13 @@ class ProfilesFieldsController extends GxController {
 	}
 
 	public function actionDelete($id) {
-		if (Yii::app()->getRequest()->getIsPostRequest()) {
+		// if (Yii::app()->getRequest()->getIsPostRequest()) {
 			$this->loadModel($id, 'ProfilesFields')->delete();
 
 			if (!Yii::app()->getRequest()->getIsAjaxRequest())
 				$this->redirect(array('admin'));
-		} else
-			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
+		// } else
+		// 	throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
 	}
 
 	public function actionIndex() {

@@ -18,6 +18,7 @@
  * @property string $lang
  * @property string $share
  * @property string $usertime
+ * @property string $language_support
  * @property string $created_at
  * @property string $updated_at
  *
@@ -44,12 +45,12 @@ abstract class BaseQueries extends GxActiveRecord {
 		return array(
 			array('provider, data, query, lang', 'required'),
 			array('member_id', 'numerical', 'integerOnly'=>true),
-			array('user_id', 'length', 'max'=>255),
+			array('user_id, language_support', 'length', 'max'=>255),
 			array('provider, lang, share', 'length', 'max'=>128),
 			array('data', 'length', 'max'=>256),
 			array('usertime, created_at, updated_at', 'safe'),
-			array('member_id, user_id, share, usertime, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, member_id, user_id, provider, data, query, lang, share, usertime, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('member_id, user_id, share, usertime, language_support, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, member_id, user_id, provider, data, query, lang, share, usertime, language_support, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +75,7 @@ abstract class BaseQueries extends GxActiveRecord {
 			'lang' => Yii::t('app', 'Lang'),
 			'share' => Yii::t('app', 'Share'),
 			'usertime' => Yii::t('app', 'Usertime'),
+			'language_support' => Yii::t('app', 'Language Support'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
 		);
@@ -91,6 +93,7 @@ abstract class BaseQueries extends GxActiveRecord {
 		$criteria->compare('lang', $this->lang, true);
 		$criteria->compare('share', $this->share, true);
 		$criteria->compare('usertime', $this->usertime, true);
+		$criteria->compare('language_support', $this->language_support, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
 

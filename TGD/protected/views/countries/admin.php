@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	);
 
@@ -43,8 +42,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'name_en_us',
+		'name_en',
 		'name_es',
+		'code',
 		array(
 			'class' => 'CButtonColumn',
 		),

@@ -130,7 +130,7 @@ class YiiMail extends CApplicationComponent
 	public function send(YiiMailMessage $message, &$failedRecipients = null) {
 		if ($this->logging===true) self::log($message);
 		if ($this->dryRun===true) return count($message->to);
-		else return $this->getMailer()->send($message->message, $failedRecipients);
+		else return $this->getMailer($message)->send($message->message, $failedRecipients);
 	}
 
 	/**
@@ -199,7 +199,37 @@ class YiiMail extends CApplicationComponent
 	* not been created yet
 	* @return mixed {@link Swift_MailTransport} or {@link Swift_SmtpTransport}
 	*/
-	public function getTransport() {
+	public function getTransport($m=null) {
+
+		//var_dump($m->from);die;
+		//var_dump($this->transport);die;
+
+		
+		// $this->transport->setusername(EMAIL_GENERIC_USERNAME);
+		// $this->transport->setpassword(EMAIL_GENERIC_PASSWORD);
+		// $this->transport->setport(EMAIL_GENERIC_PORT);
+
+		$this->transport = Swift_SmtpTransport::newInstance();
+
+		if ($m->from[EMAIL_GENERIC_FROM] == null)
+		{
+			$this->transport->setHost(EMAIL_GENERIC_HOST);
+			$this->transport->setUsername(EMAIL_GENERIC_USERNAME);
+			$this->transport->setPassword(EMAIL_GENERIC_PASSWORD);
+			$this->transport->setPort(EMAIL_GENERIC_PORT);
+            $this->transport->setEncryption('ssl');
+
+		}
+		else if ($m->from[EMAIL_PERSONAL_FROM] == null)
+		{
+			$this->transport->setHost(EMAIL_PERSONAL_HOST);
+			$this->transport->setUsername(EMAIL_PERSONAL_USERNAME);
+			$this->transport->setPassword(EMAIL_PERSONAL_PASSWORD);
+			$this->transport->setPort(EMAIL_PERSONAL_PORT);
+            $this->transport->setEncryption('ssl');
+
+		}
+
 		if ($this->transport===null) {
 			switch ($this->transportType) {
 				case 'php':
@@ -209,11 +239,27 @@ class YiiMail extends CApplicationComponent
 					break;
 				case 'smtp':
 					$this->transport = Swift_SmtpTransport::newInstance();
-					foreach ($this->transportOptions as $option => $value)
-						$this->transport->{'set'.ucfirst($option)}($value); // sets option with the setter method
+					
+					
+
 					break;
 			}
 		}
+
+		// if ($this->transport===null) {
+		// 	switch ($this->transportType) {
+		// 		case 'php':
+		// 			$this->transport = Swift_MailTransport::newInstance();
+		// 			if ($this->transportOptions !== null)
+		// 				$this->transport->setExtraParams($this->transportOptions);
+		// 			break;
+		// 		case 'smtp':
+		// 			$this->transport = Swift_SmtpTransport::newInstance();
+		// 			foreach ($this->transportOptions as $option => $value)
+		// 				$this->transport->{'set'.ucfirst($option)}($value); // sets option with the setter method
+		// 			break;
+		// 	}
+		// }
 		
 		return $this->transport;
 	}
@@ -222,9 +268,9 @@ class YiiMail extends CApplicationComponent
 	* Gets the SwiftMailer {@link Swift_Mailer} class instance
 	* @return Swift_Mailer
 	*/
-	public function getMailer() {
+	public function getMailer($m=null) {
 		if ($this->mailer===null)
-			$this->mailer = Swift_Mailer::newInstance($this->getTransport());
+			$this->mailer = Swift_Mailer::newInstance($this->getTransport($m));
 			
 		return $this->mailer;
 	}

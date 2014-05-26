@@ -24,9 +24,8 @@ class AdminController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','create','update','view'),
-				'users'=>UserModule::getAdmins(),
+			array('allow',  
+				'expression'=>'Yii::app()->user->isAdmin()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -64,6 +63,7 @@ class AdminController extends Controller
 	public function actionView()
 	{
 		$model = $this->loadModel();
+
 		$this->render('view',array(
 			'model'=>$model,
 		));
@@ -111,7 +111,14 @@ class AdminController extends Controller
 		$this->performAjaxValidation(array($model,$profile));
 		if(isset($_POST['User']))
 		{
+
+			$previus_status=$model->status;
+
 			$model->attributes=$_POST['User'];
+
+			$new_status=$model->status;
+
+
 			$profile->attributes=((isset($_POST['Profile'])?$_POST['Profile']:array()));;
 			
 			
@@ -123,11 +130,48 @@ class AdminController extends Controller
 				}
 				$model->save();
 				$profile->save();
+
+				if ($previus_status != $new_status &&  $new_status == User::STATUS_PRE_ACCEPTED)
+				{
+					
+					
+
+					$memberObj = Yii::app()->db->createCommand()
+                                ->setFetchMode(PDO::FETCH_OBJ)
+                                ->select('*')
+                                ->from('tbl_members_pii u')
+                                ->where(array(
+                                            'and',
+                                            'u.member_id = :user_id',
+                                            ),
+                                    array(
+                                            ':user_id'=>$model->id
+                                            )
+                                    )
+                                ->queryAll();
+                	$memberObj = $memberObj[0];
+
+
+					//SEND EMAIL
+	                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'application_approval.html');
+
+	                $content = str_replace('[FIRST_NAME]',$memberObj->firstname . ' ' .$memberObj->lastname,  $content);
+	                
+	                $user_id_token = base64_encode($model->id);
+	                $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token),  $content);
+
+	                $message = new YiiMailMessage;
+	                $message->subject = 'Your Membership application has been approved';
+	                $message->setBody($content,'text/html');
+	                $message->addTo($model->email);
+	                $message->from = Yii::app()->params['senderPersonalEmail'];
+	                Yii::app()->mail->send($message);
+
+				}
+
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
-
-		//var_dump($model);die;
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -142,8 +186,8 @@ class AdminController extends Controller
 	 */
 	public function actionDelete()
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
+		// if(Yii::app()->request->isPostRequest)
+		// {
 			// we only allow deletion via POST request
 			$model = $this->loadModel();
 			$profile = Profile::model()->findByPk($model->id);
@@ -156,9 +200,9 @@ class AdminController extends Controller
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_POST['ajax']))
 				$this->redirect(array('/user/admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		// }
+		// else
+		// 	throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 	
 	/**

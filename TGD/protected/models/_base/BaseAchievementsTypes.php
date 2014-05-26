@@ -10,7 +10,7 @@
  * followed by relations of table "{{achievements_types}}" available as properties of the model.
  *
  * @property integer $id
- * @property string $name_en_us
+ * @property string $name_en
  * @property string $name_es
  * @property string $icon
  *
@@ -31,14 +31,14 @@ abstract class BaseAchievementsTypes extends GxActiveRecord {
 	}
 
 	public static function representingColumn() {
-		return 'name_en_us';
+		return 'name_en';
 	}
 
 	public function rules() {
 		return array(
-			array('name_en_us, name_es, icon', 'length', 'max'=>255),
-			array('name_en_us, name_es, icon', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, name_en_us, name_es, icon', 'safe', 'on'=>'search'),
+			array('name_en, name_es, icon', 'length', 'max'=>255),
+			array('name_en, name_es, icon', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, name_en, name_es, icon', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +56,7 @@ abstract class BaseAchievementsTypes extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'name_en_us' => Yii::t('app', 'Name En Us'),
+			'name_en' => Yii::t('app', 'Name En'),
 			'name_es' => Yii::t('app', 'Name Es'),
 			'icon' => Yii::t('app', 'Icon'),
 			'achievements' => null,
@@ -67,7 +67,7 @@ abstract class BaseAchievementsTypes extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('name_en_us', $this->name_en_us, true);
+		$criteria->compare('name_en', $this->name_en, true);
 		$criteria->compare('name_es', $this->name_es, true);
 		$criteria->compare('icon', $this->icon, true);
 

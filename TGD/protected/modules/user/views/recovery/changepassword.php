@@ -5,32 +5,52 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1><?php echo UserModule::t("Change password"); ?></h1>
+<section id="tgd-page-content">
+    <div class="container">
+        <div class="row">
+            <section id="form" class="col-sm-16">
+
+							<h1><?php echo UserModule::t("Change password"); ?></h1>
+
+							<?php if ($success != "") { ?> 
+							<div class="clearfix">
+							    <div class="col-sm-7 alert alert-success">SUCCESS : <?php echo $success; ?></div>
+							</div>  
+							<?php } ?>
+
+							<?php if ($error != "") { ?>   
+							<div class="clearfix">
+							    <div class="col-sm-7  alert alert-danger"><?php echo $error; ?>
+							    <?php echo CHtml::errorSummary($form); ?>
+							    </div>
+							</div>
+							<?php } ?>
+
+							<?php echo CHtml::beginForm(); ?>
+
+								<div class="form-group clearfix">
+	                <div class="col-sm-7 nopadding">
+	                    <?php echo CHtml::activeLabelEx($form,'password'); ?>
+											<?php echo CHtml::activePasswordField($form,'password',array('placeholder'=>'password', 'class'=>'form-control')); ?>
+                  </div>
+                </div>
 
 
-<div class="form">
-<?php echo CHtml::beginForm(); ?>
+								<div class="form-group clearfix">
+	                <div class="col-sm-7 nopadding">
+										<?php echo CHtml::activeLabelEx($form,'verifyPassword'); ?>
+										<?php echo CHtml::activePasswordField($form,'verifyPassword',array('placeholder'=>'verify password', 'class'=>'form-control')); ?>
+                  </div>
+                </div>
+								
+								
+								<div class="form-group clearfix">
+								<?php echo CHtml::submitButton(UserModule::t("Save"), array('class'=>'btn btn-primary col-sm-2 col-sm-offset-1')); ?>
+								</div>
 
-	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
-	<?php echo CHtml::errorSummary($form); ?>
-	
-	<div class="row">
-	<?php echo CHtml::activeLabelEx($form,'password'); ?>
-	<?php echo CHtml::activePasswordField($form,'password'); ?>
-	<p class="hint">
-	<?php echo UserModule::t("Minimal password length 4 symbols."); ?>
-	</p>
-	</div>
-	
-	<div class="row">
-	<?php echo CHtml::activeLabelEx($form,'verifyPassword'); ?>
-	<?php echo CHtml::activePasswordField($form,'verifyPassword'); ?>
-	</div>
-	
-	
-	<div class="row submit">
-	<?php echo CHtml::submitButton(UserModule::t("Save")); ?>
-	</div>
-
-<?php echo CHtml::endForm(); ?>
-</div><!-- form -->
+							<?php echo CHtml::endForm(); ?>
+				
+            </section>
+        </div>
+    </div>    
+</section>			

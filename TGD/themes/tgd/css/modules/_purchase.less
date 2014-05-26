@@ -1,0 +1,187 @@
+
+/*******************************************************************************
+ * Share purchase 
+ ******************************************************************************/
+
+
+#tgd-share-purchase{
+
+
+  #descriptions{
+
+    border: 1px solid @gray-lines;
+    border-right: 4px solid @color-dark-gray;
+
+    &.loan-agreement{
+      border-right-color: @tgd-green;
+    }
+    &.bitcoin-1p{
+      border-right-color: @tgd-yellow;
+    }
+    &.donation{
+      border-right-color: @tgd-red;
+    }
+
+    h2{
+      font-weight: bold;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+    p{
+      margin-bottom: 0;
+      font-size: @font-size-large;
+    }
+    > div{
+      padding: 20px;
+      border-bottom: 1px solid @gray-lines;
+      &.clearfix{
+        padding-right: 0;
+      }
+      &:last-child{
+        border-bottom: none;
+        padding-bottom: 60px;
+      }
+      .text{
+        padding-right: 10px;
+        float:left;
+        width: 65%
+      }
+      .button{
+        float: right;
+        width: 35%;
+        .btn{
+          .border-radius(0, 0, 4px, 4px);
+          // .inner-shadow(-1px, 0, 1px, 0.4);
+          width: 100%;
+          color: white;
+          font-weight: bold;
+          text-align: left;
+          text-transform: uppercase;
+          margin-right: -20px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-right: 0;
+          .transition(all 0.2s ease-out);
+          &.loan{
+            background-color: @tgd-green;
+            background-image: url('../img/arrow.png');
+            background-repeat:  no-repeat;
+            background-position: 155px center;
+
+          }
+          &.share{
+            background-color: @tgd-yellow;
+            background-image: url('../img/bitcoin.png');
+            background-repeat:  no-repeat;
+            background-position: 155px center;
+          }
+          &.support{
+            background-color:@tgd-red;
+            background-image: url('../img/dollar.png');
+            background-repeat:  no-repeat;
+            background-position: 155px center;
+
+          }
+          &:hover{
+            background-color:@color-dark-gray;
+          }
+          &.disabled{
+            background-color: #666;
+          }
+        }
+      }
+    }
+  }
+
+
+  #questions{
+    font-weight: bold;
+    color: @color-link;
+    font-size: 1.5rem;
+  }
+
+  #form{
+    padding: 10px 20px;
+    background-color: @very-light-gray;
+    border: 1px solid @gray-lines;
+    border-left: none;
+    overflow: auto;  
+
+    button{
+      text-transform: uppercase;
+      font-size: 0.9em;
+      line-height: 0.7em;
+      font-weight: bold;
+      margin: 5px auto;
+      padding-left: 25px; 
+      padding-right: 25px;
+      display: block;
+      .transition(all 0.2s ease-out);
+      &:hover{
+        background-color: lighten(saturate(@color-link,20%),10%);
+      }
+      &:first-of-type{
+        margin-top: 15px;
+      }
+    }
+    .form-separator{
+      margin: 20px auto 5px;
+      padding: 5px 15px;
+      border-top: 1px solid @gray-text;
+      width: 20%;
+      text-align: center;
+      height: 15px;  
+      span{
+        position: relative;
+        top: -15px;
+        background-color: @very-light-gray;
+        text-transform: uppercase;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  }
+  #loan-agreement{
+    display: none;
+    h2{
+      font-size: 2.3rem;
+    }
+
+    ol{
+      > li, h3{
+        font-size: 2rem;
+        p{
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  #bitcoin-1p{
+    [type=image]{
+      display: block;
+      margin: 10px auto;
+    }
+  }
+
+  #bitcoin-1p, #donation{
+    strong{
+      font-size: @font-size-large;
+      display: block;
+      margin: 10px 0 10px 0;
+    }
+  }
+
+  #donation{
+    display: none;
+    .row{
+      margin: 10px 0;
+    }
+  }
+}
+
+.thanks{
+  p{
+    padding-left: 60px;
+  }
+}

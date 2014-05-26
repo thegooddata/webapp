@@ -1,0 +1,208 @@
+/* ------------------------------------------------------------ Sign in modal */
+
+#signInModal {
+    .modal-dialog {
+        width: 370px;
+        .modal-body {
+            padding-bottom:0;
+            label {
+                font-weight: normal;
+            }
+            .checkbox {
+                padding-left:30px;
+            }
+        }
+    }
+}
+/* ------------------------------------------------------------ No chrome modal */
+
+#chromeModal {
+    .modal-dialog {
+        width: 450px;
+        .modal-body {
+            padding-bottom:0;
+        }
+        .modal-footer {
+            margin-top: 5px;
+        }
+    }
+}
+
+/* adjustments for the modal*/
+#templateContainer {
+  margin-bottom: 0;
+}
+
+#templateBody {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.modal-content {
+  background: white;
+  label {
+    display: none;
+  }
+  .checkbox {
+    margin-top: 0;
+    label {
+      display: inline-block;
+      input {
+        margin-top: 0;
+      }
+    }
+  }
+
+
+  .form-group {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .modal-header  {
+    padding-bottom: 0;
+    border-bottom: none;
+
+    h2 {
+      margin: 0;
+      display: inline-block;
+      color: #1D5987;
+      line-height: 1em;
+    }
+  }
+  .modal-footer {
+    border-top: none;
+    margin-top: 20px;
+    padding-top: 5px;
+    button,a {
+      border: none;
+      &.tgd-button {
+        &.tgd-register {
+          .tgd-button(@tgd-yellow, 20px, 15px, 7px);
+          display:inline-block;
+        }
+        &.tgd-close {
+          .tgd-button(@tgd-red, 20px, 15px, 7px);
+          display:inline-block;
+        }
+        &.tgd-send {
+          .tgd-button(@tgd-green, 20px, 15px, 7px);
+          display:inline-block;
+        }
+      }
+    }
+  }
+}
+/*************************** early access modal ****************************************/
+#earlyAccessModal {
+  .modal-content .modal-header {
+    padding-bottom: 5px;
+  }
+  .modal-header h2{
+      margin: 0;
+      margin-top: -5px;
+      display: inline-block;
+      color: #1D5987;
+      line-height: 1em;
+  }
+  .modal-body{
+      font-size: 18px;
+      padding: 10px 20px;
+      color:#1d5987;
+  }
+
+  .modal-body .glyphicon-ok-circle{
+      font-size: 40px;
+  }
+  .modal-body p{
+      margin: 0;
+  }
+  .modal-body .title{
+      text-align: center;
+  }
+  .modal-header .glyphicon-ok{
+      margin-right: 10px;
+      margin-top: -10px;
+  }
+  .glyphicon-ok{
+      color: #72BC81;
+      font-size: 3rem;
+  }
+
+  .modal-footer .form-group{
+      width: 75%;
+  }
+
+  .modal-footer .form-control{
+      width: 100%;
+  }
+
+  .modal-footer .btn{
+      width: 24%;
+  }
+  @-webkit-keyframes progress-bar-stripes {
+    from {
+      background-position: 100px 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes progress-bar-stripes {
+    from {
+      background-position: 100px 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @-moz-keyframes progress-bar-stripes {
+      0% {
+          background-position: 100px 0;
+      }
+      100% {
+          background-position: 0 0;
+      }
+  }
+
+
+  .modal-footer.loading{
+      background-color: #E7F4FC;
+      background-size: 100px 100px;
+      
+      -webkit-animation-name: progress-bar-stripes;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-delay: initial;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-fill-mode: initial;
+      
+      animation-name: progress-bar-stripes;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+      
+      background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.55) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.55) 50%,rgba(255,255,255,.55) 75%,transparent 75%,transparent);
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.55) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0.55) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
+  }
+}
+
+// .form-control {
+//     background-color: #FFFFFF;
+//     background-image: none;
+//     border: 1px solid #CCCCCC;
+//     border-radius: 4px;
+//     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+//     color: #555555;
+//     display: block;
+//     font-size: 14px;
+//     height: 34px;
+//     line-height: 1.42857;
+//     padding: 6px 12px;
+//     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+//     width: 100%;
+// }

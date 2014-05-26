@@ -1,0 +1,394 @@
+
+/*******************************************************************************
+ * Landing page
+ ******************************************************************************/
+
+
+
+/* ------------------------------------------------------------------- Common */
+
+#landing-page{
+  section{
+    >.container{
+      h1{
+        color: #00557b;
+        font-family: @font-regular, Arial, sans-serif;
+        font-size: 3em;
+        font-weight: normal;
+        line-height: 100%;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      a{
+        &.tgd-button{
+          .tgd-button();
+        }
+      }
+      p{
+        color: @color-gray-footer;
+        font-family: "ProximaNovaSoft-Regular",Arial;
+        font-size: 1.125em;
+        text-align: center;
+        margin: 20px auto;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------------- Intro */
+
+section#intro{
+  position: relative;
+  background: url(../img/land.png) no-repeat center bottom @color-sky;
+  background-size: 100% 15%;
+  background-color: @color-sky;
+  box-shadow: inset 0 -2px 0 rgba(126,155,38,.4);
+  padding: 165px 0 180px 0;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/land.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/land.png', sizingMethod='scale')";
+  -ms-behavior: url(../bgsize.htc);  
+  > .container{
+     > h1{
+      margin-bottom: 50px;
+    }
+    a{
+      /*width: 44%;*/
+      &.tgd-button{
+        .tgd-button(#ea6654);
+        padding: 15px 32px 13px;
+        margin-left: auto;
+        margin-right: auto;   
+      }
+    }
+    p{
+      margin-top: 15.75px;
+    }
+
+  }  
+}
+
+
+/*--------------------------------------------------------------- Our Product */
+
+#bag{
+  padding: 6.25em 0;
+  .container{
+    position: relative;
+    padding: 0;
+    .content{
+      float: right;
+      margin-right: 50px;
+      > h1{
+        margin-bottom: 10px;
+        text-align: left;
+      }
+      > p{
+        margin-top: 15px;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+      a{
+        &.tgd-button{
+          /*width: 44%;*/
+          float: left;
+          .tgd-button(#6d818d);
+        }       
+      }
+    }
+  }
+  img{
+    float: left;
+    margin-left: 40px;
+    /*padding: 0 52px;*/
+    background-size: 70%;      
+    -ms-behavior: url(../bgsize.htc);  
+    background-position: 0 10px;
+    transition: background 0.8s ease-out;       
+    &.show_seeds{
+      /*background: url(../img/seeds.png) no-repeat 0 bottom;*/
+      background-size: 99%;   
+      -ms-behavior: url(../bgsize.htc);  
+      transition: background 0.8s ease-out;  
+    }
+    &#bag1{
+      position: absolute;
+      top: -60px;
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    &#bag2{
+      display: none;
+    }
+    &[src$="img/seed1.png"]{
+      position: absolute;
+      top: 255px;
+      left: 175px;
+    }
+    &[src$="img/seed2.png"]{
+      position: absolute;
+      top: 245px;
+      left: 215px;
+    }
+    &[src$="img/seed3.png"]{
+      position: absolute;
+      top: 240px;
+      left: -15px;
+    }
+    &[src$="img/seed4.png"]{
+      position: absolute;
+      top: 275px;
+      left: -30px;
+    }
+    &[src$="img/seed5.png"]{
+      position: absolute;
+      top: 270px;
+      left: 0px;
+    }
+
+  }
+  .seeds{
+    opacity: 0;
+    zoom: 0.9;
+    transition: zoom 0.5s ease-out;
+    top: inherit;
+    bottom: 0 !important;
+  }
+}
+
+/*-------------------------------------------------------------- Our Partners */
+
+#hand{
+  background-color: #f5f5e9;
+  box-shadow: inset 0 2px 1px rgba(241,234,221,.7);
+  padding: 5em 0 0 0;
+  > .container{
+    padding: 0;
+    > .content{
+      float: left;
+      margin: 0;
+      padding-bottom: 90px;
+      text-align: left;
+      > h1{
+        margin-top: 30px;
+        margin-bottom: 10px;
+        text-align: left;
+        color: #837347;    
+      }
+      > p{
+        margin-top:15px;
+        margin-bottom: 30px;
+        text-align: left;
+        color: #99927e;  
+      }
+      a{
+        &.tgd-button{
+          .tgd-button( #6fbd7f);
+          //float: right;   
+        }
+      }
+    }
+    img{
+      float: right;
+      margin: 0 50px 0 0;
+      opacity: 0;
+      transform: translate(0px,500px);
+      transition: all 0.3s ease-out;    
+      &.show_hand{
+        opacity: 1;
+        transform: translate(0px,0px);
+        transition: all 0.6s ease-out;       
+      }
+    }
+  }
+}
+
+/*-------------------------------------------------------------- Your company */
+
+section#your_company{
+    position: relative;
+    background-color: #e7f3fb;
+    box-shadow: inset 0 2px 1px rgba(209,224,233,.6);
+    padding: 6.25em 0 0em 0;
+    overflow: hidden;
+    > .container{
+        position: relative;    
+        z-index: 1;
+        
+        > h1{
+            margin: 30px 0 20px 0;
+        }
+        > p {
+            margin: 15px 0 30px 0;
+        }
+        > a{
+            &.tgd-button{             
+                .tgd-button(#6d818d);
+                margin-left: auto;
+                margin-right: auto;   
+            }
+        }
+
+    }
+
+    .cloud{
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        #cloud1,#cloud2{
+            height: 160px;
+            margin-top: 50px;
+        }
+        #cloud1{
+            background: url(../img/cloud11.png) repeat-x 460px 0px;        
+        }
+        #cloud2{
+            background: url(../img/cloud22.png) repeat-x 0px 0px;
+        }
+    }
+    .sun{
+        #sun1, #sun2, #sun3{
+            position: absolute;
+        }
+        #sun1{
+            z-index: 2;
+            right: 43px;
+            bottom: -76.3%
+        }
+        #sun2{
+            z-index: 1;
+            right: 0px;
+            bottom: -90%;
+        }
+        #sun3{
+            z-index: 0;
+            right: -39px;
+            bottom: -102%;
+        }
+    }
+    >img:last-child,
+        #fields{
+        position: relative;
+        display: block;
+        width: 100%;
+        z-index: 3;
+        margin-top: 130px;
+    }
+}
+
+/*------- Start -------*/
+
+#start{
+    background-color: #ed654f;
+    box-shadow: inset 0 2px 0 rgba(166,72,56,.31);  
+    padding: 10px 0;
+    .container{
+        position: relative;    
+    }
+    a{
+        width: inherit;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0px;
+        margin: 0;
+        color: #fff;
+        &:hover{
+            background-color: transparent;
+            h2{
+                margin: 0 40px 0 0;
+                &:before{
+                    left: 5%;
+                    opacity: 0;
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+                    transition: all 0.3s ease-out;
+                }
+                &:after{ 
+                    content: ""; 
+                    padding: 15px 50px;
+                    color: transparent;        
+                    background: url(../img/start_arrow.png) no-repeat 50px 7px;
+                    opacity: 1;
+                    transition: all 0.3s ease-out;
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+                    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+                }
+            }
+        }
+
+    }
+    h2{
+        color: #fff;
+        font-family: "ProximaNovaSoft-Regular",Arial;
+        font-size: 1.54em;
+        font-weight: normal;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0 0 0 80px ;
+        padding: 30px 0;
+        transition: all 0.3s ease-out;
+        &:before{ 
+            position: absolute;
+            top: 16px;
+            left: 22%;
+            content: "123"; 
+            padding: 15px 40px;
+            color: transparent;        
+            background: url(../img/start_arrow.png) no-repeat 15px 7px;
+            transition: all 0.3s ease-out;
+        }
+        &:after{
+            background-position-x: 0;
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+            transition: all 0.3s ease-out;
+        }
+    }
+}
+
+/*******************************************************************************
+ Parallax Scrolling
+*******************************************************************************/
+
+
+#slide2 img{
+  position: absolute;
+}
+#slide2 img:nth-child(11){
+  top: 80px;
+  left: 8%;
+}
+#slide2 img:nth-child(10){
+  top:260px;
+  left:14%;
+}
+#slide2 img:nth-child(9){
+  top:60px;
+  left:20%;
+  z-index: 0;
+}
+#slide2 img:nth-child(4){
+  top:130px;
+  left:35%;
+}
+#slide2 img:nth-child(5){
+  top: 120px;
+  right:4%;
+}
+#slide2 img:nth-child(6){
+  top:100px;
+  right:30%;
+}
+#slide2 img:nth-child(7){
+  top:230px;
+  right:20%;
+}
+#slide2 img:nth-child(8){
+  top:280px;
+  right:10%;
+}

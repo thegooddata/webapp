@@ -6,8 +6,12 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
-		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+		//array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Sources', 'url' => array('adtracksSources/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Types', 'url' => array('adtracksTypes/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Whitelist', 'url' => array('whitelists/admin')),
+
 	);
 
 Yii::app()->clientScript->registerScript('search', "

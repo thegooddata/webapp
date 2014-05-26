@@ -6,8 +6,10 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+
+		array('label'=>'Manage Loan Status', 'url'=>array('/loansStatus/admin')),
+		array('label'=>'Manage Loan Sector', 'url'=>array('/loansActivities/admin')),
 	);
 
 Yii::app()->clientScript->registerScript('search', "
@@ -43,17 +45,21 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'leader',
-		'currency',
-		'title_en_us',
+		'loan_identifier',
+		array(
+				'name'=>'leader',
+				'value'=>'GxHtml::valueEx($data->leader0)',
+				'filter'=>GxHtml::listDataEx(LoansLeaders::model()->findAllAttributes(null, true)),
+				),
+		'loan_url',
+		'title_en',
 		'title_es',
+		/*
 		array(
 				'name'=>'id_loans_activity',
 				'value'=>'GxHtml::valueEx($data->idLoansActivity)',
 				'filter'=>GxHtml::listDataEx(LoansActivities::model()->findAllAttributes(null, true)),
 				),
-		/*
-		'image',
 		array(
 				'name'=>'id_countries',
 				'value'=>'GxHtml::valueEx($data->idCountries)',
@@ -61,18 +67,23 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				),
 		'partner',
 		'amount',
+		array(
+				'name'=>'currency',
+				'value'=>'GxHtml::valueEx($data->currency0)',
+				'filter'=>GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)),
+				),
 		'term',
 		'contribution',
 		'loan_date',
 		'loan_update',
+		'paidback',
+		'loss',
 		array(
 				'name'=>'id_loans_status',
 				'value'=>'GxHtml::valueEx($data->idLoansStatus)',
 				'filter'=>GxHtml::listDataEx(LoansStatus::model()->findAllAttributes(null, true)),
 				),
-		'paidback',
-		'loss_currency',
-		'loss_defaut',
+		'image',
 		'created_at',
 		'updated_at',
 		*/

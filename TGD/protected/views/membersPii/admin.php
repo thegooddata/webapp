@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	);
 
@@ -44,28 +43,26 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'columns' => array(
 		'id',
 		'firstname',
-		'surname',
+		'lastname',
+		'streetname',
 		'streetnumber',
-		'street',
 		'streetdetails',
 		/*
 		'city',
-		'state',
-		'zipcode',
+		'statecounty',
+		'country',
+		'postcode',
+		'daybirthday',
+		'monthbirthday',
+		'yearbirthday',
 		array(
-				'name'=>'id_countries',
-				'value'=>'GxHtml::valueEx($data->idCountries)',
-				'filter'=>GxHtml::listDataEx(Countries::model()->findAllAttributes(null, true)),
-				),
-		'email',
-		'birthdate',
-		array(
-					'name' => 'agreerules',
-					'value' => '($data->agreerules === 0) ? Yii::t(\'app\', \'No\') : Yii::t(\'app\', \'Yes\')',
+					'name' => 'agree',
+					'value' => '($data->agree === 0) ? Yii::t(\'app\', \'No\') : Yii::t(\'app\', \'Yes\')',
 					'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')),
 					),
 		'created_at',
 		'updated_at',
+		'member_id',
 		*/
 		array(
 			'class' => 'CButtonColumn',

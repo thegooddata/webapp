@@ -18,7 +18,6 @@
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Members $member
  * @property AdtracksSources $adtracksSources
  */
 abstract class BaseWhitelists extends GxActiveRecord {
@@ -52,7 +51,6 @@ abstract class BaseWhitelists extends GxActiveRecord {
 
 	public function relations() {
 		return array(
-			'member' => array(self::BELONGS_TO, 'Members', 'member_id'),
 			'adtracksSources' => array(self::BELONGS_TO, 'AdtracksSources', 'adtracks_sources_id'),
 		);
 	}
@@ -66,13 +64,12 @@ abstract class BaseWhitelists extends GxActiveRecord {
 		return array(
 			'id' => Yii::t('app', 'ID'),
 			'user_id' => Yii::t('app', 'User'),
-			'member_id' => null,
+			'member_id' => Yii::t('app', 'Member'),
 			'domain' => Yii::t('app', 'Domain'),
-			'adtracks_sources_id' => null,
+			'adtracks_sources_id' => Yii::t('app', 'Broker'),
 			'status' => Yii::t('app', 'Status'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
-			'member' => null,
 			'adtracksSources' => null,
 		);
 	}

@@ -6,8 +6,10 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries', 'url' => array('queries/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Flagged', 'url' => array('queriesFlagged/admin')),
+
 	);
 
 Yii::app()->clientScript->registerScript('search', "
@@ -45,15 +47,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'id',
 		'lang',
 		'category',
-		'topic',
-		'search_term',
-		'headword',
-		/*
-		'midword',
-		'action',
+		'stem',
 		'created_at',
 		'updated_at',
-		*/
 		array(
 			'class' => 'CButtonColumn',
 		),

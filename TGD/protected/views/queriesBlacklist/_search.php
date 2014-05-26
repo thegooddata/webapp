@@ -21,38 +21,38 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'topic'); ?>
-		<?php echo $form->textField($model, 'topic', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'search_term'); ?>
-		<?php echo $form->textField($model, 'search_term', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'headword'); ?>
-		<?php echo $form->textField($model, 'headword', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'midword'); ?>
-		<?php echo $form->textField($model, 'midword', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'action'); ?>
-		<?php echo $form->textField($model, 'action', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'stem'); ?>
+		<?php echo $form->textField($model, 'stem', array('maxlength' => 255)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created_at',
+			'value' => $model->created_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'updated_at'); ?>
-		<?php echo $form->textField($model, 'updated_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'updated_at',
+			'value' => $model->updated_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row buttons">

@@ -7,10 +7,12 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-	array('label' => Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 	array('label' => Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	array('label' => Yii::t('app', 'View') . ' ' . $model->label(), 'url'=>array('view', 'id' => GxActiveRecord::extractPkValue($model, true))),
 	array('label' => Yii::t('app', 'Manage') . ' ' . $model->label(2), 'url'=>array('admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries', 'url' => array('queries/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Queries Flagged', 'url' => array('queriesFlagged/admin')),
+
 );
 ?>
 

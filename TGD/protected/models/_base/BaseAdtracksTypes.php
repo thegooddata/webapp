@@ -25,7 +25,7 @@ abstract class BaseAdtracksTypes extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'AdtracksTypes|AdtracksTypes', $n);
+		return Yii::t('app', 'Webtrack Types|Webtrack Types', $n);
 	}
 
 	public static function representingColumn() {

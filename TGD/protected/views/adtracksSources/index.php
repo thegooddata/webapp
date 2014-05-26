@@ -8,6 +8,8 @@ $this->breadcrumbs = array(
 $this->menu = array(
 	array('label'=>Yii::t('app', 'Create') . ' ' . AdtracksSources::label(), 'url' => array('create')),
 	array('label'=>Yii::t('app', 'Manage') . ' ' . AdtracksSources::label(2), 'url' => array('admin')),
+	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Types', 'url' => array('adtracksTypes/admin')),
+	array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Whitelist', 'url' => array('whitelists/admin')),
 );
 ?>
 

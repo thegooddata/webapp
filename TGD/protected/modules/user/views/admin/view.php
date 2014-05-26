@@ -8,7 +8,7 @@ if (!UserModule::isAdmin())
 	$this->menu_admin=array();
 
 $this->menu=array(
-    array('label'=>UserModule::t('Create Member'), 'url'=>array('create')),
+    //array('label'=>UserModule::t('Create Member'), 'url'=>array('create')),
     array('label'=>UserModule::t('Update Member'), 'url'=>array('update','id'=>$model->id)),
     array('label'=>UserModule::t('Delete Members'), 'url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>UserModule::t('Are you sure to delete this item?'))),
     array('label'=>UserModule::t('Manage Members'), 'url'=>array('admin')),

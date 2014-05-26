@@ -1,3 +1,4 @@
+    <div class="wrapper">
 		<div class="container">
             <div class="row block-row">
 
@@ -18,11 +19,11 @@
                             <div class="tab-pane active chart clearfix" id="last-week">
                                 <div class="clearfix no-bottom">
                                     <div class="item">
-                                        <span class="amount">3,538</span>
                                         <span class="subtext">Total</span>
+                                        <span class="amount adtracks">0</span>
                                     </div>
                                     <div class="item">
-                                        <span class="amount small">Top 5%</span>
+                                        <span class="amount small top">Top 5%</span>
                                         <span class="subtext">of all users this week</span>
                                     </div>
 
@@ -37,38 +38,38 @@
                             <div class="tab-pane chart clearfix" id="last-month">
                                 <div class="clearfix no-bottom">
                                     <div class="item">
-                                        <span class="amount">10,538</span>
                                         <span class="subtext">Total</span>
+                                        <span class="amount adtracks">0</span>
                                     </div>
                                     <div class="item">
-                                        <span class="amount small">Top 15%</span>
+                                        <span class="amount small top">Top 15%</span>
                                         <span class="subtext">of all users this month</span>
                                     </div>
 
                                 </div>
                                 <div class="legend">
                                     <ul>
-                                        <li>April 12</li>
-                                        <li>May 11</li>
+                                        <li class="first_day">April 12</li>
+                                        <li class="last_day">May 11</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="tab-pane chart clearfix" id="last-year">
                                 <div class="clearfix no-bottom">
                                     <div class="item">
-                                        <span class="amount">100,538</span>
                                         <span class="subtext">Total</span>
+                                        <span class="amount adtracks">0</span>
                                     </div>
                                     <div class="item">
-                                        <span class="amount small">Top 20%</span>
+                                        <span class="amount small top">Top 20%</span>
                                         <span class="subtext">of all users his year</span>
                                     </div>
 
                                 </div>
                                 <div class="legend">
                                     <ul>
-                                        <li>June '13</li>
-                                        <li>May '14</li>
+                                        <li class="first_day">June '13</li>
+                                        <li class="last_day">May '14</li>
                                     </ul>
                                 </div>
                             </div>
@@ -85,14 +86,13 @@
                         <h2>Mix of threats</h2>
                         <div class="legend clearfix">
                             <div class="advertising"><span></span>Advertising</div>
+                            <div class="analytics"><span></span>Analytics</div>
                             <div class="social"><span></span>Social Widgets</div>
-                            <div class="cookies"><span></span>Cookies</div>
-                            <div class="beacons"><span></span>Beacons</div>
-                            <div class="others"><span></span>Others</div>
+                            <div class="others"><span></span>Content</div>
                         </div>
                         <div class="chart clearfix">
                             <div>You</div>
-                            <div><img src="img/logo-big.png"/></div>
+                            <div><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/></div>
                         </div>
                     </div>
                 </section>
@@ -105,86 +105,26 @@
                             <thead>
                                 <tr>
                                     <th>Website</th>
-                                    <th>Threats</th>
+                                    <th>Avg.threats</th>
                                     <th>Visits</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($adtracks as $adtrack) {?>
                                 <tr>
-                                    <td><a href="#">google.com</a></td>
-                                    <td>14</td>
-                                    <td>16</td>
-                                    <td>124</td>
+                                    <td><?php echo $adtrack->domain; ?></td>
+                                    <td><?php echo $adtrack->adtracks; ?></td>
+                                    <td><?php echo $adtrack->visited; ?></td>
+                                    <td><?php echo $adtrack->total; ?></td>
                                 </tr>
-                                <tr>
-
-                                    <td><a href="#">yahoo.com</a></td>
-                                    <td>9</td>
-                                    <td>14</td>
-                                    <td>126</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">facebook.com</a></td>
-                                    <td>8</td>
-                                    <td>12</td>
-                                    <td>56</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">yahoo.com</a></td>
-                                    <td>5</td>
-                                    <td>8</td>
-                                    <td>40</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">instagram.com</a></td>
-                                    <td>4</td>
-                                    <td>6</td>
-                                    <td>24</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">dribble.com</a></td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">piratebay.se</a></td>
-                                    <td>3</td>
-                                    <td>5</td>
-                                    <td>15</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">adobe.com</a></td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>12</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">chrome.google.com</a></td>
-                                    <td>3</td>
-                                    <td>3</td>
-                                    <td>9</td>
-                                </tr>
-                                <tr>
-
-                                    <td><a href="#">apple.com</a></td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>6</td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
-
                         </table>
                     </div>
                 </section>
+
+
 
                 <!-- your risk profile -->
                 <section id="risk-profile" class="col-lg-10 col-md-10 col-sm-16">
@@ -192,14 +132,14 @@
                         <h2>Your risk profile</h2>
                         <div class="row">
                             <div class="col-md-4 col-lg-4"><div class="square you mid-risk">You</div></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount">5.3</span><span class="subtext">Threats per page visited</span></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount">40%</span><span class="subtext">Percentage of threats allowed</span></div>
-                            <div class="col-md-4 col-lg-4 risk-meter mid-risk">Risk Lover</div>
+                            <div class="col-md-4 col-lg-4"><span class="amount risk you">0</span><span class="subtext">Threats per page visited</span></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount ratio you">0</span><span class="subtext">Percentage of threats allowed</span></div>
+                            <!-- <div class="col-md-4 col-lg-4 risk-meter mid-risk">Risk Lover</div> -->
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-20px.png"/><br/>Average</div></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount">3.2</span><span class="subtext">Threats per page visited</span></div>
-                            <div class="col-md-4 col-lg-4"><span class="amount">15%</span><span class="subtext">Percentage of threats allowed</span></div>
+                            <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/></div></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount risk average">0</span><span class="subtext">Threats per page visited</span></div>
+                            <div class="col-md-4 col-lg-4"><span class="amount ratio average">0</span><span class="subtext">Percentage of threats allowed</span></div>
                             <div class="col-md-4 col-lg-4"></div>
                         </div>
                     </div>
@@ -207,12 +147,12 @@
                 </section>
             </div>
         </div>
-
+    </div>
+    
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-       <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.min.js"></script>
         <script>
 
             // Bar chart
@@ -227,13 +167,13 @@
             var canvasSide = availableWidth - paddingHorizontal;
 
             canvasTargetWeek.after('<canvas id="chart-threats-week"></canvas>');
-            $('#chart-threats-week').attr('width', canvasSide).attr('height', '230px');
+            $('#chart-threats-week').attr('width', canvasSide).attr('height', '186px');
 
             canvasTargetMonth.after('<canvas id="chart-threats-month"></canvas>');
-            $('#chart-threats-month').attr('width', canvasSide).attr('height', '230px');
+            $('#chart-threats-month').attr('width', canvasSide).attr('height', '186px');
 
             canvasTargetYear.after('<canvas id="chart-threats-year"></canvas>');
-            $('#chart-threats-year').attr('width', canvasSide).attr('height', '230px');
+            $('#chart-threats-year').attr('width', canvasSide).attr('height', '186px');
 
             // Charts data
             var optionsThreats = {
@@ -244,46 +184,102 @@
                 scaleGridLineColor: "rgba(0,0,0,0)"
 
             };
-            var dataThreatsWeek = {
-                labels: ["", "", "", "", "", "", ""],
-                datasets: [
-                    {
-                        fillColor: "rgb(252, 195, 74)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        data: [65, 59, 90, 81, 56, 55, 40]
-                    }
-                ]
-            };
 
-            var dataThreatsMonth = {
-                labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-                datasets: [
-                    {
-                        fillColor: "rgb(252, 195, 74)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        data: [65, 59, 90, 81, 56, 55, 40, 81, 56, 55, 65, 59, 90, 81, 56, 55, 40, 81, 56, 55, 65, 59, 90, 81, 56, 55, 40, 81, 56, 55, 76]
-                    }
-                ]
-            };
+            $.get( "<?php echo Yii::app()->createUrl('evilData/DataThreatsWeek')?>", function( result ) {
 
-            var dataThreatsYear = {
-                labels: ["", "", "", "", "", "", "", "", "", "", "", ""],
-                datasets: [
-                    {
-                        fillColor: "rgb(252, 195, 74)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        data: [65, 59, 90, 81, 56, 55, 34, 67, 40, 81, 56, 55]
-                    }
-                ]
-            };
+                var dataThreatsWeek = {
+                    labels: ["", "", "", "", "", "", ""],
+                    datasets: [
+                        {
+                            fillColor: "rgb(252, 195, 74)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: result.data
+                        }
+                    ]
+                };
 
-            var chartThreatsWeekCtx = $("#chart-threats-week").get(0).getContext("2d");
-            var chartThreatsMonthCtx = $("#chart-threats-month").get(0).getContext("2d");
-            var chartThreatsYearCtx = $("#chart-threats-year").get(0).getContext("2d");
+                $('#last-week .amount.adtracks').html(result.total);
 
-            var chartThreatsWeek = new Chart(chartThreatsWeekCtx).Bar(dataThreatsWeek, optionsThreats);
-            var chartThreatsMonth = new Chart(chartThreatsMonthCtx).Bar(dataThreatsMonth, optionsThreats);
-            var chartThreatsYear = new Chart(chartThreatsYearCtx).Bar(dataThreatsYear, optionsThreats);
+                $('#last-week .amount.small.top').html('Top ' + result.percentile + '%');
+                
+                var chartThreatsWeekCtx = $("#chart-threats-week").get(0).getContext("2d");
+                var chartThreatsWeek = new Chart(chartThreatsWeekCtx).Bar(dataThreatsWeek, optionsThreats);
+
+                
+
+            }, "json" );
+
+
+            $.get( "<?php echo Yii::app()->createUrl('evilData/DataThreatsMonth')?>", function( result ) {
+
+                var dataThreatsMonth = {
+                    labels: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+                    datasets: [
+                        {
+                            fillColor: "rgb(252, 195, 74)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: result.data
+                        }
+                    ]
+                };
+
+                $('#last-month .amount.adtracks').html(result.total);
+
+                $('#last-month .first_day').html(result.first_day);
+                $('#last-month .last_day').html(result.last_day);
+
+                $('#last-month .amount.small.top').html('Top ' + result.percentile + '%');
+                
+
+                var chartThreatsMonthCtx = $("#chart-threats-month").get(0).getContext("2d");
+                var chartThreatsMonth = new Chart(chartThreatsMonthCtx).Bar(dataThreatsMonth, optionsThreats);
+
+            }, "json" );
+            
+
+            $.get( "<?php echo Yii::app()->createUrl('evilData/DataThreatsYear')?>", function( result ) {
+
+                var dataThreatsYear = {
+                    labels: ["", "", "", "", "", "", "", "", "", "", "", ""],
+                    datasets: [
+                        {
+                            fillColor: "rgb(252, 195, 74)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: result.data
+                        }
+                    ]
+                };
+
+                $('#last-year .amount.adtracks').html(result.total);
+
+                $('#last-year .first_day').html(result.first_day);
+                $('#last-year .last_day').html(result.last_day);
+
+                $('#last-year .amount.small.top').html('Top ' + result.percentile + '%');
+                
+                var chartThreatsYearCtx = $("#chart-threats-year").get(0).getContext("2d");
+                var chartThreatsYear = new Chart(chartThreatsYearCtx).Bar(dataThreatsYear, optionsThreats);
+
+            }, "json" );
+            
+            $.get( "<?php echo Yii::app()->createUrl('evilData/RiskRatios')?>", function( result ) {
+
+               $('#risk-profile .amount.risk.you').html(result.risk_you);
+               // $('#risk-profile .risk-meter');
+               $('#risk-profile .amount.risk.average').html(result.risk_average);
+
+               $('#risk-profile .amount.ratio.you').html(result.risk_ratio_you+"%");
+               $('#risk-profile .amount.ratio.average').html(result.risk_ratio_average+"%");
+
+                
+            }, "json" );
+
+            
+            
+
+
+            
+            
 
             // Donught charts
 
@@ -297,59 +293,19 @@
             canvasTarget.append('<canvas id="chart-you"></canvas>', '<canvas id="chart-tgd"></canvas>');
             $('#chart-you').attr('width', canvasSide).attr('height', canvasSide).css("marginRight", (gap / 2) + "px");
             $('#chart-tgd').attr('width', canvasSide).attr('height', canvasSide).css("marginLeft", (gap / 2) + "px");
-            // Charts data
-            var dataYou = [
-                {
-                    value: 30,
-                    color: "#8AC6EA"
-                },
-                {
-                    value: 50,
-                    color: "#EA6654"
-                },
-                {
-                    value: 100,
-                    color: "#FCC34A"
-                },
-                {
-                    value: 40,
-                    color: "#72BC81"
-                },
-                {
-                    value: 120,
-                    color: "#095779"
-                }
 
-            ];
-            var dataTGD = [
-                {
-                    value: 90,
-                    color: "#8AC6EA"
-                },
-                {
-                    value: 20,
-                    color: "#EA6654"
-                },
-                {
-                    value: 100,
-                    color: "#FCC34A"
-                },
-                {
-                    value: 20,
-                    color: "#72BC81"
-                },
-                {
-                    value: 130,
-                    color: "#095779"
-                }
+            $.get( "<?php echo Yii::app()->createUrl('evilData/AdtracksRatios')?>", function( result ) {
 
-            ];
+                var dataYou =result.adtracks_you;
+                var dataTGD = result.adtracks_average;
 
-            //Get context with jQuery - using jQuery's .get() method.
-            var chartYouCtx = $("#chart-you").get(0).getContext("2d");
-            var chartTGDCtx = $("#chart-tgd").get(0).getContext("2d");
-            var chartYou = new Chart(chartYouCtx).Doughnut(dataYou);
-            var chartTGD = new Chart(chartTGDCtx).Doughnut(dataTGD);
+                //Get context with jQuery - using jQuery's .get() method.
+                var chartYouCtx = $("#chart-you").get(0).getContext("2d");
+                var chartTGDCtx = $("#chart-tgd").get(0).getContext("2d");
+                var chartYou = new Chart(chartYouCtx).Doughnut(dataYou);
+                var chartTGD = new Chart(chartTGDCtx).Doughnut(dataTGD);
 
+                
+            }, "json" );
 
         </script>

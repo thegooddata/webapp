@@ -4,8 +4,8 @@
 	<?php echo GxHtml::link(GxHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
 	<br />
 
-	<?php echo GxHtml::encode($data->getAttributeLabel('source_type')); ?>:
-	<?php echo GxHtml::encode($data->source_type); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('type')); ?>:
+		<?php echo GxHtml::encode(GxHtml::valueEx($data->type0)); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('source_name')); ?>:
 	<?php echo GxHtml::encode($data->source_name); ?>
@@ -20,7 +20,7 @@
 	<?php echo GxHtml::encode($data->income_date); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('currency')); ?>:
-	<?php echo GxHtml::encode($data->currency); ?>
+		<?php echo GxHtml::encode(GxHtml::valueEx($data->currency0)); ?>
 	<br />
 	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('xrate_usd_spot')); ?>:

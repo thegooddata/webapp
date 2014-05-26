@@ -3,7 +3,7 @@
 class ProfileController extends Controller
 {
 	public $defaultAction = 'profile';
-	public $layout='//layouts/column2';
+	public $layout = '//layouts/blank';
 
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
@@ -14,11 +14,89 @@ class ProfileController extends Controller
 	 */
 	public function actionProfile()
 	{
-		$model = $this->loadUser();
+
+		Yii::app()->theme = 'tgd';
+
+        // set title
+        $this->pageTitle = " - Edit profile";
+
+        // set body id to #tgd-share-purchase
+        $this->bodyId = "tgd-edit-profile";
+
+
+        $profile_form = array();
+        $error = '';
+        $success = '';
+
+        $user = $this->loadUser();
+
+        if(isset($_POST['ProfileForm'])) {
+            $profile_form=$_POST['ProfileForm'];
+
+            $user->username = $profile_form['username'];
+            $user->email = $profile_form['email'];
+            
+            if ($profile_form['current-password']!=""){
+
+            	$identity=new UserIdentity($user->username,$profile_form['current-password']);
+				$identity->authenticate();
+				
+				if ( $identity->errorCode == UserIdentity::ERROR_NONE)
+				{
+
+					if ($profile_form['new-password'] == $profile_form['password-confirm'])
+					{
+						$soucePassword = $profile_form['new-password'];
+
+						if (preg_match('([a-zA-Z].*[0-9]|[0-9].*[a-zA-Z])', $soucePassword))
+						{
+							$user->activkey=UserModule::encrypting(microtime().$soucePassword);
+						    $user->password=UserModule::encrypting($soucePassword);
+						}
+						else
+						{
+							$error.="Password must be 8 to 32 characters long and include at least one letter and one number";
+						    
+						}
+					}
+					else
+					{
+						$error.="Passwords do not match";
+					}
+				}
+				else
+				{
+					$error.="Current password is not correct";
+				}
+
+            }
+
+            if($error=="" && $user->validate())
+            {
+            	$user->save();
+            	Yii::app()->user->username = $user->username;
+            	$success="Changes have been made successfully";
+            }
+            else
+            {
+            	foreach($user->getErrors() as $key => $value){
+                    $error.="<li>".$value[0]."</li>";
+                }
+            }
+		}
+        else
+        {
+
+        }
+
+		
+
 	    $this->render('profile',array(
-	    	'model'=>$model,
-			'profile'=>$model->profile,
-	    ));
+	    	'user'=>$user,
+	    	'profile_form'=>$profile_form,
+	    	'error'=>$error,
+        	'success'=>$success,
+		));
 	}
 
 
@@ -28,7 +106,10 @@ class ProfileController extends Controller
 	 */
 	public function actionEdit()
 	{
+
 		$model = $this->loadUser();
+
+
 		$profile=$model->profile;
 		
 		// ajax validator
@@ -50,6 +131,7 @@ class ProfileController extends Controller
 				$this->redirect(array('/user/profile'));
 			} else $profile->validate();
 		}
+
 
 		$this->render('edit',array(
 			'model'=>$model,
@@ -95,11 +177,45 @@ class ProfileController extends Controller
 	{
 		if($this->_model===null)
 		{
-			if(Yii::app()->user->id)
+			if(Yii::app()->user->id){
 				$this->_model=Yii::app()->controller->module->user();
-			if($this->_model===null)
+			}
+			
+			if($this->_model===null){
 				$this->redirect(Yii::app()->controller->module->loginUrl);
+			}
 		}
+
+		// var_dump($this->_model);die;
 		return $this->_model;
 	}
+
+	public function actionSendEmail() {
+
+		if(Yii::app()->user->id){
+			$model=Yii::app()->controller->module->user();
+		
+			if ($model->email != ""){
+					//SEND EMAIL
+		        $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'resignation.html');
+
+		        $url=Yii::app()->createAbsoluteUrl('/resignation?user_id='.base64_encode(Yii::app()->user->id));
+
+		        $content = str_replace('[RESIGNATION_LINK]',$url,  $content);
+		        
+		        $message = new YiiMailMessage;
+		        $message->subject = 'Please confirm your resignation of membership of TheGoodData';
+		        $message->setBody($content,'text/html');
+
+		        $message->addTo($model->email);
+		        $message->from = Yii::app()->params['senderGenericEmail'];
+		        
+		        Yii::app()->mail->send($message);
+
+			}
+			
+		}	
+
+        return "";
+    }
 }

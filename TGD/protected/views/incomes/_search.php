@@ -7,12 +7,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'id'); ?>
-		<?php echo $form->textField($model, 'id', array('maxlength' => 255)); ?>
+		<?php echo $form->textField($model, 'id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'source_type'); ?>
-		<?php echo $form->textField($model, 'source_type', array('maxlength' => 255)); ?>
+		<?php echo $form->label($model, 'type'); ?>
+		<?php echo $form->dropDownList($model, 'type', GxHtml::listDataEx(IncomesTypes::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
@@ -32,12 +32,22 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'income_date'); ?>
-		<?php echo $form->textField($model, 'income_date'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'income_date',
+			'value' => $model->income_date,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'currency'); ?>
-		<?php echo $form->textField($model, 'currency', array('maxlength' => 255)); ?>
+		<?php echo $form->dropDownList($model, 'currency', GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>
 
 	<div class="row">
@@ -52,12 +62,32 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created_at',
+			'value' => $model->created_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'updated_at'); ?>
-		<?php echo $form->textField($model, 'updated_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'updated_at',
+			'value' => $model->updated_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row buttons">

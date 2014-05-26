@@ -7,6 +7,7 @@
  */
 class UserRecoveryForm extends CFormModel {
 	public $login_or_email, $user_id;
+
 	
 	/**
 	 * Declares the validation rules.

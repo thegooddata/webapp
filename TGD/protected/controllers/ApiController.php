@@ -32,10 +32,10 @@ class ApiController extends Controller
 			                ->from('tbl_members u')
 			                ->where(array(
 			                            'and',
-			                            '(u.username = :value or u.email = :value)',
+			                            '(UPPER(u.username) = :value or UPPER(u.email) = :value)',
 			                            'u.password = :password'),
 			                    array(
-			                            ':value'=>$value,
+			                            ':value'=>strtoupper($value),
 			                            ':password'=>$password)
 			                    )
 			                ->queryAll();
@@ -43,10 +43,53 @@ class ApiController extends Controller
 		if(empty($user)) {
 	         $this->_sendResponse(404, 'No user found with username: '.$_GET['username']);
 	    } else {
+	    	$objUser = User::model()->findByPk($user[0]->id);
+			$objUser->lastvisit_at = date('Y-m-d H:i:s');
+			$objUser->save();
+	    	
 	        $this->_sendResponse(200, CJSON::encode($user),'application/json');
 	    }             
     }
  	
+ 	// Actions
+    public function actionDeleteQueries()
+	{
+		$user_id=$_GET['user_id'];
+		$member_id=$_GET['user_id'];
+
+		if (!is_numeric($_GET['user_id'])){
+			$member_id=0;
+		}
+
+		if ($member_id!=0)
+		{
+
+			$query = "delete from tbl_queries  where member_id = :member_id";
+			$command = Yii::app()->db->createCommand($query);
+			$resultado=$command->execute(array('member_id' => $member_id));
+
+			if ($resultado==0)
+				$this->_sendResponse(200, CJSON::encode('0'),'application/json');
+			else
+				$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+			
+		}
+		else
+		{
+			$query = "delete from tbl_queries  where user_id = :user_id";
+			$command = Yii::app()->db->createCommand($query);
+			$resultado=$command->execute(array('user_id' => $user_id));
+
+			if ($resultado==0)
+				$this->_sendResponse(200, CJSON::encode('0'),'application/json');
+			else
+				$this->_sendResponse(200, CJSON::encode($resultado),'application/json');
+		}
+
+
+
+	}
+
  	// Actions
     public function actionCount()
 	{
@@ -90,10 +133,8 @@ class ApiController extends Controller
 		$member_id=$_GET['user_id'];
 
 		if (!is_numeric($_GET['user_id'])){
-			$member_id=0;
+			$member_id=-1;
 		}
-
-
 
 		$datas = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
@@ -280,6 +321,11 @@ class ApiController extends Controller
 	       	case 'queriesblacklist':
 	       		$model = $this->_viewQueriesblacklist();
 	       		break;
+       		case 'languagesSupport':
+       			$model = LanguagesSupport::model()->findByAttributes(
+				    array('lang'=>$_GET['query'])
+				);
+				break;
 	            
 	       	default:
 	            $this->_sendResponse(501, sprintf(
@@ -629,23 +675,37 @@ class ApiController extends Controller
 			                    )
 			                ->queryAll();
 
-		            if (count($data)==0 && $status){
+           		 	if (count($data)==0 && $status){
 
-		            	$service = Yii::app()->db->createCommand()
-			                ->setFetchMode(PDO::FETCH_OBJ)
-			                ->select('s.id as adtracks_sources_id')
-			                ->from('tbl_adtracks_sources s')
-			                ->where(array(
-			                            'and',
-			                            's.name = :service_name'),
-			                    array(
-			                            ':service_name'=>$service_name)
-			                    )
-			                ->queryAll();
+		            	$services = array();
 
-		                if (count($service)>0){
+		            	if ($service_name == '*')
+		                {
+		                	$service = new stdClass();
+		                	$service->adtracks_sources_id='1';
 
-		                	$adtracks_sources_id = $service[0]->adtracks_sources_id;
+		                	$services[]=$service;
+		                }
+		                else
+		                {
+		                	$services = Yii::app()->db->createCommand()
+				                ->setFetchMode(PDO::FETCH_OBJ)
+				                ->select('s.id as adtracks_sources_id')
+				                ->from('tbl_adtracks_sources s')
+				                ->where(array(
+				                            'and',
+				                            's.name = :service_name'),
+				                    array(
+				                            ':service_name'=>$service_name)
+				                    )
+				                ->queryAll();
+		                }
+		            	
+
+		                if (count($services)>0){
+
+
+		                	$adtracks_sources_id = $services[0]->adtracks_sources_id;
 		                	$model = new Whitelists;
 		                	$model->user_id=$user_id;
 			        	  	$model->member_id=$member_id;
@@ -655,13 +715,14 @@ class ApiController extends Controller
 		        	  		
 			        	  	$model->save();
 			        	  	
+			        	  	
 		                }
 		                else
 		                {
-		              //   	$this->_sendResponse(501, 
-				            //     sprintf('Adtrack source not found <b>%s</b>',
-				            //     $service_name) );
-				            // Yii::app()->end();
+		                 	$this->_sendResponse(501,  
+				                 sprintf($service_name.'-Adtrack source not found <b>%s</b>',
+				                 $service_name) );
+				             Yii::app()->end();
 		                }
 
 		            	
@@ -690,6 +751,9 @@ class ApiController extends Controller
 	
 	public function _viewQueriesblacklist(){
 		$query= $_GET['query'];
+		$lang= $_GET['lang'];
+
+
 
 		$data = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
@@ -697,16 +761,48 @@ class ApiController extends Controller
 	                ->from('tbl_queries_blacklist')
 	                ->where(array(
 	                            'and',
-	                            '(midword = :query1 or midword = :query2 or midword = :query3)'
+	                            '(stem = :query1 or stem = :query2 or stem = :query3 or stem = :query4)',
+	                            'lang = :lang'
 	                            ),
 	                    	array(	
 	                            
 	                            ':query1'=>"/b".$query,
 	                            ':query2'=>"/b".$query."/b",
 	                            ':query3'=>$query."/b",
+	                            ':query4'=>$query,
+	                            ':lang'=>$lang,
 	                            )
                     	)
 	                ->queryAll();
+
+        if (count($data) == 0){
+
+        	$blackExpresion = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('stem')
+	                ->from('tbl_queries_blacklist')
+	                ->where(array(
+	                            'and',	                          
+	                            'lang = :lang'
+	                            ),
+	                    	array(	
+	                            ':lang'=>$lang
+	                            )
+                    	)
+	                ->queryAll();
+            
+
+
+            foreach ( $blackExpresion as $black)
+            {
+            	$stem = str_replace("/b", "", $black->stem);
+            	
+            	if (strpos($query,$stem) !== false) {
+				    $data[]=$black;
+				    break;
+				}
+            }
+        }
 
 		return $data;
 	}

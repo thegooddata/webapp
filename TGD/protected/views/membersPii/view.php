@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 );
 
 $this->menu=array(
-	array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
 	array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
 	array('label'=>Yii::t('app', 'Update') . ' ' . $model->label(), 'url'=>array('update', 'id' => $model->id)),
 	array('label'=>Yii::t('app', 'Delete') . ' ' . $model->label(), 'url'=>'#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm'=>'Are you sure you want to delete this item?')),
@@ -21,23 +20,21 @@ $this->menu=array(
 	'attributes' => array(
 'id',
 'firstname',
-'surname',
+'lastname',
+'streetname',
 'streetnumber',
-'street',
 'streetdetails',
 'city',
-'state',
-'zipcode',
-array(
-			'name' => 'idCountries',
-			'type' => 'raw',
-			'value' => $model->idCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idCountries)), array('countries/view', 'id' => GxActiveRecord::extractPkValue($model->idCountries, true))) : null,
-			),
-'email',
-'birthdate',
-'agreerules:boolean',
+'statecounty',
+'country',
+'postcode',
+'daybirthday',
+'monthbirthday',
+'yearbirthday',
+'agree:boolean',
 'created_at',
 'updated_at',
+'member_id',
 	),
 )); ?>
 

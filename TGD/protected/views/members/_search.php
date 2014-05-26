@@ -27,7 +27,17 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'lastvisit_at'); ?>
-		<?php echo $form->textField($model, 'lastvisit_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'lastvisit_at',
+			'value' => $model->lastvisit_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row">
@@ -47,7 +57,17 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'created_at'); ?>
-		<?php echo $form->textField($model, 'created_at'); ?>
+		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'created_at',
+			'value' => $model->created_at,
+			'options' => array(
+				'showButtonPanel' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));
+; ?>
 	</div>
 
 	<div class="row buttons">

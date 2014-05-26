@@ -1,10 +1,7 @@
 <?php
-
-// uncomment the following to define a path alias
-// Yii::setPathOfAlias('local','path/to/local-folder');
-
-// This is the main Web application configuration. Any writable
-// CWebApplication properties can be configured here.
+include 'config.php';
+?>
+<?php
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'The Good Data',
@@ -23,9 +20,10 @@ return array(
         'ext.giix-components.*',
 
         'ext.Mailchimp.*',
+        'ext.CSVExport',
 	),
 
-	
+	'theme'=>'tgd',
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -73,7 +71,7 @@ return array(
             'loginUrl' => array('/user/login'),
 
             # page after login
-            'returnUrl' => array('/user/profile'),
+            'returnUrl' => array('/userData/index'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
@@ -85,24 +83,21 @@ return array(
 	'components'=>array(
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
-			'url' => 'https://www.thegooddata.org:8080',
-			'username' => 'dani',
-			'password' => 'dani',
-			'owners' => '"user1","user2"',
-			'minimun' => 2,
-			'cert' => "/etc/ssl/certs/thegooddata.org.crt"
+			'url' => REDOCTOBER_URL,
+			'port' => REDOCTOBER_PORT,
+			'username' => REDOCTOBER_USERNAME,
+			'password' => REDOCTOBER_PASSWORD,
+			'owners' => REDOCTOBER_OWNERS,
+			'minimun' => REDOCTOBER_MIN,
+			'cert' => REDOCTOBER_CERT
 		),
-
+		
 		'mail' => array(
 		    'class' => 'ext.yii-mail.YiiMail',
 		    'transportType'=>'smtp',
-		    'transportOptions'=>array(
-		            'host'=>'host',
-		            'username'=>'username',
-		            'password'=>'password',
-		            'port'=>'25',                       
-		    ),
-		    'viewPath' => 'application.views.mail',             
+		    'viewPath' => 'application.views.mail',   
+		    'logging' => true,
+    		'dryRun' => false          
 		),
 
 		'user'=>array(
@@ -119,6 +114,9 @@ return array(
 			'rules'=>array(
 
 				// REST patterns
+				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
+				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
+
 				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
 				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
 
@@ -127,7 +125,8 @@ return array(
 
 		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
 		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%]+>', 'verb'=>'GET'),
+		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
+		        array('api/view', 'pattern'=>'api/<model:\w+>/<lang:[\w  \%\-]+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
 		        
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
 		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/', 'verb'=>'PUT'),
@@ -136,32 +135,46 @@ return array(
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        
+		        array('purchase/index', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
+		        //array('purchase/response', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>/<token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
+		        
+		        //Set friendly-url
+		        '/' => 'site/index',
+		        '/good-data' => 'goodData/index',
+		        'apply'=>'/user/registration',
+		        'share'=>'/site/purchase',
+		        'share/thanks'=>'/purchase/thanks',
+		        'sign-in'=>'/user/login',
+		        'recover'=>'/user/recovery',
+		        'good-data'=>'/goodData/index',
+		        'evil-data'=>'/evilData/index',
+		        'user-data'=>'/userData/index',
+		        'membership'=>'/user/profile',
+		        'product'=>'/site/product',
+		        'partners'=>'/site/partners',
+		        'your-company'=>'/site/company',
+		        'support-us'=>'/donate',
+		        'support-us/thanks'=>'/donate/thanks',
+		        'coders'=>'/site/coders',
+		        'faq'=>'/site/faq',
+		        'legal'=>'/site/legal',	
+
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
 			),
+	
 		),
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=tgd_webapp',
-		    'username'=>'tgd',
-		    'password'=>'tGdwA0101',
+	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME,
+		    'username'=>BD_USERNAME,
+		    'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',
 		),
-		// 'db'=>array(
-		// 	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		// ),
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
-		*/
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -173,20 +186,15 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
 			),
 		),
 	),
 
 	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'senderGenericEmail'=>EMAIL_GENERIC_FROM,
+		'senderPersonalEmail'=>EMAIL_PERSONAL_FROM,
+		'adminEmail'=>EMAIL_ADMIN,
 	),
 );
