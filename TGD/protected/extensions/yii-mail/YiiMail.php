@@ -217,6 +217,7 @@ class YiiMail extends CApplicationComponent
 			$this->transport->setUsername(EMAIL_GENERIC_USERNAME);
 			$this->transport->setPassword(EMAIL_GENERIC_PASSWORD);
 			$this->transport->setPort(EMAIL_GENERIC_PORT);
+            $this->transport->setEncryption('ssl');
 
 		}
 		else if ($m->from[EMAIL_PERSONAL_FROM] == null)
@@ -225,8 +226,9 @@ class YiiMail extends CApplicationComponent
 			$this->transport->setUsername(EMAIL_PERSONAL_USERNAME);
 			$this->transport->setPassword(EMAIL_PERSONAL_PASSWORD);
 			$this->transport->setPort(EMAIL_PERSONAL_PORT);
+            $this->transport->setEncryption('ssl');
 
-		}		
+		}
 
 		if ($this->transport===null) {
 			switch ($this->transportType) {
