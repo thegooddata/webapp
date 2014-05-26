@@ -3,6 +3,8 @@
 class UserDataController extends Controller {
 
     public $bodyId = 'tgd-user-data';
+    
+    public $displayMenu = true;
 
     public function filters() {
         return array('accessControl'); // perform access control for CRUD operations

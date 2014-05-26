@@ -3,6 +3,8 @@
 class EvilDataController extends Controller {
 
     public $bodyId = 'tgd-evil-data';
+    
+    public $displayMenu = true;
 
     public function filters() {
         return array('accessControl'); // perform access control for CRUD operations
