@@ -85,7 +85,7 @@
             $this->getUniqueId() != "user/registration" && 
             $this->getUniqueId() != "user/profile" &&
             $this->getUniqueId() != "purchase" &&
-            ( isset( $this->displayMenu ) && $this->displayMenu != false ) ) { ?>
+            ( isset( $this->displayMenu ) && $this->displayMenu == true ) ) { ?>
 
         <?php 
         $user = User::model()->findByPk(Yii::app()->user->id); 
