@@ -169,7 +169,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME,
+	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode=require;',
 		    'username'=>BD_USERNAME,
 		    'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',
