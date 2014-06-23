@@ -213,6 +213,7 @@ class YiiMail extends CApplicationComponent
 		
 		// var_dump($m->from); die();
 		
+		// Switch email info
 		foreach ($m->from as $fromEmail => $fromName) {
 		  switch ($fromEmail) {
 		    case EMAIL_GENERIC_FROM:
