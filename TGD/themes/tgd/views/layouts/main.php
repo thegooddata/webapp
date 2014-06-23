@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <form action="<?php echo Yii::app()->controller->createUrl("site/subscribelist"); ?>" method="POST" class="form-inline" role="form">
+                        <form action="<?php echo Yii::app()->controller->createUrl("/site/subscribelist"); ?>" method="POST" class="form-inline" role="form">
                             <!-- form -->
                             <input type="hidden" name="u" value="c536df10462fb6afe72117895">
                             <input type="hidden" name="id" value="b5320da781">

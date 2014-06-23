@@ -11,7 +11,9 @@ class LoginController extends Controller
 	public function actionLogin()
 	{
 		if (Yii::app()->user->isGuest) {
-			
+			// add js specific for this page
+        	Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/early-access.js', CClientScript::POS_END);
+     
 			// set title
 			$this->pageTitle = " - Sign in to TheGoodData"; // TODO: translate
 

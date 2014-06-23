@@ -7,14 +7,14 @@ $('#earlyAccessModal').on('shown.bs.modal', function(e) {
     $(this).find('form').submit(function(e) {
         // prevent form submission
         e.preventDefault();
-        var $modalBody = $(".modal-body");
+        var $modalBody = $("#earlyAccessModal .modal-body");
         var modalBodyHeight = $modalBody.height();
-        var $modalFooter = $(".modal-footer");
+        var $modalFooter = $("#earlyAccessModal .modal-footer");
         var modalFooterHeight = $modalFooter.height();
         // disable butons
-        $('.modal-footer .btn').attr('disabled', 'disabled');
+        $('#earlyAccessModal .modal-footer .btn').attr('disabled', 'disabled');
         // loading class
-        $('.modal-footer').toggleClass('loading');
+        $('#earlyAccessModal .modal-footer').toggleClass('loading');
         // collect data from the form's input fields
         var $form = $(this),
                 url = $form.attr('action'),
@@ -33,15 +33,15 @@ $('#earlyAccessModal').on('shown.bs.modal', function(e) {
                 url, // taget URL
                 data, // request data
                 function(data, status) { // success callback
-                    $('.modal-header h2').html('Success!');
-                    $('.modal-body').empty().append(data).height(modalBodyHeight).css('text-align', 'center');
-                    $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
+                    $('#earlyAccessModal .modal-header h2').html('Success!');
+                    $('#earlyAccessModal .modal-body').empty().append(data).height(modalBodyHeight).css('text-align', 'center');
+                    $('#earlyAccessModal .modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').height(modalFooterHeight).toggleClass('loading').find('.btn').css('width', 'auto');
                 },
                 'html' // data type expected from the server
                 ).error(function() {
-            $('.modal-header h2').html('Error');
-            $('.modal-body').empty().append('Something went wrong while processing your request').css('text-align', 'center');
-            $('.modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').toggleClass('loading').find('.btn').css('width', 'auto');
+            $('#earlyAccessModal .modal-header h2').html('Error');
+            $('#earlyAccessModal .modal-body').empty().append('Something went wrong while processing your request').css('text-align', 'center');
+            $('#earlyAccessModal .modal-footer').empty().append('<button data-dismiss="modal" class="btn btn-primary" type="button">« return to our website</button>').toggleClass('loading').find('.btn').css('width', 'auto');
         });
     });
 });
@@ -50,7 +50,7 @@ $('#earlyAccessModal').on('shown.bs.modal', function(e) {
 // state it had before being closed the last time.
 $('#earlyAccessModal').on('hidden.bs.modal', function(e) {
     // delete model content
-    $('.modal-content').remove();
+    $('#earlyAccessModal .modal-content').remove();
     // restore original content
-    $('.modal-dialog').html(content);
+    $('#earlyAccessModal .modal-dialog').html(content);
 });
