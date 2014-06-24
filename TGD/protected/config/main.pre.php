@@ -81,6 +81,9 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'openAtrium' => array(
+			'class' => 'ext.OpenAtrium',
+	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
 			'url' => REDOCTOBER_URL,

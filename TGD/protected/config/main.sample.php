@@ -84,6 +84,9 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'openAtrium' => array(
+			'class' => 'ext.OpenAtrium',
+	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
 			'url' => 'https://www.thegooddata.org:8080',
