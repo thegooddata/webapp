@@ -10,6 +10,10 @@ CONST REDOCTOBER_OWNERS = '"user1","user2"';
 CONST REDOCTOBER_MIN = 2;
 CONST REDOCTOBER_CERT = "/Users/you/Dev/redoctober/cert/server.crt";
 
+const OPENATRIUM_HOST = 'https://collaborate.thegooddata.org';
+const OPENATRIUM_ADMIN_LOGIN = 'tgdAdmin';
+const OPENATRIUM_PASSWORD = '';
+
 CONST BD_NAME = 'tgd';
 CONST BD_HOST = 'localhost';
 CONST BD_USERNAME = 'user';

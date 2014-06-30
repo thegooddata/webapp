@@ -86,6 +86,9 @@ return array(
 	'components'=>array(
 	  'openAtrium' => array(
 			'class' => 'ext.OpenAtrium',
+			'host' => OPENATRIUM_HOST,
+			'adminLogin' => OPENATRIUM_ADMIN_LOGIN,
+			'adminPassword' => OPENATRIUM_PASSWORD,
 	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
