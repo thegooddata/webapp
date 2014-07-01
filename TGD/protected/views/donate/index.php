@@ -10,12 +10,48 @@
     </div>
 </div>  -->
 
+<script>
+function create_donate_url(gateway, currency, amount) {
+  <?php 
+
+  $param = array(
+      'transaction_id'=>$transaction_id,
+      'type'=>DonateController::TYPE_DONATION,
+      'status'=>DonateController::TRANSACTION_OK
+  );
+  
+  $param_json=json_encode($param);
+  $param_b64 = base64_encode($param_json);
+
+  $url=Yii::app()->controller->createAbsoluteUrl('donate/?token='.$param_b64.'&gateway=[gateway]&currency=[currency]&amount=[amount]');
+
+  ?>
+  
+  var url='<?php echo $url; ?>';
+  
+  url = url.replace("[gateway]",gateway);
+  url = url.replace("[currency]",currency);
+  url = url.replace("[amount]",amount);
+  
+  return url;
+}
+</script>
+
 <?php if ($state == DonateController::RETURN_FROM_GATEWAY && $status == DonateController::TRANSACTION_OK) { ?>   
     <div class="alert alert-success">SUCCESS</div>
 <?php } ?>
 
 <?php if ($state == DonateController::RETURN_FROM_GATEWAY && $status == DonateController::TRANSACTION_ERROR) { ?>   
-    <div class="alert alert-danger">ERROR</div>
+    <div class="alert alert-danger">
+    <p>ERROR</p>
+    <?php if (is_array($errors) && count($errors)): ?>
+      <ul>
+        <?php foreach ($errors as $error): ?>
+          <li><?php echo $error; ?></li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+    </div>
 <?php } ?>
 
 <div class="wrapper">
@@ -52,30 +88,127 @@
                         <strong>Choose a fair amount</strong>
                         Thanks for taking this generous decision. Use the form fields bellow
                         to specify a fair amount and the currency in which you wish to make the donation.
-                        <form id="donate" action="" method="post" onsubmit="return bp.validateMobileCheckoutForm($('#donate'));">
-                            <input name="action" type="hidden" value="checkout">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <form id="donate_stripe_form" action="" method="post">
+                            
                             <div class="form-group row">
+                            
                                 <div class="col-md-8 tgd-no-left-padding">
-                                    <input class="form-control" name="price" type="number" placeholder="Amount" value="10.00" />
+                                    <input class="form-control" name="amount" type="number" placeholder="Amount" value="10.00" />
                                 </div>
+                                
                                 <div class="col-md-8 tgd-no-right-padding">
-                                    <select class="form-control" name="currency" value="" >
+                                    <select class="form-control" name="currency">
                                         <option value="USD" selected="selected">USD</option>
                                         <option value="EUR">EUR</option>
                                         <option value="GBP">GBP</option>
                                     </select>
                                 </div>
-                            </div>                        
-                            <button type="submit" class="btn btn-primary">donate! <span class="fa fa-credit-card"></span></button>
+                                
+                            </div>
+                            
+                            <button id="btnProceedDonationStripe" type="button" class="btn btn-primary">donate! <span class="fa fa-credit-card"></span></button>
+                            
+                            
+                            <script src="https://checkout.stripe.com/checkout.js"></script>
+                            <script>
+                              var stripeHandler = StripeCheckout.configure({
+                                key: '<?php echo Yii::app()->stripe->getPublishableKey(); ?>',
+                                image: '/themes/tgd/img/logo-big.png',
+                                token: function(token) {
+                                  // Use the token to create the charge with a server-side script.
+                                  // You can access the token ID with `token.id`
+                                  // console.log(token);
+                                  var $form=$('#donate_stripe_form');
+                                  $form.append($('<input type="hidden" name="stripeToken" />').val(token.id));
+                                  var amount=parseFloat($('#donate_stripe_form input[name="amount"]').val())*100;
+                                  var currency=$('#donate_stripe_form select[name="currency"]').val();
+                                  $form.attr('action', create_donate_url('stripe', currency, amount));
+                                  $form.submit();
+                                }
+                              });
+                            </script>
+                            <?php
+                            
+                            $user=null;
+                            if (!Yii::app()->user->isGuest) {
+                              $user=Yii::app()->user->model(Yii::app()->user->id);
+                            }
+
+                            $stripeHandlerOptions=array(
+                              'name'=>'The Good Data',
+                              'description'=>'Make a donation',
+                              'panelLabel'=>'Donate {{amount}}',
+                            );
+                            
+                            if ($user != null) {
+                              $stripeHandlerOptions['email']=$user->email;
+                            }
+                            
+                            Yii::app()->clientScript->registerScript('stripe_checkout_button', "
+                            $('#btnProceedDonationStripe').click(function () {
+                            
+                              var amount=$('#donate_stripe_form input[name=\"amount\"]').val();
+                              amount=parseFloat(amount) * 100;
+                              var currency=$('#donate_stripe_form select[name=\"currency\"]').val();
+                              
+                              var stripeHandlerOptions=".CJSON::encode($stripeHandlerOptions)."
+                              stripeHandlerOptions.currency=currency;
+                              stripeHandlerOptions.amount=amount;
+                              
+                              // Open Checkout with further options
+                              stripeHandler.open(stripeHandlerOptions);
+
+                            });
+                            ");
+                            ?>
 
                             
                         </form>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     </div>
                     <div id="bitcoin">
                         <strong>Choose a fair amount</strong>
                         Thanks for taking this generous decision. Use the form fields bellow
                         to specify a fair amount and the currency in which you wish to make the donation.
-                        <form id="donate_bitcoin" action="https://bitpay.com/checkout" method="post" onsubmit="return bp.validateMobileCheckoutForm($('#donate'));">
+                        <form id="donate_bitcoin" action="https://bitpay.com/checkout" method="post" onsubmit="return bp.validateMobileCheckoutForm($('#donate_bitcoin'));">
                             <input name="action" type="hidden" value="checkout">
                             <div class="form-group row">
                                 <div class="col-md-8 tgd-no-left-padding">
@@ -98,43 +231,14 @@
                             <script>
                             $( document ).ready(function() {
 
-                                // $( "#btnProceedDonationCC" ).click(function() {
-                                //    alert('CC');
-                                //    return false;
-                                // });
-
                                 $( "#btnProceedDonationBitcoin" ).click(function() {
                                     
-                                   $('#donate_bitcoin input:hidden[name="redirectURL"]').val('<?php 
-
-                                    $param = array(
-                                        'transaction_id'=>$transaction_id,
-                                        'type'=>DonateController::TYPE_DONATION,
-                                        'status'=>DonateController::TRANSACTION_OK
-                                    );
-                                    
-                                    $param_json=json_encode($param);
-                                    $param_b64 = base64_encode($param_json);
-
-                                    echo Yii::app()->controller->createAbsoluteUrl('donate/?token='.$param_b64.'&currency=[currency]&amount=[amount]');
-
-                                    ?>'); 
-
                                    var currency=$('#currency').find(":selected").val();
                                    
                                    var amount=parseInt($('#amount').val()) * 100;
 
-                                   var redirectURL=$('#donate_bitcoin input:hidden[name="redirectURL"]').val();
-                                   
+                                   $('#donate_bitcoin input:hidden[name="redirectURL"]').val(create_donate_url('bitcoin', currency, amount));
 
-                                   redirectURL = redirectURL.replace("[currency]",currency);
-                                   redirectURL = redirectURL.replace("[amount]",amount);
-
-                                   
-                                   $('#donate_bitcoin input:hidden[name="redirectURL"]').val(redirectURL);
-
-                                   
-                                   
                                 });
                             });
                             </script>

@@ -59,6 +59,8 @@ class DonateController extends Controller {
     }
 
     public function actionIndex() {
+      
+        $errors=array();
 
         if (isset(Yii::app()->user)){
             $this->user_id = Yii::app()->user->id;
@@ -80,6 +82,23 @@ class DonateController extends Controller {
             $this->currency = $_GET['currency'];
             $this->amount = (int)$_GET['amount'] / 100;
             
+           
+            
+            /* if user paid with Stripe, charge the card */ 
+            if ($_GET['gateway']=='stripe') {
+              Yii::app()->stripe->charge(array(
+                  "amount" => $_GET['amount'], // amount in cents, again
+                  "currency" => $_GET['currency'],
+                  "card" => $_POST['stripeToken'],
+                  "description" => "Donation to The Good Data",
+              ));
+              if (Yii::app()->stripe->hasError()) {
+                $errors[]=Yii::app()->stripe->getError();
+              }
+            }
+            
+            
+            
             if ( Transactions::model()->find('transaction_id=:id_transaction', array(':id_transaction'=>$this->transaction_id)) == null)
             {
                 $transaction = new Transactions();
@@ -91,12 +110,18 @@ class DonateController extends Controller {
                 $transaction->member_id=$this->user_id;
                 $transaction->save();
             }
-
+            
+            if (count($errors)) {
+              $this->status=DonateController::TRANSACTION_ERROR;
+            } else {
+              $this->redirect(array('donate/thanks'));
+            }
 
             $this->render('index', array(
                 'transaction_id'=>$this->transaction_id,
                 'state' => DonateController::RETURN_FROM_GATEWAY,
                 'status' => $this->status,
+                'errors'=>$errors,
                 )
             );
 

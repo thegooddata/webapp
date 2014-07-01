@@ -81,6 +81,12 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'stripe' => array(
+			'class' => 'ext.yii-stripe.YiiStripe',
+			'test' => STRIPE_TEST,
+			'secret_key' => STRIPE_SK,
+			'publishable_key' => STRIPE_PK,
+	  ),
 	  'openAtrium' => array(
 			'class' => 'ext.OpenAtrium',
 			'host' => OPENATRIUM_HOST,
