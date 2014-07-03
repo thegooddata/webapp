@@ -17,9 +17,15 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/webfonts.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" type="text/css">
         
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js'; ?>"></script>        
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/bootstrap.min.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl . '/js/common.js'; ?>"></script>
+        <?php
+        $cs=Yii::app()->clientScript;
+        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
+        $cs->scriptMap=array(
+            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js',
+        );
+        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.min.js', CClientScript::POS_HEAD);
+        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
+        ?>
 
     </head>
 

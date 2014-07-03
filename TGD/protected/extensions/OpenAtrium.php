@@ -6,10 +6,6 @@ class OpenAtrium extends CApplicationComponent {
   public $adminLogin='tgdAdmin';
   public $adminPassword = 'tGdOA2346';
   
-  // public $host='http://openatrium.heavydots.com';
-  // public $adminLogin='admin';
-  // public $adminPassword = 'admin007';
-  
   public function createUser($userName, $userPassword, $userEmail, $userScreenName, &$oa_errors) {
     
 	  $host = $this->host;

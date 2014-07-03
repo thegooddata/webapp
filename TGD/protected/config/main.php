@@ -81,8 +81,17 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'stripe' => array(
+			'class' => 'ext.yii-stripe.YiiStripe',
+			'test' => STRIPE_TEST,
+			'secret_key' => STRIPE_SK,
+			'publishable_key' => STRIPE_PK,
+	  ),
 	  'openAtrium' => array(
 			'class' => 'ext.OpenAtrium',
+			'host' => OPENATRIUM_HOST,
+			'adminLogin' => OPENATRIUM_ADMIN_LOGIN,
+			'adminPassword' => OPENATRIUM_PASSWORD,
 	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
@@ -138,7 +147,7 @@ return array(
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        
-		        array('purchase/index', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
+		        array('purchase/index', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>'),
 		        //array('purchase/response', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>/<token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
 		        
 		        //Set friendly-url
