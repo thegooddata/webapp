@@ -97,6 +97,9 @@ class DonateController extends Controller {
               }
             }
             
+            if (count($errors)) {
+              $this->status=DonateController::TRANSACTION_ERROR;
+            }
             
             
             if ( Transactions::model()->find('transaction_id=:id_transaction', array(':id_transaction'=>$this->transaction_id)) == null)
@@ -111,9 +114,7 @@ class DonateController extends Controller {
                 $transaction->save();
             }
             
-            if (count($errors)) {
-              $this->status=DonateController::TRANSACTION_ERROR;
-            } else {
+            if (count($errors)==0) {
               $this->redirect(array('donate/thanks'));
             }
 

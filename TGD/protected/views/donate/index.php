@@ -144,9 +144,9 @@ function create_donate_url(gateway, currency, amount) {
                             </script>
                             <?php
                             
-                            $user=null;
+                            $user_model=null;
                             if (!Yii::app()->user->isGuest) {
-                              $user=Yii::app()->user->model(Yii::app()->user->id);
+                              $user_model=Yii::app()->user->model(Yii::app()->user->id);
                             }
 
                             $stripeHandlerOptions=array(
@@ -155,8 +155,8 @@ function create_donate_url(gateway, currency, amount) {
                               'panelLabel'=>'Donate {{amount}}',
                             );
                             
-                            if ($user != null) {
-                              $stripeHandlerOptions['email']=$user->email;
+                            if ($user_model != null) {
+                              $stripeHandlerOptions['email']=$user_model->email;
                             }
                             
                             Yii::app()->clientScript->registerScript('stripe_checkout_button', "
@@ -235,7 +235,7 @@ function create_donate_url(gateway, currency, amount) {
                                     
                                    var currency=$('#currency').find(":selected").val();
                                    
-                                   var amount=parseInt($('#amount').val()) * 100;
+                                   var amount=parseFloat($('#amount').val()) * 100;
 
                                    $('#donate_bitcoin input:hidden[name="redirectURL"]').val(create_donate_url('bitcoin', currency, amount));
 
