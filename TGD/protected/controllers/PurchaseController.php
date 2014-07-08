@@ -114,7 +114,7 @@ class PurchaseController extends Controller {
                 $message->subject = 'Your are now a Member of TheGoodData';
                 $message->setBody($content,'text/html');
                 $message->addTo($userObj->email);
-                $message->from = Yii::app()->params['senderGenericEmail'];
+                $message->from = Yii::app()->params['marcosEmailName'].' <'Yii::app()->params['marcosEmail'].'>';
                 Yii::app()->mail->send($message);
 
 
