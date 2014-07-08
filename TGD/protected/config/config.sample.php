@@ -18,6 +18,13 @@ CONST BD_PORT=5432;
 
 const EMAIL_ADMIN = 'admin@thegooddata.com';
 
+CONST EMAIL_MEMBERS_FROM_NAME = 'Members, TheGoodData';
+CONST EMAIL_MEMBERS_FROM = 'members@thegooddata.org';
+
+CONST EMAIL_MARCOS_FROM_NAME = 'Marcos Menendez, TheGoodData';
+CONST EMAIL_MARCOS_FROM = 'marcos@thegooddata.org';
+
+CONST EMAIL_GENERIC_FROM_NAME = 'Info, TheGoodData';
 CONST EMAIL_GENERIC_FROM = 'info@thegooddata.org';
 CONST EMAIL_GENERIC_HOST = "smtp.zoho.com";
 CONST EMAIL_GENERIC_USERNAME = 'info@thegooddata.org';
