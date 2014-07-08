@@ -7,12 +7,49 @@
     </div>
 </div> 
 
+<script>
+function create_donate_url(gateway, currency, amount) {
+
+  <?php 
+
+  $param = array(
+      'transaction_id'=>$transaction_id,
+      'type'=>PurchaseController::TYPE_DONATION,
+      'status'=>PurchaseController::TRANSACTION_OK
+  );
+  
+  $param_json=json_encode($param);
+  $param_b64 = base64_encode($param_json);
+
+  $url=Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&gateway=[gateway]&currency=[currency]&amount=[amount]');
+
+  ?>
+  
+  var url='<?php echo $url; ?>';
+  
+  url = url.replace("[gateway]",gateway);
+  url = url.replace("[currency]",currency);
+  url = url.replace("[amount]",amount);
+  
+  return url;
+}
+</script>
+
 <?php if ($state == PurchaseController::RETURN_FROM_GATEWAY && $status == PurchaseController::TRANSACTION_OK) { ?>   
     <div class="alert alert-success">SUCCESS</div>
 <?php } ?>
 
 <?php if ($state == PurchaseController::RETURN_FROM_GATEWAY && $status == PurchaseController::TRANSACTION_ERROR) { ?>   
-    <div class="alert alert-danger">ERROR</div>
+    <div class="alert alert-danger">
+    <p>ERROR</p>
+    <?php if (is_array($errors) && count($errors)): ?>
+      <ul>
+        <?php foreach ($errors as $error): ?>
+          <li><?php echo $error; ?></li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+    </div>
 <?php } ?>
 
 <div class="wrapper">
@@ -173,43 +210,100 @@
 
                         <input type="hidden" name="redirectURL" value="<?php echo Yii::app()->controller->createAbsoluteUrl("user/purchase/".$user_token.'/'.$transaction_id.'/'.base64_encode(PurchaseController::TYPE_DONATION).'/'.PurchaseController::TRANSACTION_OK)?>" />
                         <input type="hidden" name="data" value="i+8wYLNGk9LIgh913da5SgG/GA7jj8JhA0LTzmCuHJ2A1xPgE/JABmoEwVawN+bsUjzwXKkU5syz/IelMYuZhsb5J6oKZ6n2CQ+hWvueNa4vp3vH7dx9PPgD5/KRTGkqSP568lr7CJ3UecrKSbQpBY0UT6wVK17gIVG98wp8Ld0hEcf0dFKpN/ZFk8T75wsDfnk0dCvnUnDOdEmdWS0aCg52y8OKJJzLNq+o2OaM8Kw=">
-                        <button id="btnProceedDonationCC" disabled="disabled" type="submit" class="btn btn-primary">pay with credit card <span class="fa fa-credit-card"></span></button>
+                        
+                        <button id="btnProceedDonationStripe" type="button" class="btn btn-primary">pay with credit card <span class="fa fa-credit-card"></span></button>
                         <div class="form-separator"><span>or</span></div>
                         <button id="btnProceedDonationBitcoin" type="submit" class="btn btn-primary">pay with bitcoins <span class="fa fa-bitcoin"></span></button>
+                        
+                        
+                        
+                        
+                        
+                        
+
+                            
+                            <script src="https://checkout.stripe.com/checkout.js"></script>
+                            <script>
+                              var stripeHandler = StripeCheckout.configure({
+                                key: '<?php echo Yii::app()->stripe->getPublishableKey(); ?>',
+                                image: '/themes/tgd/img/logo-big.png',
+                                token: function(token) {
+                                  // Use the token to create the charge with a server-side script.
+                                  // You can access the token ID with `token.id`
+                                  // console.log(token);
+                                  
+                                  // This time we create a new form since we're already inside bitcoin form
+                                  // this way everything will work independently.
+                                  var $form = jQuery('<form>', {
+                                      'action': '',
+                                      'method': 'POST'
+                                  });
+                                  
+                                  $form.append($('<input type="hidden" name="stripeToken" />').val(token.id));
+                                  
+                                  var currency=$('#currency').val();
+                                  var amount=parseFloat($('#amount').val()) * 100;
+                                  
+                                  $form.attr('action', create_donate_url('stripe', currency, amount));
+                                  $form.appendTo("body").submit();
+                                }
+                              });
+                            </script>
+                            <?php
+                            
+                            $user_model=null;
+                            if (!Yii::app()->user->isGuest) {
+                              $user_model=Yii::app()->user->model(Yii::app()->user->id);
+                            }
+
+                            $stripeHandlerOptions=array(
+                              'name'=>'The Good Data',
+                              'description'=>'Make a donation',
+                              'panelLabel'=>'Donate {{amount}}',
+                            );
+                            
+                            if ($user_model != null) {
+                              $stripeHandlerOptions['email']=$user_model->email;
+                            }
+                            
+                            Yii::app()->clientScript->registerScript('stripe_checkout_button', "
+                            $('#btnProceedDonationStripe').click(function () {
+                            
+                              var currency=$('#currency').val();
+                              
+                              if (currency=='BTC') {
+                                alert('Please choose other currency than BTC for credit card payment or use the pay with bitcoins button.');
+                                return;
+                              }
+                              
+                              var amount=parseFloat($('#amount').val()) * 100;
+                              
+                              var stripeHandlerOptions=".CJSON::encode($stripeHandlerOptions)."
+                              stripeHandlerOptions.currency=currency;
+                              stripeHandlerOptions.amount=amount;
+                              
+                              // Open Checkout with further options
+                              stripeHandler.open(stripeHandlerOptions);
+
+                            });
+                            ");
+                            ?>
+                        
+                        
+                        
+                        
+                        
                         
                         <script>
                         $( document ).ready(function() {
 
-                            // $( "#btnProceedDonationCC" ).click(function() {
-                            //    alert('CC');
-                            //    return false;
-                            // });
-
                             $( "#btnProceedDonationBitcoin" ).click(function() {
-                                
-                               $('#donate input:hidden[name="redirectURL"]').val('<?php 
-
-                                $param = array(
-                                    'transaction_id'=>$transaction_id,
-                                    'type'=>PurchaseController::TYPE_DONATION,
-                                    'status'=>PurchaseController::TRANSACTION_OK
-                                );
-                                
-                                $param_json=json_encode($param);
-                                $param_b64 = base64_encode($param_json);
-
-                                echo Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&currency=[currency]&amount=[amount]');
-
-                                ?>');  
-
-                               var currency=$('#currency').find(":selected").text();
-                               var amount=(int)$('#amount').text() * 100;
-
-                               var posData=$('#donate input:hidden[name="redirectURL"]').val();
-                               posData = posData.replace("[currency]",currency);
-                               posData = posData.replace("[amount]",amount);
-
-                               $('#donate input:hidden[name="redirectURL"]').val(posData);
+                            
+                            
+                              var currency=$('#currency').val();
+                              var amount=parseFloat($('#amount').val()) * 100;
+                              $('#donate input:hidden[name="redirectURL"]').val(create_donate_url('bitcoin', currency, amount));
+                    
 
                             });
                         });
@@ -243,7 +337,7 @@
                                 $param_json=json_encode($param);
                                 $param_b64 = base64_encode($param_json);
 
-                                echo Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&currency=USD&amount=1');
+                                echo Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&currency=GBP&amount=1');
 
                                 ?>');  
 

@@ -81,6 +81,18 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'stripe' => array(
+			'class' => 'ext.yii-stripe.YiiStripe',
+			'test' => STRIPE_TEST,
+			'secret_key' => STRIPE_SK,
+			'publishable_key' => STRIPE_PK,
+	  ),
+	  'openAtrium' => array(
+			'class' => 'ext.OpenAtrium',
+			'host' => OPENATRIUM_HOST,
+			'adminLogin' => OPENATRIUM_ADMIN_LOGIN,
+			'adminPassword' => OPENATRIUM_PASSWORD,
+	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
 			'url' => REDOCTOBER_URL,

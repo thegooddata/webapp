@@ -257,6 +257,7 @@ class SiteController extends Controller {
     }
 
     public function actionIndex() {
+      
         Yii::app()->theme = 'tgd';
 
         // add js specific for this page
