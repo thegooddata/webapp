@@ -208,7 +208,8 @@ class ProfileController extends Controller
 		        $message->setBody($content,'text/html');
 
 		        $message->addTo($model->email);
-		        $message->from = Yii::app()->params['marcosEmailName'].' <'.Yii::app()->params['marcosEmail'].'>';
+		        $message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
+
 		        
 		        Yii::app()->mail->send($message);
 
