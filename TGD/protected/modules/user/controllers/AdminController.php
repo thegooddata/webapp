@@ -164,7 +164,7 @@ class AdminController extends Controller
 	                $message->subject = 'Your Membership application has been approved';
 	                $message->setBody($content,'text/html');
 	                $message->addTo($model->email);
-	                $message->from = Yii::app()->params['marcosEmailName'].' <'Yii::app()->params['marcosEmail'].'>';
+	                $message->from = Yii::app()->params['marcosEmailName'].' <'.Yii::app()->params['marcosEmail'].'>';
 	                Yii::app()->mail->send($message);
 
 				}

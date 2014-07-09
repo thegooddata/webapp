@@ -136,7 +136,7 @@ class RegistrationController extends Controller
                             $message->subject = $subject;
                             $message->setBody($content,'text/html');
                             $message->addTo(Yii::app()->params['adminEmail']);
-                            $message->from = Yii::app()->params['senderGenericEmailName'].' <'Yii::app()->params['senderGenericEmail'].'>';
+                            $message->from = Yii::app()->params['senderGenericEmailName'].' <'.Yii::app()->params['senderGenericEmail'].'>';
                             Yii::app()->mail->send($message);
 
 
