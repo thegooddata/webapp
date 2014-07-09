@@ -29,11 +29,12 @@ task :production do
 end
 
 task :staging do
-  role :web,        "main.#{domain}"
-  role :app,        "main.#{domain}"
-  role :db,         "main.#{domain}", :primary => true
+  ssh_options[:port] = 21950
+  role :web,        "lnd-app00-pre.#{domain}"
+  role :app,        "lnd-app00-pre.#{domain}"
+  role :db,         "lnd-app00-pre.#{domain}", :primary => true
 
-  set :deploy_to,   "/usr/share/nginx/webapp_pre/"
+  set :deploy_to,   "/srv/webapp/"
   set :branch, "develop"
   set :env_sufix, "pre"
 end
