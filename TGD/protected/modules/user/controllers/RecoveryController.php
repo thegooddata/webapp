@@ -84,7 +84,7 @@ class RecoveryController extends Controller
 			                $message->subject = 'Password reset on TheGoodData';
 			                $message->setBody($content,'text/html');
 			                $message->addTo($user->email);
-			                $message->from = Yii::app()->params['senderGenericEmail'];
+			                $message->from = Yii::app()->params['senderGenericEmailName'].' <'.Yii::app()->params['senderGenericEmail'].'>';
 			                Yii::app()->mail->send($message);
 			                
 							// Yii::app()->user->setFlash('recoveryMessage',UserModule::t("Please check your email. An instructions was sent to your email address."));

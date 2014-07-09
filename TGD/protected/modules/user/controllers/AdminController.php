@@ -155,7 +155,7 @@ class AdminController extends Controller
 					//SEND EMAIL
 	                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'application_approval.html');
 
-	                $content = str_replace('[FIRST_NAME]',$memberObj->firstname . ' ' .$memberObj->lastname,  $content);
+	                $content = str_replace('[FIRST_NAME]',$memberObj->firstname,  $content);
 	                
 	                $user_id_token = base64_encode($model->id);
 	                $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token),  $content);
@@ -164,7 +164,7 @@ class AdminController extends Controller
 	                $message->subject = 'Your Membership application has been approved';
 	                $message->setBody($content,'text/html');
 	                $message->addTo($model->email);
-	                $message->from = Yii::app()->params['senderPersonalEmail'];
+	                $message->from = Yii::app()->params['marcosEmailName'].' <'.Yii::app()->params['marcosEmail'].'>';
 	                Yii::app()->mail->send($message);
 
 				}
