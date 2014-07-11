@@ -4,9 +4,10 @@ $(function() {
     });
 
     $('#address_search').keydown(function (e){
-        if (e.which == 13){
-            return false;
-        }
+        console.log($('.pac-container:visible').length);
+        // if (e.which == 13 && $('.pac-container:visible').length)){
+        //     return false;
+        // }
     })
     
     var sameSize = function() {
