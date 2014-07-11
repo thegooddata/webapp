@@ -2,6 +2,12 @@ $(function() {
     $('.with-popover').popover({trigger: 'hover'}).click(function(e){
         e.preventDefault();
     });
+
+    $('#address_search').keydown(function (e){
+        if (e.which == 13){
+            return false;
+        }
+    })
     
     var sameSize = function() {
         var formHeight = $('#registration-form-block').innerHeight();
