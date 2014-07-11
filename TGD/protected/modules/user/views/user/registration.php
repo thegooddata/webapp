@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-16 col-lg-16">
                                 <label>Street name</label>
-                                <input id="autocomplete address_search" type="text" class="form-control" name="RegistrationForm[streetName]" value="<?php echo isset($registration_form['streetName']) ? $registration_form['streetName']:''; ?>">
+                                <input id="autocomplete" type="text" class="form-control address-search" name="RegistrationForm[streetName]" value="<?php echo isset($registration_form['streetName']) ? $registration_form['streetName']:''; ?>">
                             </div>
                         </div>
                         <div class="row">
