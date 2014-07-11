@@ -4,10 +4,9 @@ $(function() {
     });
 
     $('.address-search').keydown(function (e){
-        console.log($('.pac-container:visible').length);
-        // if (e.which == 13 && $('.pac-container:visible').length)){
-        //     return false;
-        // }
+        if (e.which == 13 && $('.pac-container:visible').length)){
+            return false;
+        }
     })
     
     var sameSize = function() {
