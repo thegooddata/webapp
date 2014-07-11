@@ -103,6 +103,16 @@ class RegistrationController extends Controller
                             $success="Membership application has been done successfully";
 
                             $registration_form = array();
+                            
+                            // CREATE OA USER
+                            $oa_errors=array();
+                            Yii::app()->openAtrium->createUser($username, $password, $email, $username, $oa_errors);
+                            if (count($oa_errors)) {
+                              Yii::log("Could not creat OA User", 'error');
+                              foreach ($oa_errors as $error) {
+                                Yii::log($error, 'error');
+                              }
+                            }
 
                             //SEND EMAIL
                             $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
@@ -126,7 +136,7 @@ class RegistrationController extends Controller
                             $message->subject = $subject;
                             $message->setBody($content,'text/html');
                             $message->addTo(Yii::app()->params['adminEmail']);
-                            $message->from = Yii::app()->params['senderGenericEmail'];
+                            $message->setFrom(Yii::app()->params['senderGenericEmail'], Yii::app()->params['senderGenericEmailName']);
                             Yii::app()->mail->send($message);
 
 

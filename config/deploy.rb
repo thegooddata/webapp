@@ -5,7 +5,7 @@ set :use_sudo, false
 
 set :user, "tgd"
 
-set :application, "tgd_webapp"
+set :application, "webapp"
 set :domain,      "thegooddata.org"
 
 set :repository,  "git@github.com:thegooddata/webapp.git"
@@ -18,21 +18,23 @@ before "deploy:finalize_update", "deploy:move_TGD_to_current"
 after "deploy:update_code", "deploy:rename_main_file"  
 
 task :production do
-  role :web,        "main.#{domain}"
-  role :app,        "main.#{domain}"
-  role :db,         "main.#{domain}", :primary => true
+  ssh_options[:port] = 21950
+  role :web,        "lnd-app00.#{domain}"
+  role :app,        "lnd-app00.#{domain}"
+  role :db,         "lnd-app00.#{domain}", :primary => true
 
-  set :deploy_to,   "/usr/share/nginx/webapp/"
+  set :deploy_to,   "/srv/webapp/"
   set :branch, "master"
   set :env_sufix, "prod"
 end
 
 task :staging do
-  role :web,        "main.#{domain}"
-  role :app,        "main.#{domain}"
-  role :db,         "main.#{domain}", :primary => true
+  ssh_options[:port] = 21950
+  role :web,        "lnd-app00-pre.#{domain}"
+  role :app,        "lnd-app00-pre.#{domain}"
+  role :db,         "lnd-app00-pre.#{domain}", :primary => true
 
-  set :deploy_to,   "/usr/share/nginx/webapp_pre/"
+  set :deploy_to,   "/srv/webapp/"
   set :branch, "develop"
   set :env_sufix, "pre"
 end

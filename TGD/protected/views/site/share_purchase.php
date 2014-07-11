@@ -23,7 +23,7 @@
                             that will be cancelled when you end our membership at no cost.
                         </div>
                         <div class="button">
-                            <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1p loan</button>
+                            <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                         </div>
                     </div>
                     <div class="clearfix">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div id="questions">
-                        <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq")?>">Have questions?</a>
+                        <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq")."#membership-2";?>">Have questions?</a>
                     </div>
                 </section>
             </div>

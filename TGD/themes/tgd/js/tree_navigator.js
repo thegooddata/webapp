@@ -9,12 +9,23 @@
 $(document).ready(function(){
   if(window.location.hash) {
     var hash     = window.location.hash.substring(1);
-    var question = $("#"+hash)
-    var parentId = question.closest('.tab-pane').attr('id')
-    var parent = $('.faq-index').find('a[href=#'+ parentId + ']')
+
+    var dash = hash.indexOf('-');
+    var questionNumber = false;
+    if(!(dash < 0)){
+        questionNumber = hash.substring(dash+1);
+        hash = hash.substring(0,dash);
+    }
+    
+
+    var question = $("#"+hash);
+    var questionItem = $("#"+hash+">ul>li").eq(questionNumber);
+    
+    var parentId = question.closest('.tab-pane').attr('id');
+    var parent = $('.faq-index').find('a[href=#'+ parentId + ']');
 
     parent.click();
-    question.click();
+    questionItem.click();
 
     $('html, body').animate({
         scrollTop: question.offset().top -80

@@ -210,25 +210,30 @@ class YiiMail extends CApplicationComponent
 		// $this->transport->setport(EMAIL_GENERIC_PORT);
 
 		$this->transport = Swift_SmtpTransport::newInstance();
-
-		if ($m->from[EMAIL_GENERIC_FROM] == null)
-		{
-			$this->transport->setHost(EMAIL_GENERIC_HOST);
-			$this->transport->setUsername(EMAIL_GENERIC_USERNAME);
-			$this->transport->setPassword(EMAIL_GENERIC_PASSWORD);
-			$this->transport->setPort(EMAIL_GENERIC_PORT);
-            $this->transport->setEncryption('ssl');
-
+		
+		// var_dump($m->from); die();
+		
+		// Switch email info
+		foreach ($m->from as $fromEmail => $fromName) {
+		  switch ($fromEmail) {
+		    case EMAIL_GENERIC_FROM:
+		      $this->transport->setHost(EMAIL_GENERIC_HOST);
+    			$this->transport->setUsername(EMAIL_GENERIC_USERNAME);
+    			$this->transport->setPassword(EMAIL_GENERIC_PASSWORD);
+    			$this->transport->setPort(EMAIL_GENERIC_PORT);
+          $this->transport->setEncryption('ssl');
+		      break;
+		    case EMAIL_PERSONAL_FROM:
+		      $this->transport->setHost(EMAIL_PERSONAL_HOST);
+    			$this->transport->setUsername(EMAIL_PERSONAL_USERNAME);
+    			$this->transport->setPassword(EMAIL_PERSONAL_PASSWORD);
+    			$this->transport->setPort(EMAIL_PERSONAL_PORT);
+          $this->transport->setEncryption('ssl');
+		      break;
+		  }
 		}
-		else if ($m->from[EMAIL_PERSONAL_FROM] == null)
-		{
-			$this->transport->setHost(EMAIL_PERSONAL_HOST);
-			$this->transport->setUsername(EMAIL_PERSONAL_USERNAME);
-			$this->transport->setPassword(EMAIL_PERSONAL_PASSWORD);
-			$this->transport->setPort(EMAIL_PERSONAL_PORT);
-            $this->transport->setEncryption('ssl');
 
-		}
+		
 
 		if ($this->transport===null) {
 			switch ($this->transportType) {

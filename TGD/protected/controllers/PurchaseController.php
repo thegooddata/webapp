@@ -57,6 +57,8 @@ class PurchaseController extends Controller {
     }
 
     public function actionIndex($user_token) {
+      
+        $errors=array();
 
         $this->user_token = $user_token;
         $this->user_id = base64_decode($user_token);
@@ -77,6 +79,13 @@ class PurchaseController extends Controller {
             $this->currency = $_GET['currency'];
             $this->amount = (int)$_GET['amount'] / 100;
             
+            /*
+            CVarDumper::dump($_GET, true, 10);
+            CVarDumper::dump($_POST, true, 10);
+            CVarDumper::dump($token, true, 10);
+            die();
+            */
+            
             $user = Yii::app()->db->createCommand()
                                 ->setFetchMode(PDO::FETCH_OBJ)
                                 ->select('*')
@@ -90,8 +99,27 @@ class PurchaseController extends Controller {
                                             )
                                     )
                                 ->queryAll();
+                                
+            /* if user paid with Stripe, charge the card */ 
+            if ($_GET['gateway']=='stripe') {
+              Yii::app()->stripe->charge(array(
+                  "amount" => $_GET['amount'], // amount in cents, again
+                  "currency" => $_GET['currency'],
+                  "card" => $_POST['stripeToken'],
+                  "description" => "Donation to The Good Data",
+              ));
+              if (Yii::app()->stripe->hasError()) {
+                $errors[]=Yii::app()->stripe->getError();
+              }
+            }
+            
+            if (count($errors)) {
+              $this->status=PurchaseController::TRANSACTION_ERROR;
+            }
 
-            if ($this->type == PurchaseController::TYPE_LOAN && $this->status=PurchaseController::TRANSACTION_OK)
+            // Commented the following line because it was activating users only if the type was LOAN, shouldn't it activate in all cases?
+            /*if ($this->type == PurchaseController::TYPE_LOAN && $this->status=PurchaseController::TRANSACTION_OK)*/
+            if ($this->status=PurchaseController::TRANSACTION_OK)
             {
                 //Change status
                 $userObj=User::model()->findByPk($this->user_id);
@@ -114,7 +142,8 @@ class PurchaseController extends Controller {
                 $message->subject = 'Your are now a Member of TheGoodData';
                 $message->setBody($content,'text/html');
                 $message->addTo($userObj->email);
-                $message->from = Yii::app()->params['senderGenericEmail'];
+                $message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
+
                 Yii::app()->mail->send($message);
 
 
@@ -134,14 +163,18 @@ class PurchaseController extends Controller {
                 $transaction->save();
             }
 
-            
+            if (count($errors)==0) {
+              $this->redirect(array('purchase/thanks'));
+            }
 
             $this->render('index', array(
                 'transaction_id'=>$this->transaction_id,
                 'user_token' => $this->user_token,
                 'state' => PurchaseController::RETURN_FROM_GATEWAY,
                 'status' => $this->status,
-                'user'=>$user)
+                'errors'=>$errors,
+                'user'=>$user,
+                )
             );
 
         }
@@ -179,7 +212,7 @@ class PurchaseController extends Controller {
     }
 
     public function actionThanks() {
-        $this -> render('thanks');
+        $this->render('thanks');
     }
 
 }

@@ -15,17 +15,17 @@
         <div class="col-xs-6 faq-index" style="padding-right: 0;"> <!-- required for floating -->
           <!-- Nav tabs -->
           <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
-            <li class="active"><a href="#home" data-toggle="tab">Company</a></li>
-            <li><a href="#profile" data-toggle="tab">Service</a></li>
-            <li><a href="#messages" data-toggle="tab">Membership</a></li>
-            <li><a href="#settings" data-toggle="tab">Collaborators</a></li>
+            <li class="active"><a href="#company" data-toggle="tab">Company</a></li>
+            <li><a href="#service" data-toggle="tab">Service</a></li>
+            <li><a href="#membership" data-toggle="tab">Membership</a></li>
+            <li><a href="#collaborators" data-toggle="tab">Collaborators</a></li>
           </ul>
         </div>
 
         <div class="col-xs-10 faq">
           <!-- Tab panes -->
           <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane active" id="company">
               <ul class="clearfix">
                 <li>
                   <em>What is TheGoodData Mission?</em>
@@ -59,7 +59,7 @@
                 </li>
               </ul>
             </div>
-            <div class="tab-pane" id="profile">
+            <div class="tab-pane" id="service">
               <ul class="clearfix">
                 <li>
                   <em>What is TheGoodData service</em>
@@ -155,7 +155,7 @@
                 </li>
               </ul>
             </div>
-            <div class="tab-pane" id="messages">
+            <div class="tab-pane" id="membership">
               <ul class="clearfix">
                 <li>
                   <em>What does becoming a Member of TheGoodData mean?</em>
@@ -181,7 +181,7 @@
                 </li>
               </ul>
             </div>
-            <div class="tab-pane" id="settings">
+            <div class="tab-pane" id="collaborators">
               <ul class="clearfix">
                 <li>
                   <em>How can I collaborate with TheGoodData?</em>

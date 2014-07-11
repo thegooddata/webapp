@@ -81,6 +81,18 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'stripe' => array(
+			'class' => 'ext.yii-stripe.YiiStripe',
+			'test' => STRIPE_TEST,
+			'secret_key' => STRIPE_SK,
+			'publishable_key' => STRIPE_PK,
+	  ),
+	  'openAtrium' => array(
+			'class' => 'ext.OpenAtrium',
+			'host' => OPENATRIUM_HOST,
+			'adminLogin' => OPENATRIUM_ADMIN_LOGIN,
+			'adminPassword' => OPENATRIUM_PASSWORD,
+	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
 			'url' => REDOCTOBER_URL,
@@ -169,7 +181,7 @@ return array(
 
 		'db'=>array(
 		    'tablePrefix' => 'tbl_',
-	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME,
+	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode=require;',
 		    'username'=>BD_USERNAME,
 		    'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',

@@ -81,6 +81,18 @@ return array(
 
 	// application components
 	'components'=>array(
+	  'stripe' => array(
+			'class' => 'ext.yii-stripe.YiiStripe',
+			'test' => STRIPE_TEST,
+			'secret_key' => STRIPE_SK,
+			'publishable_key' => STRIPE_PK,
+	  ),
+	  'openAtrium' => array(
+			'class' => 'ext.OpenAtrium',
+			'host' => OPENATRIUM_HOST,
+			'adminLogin' => OPENATRIUM_ADMIN_LOGIN,
+			'adminPassword' => OPENATRIUM_PASSWORD,
+	  ),
 		'redoctober' => array(
 			'class' => 'ext.redoctober',
 			'url' => REDOCTOBER_URL,
@@ -135,7 +147,7 @@ return array(
 		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
 		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
 		        
-		        array('purchase/index', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
+		        array('purchase/index', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>'),
 		        //array('purchase/response', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>/<token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
 		        
 		        //Set friendly-url
@@ -196,8 +208,13 @@ return array(
 	// application-level parameters that can be accessed
 	'params'=>array(
 		// this is used in contact page
+		'senderGenericEmailName'=>EMAIL_GENERIC_FROM_NAME,
 		'senderGenericEmail'=>EMAIL_GENERIC_FROM,
 		'senderPersonalEmail'=>EMAIL_PERSONAL_FROM,
 		'adminEmail'=>EMAIL_ADMIN,
+		'marcosEmail'=>EMAIL_MARCOS_FROM,
+		'membersEmail'=>EMAIL_MEMBERS_FROM,
+		'marcosEmailName'=>EMAIL_MARCOS_FROM_NAME,
+		'membersEmailName'=>EMAIL_MEMBERS_FROM_NAME,		
 	),
 );
