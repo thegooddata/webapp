@@ -142,7 +142,7 @@
                         </form>
                     </div>
                     <div id="bitcoin-1p">
-                        <strong>Make a 1-pence payment/strong>
+                        <strong>Make a 1-pence payment</strong>
                         Upon clicking the button below, you will be redirected to a Bitpay platform page, where you'll be able to complete the paryment process 
                         using your Bitcoin wallet application and scanning a QR code or clicking on a "Pay with Bitcoin" button.
                         <form action="https://bitpay.com/checkout" method="post" >

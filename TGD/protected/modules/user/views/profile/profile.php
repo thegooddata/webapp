@@ -54,7 +54,12 @@
             </section>
         </div>
         <div id="cancel-account" class="row">
-            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign"><img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">Resign my Membership</div>
+            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign">
+                <img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">
+                Resign my Membership
+                <div class="loaderDiv"></div>
+            </div>
+
             <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16  alert alert-success alert-dismissable pnlSuccess hidden">SUCCESS: We have sent you an email to confirm your resignation and explain the next steps to sell us back your share</div>
         </div>
     </div>
@@ -73,12 +78,20 @@
         }, 100);
 
         
-        $('.btnResign').click(function() {
-            $.get( "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>", function( result ) {
-                $('.pnlSuccess').removeClass("hidden");
-            });
+        // $('.btnResign').click(function() {
+        //     $.ajax({
+        //         url: "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>",
+        //         type: "GET",
+        //         beforeSend: function(){
+        //             $("#loaderDiv").show();
+        //         },
+        //         success: function( data ){
+        //             $("#loaderDiv").hide();
+        //             $('.pnlSuccess').removeClass("hidden");
+        //         }
+        //     });
                 
-        });
+        // });
 
         $('#change-password').click(function() {
             $('.password-form').toggle();
