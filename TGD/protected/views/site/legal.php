@@ -28,7 +28,7 @@
                     <div class="tab-content">
                         <div class="tab-pane legal" id="privacy">
                             <h1>TheGoodData Privacy and Cookie Policy</h1>
-                            <p>We are committed to protecting your privacy. Please read this Privacy and Cookie Policy carefully. It explains how we obtain, use and keep your information safe. By using this website and any Services we offer via this website, you are agreeing to be bound by this Policy in respect of the information collected about you. The Good Data Cooperative Limited is registered with the Information Commissioner's Office under registration ZA048113.</p>
+                            <p>We are committed to protecting your privacy. Please read this Privacy and Cookie Policy carefully. It explains how we obtain, use and keep your information safe. By using this website and any Services we offer via this website, you are agreeing to be bound by this Policy in respect to the information collected about you. The Good Data Cooperative Limited is registered with the Information Commissioner's Office under registration reference ZA048113.</p>
                             
                             <h2>Guidelines</h2>
                             <p>Our Privacy and Cookie Policy develops the following guidelines:</p>

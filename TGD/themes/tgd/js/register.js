@@ -2,6 +2,13 @@ $(function() {
     $('.with-popover').popover({trigger: 'hover'}).click(function(e){
         e.preventDefault();
     });
+
+    $('.address-search').keydown(function (e){
+
+        if (e.which == 13 && $('.pac-container:visible').length){
+            return false;
+        }
+    })
     
     var sameSize = function() {
         var formHeight = $('#registration-form-block').innerHeight();

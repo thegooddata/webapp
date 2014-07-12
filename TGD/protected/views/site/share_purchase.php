@@ -10,13 +10,13 @@
     <div id="tgd-page-content" class="container">
         <div class="row">
             <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
-                <section id="descriptions">
+                <section id="descriptions" class="bitcoin-1p">
                     <div>
                         <h2>Your membership application has been accepted!</h2>
                         <p>To comply with UK Industrial and Provident Society rules, you need to
                             buy one share of TheGoodData to become a full right member.</p>
                     </div>
-                    <div class="clearfix">
+                    <div class="section clearfix">
                         <div class='text'>
                             But don't worry! it doesn't mean that you need to pay us anything if you
                             don't want to! To avoid payments we made up a work-around. A 1pence loan
@@ -26,7 +26,7 @@
                             <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div class="section clearfix">
                         <div class="text">
                             Do you still want to pay us that 1 little pence?<br>
                             You can do it via Bitcoin.
@@ -35,7 +35,7 @@
                             <button class="btn share" data-toggle="bitcoin-1p">buy my share<br>with bitcoins</button>
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div class="section clearfix">
                         <div class='text'>
                             Are you a generous person that want to take the opportunity 
                             to support us with a donation? Don't be shy! We accept credit cards :)
@@ -142,7 +142,7 @@
                         </form>
                     </div>
                     <div id="bitcoin-1p">
-                        <strong>Make a 1-pence payment/strong>
+                        <strong>Make a 1-pence payment</strong>
                         Upon clicking the button below, you will be redirected to a Bitpay platform page, where you'll be able to complete the paryment process 
                         using your Bitcoin wallet application and scanning a QR code or clicking on a "Pay with Bitcoin" button.
                         <form action="https://bitpay.com/checkout" method="post" >
