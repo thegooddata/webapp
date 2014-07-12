@@ -58,7 +58,7 @@ function create_donate_url(gateway, currency, amount) {
     <div id="tgd-page-content" class="container">
         <div class="row">
             <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
-                <section id="descriptions">
+                <section id="descriptions" class='bitcoin'>
                     <div>
                         <h2>Please, support our mission!</h2>
                         <p>Are you a generous person that want to take the opportunity to support us with a donation? don't be shy! We accept credit cards and bitcoins. Every little help is apreciated.</p>
