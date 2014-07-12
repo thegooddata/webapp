@@ -25,8 +25,8 @@ $(document).ready(function(){
 
           $('#descriptions').removeClass()
                             .addClass( $dataToggle );
-          $('div.share-section').removeClass("selected");
-          $(this).closest('div.share-section').addClass("selected");
+          $('div.section').removeClass("selected");
+          $(this).closest('div.section').addClass("selected");
       }
 
   });
