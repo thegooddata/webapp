@@ -30,7 +30,6 @@ $(document).ready(function(){
           $('div.share-section').removeClass("selected");
       }
 
-
   });
 
 });
