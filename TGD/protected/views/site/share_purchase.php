@@ -10,7 +10,7 @@
     <div id="tgd-page-content" class="container">
         <div class="row">
             <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
-                <section id="descriptions" class="loan-agreement">
+                <section id="descriptions" class="bitcoin-1p">
                     <div>
                         <h2>Your membership application has been accepted!</h2>
                         <p>To comply with UK Industrial and Provident Society rules, you need to
