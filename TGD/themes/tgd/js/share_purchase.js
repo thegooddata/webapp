@@ -25,7 +25,7 @@ $(document).ready(function(){
 
           $('#descriptions').removeClass()
                             .addClass( $dataToggle );
-          console.log( $(this) );
+          console.log( $(this).closest('div.share-section') );
           $(this).closest('div.share-section').addClass("selected");
           $('div.share-section').removeClass("selected");
       }
