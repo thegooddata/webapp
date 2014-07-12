@@ -78,20 +78,15 @@
         }, 100);
 
         
-        // $('.btnResign').click(function() {
-        //     $.ajax({
-        //         url: "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>",
-        //         type: "GET",
-        //         beforeSend: function(){
-        //             $("#loaderDiv").show();
-        //         },
-        //         success: function( data ){
-        //             $("#loaderDiv").hide();
-        //             $('.pnlSuccess').removeClass("hidden");
-        //         }
-        //     });
+        $('.btnResign').click(function() {
+            $('.loaderDiv').show();
+            
+            $.get( "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>", function( result ) {
+                $('.pnlSuccess').removeClass("hidden");
+                $('.loaderDiv').hide();
+            });
                 
-        // });
+        });
 
         $('#change-password').click(function() {
             $('.password-form').toggle();
