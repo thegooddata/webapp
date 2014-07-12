@@ -79,11 +79,11 @@
 
         
         $('.btnResign').click(function() {
-            $('.loaderDiv').show();
+            $('.loaderDiv').css('display', 'inline-block');
             
             $.get( "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>", function( result ) {
-                $('.pnlSuccess').removeClass("hidden");
                 $('.loaderDiv').hide();
+                $('.pnlSuccess').removeClass("hidden");
             });
                 
         });
