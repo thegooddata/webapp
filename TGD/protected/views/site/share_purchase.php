@@ -16,7 +16,7 @@
                         <p>To comply with UK Industrial and Provident Society rules, you need to
                             buy one share of TheGoodData to become a full right member.</p>
                     </div>
-                    <div class="clearfix">
+                    <div class="share-section clearfix">
                         <div class='text'>
                             But don't worry! it doesn't mean that you need to pay us anything if you
                             don't want to! To avoid payments we made up a work-around. A 1pence loan
@@ -26,7 +26,7 @@
                             <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div class="share-section clearfix">
                         <div class="text">
                             Do you still want to pay us that 1 little pence?<br>
                             You can do it via Bitcoin.
@@ -35,7 +35,7 @@
                             <button class="btn share" data-toggle="bitcoin-1p">buy my share<br>with bitcoins</button>
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div class="share-section clearfix">
                         <div class='text'>
                             Are you a generous person that want to take the opportunity 
                             to support us with a donation? Don't be shy! We accept credit cards :)

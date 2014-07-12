@@ -17,16 +17,20 @@ $(document).ready(function(){
            $parent     = $target.parent();
            $dataToggle = $(this).data('toggle');
 
-      console.log($target);
       if (!$target.is(':visible')) {
           // hide the rest
           $parent.children().not(targetId).hide();
           // show the target
           $target.show();
-          // console.log $dataToggle
+
           $('#descriptions').removeClass()
                             .addClass( $dataToggle );
+          console.log $(this);
+          $(this).closest('div.share-section').addClass("selected");
+          $('div.share-section').removeClass("selected");
       }
+
+
   });
 
 });
