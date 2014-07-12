@@ -1608,34 +1608,34 @@
                             <p>Latest revision &ndash; May 2014 </p>
                         </div>
                         <div class="tab-pane legal" id="principles">
-                            <h1>Principles of TheGoodData Cooperative Limited</h1>
+                            <h1>Principles of <br>TheGoodData Cooperative Limited</h1>
                             <div class="row">
                                 <div class="title">Data Ownership</div>
-                                <div class="description">People are the only owners of the data they produce. That means that they must be aware of its existence, that they can freely decide who should have access to it, and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and meaningful way. </div>
+                                <div class="description"><strong>People are the only owners of the data they produce</strong>. This means that they must be aware of its existence, that they can freely decide who should have access to it and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and understandable way.</div>
                             </div>
                             <div class="row">
                                 <div class="title">Optimism</div>
-                                <div class="description">By ensuring Data ownership, Customers will be happier. They will gain freedom of choice, a more balanced position when dealing with Corporations, and a higher value in exchange of the Data they decide to share, if any. Data can be Good for Customers.</div>
+                                <div class="description"><strong>By ensuring Data ownership, Customers will be happier</strong>. Customers will gain freedom of choice, a more balanced position when dealing with corporations, and a higher value in exchange for the data they decide to share, if any. Data can therefore be Good for Customers.</div>
                             </div>
                             <div class="row">
                                 <div class="title">Collaboration</div>
-                                <div class="description">Collaboration among customers is the only way to fully achieve Data ownership since Corporations and Administrations have many times colliding interests. TheGoodData is an expression of this collaboration. </div>
+                                <div class="description"><strong>Collaboration among customers is the only way to fully achieve data ownership</strong> since Corporations and Administrations have many competing interests. TheGoodData is an expression of this collaboration. </div>
                             </div>
                             <div class="row">
                                 <div class="title">Openness</div>
-                                <div class="description">Openness facilitates collaboration of both Customers and Coders, and therefore the development of more and better products. TheGoodData will make its best effort to ensure that all its actions, decisions and assets are visible and open for participation.</div>
+                                <div class="description"><strong>Openness facilitates collaboration of both Customers and Coders</strong>, and therefore the development of more and better products. TheGoodData will to the best of its ability ensure that all its actions, decisions and assets are transparent and open to participation.</div>
                             </div>
                             <div class="row">
                                 <div class="title">Individual choice</div>
-                                <div class="description">While being a collaborative initiative it's always upon the Customerto decide what to do as an individual with its own data. Individuals should therefore be always entitled to cease all relationship with TGD,export the data created and eliminate it from TheGoodData databases.</div>
+                                <div class="description">While being a collaborative initiative <strong>it's always upon the Customer to decide what to do as an individual with his/her own data</strong>. Individuals should therefore always be entitled to cease all relations with TheGoodData,export the data that they have created and eliminate it from TheGoodData databases.</div>
                             </div>
                             <div class="row">
                                 <div class="title">Protection</div>
-                                <div class="description">Data ownership can only be assured with full Data protection. TheGoodData will always implement most robust legal and technical measures to ensure anonymity and avoid unwanted access to data by individuals, Corporations and Administration. TheGoodData expectsthat its Users and Members are diligent as well in this regard. </div>
+                                <div class="description"><strong>Data ownership can only be assured with full Data protection</strong>. TheGoodData will always implement most robust legal and technical measures to ensure anonymity and avoid unwanted access to data by unauthorised individuals, corporations and administrations. TheGoodData also expects that its Users and Members to be diligent in this regard. </div>
                             </div>
                             <div class="row">
                                 <div class="title">Social Good</div>
-                                <div class="description">TheGoodData believes that its Mission can be achieved while doing some Good for the Society. Thus, it will always take intoconsideration the social impact of its actions.</div>
+                                <div class="description"><strong>TheGoodData believes that its Mission can be achieved while at the same time contributing positively to sociey</strong>. Thus, it will always take into consideration the social impact of its actions.</div>
                             </div>
                         </div>
                     </div>
