@@ -17,7 +17,6 @@ $(document).ready(function(){
            $parent     = $target.parent();
            $dataToggle = $(this).data('toggle');
 
-      console.log($target);
       if (!$target.is(':visible')) {
           // hide the rest
           $parent.children().not(targetId).hide();
@@ -27,6 +26,10 @@ $(document).ready(function(){
           $('#descriptions').removeClass()
                             .addClass( $dataToggle );
       }
+
+      $(this).closest('div.share-section').addClass("selected");
+      $('div.share-section').removeClass("selected");
+
   });
 
 });
