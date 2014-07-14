@@ -263,7 +263,7 @@
                             <a id="wordpress" href="//blog.thegooddata.org"></a>
                         </li>
                         <li>
-                            <a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a>
+                            <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
                         </li>
                         <li class="last">
                             <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
