@@ -22,6 +22,9 @@ class RegistrationController extends Controller
 	 */
 	public function actionRegistration() {
 
+        echo Yii::app()->params['senderGenericEmail'].'-'. Yii::app()->params['senderGenericEmailName'];
+        exit();
+        
         Yii::app()->theme = 'tgd';
         $this->layout = '//layouts/blank';
 
@@ -116,6 +119,9 @@ class RegistrationController extends Controller
 
                             //SEND EMAIL
                             $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
+                            $bd = new DateTime($pii->monthbirthday.'/'.$pii->daybirthday.'/'.$pii->yearbirthday);
+                            $now = new DateTime();
+                            $age = $bd->diff($now)->y;
 
                             $content = str_replace('[NAME]',$pii->firstname,      $content);
                             $content = str_replace('[SURNAME]',$pii->lastname, $content);
@@ -125,7 +131,8 @@ class RegistrationController extends Controller
                             $content = str_replace('[STATE]',$pii->statecounty, $content);
                             $content = str_replace('[ZIP]',$pii->postcode, $content);
                             $content = str_replace('[COUNTRY]',$pii->country, $content);
-                            $content = str_replace('[BIRTH_DATE]',$pii->monthbirthday.'/'.$pii->daybirthday.'/'.$pii->yearbirthday,       $content);
+                            $content = str_replace('[BIRTH_DATE]', $bd->format('Y-m-d'), $content);
+                            $content = str_replace('[AGE]', $age, $content);
                             $content = str_replace('[USER_CREATED]',date('Y-m-d H:i:s'), $content);
 
                             $subject = '[NAME] [SURNAME] has applied for Membership';
@@ -135,12 +142,10 @@ class RegistrationController extends Controller
                             $message = new YiiMailMessage;
                             $message->subject = $subject;
                             $message->setBody($content,'text/html');
-                            $message->addTo(Yii::app()->params['adminEmail']);
+                            $message->setTo(array(Yii::app()->params['adminEmail'], 'juan.menendez.buitrago@gmail.com'));
+                            //$message->addTo(Yii::app()->params['adminEmail']);
                             $message->setFrom(Yii::app()->params['senderGenericEmail'], Yii::app()->params['senderGenericEmailName']);
                             Yii::app()->mail->send($message);
-
-
-
                         }
                         else
                         {
