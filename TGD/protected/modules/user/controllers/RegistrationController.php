@@ -22,8 +22,6 @@ class RegistrationController extends Controller
 	 */
 	public function actionRegistration() {
 
-        echo Yii::app()->params['senderGenericEmail'].'-'. Yii::app()->params['senderGenericEmailName'];
-        exit();
         
         Yii::app()->theme = 'tgd';
         $this->layout = '//layouts/blank';
@@ -119,7 +117,7 @@ class RegistrationController extends Controller
 
                             //SEND EMAIL
                             $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
-                            $bd = new DateTime($pii->monthbirthday.'/'.$pii->daybirthday.'/'.$pii->yearbirthday);
+                            $bd = new DateTime($pii->yearbirthday.'/'.$pii->monthbirthday.'/'.$pii->daybirthday);
                             $now = new DateTime();
                             $age = $bd->diff($now)->y;
 
@@ -144,7 +142,7 @@ class RegistrationController extends Controller
                             $message->setBody($content,'text/html');
                             $message->setTo(array(Yii::app()->params['adminEmail'], 'juan.menendez.buitrago@gmail.com'));
                             //$message->addTo(Yii::app()->params['adminEmail']);
-                            $message->setFrom(Yii::app()->params['senderGenericEmail'], Yii::app()->params['senderGenericEmailName']);
+                            $message->setFrom(array(Yii::app()->params['senderGenericEmail'] => Yii::app()->params['senderGenericEmailName']));
                             Yii::app()->mail->send($message);
                         }
                         else
