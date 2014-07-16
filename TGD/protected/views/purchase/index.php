@@ -69,7 +69,7 @@ function create_donate_url(gateway, currency, amount) {
                         that will be cancelled when you end our membership at no cost.
                     </div>
                     <div class="button">
-                        <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan (1.7 US cents)</button>
+                        <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                     </div>
                 </div>
                 <div class="clearfix">
