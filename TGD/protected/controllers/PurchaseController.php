@@ -101,7 +101,7 @@ class PurchaseController extends Controller {
                                 ->queryAll();
                                 
             /* if user paid with Stripe, charge the card */ 
-            if ($_GET['gateway']=='stripe') {
+            if (isset($_GET['gateway']) && $_GET['gateway']=='stripe') {
               Yii::app()->stripe->charge(array(
                   "amount" => $_GET['amount'], // amount in cents, again
                   "currency" => $_GET['currency'],
