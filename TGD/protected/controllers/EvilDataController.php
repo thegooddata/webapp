@@ -188,6 +188,7 @@ class EvilDataController extends Controller {
             }
 
             $tmp = array();
+            $tmp['name'] = $adtrack->name;
             $tmp['value'] = $adtrack->count;
             $tmp['color'] = $color;
 
