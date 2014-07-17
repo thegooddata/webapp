@@ -264,6 +264,14 @@ class EvilDataController extends Controller {
 
         $result['risk_ratio_you'] = number_format($adtracks[0]->risk);
 
+        if ($result['risk_ratio_you'] > 75) {
+            $result['risk_level'] = 'high';
+        } else if ($result['risk_ratio_you'] > 25) {
+            $result['risk_level'] = 'medium';
+        } else {
+            $result['risk_level'] = 'low';
+        }
+
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("_getRiskRatioTotal () as risk")
@@ -271,6 +279,10 @@ class EvilDataController extends Controller {
                 ->queryAll();
 
         $result['risk_ratio_average'] = number_format($adtracks[0]->risk);
+
+
+
+        $result['percentile'] = number_format($adtracks[0]->risk);
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
