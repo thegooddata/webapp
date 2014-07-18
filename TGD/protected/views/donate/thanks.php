@@ -12,9 +12,9 @@
         <div class="row">
             <div class="col-sm-offset-1 col-sm-14 tgd-no-horizontal-padding">
                 <div>
-                    <h1>Thanks for supporting TheGoodData!</h1>
+                    <h2>Thanks for supporting TheGoodData!</h2>
                     <p>Your payment has been processed successfully.</p>
-                    <h2>You can also support us in other ways</h2>
+                    <h3>You can also support us in other ways</h3>
                     <ul>
                         <li>Install TheGoodData extension</li>
                         <li>Tell your family, friends, and colleagues about TheGoodData by email, facebook, twitter or google plus</li>
