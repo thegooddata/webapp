@@ -100,37 +100,11 @@
                                 </p>
                             </li>
                         </ol>
+
                         Signed by borrower_name
                         <br>
                         <br>
-                        <?php $date=new DateTime(); echo $date->format('jS F Y'); ?>
-                        <br>
-                        <br>
-
-
-
-                        <button id="btnProceed1pLoan" type="submit" class="btn btn-primary">Proceed</button>
-
-                        <script>
-                        $( document ).ready(function() {
-                            $( "#btnProceed1pLoan" ).click(function() {
-                                window.location.href = "<?php 
-
-                                $param = array(
-                                    'transaction_id'=>$transaction_id,
-                                    'type'=>PurchaseController::TYPE_LOAN,
-                                    'status'=>PurchaseController::TRANSACTION_OK
-                                );
-                                
-                                $param_json=json_encode($param);
-                                $param_b64 = base64_encode($param_json);
-
-                                echo Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&currency=USD&amount=1');
-
-                                ?>";
-                            });
-                        });
-                        </script>
+                        December 19th, 2013
                     </div>
                     <div id="donation">
                         <strong>Please choose a payment method</strong>
