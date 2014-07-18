@@ -100,7 +100,7 @@
                                 </p>
                             </li>
                         </ol>
-                        Signed by <?php echo $user[0]->firstname; ?> <?php echo $user[0]->lastname; ?>
+                        Signed by borrower_name
                         <br>
                         <br>
                         <?php $date=new DateTime(); echo $date->format('jS F Y'); ?>
