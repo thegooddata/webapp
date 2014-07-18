@@ -10,11 +10,11 @@
     <div class="container">
         <div class="row">
             <?php if ($success != "") { ?>   
-                <p class="alert alert-success">SUCCESS : <?php echo $success; ?>
+                <p class="alert alert-success"><?php echo $success; ?>
             <?php } ?>
 
             <?php if ($error != "") { ?>   
-                <p class="alert alert-danger">ERROR : <?php echo $error; ?>
+                <p class="alert alert-danger"><?php echo $error; ?>
             <?php } ?>
             <section id="form" class="col-sm-16 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
                 <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile/profile"); ?>" method="POST">
