@@ -71,7 +71,7 @@ function create_donate_url(gateway, currency, amount) {
                             <button class="btn credit-card" data-toggle="credit-card">Donate with<br> credit card</button>
                         </div>
                     </div>
-                    <div class="section clearfix">
+                    <div class="section clearfix selected">
                         <div class="text">
                             We accept bitcoins as well. Click on this button if this
                             method is more of your liking.

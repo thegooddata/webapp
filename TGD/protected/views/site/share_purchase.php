@@ -26,7 +26,7 @@
                             <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                         </div>
                     </div>
-                    <div class="section clearfix">
+                    <div class="section clearfix selected">
                         <div class="text">
                             Do you still want to pay us that 1 little pence?<br>
                             You can do it via Bitcoin.
