@@ -126,7 +126,7 @@
 
                                 array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
 
-                                array('label'=>'GET YOUR SHARE', 'url'=>array('/share'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'GET YOUR SHARE', 'url'=>array('site/purchase'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest),
