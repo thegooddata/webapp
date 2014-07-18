@@ -14,7 +14,7 @@ $this->breadcrumbs=array(
 
 							<?php if ($success != "") { ?> 
 							<div class="clearfix">
-							    <div class="col-sm-7 alert alert-success">SUCCESS : <?php echo $success; ?></div>
+							    <div class="col-sm-7 alert alert-success"><?php echo $success; ?></div>
 							</div>  
 							<?php } ?>
 
