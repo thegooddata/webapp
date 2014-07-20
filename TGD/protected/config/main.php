@@ -10,18 +10,7 @@ return array(
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-		'application.modules.user.models.*',
-        'application.modules.user.components.*',
-
-        'ext.yii-mail.YiiMailMessage',
-        'ext.giix-components.*',
-
-        'ext.Mailchimp.*',
-        'ext.CSVExport',
-	),
+	'import'=>require(dirname(__FILE__).'/common.import.php'),
 
 	'theme'=>'tgd',
 
