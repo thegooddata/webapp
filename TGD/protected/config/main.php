@@ -60,7 +60,7 @@ return array(
             'loginUrl' => array('/user/login'),
 
             # page after login
-            'returnUrl' => array('/userData/index'),
+            'returnUrl' => array('/site/purchase'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),

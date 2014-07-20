@@ -134,7 +134,7 @@
                             <div class="col-md-4 col-lg-4"><div class="square you mid-risk">You</div></div>
                             <div class="col-md-4 col-lg-4"><span class="amount risk you">0</span><span class="subtext">Threats per page visited</span></div>
                             <div class="col-md-4 col-lg-4"><span class="amount ratio you">0</span><span class="subtext">Percentage of threats allowed</span></div>
-                            <div class="col-md-4 col-lg-4 risk-meter mid-risk">Risk Lover</div>
+                            <div class="col-md-4 col-lg-4 risk-meter">Risk Lover</div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/></div></div>
@@ -264,8 +264,20 @@
             
             $.get( "<?php echo Yii::app()->createUrl('evilData/RiskRatios')?>", function( result ) {
 
+                var risk_class = 'high-risk';
+
                $('#risk-profile .amount.risk.you').html(result.risk_you);
-               // $('#risk-profile .risk-meter');
+
+               switch (result.risk_level){
+                    case 'low':
+                        risk_class = 'low-risk';
+                    break;
+                    case 'medium':
+                        risk_class = 'mid-risk';
+                    break;
+               }
+
+               $('#risk-profile .risk-meter').addClass(risk_class);
                $('#risk-profile .amount.risk.average').html(result.risk_average);
 
                $('#risk-profile .amount.ratio.you').html(result.risk_ratio_you+"%");

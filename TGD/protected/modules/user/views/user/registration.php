@@ -26,11 +26,11 @@
                         You may be required later to send proof of ID.</p>
 
 <?php if ($success != "") { ?>   
-    <div class="alert alert-success">SUCCESS : <?php echo $success; ?></div>
+    <div class="alert alert-success"><?php echo $success; ?></div>
 <?php } ?>
 
 <?php if ($error != "") { ?>   
-    <div class="alert alert-danger">ERROR : <?php echo $error; ?></div>
+    <div class="alert alert-danger"><?php echo $error; ?></div>
 <?php } ?>
 
 

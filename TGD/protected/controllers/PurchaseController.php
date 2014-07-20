@@ -21,6 +21,7 @@ class PurchaseController extends Controller {
     public $amount='';
 
     public $bodyId = 'tgd-user-data';
+    public $displayMenu = true;
 
     public function init() {
         Yii::app()->theme = 'tgd';
