@@ -179,18 +179,23 @@ class EvilDataController extends Controller {
 
             if ($adtrack->name == 'Advertising') {
                 $color = '#8ac6ea';
+                $light_color = '#cbe6f6';
             } else if ($adtrack->name == 'Analytics') {
                 $color = '#72bc81';
+                $light_color = '#a6d5af';
             } else if ($adtrack->name == 'Others') {
                 $color = '#fcc34a';
+                $light_color = '#fddc95';
             } else if ($adtrack->name == 'Social') {
                 $color = '#ea6654';
+                $light_color = '#f2a398';
             }
 
             $tmp = array();
-            $tmp['name'] = $adtrack->name;
+            //$tmp['name'] = $adtrack->name;
             $tmp['value'] = $adtrack->count;
             $tmp['color'] = $color;
+            $tmp['highlight'] = $light_color;
 
             $result[] = $tmp;
         }
@@ -375,10 +380,12 @@ class EvilDataController extends Controller {
         $week_end = date('Y-m-d', strtotime('+' . (6 - $day) . ' days'));
 
         $data = $this->_getThreatsDatePerDay($member_id, $week_start, $week_end);
-
-        $result = array();
+        $data = array(10,20,40,20,50,80,10);
+        
         $result['data'] = $data;
         $result['total'] = array_sum($data);
+        $result['first_day'] = date('l', strtotime($week_start));
+        $result['last_day'] = date('l', strtotime($week_end));
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)

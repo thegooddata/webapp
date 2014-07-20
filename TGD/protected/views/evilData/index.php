@@ -30,8 +30,8 @@
                                 </div>
                                 <div class="legend">
                                     <ul>
-                                        <li>Monday</li>
-                                        <li>Sunday</li>
+                                        <li class="first_day"></li>
+                                        <li class="last_day"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -49,8 +49,8 @@
                                 </div>
                                 <div class="legend">
                                     <ul>
-                                        <li class="first_day">April 12</li>
-                                        <li class="last_day">May 11</li>
+                                        <li class="first_day"></li>
+                                        <li class="last_day"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.js"></script>
         <script>
 
             // Bar chart
@@ -196,16 +196,22 @@
                             data: result.data
                         }
                     ]
-                };
+                },
+                    topBottom = 'Top';
 
                 $('#last-week .amount.adtracks').html(result.total);
 
-                $('#last-week .amount.small.top').html('Top ' + result.percentile + '%');
+                if (result.percentile > 50) {
+                    result.percentile = 100 - result.percentile;
+                    topBottom = 'Bottom';
+                }
+
+                $('#last-week .amount.small.top').html(topBottom + ' ' + result.percentile + '%');
+                $('#last-week .last_day').html(result.last_day);
+                $('#last-week .first_day').html(result.first_day);
                 
                 var chartThreatsWeekCtx = $("#chart-threats-week").get(0).getContext("2d");
-                var chartThreatsWeek = new Chart(chartThreatsWeekCtx).Bar(dataThreatsWeek, optionsThreats);
-
-                
+                var chartThreatsWeek = new Chart(chartThreatsWeekCtx).Bar(dataThreatsWeek, optionsThreats);              
 
             }, "json" );
 
@@ -221,16 +227,21 @@
                             data: result.data
                         }
                     ]
-                };
-
+                },
+                    topBottom = 'Top';
+                    
                 $('#last-month .amount.adtracks').html(result.total);
 
                 $('#last-month .first_day').html(result.first_day);
                 $('#last-month .last_day').html(result.last_day);
 
-                $('#last-month .amount.small.top').html('Top ' + result.percentile + '%');
-                
+                if (result.percentile > 50) {
+                    result.percentile = 100 - result.percentile;
+                    topBottom = 'Bottom';
+                }
 
+                $('#last-month .amount.small.top').html(topBottom + ' ' + result.percentile + '%');
+                
                 var chartThreatsMonthCtx = $("#chart-threats-month").get(0).getContext("2d");
                 var chartThreatsMonth = new Chart(chartThreatsMonthCtx).Bar(dataThreatsMonth, optionsThreats);
 
@@ -248,14 +259,21 @@
                             data: result.data
                         }
                     ]
-                };
-
+                },
+                    topBottom = 'Top';
+            
                 $('#last-year .amount.adtracks').html(result.total);
 
-                $('#last-year .first_day').html(result.first_day);
                 $('#last-year .last_day').html(result.last_day);
+                $('#last-year .first_day').html(result.first_day);
 
-                $('#last-year .amount.small.top').html('Top ' + result.percentile + '%');
+                if (result.percentile > 50) {
+                    result.percentile = 100 - result.percentile;
+                    topBottom = 'Bottom';
+                }
+
+                $('#last-year .amount.small.top').html(topBottom + ' ' + result.percentile + '%');
+                //$('#last-year .legend li').eq(0).html(months[oneYearAgoMonth] + ' ' + oneYearAgoYear);
                 
                 var chartThreatsYearCtx = $("#chart-threats-year").get(0).getContext("2d");
                 var chartThreatsYear = new Chart(chartThreatsYearCtx).Bar(dataThreatsYear, optionsThreats);
@@ -286,13 +304,6 @@
                 
             }, "json" );
 
-            
-            
-
-
-            
-            
-
             // Donught charts
 
             canvasTarget = $('#mix-threats .chart');
@@ -307,15 +318,34 @@
             $('#chart-tgd').attr('width', canvasSide).attr('height', canvasSide).css("marginLeft", (gap / 2) + "px");
 
             $.get( "<?php echo Yii::app()->createUrl('evilData/AdtracksRatios')?>", function( result ) {
+                var options = {tooltipTemplate: "<%if (label){%><%=label%><%}%>",};
 
-                var dataYou =result.adtracks_you;
-                var dataTGD = result.adtracks_average;
+                
+                var dataYou =result.adtracks_you,
+                    totalYou = 0;
+                for(index in dataYou){
+                    totalYou += Number(dataYou[index].value);
+                }
+                for(index in dataYou){
+                    dataYou[index].value = Number(dataYou[index].value);
+                    dataYou[index].label = (dataYou[index].value * 100 /totalYou).toFixed(1) + "%";
+                }
+
+                var dataTGD = result.adtracks_average,
+                totalAverage = 0;
+                for(index in dataTGD){
+                    totalAverage += Number(dataTGD[index].value);
+                }
+                for(index in dataTGD){
+                    dataTGD[index].value = Number(dataTGD[index].value);
+                    dataTGD[index].label = (dataTGD[index].value * 100 /totalAverage).toFixed(1) + "%";
+                }
 
                 //Get context with jQuery - using jQuery's .get() method.
                 var chartYouCtx = $("#chart-you").get(0).getContext("2d");
                 var chartTGDCtx = $("#chart-tgd").get(0).getContext("2d");
-                var chartYou = new Chart(chartYouCtx).Doughnut(dataYou);
-                var chartTGD = new Chart(chartTGDCtx).Doughnut(dataTGD);
+                var chartYou = new Chart(chartYouCtx).Doughnut(dataYou, options);
+                var chartTGD = new Chart(chartTGDCtx).Doughnut(dataTGD, options);
 
                 
             }, "json" );
