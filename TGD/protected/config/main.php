@@ -10,18 +10,7 @@ return array(
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-		'application.modules.user.models.*',
-        'application.modules.user.components.*',
-
-        'ext.yii-mail.YiiMailMessage',
-        'ext.giix-components.*',
-
-        'ext.Mailchimp.*',
-        'ext.CSVExport',
-	),
+	'import'=>require(dirname(__FILE__).'/common.import.php'),
 
 	'theme'=>'tgd',
 
@@ -71,7 +60,7 @@ return array(
             'loginUrl' => array('/user/login'),
 
             # page after login
-            'returnUrl' => array('/purchase'),
+            'returnUrl' => array('/site/purchase'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
