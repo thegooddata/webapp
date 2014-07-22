@@ -152,7 +152,7 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/Chart.min.js"></script>
         <script>
 
             // Bar chart
@@ -180,6 +180,8 @@
                 scaleShowLabels: false,
                 scaleShowGridLines: false,
                 barShowStroke: false,
+                barValueSpacing : 1,
+                tooltipCaretSize: 0,
                 scaleLineColor: "rgba(0,0,0,0)",
                 scaleGridLineColor: "rgba(0,0,0,0)"
 
@@ -318,7 +320,7 @@
             $('#chart-tgd').attr('width', canvasSide).attr('height', canvasSide).css("marginLeft", (gap / 2) + "px");
 
             $.get( "<?php echo Yii::app()->createUrl('evilData/AdtracksRatios')?>", function( result ) {
-                var options = {tooltipTemplate: "<%if (label){%><%=label%><%}%>",};
+                var options = {tooltipTemplate: "<%if (label){%><%=label%><%}%>", tooltipCaretSize: 0,};
 
                 
                 var dataYou =result.adtracks_you,
