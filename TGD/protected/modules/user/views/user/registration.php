@@ -26,11 +26,11 @@
                         You may be required later to send proof of ID.</p>
 
 <?php if ($success != "") { ?>   
-    <div class="alert alert-success">SUCCESS : <?php echo $success; ?></div>
+    <div class="alert alert-success"><?php echo $success; ?></div>
 <?php } ?>
 
 <?php if ($error != "") { ?>   
-    <div class="alert alert-danger">ERROR : <?php echo $error; ?></div>
+    <div class="alert alert-danger"><?php echo $error; ?></div>
 <?php } ?>
 
 
@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="form-group col-sm-16 col-md-16 col-lg-16">
                                 <label>Street name</label>
-                                <input id="autocomplete" type="text" class="form-control" name="RegistrationForm[streetName]" value="<?php echo isset($registration_form['streetName']) ? $registration_form['streetName']:''; ?>">
+                                <input id="autocomplete" type="text" class="form-control address-search" name="RegistrationForm[streetName]" value="<?php echo isset($registration_form['streetName']) ? $registration_form['streetName']:''; ?>">
                             </div>
                         </div>
                         <div class="row">

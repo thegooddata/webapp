@@ -159,7 +159,7 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
-.tgd-button(@color: #EA6654, @radius: 25px, @hPadding: 32px, @vPadding: 14px){
+.tgd-button(@color: #EA6654, @radius: 25px, @hPadding: 32px, @vPadding: 14px, @vbPadding: 10px){
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: table;
@@ -173,7 +173,7 @@
   background-color: @color;
   box-shadow: 0 2px 0 darken(@color, 10%), 0 3px 3px #b8ccd8;
 
-  padding: @vPadding @hPadding;  
+  padding: @vPadding @hPadding @vbPadding;  
   &:hover{
     background-color: lighten(saturate(@color,10%),5%);
   }

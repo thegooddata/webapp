@@ -21,6 +21,7 @@ class PurchaseController extends Controller {
     public $amount='';
 
     public $bodyId = 'tgd-user-data';
+    public $displayMenu = true;
 
     public function init() {
         Yii::app()->theme = 'tgd';
@@ -101,7 +102,7 @@ class PurchaseController extends Controller {
                                 ->queryAll();
                                 
             /* if user paid with Stripe, charge the card */ 
-            if ($_GET['gateway']=='stripe') {
+            if (isset($_GET['gateway']) && $_GET['gateway']=='stripe') {
               Yii::app()->stripe->charge(array(
                   "amount" => $_GET['amount'], // amount in cents, again
                   "currency" => $_GET['currency'],
@@ -142,7 +143,8 @@ class PurchaseController extends Controller {
                 $message->subject = 'Your are now a Member of TheGoodData';
                 $message->setBody($content,'text/html');
                 $message->addTo($userObj->email);
-                $message->from = Yii::app()->params['senderGenericEmail'];
+                $message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
+
                 Yii::app()->mail->send($message);
 
 

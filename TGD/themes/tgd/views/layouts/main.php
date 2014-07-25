@@ -126,12 +126,10 @@
 
                                 array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
 
+                                array('label'=>'GET YOUR SHARE', 'url'=>array('site/purchase'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest),
-
-                                array('label'=>'PURCHASE SHARES', 'url'=>array('/user/purchase/'.$user_id_token), 'visible'=>$user!=null? $user->status == User::STATUS_PRE_ACCEPTED: false),
-
                                 
                                 /*
                                 array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout"), 'visible'=>!Yii::app()->user->isGuest),
@@ -263,7 +261,7 @@
                             <a id="wordpress" href="//blog.thegooddata.org"></a>
                         </li>
                         <li>
-                            <a id="reddit" href="http://www.reddit.com/user/thegooddata" class="exclude"></a>
+                            <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
                         </li>
                         <li class="last">
                             <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>

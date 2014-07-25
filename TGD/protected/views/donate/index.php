@@ -58,12 +58,12 @@ function create_donate_url(gateway, currency, amount) {
     <div id="tgd-page-content" class="container">
         <div class="row">
             <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
-                <section id="descriptions">
+                <section id="descriptions" class='bitcoin'>
                     <div>
                         <h2>Please, support our mission!</h2>
                         <p>Are you a generous person that want to take the opportunity to support us with a donation? don't be shy! We accept credit cards and bitcoins. Every little help is apreciated.</p>
                     </div>
-                    <div class="clearfix">
+                    <div class="section clearfix">
                         <div class='text'>
                             Click on this button if you wish to pay via credit card.
                         </div>
@@ -71,7 +71,7 @@ function create_donate_url(gateway, currency, amount) {
                             <button class="btn credit-card" data-toggle="credit-card">Donate with<br> credit card</button>
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div class="section clearfix selected">
                         <div class="text">
                             We accept bitcoins as well. Click on this button if this
                             method is more of your liking.
@@ -88,19 +88,6 @@ function create_donate_url(gateway, currency, amount) {
                         <strong>Choose a fair amount</strong>
                         Thanks for taking this generous decision. Use the form fields bellow
                         to specify a fair amount and the currency in which you wish to make the donation.
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         
                         
                         <form id="donate_stripe_form" action="" method="post">
@@ -179,29 +166,6 @@ function create_donate_url(gateway, currency, amount) {
 
                             
                         </form>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         
                     </div>
                     <div id="bitcoin">

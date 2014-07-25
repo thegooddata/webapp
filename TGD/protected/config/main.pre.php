@@ -71,7 +71,7 @@ return array(
             'loginUrl' => array('/user/login'),
 
             # page after login
-            'returnUrl' => array('/userData/index'),
+            'returnUrl' => array('/site/purchase'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
@@ -205,8 +205,13 @@ return array(
 	// application-level parameters that can be accessed
 	'params'=>array(
 		// this is used in contact page
+		'senderGenericEmailName'=>EMAIL_GENERIC_FROM_NAME,
 		'senderGenericEmail'=>EMAIL_GENERIC_FROM,
 		'senderPersonalEmail'=>EMAIL_PERSONAL_FROM,
 		'adminEmail'=>EMAIL_ADMIN,
+		'marcosEmail'=>EMAIL_MARCOS_FROM,
+		'membersEmail'=>EMAIL_MEMBERS_FROM,
+		'marcosEmailName'=>EMAIL_MARCOS_FROM_NAME,
+		'membersEmailName'=>EMAIL_MEMBERS_FROM_NAME,		
 	),
 );

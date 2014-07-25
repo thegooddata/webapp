@@ -10,18 +10,7 @@ return array(
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-		'application.modules.user.models.*',
-        'application.modules.user.components.*',
-
-        'ext.yii-mail.YiiMailMessage',
-        'ext.giix-components.*',
-
-        'ext.Mailchimp.*',
-        'ext.CSVExport',
-	),
+	'import'=>require(dirname(__FILE__).'/common.import.php'),
 
 	'theme'=>'tgd',
 
@@ -71,7 +60,7 @@ return array(
             'loginUrl' => array('/user/login'),
 
             # page after login
-            'returnUrl' => array('/userData/index'),
+            'returnUrl' => array('/site/purchase'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
@@ -208,8 +197,13 @@ return array(
 	// application-level parameters that can be accessed
 	'params'=>array(
 		// this is used in contact page
+		'senderGenericEmailName'=>EMAIL_GENERIC_FROM_NAME,
 		'senderGenericEmail'=>EMAIL_GENERIC_FROM,
 		'senderPersonalEmail'=>EMAIL_PERSONAL_FROM,
 		'adminEmail'=>EMAIL_ADMIN,
+		'marcosEmail'=>EMAIL_MARCOS_FROM,
+		'membersEmail'=>EMAIL_MEMBERS_FROM,
+		'marcosEmailName'=>EMAIL_MARCOS_FROM_NAME,
+		'membersEmailName'=>EMAIL_MEMBERS_FROM_NAME,		
 	),
 );

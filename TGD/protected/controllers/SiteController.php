@@ -240,9 +240,6 @@ class SiteController extends Controller {
         // set title
         $this->pageTitle = " - Share Purchase";
 
-        // dont display menu
-        $this->displayMenu = false;
-
         // add css specific for this page
 //        Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/share_purchase.css');
 

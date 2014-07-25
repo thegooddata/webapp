@@ -10,11 +10,11 @@
     <div class="container">
         <div class="row">
             <?php if ($success != "") { ?>   
-                <p class="alert alert-success">SUCCESS : <?php echo $success; ?>
+                <p class="alert alert-success"><?php echo $success; ?>
             <?php } ?>
 
             <?php if ($error != "") { ?>   
-                <p class="alert alert-danger">ERROR : <?php echo $error; ?>
+                <p class="alert alert-danger"><?php echo $error; ?>
             <?php } ?>
             <section id="form" class="col-sm-16 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
                 <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile/profile"); ?>" method="POST">
@@ -54,7 +54,12 @@
             </section>
         </div>
         <div id="cancel-account" class="row">
-            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign"><img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">Resign my Membership</div>
+            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign">
+                <img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">
+                Resign my Membership
+                <div class="loaderDiv"></div>
+            </div>
+
             <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16  alert alert-success alert-dismissable pnlSuccess hidden">SUCCESS: We have sent you an email to confirm your resignation and explain the next steps to sell us back your share</div>
         </div>
     </div>
@@ -74,7 +79,10 @@
 
         
         $('.btnResign').click(function() {
+            $('.loaderDiv').css('display', 'inline-block');
+            
             $.get( "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>", function( result ) {
+                $('.loaderDiv').hide();
                 $('.pnlSuccess').removeClass("hidden");
             });
                 

@@ -179,17 +179,23 @@ class EvilDataController extends Controller {
 
             if ($adtrack->name == 'Advertising') {
                 $color = '#8ac6ea';
+                $light_color = '#cbe6f6';
             } else if ($adtrack->name == 'Analytics') {
                 $color = '#72bc81';
-            } else if ($adtrack->name == 'Others') {
+                $light_color = '#a6d5af';
+            } else if ($adtrack->name == 'Others' || $adtrack->name == 'Content') {
                 $color = '#fcc34a';
+                $light_color = '#fddc95';
             } else if ($adtrack->name == 'Social') {
                 $color = '#ea6654';
+                $light_color = '#f2a398';
             }
 
             $tmp = array();
+            //$tmp['name'] = $adtrack->name;
             $tmp['value'] = $adtrack->count;
             $tmp['color'] = $color;
+            $tmp['highlight'] = $light_color;
 
             $result[] = $tmp;
         }
@@ -263,6 +269,14 @@ class EvilDataController extends Controller {
 
         $result['risk_ratio_you'] = number_format($adtracks[0]->risk);
 
+        if ($result['risk_ratio_you'] > 75) {
+            $result['risk_level'] = 'high';
+        } else if ($result['risk_ratio_you'] > 25) {
+            $result['risk_level'] = 'medium';
+        } else {
+            $result['risk_level'] = 'low';
+        }
+
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("_getRiskRatioTotal () as risk")
@@ -271,22 +285,26 @@ class EvilDataController extends Controller {
 
         $result['risk_ratio_average'] = number_format($adtracks[0]->risk);
 
+
+
+        $result['percentile'] = number_format($adtracks[0]->risk);
+
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
 
     public function actionDataThreatsYear() {
 
         $member_id = Yii::app()->user->id;
-
-        $day_start = date('Y-m-d', strtotime('first day of January this year', time()));
-        $day_end = date('Y-m-d', strtotime('first day of December this year', time()));
+        
+        $day_start = date('Y-m-d', strtotime('first day of next month last year', time()));
+        $day_end = date('Y-m-d', strtotime('first day next month this year', time()));
 
         $data = $this->_getThreatsDatePerMonth($member_id, $day_start, $day_end);
 
         $result = array();
         $result['data'] = $data;
         $result['first_day'] = date('F Y', strtotime($day_start));
-        $result['last_day'] = date('F Y', strtotime($day_end));
+        $result['last_day'] = date('F Y');
         $result['total'] = array_sum($data);
 
         $datas = Yii::app()->db->createCommand()
@@ -315,15 +333,18 @@ class EvilDataController extends Controller {
 
         $member_id = Yii::app()->user->id;
 
-        $day_start = date('Y-m-d', strtotime('first day of this month', time()));
-        $day_end = date('Y-m-d', strtotime('last day of this month', time()));
+        // when the day is 31, 'last month' returns day 1 of same month
+        $minusOneDay = (date('d') == 31)?' -1 day':'';
+        
+        $day_start = date('Y-m-d', strtotime('last month'.$minusOneDay));
+        $day_end = date('Y-m-d', strtotime('+1 day'));
 
         $data = $this->_getThreatsDatePerDay($member_id, $day_start, $day_end);
 
         $result = array();
         $result['data'] = $data;
         $result['first_day'] = date('F d', strtotime($day_start));
-        $result['last_day'] = date('F d', strtotime($day_end));
+        $result['last_day'] = date('F d');
         $result['total'] = array_sum($data);
 
         $datas = Yii::app()->db->createCommand()
@@ -352,20 +373,15 @@ class EvilDataController extends Controller {
 
         $member_id = Yii::app()->user->id;
 
-        $day = date('w');
-        $day = $day - 1;
-
-        if ($day < 0)
-            $day = 6;
-
-        $week_start = date('Y-m-d', strtotime('-' . $day . ' days'));
-        $week_end = date('Y-m-d', strtotime('+' . (6 - $day) . ' days'));
+        $week_start = date('Y-m-d', strtotime('-6 days'));
+        $week_end = date('Y-m-d', strtotime('+1 days'));
 
         $data = $this->_getThreatsDatePerDay($member_id, $week_start, $week_end);
-
-        $result = array();
+        
         $result['data'] = $data;
         $result['total'] = array_sum($data);
+        $result['first_day'] = date('l', strtotime($week_start));
+        $result['last_day'] = date('l');
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)

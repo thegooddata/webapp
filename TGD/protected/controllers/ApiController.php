@@ -656,84 +656,168 @@ class ApiController extends Controller
 			foreach ($put_vars as $domain => $services){
 
 				foreach ($services as $service_name => $status){
+				  
+				  // split $service_name into name and category
+				  $category=null;
+				  $service_name_parts=explode(":", $service_name);
+				  if (count($service_name_parts) > 1) {
+				    // get last item concatenated by ':' and assign it as category
+				    $category = array_pop($service_name_parts);
+				    // build back the original name of the service without the category
+				    $service_name=implode(":", $service_name_parts);
+				  }
+				  
+				  // skip this service if it did not contain a category
+				  if ($category==null) {
+				    continue;
+				  }
 
+          // get the current whitelist
 					$data = Yii::app()->db->createCommand()
-			                ->setFetchMode(PDO::FETCH_OBJ)
-			                ->select('w.id as whitelist_id')
-			                ->from('tbl_whitelists w, tbl_adtracks_sources s')
-			                ->where(array(
-			                            'and',
-			                            'w.adtracks_sources_id = s.id',
-			                            's.name = :service_name',
-			                            '(w.member_id = :member_id or w.user_id = :user_id)',
-			                            'w.domain = :domain'),
-			                    array(
-			                            ':domain'=>$domain,
-			                            ':member_id'=>$member_id,
-	                            		':user_id'=>$user_id,
-			                            ':service_name'=>$service_name)
-			                    )
-			                ->queryAll();
+          ->setFetchMode(PDO::FETCH_OBJ)
+          ->select('w.id as whitelist_id')
+          ->from('tbl_whitelists w')
+          ->join('tbl_adtracks_sources s','s.id=w.adtracks_sources_id')
+          ->join('tbl_adtracks_types ty','ty.id=s.adtrack_type_id')
+          ->where(array(
+                      'and',
+                      'w.adtracks_sources_id = s.id',
+                      's.name = :service_name',
+                      'ty.name = :category',
+                      '(w.member_id = :member_id or w.user_id = :user_id)',
+                      'w.domain = :domain',
+                      ),
+              array(
+                      ':domain'=>$domain,
+                      ':member_id'=>$member_id,
+                  		':user_id'=>$user_id,
+                      ':service_name'=>$service_name,
+                      ':category'=>$category,
+                      )
+              )
+          ->queryAll();
 
-           		 	if (count($data)==0 && $status){
+          // if whitelist not found
+     		 	if (count($data)==0 && $status) {
 
-		            	$services = array();
+          	$services = array();
+            
+            // * all
+          	if ($service_name == '*') {
+            	$service = new stdClass();
+            	$service->adtracks_sources_id='1';
+  
+            	$services[]=$service;
+            } else {
+              
+              // find current service by name cand category
+            	$services = Yii::app()->db->createCommand()
+              ->setFetchMode(PDO::FETCH_OBJ)
+              ->select('s.id as adtracks_sources_id')
+              ->from('tbl_adtracks_sources s')
+              ->join('tbl_adtracks_types ty','ty.id=s.adtrack_type_id')
+              ->where(array(
+                          'and',
+                          's.name = :service_name',
+                          'ty.name = :category',
+                          ),
+                  array(
+                          ':service_name'=>$service_name,
+                          ':category'=>$category,
+                          )
+                  )
+              ->queryAll();
+            }
+              
+            // create ad track source if not found?
+            if (count($services)==0) {
+              
+              // get adtrack_type_id for current category
+              $adtrack_type_id = Yii::app()->db->createCommand()
+              ->select('t.id')
+              ->from('tbl_adtracks_types t')
+              ->where(array(
+                          'and',
+                          't.name = :category'),
+              array(
+                      ':category'=>$category
+                      )
+              )
+              ->queryScalar();
+              
+              if (!$adtrack_type_id) {
+                $this->_sendResponse(501,  
+                 sprintf($service_name.'-Adtrack type not found <b>%s</b>',
+                 $category) );
+                Yii::app()->end();
+              }
+              
+              // Disabled until we get a $service_url from somewhere
+              // Details: the api throws error because there are services in the .json
+              // that are not available in the database, so it can't add a whitelist
+              // for a service that doesn't exist in the db, this code is ment
+              // to create the service if missing, but in the whitelist data the
+              // extension is sending right now we haven't got the service_url
+              // so we can't create it for the moment.
+              // Anyways this might not even be required since basically a 
+              // "create adtrack - blocked" would be run before saving whitelist
+              // and that command does have the service_url and does create it if it 
+              // doesn't exist. Ao this gives error when you have in the whitelist a service
+              // that did not sent an adtrack to the server yet.
+              if (isset($service_url)) {
+                $service = new AdtracksSources; 
+              	$service->adtrack_type_id=$adtrack_type_id;
+              	$service->name=$service_name;
+              	$service->url=$service_url;
+        
+              	if (!$service->save()) {
+            		  var_dump($service->errors);die;
+        	    	} else {
+        	    	  
+        	    	  // add it to the array
+        	    		$tmp = new stdClass();
+                	$tmp->adtracks_sources_id=$service->id;
+      
+                	$services[]=$tmp;
+        	    		
+        	    	}
+              }
+              
+              
+              
+            }
+          	
+            // if service was found, add new whitelist
+            if (count($services)>0) {
 
-		            	if ($service_name == '*')
-		                {
-		                	$service = new stdClass();
-		                	$service->adtracks_sources_id='1';
+            	$adtracks_sources_id = $services[0]->adtracks_sources_id;
+            	$model = new Whitelists;
+            	$model->user_id=$user_id;
+        	  	$model->member_id=$member_id;
+        	  	$model->adtracks_sources_id=$adtracks_sources_id;
+        	  	$model->domain = $domain;
+        	  	$model->status = true;
+    	  		
+      	  	  $model->save();
+      	  	
+            } else{
+             	$this->_sendResponse(501,  
+                 sprintf($service_name.'-Adtrack source not found <b>%s</b>',
+                 $service_name) );
+              Yii::app()->end();
+            }
 
-		                	$services[]=$service;
-		                }
-		                else
-		                {
-		                	$services = Yii::app()->db->createCommand()
-				                ->setFetchMode(PDO::FETCH_OBJ)
-				                ->select('s.id as adtracks_sources_id')
-				                ->from('tbl_adtracks_sources s')
-				                ->where(array(
-				                            'and',
-				                            's.name = :service_name'),
-				                    array(
-				                            ':service_name'=>$service_name)
-				                    )
-				                ->queryAll();
-		                }
-		            	
+          	
+          } else if (count($data)>0 && $status==false){
 
-		                if (count($services)>0){
+            // if whitelist already existed, and status is false, update its status
+          	$model = Whitelists::model()->findByPk($data[0]->whitelist_id);
+          	$model->status = false;
+          	$model->save();
+          	
+          }
 
-
-		                	$adtracks_sources_id = $services[0]->adtracks_sources_id;
-		                	$model = new Whitelists;
-		                	$model->user_id=$user_id;
-			        	  	$model->member_id=$member_id;
-			        	  	$model->adtracks_sources_id=$adtracks_sources_id;
-			        	  	$model->domain = $domain;
-			        	  	$model->status = true;
-		        	  		
-			        	  	$model->save();
-			        	  	
-			        	  	
-		                }
-		                else
-		                {
-		                 	$this->_sendResponse(501,  
-				                 sprintf($service_name.'-Adtrack source not found <b>%s</b>',
-				                 $service_name) );
-				             Yii::app()->end();
-		                }
-
-		            	
-		            } else if (count($data)>0 && $status==false){
-
-		            	$model = Whitelists::model()->findByPk($data[0]->whitelist_id);
-		            	$model->status = false;
-		            	$model->save();
-		            }
-
-	            }
+        }
 
 			}
 		}
@@ -843,90 +927,98 @@ class ApiController extends Controller
         return $result;
 	}
 
-	public function _createAdtrack(){
+  
+	public function _createAdtrack() {
 
-		$member_id=$_POST['member_id'];
-		$user_id=$_POST['user_id'];
-		$usertime=$_POST['usertime'];
-	    $category=$_POST['category'];
-	    $service_name=$_POST['service_name'];
-	    $service_url=$_POST['service_url'];
-	    $domain=$_POST['domain'];
-	    $status=$_POST['status'];
-	    $url=$_POST['url'];
+    // get post info
+  	$member_id=$_POST['member_id'];
+  	$user_id=$_POST['user_id'];
+  	$usertime=$_POST['usertime'];
+    $category=$_POST['category'];
+    $service_name=$_POST['service_name'];
+    $service_url=$_POST['service_url'];
+    $domain=$_POST['domain'];
+    $status=$_POST['status'];
+    $url=$_POST['url'];
 
-	    $data = Yii::app()->db->createCommand()
-	                ->setFetchMode(PDO::FETCH_OBJ)
-	                ->select('s.id as adtracks_sources_id, c.id as category_id')
-	                ->from('tbl_adtracks_types c, tbl_adtracks_sources s')
-	                ->where(array(
-	                            'and',
-	                            'c.name = :category',
-	                            's.name = :service_name'),
-	                    array(
-	                            ':category'=>$category,
-	                            ':service_name'=>$service_name)
-	                    )
-	                ->queryAll();
+    // get source by name and category?
+    $data = Yii::app()->db->createCommand()
+    ->setFetchMode(PDO::FETCH_OBJ)
+    ->select('s.id as adtracks_sources_id, c.id as category_id')
+    ->from('tbl_adtracks_sources s')
+    ->join('tbl_adtracks_types c','c.id=s.adtrack_type_id')
+    ->where(array(
+                'and',
+                'c.name = :category',
+                's.name = :service_name'),
+        array(
+                ':category'=>$category,
+                ':service_name'=>$service_name)
+        )
+    ->queryAll();
 
-	    if (count($data)>0){
-			$adtracks_sources_id = $data[0]->adtracks_sources_id;
-	    }
-	    else{
+    //$this->_sendResponse(501, CJSON::encode($data) );
+    //  Yii::app()->end();
 
-	    	$data = Yii::app()->db->createCommand()
-	                        ->setFetchMode(PDO::FETCH_OBJ)
-	                        ->select('t.id as adtracks_sources_id')
-	                        ->from('tbl_adtracks_types t')
-	                        ->where(array(
-	                                    'and',
-	                                    't.name = :category'),
-	                            array(
-	                                    ':category'=>$category)
-	                            )
-	                        ->queryAll();
+    // if found by name and category, assign as $adtracks_sources_id
+    if (count($data)>0) {
+		  $adtracks_sources_id = $data[0]->adtracks_sources_id;
+    } else {
 
-	        if (count($data)>0){
+      // was not found, let's find just the type(category)
+    	$data = Yii::app()->db->createCommand()
+      ->setFetchMode(PDO::FETCH_OBJ)
+      ->select('t.id as adtracks_sources_id')
+      ->from('tbl_adtracks_types t')
+      ->where(array(
+                  'and',
+                  't.name = :category'),
+      array(
+              ':category'=>$category
+              )
+      )
+      ->queryAll();
+      
+      // okay, we've got the type(category), let's create a new source in that category with the data provided in POST
+      if (count($data)>0) {
 
-	        	$adtracks_sources_id = $data[0]->adtracks_sources_id;
+      	$adtracks_sources_id = $data[0]->adtracks_sources_id;
 
-	        	$service = new AdtracksSources; 
-	        	$service->adtrack_type_id=$adtracks_sources_id ;
-	        	$service->name=$service_name;
-	        	$service->url=$service_url;
+      	$service = new AdtracksSources; 
+      	$service->adtrack_type_id=$adtracks_sources_id ;
+      	$service->name=$service_name;
+      	$service->url=$service_url;
 
-	        	if (!$service->save()){
-		    		var_dump($service->errors);die;
-		    	}else{
-		    		$adtracks_sources_id = $service->id;
-		    	}
-	        }
-	        else{
-				$this->_sendResponse(501, 
-	                sprintf('Adtrack source not found <b>%s</b>',
-	                $category) );
-	            Yii::app()->end();
-	        }
-	    }
-
-	    if (isset($adtracks_sources_id)){
-
-	        $model = new Adtracks; 
-	    	$model->member_id=$member_id;
-	    	$model->user_id=$user_id;
-			$model->usertime=$usertime;
-	    	$model->adtracks_sources_id=$adtracks_sources_id;
-	    	$model->domain=$domain;
-	    	$model->status=$status;
-	    	$model->url=$url;
-		}
-		else{
-			$this->_sendResponse(501, 
-	            sprintf('Adtrack source not found <b>%s</b>',
-	            $service_name) );
-	        Yii::app()->end();
-	    }	
-
-	    return $model;
+      	if (!$service->save()) {
+    		  var_dump($service->errors);die;
+	    	} else {
+	    		$adtracks_sources_id = $service->id;
+	    	}
+      } else{
+		    $this->_sendResponse(501, 
+        sprintf('Adtrack type(category) not found <b>%s</b>',
+        $category) );
+        Yii::app()->end();
+      }
+    }
+    
+    // if we finally got the source id, assign fields to adtrack model
+    if (isset($adtracks_sources_id)) {
+      $model = new Adtracks; 
+    	$model->member_id=$member_id;
+    	$model->user_id=$user_id;
+		  $model->usertime=$usertime;
+    	$model->adtracks_sources_id=$adtracks_sources_id;
+    	$model->domain=$domain;
+    	$model->status=$status;
+    	$model->url=$url;
+  	} else {
+	    $this->_sendResponse(501, 
+          sprintf('Adtrack source not found <b>%s</b>',
+          $service_name) );
+      Yii::app()->end();
+    }
+    
+    return $model;
 	}
 }

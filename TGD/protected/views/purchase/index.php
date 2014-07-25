@@ -1,12 +1,4 @@
 
-<div id="tgd-page-title">
-    <div class="container">
-        <div class="row">
-            <h2>Share purchase</h2>
-        </div>
-    </div>
-</div> 
-
 <script>
 function create_donate_url(gateway, currency, amount) {
 
@@ -56,23 +48,23 @@ function create_donate_url(gateway, currency, amount) {
 <div id="tgd-page-content" class="container">
     <div class="row">
         <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
-            <section id="descriptions">
+            <section id="descriptions" class="bitcoin-1p">
                 <div>
                     <h2>Your membership application has been accepted!</h2>
                     <p>To comply with UK Industrial and Provident Society rules, you need to
                         buy one share of TheGoodData to become a full right member.</p>
                 </div>
-                <div class="clearfix">
+                <div class="section clearfix">
                     <div class='text'>
                         But don't worry! it doesn't mean that you need to pay us anything if you
                         don't want to! To avoid payments we made up a work-around. A 1pence loan
                         that will be cancelled when you end our membership at no cost.
                     </div>
                     <div class="button">
-                        <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1p loan</button>
+                        <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                     </div>
                 </div>
-                <div class="clearfix">
+                <div class="section clearfix selected">
                     <div class="text">
                         Do you still want to pay us that 1 little pence?<br>
                         You can do it via Bitcoin.
@@ -81,7 +73,7 @@ function create_donate_url(gateway, currency, amount) {
                         <button class="btn share" data-toggle="bitcoin-1p">buy my share<br>with bitcoins</button>
                     </div>
                 </div>
-                <div class="clearfix">
+                <div class="section clearfix">
                     <div class='text'>
                         Are you a generous person that want to take the opportunity 
                         to support us with a donation? Don't be shy! We accept credit cards :)
