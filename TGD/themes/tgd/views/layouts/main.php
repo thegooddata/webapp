@@ -103,40 +103,47 @@
                 <div class="container">
                     <div class="row">
 
-                        <?php $this->widget('zii.widgets.CMenu',array(
-                            'items'=>array(
-                                /*
-                                array('label'=>'Home', 'url'=>array('/site/index')),
-                                array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                                array('label'=>'Contact', 'url'=>array('/site/contact')),
-                                */
-                                // array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("LOGIN"), 'visible'=>Yii::app()->user->isGuest),
-                                // array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("REGISTER"), 'visible'=>Yii::app()->user->isGuest),
+                        <?php
+                        
+                            $menu_items=array();
                                 
-                                array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>array('/site/product'), 'label'=>'PRODUCT', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
-                                array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
+                            if (Yii::app()->user->isGuest) {
+                              
+                               // Menu for guest users
+                               $menu_items=array(
+                                  array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/site/product'), 'label'=>'PRODUCT', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
+                               );
+                            } else {
+                              
+                              // Menu for logged in users
+                              $menu_items[]=array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()); // Admin only
+                              
+                              // Check if we need to show the GET YOUR SHARE link in the menu. Only if user did not get his share yet. 
+                              // if there is a MembersPii with his id means information has not been unlinked yet, so we must show the get share link.
+                              $memberObj=MembersPii::model()->find("t.member_id=:user_id", array(":user_id"=>Yii::app()->user->id));
 
-                                
-                                
-
-                                array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()),
-
-                                array('label'=>'GET YOUR SHARE', 'url'=>array('site/purchase'), 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest),
-                                
-                                /*
-                                array('url'=>Yii::app()->getModule('user')->logoutUrl, 'label'=>Yii::app()->getModule('user')->t("Logout"), 'visible'=>!Yii::app()->user->isGuest),
-                                */
-                                
-
-                                ),
+                              if ($memberObj && $memberObj->member_id) {
+                                $menu_items[]=array(
+                                    'label'=>'GET YOUR SHARE', 
+                                    'url'=>Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.base64_encode(Yii::app()->user->id)), 
+                                    'visible'=>!Yii::app()->user->isGuest
+                                  );
+                              }
+                              
+                              // Rest of menu links
+                              $menu_items[]=array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest);
+                              $menu_items[]=array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest);
+                              $menu_items[]=array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest);
+                            }
+                        
+                            $this->widget('zii.widgets.CMenu',array(
+                            'items'=>$menu_items,
                             'htmlOptions' => array(
                                 'class'=>'nav navbar-nav',
                             ),
