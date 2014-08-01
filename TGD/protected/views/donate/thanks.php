@@ -18,7 +18,7 @@
                     <ul>
                         <li>Install TheGoodData extension</li>
                         <li>Tell your family, friends, and colleagues about TheGoodData by email, facebook, twitter or google plus</li>
-                        <li>Become a member of TheGoodData and participate in our collaborative platform</li>
+                        <li>Become a member of TheGoodData and participate in our <a href="https://collaborate.thegooddata.org">collaborative platform</a></li>
                     </ul>
                 </div>
             </div>
