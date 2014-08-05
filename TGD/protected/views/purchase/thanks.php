@@ -13,10 +13,10 @@
             <div class="col-sm-offset-1 col-sm-14 tgd-no-horizontal-padding">
                 <div>
                     <h2>You are now owner of one of our shares!</h2>
-                    <p>From now own you are a full right Member of TheGoodData!</p>
+                    <p>From now own, you are a full right Member of TheGoodData!</p>
                     <h3>You are invited to collaborate with us</h3>
-                    <p>Please visit <a href="https://collaborate.thegooddata.org/">https://collaborate.thegooddata.org/</a> to join the discussion about key company topics and be informed about business progress.</p>
-                    <p>TheGoodData is an open and collaborative company, and its goals will only be achievable with our transparency and your participation.</p>
+                    <p>Please visit <a href="https://collaborate.thegooddata.org/">https://collaborate.thegooddata.org/</a> to join discussions concerning key company topics and stay up to date with the progress of your business.</p>
+                    <p>TheGoodData is an open and collaborative company, and its goals can only be achieved through our transparency and your participation.</p>
                 </div>
             </div>
         </div>

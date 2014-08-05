@@ -33,85 +33,86 @@
                             <h2>Guidelines</h2>
                             <p>Our Privacy and Cookie Policy develops the following guidelines:</p>
                             <ol start="1">
-                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users or store any cookies.</a></li>
+                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users.</a></li>
                                 <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-2">Anonymous data will only be stored with your permission and for a limited time.</a></li>
-                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-3">Anonymous data will only be traded with third parties if you provide an additional and limited permission to do so.</a></li>
-                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-4">Only if you request to become a cooperative Member, we will store as minimum PII as possible.</a></li>
-                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-5">To improve the Service we use non-identifying browser cookies.</a></li>
-                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-6">We will always do our best effort to avoid unwanted access to your data by third parties.</a></li>
-                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-7">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at any time without delay.</a></li>
+                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-3">Anonymous data will only be traded with third parties if you provide us with additional and limited permission to do so.</a></li>
+                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-4">Only if you request to become a cooperative Member, will we store as little as possible or your PII.</a></li>
+                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-5">To improve the Services we use non-identifying browser cookies.</a></li>
+                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-6">We will always make the best effort possible to avoid unwanted access to your data by third parties.</a></li>
+                                <li><a class="inner-link" data-ref="tab-content" href="#" data-target="item-7">We will provide you with access to the data we have about you, as well as the opportunity to correct or remove it from our servers at any time and and without delay.</a></li>
                             </ol>
                             <ol start="1">
                                 <li><h3 id="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users.</h3>
-                                    <p>&ldquo;Personally identifiable information&rdquo; (PII) &nbsp;is data that can be used to identify a particular person. Aggregate or Anonymous data aren&rsquo;t considered PII. Service Users are those individuals that install our browser extension and enjoy any of our Services, as described in our Terms of Use.</p>
-                                    <p>Unlike most websites, our site doesn&rsquo;t install any type of browser cookies or stores any IP data that could be used to identify our users. We will only keep the minimum of logs and debug information necessary to ensure that we can improve the Service and resolve issues that may have occurred. These logs will be kept for a maximum of 15 days.</p>
+                                    <p>&ldquo;Personally identifiable information&rdquo; (PII) &nbsp;is data that can be used to identify a particular person. Aggregate or anonymous Service data are not considered PII. Service Users are those individuals that install our browser extension and enjoy any of our Services, as described in our Terms of Use.</p>
+
+                                    <p>Unlike most websites, our site doesn&rsquo;t store any IP data that could be used to identify our users. We will only keep the minimum of logs and debug information necessary to ensure that we can improve the Services and resolve issues that may arise. These logs will be kept for a maximum of 15 days.</p>
                                 </li>
                             </ol>
 
                             <ol start="2">
                                 <li><h3 id="item-2">Anonymous data will be stored only with your permission and for a limited time.</h3>
-                                    <p>Being a data cooperative, we aim to gather Anonymous Service data that you produce in order to help you enjoy the value of it. At this time, this data consists of online behavioural and interest data such as browsing history and search queries.</p>
-                                    <p>This data will only be stored if you provide us with your permission. You will be able to enjoy our Services regardless of your decision to let us store this data or not.</p>
-                                    <p>Raw online behavioural data will be automatically deleted if older than 3 months. Estimated and aggregated behavioural and interest data may be kept for longer only if it remains valid and commercially valuable.</p>
+                                    <p>Being a data cooperative, we aim to gather the anonymous Service data that you produce in order to help you enjoy the value of it. At this time, this data consists of online behavioral and interest data, such as browsing history and search queries.</p>
+                                    <p>This data will only be stored if you give us your permission to do so. You will be able to enjoy our Services regardless of your decision to let us store this data or not.</p>
+                                    <p>Raw online behavioral data will be automatically deleted if older than three months. Estimated and aggregated behavioral and interest data may be kept for longer only if it remains valid and commercially valuable.</p>
                                 </li>
                             </ol>
 
                             <ol start="3">
-                                <li><h3 id="item-3">Anonymous data will only be traded with third parties if you provide an additional and limited permission to do so.</h3>
-                                    <p>In case we find a third party interested on your Anonymous data, we will only give access to it provided that you have previously given us permission to do so. This permission will be limited to a certain type of data, for a limited time period and for a type of third party. This permission may contain as well certain terms limits (minimum benefit expected, etc). Data traded will not include PII data.</p>
+                                <li><h3 id="item-3">Anonymous data will only be traded with third parties if you provide us with additional and limited permission to do so.</h3>
+                                    <p>In case we find a third party interested on your anonymous data, we will only provide access to it if you have previously given us permission to do so. This permission will be limited to a certain type of data, for a limited time period and for a type of third party. This permission may contain certain terms limits (minimum benefit expected, etc). Data traded will not include PII data.</p>
                                 </li>
                             </ol>
 
                             <ol start="4">
-                                <li><h3 id="item-4">Only if you request to become a cooperative Member, we will store as minimum PII as possible. </h3>
-                                    <p>In case you apply to become a cooperative Member, we will request as minimum PII as required by law in order to identify and register you as a Member. Once you become a Member, we will encrypt the link between your PII and your Service data with two-man rule techniques. That means that we will know that someone has visited certain website, but will not be able to know its personal details. That is the reason why from then on we will address you by your username.</p>
-                                    <p>Only our Membership Committee will be able to deanonymise your Service data if we are legally forced or if you terminate your Membership or you are expulsed as a Member. On these two last cases all your data will be immediately deleted after de-encrypted.</p>
-                                    <p>Only email will remain attached to your Service data. It will be used both for password recovery as well as to send you company announcements. This is the only PII that for operative purposes cannot be detached from your Service data, so if you are worried about your anonymity, we recommend you to use a non personally identifiable email address.</p>
-                                    <p>We may use MailChimp to manage some of our email communications with cooperative Members. There’s no third-party tracking in messages we send through MailChimp besides MailChimp’s own analytics, which may aggregate how many subscribers open a message or click the links inside. MailChimp’s privacy policy is available at http://mailchimp.com/legal/privacy.</p>
+                                <li><h3 id="item-4">Only if you request to become a cooperative Member, will we store as little as possible of your PII. </h3>
+                                    <p>If you apply to become a cooperative Member, we will request the minimum PII required by law for identifying and registering you as a Member. Once you become a Member, we will encrypt the link between your PII and your Service data with two-man rule techniques. This means that we will know that someone has visited certain website, but will not be able to know his/her personal details. This is why we will from this point forward address you by your username.</p>
+                                    <p>Only our Membership Committee will be able to de-anonymize your Service data if we are legally forced to do so, or if you terminate your Membership, or if you are expelled as a Member. In the latter two cases all your data will immediately be deleted after being de-encrypted.</p>
+                                    <p>Only your email address will remain attached to your Service data. It will be used both for password recovery as well as to send you company announcements. This is the only PII that for operative purposes cannot be detached from your Service data; if you are worried about your anonymity, we recommend you to use a non-personally identifiable email address.</p>
+                                    <p>We may use MailChimp to manage some of our email communications with cooperative Members. There is no third-party tracking present in messages that we send through MailChimp except for MailChimp’s own analytics, which may aggregate how many subscribers open a message or click the links within emails. MailChimp’s privacy policy is available at http://mailchimp.com/legal/privacy.</p>
                                 </li>
                             </ol>
 
                             <ol start="5">
                                 <li>
-                                    <h3 id="item-5">To improve our Service we use non-identifying browser cookies</h3>
+                                    <h3 id="item-5">To improve the Services we use non-identifying browser cookies</h3>
                                     <p>The table below explains the cookies we use on our website and why.</p>
                                     <table>
                                         <tr>
                                             <td>Cookie</td><td>Name</td><td>Purpose</td>
                                         </tr>
                                         <tr>
-                                            <td>Session cookie</td><td>PHPSESSID, has_js</td><td>These are temporary cookies, which only exist until you close the browser after accessing the website. Session cookies help us remember what you chose on the previous page, therefore avoiding the need to re-enter information and improve your experience whilst using the site. These cookies do not contain personal information and cannot be used to identify you.</td>
+                                            <td>Session cookie</td><td>PHPSESSID, has_js</td><td>These are temporary cookies that only exist until you close the browser after accessing the website. Session cookies help us remember what you chose on the previous page, thereby avoiding the need to re-enter information and as a result improving your experience while browsing. These cookies do not contain personal information and cannot be used to identify you.</td>
                                         </tr>
                                         <tr>
-                                            <td>Persistent cookie</td><td>variable</td><td>These are cookies, which remain on your device after you have visited our website. Persistent cookies help us identify you as a unique visitor, they do not contain information that could be used to identify you to another person.</td>
+                                            <td>Persistent cookie</td><td>variable</td><td>These are cookies that remain on your device after you have visited our website. Persistent cookies help us identify you as a unique visitor. They do not contain information that could be used to identify you to another person.</td>
                                         </tr>
                                     </table>
-                                    <p>We do not use cookies to track your use of the internet after you leave our sites, nor do we store any personal information in them that could identify you to other people. The length of time a cookie will remain on your device will depend on the type of cookie.</p>
-                                    <p>Besides using a browser extension like ours, most web browsers allow some control of most cookies through the browser settings. To find out more about how to set them, please visit www.aboutcookies.org</p>
+                                    <p>We do not use cookies to track your use of the Internet after you leave our sites, nor do we store any personal information in them that could identify you to other people. The length of time a cookie will remain on your device will depend on the particular type of cookie.</p>
+                                    <p>In addition to using a browser extension like ours, most web browsers allow some control of most cookies through the browser's settings. To find out more about how to set these, please visit www.aboutcookies.org</p>
                                 </li>
                             </ol>
                             <ol start="6">
-                                <li><h3 id="item-6">We will always do our best effort to avoid unwanted access to your data by third parties.</h3>
-                                    <p>We will always implement the most robust legal, procedural, physical and technical measures that are at our reach in order to ensure your anonymity and avoid unwanted access to your data by other individuals, corporations and administrations. Unwanted access refers to access to your data without your express permission.</p>
-                                    <p>No data transmissions over the Internet can be guaranteed to be 100% secure though. Consequently, we cannot ensure or warrant the security of any information you transmit to us. You do so at your own risk.</p>
-                                    <p>As stated in our Secondary Rules, if we should ever file for bankruptcy, or have any of our assets sold to or merged with another entity, data that we have about you will never be transferred, nor will be the browser extensions that we have published in the different app stores.</p>
+                                <li><h3 id="item-6">We will always make the best effort possible to avoid unwanted access to your data by third parties.</h3>
+                                    <p>We will always implement the most robust legal, procedural, physical and technical measures available to us in order to improve your anonymity and avoid unwanted access to your data by other individuals, corporations and administrations. Unwanted access refers to access to your data without your express permission.</p>
+                                    <p>However, no data transmissions over the Internet can be guaranteed to be 100% secure though. Consequently, we cannot ensure or warrant the security of any information you transmit to us. You do so at your own risk.</p>
+                                    <p>As stated in our Secondary Rules, if we should ever file for bankruptcy, or have any of our assets sold to or merged with another entity, the data that we have about you will never be transferred, nor will be the browser extensions that we have published in the different app stores.</p>
                                 </li>
                             </ol>
 
                             <ol start="7">
-                                <li><h3 id="item-7">We will provide you access to the data we have about yourself, as well as the possibility to correct it or remove it from our servers at anytime without delay.</h3>
-                                    <p>In our website you will always have access to the data we have gathered, processed or inferred about yourself, as well as the possibility to download it or delete it from our servers at any time.</p>
+                                <li><h3 id="item-7">We will provide you with access to the data we have about you, as well as the opportunity to correct or remove it from our servers at any time and without delay.</h3>
+                                    <p>On our website you will always have access to the data we have gathered, processed or inferred about you, as well as the opportunity to download or delete it from our servers at any time.</p>
                                     <p>You may ask us to correct information you think is inaccurate by contacting us at info@thegooddata.org.</p>
-                                    <p>Data about terminated or expulsed members as well as from inactive users will be automatically deleted from our records with a delay no longer than one month. As inactive users we refer to individuals that have not used our Services for 3 months or more.</p>
+                                    <p>Data about terminated or expelled Members, as well as from inactive users will be automatically deleted from our records with a delay of no longer than one month. By "inactive users" we refer to individuals that have not used our Services for three months or more.</p>
                                 </li>
                             </ol>
 
                             <h2>Changes to this Policy</h2>
-                            <p>We are proud of our commitment to continuously work for your data ownership rights in an open and collaborative way. Therefore, we will provide any substantial future revisions of this Policy to the community for comment at least thirty 30 days before their application. For changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three 3 days' notice.</p>
-                            <p>Substantial revisions of this Policy will be notified by email in case you provided it, as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member’s forum.</p>
-                            <p>You are welcome to comment current Policy or substantial future revisions in <span><a href="https://collaborate.thegooddata.org/corporate/documents/privacy-policy">https://collaborate.thegooddata.org/corporate/documents/privacy-policy</a>.</p>
-                            <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Policy. If you don&rsquo;t agree to the revised Policy, please stop using the Services.</p>
-                            <h2>Contact</h2><p>You can contact us at <span><a href="mailto:support@thegooddata.org">support@thegooddata.org</a>&nbsp;if you have any questions about this Policy.
+                            <p>We are proud of our commitment to continuously work for your data ownership rights in an open and collaborative way. Therefore, we will provide any substantial future revisions of this Policy to the community for comment at least thirty (30) days prior to their application. Concerning changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three (3) days' notice.</p>
+                            <p>Substantial revisions to this Policy will be notified by email (if you have provided it), as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member’s forum.</p>
+                            <p>You are welcome to comment on current Policy or substantial future revisions at <span><a href="https://collaborate.thegooddata.org/corporate/documents/privacy-policy">https://collaborate.thegooddata.org/corporate/documents/privacy-policy</a>.</p>
+                            <p>By continuing to use the Services after revisions have become effective, you are agreeing to the revised Policy. If you do not agree to the revised Policy, please refrain from using the Services.</p>
+                            <h2>Contact</h2><p>You can contact us at <span><a href="mailto:info@thegooddata.org">info@thegooddata.org</a>&nbsp;if you have any questions about this Policy.
                             </p>
 
                             <p>
@@ -123,12 +124,12 @@
                         </div>
                         <div class="tab-pane active legal" id="terms">
                             <h1>TheGoodData Terms of Use</h1>
-                                  <p>Thank you for using TheGoodData. These terms of use &mdash; referred to as &ldquo;Terms&rdquo; &mdash; apply to your use of TheGoodData&rsquo;s software and services &mdash; referred to as &ldquo;Services&rdquo;. Your use of the Services indicates you agree to the Terms, so please read carefully.</p>
+                                  <p>Thank you for using TheGoodData. These terms of use &mdash; referred to as &ldquo;Terms&rdquo; &mdash; apply to your use of TheGoodData&rsquo;s software and services &mdash; referred to as &ldquo;Services&rdquo;. Your use of the Services indicates you agree to the Terms, so please read the following carefully.</p>
 
                                 <h2>Who we are</h2>
                                 <p>We are The Good Data Cooperative Limited, an Industrial and Provident Society Registered in England under number 32340R. Our registered office is at Unit 1, 82 Clerkenwell Road, London EC1M 5RF.</p>
 
-                                <p>In this website we provide data management services once users have installed Our browser extension (&quot;Services&quot;). </p>
+                                <p>On this website we provide data management services once users have installed our browser extension (&quot;Services&quot;). </p>
 
                                 <h2>Privacy Policy</h2>
                                 <p>We ask that you review our <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy Policy</a>, so that you are aware of how we collect and use your data, as well as the rights you have to access or cancel this data at any time. Because our Services are used by people all over the world, personal information that we collect may be stored and processed in the United Kingdom or any other country. By using our services, you consent to any such transfer of information outside your country.</p>
@@ -142,7 +143,7 @@
                                 <h2>Protected property</h2>
                                 <p>In order to protect our users from fraudulent impersonators you may not duplicate or reuse any portion of the visual elements of the Services, including but not solely the logos, trademarks, domain names and other brand features or design elements without express written permission from TheGoodData.</p>
 
-                                <p>All other content excluding code and visual elements can be shared or adapted under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0 Attribution License</a>. This content includes blog posts, presentations, as well as any other kind of commercial or legal content created by TheGoodData.</p>
+                                <p>All other content excluding code and visual elements can be shared or adapted under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0 Attribution International License</a>. This content includes blog posts, presentations, as well as any other type of commercial or legal content created by TheGoodData.</p>
 
                                 <h2>Restrictions</h2>
                                 <p>You agree that you will not attempt to or in fact do the following to the Services: probe, scan, or test the vulnerability of any system or network; breach or otherwise circumvent any security or authentication measures; access, tamper with, or use non-public areas of the Services or areas of the Services you have not been invited to including those of TheGoodData or our service providers’ computer systems.</p>
@@ -162,7 +163,7 @@
                                 <p>You may terminate this agreement at any time by ceasing to participate in or access the Services. We may terminate this agreement and your use at any time, without cause and without notice. This agreement will automatically terminate if you fail to comply with the Terms. Upon any termination, you agree to uninstall and stop using the Services.</p>
                                 
                                 <h2>No warranty</h2>
-                                <p>Whilst we endeavour to ensure the best Service quality that is commercially possible, &nbsp;TheGoodData does not warrant that (i) the Services will meet your specific requirements, (ii) the Services will be uninterrupted, timely, secure, or error-free, (iii) the results that may be obtained from the use of the service will be accurate or reliable, (iv) the quality of any products, services, information, or other material obtained by you through the service will meet your expectations, and (v) any errors in the Service will be corrected.</p>
+                                <p>Whilst we endeavor to ensure the best Service quality that is commercially possible, &nbsp;TheGoodData does not warrant that (i) the Services will meet your specific requirements; (ii) the Services will be uninterrupted, timely, secure, or error-free; (iii) the results that may be obtained from the use of the Services will be accurate or reliable; (iv) the quality of any products, services, information, or other material obtained by you through the Services will meet your expectations; and (v) any errors in the Services will be corrected.</p>
 
                                 <h2>Limitation of liability</h2>
                                 <p>You expressly understand and agree that TheGoodData will not be liable for any damages, including but not limited to, damages for loss of profits, goodwill or data (even if TheGoodData has been advised of the possibility of such damages) resulting from: (i) the use or the inability to use the Services; (ii) unauthorized access to or alteration of your transmissions or data; (iii) statements or conduct of any third party on the Services; (iv) or any other matter relating to the Services.</p>
@@ -180,7 +181,7 @@
                                 <p>We believe that community input is essential to these Terms to properly serve our users. It is also essential for a fair contract. Therefore, we will provide any substantial future revisions of these Terms to the community for comment at least thirty (30) days prior to their application. Concerning changes for legal or administrative reasons, to correct an inaccurate statement, or changes in response to community comments, we will provide at least three (3) days' notice.</p>
                                 <p>Substantial revisions of these Terms&nbsp;will be notified by email (if you provided it), as well as by publishing them on our main communication channels, including our browser extension, website blog, twitter account and Member&rsquo;s forum.</p>
 
-                                <p>You are welcome to comment current Terms or substantial future revisions in our management platform <a href="http://collaborate.thegooddata.org/corporate/documents/terms-of-use">http://collaborate.thegooddata.org/corporate/documents/terms-of-use</a>.</p>
+                                <p>You are welcome to comment current Terms or substantial future revisions at <a href="http://collaborate.thegooddata.org/corporate/documents/terms-of-use">http://collaborate.thegooddata.org/corporate/documents/terms-of-use</a>.</p>
 
                                 <p>By continuing to use the Services after revisions become effective, you are agreeing to the revised Terms. If you do not agree to the revised Terms, please refrain from using the Services.</p>
                                 <h2>Contact</h2>

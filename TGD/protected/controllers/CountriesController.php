@@ -2,6 +2,8 @@
 
 class CountriesController extends GxController {
 
+	public $displayMenu = true;
+
 	public function filters()
     {
         return array( 'accessControl' ); // perform access control for CRUD operations
