@@ -10,6 +10,8 @@ class LoginController extends Controller
 	 */
 	public function actionLogin()
 	{
+	  
+	  
 		if (Yii::app()->user->isGuest) {
 			
 			// set title
@@ -28,11 +30,11 @@ class LoginController extends Controller
 				
 				if($model->validate()) {
 					$this->lastViset();
-					if (Yii::app()->getBaseUrl()."/index.php" === Yii::app()->user->returnUrl)
-
+					if (Yii::app()->user->returnUrl=='/') {
 						$this->redirect(Yii::app()->createUrl('goodData/index'));
-					else
-						$this->redirect(Yii::app()->createUrl('goodData/index'));
+					} else {
+						$this->redirect(Yii::app()->user->returnUrl);
+					}
 				}
 			}
 			// display the login form
