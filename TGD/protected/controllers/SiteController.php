@@ -304,5 +304,14 @@ class SiteController extends Controller {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+    
+    public function actionRobots() {
+      $robots_txt_path=dirname(__FILE__).'/../robots/'.$_SERVER['SERVER_NAME'].'.txt';
+      header('Content-Type: text/plain; charset=utf-8');
+      if (file_exists($robots_txt_path)) {
+        readfile($robots_txt_path);
+      }
+      Yii::app()->end();
+    }
 
 }
