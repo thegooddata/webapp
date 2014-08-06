@@ -14,14 +14,13 @@ class PurchaseController extends Controller {
 
     public $transaction_id = '';
     public $user_id = '';
-    public $user_token ='';
     public $type ='';
     public $status ='';
     public $currency='';
     public $amount='';
 
     public $bodyId = 'tgd-user-data';
-    public $displayMenu = true;
+    public $displayMenu = false;
 
     public function init() {
         Yii::app()->theme = 'tgd';
@@ -39,9 +38,9 @@ class PurchaseController extends Controller {
         parent::init();
     }
 
-    // public function filters() {
-    //     return array('accessControl'); // perform access control for CRUD operations
-    // }
+    public function filters() {
+        return array('accessControl'); // perform access control for CRUD operations
+    }
 
     public function accessRules() {
         return array(
@@ -57,19 +56,35 @@ class PurchaseController extends Controller {
         
     }
 
-    public function actionIndex($user_token) {
+    public function actionIndex() {
       
         $errors=array();
 
-        $this->user_token = $user_token;
-        $this->user_id = base64_decode($user_token);
+        $this->user_id = Yii::app()->user->id;
+        
+        $user_model=null;
+        $user_model=Yii::app()->user->model(Yii::app()->user->id);
+        
+        // Check user status and forward to the correct page if necessary
+        switch ($user_model->status) {
+          case User::STATUS_PRE_ACCEPTED: {
+            // nothing to do, just show this page
+            break;
+          }
+          case User::STATUS_ACCEPT: {
+            // if already accepted, redirect to thanks
+            $this->redirect(array('purchase/thanks'));
+            break;
+          }
+          default:
+            // default if not pre-accepted or accepted, then redirect to not applicable
+            $this->redirect(array('purchase/notApplicable'));
+            break;
+        }
 
         if (isset($_GET['token']) && $_GET['token']!='')
         {
             $token = $_GET['token'];
-
-            $this->user_token = $user_token;
-            $this->user_id = base64_decode($user_token);
 
             $token = base64_decode($token);
             $token = json_decode( $token);
@@ -201,8 +216,8 @@ class PurchaseController extends Controller {
             //var_dump($user);die;
 
             $this->render('index', array(
+                'user_model'=>$user_model,
                 'transaction_id'=>$this->transaction_id,
-                'user_token' => $this->user_token,
                 'state' => PurchaseController::INIT,
                 'user'=>$user)
             );
@@ -213,7 +228,12 @@ class PurchaseController extends Controller {
     }
 
     public function actionThanks() {
+        $this->displayMenu=true;
         $this->render('thanks');
+    }
+    
+    public function actionNotApplicable() {
+      $this->render('notApplicable');
     }
 
 }

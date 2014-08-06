@@ -1,12 +1,3 @@
-
-
-<div id="tgd-page-title">
-    <div class="container">
-        <div class="row">
-            <h2>Share purchase</h2>
-        </div>
-    </div>
-</div> 
 <div class="wrapper">
     <div id="tgd-page-content" class="container thanks">
         <div class="row">

@@ -160,8 +160,7 @@ class AdminController extends Controller
 
 	                $content = str_replace('[FIRST_NAME]',$memberObj->firstname,  $content);
 	                
-	                $user_id_token = base64_encode($model->id);
-	                $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.$user_id_token),  $content);
+	                $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/purchase/index'),  $content);
 
 	                $message = new YiiMailMessage;
 	                $message->subject = 'Your Membership application has been approved';

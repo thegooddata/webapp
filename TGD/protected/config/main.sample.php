@@ -13,18 +13,7 @@ return array(
 	'preload'=>array('log'),
 
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-		'application.modules.user.models.*',
-        'application.modules.user.components.*',
-
-        'ext.yii-mail.YiiMailMessage',
-        'ext.giix-components.*',
-
-        'ext.Mailchimp.*',
-        'ext.CSVExport',
-	),
+	'import'=>require(dirname(__FILE__).'/common.import.php'),
 
 	'theme'=>'tgd',
 
@@ -129,57 +118,7 @@ return array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
 			'urlSuffix' => '',
-			'rules'=>array(
-
-				// REST patterns
-				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
-				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
-
-				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
-				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
-
-
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
-
-		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<lang:[\w  \%\-]+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
-		        
-		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
-		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/', 'verb'=>'PUT'),
-		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/<member_id:\d*>', 'verb'=>'PUT'),
-
-		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
-		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
-		        
-		        //Set friendly-url
-		        '/' => 'site/index',
-		        '/good-data' => 'goodData/index',
-		        'apply'=>'/user/registration',
-		        'share'=>'/site/purchase',
-		        'share/thanks'=>'/purchase/thanks',
-		        'sign-in'=>'/user/login',
-		        'recover'=>'/user/recovery',
-		        'good-data'=>'/goodData/index',
-		        'evil-data'=>'/evilData/index',
-		        'user-data'=>'/userData/index',
-		        'membership'=>'/user/profile',
-		        'product'=>'/site/product',
-		        'partners'=>'/site/partners',
-		        'your-company'=>'/site/company',
-		        'support-us'=>'/donate',
-		        'support-us/thanks'=>'/donate/thanks',
-		        'coders'=>'/site/coders',
-		        'faq'=>'/site/faq',
-		        'legal'=>'/site/legal',	
-
-		        
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
+			'rules'=>require(dirname(__FILE__).'/common.rules.php'),
 		),
 
 		'db'=>array(
