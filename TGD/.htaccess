@@ -6,5 +6,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
 # RewriteBase /tgd/
-RewriteRule ^robots\.txt index.php
 RewriteRule . index.php
