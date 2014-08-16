@@ -2,6 +2,9 @@
 
 class TestController extends Controller {
   
+    public function actionDirname() {
+        echo dirname(__FILE__);
+    }
   
   public function actionGet_whitelist($domain, $member_id, $user_id, $service_name, $category) {
     
