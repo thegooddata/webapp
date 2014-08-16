@@ -93,7 +93,7 @@ class PurchaseController extends Controller {
             $this->transaction_id = $token->transaction_id;
             $this->status = $token->status;
             $this->currency = $_GET['currency'];
-            $this->amount = (int)$_GET['amount'] / 100;
+            $this->amount = (float)$_GET['amount'] / 100;
             
             /*
             CVarDumper::dump($_GET, true, 10);

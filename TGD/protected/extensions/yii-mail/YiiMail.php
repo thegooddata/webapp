@@ -211,7 +211,7 @@ class YiiMail extends CApplicationComponent
 
 		$this->transport = Swift_SmtpTransport::newInstance();
 		
-		// var_dump($m->from); die();
+//		 print_r($m->from); die();
 		
 		// Switch email info
 		foreach ($m->from as $fromEmail => $fromName) {
