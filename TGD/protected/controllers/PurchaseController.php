@@ -71,7 +71,7 @@ class PurchaseController extends Controller {
             // nothing to do, just show this page
             break;
           }
-          case User::STATUS_ACCEPT: {
+          case User::STATUS_ACCEPTED: {
             // if already accepted, redirect to thanks
             $this->redirect(array('purchase/thanks'));
             break;
@@ -139,7 +139,7 @@ class PurchaseController extends Controller {
             {
                 //Change status
                 $userObj=User::model()->findByPk($this->user_id);
-                $userObj->status=User::STATUS_ACCEPT;
+                $userObj->status=User::STATUS_ACCEPTED;
                 $userObj->save();
 
                 

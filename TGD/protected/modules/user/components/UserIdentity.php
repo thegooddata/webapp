@@ -11,6 +11,7 @@ class UserIdentity extends CUserIdentity
 	const ERROR_EMAIL_INVALID=3;
 	const ERROR_STATUS_NOTACTIV=4;
 	const ERROR_STATUS_BAN=5;
+        const ERROR_STATUS_APPLIED=6;
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -43,9 +44,13 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else if($user->status==0&&Yii::app()->getModule('user')->loginNotActiv==false)
 			$this->errorCode=self::ERROR_STATUS_NOTACTIV;
-		else if($user->status==-1)
-			$this->errorCode=self::ERROR_STATUS_BAN;
-		else if($user->status==-4)
+		else if($user->status==User::STATUS_APPLIED)
+			$this->errorCode=self::ERROR_STATUS_APPLIED;
+		else if(in_array($user->status, array(
+                    User::STATUS_EXPELLED,
+                    User::STATUS_DENIED,
+                    User::STATUS_LEFT,
+                )))
 			$this->errorCode=self::ERROR_STATUS_BAN;
 		else 
 		{

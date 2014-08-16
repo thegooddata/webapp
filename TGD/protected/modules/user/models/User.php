@@ -10,7 +10,7 @@ class User extends CActiveRecord
 	const STATUS_LEFT = -4;
 
 	const STATUS_PRE_ACCEPTED = 1;
-	const STATUS_ACCEPT = 2;
+	const STATUS_ACCEPTED = 2;
 
 	//TODO: Delete for next version (backward compatibility)
 	//const STATUS_BANED=-1;
@@ -77,7 +77,7 @@ class User extends CActiveRecord
 					self::STATUS_DENIED,
 					self::STATUS_LEFT,
 					self::STATUS_PRE_ACCEPTED,
-					self::STATUS_ACCEPT,
+					self::STATUS_ACCEPTED,
 				)
 			),
 			array('superuser', 'in', 'range'=>array(0,1)),
@@ -136,7 +136,7 @@ class User extends CActiveRecord
     {
         return array(
             'active'=>array(
-                'condition'=>'status='.self::STATUS_ACCEPT.' or status='.self::STATUS_PRE_ACCEPTED,
+                'condition'=>'status='.self::STATUS_ACCEPTED.' or status='.self::STATUS_PRE_ACCEPTED,
             ),
             'notactive'=>array(
                 'condition'=>'status='.self::STATUS_LEFT,
@@ -169,7 +169,7 @@ class User extends CActiveRecord
 				self::STATUS_APPLIED => UserModule::t('Applied'),
 				self::STATUS_PRE_ACCEPTED => UserModule::t('Pre-Accepted'),
 				self::STATUS_DENIED => UserModule::t('Denied'),
-				self::STATUS_ACCEPT => UserModule::t('Accept'),
+				self::STATUS_ACCEPTED => UserModule::t('Accepted'),
 				self::STATUS_EXPELLED => UserModule::t('Expelled'),
 				self::STATUS_LEFT => UserModule::t('Left'),
 
