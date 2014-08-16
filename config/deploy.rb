@@ -14,6 +14,9 @@ set :scm,         :git
 set  :keep_releases,  10
 set  :yii_console,  "www/protected/yiic"
 
+# Dirs that need to remain the same between deploys (shared dirs)
+set :shared_children,   %w(assets protected/runtime protected/messages uploads)
+
 before "deploy:finalize_update", "deploy:move_TGD_to_current"
 after "deploy:update_code", "deploy:rename_main_file"  
 
