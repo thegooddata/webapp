@@ -31,6 +31,8 @@ return array(
   //'share/thanks'=>'/purchase/thanks', // think this is old and should be removed
   'sign-in'=>'/user/login',
   'recover'=>'/user/recovery',
+  'resignation'=>'/user/resignation',
+  'resignation/thanks'=>'/user/resignation/thanks',
   'good-data'=>'/goodData/index',
   'evil-data'=>'/evilData/index',
   'user-data'=>'/userData/index',
