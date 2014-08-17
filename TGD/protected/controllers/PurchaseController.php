@@ -71,7 +71,7 @@ class PurchaseController extends Controller {
             // nothing to do, just show this page
             break;
           }
-          case User::STATUS_ACCEPT: {
+          case User::STATUS_ACCEPTED: {
             // if already accepted, redirect to thanks
             $this->redirect(array('purchase/thanks'));
             break;
@@ -93,7 +93,7 @@ class PurchaseController extends Controller {
             $this->transaction_id = $token->transaction_id;
             $this->status = $token->status;
             $this->currency = $_GET['currency'];
-            $this->amount = (int)$_GET['amount'] / 100;
+            $this->amount = (float)$_GET['amount'] / 100;
             
             /*
             CVarDumper::dump($_GET, true, 10);
@@ -139,7 +139,7 @@ class PurchaseController extends Controller {
             {
                 //Change status
                 $userObj=User::model()->findByPk($this->user_id);
-                $userObj->status=User::STATUS_ACCEPT;
+                $userObj->status=User::STATUS_ACCEPTED;
                 $userObj->save();
 
                 

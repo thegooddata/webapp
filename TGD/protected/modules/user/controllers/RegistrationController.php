@@ -36,7 +36,7 @@ class RegistrationController extends Controller
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/register.js', CClientScript::POS_END);
         Yii::app()->clientScript->registerScriptFile('https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBIqMM7HGjLXLXHpvBemGUj7sADxe7zEJ0&sensor=false&libraries=places', CClientScript::POS_END);
         
-        // set body id to #tgd-share-purchase
+        // set body id
         $this->bodyId = "tgd-register";
 
 
@@ -45,15 +45,8 @@ class RegistrationController extends Controller
         $error = '';
         $success = '';
 
-        // ajax validator
-        if(isset($_POST['ajax']) && $_POST['ajax']==='registration-form')
-        {
-            echo UActiveForm::validate(array($model,$profile));
-            Yii::app()->end();
-        }
-
         if (Yii::app()->user->id) {
-            $this->redirect(Yii::app()->controller->module->profileUrl);
+            $this->redirect(array('//site/index'));
         } else {
             if(isset($_POST['RegistrationForm'])) {
                 
@@ -105,17 +98,17 @@ class RegistrationController extends Controller
 
                             $registration_form = array();
                             
-                            // CREATE OA USER
+                            // TRY TO CREATE OA USER and save log if fails
                             $oa_errors=array();
                             Yii::app()->openAtrium->createUser($username, $password, $email, $username, $oa_errors);
                             if (count($oa_errors)) {
-                              Yii::log("Could not creat OA User", 'error');
-                              foreach ($oa_errors as $error) {
-                                Yii::log($error, 'error');
+                              Yii::log("Could not create OA User", 'error');
+                              foreach ($oa_errors as $e) {
+                                Yii::log($e, 'error');
                               }
                             }
 
-                            //SEND EMAIL
+                            // SEND EMAIL
                             $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
                             $bd = new DateTime($pii->yearbirthday.'/'.$pii->monthbirthday.'/'.$pii->daybirthday);
                             $now = new DateTime();
@@ -144,6 +137,9 @@ class RegistrationController extends Controller
                             //$message->addTo(Yii::app()->params['adminEmail']);
                             $message->setFrom(array(Yii::app()->params['senderGenericEmail'] => Yii::app()->params['senderGenericEmailName']));
                             Yii::app()->mail->send($message);
+                            
+                            $this->redirect(array('thanks'));
+                            
                         }
                         else
                         {
@@ -175,4 +171,8 @@ class RegistrationController extends Controller
             );
         }
 	}
+        
+        public function actionThanks() {
+            $this->render('/user/thanks');
+        }
 }

@@ -34,7 +34,7 @@
 <?php } ?>
 
 
-                    <form method="POST" id="registration-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration/registration"); ?>">
+                    <form method="POST" id="registration-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/registration"); ?>">
                         <div class="row">
                             <div  class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>First name</label>

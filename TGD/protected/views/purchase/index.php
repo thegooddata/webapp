@@ -99,7 +99,7 @@ function create_donate_url(gateway, currency, amount) {
                       For value received, <?php echo $user[0]->firstname; ?> <?php echo $user[0]->lastname; ?> (the “Borrower”) at 
                       <?php echo $user[0]->streetname; ?> <?php echo $user[0]->streetnumber; ?> <?php echo $user[0]->streetdetails; ?>, <?php echo $user[0]->city; ?>, <?php echo $user[0]->country; ?> 
                       promises to pay to the order of The Good Data Cooperative Ltd (the “Lender”) at 
-                      Unit 1, 82 Clerkenwell Road, London UK, the sum of $0.01 with no interest.
+                      Unit 1, 82 Clerkenwell Road, London UK, the sum of 1 UK pence with no interest.
                     </p>
                     <ol type="I">
                         <li>
@@ -186,7 +186,7 @@ function create_donate_url(gateway, currency, amount) {
                             $param_json=json_encode($param);
                             $param_b64 = base64_encode($param_json);
 
-                            echo Yii::app()->controller->createAbsoluteUrl('purchase/index').'?token='.$param_b64.'&currency=USD&amount=1';
+                            echo Yii::app()->controller->createAbsoluteUrl('purchase/index').'?token='.$param_b64.'&currency=GBP&amount=-1';
 
                             ?>";
                         });

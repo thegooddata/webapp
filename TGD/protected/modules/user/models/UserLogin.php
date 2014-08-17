@@ -65,6 +65,9 @@ class UserLogin extends CFormModel
 				case UserIdentity::ERROR_STATUS_NOTACTIV:
 					$this->addError("status",UserModule::t("You account is not activated."));
 					break;
+				case UserIdentity::ERROR_STATUS_APPLIED:
+					$this->addError("status",UserModule::t("You are not yet a member of TheGoodData. We are reviewing your information and we will soon notify you by email."));
+					break;
 				case UserIdentity::ERROR_STATUS_BAN:
 					$this->addError("status",UserModule::t("You account is blocked."));
 					break;
