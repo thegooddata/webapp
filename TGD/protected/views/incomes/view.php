@@ -33,7 +33,6 @@ array(
 			'type' => 'raw',
 			'value' => $model->currency0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->currency0)), array('currencies/view', 'id' => GxActiveRecord::extractPkValue($model->currency0, true))) : null,
 			),
-'xrate_usd_spot',
 'loan_reserved',
 'created_at',
 'updated_at',

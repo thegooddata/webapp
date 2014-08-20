@@ -10,6 +10,7 @@ $this->menu = array(
 
 		array('label'=>'Manage Loan Status', 'url'=>array('/loansStatus/admin')),
 		array('label'=>'Manage Loan Sector', 'url'=>array('/loansActivities/admin')),
+		array('label'=>'Manage Charities', 'url'=>array('/loansLeaders/admin')),
 	);
 
 Yii::app()->clientScript->registerScript('search', "

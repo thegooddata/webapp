@@ -1,7 +1,14 @@
 <?php
 
 class TestController extends Controller {
+    
+    public function actionCurrencies() {
+        $this->render('currencies');
+    }
   
+    public function actionDirname() {
+        echo dirname(__FILE__);
+    }
   
   public function actionGet_whitelist($domain, $member_id, $user_id, $service_name, $category) {
     

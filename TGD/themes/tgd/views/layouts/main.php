@@ -90,13 +90,10 @@
             // $this->getUniqueId() != "site" && 
             $this->getUniqueId() != "user/registration" && 
             $this->getUniqueId() != "user/profile" &&
-            $this->getUniqueId() != "purchase" &&
             ( isset( $this->displayMenu ) && $this->displayMenu == true ) ) { ?>
 
         <?php 
         $user = User::model()->findByPk(Yii::app()->user->id); 
-        $user_id_token = base64_encode(Yii::app()->user->id);
-
         ?>
 
             <div id="secondary-nav" <?php if (Yii::app()->user->isGuest){ ?> class="public" <?php } ?> >
@@ -124,22 +121,19 @@
                               // Menu for logged in users
                               $menu_items[]=array('label'=>'ADMIN', 'url'=>array('/manage/index'), 'visible'=>Yii::app()->user->isAdmin()); // Admin only
                               
-                              // Check if we need to show the GET YOUR SHARE link in the menu. Only if user did not get his share yet. 
-                              // if there is a MembersPii with his id means information has not been unlinked yet, so we must show the get share link.
-                              $memberObj=MembersPii::model()->find("t.member_id=:user_id", array(":user_id"=>Yii::app()->user->id));
-
-                              if ($memberObj && $memberObj->member_id) {
+                              // Check if we need to show the GET YOUR SHARE link in the menu. Only if user status is STATUS_PRE_ACCEPTED
+                              if ($user->status==User::STATUS_PRE_ACCEPTED) {
                                 $menu_items[]=array(
                                     'label'=>'GET YOUR SHARE', 
-                                    'url'=>Yii::app()->controller->createAbsoluteUrl('/user/purchase/'.base64_encode(Yii::app()->user->id)), 
-                                    'visible'=>!Yii::app()->user->isGuest
+                                    'url'=>Yii::app()->controller->createAbsoluteUrl('purchase/index'), 
                                   );
                               }
                               
                               // Rest of menu links
-                              $menu_items[]=array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'), 'visible'=>!Yii::app()->user->isGuest);
-                              $menu_items[]=array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'), 'visible'=>!Yii::app()->user->isGuest);
-                              $menu_items[]=array('label'=>'YOUR DATA', 'url'=>array('/userData/index'), 'visible'=>!Yii::app()->user->isGuest);
+                              $menu_items[]=array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'));
+                              $menu_items[]=array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'));
+                              $menu_items[]=array('label'=>'YOUR DATA', 'url'=>array('/userData/index'));
+                              
                             }
                         
                             $this->widget('zii.widgets.CMenu',array(

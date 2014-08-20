@@ -51,11 +51,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'xrate_usd_spot'); ?>
-		<?php echo $form->textField($model, 'xrate_usd_spot'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model, 'loan_reserved'); ?>
 		<?php echo $form->textField($model, 'loan_reserved'); ?>
 	</div>

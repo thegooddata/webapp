@@ -13,7 +13,9 @@
  * @property string $code
  * @property string $name_en
  * @property string $name_es
+ * @property string $exchange_rate
  *
+ * @property Incomes[] $incomes
  * @property Loans[] $loans
  */
 abstract class BaseCurrencies extends GxActiveRecord {
@@ -37,13 +39,15 @@ abstract class BaseCurrencies extends GxActiveRecord {
 	public function rules() {
 		return array(
 			array('code, name_en, name_es', 'length', 'max'=>255),
-			array('code, name_en, name_es', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, code, name_en, name_es', 'safe', 'on'=>'search'),
+			array('exchange_rate', 'length', 'max'=>13),
+			array('code, name_en, name_es, exchange_rate', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, code, name_en, name_es, exchange_rate', 'safe', 'on'=>'search'),
 		);
 	}
 
 	public function relations() {
 		return array(
+			'incomes' => array(self::HAS_MANY, 'Incomes', 'currency'),
 			'loans' => array(self::HAS_MANY, 'Loans', 'currency'),
 		);
 	}
@@ -59,6 +63,8 @@ abstract class BaseCurrencies extends GxActiveRecord {
 			'code' => Yii::t('app', 'Code'),
 			'name_en' => Yii::t('app', 'Name En'),
 			'name_es' => Yii::t('app', 'Name Es'),
+			'exchange_rate' => Yii::t('app', 'Exchange Rate'),
+			'incomes' => null,
 			'loans' => null,
 		);
 	}
@@ -70,6 +76,7 @@ abstract class BaseCurrencies extends GxActiveRecord {
 		$criteria->compare('code', $this->code, true);
 		$criteria->compare('name_en', $this->name_en, true);
 		$criteria->compare('name_es', $this->name_es, true);
+		$criteria->compare('exchange_rate', $this->exchange_rate, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

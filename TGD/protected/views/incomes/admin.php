@@ -57,7 +57,6 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				'value'=>'GxHtml::valueEx($data->currency0)',
 				'filter'=>GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)),
 				),
-		'xrate_usd_spot',
 		'loan_reserved',
 		'created_at',
 		'updated_at',

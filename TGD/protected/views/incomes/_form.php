@@ -48,16 +48,8 @@
 ; ?>
 		<?php echo $form->error($model,'income_date'); ?>
 		</div><!-- row -->
-		<div class="row incomes_currency currency">
-		<?php echo $form->labelEx($model,'currency'); ?>
-		<?php echo $form->dropDownList($model, 'currency', GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true))); ?>
-		<?php echo $form->error($model,'currency'); ?>
-		</div><!-- row -->
-		<div class="row incomes_xrate_usd_spot xrate_usd_spot">
-		<?php echo $form->labelEx($model,'xrate_usd_spot'); ?>
-		<?php echo $form->textField($model, 'xrate_usd_spot'); ?>
-		<?php echo $form->error($model,'xrate_usd_spot'); ?>
-		</div><!-- row -->
+		
+		
 		<div class="row incomes_loan_reserved loan_reserved">
 		<?php echo $form->labelEx($model,'loan_reserved'); ?>
 		<?php echo $form->textField($model, 'loan_reserved'); ?>

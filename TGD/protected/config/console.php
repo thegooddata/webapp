@@ -1,7 +1,7 @@
 <?php
 
 // including config with constants
-include 'config.php';
+include dirname(__FILE__).'/config.php';
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.

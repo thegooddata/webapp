@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include dirname(__FILE__).'/config.php';
 ?>
 <?php
 return array(
@@ -112,60 +112,7 @@ return array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
 			'urlSuffix' => '',
-			'rules'=>array(
-
-				// REST patterns
-				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
-				array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
-
-				array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
-				array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
-
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
-				array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
-
-		        array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
-		        array('api/view', 'pattern'=>'api/<model:\w+>/<lang:[\w  \%\-]+>/<query:[\w  \%\-]+>', 'verb'=>'GET'),
-		        
-		        array('api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT'),
-		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/', 'verb'=>'PUT'),
-		        array('api/update', 'pattern'=>'api/<model:\w+>/<user_id:[\w-]+>/<member_id:\d*>', 'verb'=>'PUT'),
-
-		        array('api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'DELETE'),
-		        array('api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST'),
-		        
-		        array('purchase/index', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>'),
-		        //array('purchase/response', 'pattern'=>'user/purchase/<user_token:[a-zA-Z0-9+]+={0,2}>/<token:[a-zA-Z0-9+]+={0,2}>', 'verb'=>'GET'),
-		        
-		        //Set friendly-url
-		        '/' => 'site/index',
-		        '/good-data' => 'goodData/index',
-		        'apply'=>'/user/registration',
-		        'share'=>'/site/purchase',
-		        'share/thanks'=>'/purchase/thanks',
-		        'sign-in'=>'/user/login',
-		        'recover'=>'/user/recovery',
-		        'good-data'=>'/goodData/index',
-		        'evil-data'=>'/evilData/index',
-		        'user-data'=>'/userData/index',
-		        'membership'=>'/user/profile',
-		        'product'=>'/site/product',
-		        'partners'=>'/site/partners',
-		        'your-company'=>'/site/company',
-		        'support-us'=>'/donate',
-		        'support-us/thanks'=>'/donate/thanks',
-		        'coders'=>'/site/coders',
-		        'faq'=>'/site/faq',
-		        'legal'=>'/site/legal',	
-
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-
-			),
-	
+			'rules'=>require(dirname(__FILE__).'/common.rules.php'),
 		),
 
 		'db'=>array(
@@ -195,15 +142,5 @@ return array(
 	),
 
 	// application-level parameters that can be accessed
-	'params'=>array(
-		// this is used in contact page
-		'senderGenericEmailName'=>EMAIL_GENERIC_FROM_NAME,
-		'senderGenericEmail'=>EMAIL_GENERIC_FROM,
-		'senderPersonalEmail'=>EMAIL_PERSONAL_FROM,
-		'adminEmail'=>EMAIL_ADMIN,
-		'marcosEmail'=>EMAIL_MARCOS_FROM,
-		'membersEmail'=>EMAIL_MEMBERS_FROM,
-		'marcosEmailName'=>EMAIL_MARCOS_FROM_NAME,
-		'membersEmailName'=>EMAIL_MEMBERS_FROM_NAME,		
-	),
+	'params'=>require(dirname(__FILE__).'/common.params.php'),
 );

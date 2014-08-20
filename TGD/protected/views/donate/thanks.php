@@ -1,12 +1,3 @@
-
-
-<div id="tgd-page-title">
-    <div class="container">
-        <div class="row">
-            <h2>Donate</h2>
-        </div>
-    </div>
-</div> 
 <div class="wrapper">
     <div id="tgd-page-content" class="container thanks">
         <div class="row">
@@ -18,7 +9,7 @@
                     <ul>
                         <li>Install TheGoodData extension</li>
                         <li>Tell your family, friends, and colleagues about TheGoodData by email, facebook, twitter or google plus</li>
-                        <li>Become a member of TheGoodData and participate in our collaborative platform</li>
+                        <li>Become a member of TheGoodData and participate in our <a href="https://collaborate.thegooddata.org">collaborative platform</a></li>
                     </ul>
                 </div>
             </div>

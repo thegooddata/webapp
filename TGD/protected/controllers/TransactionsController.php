@@ -2,6 +2,7 @@
 
 class TransactionsController extends GxController {
 
+	public $displayMenu = true;
 
 	public function actionView($id) {
 		$this->render('view', array(

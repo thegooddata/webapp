@@ -39,6 +39,7 @@ class Controller extends CController
 		// array('label'=>'Manage Loan Sector', 'url'=>array('/loansActivities/admin')),
 		
 		array('label'=>'Manage Countries', 'url'=>array('/countries/admin')),
+		array('label'=>'Manage Currencies', 'url'=>array('/currencies/admin')),
 		
 		array('label'=>'Manage Announcements', 'url'=>array('/achievements/admin')),
 

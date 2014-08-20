@@ -2,6 +2,8 @@
 
 class IncomesController extends GxController {
 
+	public $displayMenu = true;
+
 	public function filters()
     {
         return array( 'accessControl' ); // perform access control for CRUD operations
@@ -26,6 +28,8 @@ class IncomesController extends GxController {
 	public function actionCreate() {
 		$model = new Incomes;
 
+                // set currency to default one.
+                $model->currency=Currencies::getDefaultCurrencyModel()->id;
 
 		if (isset($_POST['Incomes'])) {
 			$model->setAttributes($_POST['Incomes']);

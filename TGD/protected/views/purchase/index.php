@@ -13,7 +13,7 @@ function create_donate_url(gateway, currency, amount) {
   $param_json=json_encode($param);
   $param_b64 = base64_encode($param_json);
 
-  $url=Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&gateway=[gateway]&currency=[currency]&amount=[amount]');
+  $url=Yii::app()->controller->createAbsoluteUrl('purchase/index').'?token='.$param_b64.'&gateway=[gateway]&currency=[currency]&amount=[amount]';
 
   ?>
   
@@ -57,7 +57,7 @@ function create_donate_url(gateway, currency, amount) {
                 <div class="section clearfix">
                     <div class='text'>
                         But don't worry! it doesn't mean that you need to pay us anything if you
-                        don't want to! To avoid payments we made up a work-around. A 1pence loan
+                        don't want to! To avoid payments we made up a work-around. A 1 UK pence loan
                         that will be cancelled when you end our membership at no cost.
                     </div>
                     <div class="button">
@@ -89,9 +89,18 @@ function create_donate_url(gateway, currency, amount) {
         </div>
         <div class="col-sm-16 col-md-6 col-lg-6 tgd-no-horizontal-padding">
             <section id="form">
-                <div id="loan-agreement">
+                <div id="loan-agreement" style="display:block;">
+                
+                
                     <h2>Loan Agreement</h2>
-                    <p>For value received, <?php echo $user[0]->firstname; ?> <?php echo $user[0]->lastname; ?> (the “Borrower”) at <?php echo $user[0]->streetname; ?> <?php echo $user[0]->streetnumber; ?> <?php echo $user[0]->streetdetails; ?>, <?php echo $user[0]->city; ?>, <?php echo $user[0]->country; ?> promises to pay to the order of The Good Data Cooperative Ltd (the “Lender”) at Unit 1, 82 Clerkenwell Road, London UK, the sum of $0.01 with no interest.</p>
+                    
+                    <div style="height:430px; padding-right: 10px; overflow: auto;">
+                    <p>
+                      For value received, <?php echo $user[0]->firstname; ?> <?php echo $user[0]->lastname; ?> (the “Borrower”) at 
+                      <?php echo $user[0]->streetname; ?> <?php echo $user[0]->streetnumber; ?> <?php echo $user[0]->streetdetails; ?>, <?php echo $user[0]->city; ?>, <?php echo $user[0]->country; ?> 
+                      promises to pay to the order of The Good Data Cooperative Ltd (the “Lender”) at 
+                      Unit 1, 82 Clerkenwell Road, London UK, the sum of 1 UK pence with no interest.
+                    </p>
                     <ol type="I">
                         <li>
                             <h3>Destination of the amount lent</h3>
@@ -154,9 +163,14 @@ function create_donate_url(gateway, currency, amount) {
                     <br>
                     <br>
 
+                      
+                      
+                      
+                    </div>  
+                      
+                      
 
-
-                    <button id="btnProceed1pLoan" type="submit" class="btn btn-primary">Proceed</button>
+                    <button id="btnProceed1pLoan" type="submit" class="btn btn-primary" style="margin:10px 0 0 0;">I AGREE</button>
 
                     <script>
                     $( document ).ready(function() {
@@ -172,18 +186,18 @@ function create_donate_url(gateway, currency, amount) {
                             $param_json=json_encode($param);
                             $param_b64 = base64_encode($param_json);
 
-                            echo Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&currency=USD&amount=1');
+                            echo Yii::app()->controller->createAbsoluteUrl('purchase/index').'?token='.$param_b64.'&currency=GBP&amount=-1';
 
                             ?>";
                         });
                     });
                     </script>
                 </div>
-                <div id="donation">
-                    <strong>Please choose a payment method</strong>
-                    Are you a generous person that want to take the
-                    opportunity to support us with a donation? don't be shy! 
-                    We accept credit cards.
+                <div id="donation" style="display:none;">
+                    <strong>Support us and get your share</strong>
+                    Please choose the amount and payment method. <br />
+                    1 UK pence will be used to buy your share. <br />
+                    The rest will be donated to The Good Data Cooperative Ltd.
                     <form id="donate" action="https://bitpay.com/checkout" method="post" onsubmit="return bp.validateMobileCheckoutForm($('#donate'));">
                         <input name="action" type="hidden" value="checkout">
                         <div class="form-group row">
@@ -200,7 +214,7 @@ function create_donate_url(gateway, currency, amount) {
                             </div>
                         </div>
 
-                        <input type="hidden" name="redirectURL" value="<?php echo Yii::app()->controller->createAbsoluteUrl("user/purchase/".$user_token.'/'.$transaction_id.'/'.base64_encode(PurchaseController::TYPE_DONATION).'/'.PurchaseController::TRANSACTION_OK)?>" />
+                        <input type="hidden" name="redirectURL" value="" />
                         <input type="hidden" name="data" value="i+8wYLNGk9LIgh913da5SgG/GA7jj8JhA0LTzmCuHJ2A1xPgE/JABmoEwVawN+bsUjzwXKkU5syz/IelMYuZhsb5J6oKZ6n2CQ+hWvueNa4vp3vH7dx9PPgD5/KRTGkqSP568lr7CJ3UecrKSbQpBY0UT6wVK17gIVG98wp8Ld0hEcf0dFKpN/ZFk8T75wsDfnk0dCvnUnDOdEmdWS0aCg52y8OKJJzLNq+o2OaM8Kw=">
                         
                         <button id="btnProceedDonationStripe" type="button" class="btn btn-primary">pay with credit card <span class="fa fa-credit-card"></span></button>
@@ -243,10 +257,7 @@ function create_donate_url(gateway, currency, amount) {
                             </script>
                             <?php
                             
-                            $user_model=null;
-                            if (!Yii::app()->user->isGuest) {
-                              $user_model=Yii::app()->user->model(Yii::app()->user->id);
-                            }
+                            
 
                             $stripeHandlerOptions=array(
                               'name'=>'The Good Data',
@@ -302,14 +313,14 @@ function create_donate_url(gateway, currency, amount) {
                         </script>
                     </form>
                 </div>
-                <div id="bitcoin-1p">
+                <div id="bitcoin-1p" style="display:none;">
                     <strong>Make a 1-pence payment</strong>
                     Upon clicking the button below, you will be redirected to a Bitpay platform page, where you'll be able to complete the payment process 
                     using your Bitcoin wallet application and scanning a QR code or clicking on a "Pay with Bitcoin" button.
                     <form id='formShare' action="https://bitpay.com/checkout" method="post" >
                         <input type="hidden" name="action" value="checkout" />
                         <input type="hidden" name="posData" value="" />
-                        <input type="hidden" name="redirectURL" value="<?php echo Yii::app()->controller->createAbsoluteUrl("user/purchase/".$user_token.'/'.$transaction_id.'/'.base64_encode(PurchaseController::TYPE_SHARE).'/'.PurchaseController::TRANSACTION_OK)?>" />
+                        <input type="hidden" name="redirectURL" value="" />
                         <input type="hidden" name="data" value="i+8wYLNGk9LIgh913da5SgG/GA7jj8JhA0LTzmCuHJ2A1xPgE/JABmoEwVawN+bsp7DjS+An+ATbMzhpkB6ZHzuuKxHRHnjN2f785x2ENejcv/x1lXq06axFiaAMkw1o8T1uTY7O2UpV1zKo1R7mR5Hds9iiOgRLW9ZItMP7p0wa07EFcardTCTPaxq0Upv5p9eGF8pypHVvrNfvzMjhs3kLI4bf9X9hOwMrA0i898FVHQ+L66xstqBs2+6WDzUH" />
 <!--                        <input type="image" src="https://bitpay.com/img/donate-md.png" border="0" name="submit" alt="BitPay, the easy way to pay with bitcoins." >-->
                         <button id="btnProceedShare" type="submit" class="btn btn-primary">Pay with Bitcoins <span class="fa fa-bitcoin"></span></button>
@@ -329,7 +340,7 @@ function create_donate_url(gateway, currency, amount) {
                                 $param_json=json_encode($param);
                                 $param_b64 = base64_encode($param_json);
 
-                                echo Yii::app()->controller->createAbsoluteUrl('user/purchase/'.$user_token.'?token='.$param_b64.'&currency=GBP&amount=1');
+                                echo Yii::app()->controller->createAbsoluteUrl('purchase/index').'?token='.$param_b64.'&currency=GBP&amount=1';
 
                                 ?>');  
 

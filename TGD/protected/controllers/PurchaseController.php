@@ -14,14 +14,13 @@ class PurchaseController extends Controller {
 
     public $transaction_id = '';
     public $user_id = '';
-    public $user_token ='';
     public $type ='';
     public $status ='';
     public $currency='';
     public $amount='';
 
     public $bodyId = 'tgd-user-data';
-    public $displayMenu = true;
+    public $displayMenu = false;
 
     public function init() {
         Yii::app()->theme = 'tgd';
@@ -39,9 +38,9 @@ class PurchaseController extends Controller {
         parent::init();
     }
 
-    // public function filters() {
-    //     return array('accessControl'); // perform access control for CRUD operations
-    // }
+    public function filters() {
+        return array('accessControl'); // perform access control for CRUD operations
+    }
 
     public function accessRules() {
         return array(
@@ -57,19 +56,35 @@ class PurchaseController extends Controller {
         
     }
 
-    public function actionIndex($user_token) {
+    public function actionIndex() {
       
         $errors=array();
 
-        $this->user_token = $user_token;
-        $this->user_id = base64_decode($user_token);
+        $this->user_id = Yii::app()->user->id;
+        
+        $user_model=null;
+        $user_model=Yii::app()->user->model(Yii::app()->user->id);
+        
+        // Check user status and forward to the correct page if necessary
+        switch ($user_model->status) {
+          case User::STATUS_PRE_ACCEPTED: {
+            // nothing to do, just show this page
+            break;
+          }
+          case User::STATUS_ACCEPTED: {
+            // if already accepted, redirect to thanks
+            $this->redirect(array('purchase/thanks'));
+            break;
+          }
+          default:
+            // default if not pre-accepted or accepted, then redirect to not applicable
+            $this->redirect(array('purchase/notApplicable'));
+            break;
+        }
 
         if (isset($_GET['token']) && $_GET['token']!='')
         {
             $token = $_GET['token'];
-
-            $this->user_token = $user_token;
-            $this->user_id = base64_decode($user_token);
 
             $token = base64_decode($token);
             $token = json_decode( $token);
@@ -78,7 +93,7 @@ class PurchaseController extends Controller {
             $this->transaction_id = $token->transaction_id;
             $this->status = $token->status;
             $this->currency = $_GET['currency'];
-            $this->amount = (int)$_GET['amount'] / 100;
+            $this->amount = (float)$_GET['amount'] / 100;
             
             /*
             CVarDumper::dump($_GET, true, 10);
@@ -124,7 +139,7 @@ class PurchaseController extends Controller {
             {
                 //Change status
                 $userObj=User::model()->findByPk($this->user_id);
-                $userObj->status=User::STATUS_ACCEPT;
+                $userObj->status=User::STATUS_ACCEPTED;
                 $userObj->save();
 
                 
@@ -154,14 +169,41 @@ class PurchaseController extends Controller {
 
             if ( Transactions::model()->find('transaction_id=:id_transaction', array(':id_transaction'=>$this->transaction_id)) == null)
             {
-                $transaction = new Transactions();
-                $transaction->transaction_id=$this->transaction_id;
-                $transaction->type=$this->type;
-                $transaction->status=$this->status;
-                $transaction->currency=$this->currency;
-                $transaction->amount=$this->amount;
-                $transaction->member_id=$this->user_id;
-                $transaction->save();
+                
+                
+            }
+            
+            switch ($this->type) {
+                
+                // In case of a loan, also generate a SHARE transaction
+                case self::TYPE_LOAN: {
+                    // save loan
+                    $this->saveTransaction($this->transaction_id, $this->type, $this->status, $this->currency, $this->amount, $this->user_id);
+                    // save share
+                    $this->saveTransaction(null, self::TYPE_SHARE, $this->status, 'GBP', 0.01, $this->user_id);
+                    break;
+                }
+                
+                // In case of a donation, also generate a SHARE transaction 
+                case self::TYPE_DONATION: {
+                    
+                    // save share
+                    $this->saveTransaction(null, self::TYPE_SHARE, $this->status, 'GBP', 0.01, $this->user_id);
+                    
+                    // convert the share price of 0.01 GBP to donation currency and set new donation amount to (original - share)
+                    // todo: keep in mind that we should validate that the donation amount is > than 0.01 GBP
+                    $donation_amount=($this->amount - Currencies::convertDefaultTo(0.01, $this->currency));
+                    
+                    // save donation
+                    $this->saveTransaction($this->transaction_id, $this->type, $this->status, $this->currency, $donation_amount, $this->user_id);
+                    
+                    break;
+                }
+                
+                // Normal case, save just share.
+                case self::TYPE_SHARE: {
+                    $this->saveTransaction($this->transaction_id, $this->type, $this->status, $this->currency, $this->amount, $this->user_id);
+                }
             }
 
             if (count($errors)==0) {
@@ -201,8 +243,8 @@ class PurchaseController extends Controller {
             //var_dump($user);die;
 
             $this->render('index', array(
+                'user_model'=>$user_model,
                 'transaction_id'=>$this->transaction_id,
-                'user_token' => $this->user_token,
                 'state' => PurchaseController::INIT,
                 'user'=>$user)
             );
@@ -211,9 +253,41 @@ class PurchaseController extends Controller {
 
         
     }
+    
+    /**
+     * Common function to create a new transaction
+     * @param type $transaction_id
+     * @param type $type
+     * @param type $status
+     * @param type $currency
+     * @param type $amount
+     * @param type $member_id
+     * @return type
+     */
+    private function saveTransaction($transaction_id, $type, $status, $currency, $amount, $member_id) {
+        
+        // if transaction_id not provided generate new one
+        if ($transaction_id==null) {
+            $transaction_id = uniqid();
+        }
+        
+        $transaction = new Transactions();
+        $transaction->transaction_id=$transaction_id;
+        $transaction->type=$type;
+        $transaction->status=$status;
+        $transaction->currency=$currency;
+        $transaction->amount=$amount;
+        $transaction->member_id=$member_id;
+        return $transaction->save();
+    }
 
     public function actionThanks() {
+        $this->displayMenu=true;
         $this->render('thanks');
+    }
+    
+    public function actionNotApplicable() {
+      $this->render('notApplicable');
     }
 
 }
