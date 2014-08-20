@@ -3,37 +3,36 @@
     <section id="tgd-page-content">
         <div class="container">
             <div class="row">
-                <section id="kiva" class="tgd-box col-sm-16 col-md-8 col-lg-8">
+                <section id="zidisha" class="tgd-box col-sm-16 col-md-8 col-lg-8">
                     <h2>Use of funds</h2>
-                    <div class="tgd-box-section logo kiva" data-url="http://www.kiva.org"></div>
+                    <div class="tgd-box-section logo zidisha" data-url="http://www.zidisha.org"></div>
                     <div class="tgd-box-section  very-light-gray">
                         <ul>
-                            <li><span class="glyphicon glyphicon-ok-sign"></span>Kiva is the online microproject leader.</li>
-                            <li><span class="glyphicon glyphicon-ok-sign"></span>It provides us with the best way to invest part of the money earned in wealth generating projects in developing countries.</li>
-                            <li><span class="glyphicon glyphicon-ok-sign"></span>Thanks to their online platform and local presence we can choose and monitor the progress of the projects we support.</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>Zidisha is the person-to-person microcredit leader.</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>It provides the best way to invest part of the money earned in wealth generating projects in developing countries without intermediaries.</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>Thanks to their online platform and absence of middlemen we can monitor the progress of the projects we support and be sure that people receive the loans with very low interest rates.</li>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>Being loans rather than donations allow TheGoodData to keep growing its asset base.</li>
                         </ul>
                     </div>
                     <div class="tgd-box-section clearfix cases">
                         <div class="photo col-sm-16 co-md-8 col-md-8">
-                            <a href="http://www.kiva.org/lend/663114">
-                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/mabinity.png" class="photo"><span class="name">Mabinity</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/sl.png" class="flag"/><br>
-                            <div class="subtext">$300to purchase retail stock for her shop.</div>
+                            <a href="https://www.zidisha.org/microfinance/loan/comfortboakye/9449.html"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/zidi-1.jpg" class="photo"><span class="name">Comfort Boakye</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/gh.png" class="flag"/><br>
+                            <div class="subtext">$150 to continue my education.</div>
                             </a>
                         </div>
                         <div class="photo col-sm-16 co-md-8 col-md-8">
-                            <a href="http://www.kiva.org/lend/663520"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/waterford.png" class="photo"><span class="name">Waterford School</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/ug.png" class="flag"/><br>
-                            <div class="subtext">$2400 to provide drinking water to students.</div>
+                            <a href="https://www.zidisha.org/microfinance/loan/akuablessing/9452.html"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/zidi-2.jpg" class="photo"><span class="name">Blessing Boahen</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/gh.png" class="flag"/><br>
+                            <div class="subtext">$150 to pay my admission fees for nursing training.</div>
                             </a>
                         </div>
                         <div class="photo col-sm-16 co-md-8 col-md-8">
-                            <a href="http://www.kiva.org/lend/659906"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/gulkhan.png" class="photo"><span class="name">Gulkhan</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/kg.png" class="flag"/><br>
-                            <div class="subtext">$2000 to buy cows for fattening and resale.</div>
+                            <a href="https://www.zidisha.org/microfinance/loan/SAFEMBA/9419.html"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/zidi-3.jpg" class="photo"><span class="name">Safemba Soulama</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/bf.png" class="flag"/><br>
+                            <div class="subtext">$364 for welding equipment to produce doors and windows for homes.</div>
                             </a>
                         </div>
                         <div class="photo col-sm-16 co-md-8 col-md-8">
-                            <a href="http://www.kiva.org/lend/662966"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/mohammed.png" class="photo"><span class="name">Mohammed</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/ke.png" class="flag"/><br>
-                            <div class="subtext">$375 to buy tomatoes for his wholesale business.</div></a>
+                            <a href="https://www.zidisha.org/microfinance/loan/danielngerere/9410.html"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/zidi-4.jpg" class="photo"><span class="name">Daniel Ngerere</span><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/flags/png/ke.png" class="flag"/><br>
+                            <div class="subtext">$1,734 purchase new motor-bike and human basic needs.</div></a>
                         </div>
                     </div>
                 </section>

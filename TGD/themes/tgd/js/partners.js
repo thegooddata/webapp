@@ -1,7 +1,7 @@
 $(function() {
     var sameSize = function() {
-        var kivaGrayHeight = $('#kiva .tgd-box-section:nth-child(3)').innerHeight(),
-                picturesHeight = $('#kiva .tgd-box-section:nth-child(4)').innerHeight(),
+        var kivaGrayHeight = $('#zidisha .tgd-box-section:nth-child(3)').innerHeight(),
+                picturesHeight = $('#zidisha .tgd-box-section:nth-child(4)').innerHeight(),
                 emphasisHeight = $('#chango .tgd-box-section:nth-child(4)').innerHeight(),
                 deltaHeight = 0;
         // set heights of 2nd row
