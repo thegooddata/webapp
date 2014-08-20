@@ -43,6 +43,7 @@ class ResignationController extends Controller
 						$user = User::model()->findByPk($user->id); 
 				        $user->status = User::STATUS_LEFT;
 				        $user->save();
+				        $this->sendEmail();
 						Yii::app()->user->logout();
 
 						$this->redirect('/resignation/thanks');
@@ -113,6 +114,24 @@ class ResignationController extends Controller
 
 		// var_dump($this->_model);die;
 		return $this->_model;
+	}
+
+	public function sendEmail() {
+		if(Yii::app()->user->id){
+			$model=Yii::app()->controller->module->user();
+			if ($model->email != ""){
+				//SEND EMAIL
+				$content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'resignation.html');
+				$content = str_replace('[USERNAME]',$model->username);
+				$message = new YiiMailMessage;
+				$message->subject = 'Resignation of Membership of TheGoodData Confirmed';
+				$message->setBody($content,'text/html');
+				$message->addTo($model->email);
+				$message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
+				Yii::app()->mail->send($message);
+			}
+		}	
+		return "";
 	}
 	// Uncomment the following methods and override them if needed
 	/*
