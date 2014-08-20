@@ -1,6 +1,10 @@
 <?php
 
 class TestController extends Controller {
+    
+    public function actionCurrencies() {
+        $this->render('currencies');
+    }
   
     public function actionDirname() {
         echo dirname(__FILE__);

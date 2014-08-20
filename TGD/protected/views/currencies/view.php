@@ -19,23 +19,29 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
-array(
-			'name' => 'type0',
-			'type' => 'raw',
-			'value' => $model->type0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->type0)), array('incomesTypes/view', 'id' => GxActiveRecord::extractPkValue($model->type0, true))) : null,
-			),
-'source_name',
-'gross_amount',
-'expenses',
-'income_date',
-array(
-			'name' => 'currency0',
-			'type' => 'raw',
-			'value' => $model->currency0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->currency0)), array('currencies/view', 'id' => GxActiveRecord::extractPkValue($model->currency0, true))) : null,
-			),
-'loan_reserved',
-'created_at',
-'updated_at',
+'code',
+'name_en',
+'name_es',
+'exchange_rate',
 	),
 )); ?>
 
+<h2><?php echo GxHtml::encode($model->getRelationLabel('incomes')); ?></h2>
+<?php
+	echo GxHtml::openTag('ul');
+	foreach($model->incomes as $relatedModel) {
+		echo GxHtml::openTag('li');
+		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('incomes/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
+		echo GxHtml::closeTag('li');
+	}
+	echo GxHtml::closeTag('ul');
+?><h2><?php echo GxHtml::encode($model->getRelationLabel('loans')); ?></h2>
+<?php
+	echo GxHtml::openTag('ul');
+	foreach($model->loans as $relatedModel) {
+		echo GxHtml::openTag('li');
+		echo GxHtml::link(GxHtml::encode(GxHtml::valueEx($relatedModel)), array('loans/view', 'id' => GxActiveRecord::extractPkValue($relatedModel, true)));
+		echo GxHtml::closeTag('li');
+	}
+	echo GxHtml::closeTag('ul');
+?>

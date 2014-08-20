@@ -150,16 +150,16 @@
             $('.total_registered_members').html(result.total_registered_members);
             $('.monthly_queries_processed').html(result.monthly_queries_processed);
             $('.monthly_queries_traded').html(result.monthly_queries_trade_processed);
-            $('.total_money_earned').html("$"+result.total_money_earned);
+            $('.total_money_earned').html(result.total_money_earned);
         }, "json" );
 
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodInvestmentsData')?>", function( result ) {
 
-            $('.money_reserved').html("$"+result.money_reserved);
-            $('.money_lent').html("$"+result.money_lent);
-            $('.money_repaid').html("$"+result.money_repaid);
-            $('.money_lost').html("$"+result.money_lost);
-            $('.outstanding_portfolio').html("$"+result.outstanding_portfolio);
+            $('.money_reserved').html(result.money_reserved);
+            $('.money_lent').html(result.money_lent);
+            $('.money_repaid').html(result.money_repaid);
+            $('.money_lost').html(result.money_lost);
+            $('.outstanding_portfolio').html(result.outstanding_portfolio);
         }, "json" );
 
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodProjectsData')?>", function( result ) {

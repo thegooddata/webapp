@@ -23,8 +23,7 @@
 		<?php echo GxHtml::encode(GxHtml::valueEx($data->currency0)); ?>
 	<br />
 	<?php /*
-	<?php echo GxHtml::encode($data->getAttributeLabel('xrate_usd_spot')); ?>:
-	<?php echo GxHtml::encode($data->xrate_usd_spot); ?>
+
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('loan_reserved')); ?>:
 	<?php echo GxHtml::encode($data->loan_reserved); ?>

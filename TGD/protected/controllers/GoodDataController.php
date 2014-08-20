@@ -85,6 +85,11 @@ class GoodDataController extends Controller {
         $total = 0;
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
+        
+        // convert to usd
+        $total=Currencies::convertDefaultTo($total, 'USD');
+                
+        $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         $result['total_money_earned'] = $total;
 
@@ -105,7 +110,16 @@ class GoodDataController extends Controller {
 
         $total = 0;
         if ($datas[0]->total != null)
-            $total = number_format($datas[0]->total, 2, '.', '');
+            $total = $datas[0]->total;
+        
+        
+//            $total = number_format($datas[0]->total, 2, '.', '');
+        
+        
+        // convert to usd
+        $total=Currencies::convertDefaultTo($total, 'USD');
+        
+        $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         $result['money_reserved'] = $total;
 
@@ -119,7 +133,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_lent'] = $total;
+        $result['money_lent'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -137,7 +151,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['outstanding_portfolio'] = $total;
+        $result['outstanding_portfolio'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -155,7 +169,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_repaid'] = $total;
+        $result['money_repaid'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
 
 
@@ -176,7 +190,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_lost'] = $total;
+        $result['money_lost'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
