@@ -213,3 +213,8 @@ function create_donate_url(gateway, currency, amount) {
         </div>
     </div>
 </div>
+<script>
+$( document ).ready(function() {
+    $( "button.credit-card" ).focus();
+});
+</script>
