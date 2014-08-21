@@ -48,13 +48,13 @@ function create_donate_url(gateway, currency, amount) {
 <div id="tgd-page-content" class="container">
     <div class="row">
         <div class="col-sm-16 col-md-10 col-lg-10 tgd-no-horizontal-padding">
-            <section id="descriptions" class="bitcoin-1p">
+            <section id="descriptions" class="loan-agreement">
                 <div>
                     <h2>Your membership application has been accepted!</h2>
                     <p>To comply with UK Industrial and Provident Society rules, you need to
                         buy one share of TheGoodData to become a full right member.</p>
                 </div>
-                <div class="section clearfix">
+                <div class="section clearfix selected">
                     <div class='text'>
                         But don't worry! it doesn't mean that you need to pay us anything if you
                         don't want to! To avoid payments we made up a work-around. A 1 UK pence loan
@@ -64,7 +64,7 @@ function create_donate_url(gateway, currency, amount) {
                         <button class="btn loan" data-toggle="loan-agreement">show me the<br> 1 UK pence loan <br>(1.7 US cents)</button>
                     </div>
                 </div>
-                <div class="section clearfix selected">
+                <div class="section clearfix">
                     <div class="text">
                         Do you still want to pay us that 1 little pence?<br>
                         You can do it via Bitcoin.
@@ -83,7 +83,7 @@ function create_donate_url(gateway, currency, amount) {
                     </div>
                 </div>
                 <div id="questions">
-                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq")?>">Have questions?</a>
+                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq")."#membership|2";?>" target="_blank">Have questions?</a>
                 </div>
             </section>
         </div>
@@ -356,16 +356,7 @@ function create_donate_url(gateway, currency, amount) {
 </div>
 </div>
 <script>
-    $('#descriptions button').not(':disabled').click(function() {
-        var targetId = '#' + $(this).data('toggle'),
-                $target = $(targetId),
-                $parent = $target.parent();
-
-        if (!$target.is(':visible')) {
-            // hide the rest
-            $parent.children().not(targetId).hide();
-            // show the target
-            $target.show();
-        }
-    });
+$( document ).ready(function() {
+    $( "button.loan" ).focus();
+});
 </script>
