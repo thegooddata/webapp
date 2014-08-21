@@ -16,7 +16,6 @@
  * @property string $expenses
  * @property string $income_date
  * @property integer $currency
- * @property string $xrate_usd_spot
  * @property string $loan_reserved
  * @property string $created_at
  * @property string $updated_at
@@ -47,9 +46,9 @@ abstract class BaseIncomes extends GxActiveRecord {
 			array('type, currency, loan_reserved', 'required'),
 			array('type, currency, loan_reserved', 'numerical'),
 			array('source_name', 'length', 'max'=>255),
-			array('gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe'),
-			array('source_name, gross_amount, expenses, income_date, xrate_usd_spot, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, type, source_name, gross_amount, expenses, income_date, currency, xrate_usd_spot, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('gross_amount, expenses, income_date, loan_reserved, created_at, updated_at', 'safe'),
+			array('source_name, gross_amount, expenses, income_date, loan_reserved, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, type, source_name, gross_amount, expenses, income_date, currency, loan_reserved, created_at, updated_at', 'safe', 'on'=>'search'),
 
 		);
 	}
@@ -75,7 +74,6 @@ abstract class BaseIncomes extends GxActiveRecord {
 			'expenses' => Yii::t('app', 'Expenses'),
 			'income_date' => Yii::t('app', 'Income Date'),
 			'currency' => null,
-			'xrate_usd_spot' => Yii::t('app', 'Xrate Usd Spot'),
 			'loan_reserved' => Yii::t('app', 'Loan reserve (%)'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
@@ -94,7 +92,6 @@ abstract class BaseIncomes extends GxActiveRecord {
 		$criteria->compare('expenses', $this->expenses, true);
 		$criteria->compare('income_date', $this->income_date, true);
 		$criteria->compare('currency', $this->currency);
-		$criteria->compare('xrate_usd_spot', $this->xrate_usd_spot, true);
 		$criteria->compare('loan_reserved', $this->loan_reserved, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);

@@ -163,9 +163,5 @@ return array(
 	),
 
 	// application-level parameters that can be accessed
-	'params'=>array(
-		// this is used in contact page
-		'senderEmail'=>'webmaster@sample.com',
-		'adminEmail'=>'webmaster@sample.com',
-	),
+	'params'=>require(dirname(__FILE__).'/common.params.php'),
 );

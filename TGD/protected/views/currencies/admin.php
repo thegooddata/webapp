@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('incomes-grid', {
+	$.fn.yiiGridView.update('currencies-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -37,30 +37,15 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id' => 'incomes-grid',
+	'id' => 'currencies-grid',
 	'dataProvider' => $model->search(),
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		array(
-				'name'=>'type',
-				'value'=>'GxHtml::valueEx($data->type0)',
-				'filter'=>GxHtml::listDataEx(IncomesTypes::model()->findAllAttributes(null, true)),
-				),
-		'source_name',
-		'gross_amount',
-		'expenses',
-		'income_date',
-		/*
-		array(
-				'name'=>'currency',
-				'value'=>'GxHtml::valueEx($data->currency0)',
-				'filter'=>GxHtml::listDataEx(Currencies::model()->findAllAttributes(null, true)),
-				),
-		'loan_reserved',
-		'created_at',
-		'updated_at',
-		*/
+		'code',
+		'name_en',
+		'name_es',
+		'exchange_rate',
 		array(
 			'class' => 'CButtonColumn',
 		),

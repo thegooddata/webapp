@@ -169,14 +169,41 @@ class PurchaseController extends Controller {
 
             if ( Transactions::model()->find('transaction_id=:id_transaction', array(':id_transaction'=>$this->transaction_id)) == null)
             {
-                $transaction = new Transactions();
-                $transaction->transaction_id=$this->transaction_id;
-                $transaction->type=$this->type;
-                $transaction->status=$this->status;
-                $transaction->currency=$this->currency;
-                $transaction->amount=$this->amount;
-                $transaction->member_id=$this->user_id;
-                $transaction->save();
+                
+                
+            }
+            
+            switch ($this->type) {
+                
+                // In case of a loan, also generate a SHARE transaction
+                case self::TYPE_LOAN: {
+                    // save loan
+                    $this->saveTransaction($this->transaction_id, $this->type, $this->status, $this->currency, $this->amount, $this->user_id);
+                    // save share
+                    $this->saveTransaction(null, self::TYPE_SHARE, $this->status, 'GBP', 0.01, $this->user_id);
+                    break;
+                }
+                
+                // In case of a donation, also generate a SHARE transaction 
+                case self::TYPE_DONATION: {
+                    
+                    // save share
+                    $this->saveTransaction(null, self::TYPE_SHARE, $this->status, 'GBP', 0.01, $this->user_id);
+                    
+                    // convert the share price of 0.01 GBP to donation currency and set new donation amount to (original - share)
+                    // todo: keep in mind that we should validate that the donation amount is > than 0.01 GBP
+                    $donation_amount=($this->amount - Currencies::convertDefaultTo(0.01, $this->currency));
+                    
+                    // save donation
+                    $this->saveTransaction($this->transaction_id, $this->type, $this->status, $this->currency, $donation_amount, $this->user_id);
+                    
+                    break;
+                }
+                
+                // Normal case, save just share.
+                case self::TYPE_SHARE: {
+                    $this->saveTransaction($this->transaction_id, $this->type, $this->status, $this->currency, $this->amount, $this->user_id);
+                }
             }
 
             if (count($errors)==0) {
@@ -225,6 +252,33 @@ class PurchaseController extends Controller {
         }
 
         
+    }
+    
+    /**
+     * Common function to create a new transaction
+     * @param type $transaction_id
+     * @param type $type
+     * @param type $status
+     * @param type $currency
+     * @param type $amount
+     * @param type $member_id
+     * @return type
+     */
+    private function saveTransaction($transaction_id, $type, $status, $currency, $amount, $member_id) {
+        
+        // if transaction_id not provided generate new one
+        if ($transaction_id==null) {
+            $transaction_id = uniqid();
+        }
+        
+        $transaction = new Transactions();
+        $transaction->transaction_id=$transaction_id;
+        $transaction->type=$type;
+        $transaction->status=$status;
+        $transaction->currency=$currency;
+        $transaction->amount=$amount;
+        $transaction->member_id=$member_id;
+        return $transaction->save();
     }
 
     public function actionThanks() {

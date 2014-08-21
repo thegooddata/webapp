@@ -46,7 +46,8 @@ return array(
   'faq'=>'/site/faq',
   'legal'=>'/site/legal',	
   'get-your-share'=>'/purchase/index',
-  'not-applicable'=>'/purchase/notApplicable',
+  'get-your-share/not-applicable'=>'/purchase/notApplicable',
+  'get-your-share/thanks'=> '/purchase/thanks',
   'robots.txt'=>'/site/robots',
 
 	'<controller:\w+>/<id:\d+>'=>'<controller>/view',
