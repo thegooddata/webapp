@@ -9,15 +9,15 @@
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
-            <?php if ($success != "") { ?>   
-                <p class="alert alert-success"><?php echo $success; ?>
-            <?php } ?>
-
-            <?php if ($error != "") { ?>   
-                <p class="alert alert-danger"><?php echo $error; ?>
-            <?php } ?>
             <section id="form" class="col-sm-16 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
-                <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile/profile"); ?>" method="POST">
+                <?php if ($success != "") { ?>   
+                    <p class="alert alert-success"><?php echo $success; ?>
+                <?php } ?>
+
+                <?php if ($error != "") { ?>   
+                    <p class="alert alert-danger"><?php echo $error; ?>
+                <?php } ?>
+                <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/membership"); ?>" method="POST">
                     <div  class="form-group col-sm-16 col-md-16 col-lg-16">
                         <label>Username</label>
                         <input type="text" class="form-control" id="username" name="ProfileForm[username]" value="<?php echo $user->username; ?>">
