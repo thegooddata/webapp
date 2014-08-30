@@ -3,7 +3,7 @@
 
 In order to be able to deploy a new release, first of all you need to ask for access to our sysadmin.
 
-### Technology used
+### Technologies used
 
 - [Ruby](https://www.ruby-lang.org)
 - [Bundler](https://github.com/bundler/bundler)
@@ -11,10 +11,8 @@ In order to be able to deploy a new release, first of all you need to ask for ac
 
 ### Procedure
 
-Install Ruby for your platform
-
-Install [Ruby gems](https://rubygems.org/)
-
+Install Ruby for your platform.
+Install [Ruby gems](https://rubygems.org/).
 Install Bunlder:
 ``` bash
 gem install bundler
