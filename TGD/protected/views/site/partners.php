@@ -9,9 +9,9 @@
                     <div class="tgd-box-section  very-light-gray">
                         <ul>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>Zidisha is the person-to-person microcredit leader.</li>
-                            <li><span class="glyphicon glyphicon-ok-sign"></span>It provides the best way to invest part of the money earned in wealth generating projects in developing countries without intermediaries.</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>It provides the best way to invest without intermediaries the money earned with your data in developing countries.</li>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>Thanks to their online platform and absence of middlemen we can monitor the progress of the projects we support and be sure that people receive the loans with very low interest rates.</li>
-                            <li><span class="glyphicon glyphicon-ok-sign"></span>Being loans rather than donations allow TheGoodData to keep growing its asset base.</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>Being loans instead of donations it allows TheGoodData to keep growing its asset base.</li>
                         </ul>
                     </div>
                     <div class="tgd-box-section clearfix cases">
