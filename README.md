@@ -20,6 +20,10 @@ These libraries are bundled with the project and needn’t be updated manually:
 0. Yii Framework
 1. jQuery
 
+## Deployment HOWTO
+
+Check the [Deployment Guide](https://github.com/thegooddata/webapp/blob/master/DEPLOY.md)
+
 ## License
 
 Copyright 2014 The Good Data Cooperative, Ltd.
