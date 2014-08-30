@@ -22,7 +22,7 @@ These libraries are bundled with the project and needn’t be updated manually:
 
 ## Deployment HOWTO
 
-Check the [Deployment Guide](https://github.com/thegooddata/webapp/blob/master/DEPLOY.md)
+Check the [Deployment Guide](DEPLOY.md)
 
 ## License
 

@@ -12,12 +12,14 @@ In order to be able to deploy a new release, first of all you need to ask for ac
 ### Procedure
 
 Install Ruby for your platform
+
 Install [Ruby gems](https://rubygems.org/)
-Install Bunlder
+
+Install Bunlder:
 ``` bash
 gem install bundler
 ```
-From the project root execute the following
+From the project root execute the following:
 ``` bash
 bundle install
 ```
