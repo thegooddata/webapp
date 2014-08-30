@@ -23,3 +23,12 @@ From the project root execute the following:
 ``` bash
 bundle install
 ```
+
+### Deployment
+
+To deploy all you need to do is execute the following (depending on the environment you want to deploy to)
+``` bash
+cap [production|staging] deploy
+``` 
+
+For more deployment options check the (config/deploy.rb)[config/deploy.rb] file
