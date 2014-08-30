@@ -31,4 +31,4 @@ To deploy all you need to do is execute the following (depending on the environm
 cap [production|staging] deploy
 ``` 
 
-For more deployment options check the (config/deploy.rb)[config/deploy.rb] file
+For more deployment options check the [config/deploy.rb](config/deploy.rb) file
