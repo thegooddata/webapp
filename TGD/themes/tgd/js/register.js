@@ -1,4 +1,6 @@
 $(function() {
+    var route = '';
+
     $('.with-popover').popover({trigger: 'hover'}).click(function(e){
         e.preventDefault();
     });
@@ -38,30 +40,22 @@ $(function() {
     function initialize() {
         // Create the autocomplete object, restricting the search
         // to geographical location types.
-        autocomplete = new google.maps.places.Autocomplete(
-                (document.getElementById('autocomplete')),
-                {types: ['geocode']});
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),{types: ['geocode']});
         // When the user selects an address from the dropdown,
         // populate the address fields in the form.
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            fillInAddress();
-        });
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {fillInAddress();});       
     }
 
     // The START and END in square brackets define a snippet for our documentation:
     function fillInAddress() {
         // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace(),
-                route = '';
+        var place = autocomplete.getPlace();
 
         for (var component in componentForm) {
-            if (component === 'route') {
-                ;
-            } else {
+            if (component !== 'route') {
                 document.getElementById(component).value = '';
                 document.getElementById(component).disabled = false;
             }
-
         }
 
         // Get each component of the address from the place details
@@ -75,11 +69,6 @@ $(function() {
                 } else {
                     document.getElementById(addressType).value = val;
                 }
-
-                setTimeout(function() {
-                    $('[id=autocomplete]').val(arguments[0]);
-                }, 200, route);
-
             }
         }
     }
@@ -96,6 +85,13 @@ $(function() {
             });
         }
     }
+
+    $('#autocomplete').on('blur',function(){
+        setTimeout(
+            function() {
+                $('[id=autocomplete]').val(arguments[0]);
+            }, 200, route);
+    });
 
     $('#registration-form').validate({
         debug: true,

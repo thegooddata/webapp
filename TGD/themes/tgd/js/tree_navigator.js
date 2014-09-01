@@ -10,7 +10,7 @@ $(document).ready(function(){
   if(window.location.hash) {
     var hash     = window.location.hash.substring(1);
 
-    var dash = hash.indexOf('-');
+    var dash = hash.indexOf('|');
     var questionNumber = false;
     if(!(dash < 0)){
         questionNumber = hash.substring(dash+1);
