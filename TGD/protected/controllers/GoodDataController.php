@@ -41,6 +41,12 @@ class GoodDataController extends Controller {
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*) as total')
                 ->from('tbl_members')
+                ->where(array(
+                    'and',
+                    'status = :status',
+                        ), array(
+                    ':status' => User::STATUS_ACCEPTED)
+                )
                 ->queryAll();
 
         $total = 0;
