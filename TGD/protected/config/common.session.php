@@ -2,7 +2,7 @@
 
 return array(
 //    'savePath' => '/some/writeable/path',
-    'sessionName'=>'TGDSESSID',
+    'sessionName'=>SESSION_NAME,
     'autoStart' => true,
     'cookieMode' => 'allow',
     'cookieParams' => array(

@@ -22,6 +22,9 @@ const OA_API_TOKEN='yayme';
 /* cookie domain name */
 const COOKIE_DOMAIN='.tgd.local';
 
+/* session name */
+const SESSION_NAME='TGDSESSID';
+
 /* stripe */
 const STRIPE_TEST=true;
 const STRIPE_SK='';
