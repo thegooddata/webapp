@@ -41,6 +41,12 @@ class GoodDataController extends Controller {
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*) as total')
                 ->from('tbl_members')
+                ->where(array(
+                    'and',
+                    'status = :status',
+                        ), array(
+                    ':status' => User::STATUS_ACCEPTED)
+                )
                 ->queryAll();
 
         $total = 0;
@@ -136,16 +142,10 @@ class GoodDataController extends Controller {
         $result['money_lent'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(paidback) as total')
-                ->from('tbl_loans')
-                ->where(array(
-                    'and',
-                    'id_loans_status = :id',
-                        ), array(
-                    ':id' => 4)
-                )
-                ->queryAll();
+        ->setFetchMode(PDO::FETCH_OBJ)
+        ->select('sum(contribution - paidback - loss) as total')
+        ->from('tbl_loans')
+        ->queryAll();
 
         $total = 0;
         if ($datas[0]->total != null)
@@ -176,14 +176,8 @@ class GoodDataController extends Controller {
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(contribution-paidback) as total')
+                ->select('sum(loss) as total')
                 ->from('tbl_loans')
-                ->where(array(
-                    'and',
-                    'id_loans_status not in (:ids)',
-                        ), array(
-                    ':ids' => '4')
-                )
                 ->queryAll();
 
         $total = 0;
