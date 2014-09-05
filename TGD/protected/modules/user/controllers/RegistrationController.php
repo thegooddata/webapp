@@ -99,14 +99,16 @@ class RegistrationController extends Controller
                             $registration_form = array();
                             
                             // TRY TO CREATE OA USER and save log if fails
-                            $oa_errors=array();
-                            Yii::app()->openAtrium->createUser($username, $password, $email, $username, $oa_errors);
-                            if (count($oa_errors)) {
-                              Yii::log("Could not create OA User", 'error');
-                              foreach ($oa_errors as $e) {
-                                Yii::log($e, 'error');
-                              }
-                            }
+                            // UPDATE: Disabled OA user creation on registration because 
+                            // user will be created on the fly from OA in the new SSO implementation
+//                            $oa_errors=array();
+//                            Yii::app()->openAtrium->createUser($username, $password, $email, $username, $oa_errors);
+//                            if (count($oa_errors)) {
+//                              Yii::log("Could not create OA User", 'error');
+//                              foreach ($oa_errors as $e) {
+//                                Yii::log($e, 'error');
+//                              }
+//                            }
 
                             // SEND EMAIL
                             $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');

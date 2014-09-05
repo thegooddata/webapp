@@ -10,7 +10,17 @@ class LoginController extends Controller
 	 */
 	public function actionLogin()
 	{
-	  
+	
+            $redirect_url=Yii::app()->request->getQuery("next",null);
+            if ($redirect_url !== null && !empty($redirect_url)) {
+                $redirect_url=urldecode($redirect_url);
+                $parsed_url=parse_url($redirect_url);
+                if (!in_array($parsed_url['host'], Yii::app()->params['safeRedirectHosts'])) {
+                    $redirect_url=null;
+                } else {
+                    Yii::app()->user->returnUrl=$redirect_url;
+                }
+            }
 	  
 		if (Yii::app()->user->isGuest) {
 			// add js specific for this page

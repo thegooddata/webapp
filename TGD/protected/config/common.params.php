@@ -11,4 +11,12 @@ return array(
     'marcosEmailName' => EMAIL_MARCOS_FROM_NAME,
     'membersEmailName' => EMAIL_MEMBERS_FROM_NAME,
     'defaultCurrency'=>'GBP',
+    'safeRedirectHosts'=>array(
+        'www.tgd.local',
+        'subdomain.tgd.local',
+        'www.thegooddata.org',
+        'collaborate.thegooddata.org',
+        'pre.thegooddata.org',
+        'collaborate-pre.thegooddata.org',
+    ),
 );

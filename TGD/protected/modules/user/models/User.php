@@ -148,7 +148,7 @@ class User extends CActiveRecord
                 'condition'=>'superuser=1',
             ),
             'notsafe'=>array(
-            	'select' => 'id, username, password, email, activkey, created_at, lastvisit_at, superuser, status',
+            	'select' => 'id, username, password, email, activkey, created_at, lastvisit_at, updated_at, superuser, status',
             ),
         );
     }
@@ -157,7 +157,7 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.superuser, user.status, user.key',
+            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key',
         ));
     }
 
@@ -246,4 +246,12 @@ class User extends CActiveRecord
         return parent::afterSave();
     }
     */
+    
+    public function beforeSave() {
+        
+        $this->updated_at = new CDbExpression('NOW()');
+        
+        return parent::beforeSave();
+    }
+    
 }

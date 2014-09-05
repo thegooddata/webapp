@@ -106,6 +106,8 @@ return array(
 			'allowAutoLogin'=>true,
 			'class' => 'WebUser',
 		),
+            
+                'session'=>require(dirname(__FILE__).'/common.session.php'),
 		
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(

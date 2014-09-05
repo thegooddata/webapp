@@ -16,6 +16,12 @@ const OPENATRIUM_HOST = 'https://collaborate.thegooddata.org';
 const OPENATRIUM_ADMIN_LOGIN = 'tgdAdmin';
 const OPENATRIUM_PASSWORD = '';
 
+/* openatriumm single sign on token */
+const OA_API_TOKEN='yayme';
+
+/* cookie domain name */
+const COOKIE_DOMAIN='.tgd.local';
+
 /* stripe */
 const STRIPE_TEST=true;
 const STRIPE_SK='';

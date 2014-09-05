@@ -2,6 +2,59 @@
 
 class TestController extends Controller {
     
+    public function actionOaApi() {
+        
+        if (date_default_timezone_get()) {
+            echo 'date_default_timezone_set: ' . date_default_timezone_get() . '<br />';
+        }
+        
+        echo date('Y-m-d H:i:s') . '<br />';
+        
+        $api_url='http://www.tgd.local/oaApi';
+        $api_token='yayme';
+        
+//        echo '<h1>Testing Index action.</h1>';
+//        $hello_world_url="$api_url/index?token=$api_token";
+//        
+//        $ch = curl_init();
+//        curl_setopt($ch, CURLOPT_URL, $hello_world_url);
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//        $output = curl_exec($ch);
+//        echo '<pre>';
+//        print_r(json_decode($output, true));
+//        echo '</pre>';
+        
+        echo '<h1>Testing getLoggedUserBySessionId action.</h1>';
+        $session_id='rskkec6tchdv1jaljjeciri4r3';
+        $getLoggedUserBySessionId_url="$api_url/getLoggedUserBySessionId?token=$api_token&session_id=$session_id";
+        
+        echo $getLoggedUserBySessionId_url."<br />";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $getLoggedUserBySessionId_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        $user=json_decode($output, true);
+        echo '<pre>';
+        print_r($user);
+        if (isset($user['updated'])) {
+            echo date("r", $user['updated']);
+        }
+        echo '</pre>';
+        
+//        echo '<h1>Testing getUserInfoById action.</h1>';
+//        $user_id=isset($user['id']) ? $user['id'] : null;
+//        $getUserInfoById_url="$api_url/getUserInfoById?token=$api_token&user_id=$user_id";
+//        
+//        $ch = curl_init();
+//        curl_setopt($ch, CURLOPT_URL, $getUserInfoById_url);
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//        $output = curl_exec($ch);
+//        echo '<pre>';
+//        print_r(json_decode($output, true));
+//        echo '</pre>';
+        
+    }
+    
     public function actionCurrencies() {
         $this->render('currencies');
     }
