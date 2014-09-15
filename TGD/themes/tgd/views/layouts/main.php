@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/favicon.ico">
 
-        <title>TheGoodData | Enjoy your data</title>
+        <title>TheGoodData | Enjoy your data <?php echo (isset($this->pageTitle))?$this->pageTitle:'';?></title>
 
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap_vertical_tabs.css" type="text/css">
