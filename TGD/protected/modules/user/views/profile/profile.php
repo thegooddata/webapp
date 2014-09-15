@@ -9,14 +9,22 @@
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
-            <section id="form" class="col-sm-16 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
-                <?php if ($success != "") { ?>   
-                    <p class="alert alert-success"><?php echo $success; ?>
-                <?php } ?>
+            <section id="form" class="col-sm-16 col-md-7 col-md-offset-1">
+                <?php  if ($success != ""): ?>   
+                    <div class="alert alert-success">
+                        <ul>
+                            <?php echo $success; ?>
+                        </ul>
+                    </div>
+                <?php  endif; ?>
 
-                <?php if ($error != "") { ?>   
-                    <p class="alert alert-danger"><?php echo $error; ?>
-                <?php } ?>
+                <?php if ($error != ""): ?>   
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php echo $error; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
                 <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/membership"); ?>" method="POST">
                     <div  class="form-group col-sm-16 col-md-16 col-lg-16">
                         <label>Username</label>
@@ -55,12 +63,10 @@
         </div>
         <div id="cancel-account" class="row">
             <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign">
-                <img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('resignation');?>"><img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">
                 Resign my Membership
-                <div class="loaderDiv"></div>
+                </a>
             </div>
-
-            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16  alert alert-success alert-dismissable pnlSuccess hidden">SUCCESS: We have sent you an email to confirm your resignation and explain the next steps to sell us back your share</div>
         </div>
     </div>
 
@@ -76,17 +82,6 @@
         setTimeout(function() {
             sameSize();
         }, 100);
-
-        
-        $('.btnResign').click(function() {
-            $('.loaderDiv').css('display', 'inline-block');
-            
-            $.get( "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>", function( result ) {
-                $('.loaderDiv').hide();
-                $('.pnlSuccess').removeClass("hidden");
-            });
-                
-        });
 
         $('#change-password').click(function() {
             $('.password-form').toggle();
