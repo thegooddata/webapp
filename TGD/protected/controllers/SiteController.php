@@ -3,6 +3,7 @@
 class SiteController extends Controller {
 
    public $displayMenu = true;
+   private $_captchaBackgroundcolor = 0xFFFFFF;
 
    public function init() {
         Yii::app()->theme = 'tgd';
@@ -18,7 +19,7 @@ class SiteController extends Controller {
             // captcha action renders the CAPTCHA image displayed on the contact page
             'captcha' => array(
                 'class' => 'CCaptchaAction',
-                'backColor' => 0xFFFFFF,
+                'backColor' => $this->_captchaBackgroundcolor,
             ),
             // page action renders "static" pages stored under 'protected/views/site/pages'
             // They can be accessed via: index.php?r=site/page&view=FileName
@@ -200,11 +201,7 @@ class SiteController extends Controller {
     
     public function actionCompany(){
         Yii::app()->theme = 'tgd';
-
-        // set title
         $this->pageTitle = " - The company";
-
-        // set body id 
         $this->bodyId = "tgd-company";
         
         $this->render('company');
@@ -249,7 +246,7 @@ class SiteController extends Controller {
      * Displays the contact page
      */
     public function actionContact() {
-        Yii::app()->theme = 'blank';
+        Yii::app()->theme = 'tgd';
 
         $model = new ContactForm;
         if (isset($_POST['ContactForm'])) {
@@ -268,6 +265,146 @@ class SiteController extends Controller {
             }
         }
         $this->render('contact', array('model' => $model));
+    }
+
+
+    /**
+     * Displays the sugestions page
+     */
+    public function actionSuggestion($ajax=0) {
+        // default values
+        $redirectURL = '/suggestion/thanks';
+        $renderFile = 'suggestion'; 
+        $renderMethod = 'render';
+        $actionSufix = '';
+
+        if($ajax==0) // if it's NOT an ajax request
+        { 
+
+            Yii::app()->theme = 'tgd';
+            $this->pageTitle = " - Suggest Improvements";
+            $this->displayMenu = false;
+            $this->bodyId = "tgd-suggestions";
+
+        }
+        else // if it's an ajax request
+        { 
+
+            //$this->_captchaBackgroundcolor = 0xFAFAF3;
+            $redirectURL .= '/ajax';
+            $renderFile .= '_ajax';
+            $renderMethod .= 'Partial';
+            $actionSufix .= '/ajax';
+        }
+
+        $model = new SuggestionForm;
+        $username = 'Guest';
+
+        if (isset($_POST['SuggestionForm']) && isset($_POST['id'])) 
+        {
+            if($_POST['id']!='0') // it's not a Guest. Don't expect an email and find it out based on username and hash.
+            { 
+                $username = isset($_POST['username']) ? $_POST['username'] : '';
+                $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+                // query database for user.
+                $user = $this->_checkUser($username, $password);
+
+                if($user !== false) // user found. Fill in the model's 'email' attribute and username.
+                {
+                    $model->email = $user->email;
+                    $username = $user->username;
+                }
+                else // something went wrong.
+                {
+                    $this->renderPartial('ops_ajax', array('id'=>$_POST['id'], 'username'=>$username, 'password'=>$password));
+                    Yii::app()->end();
+                }
+            }
+            else // it's a guest. Expect email and save it in the model.
+            {
+                $model->email = isset($_POST['SuggestionForm']['email']) ? $_POST['SuggestionForm']['email'] : '';
+            }
+
+            $model->body = isset($_POST['SuggestionForm']['body']) ? $_POST['SuggestionForm']['body'] : '';
+            
+            if ($model->validate()) // if it validates, send email and redirect to 'thanks' page
+            {
+                $this->_sendSuggestionEmail($model, $username, $redirectURL);
+            }
+        }
+        $this->$renderMethod($renderFile, array('actionSufix' => $actionSufix, 'model' => $model));
+    }
+
+    /**
+     * Queries the database for a user with a given username and password
+     * @param username
+     * @param password
+     * @return false if n user is found or the User model instance otherwise
+     */
+    private function _checkUser($username, $password) {
+        $user = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('*')
+            ->from('tbl_members u')
+            ->where(
+                array(
+                        'and',
+                        '(UPPER(u.username) = :value or UPPER(u.email) = :value)',
+                        'u.password = :password'),
+                array(
+                        ':value'=>strtoupper($username),
+                        ':password'=>$password)
+                )
+            ->queryAll();
+
+        if(empty($user)) {
+            return false;
+        }
+
+        return User::model()->findByPk($user[0]->id);            
+    }
+
+    /**
+     * Sends Email and redirects
+     */
+    private function _sendSuggestionEmail($formModel, $username, $redirect){
+
+        //SEND EMAIL
+        $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'suggestion.html');
+        $content = str_replace('[USERNAME]',$username, $content);
+        $content = str_replace('[EMAIL]',$formModel->email, $content);
+        $content = str_replace('[BODY]',nl2br(strip_tags($formModel->body)), $content);
+
+        $message = new YiiMailMessage;
+        $message->subject = 'Suggestion from '.$username.' about TheGoodData.';
+        $message->setBody($content,'text/html');
+        $message->addTo(Yii::app()->params['marcosEmail']);
+        $message->setFrom($formModel->email, $username);
+        Yii::app()->mail->send($message);
+
+        $this->redirect($redirect);
+    }
+    
+    /**
+     * Shows thanks message
+     */
+    public function actionSuggestionThanks($ajax=0) {
+        $renderFile = 'suggestionThanks';
+        $renderMethod = 'render';
+
+        if($ajax==0){
+            Yii::app()->theme = 'tgd';
+            $this->pageTitle = " - Thanks for your suggestion! ";
+            $this->displayMenu = false;
+            $this->bodyId = "tgd-suggestions";
+        }else{
+            $renderFile .= '_ajax';
+            $renderMethod .= 'Partial';
+        }
+
+        $this->$renderMethod($renderFile);
+
     }
 
     /**
