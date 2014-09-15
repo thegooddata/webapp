@@ -122,7 +122,7 @@ class ResignationController extends Controller
 			if ($model->email != ""){
 				//SEND EMAIL
 				$content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'resignation.html');
-				$content = str_replace('[USERNAME]',$model->username);
+				$content = str_replace('[USERNAME]',$model->username, $content);
 				$message = new YiiMailMessage;
 				$message->subject = 'Resignation of Membership of TheGoodData Confirmed';
 				$message->setBody($content,'text/html');
