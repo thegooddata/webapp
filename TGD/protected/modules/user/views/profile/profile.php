@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 <?php endif; ?>
-                <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/membership"); ?>" method="POST">
+                <form id="profile-form" action="<?php echo Yii::app()->request->url; ?>" method="POST">
                     <div  class="form-group col-sm-16 col-md-16 col-lg-16">
                         <label>Username</label>
                         <input type="text" class="form-control" id="username" name="ProfileForm[username]" value="<?php echo $user->username; ?>">
