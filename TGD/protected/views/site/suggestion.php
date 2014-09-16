@@ -11,7 +11,7 @@
         <div class="row">
             <section id="form" class="tgd-box col-sm-16 col-md-7 col-md-offset-1">
               	<div class="form">
-              	<?php echo $this->renderPartial('suggestion_ajax', array('model' => $model)); ?>
+              	<?php echo $this->renderPartial('suggestion_ajax', array('actionSufix'=>$actionSufix, 'model' => $model)); ?>
 				</div><!-- form -->
 
             </section>
