@@ -75,7 +75,7 @@
                         <div class="tab-pane green_drop_list" id="settings">
                             <ul class="clearfix">
                                 <li>
-                                    <p>50% of revenues are invested on projects in developing countries via Kiva, the online microcredit leader</p>
+                                    <p>50% of revenues are invested on projects in developing countries via Zidisha, the person-to-person microcredit leader</p>
                                 </li>
                                 <li>
                                     <p>The other half, is reinvested in developing new features for TheGoodData in order to make its Mission come true</p>
