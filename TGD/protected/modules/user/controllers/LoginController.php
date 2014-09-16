@@ -41,7 +41,6 @@ class LoginController extends Controller
 				
 				
 				if($model->validate()) {
-					$this->lastViset();
 					if (Yii::app()->user->returnUrl=='/') {
 						$this->redirect(Yii::app()->createUrl('goodData/index'));
 					} else {
@@ -53,12 +52,6 @@ class LoginController extends Controller
 			$this->render('/user/login',array('model'=>$model));
 		} else
 			$this->redirect(Yii::app()->controller->module->returnUrl);
-	}
-	
-	private function lastViset() {
-		$lastVisit = User::model()->notsafe()->findByPk(Yii::app()->user->id);
-		$lastVisit->lastvisit_at = date('Y-m-d H:i:s');
-		$lastVisit->save();
 	}
 
 }

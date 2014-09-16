@@ -308,9 +308,14 @@ class SiteController extends Controller {
                 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
                 // query database for user.
-                $user = $this->_checkUser($username, $password);
+                // $user = $this->_checkUser($username, $password);
+                
+                $user=null;
+                if (!Yii::app()->user->isGuest) {
+                  $user = Yii::app()->getModule('user')->user(Yii::app()->user->id);
+                }
 
-                if($user !== false) // user found. Fill in the model's 'email' attribute and username.
+                if($user) // user found. Fill in the model's 'email' attribute and username.
                 {
                     $model->email = $user->email;
                     $username = $user->username;

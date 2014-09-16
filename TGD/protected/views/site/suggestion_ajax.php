@@ -19,14 +19,13 @@
 					<div class="row">
 						<div class="form-group col-sm-16">
 						<?php echo $form->labelEx($model,'body'); ?>
-						<?php echo $form->textArea($model,'body',array('class'=>'form-control','rows'=>6)); ?>
+						<?php echo $form->textArea($model,'body',array('class'=>'form-control','rows'=>6,'placeholder'=>'Type your feedback here..')); ?>
 						<?php echo $form->error($model,'body'); ?>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class=" col-sm-16">
-						<p class="note">Fields with <span class="required">*</span> are required.</p>
 						<?php echo CHtml::htmlButton('Submit',array('id'=>'suggestion-submit', 'class'=>"btn btn-primary")); ?>
 						</div>
 					</div>

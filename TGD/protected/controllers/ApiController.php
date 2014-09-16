@@ -20,6 +20,55 @@ class ApiController extends Controller
     {
             return array();
     }
+    
+    public function actionLogin() {
+      
+      // force loading user module
+      Yii::app()->getModule('user');
+      
+      $model=new UserLogin;
+      $result=array(
+        'success'=>0,
+        'errors'=>array(),
+        'post'=>$_POST
+      );
+      if(isset($_POST['UserLogin']))
+			{
+				$model->attributes=$_POST['UserLogin'];
+				if($model->validate()) {
+					$result['success']=1;
+				} else {
+				  if ($model->hasErrors()) {
+            foreach ($model->getErrors() as $error) {
+              foreach ($error as $e) {
+                $result['errors'][]=$e;
+              }
+            }
+          }
+				}
+			}
+			$this->_sendResponse(200, CJSON::encode($result),'application/json');
+    }
+    
+    public function actionGetLoggedUser() {
+      $result=array();
+      if (!Yii::app()->user->isGuest) {
+        $result = Yii::app()->db->createCommand()
+        ->setFetchMode(PDO::FETCH_OBJ)
+        ->select('u.id, u.username')
+        ->from('tbl_members u')
+        ->where(array(
+                    'and',
+                    'u.id = :id',
+                    ),
+            array(
+                    ':id'=>Yii::app()->user->id,
+                    )
+            )
+        ->queryRow();
+      }
+		  $this->_sendResponse(200, CJSON::encode($result),'application/json');
+    }
 
     public function actionUser(){
     	

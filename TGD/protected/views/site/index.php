@@ -43,7 +43,7 @@
             <div class="container clearfix">
                 <div class="content clearfix">
                     <h1>It's in your hands to<br/> make your data work<br/> for the social good.</h1>
-                    <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Kiva, the other part will be used<br/> to fund the operations at TheGoodData, your company.</p>
+                    <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Zidisha, the other part will be used<br/> to fund the operations at TheGoodData, your company.</p>
                     <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("site/partners"); ?>">our partners</a>
                 </div> <!-- content -->
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/hand.png" alt="Its in Your Hand">
