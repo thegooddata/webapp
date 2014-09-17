@@ -78,13 +78,57 @@
                                     <p>The table below explains the cookies we use on our website and why.</p>
                                     <table>
                                         <tr>
-                                            <td>Cookie</td><td>Name</td><td>Purpose</td>
+                                            <td>Name</td>
+                                            <td>Cookie type</td>
+                                            <td>Purpose</td>
                                         </tr>
                                         <tr>
-                                            <td>Session cookie</td><td>PHPSESSID, has_js</td><td>These are temporary cookies that only exist until you close the browser after accessing the website. Session cookies help us remember what you chose on the previous page, thereby avoiding the need to re-enter information and as a result improving your experience while browsing. These cookies do not contain personal information and cannot be used to identify you.</td>
+                                            <td>TGDSESSID</td>
+                                            <td>Session cookie</td>
+                                            <td>Used by the website's login system.</td>
                                         </tr>
                                         <tr>
-                                            <td>Persistent cookie</td><td>variable</td><td>These are cookies that remain on your device after you have visited our website. Persistent cookies help us identify you as a unique visitor. They do not contain information that could be used to identify you to another person.</td>
+                                            <td>&lt;variable&gt;</td>
+                                            <td>Persistent cookie</td>
+                                            <td>This cookie with a random name it is used by the website's' login system 
+                                            when the user checked the &quot;Remember me&quot; option so the user still stays logged in 
+                                            even if the browser has been closed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SESS&lt;variable&gt;</td>
+                                            <td>Persistent cookie</td>
+                                            <td>Used by our collaboration platform's login system.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>has_js</td>
+                                            <td>Session cookie</td>
+                                            <td>Used by our collaboration platform to detect if the browser of the user supports javascript technology.</td>
+                                        </tr>
+                                    </table>
+                                    <p>Description of the cookie types:</p>
+                                    <table>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Purpose</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Session cookie</td>
+                                            <td>
+                                            These are temporary cookies that only exist until you close the 
+                                            browser after accessing the website. Session cookies help us remember 
+                                            what you chose on the previous page, thereby avoiding the need to 
+                                            re-enter information and as a result improving your experience while browsing. 
+                                            These cookies do not contain personal information and cannot be used to 
+                                            identify you.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Persistent cookie</td>
+                                            <td>
+                                            These are cookies that remain on your device after you have visited our website. 
+                                            Persistent cookies help us identify you as a unique visitor. They do not contain 
+                                            information that could be used to identify you to another person.
+                                            </td>
                                         </tr>
                                     </table>
                                     <p>We do not use cookies to track your use of the Internet after you leave our sites, nor do we store any personal information in them that could identify you to other people. The length of time a cookie will remain on your device will depend on the particular type of cookie.</p>
