@@ -10,15 +10,13 @@
 					
 					<div class="row">
 						<div class="form-group col-sm-16"> 
-						<?php echo $form->labelEx($model,'email'); ?>
-						<?php echo $form->textField($model,'email',array('class'=>'form-control')); ?>
+						<?php echo $form->textField($model,'email',array('class'=>'form-control', 'placeholder'=>$model->getAttributeLabel('email'))); ?>
 						<?php echo $form->error($model,'email'); ?>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-sm-16">
-						<?php echo $form->labelEx($model,'body'); ?>
 						<?php echo $form->textArea($model,'body',array('class'=>'form-control','rows'=>6,'placeholder'=>'Type your feedback here..')); ?>
 						<?php echo $form->error($model,'body'); ?>
 						</div>

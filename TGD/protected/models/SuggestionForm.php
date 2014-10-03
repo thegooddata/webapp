@@ -16,10 +16,9 @@ class SuggestionForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			// name, email, subject and body are required
-			array('email, body', 'required'),
+			array('body', 'required', 'message'=>'Please provide your feedback'),
 			// email has to be a valid email address
-			array('email', 'email'),
+			array('email', 'email', 'message'=>'Invalid email address'),
 			// verifyCode needs to be entered correctly
 			//array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);

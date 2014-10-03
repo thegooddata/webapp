@@ -388,12 +388,13 @@ class SiteController extends Controller {
 
         $message->setFrom(array(Yii::app()->params['senderGenericEmail'] => Yii::app()->params['senderGenericEmailName']));
         
-        if ($username!='Guest') {
-          $message->replyTo = array($formModel->email => $username);
-        } else {
-          $message->replyTo = $formModel->email;
+        if ($formModel->email) {
+          if ($username!='Guest') {
+            $message->replyTo = array($formModel->email => $username);
+          } else {
+            $message->replyTo = $formModel->email;
+          }
         }
-        
         
         if (!Yii::app()->mail->send($message)) {
           die('Your message could not be sent, please try again later.');
