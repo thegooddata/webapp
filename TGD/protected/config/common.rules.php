@@ -6,6 +6,8 @@ return array(
 	array('api/login', 'pattern'=>'api/login', 'verb'=>'POST'),
 	array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser', 'verb'=>'POST'),
 	
+	array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
+	
 	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
 	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
 

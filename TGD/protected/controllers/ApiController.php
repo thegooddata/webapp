@@ -21,6 +21,30 @@ class ApiController extends Controller
             return array();
     }
     
+    public function actionSaveUserSettings() {
+      $result=array(
+        'success'=>true,
+        'errors'=>array(),
+      );
+      if (Yii::app()->user->isGuest) {
+        $result['errors'][]='User is not logged in.';
+      } else {
+        foreach ($_POST as $key => $value) {
+          if (in_array($key, ExtensionSettings::getAllowedKeys())) {
+            if (!ExtensionSettings::setUserSetting(Yii::app()->user->id, $key, $value)) {
+              $result['errors'][]="Setting '$key' could not be saved.";
+            }
+          } else {
+            $result['errors'][]="Setting with name '$key' is not in the list of allowed items.";
+          }
+        }
+      }
+      if (count($result['errors'])) {
+        $result['success']=false;
+      }
+		  $this->_sendResponse(200, CJSON::encode($result),'application/json');
+    }
+    
     public function actionLogin() {
       
       // force loading user module
@@ -54,7 +78,6 @@ class ApiController extends Controller
       $result=array();
       if (!Yii::app()->user->isGuest) {
         $result = Yii::app()->db->createCommand()
-        ->setFetchMode(PDO::FETCH_OBJ)
         ->select('u.id, u.username')
         ->from('tbl_members u')
         ->where(array(
@@ -66,6 +89,8 @@ class ApiController extends Controller
                     )
             )
         ->queryRow();
+        // get user settings
+        $result['settings']=ExtensionSettings::getUserSettings(Yii::app()->user->id);
       }
 		  $this->_sendResponse(200, CJSON::encode($result),'application/json');
     }
