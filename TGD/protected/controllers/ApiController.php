@@ -24,7 +24,7 @@ class ApiController extends Controller
     /**
      * TODO: Not that important but we could delete all settings that are not 
      * in ExtensionSettings::getAllowedKeys() list so we don't keep deprecated 
-     * extensions.
+     * settings.
      */
     public function actionSaveUserSettings() {
       $result=array(
