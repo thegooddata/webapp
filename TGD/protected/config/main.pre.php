@@ -5,6 +5,7 @@ include 'config.php';
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'The Good Data',
+	'id'=>'TGDPreAppId', /* required to maintain sessions between deployments */
 
 	// preloading 'log' component
 	'preload'=>array('log'),
