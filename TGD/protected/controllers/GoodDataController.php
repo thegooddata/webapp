@@ -106,29 +106,49 @@ class GoodDataController extends Controller {
     public function actionGoodInvestmentsData() {
 
         $result = array();
+        
+        // Money lost
+        $datas = Yii::app()->db->createCommand()
+        ->setFetchMode(PDO::FETCH_OBJ)
+        ->select('sum(loss) as total')
+        ->from('tbl_loans')
+        ->queryAll();
 
+        $money_lost = 0;
+        if ($datas[0]->total != null)
+            $money_lost = $datas[0]->total;
 
+        $result['money_lost'] = Yii::app()->numberFormatter->formatCurrency($money_lost, 'USD');
+        
+        // Money reserved
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum((gross_amount-expenses) * loan_reserved/100) as total')
+                ->select('sum((gross_amount-expenses) * loan_reserved/100 ) as total')
                 ->from('tbl_incomes')
                 ->queryAll();
 
-        $total = 0;
+        $money_reserved = 0;
         if ($datas[0]->total != null)
-            $total = $datas[0]->total;
-        
-        
-//            $total = number_format($datas[0]->total, 2, '.', '');
-        
-        
+            $money_reserved = $datas[0]->total;
+            
         // convert to usd
-        $total=Currencies::convertDefaultTo($total, 'USD');
+        $money_reserved=Currencies::convertDefaultTo($money_reserved, 'USD');
         
-        $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        // remove the lost
+        $money_reserved = $money_reserved - $money_lost;
+        
+        // temp fix for formatting negative number, because formatCurrency with this locale displays it wrong
+        $negative='';
+        if ($money_reserved < 0) {
+          $money_reserved = abs($money_reserved);
+          $negative='-';
+        }
+        
+        $money_reserved=$negative.Yii::app()->numberFormatter->formatCurrency($money_reserved, 'USD');
+        
+        $result['money_reserved'] = $money_reserved;
 
-        $result['money_reserved'] = $total;
-
+        // Money lent
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('sum(contribution) as total')
@@ -140,7 +160,8 @@ class GoodDataController extends Controller {
             $total = $datas[0]->total;
 
         $result['money_lent'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
+        
+        // Outstanding portfolio
         $datas = Yii::app()->db->createCommand()
         ->setFetchMode(PDO::FETCH_OBJ)
         ->select('sum(contribution - paidback - loss) as total')
@@ -153,16 +174,11 @@ class GoodDataController extends Controller {
 
         $result['outstanding_portfolio'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
+        // Money repaid
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('sum(paidback) as total')
                 ->from('tbl_loans')
-                ->where(array(
-                    'and',
-                    'id_loans_status = :id',
-                        ), array(
-                    ':id' => 5)
-                )
                 ->queryAll();
 
         $total = 0;
@@ -174,18 +190,7 @@ class GoodDataController extends Controller {
 
 
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(loss) as total')
-                ->from('tbl_loans')
-                ->queryAll();
-
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
-
-        $result['money_lost'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
+        
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
