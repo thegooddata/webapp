@@ -1,5 +1,7 @@
 <?php
+require_once dirname(__FILE__).'/../components/helpers.php';
 include dirname(__FILE__).'/config.php';
+
 ?>
 <?php
 return array(
