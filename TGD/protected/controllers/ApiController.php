@@ -266,56 +266,57 @@ class ApiController extends Controller
 
 	public function _percentileQueries()
 	{
-		$user_id=$_GET['user_id'];
-		$member_id=$_GET['user_id'];
+		return getSeniorityLevelAndPercentile($_GET['user_id']);
+		// $user_id=$_GET['user_id'];
+		// $member_id=$_GET['user_id'];
 
-		if (!is_numeric($_GET['user_id'])){
-			$member_id=0;
-		}
+		// if (!is_numeric($_GET['user_id'])){
+		// 	$member_id=0;
+		// }
 
-		if ($member_id!=0)
-		{
-			$datas = Yii::app()->db->createCommand()
-			    ->setFetchMode(PDO::FETCH_OBJ)
-			    ->select('percentile')
-			    ->from('view_queries_members_percentil')
-			    ->where(array(
-			                'and',
-			                'member_id = :member_id'
-			                ),
-			                array(
-			                    'member_id'=>$member_id)
-			                )
-			    ->queryAll();
+		// if ($member_id!=0)
+		// {
+		// 	$datas = Yii::app()->db->createCommand()
+		// 	    ->setFetchMode(PDO::FETCH_OBJ)
+		// 	    ->select('percentile')
+		// 	    ->from('view_queries_members_percentil')
+		// 	    ->where(array(
+		// 	                'and',
+		// 	                'member_id = :member_id'
+		// 	                ),
+		// 	                array(
+		// 	                    'member_id'=>$member_id)
+		// 	                )
+		// 	    ->queryAll();
 
-		    if (count($datas)>0)
-		    	return $datas[0]->percentile;
-			else
-				return 0;
+		//     if (count($datas)>0)
+		//     	return $datas[0]->percentile;
+		// 	else
+		// 		return 0;
 			
-		}
-		else
-		{
-			$datas = Yii::app()->db->createCommand()
-			    ->setFetchMode(PDO::FETCH_OBJ)
-			    ->select('percentile')
-			    ->from('view_queries_users_percentil')
-			    ->where(array(
-			                'and',
-			                'user_id = :user_id'
-			                ),
-			                array(
-			                    'user_id'=>$user_id)
-			                )
-			    ->queryAll();
+		// }
+		// else
+		// {
+		// 	$datas = Yii::app()->db->createCommand()
+		// 	    ->setFetchMode(PDO::FETCH_OBJ)
+		// 	    ->select('percentile')
+		// 	    ->from('view_queries_users_percentil')
+		// 	    ->where(array(
+		// 	                'and',
+		// 	                'user_id = :user_id'
+		// 	                ),
+		// 	                array(
+		// 	                    'user_id'=>$user_id)
+		// 	                )
+		// 	    ->queryAll();
 
-		    if (count($datas)>0)
-		    	return $datas[0]->percentile;
-			else
-				return 0;
+		//     if (count($datas)>0)
+		//     	return $datas[0]->percentile;
+		// 	else
+		// 		return 0;
 
-			//return $datas[0]->queries;
-		}
+		// 	//return $datas[0]->queries;
+		// }
 	}
     // Actions
     public function actionList()

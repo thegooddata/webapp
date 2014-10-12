@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="item">
                                         <span class="amount small top">Top 20%</span>
-                                        <span class="subtext">of all users his year</span>
+                                        <span class="subtext">of all users this year</span>
                                     </div>
 
                                 </div>
@@ -325,6 +325,9 @@
                 
                 var dataYou =result.adtracks_you,
                     totalYou = 0;
+                // rearrange last two sections
+                dataYou.splice(2, 0, dataYou.splice(3,1)[0]);
+                
                 for(index in dataYou){
                     totalYou += Number(dataYou[index].value);
                 }
@@ -335,6 +338,9 @@
 
                 var dataTGD = result.adtracks_average,
                 totalAverage = 0;
+                // rearrange last two sections
+                dataAverage.splice(2, 0, dataAverage.splice(3,1)[0]);
+
                 for(index in dataTGD){
                     totalAverage += Number(dataTGD[index].value);
                 }

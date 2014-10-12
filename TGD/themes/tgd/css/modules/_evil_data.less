@@ -81,11 +81,11 @@
 
 
     .item{
-        width: 44%;
+        width: 45%;
         float: left;
         padding: 0rem;
-        &:nth-child(2),&:nth-child(3){
-            width: 35%;
+        &:nth-child(2)/*,&:nth-child(3)*/{
+            width: 55%;
             padding-left: 1rem;
             .amount{
                 line-height: @font-size-xxlarge;
@@ -256,6 +256,7 @@
                 }
                 > td{
                     padding: 5px 10px;
+                    font-size: smaller;
                     &:nth-child(3), &:nth-child(4){
                         text-align: center;
                     }

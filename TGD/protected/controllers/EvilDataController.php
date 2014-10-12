@@ -324,6 +324,10 @@ class EvilDataController extends Controller {
         else
             $adtrack_percentile = 100;
 
+        // round up to a multiple of 5
+        $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);
+        
+
         $result['percentile'] = $adtrack_percentile;
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
@@ -364,6 +368,9 @@ class EvilDataController extends Controller {
         else
             $adtrack_percentile = 100;
 
+        // round up to a multiple of 5
+        $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);
+
         $result['percentile'] = $adtrack_percentile;
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
@@ -400,9 +407,21 @@ class EvilDataController extends Controller {
         else
             $adtrack_percentile = 100;
 
+        // round up to a multiple of 5
+        $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);
+
         $result['percentile'] = $adtrack_percentile;
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+    }
+
+    private function _roundUpTo5($vale){
+        $value = round($value);
+        if($value % 5 != 0){
+            $value += (5 - ($value % 5));
+        }
+
+        return $value;
     }
 
     private function _getStatusCodeMessage($status) {
