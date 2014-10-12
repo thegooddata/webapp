@@ -30,6 +30,12 @@ $('.search-form form').submit(function(){
 ?>
 <h1><?php echo UserModule::t("Manage Members"); ?></h1>
 
+<?php if(Yii::app()->user->hasFlash('userAdmin')) { ?> 
+<div class="clearfix">
+    <div class="alert alert-success"><?php echo Yii::app()->user->getFlash('userAdmin'); ?></div>
+</div>  
+<?php } ?>
+
 <p><?php echo UserModule::t("You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done."); ?></p>
 
 <?php echo CHtml::link(UserModule::t('Advanced Search'),'#',array('class'=>'search-button')); ?>

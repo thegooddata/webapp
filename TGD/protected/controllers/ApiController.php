@@ -79,7 +79,12 @@ class ApiController extends Controller
 			$this->_sendResponse(200, CJSON::encode($result),'application/json');
     }
     
+    private function logActiveUser() {
+      ActiveUsers::logActiveUser(Yii::app()->request->getPost("user_id"));
+    }
+    
     public function actionGetLoggedUser() {
+      $this->logActiveUser(); // log active user on extension
       $result=array();
       if (!Yii::app()->user->isGuest) {
         $result = Yii::app()->db->createCommand()

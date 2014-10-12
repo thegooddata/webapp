@@ -105,6 +105,13 @@ class UserModule extends CWebModule
     public $defaultScope = array(
             'with'=>array('profile'),
     );
+    
+    public $rejectReasons=array(
+        'incomplete'=>'Incomplete/wrong personal details',
+        'not_used'=>'Have not used TheGoodData service prior applying for Membership',
+        'previous_expulsion'=>'Previous expulsion',
+        'other'=>'Other reason (specify)',
+    );
 	
 	static private $_user;
 	static private $_users=array();
@@ -387,4 +394,99 @@ class UserModule extends CWebModule
 
   //       return null;
 	}
+    
+    /**
+     * Sends new member email to admin.
+     * @param MembersPii $pii
+     * @param User $member
+     * @return bool Email sent or not.
+     */
+    public function sendNewMemberEmail($pii, $member) {
+      // SEND EMAIL
+      $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
+      $bd = new DateTime($pii->yearbirthday.'/'.$pii->monthbirthday.'/'.$pii->daybirthday);
+      $now = new DateTime();
+      $age = $bd->diff($now)->y;
+
+      $content = str_replace('[NAME]',$pii->firstname,      $content);
+      $content = str_replace('[SURNAME]',$pii->lastname, $content);
+      $content = str_replace('[STREET]',$pii->streetname, $content);
+      $content = str_replace('[STREET_DETAILS]',$pii->streetdetails, $content);
+      $content = str_replace('[CITY]',$pii->city, $content);
+      $content = str_replace('[STATE]',$pii->statecounty, $content);
+      $content = str_replace('[ZIP]',$pii->postcode, $content);
+      $content = str_replace('[COUNTRY]',$pii->country, $content);
+      $content = str_replace('[BIRTH_DATE]', $bd->format('Y-m-d'), $content);
+      $content = str_replace('[AGE]', $age, $content);
+      
+      $approveLink=Yii::app()->controller->createAbsoluteUrl('/user/admin/approveApplication',array('id'=>$member->id));
+      $content = str_replace('[LINK_ACCEPT]', $approveLink, $content);
+      
+      $reject_links=array();
+      foreach ($this->rejectReasons as $k=>$v) {
+        $reject_links[]='<li><a href="'.Yii::app()->controller->createAbsoluteUrl('/user/admin/rejectApplication',array('id'=>$member->id,'reason'=>$k)).'">'.$v.'</a></li>';
+      }
+      $content = str_replace('[REJECT_LINKS]', implode('', $reject_links), $content);
+
+      $subject = '[NAME] [SURNAME] has applied for Membership';
+      $subject = str_replace('[NAME]',$pii->firstname,  $subject);
+      $subject = str_replace('[SURNAME]',$pii->lastname, $subject);
+
+      $message = new YiiMailMessage;
+      $message->subject = $subject;
+      $message->setBody($content,'text/html');
+      $message->setTo(array(Yii::app()->params['adminEmail']));
+      //$message->addTo(Yii::app()->params['adminEmail']);
+      $message->setFrom(array(Yii::app()->params['senderGenericEmail'] => Yii::app()->params['senderGenericEmailName']));
+      return Yii::app()->mail->send($message);
+    }
+    
+    /**
+     * Sends the approved application email to a member
+     * @param User $model
+     * @return bool
+     */
+    public function sendApplicationApproval($model) {
+      
+      $firstname=null;
+      
+      $memberObj = Yii::app()->db->createCommand()
+      ->setFetchMode(PDO::FETCH_OBJ)
+      ->select('*')
+      ->from('tbl_members_pii u')
+      ->where(array(
+                  'and',
+                  'u.member_id = :user_id',
+                  ),
+          array(
+                  ':user_id'=>$model->id
+                  )
+          )
+      ->queryAll();
+      
+      if (isset($memberObj[0])) {
+        $memberObj = $memberObj[0];
+        $firstname=$memberObj->firstname;
+      }
+      
+
+
+      //SEND EMAIL
+      $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'application_approval.html');
+
+      $content = str_replace('[FIRST_NAME]', $firstname,  $content);
+
+      $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/purchase/index'),  $content);
+
+      $message = new YiiMailMessage;
+      $message->subject = 'Your Membership application has been approved';
+      $message->setBody($content,'text/html');
+      $message->addTo($model->email);
+      $message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
+      return Yii::app()->mail->send($message);
+    }
+    
+    public function getRejectReasons() {
+      return $this->rejectReasons;
+    }
 }

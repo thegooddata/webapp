@@ -97,48 +97,9 @@ class RegistrationController extends Controller
                             $success="Membership application has been done successfully";
 
                             $registration_form = array();
-                            
-                            // TRY TO CREATE OA USER and save log if fails
-                            // UPDATE: Disabled OA user creation on registration because 
-                            // user will be created on the fly from OA in the new SSO implementation
-//                            $oa_errors=array();
-//                            Yii::app()->openAtrium->createUser($username, $password, $email, $username, $oa_errors);
-//                            if (count($oa_errors)) {
-//                              Yii::log("Could not create OA User", 'error');
-//                              foreach ($oa_errors as $e) {
-//                                Yii::log($e, 'error');
-//                              }
-//                            }
 
-                            // SEND EMAIL
-                            $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'notification.html');
-                            $bd = new DateTime($pii->yearbirthday.'/'.$pii->monthbirthday.'/'.$pii->daybirthday);
-                            $now = new DateTime();
-                            $age = $bd->diff($now)->y;
-
-                            $content = str_replace('[NAME]',$pii->firstname,      $content);
-                            $content = str_replace('[SURNAME]',$pii->lastname, $content);
-                            $content = str_replace('[STREET]',$pii->streetname, $content);
-                            $content = str_replace('[STREET_DETAILS]',$pii->streetdetails, $content);
-                            $content = str_replace('[CITY]',$pii->city, $content);
-                            $content = str_replace('[STATE]',$pii->statecounty, $content);
-                            $content = str_replace('[ZIP]',$pii->postcode, $content);
-                            $content = str_replace('[COUNTRY]',$pii->country, $content);
-                            $content = str_replace('[BIRTH_DATE]', $bd->format('Y-m-d'), $content);
-                            $content = str_replace('[AGE]', $age, $content);
-                            $content = str_replace('[USER_CREATED]',date('Y-m-d H:i:s'), $content);
-
-                            $subject = '[NAME] [SURNAME] has applied for Membership';
-                            $subject = str_replace('[NAME]',$pii->firstname,  $subject);
-                            $subject = str_replace('[SURNAME]',$pii->lastname, $subject);
-                            
-                            $message = new YiiMailMessage;
-                            $message->subject = $subject;
-                            $message->setBody($content,'text/html');
-                            $message->setTo(array(Yii::app()->params['adminEmail'], 'juan.menendez.buitrago@gmail.com'));
-                            //$message->addTo(Yii::app()->params['adminEmail']);
-                            $message->setFrom(array(Yii::app()->params['senderGenericEmail'] => Yii::app()->params['senderGenericEmailName']));
-                            Yii::app()->mail->send($message);
+                            // Send new member email
+                            Yii::app()->getModule('user')->sendNewMemberEmail($pii, $member);
                             
                             $this->redirect(array('thanks'));
                             
