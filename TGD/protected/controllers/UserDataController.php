@@ -154,7 +154,7 @@ class UserDataController extends Controller {
 
         //PERCENTILE
         $member_id = $user_id;
-        $queries_percentile_data = getSeniorityLevelAndPercentile($member_id);
+        $queries_percentile_data = ADbHelper::getSeniorityLevelAndPercentile($member_id);
 
         // $loans = Yii::app()->db->createCommand()
         //            ->setFetchMode(PDO::FETCH_OBJ)
@@ -182,7 +182,7 @@ class UserDataController extends Controller {
             'browsing_pag' => $browsing_pag,
             'browsing_pages' => $browsing_pages,
             'queries_count' => $queries_count,
-            'queries_percentile_data' => $queries_percentile_data,
+            'queries_percentile_text' => $queries_percentile_data['level'],
                 )
         );
     }

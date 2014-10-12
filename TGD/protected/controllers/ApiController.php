@@ -245,7 +245,7 @@ class ApiController extends Controller
 		switch($_GET['model'])
 	    {	
             case 'queries':
-            	$models = $this->_percentileQueries();
+            	$data = $this->_percentileQueries();
             	break;
 
     		default:
@@ -256,67 +256,20 @@ class ApiController extends Controller
 	            Yii::app()->end();
 	    }
 	    // Did we get some results?
-	    if(empty($models)) {
+	    if(empty($data)) {
 	        // No
 	   		$this->_sendResponse(200, CJSON::encode('0'),'application/json');
 	     } else {
-	        $this->_sendResponse(200, CJSON::encode($models),'application/json');
+	     	// { "level" : "levelName", "value" : x }
+	        $this->_sendResponse(200, CJSON::encode($data),'application/json');
 	    }
 	}
 
 	public function _percentileQueries()
 	{
-		return getSeniorityLevelAndPercentile($_GET['user_id']);
-		// $user_id=$_GET['user_id'];
-		// $member_id=$_GET['user_id'];
-
-		// if (!is_numeric($_GET['user_id'])){
-		// 	$member_id=0;
-		// }
-
-		// if ($member_id!=0)
-		// {
-		// 	$datas = Yii::app()->db->createCommand()
-		// 	    ->setFetchMode(PDO::FETCH_OBJ)
-		// 	    ->select('percentile')
-		// 	    ->from('view_queries_members_percentil')
-		// 	    ->where(array(
-		// 	                'and',
-		// 	                'member_id = :member_id'
-		// 	                ),
-		// 	                array(
-		// 	                    'member_id'=>$member_id)
-		// 	                )
-		// 	    ->queryAll();
-
-		//     if (count($datas)>0)
-		//     	return $datas[0]->percentile;
-		// 	else
-		// 		return 0;
-			
-		// }
-		// else
-		// {
-		// 	$datas = Yii::app()->db->createCommand()
-		// 	    ->setFetchMode(PDO::FETCH_OBJ)
-		// 	    ->select('percentile')
-		// 	    ->from('view_queries_users_percentil')
-		// 	    ->where(array(
-		// 	                'and',
-		// 	                'user_id = :user_id'
-		// 	                ),
-		// 	                array(
-		// 	                    'user_id'=>$user_id)
-		// 	                )
-		// 	    ->queryAll();
-
-		//     if (count($datas)>0)
-		//     	return $datas[0]->percentile;
-		// 	else
-		// 		return 0;
-
-		// 	//return $datas[0]->queries;
-		// }
+		// returns an array with the format
+		// array('level' => 'levelName', 'value' => value)
+		return ADbHelper::getSeniorityLevelAndPercentile($_GET['user_id']);
 	}
     // Actions
     public function actionList()
