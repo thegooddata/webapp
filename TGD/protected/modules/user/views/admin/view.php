@@ -15,6 +15,12 @@ $this->menu=array(
     array('label'=>UserModule::t('Manage Profile Field'), 'url'=>array('profileField/admin')),
     array('label'=>UserModule::t('List Member'), 'url'=>array('/user')),
 );
+
+if ($model->status==User::STATUS_APPLIED) {
+  $this->menu[]=array('label'=>UserModule::t('Pre-Accept Application'), 'url'=>'#','linkOptions'=>array('submit'=>array('approveApplication','id'=>$model->id),'confirm'=>UserModule::t('Are you sure you want to Pre-Accept this member?')));
+  $this->menu[]=array('label'=>UserModule::t('Reject Application'), 'url'=>array('rejectApplication','id'=>$model->id));
+}
+
 ?>
 <h1><?php echo UserModule::t('View Member').' "'.$model->username.'"'; ?></h1>
 
@@ -58,6 +64,5 @@ $this->menu=array(
 		'data'=>$model,
 		'attributes'=>$attributes,
 	));
-	
 
 ?>
