@@ -107,6 +107,8 @@ class ActiveUsers extends CActiveRecord {
    */
   static public function logActiveUser($user_id = null) {
     
+    $prefix=date("Y-m-d"); // quick fix so we store data every day
+    
     // temporary in case extension is not updated and doesn't send a user_id
     if ($user_id==null) {
       $user_id=Yii::app()->getSession()->getSessionId();
@@ -123,10 +125,10 @@ class ActiveUsers extends CActiveRecord {
 
     $activeUserLogged = Yii::app()->user->getState('activeUserLogged', null);
     
-    if ($activeUserLogged===$model->member_or_user_id) {
+    if ($activeUserLogged===$prefix.$model->member_or_user_id) {
       return true;
     } else {
-      Yii::app()->user->setState('activeUserLogged', $model->member_or_user_id);
+      Yii::app()->user->setState('activeUserLogged', $prefix.$model->member_or_user_id);
     }
     
     return $model->save();
