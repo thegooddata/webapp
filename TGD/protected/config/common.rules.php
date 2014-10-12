@@ -40,7 +40,7 @@ return array(
   'resignation/thanks'=>'/user/resignation/thanks',
   'good-data'=>'/goodData/index',
   'evil-data'=>'/evilData/index',
-  'your-data'=>'/userData/index',
+  'user-data'=>'/userData/index',
   'membership'=>'/user/profile',
   'product'=>'/site/product',
   'partners'=>'/site/partners',
