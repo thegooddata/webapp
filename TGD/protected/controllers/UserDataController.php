@@ -29,7 +29,7 @@ class UserDataController extends Controller {
         $user_id = Yii::app()->user->id;
 
         $queries_pag = 0;
-        $queries_pag_size = 1;
+        $queries_pag_size = 10;
 
         if (isset($_GET['queries_pag']))
             $queries_pag = $_GET['queries_pag'];
