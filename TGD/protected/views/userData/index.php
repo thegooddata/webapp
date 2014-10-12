@@ -198,6 +198,16 @@
                         <button type="button" class="btn btn-xs delete_one">DELETE</button>
                     </div>
                     <div class="pull-right">
+                    
+                    
+                        <?php $this->widget('ext.TGDLinkPager', array(
+                          'header' => '',
+                          'pages' => $browsing_pages,
+                        )); ?>
+                    
+                    
+                    
+                        <?php if (false): ?>
                         <ul class="pagination">
                             <!-- <li class="disabled"><a href="#" class="glyphicon glyphicon-arrow-left"></a></li> -->
 
@@ -228,6 +238,10 @@
 
                             <!-- <li><a href="#" class="glyphicon glyphicon-arrow-right"></a></li> -->
                         </ul>
+                        <?php endif; ?>
+                        
+                        
+                        
 
                     </div>
                 </div>

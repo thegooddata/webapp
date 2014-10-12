@@ -63,8 +63,8 @@ class UserDataController extends Controller {
 
 
 
-        $browsing_pag = 0;
-        $browsing_pag_size = 10;
+        $browsing_pag = 1;
+        $browsing_pag_size = 1;
 
         if (isset($_GET['browsing_pag']))
             $browsing_pag = $_GET['browsing_pag'];
@@ -82,6 +82,10 @@ class UserDataController extends Controller {
                 ->queryAll();
 
         $browsing_total = count($browsing);
+        
+        $browsing_pages=new CPagination($browsing_total);
+        $browsing_pages->pageSize=$browsing_pag_size;
+        $browsing_pages->pageVar='browsing_pag';
 
         $browsing = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -95,7 +99,7 @@ class UserDataController extends Controller {
                 ->order('count desc')
                 ->group('domain')
                 ->limit($browsing_pag_size)
-                ->offset($browsing_pag * $browsing_pag_size)
+                ->offset(($browsing_pag-1) * $browsing_pag_size)
                 ->queryAll();
 
         $browsing_details = array();
@@ -193,6 +197,7 @@ class UserDataController extends Controller {
             'browsing_size' => $browsing_pag_size,
             'browsing_total' => $browsing_total,
             'browsing_pag' => $browsing_pag,
+            'browsing_pages' => $browsing_pages,
             'queries_count' => $queries_count,
             'queries_percentile_text' => $queries_percentile_text
                 )
