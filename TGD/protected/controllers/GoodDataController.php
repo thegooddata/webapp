@@ -25,15 +25,25 @@ class GoodDataController extends Controller {
 
 
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('*')
-                ->from('view_members_month')
-                ->queryAll();
-
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+//        $datas = Yii::app()->db->createCommand()
+//                ->setFetchMode(PDO::FETCH_OBJ)
+//                ->select('*')
+//                ->from('view_members_month')
+//                ->queryAll();
+//
+//        $total = 0;
+//        if ($datas[0]->total != null)
+//            $total = $datas[0]->total;
+        
+        $total=Yii::app()->db->createCommand("
+        select count(*) from (
+          SELECT member_or_user_id
+        FROM tbl_active_users 
+        WHERE
+        tbl_active_users.created_at >= (now() - '1 mon'::interval) 
+        AND tbl_active_users.created_at <=  now()  
+        group by member_or_user_id
+        ) as tmp")->queryScalar();
 
         $result['monthly_active_users'] = $total;
 
