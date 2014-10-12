@@ -29,7 +29,7 @@ class UserDataController extends Controller {
         $user_id = Yii::app()->user->id;
 
         $queries_pag = 0;
-        $queries_pag_size = 10;
+        $queries_pag_size = 1;
 
         if (isset($_GET['queries_pag']))
             $queries_pag = $_GET['queries_pag'];
@@ -46,6 +46,11 @@ class UserDataController extends Controller {
                 ->queryAll();
 
         $queries_total = $queries[0]->count;
+        
+        $queries_pages=new CPagination($queries_total);
+        $queries_pages->pageSize=$queries_pag_size;
+        $queries_pages->pageVar='queries_pag';
+        $queries_pages->params=  array_merge($_GET, array('tab'=>'queries'));
 
         $queries = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -64,7 +69,7 @@ class UserDataController extends Controller {
 
 
         $browsing_pag = 1;
-        $browsing_pag_size = 1;
+        $browsing_pag_size = 10;
 
         if (isset($_GET['browsing_pag']))
             $browsing_pag = $_GET['browsing_pag'];
@@ -86,6 +91,7 @@ class UserDataController extends Controller {
         $browsing_pages=new CPagination($browsing_total);
         $browsing_pages->pageSize=$browsing_pag_size;
         $browsing_pages->pageVar='browsing_pag';
+        $browsing_pages->params=  array_merge($_GET, array('tab'=>'browsing'));
 
         $browsing = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -192,6 +198,7 @@ class UserDataController extends Controller {
             'queries_size' => $queries_pag_size,
             'queries_total' => $queries_total,
             'queries_pag' => $queries_pag,
+            'queries_pages' => $queries_pages,
             'browsing' => $browsing,
             'browsing_details' => $browsing_details,
             'browsing_size' => $browsing_pag_size,
@@ -225,7 +232,7 @@ class UserDataController extends Controller {
             $model->delete();
         }
 
-        $this->visualizar();
+        $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
     public function actionIndex() {
@@ -236,21 +243,21 @@ class UserDataController extends Controller {
         $member_id = Yii::app()->user->id;
         Queries::model()->deleteAll('member_id IN (' . $member_id . ')');
         Browsing::model()->deleteAll('member_id IN (' . $member_id . ')');
-         $this->visualizar();
+        $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
     public function actionDeleteQueries() {
         $member_id = Yii::app()->user->id;
 
         Queries::model()->deleteAll('member_id IN (' . $member_id . ')');
-        $this->visualizar();
+        $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
     public function actionDeleteBrowsing() {
         $member_id = Yii::app()->user->id;
 
         Browsing::model()->deleteAll('member_id IN (' . $member_id . ')');
-        $this->visualizar();
+        $this->redirect(array('userData/index','tab'=>'browsing','browsing_pag'=>$_GET['browsing_pag']));
     }
 
     public function actionExportBrowsing() {
