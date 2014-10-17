@@ -142,7 +142,7 @@ class ADbHelper {
    */
   static public function getSeniorityLevelAndPercentile($id) {
       
-    $percentile = $this->getPercentile($id);
+    $percentile = ADbHelper::getPercentile($id);
     $result = array('value' => $percentile, 'level' => '');
 
     $status = Yii::app()->user->user($id)->status;
