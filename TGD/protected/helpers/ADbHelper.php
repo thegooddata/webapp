@@ -145,36 +145,37 @@ class ADbHelper {
     $percentile = ADbHelper::getPercentile($id);
     $result = array('value' => $percentile, 'level' => '');
 
-    $status = Yii::app()->user->user($id)->status;
-
-    if(!Yii::app()->user->isGuest && $status == 2)
+    if(!Yii::app()->user->isGuest)
     {
-      if(false /* TODO: find out a way to figure out if the user is a collaborator*/)
+      if(Yii::app()->user->user($id)->status == 2) // community member
       {
-        $result['level'] = 'Collaborator';
-      }
-      else
-      {
-        if($percentile < 20)
+        if(false /* TODO: find out a way to figure out if the user is a collaborator*/)
         {
-          $result['level'] = 'Owner';
+          $result['level'] = 'Collaborator';
         }
         else
         {
-          $result['level'] = 'Expert';
+          if($percentile < 20)
+          {
+            $result['level'] = 'Owner';
+          }
+          else
+          {
+            $result['level'] = 'Expert';
+          }
         }
+        return $result;
       }
+    }
+    
+    // user is guest or member not accepted (rejected and expelled included)
+    if($percentile < 5)
+    {
+      $result['level'] = 'Apprentice';
     }
     else
     {
-      if($percentile < 5)
-      {
-        $result['level'] = 'Apprentice';
-      }
-      else
-      {
-        $result['level'] = 'Journeyman';
-      }
+      $result['level'] = 'Journeyman';
     }
 
     return $result;
