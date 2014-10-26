@@ -1,6 +1,9 @@
-<!-- Rename this file to config.php -->
 
 <?php
+//-- Rename this file to config.php 
+
+/* debug file TODO: remove in production */
+const DB_DEBUG_FILE = '/tmp/database_queries.log';
 
 /* redoctober */
 CONST REDOCTOBER_URL = 'https://localhost:8080';
