@@ -7,6 +7,8 @@
  *
  */
 class ADbHelper {
+  static private $times = array();
+  static private $fileName = DB_DEBUG_FILE;
 
   /**
    * Split a sql script into queries and execute them all in a transaction.
@@ -59,8 +61,8 @@ class ADbHelper {
             return false;
         }
       }
-//      Tools::print_pre($lines);
-//      Tools::print_pre($queries);
+    //      Tools::print_pre($lines);
+    //      Tools::print_pre($queries);
     }
     return true;
   }
@@ -179,6 +181,36 @@ class ADbHelper {
     }
 
     return $result;
+  }
+
+  /**
+   * writeToLogFile
+   *
+   * Writes message to a given log file
+   *
+   * @param int $id Identifier for the measure.
+   * @param string $text Message to write.
+   * @param bool $closeFlag Indicates whether or not to compute the time.
+   * @return void
+   */
+  static public function logQueryTime($id, $text, $closeFlag = 0){
+    !isset(self::$times[$id]) && (self::$times[$id] = array('begin' => 0, 'end' => 0, 'time' => 0));
+
+    // compute the time spent. 
+    if(!$closeFlag){
+      self::$times[$id]['begin'] = microtime(true);
+    } else {
+      self::$times[$id]['end'] = microtime(true);
+      self::$times[$id]['time'] = self::$times[$id]['end'] - self::$times[$id]['begin'];
+    }
+
+    $time = (self::$times[$id]['time'] > 0) ? self::$times[$id]['time'] : 0;
+
+    $stringPrefix = ($closeFlag === true) ? 'Closing query: ' : (($closeFlag === false) ? 'Opening query: ' : '');
+    $stringSuffix = ($closeFlag) ? $time : '';
+
+    $text = $stringPrefix . $text . (empty($stringSuffix) ? '':" -> ") . $stringSuffix . "\n";
+    file_put_contents ( self::$fileName , $text, FILE_APPEND);
   }
 }
 ?>
