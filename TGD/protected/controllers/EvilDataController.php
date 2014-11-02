@@ -26,7 +26,7 @@ class EvilDataController extends Controller {
     public function actionIndex() {
         $this->layout = '//layouts/blank';
 
-        ADbHelper::logQueryTime('message',"\n" . date('Y-m-d H:i:s') . "  ####### Loading index action ########\n");
+         
 
         $member_id = Yii::app()->user->id;
 
@@ -210,8 +210,6 @@ class EvilDataController extends Controller {
         $member_id = Yii::app()->user->id;
 
         $result = array();
-
-        ADbHelper::logQueryTime('adtracks-ratios-member','Adtracks ratios member',false);
         
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -225,13 +223,10 @@ class EvilDataController extends Controller {
                 )
                 ->queryAll();
 
-        ADbHelper::logQueryTime('adtracks-ratios-member','Adtracks ratios member',true);
 
         $you = $this->_getColor($adtracks);
 
         $result['adtracks_you'] = $you;
-
-        ADbHelper::logQueryTime('adtracks-ratios-total','Adtracks ratios total',false);
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -239,7 +234,6 @@ class EvilDataController extends Controller {
                 ->from('view_adtracks_sources_total')
                 ->queryAll();
 
-        ADbHelper::logQueryTime('adtracks-ratios-total','Adtracks ratios total',true);
 
         $average = $this->_getColor($adtracks);
 
@@ -251,43 +245,40 @@ class EvilDataController extends Controller {
 
     public function actionRiskRatios() {
 
-        $member_id = Yii::app()->user->id;
+        // Get risk for member
 
-        ADbHelper::logQueryTime('risk-member','Risk for member',false);
+        $member_id = Yii::app()->user->id;
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("_getRiskMember (" . $member_id . ") as risk")
                 ->from('tbl_members')
+                ->limit(1)
                 ->queryAll();
-
-        ADbHelper::logQueryTime('risk-member','Risk for member',true);
 
         $result = array();
 
         $result['risk_you'] = number_format($adtracks[0]->risk, 2, '.', '');
 
-        ADbHelper::logQueryTime('risk-total','Risk total',false);
+        // Get total risk
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("_getRiskTotal () as risk")
                 ->from('tbl_members')
+                ->limit(1)
                 ->queryAll();
-
-        ADbHelper::logQueryTime('risk-total','Risk total',true);
 
         $result['risk_average'] = number_format($adtracks[0]->risk, 2, '.', '');
 
-        ADbHelper::logQueryTime('risk-ratios-member','Risk ratios for member',false);
+        // Get risk ratio for member 
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("_getRiskRatioMember (" . $member_id . ") as risk")
                 ->from('tbl_members')
+                ->limit(1)
                 ->queryAll();
-
-        ADbHelper::logQueryTime('risk-ratios-member','Risk ratios for member',true);
 
         $result['risk_ratio_you'] = number_format($adtracks[0]->risk);
 
@@ -299,16 +290,16 @@ class EvilDataController extends Controller {
             $result['risk_level'] = 'low';
         }
 
-        ADbHelper::logQueryTime('risk-ratios-total','Risk ratios total',false);
+        // Get total risk ratio
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("_getRiskRatioTotal () as risk")
                 ->from('tbl_members')
+                ->limit(1)
                 ->queryAll();
 
-        ADbHelper::logQueryTime('risk-ratios-total','Risk ratios total',true);
-
+        
         $result['risk_ratio_average'] = number_format($adtracks[0]->risk);
 
 
@@ -333,7 +324,7 @@ class EvilDataController extends Controller {
         $result['last_day'] = date('F Y');
         $result['total'] = array_sum($data);
 
-        ADbHelper::logQueryTime('data-threats-year','Data threats per year',false);
+         
 
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -347,7 +338,7 @@ class EvilDataController extends Controller {
                 )
                 ->queryAll();
 
-        ADbHelper::logQueryTime('data-threats-year','Data threats per year',true);
+         
         
         if (count($datas) > 0)
             $adtrack_percentile = 100 - $datas[0]->percentile;
@@ -381,7 +372,7 @@ class EvilDataController extends Controller {
         $result['last_day'] = date('F d');
         $result['total'] = array_sum($data);
 
-        ADbHelper::logQueryTime('data-threats-month','Data threats per month',false);
+         
         
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -395,7 +386,7 @@ class EvilDataController extends Controller {
                 )
                 ->queryAll();
 
-        ADbHelper::logQueryTime('data-threats-month','Data threats per month',true);
+         
         
         if (count($datas) > 0)
             $adtrack_percentile = 100 - $datas[0]->percentile;
@@ -424,7 +415,7 @@ class EvilDataController extends Controller {
         $result['first_day'] = date('l', strtotime($week_start));
         $result['last_day'] = date('l');
 
-        ADbHelper::logQueryTime('data-threats-week','Data threats per week',false);
+         
         
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -438,7 +429,7 @@ class EvilDataController extends Controller {
                 )
                 ->queryAll();
 
-        ADbHelper::logQueryTime('data-threats-week','Data threats per week',true);
+         
         
         if (count($datas) > 0)
             $adtrack_percentile = 100 - $datas[0]->percentile;
