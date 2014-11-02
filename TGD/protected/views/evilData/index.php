@@ -292,12 +292,12 @@
                     case 'low':
                         risk_class = 'low-risk';
                     break;
-                    case 'medium':
+                    case 'mid':
                         risk_class = 'mid-risk';
                     break;
                }
 
-               $('#risk-profile .risk-meter').addClass(risk_class);
+               $('#risk-profile .risk-meter').addClass(risk_class).html(result.risk_level_name);
                $('#risk-profile .amount.risk.average').html(result.risk_average);
 
                $('#risk-profile .amount.ratio.you').html(result.risk_ratio_you+"%");

@@ -282,12 +282,15 @@ class EvilDataController extends Controller {
 
         $result['risk_ratio_you'] = number_format($adtracks[0]->risk);
 
-        if ($result['risk_ratio_you'] > 75) {
+        if ($result['risk_ratio_you'] > 70) {
             $result['risk_level'] = 'high';
-        } else if ($result['risk_ratio_you'] > 25) {
-            $result['risk_level'] = 'medium';
+            $result['risk_level_name'] = 'risk lover';
+        } else if ($result['risk_ratio_you'] > 20) {
+            $result['risk_level'] = 'mid';
+            $result['risk_level_name'] = 'average guy';
         } else {
             $result['risk_level'] = 'low';
+            $result['risk_level_name'] = 'risk averse';
         }
 
         // Get total risk ratio
