@@ -339,7 +339,7 @@
                 var dataTGD = result.adtracks_average,
                 totalAverage = 0;
                 // rearrange last two sections
-                dataAverage.splice(2, 0, dataAverage.splice(3,1)[0]);
+                dataTGD.splice(2, 0, dataTGD.splice(3,1)[0]);
 
                 for(index in dataTGD){
                     totalAverage += Number(dataTGD[index].value);
