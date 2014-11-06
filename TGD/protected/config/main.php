@@ -1,5 +1,4 @@
 <?php
-require_once dirname(__FILE__).'/../components/helpers.php';
 include dirname(__FILE__).'/config.php';
 
 ?>
@@ -142,7 +141,7 @@ return array(
 					'levels'=>'error, warning',
 				),
 			),
-		),
+		),    
 	),
 
 	// application-level parameters that can be accessed
