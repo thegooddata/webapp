@@ -239,7 +239,7 @@ class EvilDataController extends Controller {
 
         $result['adtracks_average'] = $average;
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $this->_sendResponse(200, CJSON::encode($result), $this->getResponseContentType());
         //view_adtracks_sources_total
     }
 
@@ -309,7 +309,7 @@ class EvilDataController extends Controller {
 
         $result['percentile'] = number_format($adtracks[0]->risk);
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $this->_sendResponse(200, CJSON::encode($result), $this->getResponseContentType());
     }
 
     public function actionDataThreatsYear() {
@@ -354,7 +354,7 @@ class EvilDataController extends Controller {
 
         $result['percentile'] = $adtrack_percentile;
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $this->_sendResponse(200, CJSON::encode($result), $this->getResponseContentType());
     }
 
     public function actionDataThreatsMonth() {
@@ -401,7 +401,7 @@ class EvilDataController extends Controller {
 
         $result['percentile'] = $adtrack_percentile;
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $this->_sendResponse(200, CJSON::encode($result), $this->getResponseContentType());
     }
 
     public function actionDataThreatsWeek() {
@@ -444,7 +444,14 @@ class EvilDataController extends Controller {
 
         $result['percentile'] = $adtrack_percentile;
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $this->_sendResponse(200, CJSON::encode($result), $this->getResponseContentType());
+    }
+    
+    private function getResponseContentType() {
+      if (isset($_GET['html'])) {
+        return 'text/html';
+      }
+      return 'application/json';
     }
 
     private function _roundUpTo5($value){
