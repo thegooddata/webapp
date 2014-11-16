@@ -328,23 +328,12 @@ class EvilDataController extends Controller {
         $result['total'] = array_sum($data);
 
          
-
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_adtracks_year_users_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
-         
+        $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileyear(". $member_id .") AS percentile;")->queryAll();
+         print_r($datas);
+         exit(0);
         
         if (count($datas) > 0)
-            $adtrack_percentile = 100 - $datas[0]->percentile;
+            $adtrack_percentile = 100 - $datas[0]['percentile'];
         else
             $adtrack_percentile = 100;
 
@@ -375,27 +364,14 @@ class EvilDataController extends Controller {
         $result['last_day'] = date('F d');
         $result['total'] = array_sum($data);
 
-         
-        
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_adtracks_month_users_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
-         
+        $datas = Yii::app()->db->createCommand("SELECT _getuserpercentilemonth(". $member_id .") AS percentile;")->queryAll();
         
         if (count($datas) > 0)
-            $adtrack_percentile = 100 - $datas[0]->percentile;
+            $adtrack_percentile = 100 - $datas[0]['percentile'];
         else
             $adtrack_percentile = 100;
 
+        
         // round up to a multiple of 5
         $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);
 
@@ -418,24 +394,10 @@ class EvilDataController extends Controller {
         $result['first_day'] = date('l', strtotime($week_start));
         $result['last_day'] = date('l');
 
+        $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileweek(". $member_id .") AS percentile;")->queryAll();
          
-        
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_adtracks_week_users_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
-         
-        
         if (count($datas) > 0)
-            $adtrack_percentile = 100 - $datas[0]->percentile;
+            $adtrack_percentile = 100 - $datas[0]['percentile'];
         else
             $adtrack_percentile = 100;
 
@@ -458,6 +420,7 @@ class EvilDataController extends Controller {
         $value = round($value);
         if($value % 5 != 0){
             $value += (5 - ($value % 5));
+            if($value > 100) $value = 100;
         }
 
         return $value;
