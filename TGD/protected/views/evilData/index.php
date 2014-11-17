@@ -134,7 +134,7 @@
                             <div class="col-md-4 col-lg-4"><div class="square you mid-risk">You</div></div>
                             <div class="col-md-4 col-lg-4"><span class="amount risk you">0</span><span class="subtext">Threats per page visited</span></div>
                             <div class="col-md-4 col-lg-4"><span class="amount ratio you">0</span><span class="subtext">Percentage of threats allowed</span></div>
-                            <div class="col-md-4 col-lg-4 risk-meter">Risk Lover</div>
+                            <div class="col-md-4 col-lg-4 risk-meter"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-lg-4"><div class="square tgd"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/logo-big.png"/></div></div>
