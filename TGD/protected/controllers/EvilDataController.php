@@ -329,8 +329,6 @@ class EvilDataController extends Controller {
 
          
         $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileyear(". $member_id .") AS percentile;")->queryAll();
-         print_r($datas);
-         exit(0);
         
         if (count($datas) > 0)
             $adtrack_percentile = 100 - $datas[0]['percentile'];
