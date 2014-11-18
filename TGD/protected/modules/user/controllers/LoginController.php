@@ -51,7 +51,7 @@ class LoginController extends Controller
                     }
                     
 					if (Yii::app()->user->returnUrl=='/') {
-						$this->redirect(Yii::app()->createUrl('goodData/index'));
+						$this->redirect(Yii::app()->createUrl('//goodData/index'));
 					} else {
 						$this->redirect(Yii::app()->user->returnUrl);
 					}
