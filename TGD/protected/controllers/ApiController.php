@@ -728,6 +728,8 @@ class ApiController extends Controller
         /**
          * This feature gets disabled for now until future optimization.
          */
+         $this->_sendResponse(200, CJSON::encode(array()),'application/json');
+         Yii::app()->end();
         return false;
 
 		$user_id= $_GET['user_id'];
