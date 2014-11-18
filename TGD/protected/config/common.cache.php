@@ -2,5 +2,6 @@
 
 return array(
     'class' => 'system.caching.CDbCache',
-    'autoCreateCacheTable'=>true
+    'autoCreateCacheTable'=>true,
+    'connectionID'=>'db',
 );
