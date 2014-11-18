@@ -415,9 +415,50 @@ class ApiController extends Controller
 
 	    // Try to assign POST values to attributes
 
-
+        // Special handling for AdTracks
 	    if ($_GET['model'] == 'adtracks'){
-			$model=$this->_createAdtrack();
+          
+            $adtracks_to_create=array();
+            $adtracks_created=array();
+            
+            // maintain backwards compatibility with earlier version of extension that sends adtracks by post one by one
+            if (count($_POST)) { 
+              $adtracks_to_create[]=$_POST;
+            } else {
+              // retrieve array of multiple adtracks send to the API as JSON
+              $data = file_get_contents('php://input');
+              $data = json_decode($data, true);
+              if (is_array($data)) {
+                $adtracks_to_create=$data;
+              }
+            }
+            
+            if (count($adtracks_to_create)) {
+              foreach ($adtracks_to_create as $params) {
+                  $model=$this->_createAdtrack($params);
+                  if ($model->save()) {
+                    $adtracks_created[]=$model;
+                  } else {
+                    // Errors occurred
+                    $msg = "<h1>Error</h1>";
+                    $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
+                    $msg .= "<ul>";
+                    foreach($model->errors as $attribute=>$attr_errors) {
+                        $msg .= "<li>Attribute: $attribute</li>";
+                        $msg .= "<ul>";
+                        foreach($attr_errors as $attr_error)
+                            $msg .= "<li>$attr_error</li>";
+                        $msg .= "</ul>";
+                    }
+                    $msg .= "</ul>";
+                    Yii::log($msg,CLogger::LEVEL_ERROR);
+                    $this->_sendResponse(500, $msg );
+                }
+              }
+            }
+            
+            $this->_sendResponse(200, CJSON::encode($adtracks_created),'application/json');
+            
 		}
 	    else {
 			
@@ -966,18 +1007,18 @@ class ApiController extends Controller
 	}
 
   
-	public function _createAdtrack() {
-
+	public function _createAdtrack($params) {
+      
     // get post info
-  	$member_id=$_POST['member_id'];
-  	$user_id=$_POST['user_id'];
-  	$usertime=$_POST['usertime'];
-    $category=$_POST['category'];
-    $service_name=$_POST['service_name'];
-    $service_url=$_POST['service_url'];
-    $domain=$_POST['domain'];
-    $status=$_POST['status'];
-    $url=$_POST['url'];
+  	$member_id=$params['member_id'];
+  	$user_id=$params['user_id'];
+  	$usertime=$params['usertime'];
+    $category=$params['category'];
+    $service_name=$params['service_name'];
+    $service_url=$params['service_url'];
+    $domain=$params['domain'];
+    $status=$params['status'];
+    $url=$params['url'];
 
     // get source by name and category?
     $data = Yii::app()->db->createCommand()
