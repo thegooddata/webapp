@@ -110,7 +110,9 @@ return array(
 			'class' => 'WebUser',
 		),
             
-                'session'=>require(dirname(__FILE__).'/common.session.php'),
+        'session'=>require(dirname(__FILE__).'/common.session.php'),
+        
+        'cache'=>require(dirname(__FILE__).'/common.cache.php'),
 		
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
