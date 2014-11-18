@@ -724,6 +724,11 @@ class ApiController extends Controller
 	}
 
 	public function _updateWhitelist($put_vars){
+      
+        /**
+         * This feature gets disabled for now until future optimization.
+         */
+        return false;
 
 		$user_id= $_GET['user_id'];
 		$member_id= isset($_GET['member_id']) ? $_GET['member_id'] : null;
