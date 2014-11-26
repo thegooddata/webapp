@@ -20,4 +20,5 @@ return array(
         'pre.thegooddata.org',
         'collaborate-pre.thegooddata.org',
     ),
+    'dataThreatsYearCacheDuration'=>86400,
 );

@@ -41,8 +41,17 @@ class LoginController extends Controller
 				
 				
 				if($model->validate()) {
+                  
+                    // check if it is a pre-accepted user and redirect to get share page
+                    if (!Yii::app()->user->isGuest) {
+                      $user = User::model()->findByPk(Yii::app()->user->id);
+                      if ($user->status==User::STATUS_PRE_ACCEPTED) {
+                        Yii::app()->user->returnUrl=Yii::app()->controller->createAbsoluteUrl('//purchase/index');
+                      }
+                    }
+                    
 					if (Yii::app()->user->returnUrl=='/') {
-						$this->redirect(Yii::app()->createUrl('goodData/index'));
+						$this->redirect(Yii::app()->createUrl('//goodData/index'));
 					} else {
 						$this->redirect(Yii::app()->user->returnUrl);
 					}

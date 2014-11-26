@@ -63,7 +63,7 @@ class UserModule extends CWebModule
 	public $loginUrl = array("/user/login");
 	public $logoutUrl = array("/user/logout");
 	public $profileUrl = array("/user/profile");
-	public $returnUrl = array("/user/profile");
+	public $returnUrl = array("//goodData/index");
 	public $returnLogoutUrl = array("/user/login");
 	
 	

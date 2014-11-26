@@ -381,8 +381,17 @@ class EvilDataController extends Controller {
         $result['last_day'] = date('F Y');
         $result['total'] = array_sum($data);
 
-         
-        $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileyear(". $member_id .") AS percentile;")->queryAll();
+        // set cache key for this user
+        $dataThreatsYearCacheKey="DataThreatsYear-$member_id";
+        $datas=Yii::app()->cache->get($dataThreatsYearCacheKey);
+        if($datas===false)
+        {
+            // regenerate because it is not found in cache
+            $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileyear(". $member_id .") AS percentile;")->queryAll();
+            // and save it in cache for later use:
+            Yii::app()->cache->set($dataThreatsYearCacheKey, $datas, Yii::app()->params['dataThreatsYearCacheDuration']);
+        }
+        
         
         if (count($datas) > 0)
             $adtrack_percentile = 100 - $datas[0]['percentile'];
