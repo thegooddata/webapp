@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
 
-                <section id="kiva" class="mission tgd-box col-sm-16 col-md-8 col-lg-8">
+                <section id="zidisha" class="mission tgd-box col-sm-16 col-md-8 col-lg-8">
                     <h2>Our Mission</h2>
                     <div class="title_head clearfix">
                         <h3>We help customers<br/> enjoy ownership of the <br/> data they produce</h3>
