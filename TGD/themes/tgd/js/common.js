@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
     e.preventDefault();
     if(isChromium !== null && vendorName === "Google Inc.") {
       // is Google chrome
-      $('#earlyAccessModal').modal({'keyboard': true});
+      var win = window.open($(this).attr('href'), '_blank');
 
     } else {
       var options = {
