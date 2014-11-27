@@ -114,7 +114,14 @@
                                   array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
-                                  array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
+                                  array(
+                                    'url'=>'https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd', 
+                                    'label'=>'GET THEGOODDATA', 
+                                    'visible'=>Yii::app()->user->isGuest,
+                                    'linkOptions'=>array(
+                                        'target'=>'_blank',
+                                    ),
+                                  ),
                                );
                             } else {
                               
