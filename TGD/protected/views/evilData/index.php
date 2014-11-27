@@ -371,17 +371,20 @@
                     dataTGD = result.adtracks_average,
                     totalAverage = 0;
                    
+                // check we've got items in the list before using it
+                if (dataYou.length) {
+                  
+                  // rearrange last two sections
+                  dataYou.splice(2, 0, dataYou.splice(3,1)[0]);
 
-                // rearrange last two sections
-                dataYou.splice(2, 0, dataYou.splice(3,1)[0]);
-                
-                for(index in dataYou){
-                    totalYou += Number(dataYou[index].value);
-                }
+                  for(index in dataYou){
+                      totalYou += Number(dataYou[index].value);
+                  }
 
-                for(index in dataYou){
-                    dataYou[index].value = Number(dataYou[index].value);
-                    dataYou[index].label = (dataYou[index].value * 100 /totalYou).toFixed(1) + "%";
+                  for(index in dataYou){
+                      dataYou[index].value = Number(dataYou[index].value);
+                      dataYou[index].label = (dataYou[index].value * 100 /totalYou).toFixed(1) + "%";
+                  }
                 }
 
                 // rearrange last two sections
