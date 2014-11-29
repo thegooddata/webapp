@@ -26,7 +26,7 @@
                                     <p>The extension lets you whitelist certain trackers in case they are needed to properly see the site</p>
                                 </li>
                                 <li>
-                                    <p>"Technology is open source and has been built based on <a href="https://github.com/disconnectme" target="_blank">disconnect.me</a> code</p>
+                                    <p>Technology is open source and has been built based on <a href="https://github.com/disconnectme" target="_blank">disconnect.me</a> code</p>
                                 </li>
                             </ul>
                         </div>
