@@ -75,5 +75,26 @@
             </div> <!-- container -->
         </section> <!-- start -->      
 
+        <section id="mentions" class="start clearfix">
+            <div class="container clearfix">
+                <span class="helper">
+                    <a href="https://gigaom.com/2014/11/27/thegooddata-wants-your-browsing-data-to-benefit-good-causes/" target="_blank">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/gigaom.png" alt="placeholder+image">
+                    </a>
+                </span>
+
+                <span class="helper">
+                    <a href="http://www.fastcoexist.com/3026452/instead-of-giving-google-your-data-for-free-now-you-can-donate-it-for-good" target="_blank">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/fastcompany.png" alt="">
+                    </a>
+                </span>
+                
+                <span class="helper">
+                    <a href="http://www.forbes.com/sites/adamtanner/2014/11/28/share-your-data-fund-microloans-to-developing-world/" target="_blank">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/forbes.png" alt="placeholder+image">
+                    </a>
+                </span>
+            </div> <!-- container -->
+        </section> <!-- start -->      
        
      
