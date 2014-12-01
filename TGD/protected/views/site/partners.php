@@ -5,7 +5,6 @@
             <div class="row">
                 <section id="zidisha" class="tgd-box col-sm-16 col-md-8 col-lg-8">
                     <h2>Use of funds</h2>
-                    <div class="tgd-box-section logo zidisha" data-url="http://www.zidisha.org"></div>
                     <div class="tgd-box-section  very-light-gray">
                         <ul>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>Zidisha is the person-to-person microcredit leader.</li>
@@ -38,7 +37,6 @@
                 </section>
                 <section id="chango" class="tgd-box col-sm-16 col-md-8 col-lg-8">
                     <h2>Source of funds</h2>
-                    <div class="tgd-box-section logo" data-url="http://www.chango.com"></div>
                     <div class="tgd-box-section very-light-gray">
                         <ul>
                             <li><span class="glyphicon glyphicon-ok-sign"></span>Our data trading partner use our processed data in order to display ads in line with your interests.</li>
