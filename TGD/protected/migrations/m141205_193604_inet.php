@@ -4,7 +4,7 @@ class m141205_193604_inet extends CDbMigration
 {
 	public function up()
 	{
-      $this->execute("ALTER TABLE tbl_active_users ADD COLUMN host inet SET DEFAULT NULL");
+      $this->execute("ALTER TABLE tbl_active_users ADD COLUMN host inet");
 	}
 
 	public function down()
