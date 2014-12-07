@@ -212,7 +212,7 @@ class SiteController extends Controller {
         Yii::app()->theme = 'tgd';
         
         // set title
-        $this->pageTitle = "";
+        //$this->pageTitle = "";
 
         // add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/modernizr-2.6.2.min.js', CClientScript::POS_END);

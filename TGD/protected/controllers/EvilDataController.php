@@ -26,7 +26,7 @@ class EvilDataController extends Controller {
     public function actionIndex() {
         $this->layout = '//layouts/blank';
 
-         
+        $this->pageTitle = " - Evil Data";         
 
         $member_id = Yii::app()->user->id;
 

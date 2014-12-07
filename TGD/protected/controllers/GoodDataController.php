@@ -279,6 +279,8 @@ class GoodDataController extends Controller {
     public function actionIndex() {
         $this->layout = '//layouts/blank';
 
+        $this->pageTitle = " - Good Data";
+
         $loans = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('tbl_loans.*,tbl_loans_activities.name_en as activity,tbl_countries.name_en as country, tbl_loans_status.name_en as status, tbl_countries.code')

@@ -213,6 +213,8 @@ class UserDataController extends Controller {
 
     public function actionIndex() {
         $this->visualizar();
+
+        $this->pageTitle = " - Your Data";
     }
 
     public function actionDeleteAllQueries(){

@@ -29,7 +29,7 @@ class DonateController extends Controller {
         Yii::app()->theme = 'tgd';
 
         // set title
-        $this->pageTitle = " - Donate";
+        $this->pageTitle = " - Support Us";
 
         // set body id to #tgd-donate
         $this->bodyId = "tgd-donate";
