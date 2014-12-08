@@ -62,7 +62,7 @@
                             <td class="query"><?php echo urldecode(html_entity_decode($query->data));?></td>
                             <td class="engine"><?php echo $query->provider;?></td>
                             <td class="date"><?php echo date_format(date_create($query->created_at), 'Y-m-d H:i:s')?></td>
-                            <td class="traded"><i class="fa fa-check <?php echo(isset($query->traded)?$query->traded:'');?>"></i></td>
+                            <td class="traded"><i class="fa fa-check <?php echo($query->share == 'true')?'yes':'';?>"></i></td>
                             <td class="sensitive-data checked"><a href="<?php echo Yii::app()->createUrl('userData/deleteQuery', array('queries_pag' => $queries_pag, 'id_query'=>$query->id))?>" class="glyphicon glyphicon-remove delete"></a></td> 
                         </tr>
                         <?php } ?>
