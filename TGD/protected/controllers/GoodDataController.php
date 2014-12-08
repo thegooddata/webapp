@@ -19,35 +19,47 @@ class GoodDataController extends Controller {
         );
     }
 
+
     public function actionCompanyAchievementsData() {
 
         $result = array();
 
+        // Active users ----------------------
 
+        // set cache key for this data
+        $cacheKey="CompanyAchievementsData-ActiveUsers";
+        $total=Yii::app()->cache->get($cacheKey);
 
-//        $datas = Yii::app()->db->createCommand()
-//                ->setFetchMode(PDO::FETCH_OBJ)
-//                ->select('*')
-//                ->from('view_members_month')
-//                ->queryAll();
-//
-//        $total = 0;
-//        if ($datas[0]->total != null)
-//            $total = $datas[0]->total;
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand("
+                SELECT count(*) from (
+                    SELECT member_or_user_id
+                    FROM tbl_active_users 
+                    WHERE tbl_active_users.created_at >= (now() - '30 days'::interval) AND tbl_active_users.created_at <=  now()  
+                    GROUP BY member_or_user_id
+                ) as tmp")->queryScalar();
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
         
-        $total=Yii::app()->db->createCommand("
-        select count(*) from (
-          SELECT member_or_user_id
-        FROM tbl_active_users 
-        WHERE
-        tbl_active_users.created_at >= (now() - '1 mon'::interval) 
-        AND tbl_active_users.created_at <=  now()  
-        group by member_or_user_id
-        ) as tmp")->queryScalar();
+        
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['monthly_active_users'] = $total;
 
-        $datas = Yii::app()->db->createCommand()
+        // registered members ----------------
+
+        // set cache key for this data
+        $cacheKey="CompanyAchievementsData-RegisteredUsers";
+        $total=Yii::app()->cache->get($cacheKey);
+
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*) as total')
                 ->from('tbl_members')
@@ -57,51 +69,85 @@ class GoodDataController extends Controller {
                         ), array(
                     ':status' => User::STATUS_ACCEPTED)
                 )
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['total_registered_members'] = $total;
 
+        // queries last month ---------------------
 
-        $datas = Yii::app()->db->createCommand()
+        // set cache key for this data
+        $cacheKey="CompanyAchievementsData-LastMonthQueries";
+        $total=Yii::app()->cache->get($cacheKey);
+
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('*')
                 ->from('view_queries_month')
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['monthly_queries_processed'] = $total;
+        
+        // queries traded last month ------------------
 
+        $cacheKey="CompanyAchievementsData-LastMonthTradedQueries";
+        $total=Yii::app()->cache->get($cacheKey);
 
-        $datas = Yii::app()->db->createCommand()
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('*')
                 ->from('view_queries_trade_month')
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['monthly_queries_trade_processed'] = $total;
+        
+        // money earned -----------------------
 
+        $cacheKey="CompanyAchievementsData-MoneyEarned";
+        $total=Yii::app()->cache->get($cacheKey);
 
-        $datas = Yii::app()->db->createCommand()
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('sum(gross_amount) as total')
                 ->from('tbl_incomes')
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
-        
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
+
         // convert to usd
         $total=Currencies::convertDefaultTo($total, 'USD');
                 
@@ -275,23 +321,25 @@ class GoodDataController extends Controller {
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
+     * - Loads the loans data.
      */
     public function actionIndex() {
+        // set page layout
         $this->layout = '//layouts/blank';
-
+        // set page title
         $this->pageTitle = " - Good Data";
-
+        // get loans
         $loans = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('tbl_loans.*,tbl_loans_activities.name_en as activity,tbl_countries.name_en as country, tbl_loans_status.name_en as status, tbl_countries.code')
-                ->from('tbl_loans,tbl_loans_activities,tbl_countries,tbl_loans_status')
+                ->select('tbl_loans.*, tbl_loans_activities.name_en as activity, tbl_countries.name_en as country, tbl_loans_status.name_en as status, tbl_countries.code')
+                ->from('tbl_loans, tbl_loans_activities, tbl_countries, tbl_loans_status')
                 ->where(array(
-                    'and',
-                    'tbl_loans_activities.id = tbl_loans.id_loans_activity',
-                    'tbl_countries.id = tbl_loans.id_countries',
-                    'tbl_loans_status.id = tbl_loans.id_loans_status',
+                            'and',
+                            'tbl_loans_activities.id = tbl_loans.id_loans_activity',
+                            'tbl_countries.id = tbl_loans.id_countries',
+                            'tbl_loans_status.id = tbl_loans.id_loans_status',
                         )
-                )
+                    )
                 ->queryAll();
 
         $this->render('index', array(
