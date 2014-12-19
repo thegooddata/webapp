@@ -10,6 +10,7 @@
  * @property string $member_or_user_id
  * @property string $created_at
  * @property string $updated_at
+ * @property string $host
  */
 class ActiveUsers extends CActiveRecord {
 
@@ -122,6 +123,8 @@ class ActiveUsers extends CActiveRecord {
     $model->user_id = $user_id?$user_id:NULL;
     $model->member_id = $member_id?$member_id:NULL;
     $model->member_or_user_id = $member_id ? $member_id : $user_id;
+    
+    $model->host=Yii::app()->request->userHostAddress;
 
     $activeUserLogged = Yii::app()->user->getState('activeUserLogged', null);
     

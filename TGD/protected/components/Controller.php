@@ -57,6 +57,20 @@ class Controller extends CController
 
 	public $bodyId = "";
 	
-
+    public function init() {
+      parent::init();
+      
+      // ban ip at application level
+      if (in_array(Yii::app()->request->userHostAddress, $this->bannedIPs())) {
+        Yii::app()->end();
+      }
+      
+    }
+    
+    public function bannedIPs() {
+      return array(
+          '205.213.52.10',
+      );
+    }
 
 }
