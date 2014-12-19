@@ -124,7 +124,7 @@ class ActiveUsers extends CActiveRecord {
     $model->member_id = $member_id?$member_id:NULL;
     $model->member_or_user_id = $member_id ? $member_id : $user_id;
     
-    $model->host=Yii::app()->request->userHostAddress;
+    $model->host=md5(Yii::app()->request->userHostAddress);
 
     $activeUserLogged = Yii::app()->user->getState('activeUserLogged', null);
     
