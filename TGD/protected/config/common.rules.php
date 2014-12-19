@@ -49,7 +49,7 @@ return array(
   'suggestion/thanks'=>'/site/suggestionThanks',
   'suggestion/thanks/ajax'=>'/site/suggestionThanks/ajax/1',
   'your-company'=>'/site/company',
-  'support-us'=>'/donate',
+  'support-us'=>'/donate/index',
   'support-us/thanks'=>'/donate/thanks',
   'coders'=>'/site/coders',
   'faq'=>'/site/faq',
