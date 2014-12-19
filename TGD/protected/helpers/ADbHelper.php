@@ -212,5 +212,10 @@ class ADbHelper {
     $text = $stringPrefix . $text . (empty($stringSuffix) ? '':" -> ") . $stringSuffix . "\n";
     file_put_contents ( self::$fileName , $text, FILE_APPEND);
   }
+  
+  static public function encrypt_ip($ip) {
+    $key=BD_PASSWORD;
+    return md5(str_pad($ip, 64, '#').$key);
+  }
 }
 ?>

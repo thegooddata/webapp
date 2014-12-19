@@ -22,7 +22,7 @@
                     </p>
                     <p>
                       <?php
-                      $link=Yii::app()->createAbsoluteUrl('donate');
+                      $link=Yii::app()->createAbsoluteUrl('donate/index');
                       ?>
                       If what you wanted to do is supporting us with a donation, please visit <?php echo CHtml::link($link, $link); ?>
                     </p>
