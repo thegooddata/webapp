@@ -61,7 +61,7 @@ class Controller extends CController
       parent::init();
       
       // ban ip at application level
-      if (in_array(md5(Yii::app()->request->userHostAddress), $this->bannedIPs())) {
+      if (in_array(ADbHelper::encrypt_ip(Yii::app()->request->userHostAddress), $this->bannedIPs())) {
         Yii::app()->end();
       }
       
@@ -69,7 +69,7 @@ class Controller extends CController
     
     public function bannedIPs() {
       return array(
-          '718bfbb8e8a685a335009a39e1b1342d',
+          'a8e7987098d93717d28e336649197d92',
       );
     }
 
