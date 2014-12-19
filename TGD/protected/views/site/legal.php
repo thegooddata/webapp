@@ -45,7 +45,6 @@
                                 <li><h3 id="item-1">Our browser extension does not collect any Personally Identifiable Information (PII) of Service Users.</h3>
                                     <p>&ldquo;Personally identifiable information&rdquo; (PII) &nbsp;is data that can be used to identify a particular person. Aggregate or anonymous Service data are not considered PII. Service Users are those individuals that install our browser extension and enjoy any of our Services, as described in our Terms of Use.</p>
 
-                                    <p>Unlike most websites, our site doesn&rsquo;t store any IP data that could be used to identify our users. We will only keep the minimum of logs and debug information necessary to ensure that we can improve the Services and resolve issues that may arise. These logs will be kept for a maximum of 15 days.</p>
                                 </li>
                             </ol>
 
@@ -163,7 +162,7 @@
                                 First drafted - May 2014
                             </p>
                             <p>
-                                Latest revision &ndash; May 2014
+                                Latest revision &ndash; December 2014
                             </p>
                         </div>
                         <div class="tab-pane active legal" id="terms">
