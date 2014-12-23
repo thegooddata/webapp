@@ -356,6 +356,9 @@ class ApiController extends Controller
             case 'whitelists':
 	            $model = $this->_viewWhitelist();
 	            break;
+	        case 'blacklist':
+	            $model = $this->_viewBlacklist();
+	            break;	            
 	       	case 'queriesblacklist':
 	       		$model = $this->_viewQueriesblacklist();
 	       		break;
@@ -923,58 +926,45 @@ class ApiController extends Controller
 		$query= $_GET['query'];
 		$lang= $_GET['lang'];
 
-
-
 		$data = Yii::app()->db->createCommand()
-	                ->setFetchMode(PDO::FETCH_OBJ)
-	                ->select('id')
-	                ->from('tbl_queries_blacklist')
-	                ->where(array(
-	                            'and',
-	                            '(stem = :query1 or stem = :query2 or stem = :query3 or stem = :query4)',
-	                            'lang = :lang'
-	                            ),
-	                    	array(	
-	                            
-	                            ':query1'=>"/b".$query,
-	                            ':query2'=>"/b".$query."/b",
-	                            ':query3'=>$query."/b",
-	                            ':query4'=>$query,
-	                            ':lang'=>$lang,
-	                            )
-                    	)
-	                ->queryAll();
-
-        if (count($data) == 0){
-
-        	$blackExpresion = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('stem')
 	                ->from('tbl_queries_blacklist')
-	                ->where(array(
-	                            'and',	                          
-	                            'lang = :lang'
-	                            ),
-	                    	array(	
-	                            ':lang'=>$lang
-	                            )
-                    	)
+	                ->where('lang = :lang', array(':lang'=>$lang))
 	                ->queryAll();
-            
+	    
+	    
+    	$regexp = array();	
+	    if(count($data) > 0){
+	    	foreach($data as $object){
+	    		$regexp[]=$object->stem;
+	    	}
+	    }
 
+	    $regexp='/'.join($regexp,'|').'/';
+	    $matched=preg_match($regexp, $query,$matches);
+	    
+		return $matches;
+	}
 
-            foreach ( $blackExpresion as $black)
-            {
-            	$stem = str_replace("/b", "", $black->stem);
-            	
-            	if (strpos($query,$stem) !== false) {
-				    $data[]=$black;
-				    break;
-				}
-            }
-        }
+	public function _viewBlacklist(){
+		$lang= $_GET['query'];
 
-		return $data;
+		$data = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('stem')
+	                ->from('tbl_queries_blacklist')
+	                ->where('lang = :lang', array(':lang'=>$lang))
+	                ->queryAll();
+	    
+    	$result = array();	
+	    if(count($data) > 0){
+	    	foreach($data as $key=>$value){
+	    		$result[]=$value->stem;
+	    	}
+	    }
+
+		return $result;
 	}
 
 	public function _viewWhitelist(){
