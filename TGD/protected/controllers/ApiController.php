@@ -710,18 +710,22 @@ class ApiController extends Controller
 	}
 
 	public function _listAchievements(){
-		$achievements= Achievements::model()->findAll();
+            
+        $criteria=new CDbCriteria(array(
+            'condition'=>'t.achievements_finish >= :now AND t.achievements_start <= :now',
+            'params'=>array(
+                ':now'=>date("Y-m-d H:i:s"),
+            ),
+            'limit'=>5,
+            'order'=>'t.created_at DESC',
+        ));
+        
+		$achievements= Achievements::model()->findAll($criteria);
+        
 		$achievements_valid=array();
 
 		foreach ($achievements as $achievement){
-			$todays_date = date("Y-m-d");
-			$today = strtotime($todays_date);
-			$init_date = strtotime($achievement->achievements_start);
-			$expiration_date = strtotime($achievement->achievements_finish);
-
-			if ($expiration_date > $today && $init_date < $today) {
-			     $achievements_valid[]=$achievement;
-			} 
+            $achievements_valid[]=$achievement;
 		}
 		return $achievements_valid;
 	}
