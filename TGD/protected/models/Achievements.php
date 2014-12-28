@@ -10,6 +10,8 @@ class Achievements extends BaseAchievements
     
     public function search() {
 		$criteria = new CDbCriteria;
+        
+        $criteria->addCondition('t.deleted=0');
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('achievement_type_id', $this->achievement_type_id);

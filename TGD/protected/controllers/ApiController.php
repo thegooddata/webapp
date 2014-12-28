@@ -712,7 +712,7 @@ class ApiController extends Controller
 	public function _listAchievements(){
             
         $criteria=new CDbCriteria(array(
-            'condition'=>'t.achievements_finish >= :now AND t.achievements_start <= :now',
+            'condition'=>'t.deleted=0 AND t.achievements_finish >= :now AND t.achievements_start <= :now',
             'params'=>array(
                 ':now'=>date("Y-m-d H:i:s"),
             ),

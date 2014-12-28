@@ -67,7 +67,9 @@ class AchievementsController extends GxController {
 
 	public function actionDelete($id) {
 		//if (Yii::app()->getRequest()->getIsPostRequest()) {
-			$this->loadModel($id, 'Achievements')->delete();
+			$model=$this->loadModel($id, 'Achievements');
+            $model->deleted=1;
+            $model->save();
 
 			if (!Yii::app()->getRequest()->getIsAjaxRequest())
 				$this->redirect(array('admin'));
