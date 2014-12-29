@@ -85,11 +85,8 @@ function create_donate_url(gateway, currency, amount) {
             <div class="col-sm-16 col-md-6 col-lg-6 tgd-no-horizontal-padding">
                 <section id="form">
                     <div id="credit-card">
-                        <strong>Choose a fair amount</strong>
-                        Thanks for taking this generous decision. Use the form fields bellow
-                        to specify a fair amount and the currency in which you wish to make the donation.
-                        
-                        
+                        <strong>Select the amount you wish to donate</strong>
+                        Thank you for your generosity - it helps us ensure TheGoodData can keep running, and can keep your data safe. Use the fields below to specify the amount you’d like to give, and the currency in which you’d like to make your donation.
                         <form id="donate_stripe_form" action="" method="post">
                             
                             <div class="form-group row">

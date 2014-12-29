@@ -12,18 +12,19 @@
         <div class="container">
             <div class="row">
                 <div id="registration-form-block" class="col-sm-16 col-md-10 col-lg-8">
-                    <p>You can use TheGoodData extension without registration, 
-                        but if you also want to become a Member of TheGoodData
-                        Cooperative Ltd., you need to submit your personal 
-                        details. To become a Member you must have used the
-                        extension first.</p>
-                    <p>By becoming a member you have the right to access 
-                        company data, participate in the collaborative platform
-                        as well as in General Meetings, and elect or be elected 
-                        as a company Director, among other rights.</p>
-                    <p>Note it is vital that you enter correct details, as 
-                        it determines your legal rights as cooperative member.
-                        You may be required later to send proof of ID.</p>
+                    <p>You don’t need to register in order to use TheGoodData 
+                    browser extension, but if you want to become an owner/Member 
+                    of TheGoodData Cooperative Ltd then we need some details in order 
+                    to register you. Before filling this out, please ensure you’ve 
+                    <a href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank">downloaded the browser extension</a>.</p>
+                    <p>Once you’re a Member, you will be able to access company 
+                    information, participate in our collaborative platform and 
+                    take part in Annual General Meetings. You will also be able 
+                    to elect, or be elected as, a company Director among other 
+                    benefits.</p>
+                    <p>It is vital that you enter the correct details below, as 
+                    the information you provide will determine your legal rights 
+                    as a cooperative Member.</p>
 
 <?php if ($success != "") { ?>   
     <div class="alert alert-success"><?php echo $success; ?></div>

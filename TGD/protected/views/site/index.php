@@ -3,9 +3,9 @@
             <section id="intro" class="intro clearfix">       
 
                 <div class="container clearfix">
-                    <h1>Browse the web anonymously<br/> while doing some good.</h1>
+                    <h1>Protect your online data<br/>and make it work for a better cause.</h1>
                     <a class="tgd-button modal-trigger" target="_blank" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd">Get TheGoodData</a>
-                    <p>TheGoodData helps you control<br/> your personal data and make it<br/> work for a good cause.</p>
+                    <p>TheGoodData gives you back control<br/>of your valuable browsing data<br/>and lets you do some good with it.</p>
 
                     <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/yellow_small.png" data-stellar-ratio="-3" alt="">
                     <img class="drops big_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/green_big.png" data-stellar-ratio="-1.2" alt="">
@@ -24,8 +24,13 @@
             <div class="container clearfix">        
                 <div class="content clearfix">
                     <h1>You own your data.</h1>
-                    <p>Nobody should have access to it without your consent<br/> and in exchange of nothing. TheGoodData extension blocks<br/>browsing data that would otherwise be used by third party trackers.</p>
-                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/site/product");?>">our product</a>
+                    <p>No one should have unlimited access to your data <br/> 
+                    without your express consent.<br/>
+                    Right now, companies use your data to their advantage,<br/> 
+                    but give you nothing in exchange.</p>
+                    <p>TheGoodData extension prevents third party trackers from <br/>
+                    accessing your information so you can take back your privacy online.</p>
+                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/site/product");?>">About our product</a>
                 </div> <!-- content -->
 
                 <img class="seeds" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/seed3.png" alt="Your Data">
@@ -42,9 +47,14 @@
         <section id="hand" class="our_partners clearfix">
             <div class="container clearfix">
                 <div class="content clearfix">
-                    <h1>It's in your hands to<br/> make your data work<br/> for the social good.</h1>
-                    <p>Only if you give us consent, we will anonymise and trade<br/> on your behalf a small part of that data. 50% of the<br/> money collected will be lent to microcredit projects in<br/> developing countries via Zidisha, the other part will be used<br/> to fund the operations at TheGoodData, your company.</p>
-                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("site/partners"); ?>">our partners</a>
+                    <h1>With TheGoodData, <br/>your data has the power <br/>to do good.</h1>
+                    <p>With your consent, we will trade selected anonymous data<br/>
+                    to a fraction of those companies who have previously <br/>
+                    collected it for free. We will reinvest 50% of the revenues<br/>
+                    into TheGoodData - your company - and the other 50% will fund<br/>
+                    microloans to people in developing countries <br/>
+                    via our partner, Zidisha.</p>
+                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("site/partners"); ?>">About our partners</a>
                 </div> <!-- content -->
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/hand.png" alt="Its in Your Hand">
             </div> <!-- container -->
@@ -52,10 +62,9 @@
 
         <section id="your_company" class="your_company clearfix">
             <div class="container clearfix">
-                <h1>You don't just own just your data,<br/> You also own TheGoodData.</h1>
-                <p>Winning back data ownership in front of Corporations can only be achieved<br/> with the collaboration of thousands of people like you. That’s why, if you wish,<br/> you can become owner of TheGoodData at no cost. You will be informed of<br/> company progress and can take part on major decisions.</p>
-                <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/site/company");?>">your company</a>  
-
+                <h1>You don't just own your data,<br/> You also own TheGoodData.</h1>
+                <p>The more we collaborate, the less choice companies will have to get <br/>your data for free. So come join us, become an owner of TheGoodData <br/>and you’ll have a say in major company decisions and be kept <br/>updated on company progress - all at no cost.</p>
+                <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/site/company");?>">About your company</a>  
                 <div class="sun clearfix">
                     <img id="sun1" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun1.png" alt="">
                     <img id="sun2" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sun2.png" alt="">
@@ -71,7 +80,7 @@
 
         <section id="start" class="start clearfix">
             <div class="container clearfix">
-                <a class="button modal-trigger" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank"><h2>start enjoying your data now</h2></a>            
+                <a class="button modal-trigger" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank"><h2>take back your data now</h2></a>            
             </div> <!-- container -->
         </section> <!-- start -->      
 

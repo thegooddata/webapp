@@ -54,11 +54,10 @@
                 </form>
             </section>
             <section id="description" class="col-sm-16 col-md-7 col-lg-7">
-                <p>In case you want to update your membership details (ie. postal address),
-                    please send us an email to <a href="mailto:members@thegooddata.org">members@thegooddata.org</a>
-                    including your membership number, full name and a proof of the new data (utility bill).
-                </p>
-                <p>Your personal details are not displayed here since they have been decoupled from you user data to protect your identity.</p>
+                <p>If you would like to update your membership details (for eg, your postal address), email us 
+                at <a href="mailto:members@thegooddata.org">members@thegooddata.org</a> and include your membership 
+                number, your full name and proof of the new information (eg, photocopy of new utility bill).</p>
+                <p>We have decoupled your personal details from your user data in order to protect your identity. For this reason, your details aren’t shown here.</p>
             </section>
         </div>
         <div id="cancel-account" class="row">

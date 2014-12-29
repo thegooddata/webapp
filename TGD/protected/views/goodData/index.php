@@ -4,9 +4,7 @@
                 <div class="row">
                     <div class="col-sm-16 col-md-12 col-md-offset-2 col-lg-12 col-lg-offset-2 alert alert-warning alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/start.png"/> We've just started so we know that the following metrics are still negligible, but we wanted
-                        to share them with you from the very beginning. We think company transparency
-                        is a must to earn your collaboration.
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/start.png"/>Even though we’re really still at the starting line, we wanted to share our stats with you from the get-go. We believe that transparency is a must in order to ensure real collaboration. Have a look below to find out what we’ve been working on.
                     </div>
                 </div>
             </div>
@@ -25,7 +23,7 @@
                         </div>
                         <div class="item">
                             <div class="amount total_registered_members">0</div>
-                            <div class="subtext">Total Registered Members</div>
+                            <div class="subtext">Registered Members</div>
                         </div>
                         <div class="item">
                             <div class="amount monthly_queries_processed">0</div>
@@ -80,11 +78,11 @@
                         </div>
                         <div class="item">
                             <div class="amount projects_paying_back">0</div>
-                            <div class="subtext">Projects Paying-Back</div>
+                            <div class="subtext">Projects Paying Back</div>
                         </div>
                         <div class="item">
                             <div class="amount projects_paid_back">0</div>
-                            <div class="subtext">Projects Paid-Back</div>
+                            <div class="subtext">Projects Paid Back</div>
                         </div>
                         <div class="item">
                             <div class="amount projects_at_lost">0</div>
