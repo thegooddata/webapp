@@ -9,6 +9,7 @@ class ProfileFieldController extends Controller
 	private $_model;
 	private static $_widgets = array();
 	public $defaultAction = 'admin';
+	public $displayMenu = true;
 	public $layout='//layouts/column2';
 
 	/**

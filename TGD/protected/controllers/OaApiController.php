@@ -2,6 +2,8 @@
 
 class OaApiController extends Controller {
 
+    public $displayMenu = true;
+    
     /**
      * @return array action filters
      */

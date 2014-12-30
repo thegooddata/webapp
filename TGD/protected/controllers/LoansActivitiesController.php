@@ -1,6 +1,8 @@
 <?php
 
 class LoansActivitiesController extends GxController {
+	
+	public $displayMenu = true;
 
 	public function filters()
     {
