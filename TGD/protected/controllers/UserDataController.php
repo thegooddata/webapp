@@ -2,6 +2,9 @@
 
 class UserDataController extends Controller {
 
+        // set title
+    public $pageTitle = " - Your data";
+
     public $bodyId = 'tgd-user-data';
     
     public $displayMenu = true;
