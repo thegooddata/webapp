@@ -68,11 +68,14 @@ class SiteController extends Controller {
 
     public function actionSignup() {
         Yii::app()->theme = 'blank';
+
         $this->render('signup');
     }
 
     public function actionSignin() {
         Yii::app()->theme = 'blank';
+
+
         Yii::app()->clientScript->reset();
         $this->render('signin');
     }
@@ -201,7 +204,7 @@ class SiteController extends Controller {
     
     public function actionCompany(){
         Yii::app()->theme = 'tgd';
-        $this->pageTitle = " - The company";
+        $this->pageTitle = " - Your company";
         $this->bodyId = "tgd-company";
         
         $this->render('company');
@@ -212,7 +215,7 @@ class SiteController extends Controller {
         Yii::app()->theme = 'tgd';
         
         // set title
-        //$this->pageTitle = "";
+        $this->pageTitle = "";
 
         // add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/modernizr-2.6.2.min.js', CClientScript::POS_END);
