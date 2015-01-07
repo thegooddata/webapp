@@ -253,7 +253,7 @@
 
                             <ol>
                                 <li value="2">
-                                    The registered office of the society shall be at Unit 1, 82 Clerkenwell Road London    
+                                    The registered office of the society shall be at Unit 1, 82 Clerkenwell Road London EC1M 5RF
                                 </li>
                             </ol>
 
@@ -369,10 +369,20 @@
                                     Administrations or other Customers in exchange of a financial benefit and/or any other 
                                     tangible or intangible benefit. 
                                 </li>
+                            </ol>
+
+                            <h3>POWERS</h3>
+
+                            <ol>
                                 <li value="6">
                                     The Co-operative may do all such lawful things as may further the Co-operative's 
                                     objects and, in particular, may borrow or raise funds for any purpose and on behalf of
                                 </li>
+                            </ol>
+
+                            <h3>BORROWING</h3>
+
+                            <ol>
                                 <li value="7">
                                     The Co-operative shall have the power to borrow money from its Members and others 
                                     in order to further its objects providing that the amount outstanding at any one time 
@@ -396,6 +406,11 @@
                                     order to further its objects but shall not receive money on deposit. 
                                     Borrowing from Members     
                                 </li>
+                            </ol>
+
+                            <h3>Borrowing from Members</h3>
+
+                            <ol>
                                 <li value="11">
                                     In accordance with the Co-operative Principle of member economic participation the 
                                     interest paid by the Co-operative on money borrowed from Members shall not exceed 
@@ -420,17 +435,17 @@
                                 <li value="13">
                                     The Co-operative may invest any part of its funds in the manner set out in Section 31 of the Act.
                                 </li>
+                            </ol>
+
+                            <h3>MEMBERS</h3>
+
+                            <ol>
                                 <li value="14">
                                     The first Members of the Co-operative will be the Founder Members. The Co-
                                     operative may admit to membership any individual, corporate body or nominee of 
                                     an unincorporated body, firm or partnership that wishes to use the services of the Co-operative.
                                 </li>
                                 <li value="15">
-                                    In accordance with the Co-operative Principle of voluntary and open membership, 
-                                    whilst the Co-operative shall undertake to encourage its users to become Members 
-                                    membership must be voluntary.     
-                                </li>
-                                <li value="16">
                                     In accordance with the Co-operative Principle of voluntary and open membership, 
                                     whilst the Co-operative shall undertake to encourage its stakeholders to become 
                                     Members, membership must be voluntary and as a result cannot be a condition of employment.
@@ -440,7 +455,7 @@
                             <h3>Applications for Membership </h3>
 
                             <ol>
-                                <li value="17">
+                                <li value="16">
                                     No natural person shall be admitted into membership of the Co-operative unless they 
                                     have attained the age of 16. All those wishing to become a Member must support the 
                                     objects of the Co-operative and complete an application for membership which shall 
@@ -448,7 +463,7 @@
                                     form must be approved by the Directors and the Directors must approve each 
                                     application for membership. 
                                 </li>
-                                <li value="18">
+                                <li value="17">
                                     A corporate body which is a Member shall by resolution of its governing body appoint 
                                     a representative who may during the continuance of her/his appointment be entitled to 
                                     exercise all such rights and powers as the corporate body would exercise if it were an 
@@ -460,18 +475,18 @@
                             <h3>Member Commitment</h3>
 
                             <ol>
-                                <li value="19">
+                                <li value="18">
                                     All Members agree to attend general meetings and take an active interest in the 
                                     operation and development of the Co-operative and its business. Members have a 
                                     duty to respect the confidential nature of the business decisions of the Co-operative. 
                                 </li>
-                                <li value="20">
+                                <li value="19">
                                     In accordance with the Co-operative Principle of education, training and information, 
                                     the Co-operative shall provide potential Members with information about what the role 
                                     of a Member is within the Co-operative and will provide training in the skills required to 
                                     be a Member and to participate in the operation of the Co-operative. 
                                 </li>
-                                <li value="21">
+                                <li value="20">
                                     The Co-operative shall provide ongoing education and training in co-operative values 
                                     and principles and associated topics. The Co-operative shall support its Members by 
                                     ensuring that general meetings are accessible and encourage participation. 
@@ -481,7 +496,7 @@
                             <h3>Termination of Membership</h3>
 
                             <ol>
-                                <li value="22">
+                                <li value="21">
                                     A Member shall cease to be a Member of the Co-operative immediately that they: 
                                     <ol type="a">
                                         <li>Are no longer eligible for membership; or </li>
@@ -497,7 +512,7 @@
                             <h3>Expulsion from Membership</h3>
 
                             <ol>
-                                <li value="23">
+                                <li value="22">
                                     A Member may be expelled for conduct prejudicial to the Co operative by a 
                                     Membership sub-committee (to be regulated by the Secondary Rules), provided that 
                                     the grounds for expulsion have been specified in the notices calling the sub-committee 
@@ -506,7 +521,7 @@
                                     individual who is there to represent them (who need not be a Member of the Co-
                                     operative) has been allowed to make representations to the meeting. 
                                 </li>
-                                <li value="24">
+                                <li value="23">
                                     If on due notice having been served the Member fails to attend the meeting the 
                                     meeting may proceed in the Member's absence. 
                                     <ol type="a">
@@ -520,10 +535,10 @@
                                 </li>
                             </ol>
 
-                            <h3>PROCEEDINGS ON DEATH OR BANKRUPTCY OF A MEMBER </h3>
+                            <h3>Proceedings on death or bankruptcy of a Member</h3>
 
                             <ol>
-                                <li value="25">
+                                <li value="24">
                                     Upon a claim being made by: 
                                     <ol type="a">
                                         <li>The personal representative of a deceased Member; or </li>
@@ -533,7 +548,7 @@
                                             Holder has become entitled as the Office Holder may direct them.</li>
                                     </ol>                       
                                 </li>
-                                <li value="26">
+                                <li value="25">
                                     A Member may in accordance with the Act nominate any individual or individuals to 
                                     whom any of her/his property in the Co-operative at the time of her/his death shall be 
                                     transferred, but such nomination shall only be valid to the extent of the amount for the 
@@ -544,10 +559,10 @@
                                 </li>
                             </ol>
 
-                            <h3>Share Capital</h3>
+                            <h3>SHARE CAPITAL</h3>
 
                             <ol>
-                                <li value="27">
+                                <li value="26">
                                     The shares of the Co-operative shall be of the nominal value of £0.01 issued to 
                                     Persons upon admission to membership of the Co-operative. The shares shall be fully 
                                     paid prior to issue, neither Transferable nor Withdrawable, shall carry no right to 
@@ -561,12 +576,12 @@
                             <h3>GENERAL MEETINGS</h3>
 
                             <ol>
-                                <li value="28">
+                                <li value="27">
                                     The Co-operative shall, within six months of the end of the financial year, hold a 
                                     general meeting of the Members as its annual general meeting and shall specify the 
                                     meeting as such in the notices calling it. 
                                 </li>
-                                <li value="29">
+                                <li value="28">
                                     The business of an annual general meeting shall comprise, where appropriate: 
                                     <ol type="a">
                                         <li>The receipt of the accounts and balance sheet and of the reports of the Board and Auditor (if any).</li>
@@ -576,7 +591,7 @@
                                         <li>The transaction of any other business included in the notice convening the meeting.</li>
                                     </ol>                           
                                 </li>
-                                <li value="30">
+                                <li value="29">
                                     In accordance with the Co-operative Principle of democratic member control, the Co-
                                     operative shall ensure that, in addition to the annual general meeting, it will facilitate 
                                     constant electronic means to ensure that Members are given the opportunity to 
@@ -589,19 +604,19 @@
                             <h3>Calling a General Meeting</h3>
 
                             <ol>
-                                <li value="31">
+                                <li value="30">
                                     The Secretary, at the request of the Board of Directors may convene a general 
                                     meeting of the Co-operative. The purpose of the general meeting shall be stated in 
                                     the notice of the meeting. 
                                 </li>
-                                <li value="32">
+                                <li value="31">
                                     The Board of Directors upon an application signed by one-tenth of the total number of 
                                     Members, or 100 Members, whichever is the lesser, delivered to the registered office 
                                     of the Co-operative, shall convene a general meeting. The purpose of the general 
                                     meeting shall be stated in the application for and notice of the meeting. No business 
                                     other than that stated in the notice of the meeting shall be conducted at the meeting. 
                                 </li>
-                                <li value="33">
+                                <li value="32">
                                     If within one month from the date of the receipt of the application the Board have not 
                                     convened a general meeting to be held within six weeks of the application, any three 
                                     Members of the Co-operative acting on behalf of the signatories to the application may 
@@ -613,12 +628,12 @@
                             <h3>Notices</h3>
 
                             <ol>
-                                <li value="34">
+                                <li value="33">
                                     The Directors shall call the annual general meeting giving 14 Clear Days’ notice to all 
                                     Members. All other general meetings shall be convened with at least 14 Clear Days’ 
                                     notice but may be held at shorter notice if so agreed in Writing by 90% of the Members.
                                 </li>
-                                <li value="35">
+                                <li value="34">
                                     Notices of meetings shall either be given to Members personally or sent to them at 
                                     their Address or alternatively, if so agreed by the Co-operative in general meeting, 
                                     notices of general meetings may be displayed conspicuously at the registered office 
@@ -627,17 +642,17 @@
                                     held, and the business which is to be transacted at that meeting. A general meeting 
                                     shall not transact any business other than that specified in the notices calling the meeting.
                                 </li>
-                                <li value="36">
+                                <li value="35">
                                     A notice sent to a Member's Address shall be deemed to have been duly served 48 
                                     hours after its posting. The accidental omission to send any notice to or the 
                                     non-receipt of any notice by any Person entitled to receive notice shall not invalidate 
                                     the proceedings at the meeting. 
                                 </li>
-                                <li value="37">
+                                <li value="36">
                                     All notices shall specify the date, time and place of the meeting along with the general 
                                     nature of business to be conducted and any proposed resolutions.     
                                 </li>
-                                <li value="38">
+                                <li value="37">
                                     If the Co-operative has appointed an Auditor in accordance with these Rules they shall 
                                     be entitled to attend general meetings of the Co-operative and to receive all notices of 
                                     and communications relating to any general meeting which any Member of the 
@@ -649,7 +664,7 @@
                             <h3>Quorum</h3>
 
                             <ol>
-                                <li value="39">
+                                <li value="38">
                                     No business shall be transacted at a general meeting unless a quorum of Members is 
                                     present, including those not present in Person. Unless amended by Extraordinary 
                                     Resolution, a quorum shall be 3 Members or 25% of the membership, whichever is the greater.    
@@ -659,13 +674,18 @@
                             <h3>Chairing General Meetings</h3>
 
                             <ol>
-                                <li value="40">
+                                <li value="39">
                                     The chairperson of the Co-operative shall facilitate general meetings. If s/he is absent 
                                     or unwilling to act at the time any meeting proceeds to business then the Members 
                                     present shall choose one of their number to be the chairperson for that meeting. 
                                     Attendance and Speaking at General Meetings 
                                 </li>
-                                <li value="41">
+                            </ol>
+
+                            <h3>Attendance and Speaking at General Meetings </h3>
+
+                            <ol>
+                                <li value="40">
                                     A Member is able to exercise the right to speak at a general meeting and is deemed to 
                                     be in attendance when that Person is in a position to communicate to all those 
                                     attending the meeting. The Directors may make whatever arrangements they consider 
@@ -674,17 +694,22 @@
                                     general meeting, it is immaterial whether any two or more Members attending are in 
                                     the same place as each other, provided that they are able to communicate with each other.
                                 </li>
-                                <li value="42">
+                                <li value="41">
                                     The chairperson of the meeting may permit other persons who are not Members of the 
                                     Co-operative to attend and speak at general meetings, without granting any voting rights.
                                 </li>
-                                <li value="43">
+                            </ol>
+
+                            <h3>Adjournment </h3>
+
+                            <ol>
+                                <li value="42">
                                     If a quorum is not present within half an hour of the time the general meeting was due 
                                     to commence, or if during a meeting a quorum ceases to be present, the chairperson 
                                     must adjourn the meeting. If within half an hour of the time the adjourned meeting was 
                                     due to commence a quorum is not present, the Members present shall constitute a quorum.
                                 </li>
-                                <li value="44">
+                                <li value="43">
                                     The chairperson of a general meeting may adjourn the meeting whilst a quorum is present if:
                                     <ol type="a">
                                         <li>
@@ -695,19 +720,19 @@
                                             meeting is conducted in an orderly manner. </li>
                                     </ol>
                                 </li>
-                                <li value="45">
+                                <li value="44">
                                     The chairperson must adjourn the meeting if directed to do so by the meeting. 
                                 </li>
-                                <li value="46">
+                                <li value="45">
                                     When adjourning a meeting the chairperson must specify the date, time and place to 
                                     which it will stand adjourned or that the meeting is to continue at a date, time and 
                                     place to be fixed by the Directors. 
                                 </li>
-                                <li value="47">
+                                <li value="46">
                                     If the meeting is adjourned for 14 days or more, at least 7 Clear Days’ notice of the 
                                     adjourned meeting shall be given in the same manner as the notice of the original meeting.
                                 </li>
-                                <li value="48">
+                                <li value="47">
                                     No business shall be transacted at an adjourned meeting other than business which 
                                     could properly have been transacted at the meeting if the adjournment had not taken place.
                                 </li>
@@ -716,18 +741,18 @@
                             <h3>Voting</h3>
 
                             <ol>
-                                <li value="49">
+                                <li value="48">
                                     In accordance with the Co-operative Principle of democratic member control, each 
                                     Member shall have one vote on any question to be decided in general meeting. 
                                 </li>
-                                <li value="50">
+                                <li value="49">
                                     A resolution put to the vote at a general meeting shall be decided on a show of hands 
                                     unless a paper ballot is demanded in accordance with these Rules. A declaration by 
                                     the chair that a resolution has on a show of hands been carried or lost with an entry to 
                                     that effect recorded in the minutes of the general meeting shall be conclusive evidence 
                                     of the result. Proportions or numbers of votes in favour for or against need not be recorded.
                                 </li>
-                                <li value="51">
+                                <li value="50">
                                     In the case of an equality of votes, whether on a show of hands or a poll, the 
                                     chairperson shall not have a second or casting vote and the resolution shall be 
                                     deemed to have been lost. 
@@ -737,17 +762,17 @@
                             <h3>Paper Ballot</h3>
 
                             <ol>
-                                <li value="52">
+                                <li value="51">
                                     A paper ballot on a resolution may be demanded before or on the declaration of the 
                                     result of the show of hands by three Members at a general meeting. 
                                 </li>
-                                <li value="53">
+                                <li value="52">
                                     If a paper ballot is duly demanded it shall be taken in such a manner as the 
                                     chairperson directs, provided that no Member shall have more than one vote, and the 
                                     result of the ballot shall be deemed to be the resolution of the meeting at which the 
                                     ballot was demanded. 
                                 </li>
-                                <li value="54">
+                                <li value="53">
                                     The demand for a paper ballot shall not prevent the continuance of a meeting for the 
                                     transaction of any other business than the question upon which a ballot has been 
                                     demanded. The demand for a paper ballot may be withdrawn. 
@@ -757,7 +782,7 @@
                             <h3>Resolutions</h3>
 
                             <ol>
-                                <li value="55">
+                                <li value="54">
                                     Decisions at general meetings shall be made by passing resolutions:
                                     <ol type="a">
                                         <li>
@@ -784,27 +809,32 @@
                                         </li>
                                     </ol>
                                 </li>
-                                <li value="56">
+                                <li value="55">
                                     An Extraordinary Resolution is one passed by a majority of not less than 75% of votes 
                                     cast at a general meeting and an ordinary resolution is one passed by a simple 
                                     majority (51%) of votes cast. 
                                 </li>
-                                <li value="57">
+                                <li value="56">
                                     Resolutions may be passed at general meetings or by written resolution. A written 
                                     resolution may consist of several identical Documents signed by one or more Members.
                                 </li>
-                                <li value="58">
+                            </ol>
+
+                            <h3>DIRECTORS</h3>
+
+                            <ol>
+                                <li value="57">
                                     The Co-operative shall have a Board of Directors comprising not less than three Directors.
                                 </li>
-                                <li value="59">
+                                <li value="58">
                                     The initial Directors of the Co-operative from registration until the first annual general 
                                     meeting shall be appointed by the Founder Members. 
                                 </li>
-                                <li value="60">
+                                <li value="59">
                                     Only Members of the Co-operative who are aged 18 years or more may serve on the 
                                     Board of Directors. 
                                 </li>
-                                <li value="61">
+                                <li value="60">
                                     The Board of Directors shall be elected by and from the Co-operative’s Members. The 
                                     maximum number of Directors serving on the Board shall be determined by a general 
                                     meeting of the Co-operative from time to time. 
@@ -814,7 +844,7 @@
                             <h3>Retirement Cycle</h3>
 
                             <ol>
-                                <li value="62">
+                                <li value="61">
                                     At the first annual general meeting all Directors shall stand down. At every subsequent 
                                     annual general meeting one-third of the Board of Directors, or if their number is not a 
                                     multiple of three then the number nearest to one-third, shall retire from office. The 
@@ -827,7 +857,7 @@
                             <h3>Co-option of Directors </h3>
 
                             <ol>
-                                <li value="63">
+                                <li value="62">
                                     In addition the Board of Directors may co-opt up to two external independent Directors 
                                     who need not be Members and are selected for their particular skills and/or 
                                     experience. Such external independent Directors shall serve a fixed period determined 
@@ -835,7 +865,7 @@
                                     12 months. External independent Directors may be removed from office at any time by 
                                     a resolution of the Board of Directors. 
                                 </li>
-                                <li value="64">
+                                <li value="63">
                                     The Board of Directors may at any time fill a casual vacancy on the Board by 
                                     co-option. Co-opted individuals must be Members of the Co-operative and will hold 
                                     office as Director only until the next annual general meeting.
@@ -845,7 +875,7 @@
                             <h3>Board Education and Training</h3>
 
                             <ol>
-                                <li value="65">
+                                <li value="64">
                                     In accordance with the Co-operative Principle of education, training and information, 
                                     before accepting a position as Director an individual must agree to undertake training 
                                     during their first year of office as deemed appropriate by the Co-operative. This 
@@ -857,35 +887,35 @@
                             <h3>Powers and Duties of the Board of Directors</h3> 
 
                             <ol>
-                                <li value="66">
+                                <li value="65">
                                     The business of the Co-operative shall be managed by the Board who may exercise 
                                     all such powers of the Co-operative as may be exercised and done by the Co-
                                     operative and as are not by statute or by these Rules required to be exercised or done 
                                     by the Co-operative in general meeting. 
                                 </li>
-                                <li value="67">
+                                <li value="66">
                                     All decisions made by a meeting of the Board of Directors or by any person acting as 
                                     a Director shall remain valid even if it is later discovered that there was some defect in 
                                     the Director’s appointment or that the individual had previously been disqualified from 
                                     acting as a Director. 
                                 </li>
-                                <li value="68">
+                                <li value="67">
                                     All cheques, promissory notes, drafts, bills of exchange and other negotiable 
                                     instruments, and all receipts for monies paid to the Co-operative shall be signed, 
                                     drawn, accepted, endorsed, or otherwise executed in such manner as the Board shall 
                                     from time to time direct. 
                                 </li>
-                                <li value="69">
+                                <li value="68">
                                     Without prejudice to its general powers, the Board may exercise all the powers of the 
                                     Co-operative to borrow money and to mortgage or charge its undertaking and property 
                                     or any part of it and to issue debentures and other securities whether outright or as 
                                     security for any debt, liability or obligation of the Co-operative or of any third party. 
                                 </li>
-                                <li value="70">
+                                <li value="69">
                                     No Regulation made by the Co-operative in general meeting shall invalidate any prior 
                                     act of the Board which would have been valid had that Regulation not been made. 
                                 </li>
-                                <li value="71">
+                                <li value="70">
                                     In accordance with the Co-operative Principles of democratic member control and 
                                     member economic participation, the Board of Directors shall not be entitled to sell or 
                                     otherwise dispose of assets (in a single transaction or series of transactions) 
@@ -897,17 +927,17 @@
                             <h3>Delegation</h3>
 
                             <ol>
-                                <li value="72">
+                                <li value="71">
                                     Subject to these Rules, the Directors may delegate any of the powers which are 
                                     conferred on them under these Rules to any Person or committee consisting of 
                                     Members of the Co-operative, by such means, to such an extent, in relation to such 
                                     matters and on such terms and conditions as they think fit. 
                                 </li>
-                                <li value="73">
+                                <li value="72">
                                     The Directors may specify that any such delegation may authorise further delegation 
                                     of the powers by any Person to whom they are delegated. 
                                 </li>
-                                <li value="74">
+                                <li value="73">
                                     The Directors may revoke any delegation in whole or in part or alter any terms and conditions.
                                 </li>
                             </ol>
@@ -915,16 +945,16 @@
                             <h3>Sub-Committees</h3> 
 
                             <ol>
-                                <li value="75">
+                                <li value="74">
                                     A sub-committee to which the Directors delegate any of their powers must follow 
                                     procedures which are based as far as they are applicable on those provisions of these 
                                     Rules which govern the taking of decisions by Directors. 
                                 </li>
-                                <li value="76">
+                                <li value="75">
                                     The Directors may make Regulations for all or any sub-committees, provided that 
                                     such Regulations are not inconsistent with these Rules. 
                                 </li>
-                                <li value="77">
+                                <li value="76">
                                     All acts and proceedings of any sub-committee must be fully and promptly reported to the Directors.
                                 </li>
                             </ol>
@@ -936,7 +966,7 @@
 
 
                             <ol>
-                                <li value="78">
+                                <li value="77">
                                     Any Director may, and the Secretary on the requisition of a Director shall, call a 
                                     meeting of the Board of Directors by giving reasonable notice of the meeting to all 
                                     Directors. Notice of any meeting of the Board of Directors must indicate the date, time 
@@ -948,11 +978,11 @@
                             <h3>Proceedings of a Meeting of the Board of Directors </h3>
 
                             <ol>
-                                <li value="79">
+                                <li value="78">
                                     The Board of Directors may meet together for the despatch of business, adjourn and 
                                     otherwise regulate their meetings as they think fit. 
                                 </li>
-                                <li value="80">
+                                <li value="79">
                                     A Director is able to exercise the right to speak at a meeting of the Board of Directors 
                                     and is deemed to be in attendance when that person is in a position to communicate 
                                     to all those attending the meeting. The Directors may make whatever arrangements 
@@ -961,18 +991,18 @@
                                     determining attendance at a meeting of the Board of Directors, it is immaterial whether 
                                     any two or more Directors attending are in the same place as each other. 
                                 </li>
-                                <li value="81">
+                                <li value="80">
                                     Questions arising at any meetings of the Board shall be decided by a majority of votes. 
                                     In the case of an equality of votes the status quo shall be maintained and the Board of 
                                     Directors may choose to refer the matter to a general meeting of the Co-operative. 
                                 </li>
-                                <li value="82">
+                                <li value="81">
                                     A written resolution, circulated to all Directors and signed by a simple majority (51%) 
                                     of Directors, shall be valid and effective as if it had been passed at a Board meeting
                                     duly convened and held. A written resolution may consist of several identical 
                                     Documents signed by one or more Directors. 
                                 </li>
-                                <li value="83">
+                                <li value="82">
                                     The Board of Directors may, at its discretion, invite other persons to attend its 
                                     meetings with or without speaking rights and without voting rights. Such attendees will 
                                     not count toward the quorum. 
@@ -982,12 +1012,12 @@
                             <h3>Quorum</h3>
 
                             <ol>
-                                <li value="84">
+                                <li value="83">
                                     The quorum necessary for the transaction of business at a meeting of the Board of 
                                     Directors shall be 50% of the Directors or 3 Directors, including those not present in 
                                     person, whichever is the greater. 
                                 </li>
-                                <li value="85">
+                                <li value="84">
                                     If at any time the total number of Directors in office is less than the quorum required, 
                                     the Directors are unable to take any decisions other than to appoint further Directors 
                                     or to call a general meeting so as to enable the Members to appoint further Directors. 
@@ -997,7 +1027,7 @@
                             <h3>Chairing Board Meetings</h3> 
 
                             <ol>
-                                <li value="86">
+                                <li value="85">
                                     The chairperson shall facilitate meetings of the Board of Directors. If s/he is absent or 
                                     unwilling to act at the time any meeting proceeds to business then the Directors 
                                     present shall choose one of their number to be the chairperson for that meeting. 
@@ -1008,7 +1038,7 @@
                             <h3>Declaration of Interest</h3> 
 
                             <ol>
-                                <li value="87">
+                                <li value="86">
                                     A Director shall declare an interest in any contract or matter in which s/he has a 
                                     personal, material or financial interest, whether directly or indirectly, and shall not vote 
                                     in respect of such contract or matter, provided that nothing shall prevent a Director 
@@ -1019,7 +1049,7 @@
                             <h3>Expenses</h3> 
 
                             <ol>
-                                <li value="88">
+                                <li value="87">
                                     The Co-operative may pay any reasonable expenses which the Directors properly 
                                     incur in connection with their attendance at meetings or otherwise in connection with 
                                     the exercise of their powers and the discharge of their responsibilities in relation to the 
@@ -1031,7 +1061,7 @@
                             <h3>Termination of a Director’s Appointment</h3> 
 
                             <ol>
-                                <li value="89">
+                                <li value="88">
                                     A person ceases to be a Director of the Co-operative as soon as: 
                                     <ol type='a'>
                                         <li>
@@ -1078,7 +1108,7 @@
                             <h3>OFFICERS</h3>
 
                             <ol>
-                                <li value="90">
+                                <li value="89">
                                     The Board shall elect from among their own number a chairperson and Secretary and 
                                     such other Officers as they may from time to time decide. These Officers shall have 
                                     such duties and rights as may be bestowed on them by the Board or by law and any 
@@ -1091,7 +1121,7 @@
                             <h3>DISPUTES</h3>
 
                             <ol>
-                                <li value="91">
+                                <li value="90">
                                     In the event of a dispute between the Co-operative or its Board and a Member of the 
                                     Co-operative or a former Member, such dispute shall be referred to an independent 
                                     arbitrator whose appointment is acceptable to both parties to the dispute or in the 
@@ -1109,7 +1139,7 @@
                             <h3>REGULATIONS</h3>
 
                             <ol>
-                                <li value="92">
+                                <li value="91">
                                     The Co-operative in a general meeting, or the Board of Directors, may from time to 
                                     time make, adopt and amend such Regulations in the form of bye-laws, standing 
                                     orders, secondary rules or otherwise as they think fit for the management, conduct 
@@ -1124,7 +1154,7 @@
                             <h3>LIABILITY OF MEMBERS</h3>
 
                             <ol>
-                                <li value="93">
+                                <li value="92">
                                     The liability of a Member is limited to the amount of their shareholding.
                                 </li>
                             </ol>
@@ -1132,7 +1162,7 @@
                             <h3>APPLICATION OF PROFITS</h3>
 
                             <ol>
-                                <li value="94">
+                                <li value="93">
                                     Any profits of the Co-operative shall be applied as follows in such proportions and in 
                                     such manner as may be decided by the Co-operative at the annual general meeting: 
                                     <ol type='a'>
@@ -1155,13 +1185,13 @@
                             <h3>AMALGAMATION, TRANSFER OF ENGAGEMENTS AND CONVERSION</h3> 
 
                             <ol>
-                                <li value="95">
+                                <li value="94">
                                     The Co-operative may, by special resolution passed in the way required by the Act, 
                                     amalgamate with or transfer its engagements to any other society. The Co-operative 
                                     may also accept a transfer of engagements and assets by resolution of the Board or of 
                                     a general meeting. 
                                 </li>
-                                <li value="96">
+                                <li value="95">
                                     The Co-operative may, by special resolution passed in the way required by s52(3) of 
                                     the Act, amalgamate with or transfer its engagements to a company or convert itself 
                                     into a company under the provisions of the Act. In relation to calling a general meeting 
@@ -1218,7 +1248,7 @@
                             <h3>DISSOLUTION</h3>
 
                             <ol>
-                                <li value="97">
+                                <li value="96">
                                     The Co-operative may be dissolved by the consent of three quarters of the Members 
                                     by their signatures to an instrument of dissolution, or by winding up in a manner 
                                     provided for by the Act. 
@@ -1228,7 +1258,7 @@
                             <h3>Co-ownership</h3>
 
                             <ol>
-                                <li value="98">
+                                <li value="97">
                                     The Co-operative is a co-ownership enterprise. If on the winding up or dissolution of 
                                     the Co-operative any of its assets remain to be disposed of after its liabilities are 
                                     satisfied, these assets may be distributed among the Members and those persons 
@@ -1249,11 +1279,11 @@
                             <h3>Means of Communication</h3> 
 
                             <ol>
-                                <li value="99">
+                                <li value="98">
                                     A Member may provide their consent to receive communications from the 
                                     Co-operative by Electronic Means. 
                                 </li>
-                                <li value="100">
+                                <li value="99">
                                     A notice sent to a Director’s Address shall be deemed to have been duly served 48 
                                     hours after its posting. A Director may agree with the Co-operative that notices or 
                                     Documents sent to her/him in a particular way are to be deemed to have been 
@@ -1265,7 +1295,7 @@
                             <h3>Seal</h3>
 
                             <ol>
-                                <li value="101">
+                                <li value="100">
                                     If the Co-operative has a seal, it shall only be used by the authority of the Board of 
                                     Directors acting on behalf of the Co-operative. Every instrument to which the seal 
                                     shall be attached shall be signed by a Director and countersigned by a second 
@@ -1276,7 +1306,7 @@
                             <h3>Register</h3>
 
                             <ol>
-                                <li value="102">
+                                <li value="101">
                                     The Board of Directors shall ensure accurate registers are maintained which shall 
                                     include a register of Members, a register of Directors and a register of Officers. 
                                 </li>
@@ -1285,7 +1315,7 @@
                             <h3>Register of Members</h3> 
 
                             <ol>
-                                <li value="103">
+                                <li value="102">
                                     The Board shall ensure that the register is maintained in accordance with the Act and 
                                     that the particulars required by the Act are available for inspection and accessible 
                                     without the need to disclose other particulars contained in the register. 
@@ -1295,7 +1325,7 @@
                             <h3>Register of Directors and Officers</h3> 
 
                             <ol>
-                                <li value="104">
+                                <li value="103">
                                     The Co-operative shall maintain a register of Directors and Officers which shall include 
                                     the following particulars: 
                                     <ol type="a">
@@ -1323,7 +1353,7 @@
                             <h3>Amendments to Rules</h3>
 
                             <ol>
-                                <li value="105">
+                                <li value="104">
                                     Any of these Rules may be rescinded or amended or a new rule made by an 
                                     Extraordinary Resolution at a general meeting of which 14 Clear Days' notice has 
                                     been given, such notice to include details of the change(s) to be proposed at that 
@@ -1337,7 +1367,7 @@
                             <h3>Copies of the Co-operative's Rules</h3> 
 
                             <ol>
-                                <li value="106">
+                                <li value="105">
                                     A copy of these Rules and any amendments made to them shall be given free of 
                                     charge to every Member upon admission to membership and shall be provided to any 
                                     other person on demand and on payment of the statutory fee chargeable for the time
@@ -1348,7 +1378,7 @@
                             <h3>Minutes</h3>
 
                             <ol>
-                                <li value="107">
+                                <li value="106">
                                     The Co-operative shall ensure that minutes are kept of all:
                                     <ol type="a">
                                         <li>
@@ -1366,7 +1396,7 @@
                             <h3>Annual Return</h3>
 
                             <ol>
-                                <li value="108">
+                                <li value="107">
                                     Every year and within the period prescribed by the Act, the Secretary shall send the 
                                     annual return in the prescribed form to the Registrar. The annual return shall be 
                                     accompanied by: 
@@ -1382,13 +1412,13 @@
                                         </li>
                                     </ol>
                                 </li>
-                                <li value="109">
+                                <li value="108">
                                     The Co-operative shall on demand supply free of charge to any Member or any 
                                     person with an interest in the funds of the Co-operative a copy of the latest annual 
                                     return together with a copy of the Auditor's report on the accounts and balance sheet 
                                     contained in the annual return and the Auditor’s report (if any).
                                 </li>
-                                <li value="110">
+                                <li value="109">
                                     The Co-operative shall at all times keep a copy of the latest balance sheet of the 
                                     Co-operative together with a copy of the corresponding Auditor's report (if any) hung 
                                     up in a conspicuous place at the registered office and displayed on the Co-operative's 
@@ -1399,7 +1429,7 @@
                             <h3>Audit</h3>
 
                             <ol>
-                                <li value="111">
+                                <li value="110">
                                     Unless the Co-operative meets the criteria set out in section 4(2) of the Friendly and 
                                     Industrial and Provident Societies Act 1968 or fulfils the exemptions set out in sub-
                                     sections 4(A) (1) and (2) of the Friendly and Industrial and Provident Societies Act 
@@ -1408,7 +1438,7 @@
                                     the Co-operative’s accounts and balance sheet for the year. This provision also 
                                     applies if the Co-operative is in its first financial year. 
                                 </li>
-                                <li value="112">
+                                <li value="111">
                                     The following persons shall not be appointed as Auditor of the Co-operative: 
                                     <ol type="a">
                                         <li>
@@ -1419,10 +1449,10 @@
                                         </li>
                                     </ol>
                                 </li>
-                                <li value="113">
+                                <li value="112">
                                     The Board may appoint an Auditor to fill a casual vacancy occurring between general meetings.
                                 </li>
-                                <li value="114">
+                                <li value="113">
                                     An Auditor for the preceding financial year shall be re-appointed as Auditor of the 
                                     Co-operative for the current financial year unless: 
                                     <ol type="a">
@@ -1441,7 +1471,7 @@
                                         </li>
                                     </ol>
                                 </li>
-                                <li value="115">
+                                <li value="114">
                                     Any ordinary resolution of a general meeting of the Co-operative either to remove an 
                                     Auditor from office or to appoint another person as Auditor shall not be effective unless 
                                     notice of the proposed resolution has been given to the Co-operative at least 28 days 
@@ -1454,7 +1484,7 @@
                             <h3>Social Accounting and Reporting</h3> 
 
                             <ol>
-                                <li value="116">
+                                <li value="115">
                                     In addition to any financial accounts required by the Act, the Members may resolve to 
                                     undertake an account of the activities of the Co-operative which will endeavour to 
                                     measure its co-operative, social and environmental performance using whatever 
@@ -1467,15 +1497,15 @@
                             <h3>Indemnity and Insurance</h3> 
 
                             <ol>
-                                <li value="117">
+                                <li value="116">
                                     Subject to the following rule, any Director or former Director of the Co-operative may 
                                     be indemnified out of the Co-operative’s assets against: 
                                     <ol type="a">
-                                        <il>
+                                        <li>
                                             Any liability incurred by that Director in connection with any negligence, default, 
                                             breach of duty or breach of trust in relation to the Co-operative; 
 
-                                        </il>
+                                        </li>
                                         <li>
                                             Any liability incurred by that Director in connection with the activities of the 
                                             Co-operative in its capacity as a trustee of an occupational pension scheme; 
@@ -1486,11 +1516,11 @@
                                         </li>
                                     </ol>
                                 </li>
-                                <li value="118">
+                                <li value="117">
                                     The above rule does not authorise any indemnity which would be prohibited or
                                     rendered void by any provision of law. 
                                 </li>
-                                <li value="119">
+                                <li value="118">
                                     The Directors may decide to purchase and maintain insurance, at the expense of the 
                                     Co-operative, for the benefit of any Director or former Director of the Co-operative in 
                                     respect of any loss or liability which has been or may be incurred by such a Director in 
@@ -1503,7 +1533,7 @@
                              <h1> The Good Data Cooperative Ltd Secondary Rules</h1>
                                 <h2 > Structure</h2>
 
-                                <p>This agreement (our secondary rules) sets out the commitment between The Good Data Cooperative Ltd. (“TheGoodData”) and you – its Members. These should be read in addition to our Company Principles and our Company Rules as an Industrial and Provident Society, Cooperative Consortia. Both are available on our website. TheGoodData is a learning organization that aims for an ongoing increase in collaboration with its Members; therefore, these rules will evolve over time through consultation with them.</p>
+                                <p>This agreement (our secondary rules) sets out the commitment between The Good Data Cooperative Ltd. (“TheGoodData”) and you , its Members. These should be read in addition to our Company Principles and our Company Rules as an Industrial and Provident Society, Cooperative Consortia. Both are available on our website. TheGoodData is a learning organization that aims for an ongoing increase in collaboration with its Members; therefore, these rules will evolve over time through consultation with them.</p>
 
                                 <p>TheGoodData is a cooperative of Customers that aim to help its Members to regain ownership over the data that they produce. This implies supporting them in identifying, gathering, producing, securing and/or processing the data that they directly or indirectly collaborate to generate, as well as supporting them to keep it private if they choose to do so, or trade it, or to set up services that trade it with corporations, administrations or other Customers in exchange for a financial benefit and/or any other tangible or intangible benefit.</p>
 
@@ -1512,11 +1542,11 @@
                                 <h2 > Membership</h2>
 
                                 <ol>
-                                    <li value="1">Members of TheGoodData share responsibility for the achievement of TheGoodData goals.
+                                    <li value="1">Members of TheGoodData share responsibility for the achievement of goals set by TheGoodData.
                                         <ol type="a">
-                                            <li>On joining Members agree to the following:
+                                            <li>On joining, Members agree to the following:
                                                 <ul>
-                                                    <li >To support the primary and secondary rules as well as the values and principles of TheGoodData.</li>
+                                                    <li >To support the primary and secondary rules, as well as the values and principles of TheGoodData.</li>
                                                     <li >To use and promote the use of the service among other Customers.</li>
                                                 </ul>
                                             </li>
@@ -1534,11 +1564,11 @@
                                 <ol>
                                     <li value="2">Members are encouraged to contribute to the growth of the TheGoodData in whatever way they choose, although this is not a condition of Membership. TheGoodData will set up an online collaboration platform in order to provide a means for Members to contribute by providing feedback, ideas and requirements, participating in functional areas or projects, answering polls, voting and becoming a member of Subcommittees or the Board, coding or reviewing the code, facilitating deals with data providers, data buyers or any other partner, as well as carrying out any other action for the benefit of TheGoodData. Multiple online communication means will also be employed to keep Members informed of developments and current issues. These means include TheGoodData’s blog, twitter, email and the company website among others.</li>
 
-                                    <li value="3">Only individuals who have used the service in the past three months and that are at least 16 years old are eligible for membership. Failure to use the service during this period is a cause for Membership termination.</li>
+                                    <li value="3"> Only individuals who have used the service in the past three months and that are at least 16 years old are eligible for membership. Failure to use the service during this period is a cause for Membership termination.</li>
 
                                     <li value="4">Applicants will be required to fill out a form including their personal details. TheGoodData may require, at the time of application or at any other later stage, some proof of identity to validate these personal details. Submitting false or substantially incomplete details (including on behalf of a third party) is forbidden and will be a cause of application denial or Membership expulsion.</li>
 
-                                    <li value="5">In order to facilitate application for Membership, TheGoodData will offer to those that are interested, a 0 interest loan with the sole purpose of purchasing one Membership share. This loan will automatically be cancelled upon termination or expulsion from Membership.</li>
+                                    <li value="5"> In order to facilitate application for Membership, TheGoodData will offer to those that are interested, a 0 interest loan with the sole purpose of purchasing one Membership share. This loan will automatically be cancelled upon termination or expulsion from Membership.</li>
         
                                 </ol>
                                 
@@ -1551,10 +1581,10 @@
                                             <li>Any Member of TheGoodData may stand for election to the Board if proposed and seconded by two other Members. Membership is required to become a Director.</li>
                                             <li>Directors will be elected each year at the Annual General Meeting and their names will appear on the TheGoodData register of Directors.</li>
                                             <li>Directors may co-opt Members without them being elected at an Annual General Meeting. Co-opted Members will then have to stand for re-election at the Annual General meeting. At any one time no more than one third of Directors can be co-opted.</li>
-                                            <li>The Annual General Meeting can elect the Board if there is at least 15% of Members Quorum. The quorum should consider physical and electronic presence, and advanced votes.</li>
+                                            <li> The Annual General Meeting can elect the Board if there is at least 15% of Members Quorum. The quorum should consider physical and electronic presence, and advanced votes.</li>
                                             <li>Directors may be rewarded for their work. Reward schemes and levels have to be approved at the Annual General Meeting by the majority of Members.</li>
                                             <li>Major decisions, excluding primary rule changes, can only be made at Board meetings made up of at least half of the Directors.</li>
-                                            <li>The Board can spend up to &pound;20 000 per item without approval from the Membership. The Board will not borrow more than &pound;100 000 without first consulting Members.</li>
+                                            <li>The Board can spend up to &pound;20 000 per item without approval from the Members. The Board will not borrow more than &pound;100 000 without first consulting Members.</li>
                                         </ol>
                                     </li>
                                 </ol>
@@ -1605,15 +1635,16 @@
                                 <li value="8">TheGoodData is divided into four major Areas of responsibility: Corporate (strategy, finance, legal &amp; brand), Product (development of different projects and operations), Data (harvesting, securing, processing and trading) and People (users, members, collaborators and social impact). Each of these Areas will be lead by a Director. The major decisions of each Area will be raised to the Board of Directors for approval. </li>
                                 <li>Directors may decide to appoint an Area Subcommittee to provide support for the company’s day-to-day duties. Subcommittees are made-up of three people and shall comprise one Director or a Director elected Officer and two other Members for a duration of one year. At least two of these individuals should participate in major decisions.</li>
                                 <li>The proceedings of Subcommittee meetings are to be reported to the Board of Directors. Subcommittee meetings may make decisions on affairs relating to the work of the particular Area, but issues of direct importance to the TheGoodData as a whole should be taken, as a proposal or item for discussion, to the Board of Directors. The Directors may open for discussion decisions made at Subcommittee meetings if it is deemed that they are of direct importance to the TheGoodData as a whole.</li>
-                                <li>The Membership Subcommittee will be in charge among other duties of accepting Membership applications, as well as of dealing with Member claims, evaluating Member&rsquo;s expulsion cases or disclosing any Member&rsquo;s data if requested by Authorities.
+                                <li>The Membership Subcommittee will be in charge, among other duties. of accepting Membership applications, dealing with Member claims, evaluating Member’s expulsion cases, or disclosing any Member’s data if requested by authorities. 
+
                                     <ol type="a">
-                                        <li>Subcommittee Members aside from a Director or elected Officer will be elected by the rest of the Members, preferably at the Annual General Meeting</li>
-                                        <li>If the Board considers that the volume of work, or language diversity, so justifies, they are empowered to establish more than one Membership Subcommittee.</li>
+                                        <li> Subcommittee Members aside from a Director or elected Officer will be elected by the rest of the Members, preferably at the Annual General Meeting</li>
+                                        <li> If the Board considers that the volume of work, or language diversity, so justifies, they are empowered to establish more than one Membership Subcommittee.</li>
                                         <li>Membership applications and claims can be dealt by one single (1) Subcommittee Member.</li> 
-                                        <li>In case of unresolved claims then the Member should raise the matter with the designated Board Member. If the matter is not resolved informally then the Member should write to the Board so that the matter can be raised at the next Board meeting.</li>
-                                        <li>Member expulsion decisions will only be made after inviting the Member for written comments about the case.</li>
-                                        <li>Disclosure to Authorities of Membership Data can only be done upon approval of the majority of Subcommittee Members. Subcommittee will only attend requests from legitimate authorities.</li>
-                                        <li>Subcommittee Members shall, prior to acceptance of their duties, read and accept TheGoodData Privacy Policy and commit to enforce it at all times.</li>
+                                        <li> In case of unresolved claims, the Member should raise the matter with the designated Board Member. If the matter is not resolved informally, the Member should write to the Board so that the matter can be raised at the next Board meeting.</li>
+                                        <li> Member expulsion decisions will only be made after inviting the Member to submit written comments about the case.</li>
+                                        <li> Disclosure to Authorities of Membership Data can only be done upon approval of the majority of Subcommittee Members. The Subcommittee will only attend to requests from legitimate authorities.</li>
+                                        <li>Subcommittee Members shall, prior to acceptance of their duties, read and accept TheGoodData’s Privacy Policy and commit to enforce it at all times.</li>
                                     </ol>
                                 <li>Subcommittees for the other Areas can be appointed at any time by the Area Director who will determine their Membership.</li>
                                 <li>Ad hoc working &ldquo;Nodes&rdquo; may be appointed by the Board of Directors at any time to deal with cross-area projects like the development of a new service or business line.</li>
@@ -1621,25 +1652,25 @@
 
                             <h2> Conduct of Meetings</h2>
                             <ol>
-                                <li value="14">The following rules apply to day-to-day meetings including Board Meetings, Subcommittee and Node Meetings. Provision and Procedure for General Meetings is outlined in the Company Rules.</li>
+                                <li value="14">The following rules apply to day-to-day meetings including Board Meetings, Subcommittee and Node Meetings. The Provision and Procedure for General Meetings is outlined in the Company Rules.</li>
                                 <li>All meetings should have an agenda and a determined duration. The date of the next meeting shall be agreed at each meeting.</li>
-                                <li>Meetings should always be minuted and mention the meeting attendants, major decisions made, actions identified, owners and deadlines. Minutes will be distributed among attendants prior o the next meeting and will be made available online to all members - excluding parts subject to TheGoodData's Privacy Policy - unless the Board of Directors declare it confidential.</li>
-                                <li>Members who are absent from a meeting may, in advance, voice an opinion, and cast a vote on any or all of the items on the Agenda.</li>
+                                <li>Meetings should always be minuted and mention the meeting attendants, major decisions made, actions identified, owners and deadlines. Minutes will be distributed among attendants prior to the next meeting and will be made available online to all members - excluding parts subject to TheGoodData’s Privacy Policy - except if the Board of Directors declares it confidential.</li>
+                                <li>Members who are absent from a meeting may, in advance, voice an opinion and cast a vote on any or all of the items on the agenda.</li>
                                 <li>An unjustified absence of two consecutive meetings, or a justified absence of over 50% of meetings over a three-month period but without extraordinary circumstances, may be held by the rest of the meeting Members to elect a substitute.</li>
-                                <li>Decisions are to be made by majority.</li>
-                                <li>Volunteers, and any such person as the Members of the meeting wish to invite, in an advisory or observational role, may attend meetings. Members who wish to attend should contact any meeting Member in advance, and be granted permission unless their attendance is deemed inappropriate. Meeting attendees may speak by request/with the permission of any of the meeting Members.</li>
-                                <li>Both day-to-day and General Meetings as well as any other communication between TheGoodData and its Members including calls for meetings and circulation of meeting minutes will be done electronically.</li>
+                                <li>Decisions are to be made by a majority.</li>
+                                <li> Volunteers, and any such persons that the Members of the meeting wish to invite, in an advisory or observational role, may attend meetings. Members who wish to attend should contact any meeting Member in advance, and be granted permission unless their attendance is deemed inappropriate. Meeting attendees may speak by request/with the permission of any of the meeting Members.</li>
+                                <li> Both day-to-day and General Meetings, as well as any other communication between TheGoodData and its Members, including calls for meetings and circulation of meeting minutes, will be done electronically.</li>
                             </ol>
 
                             <h2 > Application of income and surplus</h2>
                             <ol>
-                                <li value="22">A share of revenues not lower than 10% will be invested in support of not-for-profit causes unless TheGoodData viability is put in danger due to this investment.</li>
-                                <li>Starting from second year of TheGoodData operations, one sixth of revenues will be given to external developers that have collaborated in building TheGoodData systems, code and algorithms during the previous six years. Sharing criteria will be decided by the Product Area Director or Product Subcommittee and will consider level of effort (ie. lines of code), quality of the output and strategic importance of the development.</li>
-                                <li>Our Company Rules allow us to distribute surplus to Members as dividends, however we have chosen at present not to exercise this option, since we seek to strengthen the long-term viability of our organisation and further our social impact.</li>
+                                <li value="22">A share of revenues not lower than 10% will be invested in the support of not-for-profit causes unless TheGoodData viability is placed in danger due to this investment.</li>
+                                <li>Starting from the second year of TheGoodData operations, one sixth of revenues will be given to external developers that have collaborated in building TheGoodData systems, code and algorithms during the previous six years. Sharing criteria will be decided by the Product Area Director or Product Subcommittee, and will consider the level of effort (ie. lines of code), the quality of the output and the strategic importance of the development.</li>
+                                <li>Our Company Rules allow us to distribute surplus to Members as dividends; however we have chosen at present not to exercise this option, since we seek to strengthen the long-term viability of our organisation and further our social impact.</li>
                             </ol>
                             <h2 > Data asset lock</h2>
                             <ol>
-                                <li value="25">If we should ever file for bankruptcy, or have any of our assets sold to or merged with another entity, data that we have harvested or processed of our users will never be transferred, nor will be the browser extensions that we have made available in the different app stores.</li>
+                                <li value="25">If we should ever file for bankruptcy or have any of our assets sold to or merged with another entity, data that we have harvested or processed of our users will never be transferred, nor will be the browser extensions that we have made available through the various app stores.</li>
                             </ol>
 
                             <h2 > Changes to these rules</h2>
