@@ -119,15 +119,45 @@
                     <div class="container">
                         <?php foreach ($loans as $loan) { ?>
                         <div class="row">
-                            <div class="col-1"><a target="_blank" href="<?php echo $loan->loan_url; ?>"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo $loan->image; ?>" class="avatar"/><?php echo $loan->title_en; ?></a><div class="subtext"><?php echo $loan->activity; ?></div></div>
+                            <div class="col-1"><a target="_blank" href="<?php echo $loan->loan_url; ?>">
+                            <?php if(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->loan_identifier."-".$loan->image)): ?>
+                                <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->loan_identifier."-".$loan->image; ?>" class="avatar"/>
+                            <?php elseif(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->image)): ?>
+                                <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->image; ?>" class="avatar"/>
+                            <?php endif; ?>
+                            <?php echo $loan->title_en; ?></a><div class="subtext"><?php echo $loan->activity; ?></div></div>
                             <div class="col-2"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/flags/<?php echo strtolower($loan->code); ?>.png" class="flag"/><?php echo $loan->country; ?><div class="subtext"><?php echo $loan->partner; ?></div></div>
-                            <div class="col-3">$<?php echo $loan->amount; ?></div>
+                            <div class="col-3">$<?php echo number_format($loan->amount,2); ?></div>
                             <div class="col-4"><?php echo $loan->term; ?> months</div>
-                            <div class="col-5">$<?php echo $loan->contribution; ?><div class="subtext"><?php echo date('F d, Y', strtotime($loan->loan_date));?></div></div>
-                            <div class="col-6">$<?php echo $loan->paidback; ?></div>
+                            <div class="col-5">$<?php echo number_format($loan->contribution,2); ?><div class="subtext"><?php echo date('F d, Y', strtotime($loan->loan_date));?></div></div>
+                            <div class="col-6">$<?php echo number_format($loan->paidback,2); ?></div>
                             <div class="col-7"><?php echo $loan->status;?></div>                        
                         </div>
                         <?php } ?>
+
+                        <div class="row pager">
+                            <div class="pull-right">
+                                  
+                                    <?php $this->widget('ext.TGDLinkPager', array(
+                                        'header' => '',
+                                        'cssFile' => false,
+                                        'firstPageCssClass'=>'',
+                                        'previousPageCssClass'=>'',
+                                        'nextPageCssClass'=>'',
+                                        'nextPageCssClass'=>'',
+                                        'lastPageCssClass'=>'',
+                                        'maxButtonCount'=>3,
+                                        'showFirstAndLastPages'=>false,
+                                        'showLastPageNumber'=>true,
+                                        'prevPageLabel'=>'<i class="glyphicon glyphicon-arrow-left"></i>',
+                                        'nextPageLabel'=>'<i class="glyphicon glyphicon-arrow-right"></i>',
+                                        'htmlOptions'=>array(
+                                            'class'=>'',
+                                        ),
+                                        'pages' => $loans_pages,
+                                    )); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

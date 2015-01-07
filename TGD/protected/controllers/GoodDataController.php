@@ -328,6 +328,30 @@ class GoodDataController extends Controller {
         $this->layout = '//layouts/blank';
         // set page title
         $this->pageTitle = " - Good Data";
+        
+        // ------------ intialize pagination data for loans
+
+        $loans_pag = 1;
+        $loans_pag_size = 10;
+
+        if (isset($_GET['loans_pag']))
+            $loans_pag = $_GET['loans_pag'];
+
+        // get amount of data
+        $loans = Yii::app()->db->createCommand()
+                ->setFetchMode(PDO::FETCH_OBJ)
+                ->select('count(*)')
+                ->from('tbl_loans')
+                ->queryAll();
+
+        $loans_total = $loans[0]->count;
+        
+        // build pagination: set total queries, page size, page variable and params
+        $loans_pages = new CPagination($loans_total);
+        $loans_pages->pageSize=$loans_pag_size; // 10
+        $loans_pages->pageVar='loans_pag';
+        $loans_pages->params=  $_GET;
+
         // get loans
         $loans = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
@@ -340,11 +364,15 @@ class GoodDataController extends Controller {
                             'tbl_loans_status.id = tbl_loans.id_loans_status',
                         )
                     )
+                ->order('loan_date DESC')
+                ->limit($loans_pag_size)
+                ->offset(($loans_pag-1) * $loans_pag_size)
                 ->queryAll();
 
         $this->render('index', array(
             'loans' => $loans,
-                )
+            'loans_pages' => $loans_pages,
+            )
         );
     }
 
