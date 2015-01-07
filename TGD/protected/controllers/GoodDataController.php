@@ -170,11 +170,11 @@ class GoodDataController extends Controller {
         ->from('tbl_loans')
         ->queryAll();
 
-        $money_lost = 0;
+        $total_lost = 0;
         if ($datas[0]->total != null)
-            $money_lost = $datas[0]->total;
+            $total_lost = $datas[0]->total;
 
-        $result['money_lost'] = Yii::app()->numberFormatter->formatCurrency($money_lost, 'USD');
+        $result['total_lost'] = Yii::app()->numberFormatter->formatCurrency($total_lost, 'USD');
         
         // Money reserved
         $datas = Yii::app()->db->createCommand()
@@ -191,7 +191,7 @@ class GoodDataController extends Controller {
         $money_reserved=Currencies::convertDefaultTo($money_reserved, 'USD');
         
         // remove the lost
-        $money_reserved = $money_reserved - $money_lost;
+        $money_reserved = $money_reserved - $total_lost;
         
         // temp fix for formatting negative number, because formatCurrency with this locale displays it wrong
         $negative='';
@@ -215,7 +215,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_lent'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        $result['total_contribution'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
         
         // Outstanding portfolio
         $datas = Yii::app()->db->createCommand()
@@ -228,7 +228,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['outstanding_portfolio'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        $result['total_outstanding'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         // Money repaid
         $datas = Yii::app()->db->createCommand()
@@ -241,7 +241,7 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_repaid'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        $result['total_paidback'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
 
 

@@ -47,19 +47,19 @@
                             <div class="subtext">Money available for microloans</div>
                         </div>
                         <div class="item">
-                            <div class="amount money_lent">$0</div>
+                            <div class="amount total_contribution">$0</div>
                             <div class="subtext">Money Lent</div>
                         </div>
                         <div class="item">
-                            <div class="amount money_repaid">$0</div>
+                            <div class="amount total_paidback">$0</div>
                             <div class="subtext">Money Repaid</div>
                         </div>
                         <div class="item">
-                            <div class="amount money_lost">$0</div>
+                            <div class="amount total_lost">$0</div>
                             <div class="subtext">Money Lost</div>
                         </div>
                         <div class="item">
-                            <div class="amount outstanding_portfolio">$0</div>
+                            <div class="amount total_outstanding">$0</div>
                             <div class="subtext">Outstanding Portfolio</div>
                         </div>
                     </div>
@@ -184,10 +184,10 @@
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodInvestmentsData')?>", function( result ) {
 
             $('.money_reserved').html(result.money_reserved);
-            $('.money_lent').html(result.money_lent);
-            $('.money_repaid').html(result.money_repaid);
-            $('.money_lost').html(result.money_lost);
-            $('.outstanding_portfolio').html(result.outstanding_portfolio);
+            $('.total_contribution').html(result.total_contribution);
+            $('.total_paidback').html(result.total_paidback);
+            $('.total_lost').html(result.total_lost);
+            $('.total_outstanding').html(result.total_outstanding);
         }, "json" );
 
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodProjectsData')?>", function( result ) {
