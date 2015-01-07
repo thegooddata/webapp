@@ -171,23 +171,18 @@
   }
 
   .pager {
-    li {
-      > a {
-        border-width: 2px;
-        border-color: @color-link;
-        font-weight: bold; 
-        padding-top: 0;
-        padding-bottom: 0;
-        height:3rem;
-        line-height: 3rem;
-        vertical-align: middle;
-      }
-      &.disabled {
-        > a {
-          border-color: @gray-text;      
-        }
-      }
-
+    padding: 20px 10px;
+    margin-top: 0;
+    border: none;
+    .btn-xs {
+      color: white;
+      font-size: 1rem;
+      line-height: 1rem;
+      padding: 0 0.8rem 0 0.8rem;
+      height: 1.6rem;
+      font-weight: bold;
     }
+
   }
+
 }
