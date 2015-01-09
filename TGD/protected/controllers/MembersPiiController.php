@@ -88,5 +88,32 @@ class MembersPiiController extends GxController {
 			'model' => $model,
 		));
 	}
+    
+    public function actionExcel() {
+      
+      $data=Yii::app()->db->createCommand("SELECT * FROM {{members_pii}}")->queryAll();
+      
+      // filename for download
+      $filename = "members_pii_" . date('Ymd') . ".xls";
+
+      header("Content-Disposition: attachment; filename=\"$filename\"");
+      header("Content-Type: text/csv; charset=UTF-16LE");
+
+      $flag = false;
+      foreach($data as $row) {
+        if(!$flag) {
+          // display field/column names as first row
+          echo implode("\t", array_keys($row)) . "\r\n";
+          $flag = true;
+        }
+        foreach ($row as $k => $v) {
+          ExcelHelper::cleanData($v);
+          $row[$k]=$v;
+        }
+        echo implode("\t", array_values($row)) . "\r\n";
+      }
+      Yii::app()->end();
+      
+    }
 
 }
