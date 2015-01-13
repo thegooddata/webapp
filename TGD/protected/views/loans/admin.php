@@ -54,8 +54,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 				),
 		'loan_url',
 		'title_en',
-		'title_es',
-		/*
+		/*'title_es',
 		array(
 				'name'=>'id_loans_activity',
 				'value'=>'GxHtml::valueEx($data->idLoansActivity)',
@@ -77,7 +76,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'contribution',
 		'loan_date',
 		'loan_update',
+		*/
 		'paidback',
+		/*
 		'loss',
 		array(
 				'name'=>'id_loans_status',
