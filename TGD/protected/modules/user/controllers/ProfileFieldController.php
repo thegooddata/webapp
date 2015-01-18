@@ -35,7 +35,7 @@ class ProfileFieldController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('create','update','view','admin','delete'),
+				'actions'=>array('create','update','view','admin','delete','excel'),
 				'users'=>UserModule::getAdmins(),
 			),
 			array('deny',  // deny all users
@@ -464,29 +464,31 @@ class ProfileFieldController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new ProfileField('search');
-        $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['ProfileField']))
-            $model->attributes=$_GET['ProfileField'];
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
 
-        $this->render('admin',array(
-            'model'=>$model,
-        ));
-		/*
-		$dataProvider=new CActiveDataProvider('ProfileField', array(
-			'pagination'=>array(
-				'pageSize'=>Yii::app()->controller->module->fields_page_size,
-			),
-			'sort'=>array(
-				'defaultOrder'=>'position',
-			),
+		$model = new ProfilesFields('search');
+		$model->unsetAttributes();
+
+		if (isset($_GET['ProfilesFields']))
+			$model->setAttributes($_GET['ProfilesFields']);
+
+		$columns = $this->_getTableColumns('profiles_fields');
+		$this->render('admin', array(
+			'model' => $model,
+			'columns' => $columns,
 		));
-
-		$this->render('admin',array(
-			'dataProvider'=>$dataProvider,
-		));//*/
+	
 	}
 
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('profiles_fields', $cols);
+    }
+    
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

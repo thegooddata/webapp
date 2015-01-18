@@ -34,7 +34,8 @@ $('.search-form form').submit(function(){
 You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&gt; or =) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo GxHtml::link(Yii::t('app', 'Advanced Search'), '#', array('class' => 'search-button')); ?>
+<?php echo GxHtml::link(Yii::t('app', 'Advanced Search'), '#', array('class' => 'search-button')); ?><!-- | --> 
+<?php /*echo GxHtml::link(Yii::t('app', 'Export'), array('excel')); */?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search', array(
 	'model' => $model,

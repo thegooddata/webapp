@@ -73,4 +73,20 @@ class Controller extends CController
       );
     }
 
+    protected function _getTableColumns($tableName){
+    	$data = Yii::app()->db->createCommand()
+    						  ->select('column_name')
+    						  ->from('information_schema.columns')
+    						  ->where('table_name=:name',array(':name'=>'tbl_'.$tableName))
+    						  ->queryAll();
+    	
+    	$result = array();
+    	if(count($data) > 0){
+    		foreach ($data as $key => $value) {
+    			$result[] = $value['column_name'];
+    		}
+    	}
+    	return($result);
+    }
+
 }

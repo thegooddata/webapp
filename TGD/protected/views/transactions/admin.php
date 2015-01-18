@@ -30,7 +30,45 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 </p>
 
 <?php echo GxHtml::link(Yii::t('app', 'Advanced Search'), '#', array('class' => 'search-button')); ?> | 
-<?php echo GxHtml::link(Yii::t('app', 'Export'), array('excel')); ?>
+<?php echo GxHtml::link(Yii::t('app', 'Export'), array('#'),array('id'=>'toggle-export')); ?>
+<?php $count = count($columns);
+	if($count > 0): ?>
+	<div class="alert alert-block alert-info fade in"  id="select-fields">
+	<h4>Choose fields to export</h4>
+	<p>
+		<form>
+			<div class="row">
+				<div class="span8">
+				<?php for($i=0; $i < $count; $i++): ?>
+					<?php if($i%3 == 0): ?>
+						<label><input type="checkbox" name="<?='columns['.$i.']';?>" value="<?=$columns[$i];?>"> <?=$columns[$i];?></label></br>
+					<?php endif; ?>
+				<?php endfor; ?>
+				</div>
+				<div class="span8">
+				<?php for($i=0; $i < $count; $i++): ?>
+					<?php if($i%3 == 1): ?>
+						<label><input type="checkbox" name="<?='columns['.$i.']';?>" value="<?=$columns[$i];?>"> <?=$columns[$i];?></label></br>
+					<?php endif; ?>
+				<?php endfor; ?>
+				</div>
+				<div class="span8">
+				<?php for($i=0; $i < $count; $i++): ?>
+					<?php if($i%3 == 2): ?>
+						<label><input type="checkbox" name="<?='columns['.$i.']';?>" value="<?=$columns[$i];?>"> <?=$columns[$i];?></label></br>
+					<?php endif; ?>
+				<?php endfor;?>
+				</div>
+			</div>
+		</form>
+	</p>
+	<p id="select-fields-buttons" class="clearfix">
+        <?php echo CHtml::link('Export!',array('/transactions/excel'), array('id'=>'export', 'class' => 'btn btn-success')); ?> 
+        <a id="select-all" class="btn btn-link" href="#">Select all</a>
+        <a id="unselect-all" class="btn btn-link" href="#">Unselect all</a>
+    </p>
+	</div>
+<?php endif;?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search', array(
 	'model' => $model,

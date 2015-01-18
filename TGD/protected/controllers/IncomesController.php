@@ -80,15 +80,27 @@ class IncomesController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
 		$model = new Incomes('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['Incomes']))
 			$model->setAttributes($_GET['Incomes']);
 
+		$columns = $this->_getTableColumns('incomes');
 		$this->render('admin', array(
 			'model' => $model,
+			'columns' => $columns,
 		));
 	}
 
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$columns = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('incomes', $columns);
+    }
 }
