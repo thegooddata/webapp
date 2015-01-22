@@ -76,6 +76,7 @@
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Country</label>
                                 <input type="text" class="form-control" id="country" name="RegistrationForm[country]" value="<?php echo isset($registration_form['country']) ? $registration_form['country']:''; ?>">
+                                <input type="hidden" class="form-control" id="country_code" name="RegistrationForm[country_code]" value="<?php echo isset($registration_form['country']) ? $registration_form['country']:''; ?>">
                             </div>
                             <div class="form-group col-sm-16 col-md-8 col-lg-8">
                                 <label>Post code</label>

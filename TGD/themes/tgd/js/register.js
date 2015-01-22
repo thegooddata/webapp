@@ -68,6 +68,9 @@ $(function() {
                     route = val;
                 } else {
                     document.getElementById(addressType).value = val;
+                    if(addressType === 'country'){
+                        document.getElementById('country_code').value = place.address_components[i]['short_name'];   
+                    }
                 }
             }
         }
