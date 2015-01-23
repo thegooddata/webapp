@@ -1,6 +1,4 @@
-<?php
-//$this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
-$this->breadcrumbs=array(
+<?php $this->breadcrumbs=array(
 	UserModule::t("Sign in to TheGoodData"),
 );
 ?>

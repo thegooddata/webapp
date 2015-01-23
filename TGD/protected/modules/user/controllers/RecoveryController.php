@@ -15,7 +15,7 @@ class RecoveryController extends Controller
         $success = '';
         
 		// set title
-		$this->pageTitle = " - Password recovery"; // TODO: translate
+		$this->pageTitle = " - Reset your Password"; // TODO: translate
 
 		// set body id to #tgd-share-purchase
 		$this->bodyId = "tgd-password-recovery";

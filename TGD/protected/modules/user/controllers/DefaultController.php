@@ -18,6 +18,10 @@ class DefaultController extends Controller
 			),
 		));
 
+
+        // set title
+        $this->pageTitle = " - List Users";
+
 		$this->render('/user/index',array(
 			'dataProvider'=>$dataProvider,
 		));

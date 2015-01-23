@@ -1,5 +1,4 @@
-<?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Reset Your Password");
-$this->breadcrumbs=array(
+<?php $this->breadcrumbs=array(
 	UserModule::t("Login") => array('/user/login'),
 	UserModule::t("Reset Your Password"),
 );

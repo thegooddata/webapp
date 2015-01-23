@@ -328,6 +328,10 @@ class ProfileFieldController extends Controller
 	{
 		$model=new ProfileField;
 		$scheme = get_class(Yii::app()->db->schema);
+
+        // set title
+        $this->pageTitle = " - Create Profile Field";
+
 		if(isset($_POST['ProfileField']))
 		{
 			$model->attributes=$_POST['ProfileField'];
@@ -474,6 +478,10 @@ class ProfileFieldController extends Controller
 			$model->setAttributes($_GET['ProfilesFields']);
 
 		$columns = $this->_getTableColumns('profiles_fields');
+
+        // set title
+        $this->pageTitle = " - Profile Fields";
+
 		$this->render('admin', array(
 			'model' => $model,
 			'columns' => $columns,
