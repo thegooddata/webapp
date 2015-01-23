@@ -80,7 +80,7 @@ abstract class BaseMembersPii extends GxActiveRecord {
 			'city' => Yii::t('app', 'City'),
 			'statecounty' => Yii::t('app', 'State/county'),
 			'country' => Yii::t('app', 'Country'),
-			'country_code' => "Country code", // TODO use translator.
+			'country_code' => Yii::t('app','Country code'),
 			'postcode' => Yii::t('app', 'Postcode'),
 			'daybirthday' => Yii::t('app', 'Day birthday'),
 			'monthbirthday' => Yii::t('app', 'Month birthday'),
