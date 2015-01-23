@@ -1508,7 +1508,7 @@
                         </div>
                         <hr/>
                         <div id="principles">
-                            <h2>Principles of TheGoodData Cooperative Limited</h2>
+                            <h2>TheGoodData Principles</h2>
                             <div class="row">
                                 <div class="title">Data Ownership</div>
                                 <div class="description">People are the only owners of the data they produce. That means that they must be aware of its existence, that they can freely decide who should have access to it, and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and meaningful way. </div>

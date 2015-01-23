@@ -1683,7 +1683,7 @@
                             <p>Latest revision &ndash; May 2014 </p>
                         </div>
                         <div class="tab-pane legal" id="principles">
-                            <h1>Principles of <br>TheGoodData Cooperative Limited</h1>
+                            <h1>TheGoodData Principles</h1>
                             <div class="row">
                                 <div class="title">Data Ownership</div>
                                 <div class="description"><strong>People are the only owners of the data they produce</strong>. This means that they must be aware of its existence, that they can freely decide who should have access to it and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and understandable way.</div>
