@@ -28,6 +28,8 @@ class AchievementsTypesController extends GxController {
 	public function actionCreate() {
 		$model = new AchievementsTypes;
 
+        // set title
+        $this->pageTitle = " - Create Achievements Types";
 
 		if (isset($_POST['AchievementsTypes'])) {
 			$model->setAttributes($_POST['AchievementsTypes']);
@@ -80,6 +82,9 @@ class AchievementsTypesController extends GxController {
 	public function actionAdmin() {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Achievements Types";
 
 		$model = new AchievementsTypes('search');
 		$model->unsetAttributes();

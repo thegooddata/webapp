@@ -28,6 +28,8 @@ class LoansStatusController extends GxController {
 	public function actionCreate() {
 		$model = new LoansStatus;
 
+        // set title
+        $this->pageTitle = " - Create Loan Status";
 
 		if (isset($_POST['LoansStatus'])) {
 			$model->setAttributes($_POST['LoansStatus']);
@@ -80,6 +82,9 @@ class LoansStatusController extends GxController {
 	public function actionAdmin() {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Loan Status";
 
 		$model = new LoansStatus('search');
 		$model->unsetAttributes();

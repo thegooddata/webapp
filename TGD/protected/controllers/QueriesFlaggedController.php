@@ -67,6 +67,9 @@ class QueriesFlaggedController extends GxController {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
 
+        // set title
+        $this->pageTitle = " - Manage Flagged Queries";
+
 		$model = new QueriesFlagged('search');
 		$model->unsetAttributes();
 

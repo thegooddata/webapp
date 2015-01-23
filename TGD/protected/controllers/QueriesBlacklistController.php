@@ -29,6 +29,9 @@ class QueriesBlacklistController extends GxController {
 		$model = new QueriesBlacklist;
 
 
+        // set title
+        $this->pageTitle = " - Create Queries Blacklist";
+
 		if (isset($_POST['QueriesBlacklist'])) {
 			$model->setAttributes($_POST['QueriesBlacklist']);
 
@@ -80,6 +83,9 @@ class QueriesBlacklistController extends GxController {
 		public function actionAdmin() {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Queries Blacklist";
 
 		$model = new QueriesBlacklist('search');
 		$model->unsetAttributes();

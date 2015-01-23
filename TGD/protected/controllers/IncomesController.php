@@ -27,6 +27,8 @@ class IncomesController extends GxController {
 
 	public function actionCreate() {
 		$model = new Incomes;
+        // set title
+        $this->pageTitle = " - Create Income";
 
                 // set currency to default one.
                 $model->currency=Currencies::getDefaultCurrencyModel()->id;
@@ -82,6 +84,8 @@ class IncomesController extends GxController {
 	public function actionAdmin() {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+        // set title
+        $this->pageTitle = " - Manage Income";
 
 		$model = new Incomes('search');
 		$model->unsetAttributes();

@@ -28,6 +28,9 @@ class LoansLeadersController extends GxController {
     public function actionCreate() {
         $model = new LoansLeaders;
 
+        // set title
+        $this->pageTitle = " - Create Loan Sector";
+
 
         if (isset($_POST['LoansLeaders'])) {
             $model->setAttributes($_POST['LoansLeaders']);
@@ -80,6 +83,9 @@ class LoansLeadersController extends GxController {
     public function actionAdmin() {
         // add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Loan Sectors";
 
         $model = new LoansLeaders('search');
         $model->unsetAttributes();

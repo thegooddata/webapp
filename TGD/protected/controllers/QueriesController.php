@@ -81,6 +81,9 @@ class QueriesController extends GxController {
 		$model = new Queries('search');
 		$model->unsetAttributes();
 
+        // set title
+        $this->pageTitle = " - Manage Queries";
+
 		if (isset($_GET['Queries']))
 			$model->setAttributes($_GET['Queries']);
 

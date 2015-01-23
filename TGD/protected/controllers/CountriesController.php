@@ -28,6 +28,8 @@ class CountriesController extends GxController {
 	public function actionCreate() {
 		$model = new Countries;
 
+        // set title
+        $this->pageTitle = " - Create Country";
 
 		if (isset($_POST['Countries'])) {
 			$model->setAttributes($_POST['Countries']);
@@ -80,6 +82,9 @@ class CountriesController extends GxController {
 	public function actionAdmin() {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Countries";
 
 		$model = new Countries('search');
 		$model->unsetAttributes();

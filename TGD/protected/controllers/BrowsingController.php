@@ -81,6 +81,9 @@ class BrowsingController extends GxController {
 		$model = new Browsing('search');
 		$model->unsetAttributes();
 
+        // set title
+        $this->pageTitle = " - Manage Browsings";
+
 		if (isset($_GET['Browsing']))
 			$model->setAttributes($_GET['Browsing']);
 

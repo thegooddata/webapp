@@ -29,6 +29,9 @@ class MembersPiiController extends GxController {
 		$model = new MembersPii;
 
 
+        // set title
+        $this->pageTitle = " - Create MembersPii";
+
 		if (isset($_POST['MembersPii'])) {
 			$model->setAttributes($_POST['MembersPii']);
 
@@ -80,6 +83,9 @@ class MembersPiiController extends GxController {
 	public function actionAdmin() {
 		// add js specific for this page
         Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Admin MembersPiis";
 
 		$model = new MembersPii('search');
 		$model->unsetAttributes();
