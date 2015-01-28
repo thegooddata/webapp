@@ -103,6 +103,16 @@
                                             <td>Session cookie</td>
                                             <td>Used by our collaboration platform to detect if the browser of the user supports javascript technology.</td>
                                         </tr>
+                                        <tr>
+                                            <td>piwik_ignore</td>
+                                            <td>Persistent cookie</td>
+                                            <td>Used by Piwik analytics platform. Prevents Piwik from tracking the user's browsing through TheGoodData site.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Begining with _pk_ref, _pk_cvar, _pk_id, _pk_ses</td>
+                                            <td>Persistent cookies</td>
+                                            <td>Used by Piwik analytics platform.</td>
+                                        </tr>
                                     </table>
                                     <p>Description of the cookie types:</p>
                                     <table>
