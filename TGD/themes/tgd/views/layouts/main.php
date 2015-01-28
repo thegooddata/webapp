@@ -250,7 +250,12 @@
                     </ul>
                 </div> <!-- wrap -->
             </div>
-
+            <div class="license">
+                <div class="container clearfix" id="opt-out">
+                    <iframe style="border: 0; width: 100%;" src="http://piwik.tgd.local/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+                </div>
+            </div>
+            
             <div class="license">
                 <div class="wrap">
                     <ul class="clearfix">
@@ -271,7 +276,7 @@
                 </div>
             </div>
         </footer>
-        <!-- Piwik -->
+        <!-- Piwik 
         <script type="text/javascript">
           var _paq = _paq || [];
           _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
@@ -288,6 +293,25 @@
           })();
         </script>
         <noscript><p><img src="//piwik.thegooddata.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+         End Piwik Code -->
+        
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(["setCookieDomain", "*.tgd.local"]);
+          _paq.push(["setDomains", ["*.tgd.local"]]);
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//piwik.tgd.local/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', 1]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript><p><img src="//piwik.tgd.local/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
         <!-- End Piwik Code -->
 
     </body>
