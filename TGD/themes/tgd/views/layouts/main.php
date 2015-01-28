@@ -11,19 +11,20 @@
 
         <title>TheGoodData | Enjoy your data <?php echo (isset($this->pageTitle))?$this->pageTitle:'';?></title>
 
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap_vertical_tabs.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/webfonts.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" type="text/css">
-        
         <?php
         $cs=Yii::app()->clientScript;
+
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/bootstrap.min.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/bootstrap_vertical_tabs.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/font-awesome.min.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/webfonts.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/main.css');
+
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
         $cs->scriptMap=array(
-            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js',
+            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9111.1.min.js',
         );
-        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.min.js', CClientScript::POS_HEAD);
+        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
         ?>
 
