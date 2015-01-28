@@ -1,9 +1,20 @@
 <?php
 
+$main=require(dirname(__FILE__).'/main.php');
+
+// disable minScript locally
+unset($main['controllerMap']['min']);
+unset($main['components']['clientScript']);
+
 return CMap::mergeArray(
-	require(dirname(__FILE__).'/main.php'),
+	$main,
 	array(
 		'components'=>array(
+          
+            'urlManager' => array(
+                'showScriptName' => true, // required to keep in the url since we acces the website by index-test.php
+            ),
+        
             'db' => array(
                 'enableProfiling'=>true,
                 'enableParamLogging' => true,
