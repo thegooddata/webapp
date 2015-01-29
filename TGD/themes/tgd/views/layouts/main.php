@@ -22,7 +22,7 @@
 
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
         $cs->scriptMap=array(
-            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9111.1.min.js',
+            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js',
         );
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
