@@ -250,11 +250,7 @@
                     </ul>
                 </div> <!-- wrap -->
             </div>
-            <div class="license">
-                <div class="container clearfix" id="opt-out">
-                    <iframe style="border: 0; width: 100%;" src="http://piwik.tgd.local/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
-                </div>
-            </div>
+
             
             <div class="license">
                 <div class="wrap">
