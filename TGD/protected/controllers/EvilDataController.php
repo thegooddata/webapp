@@ -241,16 +241,17 @@ class EvilDataController extends Controller {
             $resultMember['adtracks_you'] = $you;
         }
 
+
         // get cache data
-        $globalCacheData = $this->_getUserCacheData(0,"AdtracksRatioTotal");
+        $average = array();
 
+        // set cache key for this data
+        $cacheKey="GlobalCacheDataEvilDataAdtracksRatioTotal";
+        $average=Yii::app()->cache->get($cacheKey);
 
-        // if the is valid data in the cache 
-        if ($globalCacheData !== false){
-            // send cache response
-            $resultGlobal['adtracks_average'] = CJSON::decode($globalCacheData);
+        // if the is valid data in the cache
+        if ($average == false) {
 
-        }else{  
             $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("name, count")
@@ -261,10 +262,10 @@ class EvilDataController extends Controller {
             $average = $this->_getColor($adtracks);
 
             // save in cache
-            $this->_setUserCacheData(0,"AdtracksRatioTotal",CJSON::encode($average));
+            Yii::app()->cache->set($cacheKey, $average, Yii::app()->params['cacheLifespanOneDay']);
 
-            $resultGlobal['adtracks_average'] = $average;
         }
+        $resultGlobal['adtracks_average'] = $average;
 
         $this->_sendResponse(200, CJSON::encode(array_merge($resultGlobal, $resultMember)), $this->getResponseContentType());
     }
@@ -320,38 +321,37 @@ class EvilDataController extends Controller {
         }
 
         // get cache data
-        $globalCacheData = $this->_getUserCacheData(0, "RiskTotal");
+        $resultGlobal = array();
+
+        // set cache key for this data
+        $cacheKey="GlobalCacheDataEvilDataRiskTotal";
+        $resultGlobal=Yii::app()->cache->get($cacheKey);
 
         // if the is valid data in the cache 
-        if ($globalCacheData !== false){
-            // send cache response
-            $resultGlobal = CJSON::decode($globalCacheData);
-        }else{
-    
+        if ($resultGlobal == false) {
             // Get total risk
-
             $adtracks = Yii::app()->db->createCommand()
-                    ->setFetchMode(PDO::FETCH_OBJ)
-                    ->select("_getRiskTotal () as risk")
-                    ->from('tbl_members')
-                    ->limit(1)
-                    ->queryAll();
+                ->setFetchMode(PDO::FETCH_OBJ)
+                ->select("_getRiskTotal () as risk")
+                ->from('tbl_members')
+                ->limit(1)
+                ->queryAll();
 
             $resultGlobal['risk_average'] = number_format($adtracks[0]->risk, 2, '.', '');
 
             // Get total risk ratio
 
             $adtracks = Yii::app()->db->createCommand()
-                    ->setFetchMode(PDO::FETCH_OBJ)
-                    ->select("_getRiskRatioTotal () as risk")
-                    ->from('tbl_members')
-                    ->limit(1)
-                    ->queryAll();
-    
+                ->setFetchMode(PDO::FETCH_OBJ)
+                ->select("_getRiskRatioTotal () as risk")
+                ->from('tbl_members')
+                ->limit(1)
+                ->queryAll();
+
             $resultGlobal['risk_ratio_average'] = number_format($adtracks[0]->risk);
 
             // save data to cache
-            $this->_setUserCacheData(0, "RiskTotal", CJSON::encode($resultGlobal));
+            Yii::app()->cache->set($cacheKey, $resultGlobal, Yii::app()->params['cacheLifespanOneDay']);
         }
 
         $this->_sendResponse(200, CJSON::encode(array_merge($resultMember, $resultGlobal)), $this->getResponseContentType());
