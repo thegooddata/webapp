@@ -363,9 +363,7 @@ class ApiController extends Controller
 	       		$model = $this->_viewQueriesblacklist();
 	       		break;
        		case 'languagesSupport':
-       			$model = LanguagesSupport::model()->findByAttributes(
-				    array('lang'=>$_GET['query'])
-				);
+       			$model = LanguagesSupport::model()->findLanguage($_GET['query']);
 				break;
 	            
 	       	default:
