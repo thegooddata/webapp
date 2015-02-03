@@ -74,4 +74,15 @@ abstract class BaseLanguagesSupport extends GxActiveRecord {
 			'criteria' => $criteria,
 		));
 	}
+
+    public function findLanguage($lang){
+        $language = $this::model()->findByAttributes(array('lang'=>strtolower($lang)));
+        if(empty($language)){
+            $language = $this::model()->findByAttributes(array('lang'=>'en'));
+            $language->lang = $lang;
+            $language->support = false;
+            $language->alias = 'en';
+        }
+        return $language;
+    }
 }

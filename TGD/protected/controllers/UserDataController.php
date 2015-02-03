@@ -151,6 +151,7 @@ class UserDataController extends Controller {
         //COUNT QUERIES
         $member_id = $user_id;
 
+        $startdate = date('Y-m-d', strtotime("-1 month"));
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*)')
@@ -166,6 +167,7 @@ class UserDataController extends Controller {
                         'share' => 'true'
                     )
                 )
+                ->andWhere("DATE(created_at) >= '$startdate'")
                 ->queryAll();
 
         $queries_count = $datas[0]->count;
