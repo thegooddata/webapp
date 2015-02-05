@@ -114,7 +114,7 @@
                                             <td>Used by Piwik analytics platform.</td>
                                         </tr>
                                     </table>
-                                    <iframe style="border: 0; width: 100%;" src="http://piwik.tgd.local/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+                                    <iframe style="border: 0; height: 200px; width: 600px;" src="https://piwik.thegooddata.org/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
                                     <p>Description of the cookie types:</p>
                                     <table>
                                         <tr>
