@@ -159,12 +159,10 @@ class UserDataController extends Controller {
                 ->where(
                     array(
                         'and',
-                        'member_id = :member_id',
-                        'share = :share'
+                        'member_id = :member_id'
                     ), 
                     array(
-                        'member_id' => $member_id,
-                        'share' => 'true'
+                        'member_id' => $member_id
                     )
                 )
                 ->andWhere("DATE(created_at) >= '$startdate'")
