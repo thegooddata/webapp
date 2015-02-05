@@ -170,7 +170,6 @@ class UserDataController extends Controller {
 
         $queries_count = $datas[0]->count;
 
-
         //PERCENTILE
         $member_id = $user_id;
         $queries_percentile_data = ADbHelper::getSeniorityLevelAndPercentile($member_id);
