@@ -95,11 +95,7 @@ $min_cacheFileLocking = true;
  * move all @imports to the top of the output. Note that moving @imports could 
  * affect CSS values (which is why this option is disabled by default).
  */
-if($this -> _minScriptComponent -> minScriptBubbleCssImports === true) {
-    $min_serveOptions['bubbleCssImports'] = true;
-} else {
-    $min_serveOptions['bubbleCssImports'] = false;
-}
+$min_serveOptions['bubbleCssImports'] = false;
 
 
 /**

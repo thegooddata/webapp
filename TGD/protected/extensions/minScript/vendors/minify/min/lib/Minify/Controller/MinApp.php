@@ -4,6 +4,8 @@
  * @package Minify
  */
 
+require_once 'Minify/Controller/Base.php';
+
 /**
  * Controller class for requests to /min/index.php
  * 
@@ -202,12 +204,9 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
     protected function _getFileSource($file, $cOptions)
     {
         $spec['filepath'] = $file;
-        if ($cOptions['noMinPattern'] && preg_match($cOptions['noMinPattern'], basename($file))) {
-            if (preg_match('~\.css$~i', $file)) {
-                $spec['minifyOptions']['compress'] = false;
-            } else {
-                $spec['minifier'] = '';
-            }
+        if ($cOptions['noMinPattern']
+            && preg_match($cOptions['noMinPattern'], basename($file))) {
+            $spec['minifier'] = '';
         }
         return new Minify_Source($spec);
     }
