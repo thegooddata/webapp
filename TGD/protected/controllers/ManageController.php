@@ -27,6 +27,11 @@ class ManageController extends Controller
 	{
 		$this->layout='//layouts/column2';
 
+
+        // set title
+        $this->pageTitle = " - Manage";
+
+
 		$this->render('index');
 	}
 

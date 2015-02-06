@@ -29,6 +29,9 @@ class WhitelistsController extends GxController {
 		$model = new Whitelists;
 
 
+        // set title
+        $this->pageTitle = " - Create Whitelists";
+
 		if (isset($_POST['Whitelists'])) {
 			$model->setAttributes($_POST['Whitelists']);
 
@@ -80,6 +83,9 @@ class WhitelistsController extends GxController {
 	public function actionAdmin() {
 		$model = new Whitelists('search');
 		$model->unsetAttributes();
+
+        // set title
+        $this->pageTitle = " - Manage Whitelists";
 
 		if (isset($_GET['Whitelists']))
 			$model->setAttributes($_GET['Whitelists']);

@@ -1,6 +1,13 @@
 <?php
 
 return array(
+    
+    // piwik settings
+    'enableAnalytics'=> defined('ENABLE_ANALYTICS') ? ENABLE_ANALYTICS : false,
+    'piwikURL'=>defined('PIWIK_URL') ? PIWIK_URL : '//piwik.thegooddata.org/',
+    'piwikCookieDomain'=>defined('PIWIK_COOKIE_DOMAIN') ? PIWIK_COOKIE_DOMAIN : '*.thegooddata.org',
+    'piwikDomains'=>defined('PIWIK_DOMAINS') ? PIWIK_DOMAINS : '*.thegooddata.org', // if more than one, separe by comma, ej: domain1.com, domain2.com
+    
     // this is used in contact page
     'senderGenericEmailName' => EMAIL_GENERIC_FROM_NAME,
     'senderGenericEmail' => EMAIL_GENERIC_FROM,

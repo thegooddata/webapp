@@ -18,6 +18,7 @@
  * @property string $city
  * @property string $statecounty
  * @property string $country
+ * @property string $country_code
  * @property string $postcode
  * @property string $daybirthday
  * @property string $monthbirthday
@@ -48,12 +49,13 @@ abstract class BaseMembersPii extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('id, firstname, lastname, streetname, streetnumber, city, country, postcode, daybirthday, monthbirthday, yearbirthday, agree', 'required'),
+			array('id, firstname, lastname, streetname, streetnumber, city, country, country_code, postcode, daybirthday, monthbirthday, yearbirthday, agree', 'required'),
 			array('id', 'length', 'max'=>128),
+			array('country_code', 'length', 'max'=>2),
 			array('firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday', 'length', 'max'=>256),
 			array('created_at, updated_at', 'safe'),
 			array('created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, postcode, daybirthday, monthbirthday, yearbirthday, agree, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, firstname, lastname, streetname, streetnumber, streetdetails, city, statecounty, country, country_code, postcode, daybirthday, monthbirthday, yearbirthday, agree, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,6 +80,7 @@ abstract class BaseMembersPii extends GxActiveRecord {
 			'city' => Yii::t('app', 'City'),
 			'statecounty' => Yii::t('app', 'State/county'),
 			'country' => Yii::t('app', 'Country'),
+			'country_code' => Yii::t('app','Country code'),
 			'postcode' => Yii::t('app', 'Postcode'),
 			'daybirthday' => Yii::t('app', 'Day birthday'),
 			'monthbirthday' => Yii::t('app', 'Month birthday'),
@@ -92,14 +95,15 @@ abstract class BaseMembersPii extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('firstname', $this->firstname, true);
-		$criteria->compare('lastname', $this->lastname, true);
-		$criteria->compare('streetname', $this->streetname, true);
+		$criteria->compare('LOWER(firstname)', strtolower($this->firstname), true);
+		$criteria->compare('LOWER(lastname)', strtolower($this->lastname), true);
+		$criteria->compare('LOWER(streetname)', strtolower($this->streetname), true);
 		$criteria->compare('streetnumber', $this->streetnumber, true);
 		$criteria->compare('streetdetails', $this->streetdetails, true);
-		$criteria->compare('city', $this->city, true);
-		$criteria->compare('statecounty', $this->statecounty, true);
-		$criteria->compare('country', $this->country, true);
+		$criteria->compare('LOWER(city)', strtolower($this->city), true);
+		$criteria->compare('LOWER(statecounty)', strtolower($this->statecounty), true);
+		$criteria->compare('LOWER(country)', strtolower($this->country), true);
+		$criteria->compare('LOWER(country_code)', strtolower($this->country_code), true);
 		$criteria->compare('postcode', $this->postcode, true);
 		$criteria->compare('daybirthday', $this->daybirthday, true);
 		$criteria->compare('monthbirthday', $this->monthbirthday, true);

@@ -63,6 +63,7 @@ class RegistrationController extends Controller
                 $pii->city=$registration_form['city'];
                 $pii->statecounty=$registration_form['stateCounty'];
                 $pii->country=$registration_form['country'];
+                $pii->country_code=$registration_form['country_code'];
                 $pii->postcode=$registration_form['postCode'];
                 $pii->daybirthday=$registration_form['dayBirthday'];
                 $pii->monthbirthday=$registration_form['monthBirthday'];

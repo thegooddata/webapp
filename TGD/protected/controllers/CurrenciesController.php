@@ -28,6 +28,8 @@ class CurrenciesController extends GxController {
 	public function actionCreate() {
 		$model = new Currencies;
 
+        // set title
+        $this->pageTitle = " - Create Currency";
 
 		if (isset($_POST['Currencies'])) {
 			$model->setAttributes($_POST['Currencies']);
@@ -78,15 +80,32 @@ class CurrenciesController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Currencies";
+
 		$model = new Currencies('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['Currencies']))
 			$model->setAttributes($_GET['Currencies']);
 
+		$columns = $this->_getTableColumns('currencies');
 		$this->render('admin', array(
 			'model' => $model,
+	        'columns'=>$columns,
 		));
+
 	}
 
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('currencies', $cols);
+    }
+    
 }

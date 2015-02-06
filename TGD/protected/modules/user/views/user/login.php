@@ -1,6 +1,4 @@
-<?php
-//$this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
-$this->breadcrumbs=array(
+<?php $this->breadcrumbs=array(
 	UserModule::t("Sign in to TheGoodData"),
 );
 ?>
@@ -44,7 +42,7 @@ $this->breadcrumbs=array(
                 <div class="form-group clearfix">
                     <?php echo CHtml::submitButton(UserModule::t("Sign in")/*TODO: <- translate this*/, array('class'=>'btn btn-primary col-sm-2')); ?>
                     <p class="hint col-sm-5" id="rememberMe">
-                    <?php echo CHtml::activeCheckBox($model,'rememberMe'); ?>
+                    <?php echo CHtml::activeCheckBox($model,'rememberMe',array('checked'=>'checked')); ?>
                     <?php echo CHtml::activeLabelEx($model,'rememberMe'); ?>
                      | <?php echo CHtml::link(UserModule::t("Lost Password?"),Yii::app()->getModule('user')->recoveryUrl); ?>
                     </p>

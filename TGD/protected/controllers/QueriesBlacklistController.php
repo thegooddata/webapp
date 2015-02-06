@@ -29,6 +29,9 @@ class QueriesBlacklistController extends GxController {
 		$model = new QueriesBlacklist;
 
 
+        // set title
+        $this->pageTitle = " - Create Queries Blacklist";
+
 		if (isset($_POST['QueriesBlacklist'])) {
 			$model->setAttributes($_POST['QueriesBlacklist']);
 
@@ -77,16 +80,31 @@ class QueriesBlacklistController extends GxController {
 		));
 	}
 
-	public function actionAdmin() {
+		public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Queries Blacklist";
+
 		$model = new QueriesBlacklist('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['QueriesBlacklist']))
 			$model->setAttributes($_GET['QueriesBlacklist']);
 
+		$columns = $this->_getTableColumns('queries_blacklist');
 		$this->render('admin', array(
 			'model' => $model,
+			'columns' => $columns,
 		));
 	}
-
+    
+    public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('queries_blacklist', $cols);
+    }
 }

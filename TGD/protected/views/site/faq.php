@@ -29,7 +29,8 @@
               <ul class="clearfix">
                 <li>
                   <em>What is TheGoodData Mission?</em>
-                  <p>We help people to enjoy ownership of their data.</p>
+                  <p>We help people to enjoy ownership of their data.</br>
+                  We want to do it following these <?php echo CHtml::link('Company Principles','legal#principles');?>.</p>
                 </li>
                 <li>
                   <em>Why did you start the company?</em>

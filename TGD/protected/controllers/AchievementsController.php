@@ -33,6 +33,9 @@ class AchievementsController extends GxController {
 	public function actionCreate() {
 		$model = new Achievements;
 
+        // set title
+        $this->pageTitle = " - Create Achievements";
+
 
 		if (isset($_POST['Achievements'])) {
 			$model->setAttributes($_POST['Achievements']);
@@ -85,15 +88,30 @@ class AchievementsController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Achievements";
+
 		$model = new Achievements('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['Achievements']))
 			$model->setAttributes($_GET['Achievements']);
 
+		$columns = $this->_getTableColumns('achievements');
 		$this->render('admin', array(
 			'model' => $model,
+	        'columns'=>$columns,
 		));
 	}
 
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('achievements', $cols);
+    }
 }

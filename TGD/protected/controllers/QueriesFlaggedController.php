@@ -62,16 +62,33 @@ class QueriesFlaggedController extends GxController {
 		));
 	}
 
+
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Flagged Queries";
+
 		$model = new QueriesFlagged('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['QueriesFlagged']))
 			$model->setAttributes($_GET['QueriesFlagged']);
 
+		$columns = $this->_getTableColumns('queries_flagged');
 		$this->render('admin', array(
 			'model' => $model,
+			'columns' => $columns,
 		));
 	}
+    
+    public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('queries_flagged', $cols);
+    }
 
 }

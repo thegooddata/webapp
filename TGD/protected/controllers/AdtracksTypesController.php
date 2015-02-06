@@ -1,6 +1,7 @@
 <?php
 
 class AdtracksTypesController extends GxController {
+	public $displayMenu = true;
 
 	public function filters()
     {
@@ -26,6 +27,9 @@ class AdtracksTypesController extends GxController {
 	public function actionCreate() {
 		$model = new AdtracksTypes;
 
+
+        // set title
+        $this->pageTitle = " - Create Webtrack Types";
 
 		if (isset($_POST['AdtracksTypes'])) {
 			$model->setAttributes($_POST['AdtracksTypes']);
@@ -78,6 +82,9 @@ class AdtracksTypesController extends GxController {
 	public function actionAdmin() {
 		$model = new AdtracksTypes('search');
 		$model->unsetAttributes();
+
+        // set title
+        $this->pageTitle = " - Manage Webtracks Types";
 
 		if (isset($_GET['AdtracksTypes']))
 			$model->setAttributes($_GET['AdtracksTypes']);

@@ -78,15 +78,29 @@ class LoansActivitiesController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
 		$model = new LoansActivities('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['LoansActivities']))
 			$model->setAttributes($_GET['LoansActivities']);
 
+		$columns = $this->_getTableColumns('loans_activities');
 		$this->render('admin', array(
 			'model' => $model,
+			'columns' => $columns,
 		));
 	}
+
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('loans_activities', $cols);
+    }
+    
 
 }

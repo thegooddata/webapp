@@ -8,6 +8,10 @@ class AdminController extends Controller
 	
 	public $displayMenu = true;
 
+
+        // set title
+    public $pageTitle = " - Manage Members";
+
 	private $_model;
 
 	/**
@@ -40,13 +44,19 @@ class AdminController extends Controller
 	 */
 	public function actionAdmin()
 	{
+
+        // add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
 		$model=new User('search');
         $model->unsetAttributes();  // clear any default values
         if(isset($_GET['User']))
             $model->attributes=$_GET['User'];
 
+        $columns = $this->_getTableColumns('members');
         $this->render('index',array(
             'model'=>$model,
+            'columns'=>$columns,
         ));
 		/*$dataProvider=new CActiveDataProvider('User', array(
 			'pagination'=>array(
@@ -219,6 +229,15 @@ class AdminController extends Controller
 		// 	throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 	
+
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('members', $cols);
+    }
+    
 	/**
      * Performs the AJAX validation.
      * @param CModel the model to be validated

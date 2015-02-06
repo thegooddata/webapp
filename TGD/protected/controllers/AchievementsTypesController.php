@@ -2,6 +2,8 @@
 
 class AchievementsTypesController extends GxController {
 
+	public $displayMenu = true;
+
 	public function filters()
     {
         return array( 'accessControl' ); // perform access control for CRUD operations
@@ -26,6 +28,8 @@ class AchievementsTypesController extends GxController {
 	public function actionCreate() {
 		$model = new AchievementsTypes;
 
+        // set title
+        $this->pageTitle = " - Create Achievements Types";
 
 		if (isset($_POST['AchievementsTypes'])) {
 			$model->setAttributes($_POST['AchievementsTypes']);
@@ -76,15 +80,30 @@ class AchievementsTypesController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Achievements Types";
+
 		$model = new AchievementsTypes('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['AchievementsTypes']))
 			$model->setAttributes($_GET['AchievementsTypes']);
-
+		
+		$columns = $this->_getTableColumns('achievements_types');
 		$this->render('admin', array(
 			'model' => $model,
-		));
-	}
+			'columns' => $columns,
+		));	}
 
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('achievements_types', $cols);
+    }
+    
 }

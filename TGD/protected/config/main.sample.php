@@ -104,6 +104,12 @@ return array(
 		    'viewPath' => 'application.views.mail',             
 		),
 
+        'clientScript'=>array(
+            'class'=>'ext.minScript.components.ExtMinScript',
+            'minScriptDisableMin' => array('/[-\.]min\.(?:js)$/i'),
+            //'optionName'=>'optionValue',
+        ),
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -162,6 +168,13 @@ return array(
 			),
 		),
 	),
+
+    'controllerMap'=>array(
+        'min'=>array(
+            'class'=>'ext.minScript.controllers.ExtMinScriptController',
+            //'optionName'=>'optionValue',
+        ),
+    ),
 
 	// application-level parameters that can be accessed
 	'params'=>require(dirname(__FILE__).'/common.params.php'),

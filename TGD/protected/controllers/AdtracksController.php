@@ -81,6 +81,9 @@ class AdtracksController extends GxController {
 		$model = new Adtracks('search');
 		$model->unsetAttributes();
 
+        // set title
+        $this->pageTitle = " - Manage Webracks";
+
 		if (isset($_GET['Adtracks']))
 			$model->setAttributes($_GET['Adtracks']);
 

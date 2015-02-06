@@ -151,6 +151,7 @@ class UserDataController extends Controller {
         //COUNT QUERIES
         $member_id = $user_id;
 
+        $startdate = date('Y-m-d', strtotime("-1 month"));
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*)')
@@ -158,18 +159,16 @@ class UserDataController extends Controller {
                 ->where(
                     array(
                         'and',
-                        'member_id = :member_id',
-                        'share = :share'
+                        'member_id = :member_id'
                     ), 
                     array(
-                        'member_id' => $member_id,
-                        'share' => 'true'
+                        'member_id' => $member_id
                     )
                 )
+                ->andWhere("DATE(created_at) >= '$startdate'")
                 ->queryAll();
 
         $queries_count = $datas[0]->count;
-
 
         //PERCENTILE
         $member_id = $user_id;

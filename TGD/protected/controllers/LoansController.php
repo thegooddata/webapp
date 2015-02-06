@@ -28,6 +28,8 @@ class LoansController extends GxController {
 	public function actionCreate() {
 		$model = new Loans;
 
+        // set title
+        $this->pageTitle = " - Create Loan";
 
 		if (isset($_POST['Loans'])) {
 			$model->setAttributes($_POST['Loans']);
@@ -120,15 +122,31 @@ class LoansController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
+        // set title
+        $this->pageTitle = " - Manage Loans";
+
 		$model = new Loans('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['Loans']))
 			$model->setAttributes($_GET['Loans']);
 
+		$columns = $this->_getTableColumns('loans');
 		$this->render('admin', array(
 			'model' => $model,
+	        'columns'=>$columns,
 		));
 	}
 
+	public function actionExcel() {
+		if(isset($_GET['cols'])){
+			$cols = explode('|', $_GET['cols']);
+		}
+		
+      	ExcelHelper::sendData('loans', $cols);
+    }
+    
 }

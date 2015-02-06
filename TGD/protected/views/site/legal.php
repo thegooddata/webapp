@@ -103,7 +103,22 @@
                                             <td>Session cookie</td>
                                             <td>Used by our collaboration platform to detect if the browser of the user supports javascript technology.</td>
                                         </tr>
+                                        <tr>
+                                            <td>piwik_ignore</td>
+                                            <td>Persistent cookie</td>
+                                            <td>Used by Piwik analytics platform. Prevents Piwik from tracking the user's browsing through TheGoodData site.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Begining with _pk_ref, _pk_cvar, _pk_id, _pk_ses</td>
+                                            <td>Persistent cookies</td>
+                                            <td>Used by Piwik analytics platform.</td>
+                                        </tr>
                                     </table>
+                                    
+                                    <?php if (Yii::app()->params['enableAnalytics']): ?>
+                                      <iframe style="border: 0; height: 200px; width: 600px;" src="<?php echo Yii::app()->params['piwikURL']; ?>index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+                                    <?php endif; ?>
+                                      
                                     <p>Description of the cookie types:</p>
                                     <table>
                                         <tr>
@@ -1683,7 +1698,7 @@
                             <p>Latest revision &ndash; May 2014 </p>
                         </div>
                         <div class="tab-pane legal" id="principles">
-                            <h1>Principles of <br>TheGoodData Cooperative Limited</h1>
+                            <h1>TheGoodData Principles</h1>
                             <div class="row">
                                 <div class="title">Data Ownership</div>
                                 <div class="description"><strong>People are the only owners of the data they produce</strong>. This means that they must be aware of its existence, that they can freely decide who should have access to it and set the terms and benefits to be received in exchange. All these decisions should be presented to the people in an easy and understandable way.</div>
