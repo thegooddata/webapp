@@ -158,6 +158,9 @@ $min_serveOptions['minApp']['groupsOnly'] = true;
  */
 $min_symlinks = array();
 
+if (defined('ASSETS_SYMLINK')) {
+  $min_symlinks['//assets']=ASSETS_SYMLINK;
+}
 
 /**
  * If you upload files from Windows to a non-Windows server, Windows may report
