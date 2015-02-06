@@ -5,7 +5,7 @@ class m150203_185145_language_support extends CDbMigration
 	public function up()
 	{
         $this->execute("UPDATE tbl_languages_support SET lang='en-us' WHERE id=2;");
-        $this->execute(" DELETE FROM tbl_languages_support WHERE id=3;");
+//        $this->execute(" DELETE FROM tbl_languages_support WHERE id=3;");
 	}
 
 	public function down()

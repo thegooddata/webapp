@@ -364,6 +364,10 @@ class ApiController extends Controller
 	       		break;
        		case 'languagesSupport':
        			$model = LanguagesSupport::model()->findLanguage($_GET['query']);
+            // if not found, just return null and avoid returning 404
+            if (!$model) {
+              $this->_sendResponse(200, CJSON::encode(null),'application/json');
+            }
 				break;
 	            
 	       	default:
@@ -376,7 +380,7 @@ class ApiController extends Controller
 
 	    // Did we find the requested model? If not, raise an error
 	    if(is_null($model))
-	        $this->_sendResponse(404, 'No Item found with id '.$_GET['id']);
+	        $this->_sendResponse(404, 'No Item found');
 	    else
 	        $this->_sendResponse(200, CJSON::encode($model),'application/json');
 	}
