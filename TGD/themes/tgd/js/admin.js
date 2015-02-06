@@ -1,0 +1,1 @@
+// empty js file to quickly fix minScript error in admin pages
