@@ -114,7 +114,11 @@
                                             <td>Used by Piwik analytics platform.</td>
                                         </tr>
                                     </table>
-                                    <iframe style="border: 0; height: 200px; width: 600px;" src="https://piwik.thegooddata.org/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+                                    
+                                    <?php if (Yii::app()->params['enableAnalytics']): ?>
+                                      <iframe style="border: 0; height: 200px; width: 600px;" src="<?php echo Yii::app()->params['piwikURL']; ?>index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+                                    <?php endif; ?>
+                                      
                                     <p>Description of the cookie types:</p>
                                     <table>
                                         <tr>
