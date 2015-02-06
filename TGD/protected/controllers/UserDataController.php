@@ -2,6 +2,9 @@
 
 class UserDataController extends Controller {
 
+        // set title
+    public $pageTitle = " - Your data";
+
     public $bodyId = 'tgd-user-data';
     
     public $displayMenu = true;
@@ -24,83 +27,104 @@ class UserDataController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function visualizar() {
+        // set layout
         $this->layout = '//layouts/column1';
 
         $user_id = Yii::app()->user->id;
 
-        $queries_pag = 0;
+        // ------------ intialize pagination data for queries tab
+
+        $queries_pag = 1;
         $queries_pag_size = 10;
 
         if (isset($_GET['queries_pag']))
             $queries_pag = $_GET['queries_pag'];
 
+        // get amount of data
         $queries = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*)')
                 ->from('tbl_queries q')
-                ->where(array(
-                    'and',
-                    'q.member_id = :value'), array(
-                    ':value' => $user_id)
+                ->where(
+                    array(
+                        'and',
+                        'q.member_id = :value'
+                    ), 
+                    array(':value' => $user_id)
                 )
                 ->queryAll();
 
         $queries_total = $queries[0]->count;
+        
+        // build pagination: set total queries, page size, page variable and params
+        $queries_pages = new CPagination($queries_total);
+        $queries_pages->pageSize=$queries_pag_size; // 10
+        $queries_pages->pageVar='queries_pag';
+        $queries_pages->params=  array_merge($_GET, array('tab'=>'queries'));
 
         $queries = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('*')
                 ->from('tbl_queries q')
-                ->where(array(
-                    'and',
-                    'q.member_id = :value'), array(
-                    ':value' => $user_id)
+                ->where(
+                    array(
+                        'and',
+                        'q.member_id = :value'), 
+                    array(':value' => $user_id)
                 )
                 ->order('created_at desc')
                 ->limit($queries_pag_size)
-                ->offset($queries_pag * $queries_pag_size)
+                ->offset(($queries_pag-1) * $queries_pag_size)
                 ->queryAll();
 
+        // ------------ intialize pagination data for browsing tab
 
-
-        $browsing_pag = 0;
+        $browsing_pag = 1;
         $browsing_pag_size = 10;
 
         if (isset($_GET['browsing_pag']))
             $browsing_pag = $_GET['browsing_pag'];
 
+        // get amount of data
         $browsing = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*)')
                 ->from('tbl_browsing q')
-                ->where(array(
-                    'and',
-                    'q.member_id = :value'), array(
-                    ':value' => $user_id)
+                ->where(
+                    array(
+                        'and',
+                        'q.member_id = :value'), 
+                    array(':value' => $user_id)
                 )
                 ->group('domain')
                 ->queryAll();
 
         $browsing_total = count($browsing);
+        
+        // build pagination: set total queries, page size, page variable and params
+        $browsing_pages=new CPagination($browsing_total);
+        $browsing_pages->pageSize=$browsing_pag_size;
+        $browsing_pages->pageVar='browsing_pag';
+        $browsing_pages->params=  array_merge($_GET, array('tab'=>'browsing'));
 
         $browsing = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('domain,count(*)')
                 ->from('tbl_browsing q')
-                ->where(array(
-                    'and',
-                    'q.member_id = :value'), array(
-                    ':value' => $user_id)
+                ->where(
+                    array(
+                        'and',
+                        'q.member_id = :value'
+                    ), 
+                    array(':value' => $user_id)
                 )
                 ->order('count desc')
                 ->group('domain')
                 ->limit($browsing_pag_size)
-                ->offset($browsing_pag * $browsing_pag_size)
+                ->offset(($browsing_pag-1) * $browsing_pag_size)
                 ->queryAll();
 
         $browsing_details = array();
-
-
 
         foreach ($browsing as $browse) {
             $domain = $browse->domain;
@@ -109,18 +133,20 @@ class UserDataController extends Controller {
                     ->setFetchMode(PDO::FETCH_OBJ)
                     ->select('*')
                     ->from('tbl_browsing q')
-                    ->where(array(
-                        'and',
-                        'q.member_id = :value',
-                        'q.domain = :domain'), array(
-                        ':value' => $user_id,
-                        ':domain' => $domain)
+                    ->where(
+                        array(
+                            'and',
+                            'q.member_id = :value',
+                            'q.domain = :domain'
+                        ), 
+                        array(
+                            ':value' => $user_id,
+                            ':domain' => $domain
+                        )
                     )
                     ->order('created_at desc')
                     ->queryAll();
         }
-
-
 
         //COUNT QUERIES
         $member_id = $user_id;
@@ -129,13 +155,16 @@ class UserDataController extends Controller {
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*)')
                 ->from('tbl_queries')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id',
-                    'share = :share'
-                        ), array(
-                    'member_id' => $member_id,
-                    'share' => 'true')
+                ->where(
+                    array(
+                        'and',
+                        'member_id = :member_id',
+                        'share = :share'
+                    ), 
+                    array(
+                        'member_id' => $member_id,
+                        'share' => 'true'
+                    )
                 )
                 ->queryAll();
 
@@ -144,31 +173,7 @@ class UserDataController extends Controller {
 
         //PERCENTILE
         $member_id = $user_id;
-
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_queries_members_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
-        if (count($datas) > 0)
-            $queries_percentile = $datas[0]->percentile;
-        else
-            $queries_percentile = 0;
-
-        $queries_percentile_text = "";
-
-        if ($queries_percentile < 20)
-            $queries_percentile_text = 'Owner';
-        else if ($queries_percentile >= 20)
-            $queries_percentile_text = 'Expert';
-
+        $queries_percentile_data = ADbHelper::getSeniorityLevelAndPercentile($member_id);
 
         // $loans = Yii::app()->db->createCommand()
         //            ->setFetchMode(PDO::FETCH_OBJ)
@@ -188,13 +193,15 @@ class UserDataController extends Controller {
             'queries_size' => $queries_pag_size,
             'queries_total' => $queries_total,
             'queries_pag' => $queries_pag,
+            'queries_pages' => $queries_pages,
             'browsing' => $browsing,
             'browsing_details' => $browsing_details,
             'browsing_size' => $browsing_pag_size,
             'browsing_total' => $browsing_total,
             'browsing_pag' => $browsing_pag,
+            'browsing_pages' => $browsing_pages,
             'queries_count' => $queries_count,
-            'queries_percentile_text' => $queries_percentile_text
+            'queries_percentile_text' => $queries_percentile_data['level'],
                 )
         );
     }
@@ -220,32 +227,34 @@ class UserDataController extends Controller {
             $model->delete();
         }
 
-        $this->visualizar();
+        $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
     public function actionIndex() {
         $this->visualizar();
+
+        $this->pageTitle = " - Your Data";
     }
 
     public function actionDeleteAllQueries(){
         $member_id = Yii::app()->user->id;
         Queries::model()->deleteAll('member_id IN (' . $member_id . ')');
         Browsing::model()->deleteAll('member_id IN (' . $member_id . ')');
-         $this->visualizar();
+        $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
     public function actionDeleteQueries() {
         $member_id = Yii::app()->user->id;
 
         Queries::model()->deleteAll('member_id IN (' . $member_id . ')');
-        $this->visualizar();
+        $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
     public function actionDeleteBrowsing() {
         $member_id = Yii::app()->user->id;
 
         Browsing::model()->deleteAll('member_id IN (' . $member_id . ')');
-        $this->visualizar();
+        $this->redirect(array('userData/index','tab'=>'browsing','browsing_pag'=>$_GET['browsing_pag']));
     }
 
     public function actionExportBrowsing() {

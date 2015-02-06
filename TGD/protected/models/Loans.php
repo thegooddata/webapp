@@ -14,9 +14,28 @@ class Loans extends BaseLoans
 	        $this->created_at = new CDbExpression('NOW()');
 	 
 	    $this->updated_at = new CDbExpression('NOW()');
+        
+        $this->beforeSaveZeroFields();
 	 
 	    return parent::beforeSave();
 	}
+    
+    /**
+     * Fill some numerical fields with value 0 if left blank.
+     */
+    public function beforeSaveZeroFields() {
+      $fields=array(
+          'amount',
+          'contribution',
+          'paidback',
+          'loss',
+      );
+      foreach ($fields as $key) {
+        if (empty($this->{$key})) {
+          $this->{$key}=0;
+        }
+      }
+    }
 
 
 	/* Generate multilanguage fields */

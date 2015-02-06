@@ -13,7 +13,16 @@
     }
 }
 
+.fa-spinner{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
 #threats-identified, #risk-profile, #threats-ranking, #mix-threats{
+    canvas{
+        visibility: hidden;
+    }
 
     &:nth-child(1){
         padding-left: 0;
@@ -61,6 +70,10 @@
         color: @gray-text;
         line-height: 1em;
     }
+
+    .chart{
+        position: relative;
+    }
 }
 
 #threats-identified{
@@ -81,11 +94,11 @@
 
 
     .item{
-        width: 44%;
+        width: 45%;
         float: left;
         padding: 0rem;
-        &:nth-child(2),&:nth-child(3){
-            width: 35%;
+        &:nth-child(2)/*,&:nth-child(3)*/{
+            width: 55%;
             padding-left: 1rem;
             .amount{
                 line-height: @font-size-xxlarge;
@@ -172,11 +185,16 @@
             background-color: @very-light-gray;
         }
         > div{
+            position: relative;
             &:last-child{
                 text-align: center;
                 font-size: @font-size-xxsmall;
             }
         }
+    }
+
+    span.you, span.average, .subtext {
+        visibility: hidden;
     }
 
     .square{
@@ -190,7 +208,6 @@
         &.you{
             padding: 2.2rem 1.5rem 1.8rem 1.5rem;
             background-color: transparent;
-
             font-size: 1.8rem;
             font-weight: bold;
         }
@@ -207,6 +224,7 @@
         }
     }
     .risk-meter{
+        visibility: hidden;
         padding-top: 46px;
         background-position: top center;
         background-repeat: no-repeat;
@@ -256,6 +274,7 @@
                 }
                 > td{
                     padding: 5px 10px;
+                    font-size: smaller;
                     &:nth-child(3), &:nth-child(4){
                         text-align: center;
                     }
@@ -329,21 +348,22 @@
         padding: 3rem;
         div{
             position: absolute;
-            &:nth-child(1){
+            &:nth-child(2){
                 font-size: 1.8rem;
                 font-weight: bold;
                 top:143px;
                 left:135px;
+                visibility: hidden;
             }
-            &:nth-child(2){
+            &:nth-child(3){
                 text-align: center;
                 top:133px;
                 left:416px;
+                visibility: hidden;
             }
         }
     }
     canvas{
         float: left;
-
     }
 }

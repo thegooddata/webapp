@@ -43,6 +43,12 @@ class Swift_Transport_StreamBuffer
   private $_translations = array();
   
   /**
+   * Fix undefined bug.
+   * @var type 
+   */
+  private $_sequence;
+  
+  /**
    * Create a new StreamBuffer using $replacementFactory for transformations.
    * @param Swift_ReplacementFilterFactory $replacementFactory
    */

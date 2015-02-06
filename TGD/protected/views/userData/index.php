@@ -12,9 +12,9 @@
         </div>                                      
 
         <div class="gray">
-            <p><b>You have contributed with <span class="green"><?php echo $queries_count; ?></span> pieces of data this month.</b></p>
+            <p><b>You have contributed <span class="green"><?php echo $queries_count; ?></span> pieces of data this month.</b></p>
             <?php if ($queries_count==0) { ?>
-                <a class="" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq#search_query_trade");?>">Why the extension does not trade the search queries I'm doing?</a>
+                <a class="" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq#search_query_trade");?>">Why are my search queries not being traded?</a>
             <?php } ?>
         </div>
 
@@ -33,7 +33,7 @@
             <li><a id="sitesvisited" href="#sites" data-toggle="tab">Sites visited</a></li>                            
         </ul>
 
-        <?php if (isset($_GET['browsing_pag'])) { ?>
+        <?php if (isset($_GET['tab']) && 'browsing'==$_GET['tab']) { ?>
         <script>
         $(function() {
             $('#sitesvisited').click();
@@ -51,7 +51,7 @@
                             <th class="query">Query</th>
                             <th class="engine">Engine</th>
                             <th class="date">Date</th>
-                            <!-- <th class="events">Events</th> -->
+                            <th class="traded">Traded</th>
                             <th class="sensitive-data">Is it sensitive?</th>
                         </tr>
                     </thead>
@@ -62,7 +62,7 @@
                             <td class="query"><?php echo urldecode(html_entity_decode($query->data));?></td>
                             <td class="engine"><?php echo $query->provider;?></td>
                             <td class="date"><?php echo date_format(date_create($query->created_at), 'Y-m-d H:i:s')?></td>
-                            <!-- <td class="events">3</td> -->
+                            <td class="traded"><i class="fa fa-check <?php echo($query->share == 'true')?'yes':'';?>"></i></td>
                             <td class="sensitive-data checked"><a href="<?php echo Yii::app()->createUrl('userData/deleteQuery', array('queries_pag' => $queries_pag, 'id_query'=>$query->id))?>" class="glyphicon glyphicon-remove delete"></a></td> 
                         </tr>
                         <?php } ?>
@@ -75,78 +75,26 @@
                        <button type="button" class="btn btn-xs delete_one">DELETE</button> 
                     </div>
                     <div class="pull-right">
-                        <ul class="pagination">
-
-                            <?php
-
-                                if ($queries_pag !=0) {
-                            ?>  
-
-                            <!-- <li><a href="#" class="glyphicon glyphicon-arrow-left"></a></li> -->
-
-                            <?php
-
-                                }else{
-
-                            ?> 
-
-                            <!-- <li class="disabled"><a href="#" class="glyphicon glyphicon-arrow-left"></a></li> -->
-
-                            <?php
-
-                                }
-                                    
-                            ?> 
-
-                            <?php
-
-                            $num_pag = ceil($queries_total / $queries_size);
-                            
-                            for ($i=0; $i<$num_pag; $i++){
-                                $pag = $i+1;
-
-                                if ($i == $queries_pag)
-                                {
-                            ?>                                           
-                                <li class="active"><a href="#"><?php echo $pag; ?></a></li>
-
-                            <?php
-                                }
-                                else
-                                {
-                            ?>
-                                <li><a href="<?php echo Yii::app()->createUrl('userData/index', array('queries_pag' => $i))?>"><?php echo $pag; ?></a></li>
-                            <?php  
-                                }
-                            
-                            }
-                            
-                            ?>
-                            
-                            <?php
-
-                                if ($queries_pag ==$num_pag) {
-                            ?>  
-
-                            <!-- <li><a class="disabled"  href="#" class="glyphicon glyphicon-arrow-right"></a></li> -->
-
-                            <?php
-
-                                }else{
-
-                            ?> 
-
-                            <!-- <li><a href="#" class="glyphicon glyphicon-arrow-right"></a></li> -->
-
-                            <?php
-
-                                }
-                                    
-                            ?>
-
-                            
-                        </ul>
-
+                      
+                        <?php $this->widget('ext.TGDLinkPager', array(
+                            'header' => '',
+                            'cssFile' => false,
+                            'firstPageCssClass'=>'',
+                            'previousPageCssClass'=>'',
+                            'nextPageCssClass'=>'',
+                            'nextPageCssClass'=>'',
+                            'lastPageCssClass'=>'',
+                            'maxButtonCount'=>3,
+                            'showFirstAndLastPages'=>false,
+                            'showLastPageNumber'=>true,
+                            'prevPageLabel'=>'<i class="glyphicon glyphicon-arrow-left"></i>',
+                            'nextPageLabel'=>'<i class="glyphicon glyphicon-arrow-right"></i>',
+                            'htmlOptions'=>array(
+                                'class'=>'',
+                            ),
+                            'pages' => $queries_pages,
+                        )); ?>
+                      
                     </div>
                 </div>
             </div><!-- tab-pane -->
@@ -198,36 +146,25 @@
                         <button type="button" class="btn btn-xs delete_one">DELETE</button>
                     </div>
                     <div class="pull-right">
-                        <ul class="pagination">
-                            <!-- <li class="disabled"><a href="#" class="glyphicon glyphicon-arrow-left"></a></li> -->
-
-                            <?php
-
-                            $num_pag = ceil($browsing_total / $browsing_size);
-                            
-                            for ($i=0; $i<$num_pag; $i++){
-                                $pag = $i+1;
-
-                                if ($i == $browsing_pag)
-                                {
-                            ?>                                           
-                                <li class="active"><a href="#"><?php echo $pag; ?></a></li>
-
-                            <?php
-                                }
-                                else
-                                {
-                            ?>
-                                <li><a href="<?php echo Yii::app()->createUrl('userData/index', array('browsing_pag' => $i))?>"><?php echo $pag; ?></a></li>
-                            <?php  
-                                }
-                            
-                            }
-                            
-                            ?>
-
-                            <!-- <li><a href="#" class="glyphicon glyphicon-arrow-right"></a></li> -->
-                        </ul>
+                    
+                        <?php $this->widget('ext.TGDLinkPager', array(
+                            'header' => '',
+                            'cssFile' => false,
+                            'firstPageCssClass'=>'',
+                            'previousPageCssClass'=>'',
+                            'nextPageCssClass'=>'',
+                            'nextPageCssClass'=>'',
+                            'lastPageCssClass'=>'',
+                            'maxButtonCount'=>5,
+                            'showFirstAndLastPages'=>false,
+                            'showLastPageNumber'=>true,
+                            'prevPageLabel'=>'<i class="glyphicon glyphicon-arrow-left"></i>',
+                            'nextPageLabel'=>'<i class="glyphicon glyphicon-arrow-right"></i>',
+                            'htmlOptions'=>array(
+                                'class'=>'',
+                            ),
+                            'pages' => $browsing_pages,
+                        )); ?>
 
                     </div>
                 </div>

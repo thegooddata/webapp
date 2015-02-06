@@ -1,6 +1,9 @@
-<!-- Rename this file to config.php -->
 
 <?php
+//-- Rename this file to config.php 
+
+/* debug file TODO: remove in production */
+const DB_DEBUG_FILE = '/tmp/database_queries.log';
 
 /* redoctober */
 CONST REDOCTOBER_URL = 'https://localhost:8080';
@@ -21,6 +24,9 @@ const OA_API_TOKEN='yayme';
 
 /* cookie domain name */
 const COOKIE_DOMAIN='.tgd.local';
+
+/* session name */
+const SESSION_NAME='TGDSESSID';
 
 /* stripe */
 const STRIPE_TEST=true;

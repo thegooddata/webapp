@@ -20,6 +20,90 @@ class ApiController extends Controller
     {
             return array();
     }
+    
+    /**
+     * TODO: Not that important but we could delete all settings that are not 
+     * in ExtensionSettings::getAllowedKeys() list so we don't keep deprecated 
+     * settings.
+     */
+    public function actionSaveUserSettings() {
+      $result=array(
+        'success'=>true,
+        'errors'=>array(),
+      );
+      if (Yii::app()->user->isGuest) {
+        $result['errors'][]='User is not logged in.';
+      } else {
+        foreach ($_POST as $key => $value) {
+          if (in_array($key, ExtensionSettings::getAllowedKeys())) {
+            if (!ExtensionSettings::setUserSetting(Yii::app()->user->id, $key, $value)) {
+              $result['errors'][]="Setting '$key' could not be saved.";
+            }
+          } else {
+            $result['errors'][]="Setting with name '$key' is not in the list of allowed items.";
+          }
+        }
+      }
+      if (count($result['errors'])) {
+        $result['success']=false;
+      }
+		  $this->_sendResponse(200, CJSON::encode($result),'application/json');
+    }
+    
+    public function actionLogin() {
+      
+      // force loading user module
+      Yii::app()->getModule('user');
+      
+      $model=new UserLogin;
+      $result=array(
+        'success'=>0,
+        'errors'=>array(),
+        'post'=>$_POST
+      );
+      if(isset($_POST['UserLogin']))
+			{
+				$model->attributes=$_POST['UserLogin'];
+				if($model->validate()) {
+					$result['success']=1;
+				} else {
+				  if ($model->hasErrors()) {
+            foreach ($model->getErrors() as $error) {
+              foreach ($error as $e) {
+                $result['errors'][]=$e;
+              }
+            }
+          }
+				}
+			}
+			$this->_sendResponse(200, CJSON::encode($result),'application/json');
+    }
+    
+    private function logActiveUser() {
+      ActiveUsers::logActiveUser(Yii::app()->request->getPost("user_id"));
+    }
+    
+    public function actionGetLoggedUser() {
+      $this->logActiveUser(); // log active user on extension
+      $result=array();
+      if (!Yii::app()->user->isGuest) {
+        $result = Yii::app()->db->createCommand()
+        ->select('u.id, u.username')
+        ->from('tbl_members u')
+        ->where(array(
+                    'and',
+                    'u.id = :id',
+                    ),
+            array(
+                    ':id'=>Yii::app()->user->id,
+                    )
+            )
+        ->queryRow();
+        // get user settings
+        $result['settings']=ExtensionSettings::getUserSettings(Yii::app()->user->id);
+      }
+		  $this->_sendResponse(200, CJSON::encode($result),'application/json');
+    }
 
     public function actionUser(){
     	
@@ -161,7 +245,7 @@ class ApiController extends Controller
 		switch($_GET['model'])
 	    {	
             case 'queries':
-            	$models = $this->_percentileQueries();
+            	$data = $this->_percentileQueries();
             	break;
 
     		default:
@@ -172,66 +256,20 @@ class ApiController extends Controller
 	            Yii::app()->end();
 	    }
 	    // Did we get some results?
-	    if(empty($models)) {
+	    if(empty($data)) {
 	        // No
 	   		$this->_sendResponse(200, CJSON::encode('0'),'application/json');
 	     } else {
-	        $this->_sendResponse(200, CJSON::encode($models),'application/json');
+	     	// { "level" : "levelName", "value" : x }
+	        $this->_sendResponse(200, CJSON::encode($data),'application/json');
 	    }
 	}
 
 	public function _percentileQueries()
 	{
-		$user_id=$_GET['user_id'];
-		$member_id=$_GET['user_id'];
-
-		if (!is_numeric($_GET['user_id'])){
-			$member_id=0;
-		}
-
-		if ($member_id!=0)
-		{
-			$datas = Yii::app()->db->createCommand()
-			    ->setFetchMode(PDO::FETCH_OBJ)
-			    ->select('percentile')
-			    ->from('view_queries_members_percentil')
-			    ->where(array(
-			                'and',
-			                'member_id = :member_id'
-			                ),
-			                array(
-			                    'member_id'=>$member_id)
-			                )
-			    ->queryAll();
-
-		    if (count($datas)>0)
-		    	return $datas[0]->percentile;
-			else
-				return 0;
-			
-		}
-		else
-		{
-			$datas = Yii::app()->db->createCommand()
-			    ->setFetchMode(PDO::FETCH_OBJ)
-			    ->select('percentile')
-			    ->from('view_queries_users_percentil')
-			    ->where(array(
-			                'and',
-			                'user_id = :user_id'
-			                ),
-			                array(
-			                    'user_id'=>$user_id)
-			                )
-			    ->queryAll();
-
-		    if (count($datas)>0)
-		    	return $datas[0]->percentile;
-			else
-				return 0;
-
-			//return $datas[0]->queries;
-		}
+		// returns an array with the format
+		// array('level' => 'levelName', 'value' => value)
+		return ADbHelper::getSeniorityLevelAndPercentile($_GET['user_id']);
 	}
     // Actions
     public function actionList()
@@ -318,6 +356,9 @@ class ApiController extends Controller
             case 'whitelists':
 	            $model = $this->_viewWhitelist();
 	            break;
+	        case 'blacklist':
+	            $model = $this->_viewBlacklist();
+	            break;	            
 	       	case 'queriesblacklist':
 	       		$model = $this->_viewQueriesblacklist();
 	       		break;
@@ -377,9 +418,50 @@ class ApiController extends Controller
 
 	    // Try to assign POST values to attributes
 
-
+        // Special handling for AdTracks
 	    if ($_GET['model'] == 'adtracks'){
-			$model=$this->_createAdtrack();
+          
+            $adtracks_to_create=array();
+            $adtracks_created=array();
+            
+            // maintain backwards compatibility with earlier version of extension that sends adtracks by post one by one
+            if (count($_POST)) { 
+              $adtracks_to_create[]=$_POST;
+            } else {
+              // retrieve array of multiple adtracks send to the API as JSON
+              $data = file_get_contents('php://input');
+              $data = json_decode($data, true);
+              if (is_array($data)) {
+                $adtracks_to_create=$data;
+              }
+            }
+            
+            if (count($adtracks_to_create)) {
+              foreach ($adtracks_to_create as $params) {
+                  $model=$this->_createAdtrack($params);
+                  if ($model->save()) {
+                    $adtracks_created[]=$model;
+                  } else {
+                    // Errors occurred
+                    $msg = "<h1>Error</h1>";
+                    $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
+                    $msg .= "<ul>";
+                    foreach($model->errors as $attribute=>$attr_errors) {
+                        $msg .= "<li>Attribute: $attribute</li>";
+                        $msg .= "<ul>";
+                        foreach($attr_errors as $attr_error)
+                            $msg .= "<li>$attr_error</li>";
+                        $msg .= "</ul>";
+                    }
+                    $msg .= "</ul>";
+                    Yii::log($msg,CLogger::LEVEL_ERROR);
+                    $this->_sendResponse(500, $msg );
+                }
+              }
+            }
+            
+            $this->_sendResponse(200, CJSON::encode($adtracks_created),'application/json');
+            
 		}
 	    else {
 			
@@ -628,23 +710,34 @@ class ApiController extends Controller
 	}
 
 	public function _listAchievements(){
-		$achievements= Achievements::model()->findAll();
+            
+        $criteria=new CDbCriteria(array(
+            'condition'=>'t.deleted=0 AND t.achievements_finish >= :now AND t.achievements_start <= :now',
+            'params'=>array(
+                ':now'=>date("Y-m-d H:i:s"),
+            ),
+            'limit'=>5,
+            'order'=>'t.created_at DESC',
+        ));
+        
+		$achievements= Achievements::model()->findAll($criteria);
+        
 		$achievements_valid=array();
 
 		foreach ($achievements as $achievement){
-			$todays_date = date("Y-m-d");
-			$today = strtotime($todays_date);
-			$init_date = strtotime($achievement->achievements_start);
-			$expiration_date = strtotime($achievement->achievements_finish);
-
-			if ($expiration_date > $today && $init_date < $today) {
-			     $achievements_valid[]=$achievement;
-			} 
+            $achievements_valid[]=$achievement;
 		}
 		return $achievements_valid;
 	}
 
 	public function _updateWhitelist($put_vars){
+      
+        /**
+         * This feature gets disabled for now until future optimization.
+         */
+         $this->_sendResponse(200, CJSON::encode(array()),'application/json');
+         Yii::app()->end();
+        return false;
 
 		$user_id= $_GET['user_id'];
 		$member_id= isset($_GET['member_id']) ? $_GET['member_id'] : null;
@@ -837,58 +930,45 @@ class ApiController extends Controller
 		$query= $_GET['query'];
 		$lang= $_GET['lang'];
 
-
-
 		$data = Yii::app()->db->createCommand()
-	                ->setFetchMode(PDO::FETCH_OBJ)
-	                ->select('id')
-	                ->from('tbl_queries_blacklist')
-	                ->where(array(
-	                            'and',
-	                            '(stem = :query1 or stem = :query2 or stem = :query3 or stem = :query4)',
-	                            'lang = :lang'
-	                            ),
-	                    	array(	
-	                            
-	                            ':query1'=>"/b".$query,
-	                            ':query2'=>"/b".$query."/b",
-	                            ':query3'=>$query."/b",
-	                            ':query4'=>$query,
-	                            ':lang'=>$lang,
-	                            )
-                    	)
-	                ->queryAll();
-
-        if (count($data) == 0){
-
-        	$blackExpresion = Yii::app()->db->createCommand()
 	                ->setFetchMode(PDO::FETCH_OBJ)
 	                ->select('stem')
 	                ->from('tbl_queries_blacklist')
-	                ->where(array(
-	                            'and',	                          
-	                            'lang = :lang'
-	                            ),
-	                    	array(	
-	                            ':lang'=>$lang
-	                            )
-                    	)
+	                ->where('lang = :lang', array(':lang'=>$lang))
 	                ->queryAll();
-            
+	    
+	    
+    	$regexp = array();	
+	    if(count($data) > 0){
+	    	foreach($data as $object){
+	    		$regexp[]=$object->stem;
+	    	}
+	    }
 
+	    $regexp='/'.join($regexp,'|').'/';
+	    $matched=preg_match($regexp, $query,$matches);
+	    
+		return $matches;
+	}
 
-            foreach ( $blackExpresion as $black)
-            {
-            	$stem = str_replace("/b", "", $black->stem);
-            	
-            	if (strpos($query,$stem) !== false) {
-				    $data[]=$black;
-				    break;
-				}
-            }
-        }
+	public function _viewBlacklist(){
+		$lang= $_GET['query'];
 
-		return $data;
+		$data = Yii::app()->db->createCommand()
+	                ->setFetchMode(PDO::FETCH_OBJ)
+	                ->select('stem')
+	                ->from('tbl_queries_blacklist')
+	                ->where('lang = :lang', array(':lang'=>$lang))
+	                ->queryAll();
+	    
+    	$result = array();	
+	    if(count($data) > 0){
+	    	foreach($data as $key=>$value){
+	    		$result[]=$value->stem;
+	    	}
+	    }
+
+		return $result;
 	}
 
 	public function _viewWhitelist(){
@@ -928,18 +1008,18 @@ class ApiController extends Controller
 	}
 
   
-	public function _createAdtrack() {
-
+	public function _createAdtrack($params) {
+      
     // get post info
-  	$member_id=$_POST['member_id'];
-  	$user_id=$_POST['user_id'];
-  	$usertime=$_POST['usertime'];
-    $category=$_POST['category'];
-    $service_name=$_POST['service_name'];
-    $service_url=$_POST['service_url'];
-    $domain=$_POST['domain'];
-    $status=$_POST['status'];
-    $url=$_POST['url'];
+  	$member_id=$params['member_id'];
+  	$user_id=$params['user_id'];
+  	$usertime=$params['usertime'];
+    $category=$params['category'];
+    $service_name=$params['service_name'];
+    $service_url=$params['service_url'];
+    $domain=$params['domain'];
+    $status=$params['status'];
+    $url=$params['url'];
 
     // get source by name and category?
     $data = Yii::app()->db->createCommand()

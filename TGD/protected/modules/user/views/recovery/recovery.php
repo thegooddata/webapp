@@ -1,7 +1,7 @@
-<?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Restore");
+<?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Reset Your Password");
 $this->breadcrumbs=array(
 	UserModule::t("Login") => array('/user/login'),
-	UserModule::t("Restore"),
+	UserModule::t("Reset Your Password"),
 );
 ?>
 <section id="tgd-page-content">
@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
         <div class="row">
             <section id="form" class="col-sm-16">
 
-							<h1><?php echo UserModule::t("Restore"); ?></h1>
+							<h1><?php echo UserModule::t("Reset Your Password"); ?></h1>
 
 
 							<?php if ($success != "") { ?> 
@@ -37,11 +37,11 @@ $this->breadcrumbs=array(
                 </div>
 
 								<div class="form-group clearfix">
-									<p class="col-sm-7 nopadding">We will send you an email to restore your password.</p>					
+									<p class="col-sm-7 nopadding">Enter your email address and we will send you a link to reset your password.</p>					
 								</div>
 								
                 <div class="form-group clearfix">
-                    <?php echo CHtml::submitButton(UserModule::t("Send")/*TODO: <- translate this*/, array('class'=>'btn btn-primary col-sm-2 col-sm-offset-1')); ?>
+                    <?php echo CHtml::submitButton(UserModule::t("Send")/*TODO: <- translate this*/, array('class'=>'btn btn-primary col-sm-3')); ?>
                 </div>
 
 							<?php echo CHtml::endForm(); ?>

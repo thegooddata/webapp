@@ -4,9 +4,7 @@
                 <div class="row">
                     <div class="col-sm-16 col-md-12 col-md-offset-2 col-lg-12 col-lg-offset-2 alert alert-warning alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/start.png"/> We've just started so we know that the following metrics are still negligible, but we wanted
-                        to share them with you from the very beginning. We think company transparency
-                        is a must to earn your collaboration.
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/start.png"/>Even though we’re really still at the starting line, we wanted to share our stats with you from the get-go. We believe that transparency is a must in order to ensure real collaboration. Have a look below to find out what we’ve been working on.
                     </div>
                 </div>
             </div>
@@ -25,7 +23,7 @@
                         </div>
                         <div class="item">
                             <div class="amount total_registered_members">0</div>
-                            <div class="subtext">Total Registered Members</div>
+                            <div class="subtext">Registered Members</div>
                         </div>
                         <div class="item">
                             <div class="amount monthly_queries_processed">0</div>
@@ -49,19 +47,19 @@
                             <div class="subtext">Money available for microloans</div>
                         </div>
                         <div class="item">
-                            <div class="amount money_lent">$0</div>
+                            <div class="amount total_contribution">$0</div>
                             <div class="subtext">Money Lent</div>
                         </div>
                         <div class="item">
-                            <div class="amount money_repaid">$0</div>
+                            <div class="amount total_paidback">$0</div>
                             <div class="subtext">Money Repaid</div>
                         </div>
                         <div class="item">
-                            <div class="amount money_lost">$0</div>
+                            <div class="amount total_lost">$0</div>
                             <div class="subtext">Money Lost</div>
                         </div>
                         <div class="item">
-                            <div class="amount outstanding_portfolio">$0</div>
+                            <div class="amount total_outstanding">$0</div>
                             <div class="subtext">Outstanding Portfolio</div>
                         </div>
                     </div>
@@ -80,11 +78,11 @@
                         </div>
                         <div class="item">
                             <div class="amount projects_paying_back">0</div>
-                            <div class="subtext">Projects Paying-Back</div>
+                            <div class="subtext">Projects Paying Back</div>
                         </div>
                         <div class="item">
                             <div class="amount projects_paid_back">0</div>
-                            <div class="subtext">Projects Paid-Back</div>
+                            <div class="subtext">Projects Paid Back</div>
                         </div>
                         <div class="item">
                             <div class="amount projects_at_lost">0</div>
@@ -121,15 +119,45 @@
                     <div class="container">
                         <?php foreach ($loans as $loan) { ?>
                         <div class="row">
-                            <div class="col-1"><a target="_blank" href="<?php echo $loan->loan_url; ?>"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo $loan->image; ?>" class="avatar"/><?php echo $loan->title_en; ?></a><div class="subtext"><?php echo $loan->activity; ?></div></div>
+                            <div class="col-1"><a target="_blank" href="<?php echo $loan->loan_url; ?>">
+                            <?php if(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->loan_identifier."-".$loan->image)): ?>
+                                <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->loan_identifier."-".$loan->image; ?>" class="avatar"/>
+                            <?php elseif(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->image)): ?>
+                                <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->image; ?>" class="avatar"/>
+                            <?php endif; ?>
+                            <?php echo $loan->title_en; ?></a><div class="subtext"><?php echo $loan->activity; ?></div></div>
                             <div class="col-2"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/flags/<?php echo strtolower($loan->code); ?>.png" class="flag"/><?php echo $loan->country; ?><div class="subtext"><?php echo $loan->partner; ?></div></div>
-                            <div class="col-3">$<?php echo $loan->amount; ?></div>
+                            <div class="col-3">$<?php echo number_format($loan->amount,2); ?></div>
                             <div class="col-4"><?php echo $loan->term; ?> months</div>
-                            <div class="col-5">$<?php echo $loan->contribution; ?><div class="subtext"><?php echo date('F d, Y', strtotime($loan->loan_date));?></div></div>
-                            <div class="col-6">$<?php echo $loan->paidback; ?></div>
+                            <div class="col-5">$<?php echo number_format($loan->contribution,2); ?><div class="subtext"><?php echo date('F d, Y', strtotime($loan->loan_date));?></div></div>
+                            <div class="col-6">$<?php echo number_format($loan->paidback,2); ?></div>
                             <div class="col-7"><?php echo $loan->status;?></div>                        
                         </div>
                         <?php } ?>
+
+                        <div class="row pager">
+                            <div class="pull-right">
+                                  
+                                    <?php $this->widget('ext.TGDLinkPager', array(
+                                        'header' => '',
+                                        'cssFile' => false,
+                                        'firstPageCssClass'=>'',
+                                        'previousPageCssClass'=>'',
+                                        'nextPageCssClass'=>'',
+                                        'nextPageCssClass'=>'',
+                                        'lastPageCssClass'=>'',
+                                        'maxButtonCount'=>3,
+                                        'showFirstAndLastPages'=>false,
+                                        'showLastPageNumber'=>true,
+                                        'prevPageLabel'=>'<i class="glyphicon glyphicon-arrow-left"></i>',
+                                        'nextPageLabel'=>'<i class="glyphicon glyphicon-arrow-right"></i>',
+                                        'htmlOptions'=>array(
+                                            'class'=>'',
+                                        ),
+                                        'pages' => $loans_pages,
+                                    )); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,10 +184,10 @@
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodInvestmentsData')?>", function( result ) {
 
             $('.money_reserved').html(result.money_reserved);
-            $('.money_lent').html(result.money_lent);
-            $('.money_repaid').html(result.money_repaid);
-            $('.money_lost').html(result.money_lost);
-            $('.outstanding_portfolio').html(result.outstanding_portfolio);
+            $('.total_contribution').html(result.total_contribution);
+            $('.total_paidback').html(result.total_paidback);
+            $('.total_lost').html(result.total_lost);
+            $('.total_outstanding').html(result.total_outstanding);
         }, "json" );
 
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodProjectsData')?>", function( result ) {

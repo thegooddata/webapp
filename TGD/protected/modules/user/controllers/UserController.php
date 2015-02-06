@@ -7,6 +7,8 @@ class UserController extends Controller
 	 */
 	private $_model;
 
+	public $displayMenu = true;
+
 	/**
 	 * @return array action filters
 	 */
@@ -54,7 +56,7 @@ class UserController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('User', array(
 			'criteria'=>array(
-		        'condition'=>'status'.User::STATUS_BANNED,
+		        'condition'=>'status > '.User::STATUS_APPLIED,
 		    ),
 				
 			'pagination'=>array(

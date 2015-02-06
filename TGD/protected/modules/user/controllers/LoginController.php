@@ -41,9 +41,17 @@ class LoginController extends Controller
 				
 				
 				if($model->validate()) {
-					$this->lastViset();
+                  
+                    // check if it is a pre-accepted user and redirect to get share page
+                    if (!Yii::app()->user->isGuest) {
+                      $user = User::model()->findByPk(Yii::app()->user->id);
+                      if ($user->status==User::STATUS_PRE_ACCEPTED) {
+                        Yii::app()->user->returnUrl=Yii::app()->controller->createAbsoluteUrl('//purchase/index');
+                      }
+                    }
+                    
 					if (Yii::app()->user->returnUrl=='/') {
-						$this->redirect(Yii::app()->createUrl('goodData/index'));
+						$this->redirect(Yii::app()->createUrl('//goodData/index'));
 					} else {
 						$this->redirect(Yii::app()->user->returnUrl);
 					}
@@ -53,12 +61,6 @@ class LoginController extends Controller
 			$this->render('/user/login',array('model'=>$model));
 		} else
 			$this->redirect(Yii::app()->controller->module->returnUrl);
-	}
-	
-	private function lastViset() {
-		$lastVisit = User::model()->notsafe()->findByPk(Yii::app()->user->id);
-		$lastVisit->lastvisit_at = date('Y-m-d H:i:s');
-		$lastVisit->save();
 	}
 
 }

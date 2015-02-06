@@ -235,7 +235,16 @@
               font-weight: bold;
               color: @color-link;
               padding-left: 15px;
-            }           
+            }     
+            &.traded{
+              text-align: center;
+              i{
+                color: @light-gray-off;
+                &.yes{
+                  color: @tgd-green;
+                }
+              }
+            }      
           }
         }
       }
@@ -263,6 +272,7 @@
         background-color: @tgd-blue;
       }
     }
+
     .buttons {
       margin-top: 3rem;
       .btn-primary {

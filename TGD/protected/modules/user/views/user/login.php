@@ -51,7 +51,7 @@ $this->breadcrumbs=array(
                 </div>
                 
                  <div class="form-group">
-                    <p class="col-sm-7" id="becomeAMember"><?php echo UserModule::t("Do you want to collaborate with us? "). CHtml::link(UserModule::t("Become a member"),Yii::app()->getModule('user')->registrationUrl, array('class'=>'modal-trigger') ); ?></p>
+                    <p class="col-sm-7" id="becomeAMember"><?php echo("Do you want to get involved? ". CHtml::link(UserModule::t("Become a member"),Yii::app()->getModule('user')->registrationUrl )." and have a say!"); ?></p>
                 </div> 
 
             <?php echo CHtml::endForm(); ?>

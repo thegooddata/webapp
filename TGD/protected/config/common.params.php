@@ -14,9 +14,12 @@ return array(
     'safeRedirectHosts'=>array(
         'www.tgd.local',
         'subdomain.tgd.local',
+        'local.thegooddata.org',
         'www.thegooddata.org',
         'collaborate.thegooddata.org',
         'pre.thegooddata.org',
         'collaborate-pre.thegooddata.org',
     ),
+    'dataThreatsYearCacheDuration'=>86400,
+    'cacheLifespanOneDay'=>86400
 );

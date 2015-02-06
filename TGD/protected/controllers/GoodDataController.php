@@ -19,25 +19,47 @@ class GoodDataController extends Controller {
         );
     }
 
+
     public function actionCompanyAchievementsData() {
 
         $result = array();
 
+        // Active users ----------------------
 
+        // set cache key for this data
+        $cacheKey="CompanyAchievementsData-ActiveUsers";
+        $total=Yii::app()->cache->get($cacheKey);
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('*')
-                ->from('view_members_month')
-                ->queryAll();
-
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand("
+                SELECT count(*) from (
+                    SELECT member_or_user_id
+                    FROM tbl_active_users 
+                    WHERE tbl_active_users.created_at >= (now() - '30 days'::interval) AND tbl_active_users.created_at <=  now()  
+                    GROUP BY member_or_user_id
+                ) as tmp")->queryScalar();
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+        
+        
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['monthly_active_users'] = $total;
 
-        $datas = Yii::app()->db->createCommand()
+        // registered members ----------------
+
+        // set cache key for this data
+        $cacheKey="CompanyAchievementsData-RegisteredUsers";
+        $total=Yii::app()->cache->get($cacheKey);
+
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('count(*) as total')
                 ->from('tbl_members')
@@ -47,51 +69,85 @@ class GoodDataController extends Controller {
                         ), array(
                     ':status' => User::STATUS_ACCEPTED)
                 )
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['total_registered_members'] = $total;
 
+        // queries last month ---------------------
 
-        $datas = Yii::app()->db->createCommand()
+        // set cache key for this data
+        $cacheKey="CompanyAchievementsData-LastMonthQueries";
+        $total=Yii::app()->cache->get($cacheKey);
+
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('*')
                 ->from('view_queries_month')
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['monthly_queries_processed'] = $total;
+        
+        // queries traded last month ------------------
 
+        $cacheKey="CompanyAchievementsData-LastMonthTradedQueries";
+        $total=Yii::app()->cache->get($cacheKey);
 
-        $datas = Yii::app()->db->createCommand()
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('*')
                 ->from('view_queries_trade_month')
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
 
         $result['monthly_queries_trade_processed'] = $total;
+        
+        // money earned -----------------------
 
+        $cacheKey="CompanyAchievementsData-MoneyEarned";
+        $total=Yii::app()->cache->get($cacheKey);
 
-        $datas = Yii::app()->db->createCommand()
+        if($total===false)
+        {
+            // regenerate because it is not found in cache
+            $total = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('sum(gross_amount) as total')
                 ->from('tbl_incomes')
-                ->queryAll();
+                ->queryScalar();
 
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
-        
+            // and save it in cache for later use:
+            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
+        }
+
+        if (!count($total) > 0)
+            $total = 0;
+
         // convert to usd
         $total=Currencies::convertDefaultTo($total, 'USD');
                 
@@ -106,29 +162,49 @@ class GoodDataController extends Controller {
     public function actionGoodInvestmentsData() {
 
         $result = array();
+        
+        // Money lost
+        $datas = Yii::app()->db->createCommand()
+        ->setFetchMode(PDO::FETCH_OBJ)
+        ->select('sum(loss) as total')
+        ->from('tbl_loans')
+        ->queryAll();
 
+        $total_lost = 0;
+        if ($datas[0]->total != null)
+            $total_lost = $datas[0]->total;
 
+        $result['total_lost'] = Yii::app()->numberFormatter->formatCurrency($total_lost, 'USD');
+        
+        // Money reserved
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum((gross_amount-expenses) * loan_reserved/100) as total')
+                ->select('sum((gross_amount-expenses) * loan_reserved/100 ) as total')
                 ->from('tbl_incomes')
                 ->queryAll();
 
-        $total = 0;
+        $money_reserved = 0;
         if ($datas[0]->total != null)
-            $total = $datas[0]->total;
-        
-        
-//            $total = number_format($datas[0]->total, 2, '.', '');
-        
-        
+            $money_reserved = $datas[0]->total;
+            
         // convert to usd
-        $total=Currencies::convertDefaultTo($total, 'USD');
+        $money_reserved=Currencies::convertDefaultTo($money_reserved, 'USD');
         
-        $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        // remove the lost
+        $money_reserved = $money_reserved - $total_lost;
+        
+        // temp fix for formatting negative number, because formatCurrency with this locale displays it wrong
+        $negative='';
+        if ($money_reserved < 0) {
+          $money_reserved = abs($money_reserved);
+          $negative='-';
+        }
+        
+        $money_reserved=$negative.Yii::app()->numberFormatter->formatCurrency($money_reserved, 'USD');
+        
+        $result['money_reserved'] = $money_reserved;
 
-        $result['money_reserved'] = $total;
-
+        // Money lent
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('sum(contribution) as total')
@@ -139,8 +215,9 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_lent'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
+        $result['total_contribution'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        
+        // Outstanding portfolio
         $datas = Yii::app()->db->createCommand()
         ->setFetchMode(PDO::FETCH_OBJ)
         ->select('sum(contribution - paidback - loss) as total')
@@ -151,41 +228,25 @@ class GoodDataController extends Controller {
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['outstanding_portfolio'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        $result['total_outstanding'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
+        // Money repaid
         $datas = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select('sum(paidback) as total')
                 ->from('tbl_loans')
-                ->where(array(
-                    'and',
-                    'id_loans_status = :id',
-                        ), array(
-                    ':id' => 5)
-                )
                 ->queryAll();
 
         $total = 0;
         if ($datas[0]->total != null)
             $total = $datas[0]->total;
 
-        $result['money_repaid'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+        $result['total_paidback'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
 
 
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(loss) as total')
-                ->from('tbl_loans')
-                ->queryAll();
-
-        $total = 0;
-        if ($datas[0]->total != null)
-            $total = $datas[0]->total;
-
-        $result['money_lost'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
+        
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
@@ -260,26 +321,58 @@ class GoodDataController extends Controller {
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
+     * - Loads the loans data.
      */
     public function actionIndex() {
+        // set page layout
         $this->layout = '//layouts/blank';
+        // set page title
+        $this->pageTitle = " - Good Data";
+        
+        // ------------ intialize pagination data for loans
 
+        $loans_pag = 1;
+        $loans_pag_size = 10;
+
+        if (isset($_GET['loans_pag']))
+            $loans_pag = $_GET['loans_pag'];
+
+        // get amount of data
         $loans = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('tbl_loans.*,tbl_loans_activities.name_en as activity,tbl_countries.name_en as country, tbl_loans_status.name_en as status, tbl_countries.code')
-                ->from('tbl_loans,tbl_loans_activities,tbl_countries,tbl_loans_status')
+                ->select('count(*)')
+                ->from('tbl_loans')
+                ->queryAll();
+
+        $loans_total = $loans[0]->count;
+        
+        // build pagination: set total queries, page size, page variable and params
+        $loans_pages = new CPagination($loans_total);
+        $loans_pages->pageSize=$loans_pag_size; // 10
+        $loans_pages->pageVar='loans_pag';
+        $loans_pages->params=  $_GET;
+
+        // get loans
+        $loans = Yii::app()->db->createCommand()
+                ->setFetchMode(PDO::FETCH_OBJ)
+                ->select('tbl_loans.*, tbl_loans_activities.name_en as activity, tbl_countries.name_en as country, tbl_loans_status.name_en as status, tbl_countries.code')
+                ->from('tbl_loans, tbl_loans_activities, tbl_countries, tbl_loans_status')
                 ->where(array(
-                    'and',
-                    'tbl_loans_activities.id = tbl_loans.id_loans_activity',
-                    'tbl_countries.id = tbl_loans.id_countries',
-                    'tbl_loans_status.id = tbl_loans.id_loans_status',
+                            'and',
+                            'tbl_loans_activities.id = tbl_loans.id_loans_activity',
+                            'tbl_countries.id = tbl_loans.id_countries',
+                            'tbl_loans_status.id = tbl_loans.id_loans_status',
                         )
-                )
+                    )
+                ->order('loan_date DESC')
+                ->limit($loans_pag_size)
+                ->offset(($loans_pag-1) * $loans_pag_size)
                 ->queryAll();
 
         $this->render('index', array(
             'loans' => $loans,
-                )
+            'loans_pages' => $loans_pages,
+            )
         );
     }
 

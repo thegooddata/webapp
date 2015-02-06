@@ -1,7 +1,26 @@
 <?php
 
 class TestController extends Controller {
-    
+    public function actionResetApprovedMember() {
+      
+      $pii=MembersPii::model()->findByPk("3561170");
+      $member=User::model()->findByPk("14");
+      
+      $pii->member_id=$member->id;
+      $pii->update('member_id');
+      
+      $member->status=User::STATUS_APPLIED;
+      $member->update('status');
+      
+      echo 'reset done!';
+      
+    }
+    public function actionNewMemberEmail() {
+      $pii=MembersPii::model()->findByPk("3561170");
+      $member=User::model()->findByPk("14");
+      $sent=Yii::app()->getModule('user')->sendNewMemberEmail($pii, $member);
+      var_dump($sent);
+    }
     public function actionOaApi() {
         
         if (date_default_timezone_get()) {

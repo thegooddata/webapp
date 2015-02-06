@@ -5,6 +5,7 @@ include 'config.php';
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'The Good Data',
+	'id'=>'TGDPreAppId', /* required to maintain sessions between deployments */
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -59,9 +60,6 @@ return array(
             # login form path
             'loginUrl' => array('/user/login'),
 
-            # page after login
-            'returnUrl' => array('/site/purchase'),
-
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
         ),
@@ -107,7 +105,9 @@ return array(
 			'class' => 'WebUser',
 		),
             
-                'session'=>require(dirname(__FILE__).'/common.session.php'),
+        'session'=>require(dirname(__FILE__).'/common.session.php'),
+        
+        'cache'=>require(dirname(__FILE__).'/common.cache.php'),
 		
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(

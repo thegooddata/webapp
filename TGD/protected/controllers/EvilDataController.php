@@ -26,6 +26,8 @@ class EvilDataController extends Controller {
     public function actionIndex() {
         $this->layout = '//layouts/blank';
 
+        $this->pageTitle = " - Evil Data";         
+
         $member_id = Yii::app()->user->id;
 
         $adtracks = Yii::app()->db->createCommand()
@@ -69,6 +71,7 @@ class EvilDataController extends Controller {
 
         date_default_timezone_set('UTC');
 
+
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("member_id, DATE(EXTRACT(YEAR FROM created_at) || '-' || EXTRACT(MONTH FROM created_at) || '-01') as date,count(*) AS adtracks")
@@ -84,7 +87,6 @@ class EvilDataController extends Controller {
                 ->group('member_id,date')
                 ->order('date')
                 ->queryAll();
-
 
 
         $date = $day_start;
@@ -207,95 +209,167 @@ class EvilDataController extends Controller {
 
         $member_id = Yii::app()->user->id;
 
-        $result = array();
+        $resultGlobal = array();
+        $resultMember = array();
 
-        $adtracks = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("name, count")
-                ->from('view_adtracks_sources_members')
-                ->where(array(
-                    'and',
-                    'member_id= :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
+        // get cache data
+        $userCacheData = $this->_getUserCacheData($member_id,"AdtracksRatioMember");
 
-        $you = $this->_getColor($adtracks);
+        // if the is valid data in the cache 
+        if ($userCacheData !== false){
+            // send cache response
+            $resultMember['adtracks_you'] = CJSON::decode($userCacheData);
+        }else{    
+            $adtracks = Yii::app()->db->createCommand()
+                    ->setFetchMode(PDO::FETCH_OBJ)
+                    ->select("name, count")
+                    ->from('view_adtracks_sources_members')
+                    ->where(array(
+                        'and',
+                        'member_id= :member_id'
+                            ), array(
+                        'member_id' => $member_id)
+                    )
+                    ->queryAll();
 
-        $result['adtracks_you'] = $you;
 
-        $adtracks = Yii::app()->db->createCommand()
+            $you = $this->_getColor($adtracks);
+
+            // save in cache
+            $this->_setUserCacheData($member_id,"AdtracksRatioMember",CJSON::encode($you));
+
+            $resultMember['adtracks_you'] = $you;
+        }
+
+        // get cache data
+        $globalCacheData = $this->_getUserCacheData(0,"AdtracksRatioTotal");
+
+
+        // if the is valid data in the cache 
+        if ($globalCacheData !== false){
+            // send cache response
+            $resultGlobal['adtracks_average'] = CJSON::decode($globalCacheData);
+
+        }else{  
+            $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
                 ->select("name, count")
                 ->from('view_adtracks_sources_total')
                 ->queryAll();
 
-        $average = $this->_getColor($adtracks);
 
-        $result['adtracks_average'] = $average;
+            $average = $this->_getColor($adtracks);
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
-        //view_adtracks_sources_total
+            // save in cache
+            $this->_setUserCacheData(0,"AdtracksRatioTotal",CJSON::encode($average));
+
+            $resultGlobal['adtracks_average'] = $average;
+        }
+
+        $this->_sendResponse(200, CJSON::encode(array_merge($resultGlobal, $resultMember)), $this->getResponseContentType());
     }
 
     public function actionRiskRatios() {
 
+        // Get risk for member
         $member_id = Yii::app()->user->id;
 
-        $adtracks = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("_getRiskMember (" . $member_id . ") as risk")
-                ->from('tbl_members')
-                ->queryAll();
+        // get cache data
+        $userCacheData = $this->_getUserCacheData($member_id,"RiskMember");
 
-        $result = array();
+        // if the is valid data in the cache 
+        if ($userCacheData !== false){
+            // send cache response
+            $resultMember = CJSON::decode($userCacheData);
+        }else{
+            $adtracks = Yii::app()->db->createCommand()
+                    ->setFetchMode(PDO::FETCH_OBJ)
+                    ->select("_getRiskMember (" . $member_id . ") as risk")
+                    ->from('tbl_members')
+                    ->limit(1)
+                    ->queryAll();
 
-        $result['risk_you'] = number_format($adtracks[0]->risk, 2, '.', '');
+            $resultMember = array();
 
-        $adtracks = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("_getRiskTotal () as risk")
-                ->from('tbl_members')
-                ->queryAll();
+            $resultMember['risk_you'] = number_format($adtracks[0]->risk, 2, '.', '');
+    
+            // Get risk ratio for member 
 
-        $result['risk_average'] = number_format($adtracks[0]->risk, 2, '.', '');
+            $adtracks = Yii::app()->db->createCommand()
+                    ->setFetchMode(PDO::FETCH_OBJ)
+                    ->select("_getRiskRatioMember (" . $member_id . ") as risk")
+                    ->from('tbl_members')
+                    ->limit(1)
+                    ->queryAll();
 
-        $adtracks = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("_getRiskRatioMember (" . $member_id . ") as risk")
-                ->from('tbl_members')
-                ->queryAll();
+            $resultMember['risk_ratio_you'] = number_format($adtracks[0]->risk);
 
-        $result['risk_ratio_you'] = number_format($adtracks[0]->risk);
+            if ($resultMember['risk_ratio_you'] > 70) {
+                $resultMember['risk_level'] = 'high';
+                $resultMember['risk_level_name'] = 'risk lover';
+            } else if ($resultMember['risk_ratio_you'] > 20) {
+                $resultMember['risk_level'] = 'mid';
+                $resultMember['risk_level_name'] = 'average guy';
+            } else {
+                $resultMember['risk_level'] = 'low';
+                $resultMember['risk_level_name'] = 'risk averse';
+            }
 
-        if ($result['risk_ratio_you'] > 75) {
-            $result['risk_level'] = 'high';
-        } else if ($result['risk_ratio_you'] > 25) {
-            $result['risk_level'] = 'medium';
-        } else {
-            $result['risk_level'] = 'low';
+            // save data to cache
+            $this->_setUserCacheData($member_id, "RiskMember", CJSON::encode($resultMember));
         }
 
-        $adtracks = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("_getRiskRatioTotal () as risk")
-                ->from('tbl_members')
-                ->queryAll();
+        // get cache data
+        $globalCacheData = $this->_getUserCacheData(0, "RiskTotal");
 
-        $result['risk_ratio_average'] = number_format($adtracks[0]->risk);
+        // if the is valid data in the cache 
+        if ($globalCacheData !== false){
+            // send cache response
+            $resultGlobal = CJSON::decode($globalCacheData);
+        }else{
+    
+            // Get total risk
 
+            $adtracks = Yii::app()->db->createCommand()
+                    ->setFetchMode(PDO::FETCH_OBJ)
+                    ->select("_getRiskTotal () as risk")
+                    ->from('tbl_members')
+                    ->limit(1)
+                    ->queryAll();
 
+            $resultGlobal['risk_average'] = number_format($adtracks[0]->risk, 2, '.', '');
 
-        $result['percentile'] = number_format($adtracks[0]->risk);
+            // Get total risk ratio
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+            $adtracks = Yii::app()->db->createCommand()
+                    ->setFetchMode(PDO::FETCH_OBJ)
+                    ->select("_getRiskRatioTotal () as risk")
+                    ->from('tbl_members')
+                    ->limit(1)
+                    ->queryAll();
+    
+            $resultGlobal['risk_ratio_average'] = number_format($adtracks[0]->risk);
+
+            // save data to cache
+            $this->_setUserCacheData(0, "RiskTotal", CJSON::encode($resultGlobal));
+        }
+
+        $this->_sendResponse(200, CJSON::encode(array_merge($resultMember, $resultGlobal)), $this->getResponseContentType());
     }
-
     public function actionDataThreatsYear() {
 
         $member_id = Yii::app()->user->id;
         
+        // get cache data
+        $userCacheData = $this->_getUserCacheData($member_id,"DataThreatsYear");
+
+        // if the is valid data in the cache 
+        if ($userCacheData !== false){
+            // send cache response
+            $this->_sendResponse(200, $userCacheData, $this->getResponseContentType());
+        }
+
+        // otherwise, continue getting fresh data
         $day_start = date('Y-m-d', strtotime('first day of next month last year', time()));
         $day_end = date('Y-m-d', strtotime('first day next month this year', time()));
 
@@ -307,32 +381,50 @@ class EvilDataController extends Controller {
         $result['last_day'] = date('F Y');
         $result['total'] = array_sum($data);
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_adtracks_year_users_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
+        // set cache key for this user
+        $dataThreatsYearCacheKey="DataThreatsYear-$member_id";
+        $datas=Yii::app()->cache->get($dataThreatsYearCacheKey);
+        if($datas===false)
+        {
+            // regenerate because it is not found in cache
+            $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileyear(". $member_id .") AS percentile;")->queryAll();
+            // and save it in cache for later use:
+            Yii::app()->cache->set($dataThreatsYearCacheKey, $datas, Yii::app()->params['dataThreatsYearCacheDuration']);
+        }
+        
+        
         if (count($datas) > 0)
-            $adtrack_percentile = 100 - $datas[0]->percentile;
+            $adtrack_percentile = 100 - $datas[0]['percentile'];
         else
             $adtrack_percentile = 100;
 
+        // round up to a multiple of 5
+        $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);        
+
         $result['percentile'] = $adtrack_percentile;
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $result =  CJSON::encode($result);
+
+        // save data to cache
+        $this->_setUserCacheData($member_id, "DataThreatsYear",$result);
+
+        $this->_sendResponse(200, $result, $this->getResponseContentType());
     }
 
     public function actionDataThreatsMonth() {
 
         $member_id = Yii::app()->user->id;
 
+        // get cache data
+        $userCacheData = $this->_getUserCacheData($member_id,"DataThreatsMonth");
+
+        // if the is valid data in the cache 
+        if ($userCacheData !== false){
+            // send cache response
+            $this->_sendResponse(200, $userCacheData, $this->getResponseContentType());
+        }
+
+        // otherwise, continue getting fresh data
         // when the day is 31, 'last month' returns day 1 of same month
         $minusOneDay = (date('d') == 31)?' -1 day':'';
         
@@ -347,32 +439,41 @@ class EvilDataController extends Controller {
         $result['last_day'] = date('F d');
         $result['total'] = array_sum($data);
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_adtracks_month_users_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
+        $datas = Yii::app()->db->createCommand("SELECT _getuserpercentilemonth(". $member_id .") AS percentile;")->queryAll();
+        
         if (count($datas) > 0)
-            $adtrack_percentile = 100 - $datas[0]->percentile;
+            $adtrack_percentile = 100 - $datas[0]['percentile'];
         else
             $adtrack_percentile = 100;
 
-        $result['percentile'] = $adtrack_percentile;
+        
+        // round up to a multiple of 5
+        $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $result['percentile'] = $adtrack_percentile;
+        
+        $result =  CJSON::encode($result);
+
+        // save data to cache
+        $this->_setUserCacheData($member_id, "DataThreatsMonth",$result);
+
+        $this->_sendResponse(200, $result, $this->getResponseContentType());
     }
 
     public function actionDataThreatsWeek() {
 
         $member_id = Yii::app()->user->id;
 
+        // get cache data
+        $userCacheData = $this->_getUserCacheData($member_id,"DataThreatsWeek");
+
+        // if the is valid data in the cache 
+        if ($userCacheData !== false){
+            // send cache response
+            $this->_sendResponse(200, $userCacheData, $this->getResponseContentType());
+        }
+
+        // otherwise, continue getting fresh data
         $week_start = date('Y-m-d', strtotime('-6 days'));
         $week_end = date('Y-m-d', strtotime('+1 days'));
 
@@ -383,26 +484,101 @@ class EvilDataController extends Controller {
         $result['first_day'] = date('l', strtotime($week_start));
         $result['last_day'] = date('l');
 
-        $datas = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('percentile')
-                ->from('view_adtracks_week_users_percentil')
-                ->where(array(
-                    'and',
-                    'member_id = :member_id'
-                        ), array(
-                    'member_id' => $member_id)
-                )
-                ->queryAll();
-
+        $datas = Yii::app()->db->createCommand("SELECT _getuserpercentileweek(". $member_id .") AS percentile;")->queryAll();
+         
         if (count($datas) > 0)
-            $adtrack_percentile = 100 - $datas[0]->percentile;
+            $adtrack_percentile = 100 - $datas[0]['percentile'];
         else
             $adtrack_percentile = 100;
 
+        // round up to a multiple of 5
+        $adtrack_percentile = $this->_roundUpTo5($adtrack_percentile);
+
         $result['percentile'] = $adtrack_percentile;
 
-        $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        $result =  CJSON::encode($result);
+
+        // save data to cache
+        $this->_setUserCacheData($member_id, "DataThreatsWeek",$result);
+
+        $this->_sendResponse(200, $result, $this->getResponseContentType());
+    }
+    
+    private function getResponseContentType() {
+      if (isset($_GET['html'])) {
+        return 'text/html';
+      }
+      return 'application/json';
+    }
+
+    private function _getUserCacheData($member_id, $type){
+        
+        // get from database
+        $condition = ($member_id == 0)?'member_id IS NULL ':'member_id = :id';
+        $param = ($member_id == 0)?array():array(':id' => $member_id);
+        $cacheData = Yii::app()->db->createCommand()
+                                    ->select('*')
+                                    ->from('tbl_cache_data')
+                                    ->where($condition.' AND type = :type', array_merge($param, array(':type' => $type)))
+                                    ->queryAll();
+        
+        if(count($cacheData) > 0){
+            // check date
+            $cacheDate = new DateTime($cacheData[0]['updated_at']);
+            $now = new DateTime();
+            $diff = date_diff($cacheDate, $now);
+
+            if($diff->d > 0){
+                // return false forces resding fresh data
+                return false;  
+            } 
+
+            // decode JSON string
+            $cacheData = $cacheData[0]['data'];
+        }else{
+            return false;
+        }
+
+        return $cacheData;
+    }
+
+    private function _setUserCacheData($member_id, $type, $data){
+        // try update
+        $now = new DateTime();
+        if($member_id == 0){
+            $updatedRows = Yii::app()->db->createCommand()->update('tbl_cache_data', 
+                                                                array('updated_at' => $now->format('Y-m-d H:i:s') ,'data' => $data), 
+                                                                'member_id IS NULL AND type = :type', 
+                                                                array(':type' => $type));
+
+        }else{
+            $updatedRows = Yii::app()->db->createCommand()->update('tbl_cache_data', 
+                                                                array('updated_at' => $now->format('Y-m-d H:i:s') ,'data' => $data), 
+                                                                'member_id = :id AND type = :type', 
+                                                                array(':id' => $member_id, ':type' => $type));
+        }
+        // if update didn't work, try insert
+        if($updatedRows == 0){
+            if($member_id == 0){
+                $affectedRows = Yii::app()->db->createCommand()->insert('tbl_cache_data', 
+                                                               array('data'=> $data, 'type' => $type));                
+            }else{
+                $affectedRows = Yii::app()->db->createCommand()->insert('tbl_cache_data', 
+                                                               array('member_id' => $member_id, 'data'=> $data, 'type' => $type)); 
+            }
+            
+        }
+    }
+
+
+    private function _roundUpTo5($value){
+        $value = round($value);
+        if($value % 5 != 0){
+            $value += (5 - ($value % 5));
+            if($value > 100) $value = 100;
+        }
+
+        return $value;
     }
 
     private function _getStatusCodeMessage($status) {

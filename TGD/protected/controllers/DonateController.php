@@ -29,7 +29,7 @@ class DonateController extends Controller {
         Yii::app()->theme = 'tgd';
 
         // set title
-        $this->pageTitle = " - Donate";
+        $this->pageTitle = " - Support Us";
 
         // set body id to #tgd-donate
         $this->bodyId = "tgd-donate";
@@ -82,7 +82,14 @@ class DonateController extends Controller {
             $this->currency = $_GET['currency'];
             $this->amount = (int)$_GET['amount'] / 100;
             
-           
+            // prevent creation of fake donations from web bots
+            if (isset($_GET['currency']) && $_GET['currency'] != '[currency]') {
+              // all fine
+            } else {
+              // not fine
+              echo "currency cant be '[currency]'";
+              Yii::app()->end();
+            }
             
             /* if user paid with Stripe, charge the card */ 
             if (isset($_GET['gateway']) && $_GET['gateway']=='stripe') {

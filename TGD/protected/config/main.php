@@ -1,5 +1,6 @@
 <?php
 include dirname(__FILE__).'/config.php';
+
 ?>
 <?php
 return array(
@@ -28,7 +29,7 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'admin',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
+			'ipFilters'=>array('127.0.0.1','::1','62.83.209.91'),
 			'generatorPaths' => array(
 				'ext.giix-core', // giix generators
 			),
@@ -58,9 +59,6 @@ return array(
 
             # login form path
             'loginUrl' => array('/user/login'),
-
-            # page after login
-            'returnUrl' => array('/site/purchase'),
 
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
@@ -101,13 +99,21 @@ return array(
     		'dryRun' => false          
 		),
 
+        'clientScript'=>array(
+            'class'=>'ext.minScript.components.ExtMinScript',
+            'minScriptDisableMin' => array('/[-\.]min\.(?:js)$/i'),
+            //'optionName'=>'optionValue',
+        ),
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 			'class' => 'WebUser',
 		),
             
-                'session'=>require(dirname(__FILE__).'/common.session.php'),
+        'session'=>require(dirname(__FILE__).'/common.session.php'),
+        
+        'cache'=>require(dirname(__FILE__).'/common.cache.php'),
 		
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
@@ -140,8 +146,15 @@ return array(
 					'levels'=>'error, warning',
 				),
 			),
-		),
+		),    
 	),
+
+    'controllerMap'=>array(
+        'min'=>array(
+            'class'=>'ext.minScript.controllers.ExtMinScriptController',
+            //'optionName'=>'optionValue',
+        ),
+    ),
 
 	// application-level parameters that can be accessed
 	'params'=>require(dirname(__FILE__).'/common.params.php'),

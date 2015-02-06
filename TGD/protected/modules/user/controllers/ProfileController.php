@@ -76,6 +76,27 @@ class ProfileController extends Controller
             	$user->save();
             	Yii::app()->user->username = $user->username;
             	$success="Changes have been made successfully";
+            	
+            	
+            	
+            	// redirect if coming from social with a next param in the url
+            	$redirect_url=Yii::app()->request->getQuery("next",null);
+              if ($redirect_url !== null && !empty($redirect_url)) {
+                  $redirect_url=urldecode($redirect_url);
+                  $parsed_url=parse_url($redirect_url);
+                  if (!in_array($parsed_url['host'], Yii::app()->params['safeRedirectHosts'])) {
+                      $redirect_url=null;
+                  }
+              }
+              
+              if ($redirect_url != null) {
+                $this->redirect($redirect_url);
+              }
+            	
+            	
+            	
+            	
+            	
             }
             else
             {

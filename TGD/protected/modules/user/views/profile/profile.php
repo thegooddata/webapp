@@ -9,15 +9,23 @@
 <section id="tgd-page-content">
     <div class="container">
         <div class="row">
-            <section id="form" class="col-sm-16 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
-                <?php if ($success != "") { ?>   
-                    <p class="alert alert-success"><?php echo $success; ?>
-                <?php } ?>
+            <section id="form" class="col-sm-16 col-md-7 col-md-offset-1">
+                <?php  if ($success != ""): ?>   
+                    <div class="alert alert-success">
+                        <ul>
+                            <?php echo $success; ?>
+                        </ul>
+                    </div>
+                <?php  endif; ?>
 
-                <?php if ($error != "") { ?>   
-                    <p class="alert alert-danger"><?php echo $error; ?>
-                <?php } ?>
-                <form id="profile-form" action="<?php echo Yii::app()->controller->createAbsoluteUrl("/membership"); ?>" method="POST">
+                <?php if ($error != ""): ?>   
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php echo $error; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+                <form id="profile-form" action="<?php echo Yii::app()->request->url; ?>" method="POST">
                     <div  class="form-group col-sm-16 col-md-16 col-lg-16">
                         <label>Username</label>
                         <input type="text" class="form-control" id="username" name="ProfileForm[username]" value="<?php echo $user->username; ?>">
@@ -46,21 +54,18 @@
                 </form>
             </section>
             <section id="description" class="col-sm-16 col-md-7 col-lg-7">
-                <p>In case you want to update your membership details (ie. postal address),
-                    please send us an email to <a href="mailto:members@thegooddata.org">members@thegooddata.org</a>
-                    including your membership number, full name and a proof of the new data (utility bill).
-                </p>
-                <p>Your personal details are not displayed here since they have been decoupled from you user data to protect your identity.</p>
+                <p>If you would like to update your membership details (for eg, your postal address), email us 
+                at <a href="mailto:members@thegooddata.org">members@thegooddata.org</a> and include your membership 
+                number, your full name and proof of the new information (eg, photocopy of new utility bill).</p>
+                <p>We have decoupled your personal details from your user data in order to protect your identity. For this reason, your details aren’t shown here.</p>
             </section>
         </div>
         <div id="cancel-account" class="row">
             <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign">
-                <img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('resignation');?>"><img src="<?php echo Yii::app()->theme->baseUrl. "/img/cancel-account.png"; ?>">
                 Resign my Membership
-                <div class="loaderDiv"></div>
+                </a>
             </div>
-
-            <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16  alert alert-success alert-dismissable pnlSuccess hidden">SUCCESS: We have sent you an email to confirm your resignation and explain the next steps to sell us back your share</div>
         </div>
     </div>
 
@@ -76,17 +81,6 @@
         setTimeout(function() {
             sameSize();
         }, 100);
-
-        
-        $('.btnResign').click(function() {
-            $('.loaderDiv').css('display', 'inline-block');
-            
-            $.get( "<?php echo Yii::app()->createUrl('/user/profile/sendEmail')?>", function( result ) {
-                $('.loaderDiv').hide();
-                $('.pnlSuccess').removeClass("hidden");
-            });
-                
-        });
 
         $('#change-password').click(function() {
             $('.password-form').toggle();

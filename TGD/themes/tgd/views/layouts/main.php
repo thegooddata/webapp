@@ -9,21 +9,22 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/favicon.ico">
 
-        <title>TheGoodData | Enjoy your data</title>
+        <title>TheGoodData | Enjoy your data <?php echo (isset($this->pageTitle))?$this->pageTitle:'';?></title>
 
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/bootstrap_vertical_tabs.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/vendor/webfonts.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" type="text/css">
-        
         <?php
         $cs=Yii::app()->clientScript;
+
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/bootstrap.min.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/bootstrap_vertical_tabs.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/font-awesome.min.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/webfonts.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/main.css');
+
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js', CClientScript::POS_HEAD);
         $cs->scriptMap=array(
-            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9.1.min.js',
+            'jquery.js'=>Yii::app()->theme->baseUrl . '/js/vendor/jquery-1.9111.1.min.js',
         );
-        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.min.js', CClientScript::POS_HEAD);
+        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/bootstrap.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
         ?>
 
@@ -61,9 +62,12 @@
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/profile");?>">membership details</a></li>
 
                                         <li class="divider"></li>
+                                        <?php if(Yii::app()->user->isAdmin()):?>
+                                            <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/manage/index");?>">Admin</a></li>
+                                        <?php endif; ?>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index");?>">Good data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/evilData/index");?>">Evil data</a></li>
-                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/userData/index");?>">User data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/userData/index");?>">Your data</a></li>
 
                                         <li class="divider"></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/logout");?>"><span class="glyphicon glyphicon-off"></span> sign out</a></li>
@@ -75,7 +79,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/login"); ?>">Sign In</a></li>
-                                <li class="install"><a href="#">Get TheGoodData</a></li>
+                                <li class="install"><a href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank">Get TheGoodData</a></li>
                             </ul>
                         </div>
                         <?php } ?>
@@ -114,7 +118,14 @@
                                   array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
-                                  array('url'=>'#', 'label'=>'GET THEGOODDATA', 'visible'=>Yii::app()->user->isGuest),
+                                  array(
+                                    'url'=>'https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd', 
+                                    'label'=>'GET THEGOODDATA', 
+                                    'visible'=>Yii::app()->user->isGuest,
+                                    'linkOptions'=>array(
+                                        'target'=>'_blank',
+                                    ),
+                                  ),
                                );
                             } else {
                               
@@ -178,38 +189,6 @@
             </div>
 
         </div>
-         <!-- Early Access modal -->
-        <div class="modal fade" id="earlyAccessModal" tabindex="-1" role="dialog" aria-labelledby="accessModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>Early access</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- welcome message -->
-                        <div id="subscribeFormWelcome">
-                            <span>Enjoy your data!&nbsp;We are in private beta right now. Please submit your email and we will contact you shortly about joining the beta.</span><br>
-                            <br>
-                            <span>For frequent updates, follow us&nbsp;</span><a href="https://twitter.com/thegooddata" target="blank">@thegooddata</a>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="<?php echo Yii::app()->controller->createUrl("/site/subscribelist"); ?>" method="POST" class="form-inline" role="form">
-                            <!-- form -->
-                            <input type="hidden" name="u" value="c536df10462fb6afe72117895">
-                            <input type="hidden" name="id" value="b5320da781">
-                            <div class="form-group">
-                                <input class="form-control" type="email" name="MERGE0" id="MERGE0" size="25" placeholder="Enter email">
-                            </div>
-                            <button type="submit" class="btn btn-primary" name="submit">Send</button>
-                            <!-- real people should not fill this in and expect good things -->
-                            <div style="position: absolute; left: -5000px;"><input type="text" name="b_c536df10462fb6afe72117895_b5320da781" value=""></div>
-                        </form>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
 
         <!-- main content -->
 

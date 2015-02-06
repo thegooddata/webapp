@@ -216,19 +216,20 @@ class YiiMail extends CApplicationComponent
 		// Switch email info
 		foreach ($m->from as $fromEmail => $fromName) {
 		  switch ($fromEmail) {
-		    case EMAIL_GENERIC_FROM:
-		      $this->transport->setHost(EMAIL_GENERIC_HOST);
-    			$this->transport->setUsername(EMAIL_GENERIC_USERNAME);
-    			$this->transport->setPassword(EMAIL_GENERIC_PASSWORD);
-    			$this->transport->setPort(EMAIL_GENERIC_PORT);
-          $this->transport->setEncryption('ssl');
-		      break;
 		    case EMAIL_PERSONAL_FROM:
 		      $this->transport->setHost(EMAIL_PERSONAL_HOST);
-    			$this->transport->setUsername(EMAIL_PERSONAL_USERNAME);
-    			$this->transport->setPassword(EMAIL_PERSONAL_PASSWORD);
-    			$this->transport->setPort(EMAIL_PERSONAL_PORT);
-          $this->transport->setEncryption('ssl');
+              $this->transport->setUsername(EMAIL_PERSONAL_USERNAME);
+              $this->transport->setPassword(EMAIL_PERSONAL_PASSWORD);
+              $this->transport->setPort(EMAIL_PERSONAL_PORT);
+              $this->transport->setEncryption('ssl');
+		      break;
+            case EMAIL_GENERIC_FROM:
+            default:
+		      $this->transport->setHost(EMAIL_GENERIC_HOST);
+              $this->transport->setUsername(EMAIL_GENERIC_USERNAME);
+              $this->transport->setPassword(EMAIL_GENERIC_PASSWORD);
+              $this->transport->setPort(EMAIL_GENERIC_PORT);
+              $this->transport->setEncryption('ssl');
 		      break;
 		  }
 		}

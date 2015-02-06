@@ -3,6 +3,11 @@
 return array(
 
 	// REST patterns
+	array('api/login', 'pattern'=>'api/login', 'verb'=>'POST'),
+	array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser', 'verb'=>'POST'),
+	
+	array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
+	
 	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
 	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
 
@@ -39,8 +44,12 @@ return array(
   'membership'=>'/user/profile',
   'product'=>'/site/product',
   'partners'=>'/site/partners',
+  'suggestion'=>'/site/suggestion',
+  'suggestion/ajax'=>'/site/suggestion/ajax/1',
+  'suggestion/thanks'=>'/site/suggestionThanks',
+  'suggestion/thanks/ajax'=>'/site/suggestionThanks/ajax/1',
   'your-company'=>'/site/company',
-  'support-us'=>'/donate',
+  'support-us'=>'/donate/index',
   'support-us/thanks'=>'/donate/thanks',
   'coders'=>'/site/coders',
   'faq'=>'/site/faq',

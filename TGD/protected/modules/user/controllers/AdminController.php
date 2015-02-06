@@ -136,39 +136,7 @@ class AdminController extends Controller
 
 				if ($previus_status != $new_status &&  $new_status == User::STATUS_PRE_ACCEPTED)
 				{
-					
-					
-
-					$memberObj = Yii::app()->db->createCommand()
-                                ->setFetchMode(PDO::FETCH_OBJ)
-                                ->select('*')
-                                ->from('tbl_members_pii u')
-                                ->where(array(
-                                            'and',
-                                            'u.member_id = :user_id',
-                                            ),
-                                    array(
-                                            ':user_id'=>$model->id
-                                            )
-                                    )
-                                ->queryAll();
-                	$memberObj = $memberObj[0];
-
-
-					//SEND EMAIL
-	                $content = file_get_contents(Yii::app()->theme->basePath.'/emails/'.'application_approval.html');
-
-	                $content = str_replace('[FIRST_NAME]',$memberObj->firstname,  $content);
-	                
-	                $content = str_replace('[SHARE_URL]',Yii::app()->controller->createAbsoluteUrl('/purchase/index'),  $content);
-
-	                $message = new YiiMailMessage;
-	                $message->subject = 'Your Membership application has been approved';
-	                $message->setBody($content,'text/html');
-	                $message->addTo($model->email);
-	                $message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
-	                Yii::app()->mail->send($message);
-
+					Yii::app()->getModule('user')->sendApplicationApproval($model);
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
@@ -180,9 +148,53 @@ class AdminController extends Controller
 			'profile'=>$profile,
 		));
 	}
+    
+    /**
+     * Link to approve a member application
+     * @param type $id
+     */
+    public function actionApproveApplication($id) {
+      $model=$this->loadModel($id);
+      if ($model && $model->status!=User::STATUS_ACCEPTED) {
+        $model->status=User::STATUS_PRE_ACCEPTED;
+        $model->update(array('status'));
+        Yii::app()->getModule('user')->sendApplicationApproval($model);
+        Yii::app()->user->setFlash('userAdmin', "The user {$model->username} has been pre-accepted.");
+      }
+      $this->redirect(array('admin'));
+    }
+    
+    public function actionRejectApplication($id, $reason=null) {
+      
+      $member = $this->loadModel($id);
+      $model = new RejectApplicationForm();
+      $model->member=$member;
+      $model->reason=$reason;
+      $rejected=false;
+      
+      if (isset($_POST['RejectApplicationForm'])) {
+        $model->attributes = $_POST['RejectApplicationForm'];
+        if ($model->validate()) {
+          $model->reject();
+          $rejected=true;
+        }
+      }
+      
+      // if form not sent, but we've got reason by $_GET then auto-reject
+      if ($reason != null && $reason != 'other') {
+        $model->reject();
+        $rejected=true;
+      }
+            
+      if ($rejected) {
+        Yii::app()->user->setFlash('userAdmin', "The user {$member->username} has been rejected.");
+        $this->redirect(array('admin'));
+      }
+      
+      $this->render('rejectApplication', compact('model','member'));
+    }
 
-
-	/**
+  /**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 */
@@ -225,12 +237,15 @@ class AdminController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 */
-	public function loadModel()
+	public function loadModel($id=null)
 	{
+        if ($id==null && isset($_GET['id'])) {
+          $id=$_GET['id'];
+        }
 		if($this->_model===null)
 		{
-			if(isset($_GET['id']))
-				$this->_model=User::model()->notsafe()->findbyPk($_GET['id']);
+			if($id)
+				$this->_model=User::model()->notsafe()->findbyPk($id);
 			if($this->_model===null)
 				throw new CHttpException(404,'The requested page does not exist.');
 		}
