@@ -923,29 +923,42 @@ class ApiController extends Controller
 	public function _createWhitelist(){
 	}
 	
+  private function getQueriesblacklistByLang($lang) {
+    return Yii::app()->db->createCommand()
+          ->setFetchMode(PDO::FETCH_OBJ)
+          ->select('stem')
+          ->from('tbl_queries_blacklist')
+          ->where('lang = :lang', array(':lang'=>$lang))
+          ->queryAll();
+  }
 	
-	public function _viewQueriesblacklist(){
+	public function _viewQueriesblacklist() {
+    
 		$query= $_GET['query'];
 		$lang= $_GET['lang'];
+		$fallbackLang= 'en';
 
-		$data = Yii::app()->db->createCommand()
-	                ->setFetchMode(PDO::FETCH_OBJ)
-	                ->select('stem')
-	                ->from('tbl_queries_blacklist')
-	                ->where('lang = :lang', array(':lang'=>$lang))
-	                ->queryAll();
+		$data = $this->getQueriesblacklistByLang($lang);
+    
+    // if no queries for specific language, fallback to english
+    if (count($data) == 0 && $lang != $fallbackLang) {
+      $data = $this->getQueriesblacklistByLang($fallbackLang);
+    }
 	    
-	    
-    	$regexp = array();	
-	    if(count($data) > 0){
-	    	foreach($data as $object){
-	    		$regexp[]=$object->stem;
-	    	}
-	    }
+    $regexp = array();
+    $matches = array();
+    
+    if(count($data) > 0) {
+      
+      foreach($data as $object){
+        $regexp[]=$object->stem;
+      }
+      
+      $regexp='/'.join($regexp,'|').'/';
+      $matched=preg_match($regexp, $query, $matches);
+      
+    }
 
-	    $regexp='/'.join($regexp,'|').'/';
-	    $matched=preg_match($regexp, $query,$matches);
-	    
 		return $matches;
 	}
 
