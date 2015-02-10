@@ -26,16 +26,16 @@
                             <div class="subtext">Registered Members</div>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_queries_processed">0</div>
-                            <div class="subtext">Monthly Queries Processed</div>
+                            <div class="amount monthly_visits_stored">0</div>
+                            <div class="subtext">Monthly Visits Stored</div>
+                        </div>
+                        <div class="item">
+                            <div class="amount monthly_adtracks_blocked">0</div>
+                            <div class="subtext">Monthly Threats Blocked</div>
                         </div>
                         <div class="item">
                             <div class="amount monthly_queries_traded">0</div>
                             <div class="subtext">Monthly Queries Traded</div>
-                        </div>
-                        <div class="item">
-                            <div class="amount total_money_earned">$0</div>
-                            <div class="subtext">Total Money Earned</div>
                         </div>
                     </div>
                     <div id="investments" class="col-sm-4 col-md-4  col-md-offset-2 col-sm-offset-2">
@@ -43,8 +43,8 @@
                             <h2>Good investments</h2>
                         </div>
                         <div class="item">
-                            <div class="amount money_reserved">$0</div>
-                            <div class="subtext">Money available for microloans</div>
+                            <div class="amount total_money_earned">$0</div>
+                            <div class="subtext">Total Money earned</div>
                         </div>
                         <div class="item">
                             <div class="amount total_contribution">$0</div>
@@ -176,14 +176,13 @@
 
             $('.monthly_active_users').html(result.monthly_active_users);
             $('.total_registered_members').html(result.total_registered_members);
-            $('.monthly_queries_processed').html(result.monthly_queries_processed);
+            $('.monthly_visits_stored').html(result.monthly_visits_stored);
+            $('.monthly_adtracks_blocked').html(result.monthly_adtracks_blocked);
             $('.monthly_queries_traded').html(result.monthly_queries_trade_processed);
-            $('.total_money_earned').html(result.total_money_earned);
         }, "json" );
 
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodInvestmentsData')?>", function( result ) {
-
-            $('.money_reserved').html(result.money_reserved);
+            $('.total_money_earned').html(result.total_money_earned);
             $('.total_contribution').html(result.total_contribution);
             $('.total_paidback').html(result.total_paidback);
             $('.total_lost').html(result.total_lost);
