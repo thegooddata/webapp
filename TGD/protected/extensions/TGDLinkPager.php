@@ -20,6 +20,7 @@ class TGDLinkPager extends CLinkPager
 	
   public $showFirstAndLastPages=true;
   public $showLastPageNumber=false;
+  public $showFirstPageNumber=false;
 
 	/**
 	 * Initializes the pager by setting some default property values.
@@ -51,6 +52,13 @@ class TGDLinkPager extends CLinkPager
 		if(($page=$currentPage-1)<0)
 			$page=0;
 		$buttons[]=$this->createPageButton($this->prevPageLabel,$page,$this->previousPageCssClass,$currentPage<=0,false);
+
+		// show first page number
+        if ($this->showFirstPageNumber && !in_array(0, range($beginPage, $endPage))) {
+        	$buttons[] = $this->createPageButton(1,0,$this->firstPageCssClass,$currentPage<=1,false);
+        	$buttons[] ='<li>...</li>';
+          
+        }
 
 		// internal pages
 		for($i=$beginPage;$i<=$endPage;++$i)

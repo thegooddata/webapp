@@ -86,6 +86,7 @@
                             'lastPageCssClass'=>'',
                             'maxButtonCount'=>3,
                             'showFirstAndLastPages'=>false,
+                            'showFirstPageNumber' => true,
                             'showLastPageNumber'=>true,
                             'prevPageLabel'=>'<i class="glyphicon glyphicon-arrow-left"></i>',
                             'nextPageLabel'=>'<i class="glyphicon glyphicon-arrow-right"></i>',
@@ -158,6 +159,7 @@
                             'maxButtonCount'=>5,
                             'showFirstAndLastPages'=>false,
                             'showLastPageNumber'=>true,
+                            'showFirstPageNumber' => true,
                             'prevPageLabel'=>'<i class="glyphicon glyphicon-arrow-left"></i>',
                             'nextPageLabel'=>'<i class="glyphicon glyphicon-arrow-right"></i>',
                             'htmlOptions'=>array(
