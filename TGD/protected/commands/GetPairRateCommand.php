@@ -23,12 +23,12 @@ class GetPairRateCommand extends CConsoleCommand{
 		if($httpcode == 200){
 			$curl_response = json_decode($curl_response);
 			if($json === true){
-				return json_encode($curl_response->query->results->rate);
+				echo json_encode($curl_response->query->results->rate);
 			}else{
-				return $curl_response->query->results->rate->Rate;
+				echo $curl_response->query->results->rate->Rate;
 			}
 		}else{
-			return false;
+			echo 0;
 		}
 	}
 }
