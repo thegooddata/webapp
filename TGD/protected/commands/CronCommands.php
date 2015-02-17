@@ -5,6 +5,7 @@ class CronCommand extends CConsoleCommand
     public function actionSitesCategories(){
 
         $categories = InterestCategoriesSites::model()->findAll('status = 0');
+
         foreach($categories as $cat){
             $categorySite = InterestCategoriesSites::model()->findByPk($cat['id']);
             $alexa_categories = $this->alexa_categories($categorySite->site);
@@ -32,7 +33,9 @@ class CronCommand extends CConsoleCommand
                             }
                             break;
                         }
-                        $url = str_replace('/'.basename($url),'', $url);
+                        $urls = explode('/', $url);
+                        $url = str_replace('/'.end($urls),'', $url);
+
                     }
                 }
             }else{
