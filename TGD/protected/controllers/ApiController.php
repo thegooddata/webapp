@@ -1129,7 +1129,7 @@ class ApiController extends Controller
 
         // get post info
         $member_id=$params['member_id'];
-        $user_id= (count($params['user_id']) > 10) ? $params['user_id'] : null;
+        $user_id= (!empty($params['user_id'])) ? $params['user_id'] : null;
         $site = $params['domain'];
 
         $categories = InterestCategoriesSites::model()->findByAttributes(array('site' => $site));

@@ -11,6 +11,7 @@
  *
  * @property integer $id
  * @property integer $member_id
+ * @property integer $user_id
  * @property integer $site_id
  * @property integer $counter
  * @property string $created_at
@@ -39,7 +40,7 @@ abstract class BaseInterestCategoriesCounts extends GxActiveRecord {
 		return array(
 			array('member_id, site_id, counter', 'numerical', 'integerOnly'=>true),
 			array('member_id, user_id, site_id, counter, created_at, updated_at', 'safe'),
-			array('id, member_id, site_id, counter, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, user_id, member_id, site_id, counter, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
