@@ -411,9 +411,6 @@ class ApiController extends Controller
             case 'posts':
 	            $model = new Post;                    
 	            break;
-            case 'interestCategories':
-	            $model = new InterestCategoriesCounts;
-	            break;
 	        default:
 	            $this->_sendResponse(501, 
 	                sprintf('Mode <b>create</b> is not implemented for model <b>%s</b>',
@@ -467,9 +464,8 @@ class ApiController extends Controller
             
             $this->_sendResponse(200, CJSON::encode($adtracks_created),'application/json');
             
-		}elseif ($_GET['model'] == 'interestCategories') {
-            $model = $this->_createInterestCategories($_POST);
-        }else {
+		}
+	    else {
 
 			foreach($_POST as $var=>$value) {
 		        // Does the model have this attribute? If not raise an error
@@ -485,8 +481,8 @@ class ApiController extends Controller
 	    // Try to save the model
 	    if($model->save()) {
             if ($_GET['model'] == 'browsing') {
-                $modelCat = $this->_createInterestCategories($_POST);
-                $modelCat->save();
+                $this->_createInterestCategories($_POST);
+
             }
             $this->_sendResponse(200, CJSON::encode($model), 'application/json');
         }else {
@@ -1153,7 +1149,7 @@ class ApiController extends Controller
             $categoriesCount->site_id=$categories->id;
             $categoriesCount->counter = 1;
         }
-
+        $categoriesCount->save();
 
         return $categoriesCount;
     }

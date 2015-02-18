@@ -17,12 +17,28 @@ class InterestCategories extends BaseInterestCategories
         return parent::beforeSave();
     }
 
+    public function categoriesAllCounts()
+    {
+        $categories = array();
+        $all_categories = InterestCategories::model()->findAll('counter > 0');
+        foreach($all_categories as $category){
+            $categories[$category['id']] = array(
+                'counter' => $category['counter'],
+                'category' => $category['category'],
+                'parent_id' => $category['parent_id'],
+                'url' => $category['url']
+            );
+        }
+
+        return $categories;
+    }
+
     public function categoriesCounts($member_id = 0)
     {
         $this->categories = array();
         $where = '';
         if($member_id > 0){
-            $where = 'cc.member_id = $member_id AND';
+            $where = "cc.member_id = $member_id AND";
         }
         $counts = Yii::app()->db->createCommand(
             "SELECT SUM(cc.counter) as counter, cs.category_id, ic.category, ic.url

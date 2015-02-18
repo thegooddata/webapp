@@ -77,10 +77,26 @@ class CronCommand extends CConsoleCommand
         $cacheKey="InterestCategories7DayAvg";
 //        $result=Yii::app()->cache->get($cacheKey);
 
-        $categories = InterestCategories::model()->categoriesCounts();
+        $categories = InterestCategories::model()->categoriesAllCounts();
 
         Yii::app()->cache->set($cacheKey, $categories, Yii::app()->params['cacheLifespanOneDay']);
 
+    }
+
+    public function actionSitesUsersCategoriesCounts(){
+
+        $startdate = date('Y-m-d', strtotime("-7 days"));
+        $categoriesCounts = InterestCategoriesCounts::model()->findAll(array('select'=>'distinct(member_id)', 'condition'=>"DATE(date_visit) >= '$startdate' AND member_id > 0"));
+
+        if(!empty($categoriesCounts)){
+            foreach($categoriesCounts as $cat){
+                $cacheKey="InterestCategories7DayAvgMember".$cat['member_id'];
+
+                $categories = InterestCategories::model()->categoriesCounts($cat['member_id']);
+
+                Yii::app()->cache->set($cacheKey, $categories, Yii::app()->params['cacheLifespanOneDay']);
+            }
+        }
     }
 
     protected function saveParentCategoriesCounts($parent_id, $count){
