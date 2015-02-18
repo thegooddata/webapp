@@ -406,10 +406,13 @@ class ApiController extends Controller
 	            $model = new Adtracks;  
 	            break;
             case 'adtrackssources':
-	            $model = new AdtracksSources;  
+	            $model = new AdtracksSources;
 	            break;
             case 'posts':
 	            $model = new Post;                    
+	            break;
+            case 'interestCategories':
+	            $model = new InterestCategoriesCounts;
 	            break;
 	        default:
 	            $this->_sendResponse(501, 
@@ -464,9 +467,10 @@ class ApiController extends Controller
             
             $this->_sendResponse(200, CJSON::encode($adtracks_created),'application/json');
             
-		}
-	    else {
-			
+		}elseif ($_GET['model'] == 'interestCategories') {
+            $model = $this->_createInterestCategories($_POST);
+        }else {
+
 			foreach($_POST as $var=>$value) {
 		        // Does the model have this attribute? If not raise an error
 		        if($model->hasAttribute($var))
@@ -479,9 +483,13 @@ class ApiController extends Controller
 	    }
 
 	    // Try to save the model
-	    if($model->save())
-	        $this->_sendResponse(200, CJSON::encode($model),'application/json');
-	    else {
+	    if($model->save()) {
+            if ($_GET['model'] == 'browsing') {
+                $modelCat = $this->_createInterestCategories($_POST);
+                $modelCat->save();
+            }
+            $this->_sendResponse(200, CJSON::encode($model), 'application/json');
+        }else {
 	        // Errors occurred
 	        $msg = "<h1>Error</h1>";
 	        $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
@@ -1116,4 +1124,37 @@ class ApiController extends Controller
     
     return $model;
 	}
+
+    public function _createInterestCategories($params) {
+
+        // get post info
+        $member_id=$params['member_id'];
+        $user_id= (!empty($params['user_id'])) ? $params['user_id'] : null;
+        $site = $params['domain'];
+
+        $categories = InterestCategoriesSites::model()->findByAttributes(array('site' => $site));
+        if(empty($categories)) {
+            $categories = new InterestCategoriesSites;
+            $categories->site = $site;
+
+            if (!$categories->save()) {
+                var_dump($categories->errors);
+                die;
+            }
+        }
+
+        $categoriesCount = InterestCategoriesCounts::model()->findByAttributes(array('member_id' => $member_id, 'user_id' => $user_id, 'site_id' => $categories->id, 'date_visit' => date('Y-m-d')));
+        if(!empty($categoriesCount)){
+            $categoriesCount->counter = $categoriesCount->counter + 1;
+        }else{
+            $categoriesCount = new InterestCategoriesCounts;
+            $categoriesCount->member_id=$member_id ;
+            $categoriesCount->user_id=$user_id ;
+            $categoriesCount->site_id=$categories->id;
+            $categoriesCount->counter = 1;
+        }
+
+
+        return $categoriesCount;
+    }
 }
