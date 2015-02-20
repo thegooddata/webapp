@@ -1139,14 +1139,14 @@ class ApiController extends Controller
                 }
             }
 
-            $categoriesCount = InterestCategoriesCounts::model()->findByAttributes(array('member_id' => $member_id, 'user_id' => $user_id, 'site_id' => $categories->id, 'date_visit' => date('Y-m-d')));
+            $categoriesCount = InterestCategoriesCounts::model()->findByAttributes(array('member_id' => $member_id, 'user_id' => $user_id, 'site' => $site, 'date_visit' => date('Y-m-d')));
             if (!empty($categoriesCount)) {
                 $categoriesCount->counter = $categoriesCount->counter + 1;
             } else {
                 $categoriesCount = new InterestCategoriesCounts;
                 $categoriesCount->member_id = $member_id;
                 $categoriesCount->user_id = $user_id;
-                $categoriesCount->site_id = $categories->id;
+                $categoriesCount->site = $site;
                 $categoriesCount->counter = 1;
             }
             return $categoriesCount->save();
