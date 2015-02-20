@@ -21,20 +21,20 @@ class m150217_091915_create_interest_categories_tables extends CDbMigration
         ");
         $this->execute("ALTER TABLE tbl_interest_categories OWNER TO tgd;");
 
-        $this->execute(
-            "CREATE TABLE tbl_interest_categories_counts
-                (
-                  id serial NOT NULL,
-                  member_id integer,
-                  user_id character varying(255) DEFAULT ''::character varying,
-                  site_id integer,
-                  counter integer NOT NULL DEFAULT 0,
-                  date_visit date NOT NULL DEFAULT now(),
-                  CONSTRAINT tbl_interest_categories_counts_pkey PRIMARY KEY (id)
-                )
-                WITH (
-                  OIDS=FALSE
-                );
+        $this->execute("
+            CREATE TABLE tbl_interest_categories_counts
+            (
+              id serial NOT NULL,
+              member_id integer,
+              user_id character varying(255) DEFAULT ''::character varying,
+              site character varying(255) DEFAULT ''::character varying,
+              counter integer NOT NULL DEFAULT 0,
+              date_visit date NOT NULL DEFAULT now(),
+              CONSTRAINT tbl_interest_categories_counts_pkey PRIMARY KEY (id)
+            )
+            WITH (
+              OIDS=FALSE
+            );
         ");
         $this->execute("ALTER TABLE tbl_interest_categories_counts OWNER TO tgd;");
 
@@ -42,8 +42,8 @@ class m150217_091915_create_interest_categories_tables extends CDbMigration
             CREATE TABLE tbl_interest_categories_sites
             (
               id serial NOT NULL,
-              category_id integer NOT NULL DEFAULT 0,
-              site character varying(128) NOT NULL,
+              category_id integer,
+              site character varying(255) NOT NULL,
               status integer NOT NULL DEFAULT 0,
               created_at timestamp with time zone NOT NULL DEFAULT now(),
               updated_at timestamp with time zone NOT NULL DEFAULT now(),
