@@ -43,12 +43,11 @@ abstract class BaseQueries extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('provider, data, query, lang', 'required'),
 			array('member_id', 'numerical', 'integerOnly'=>true),
 			array('user_id, language_support', 'length', 'max'=>255),
 			array('provider, lang, share', 'length', 'max'=>128),
 			array('data', 'length', 'max'=>256),
-			array('usertime, created_at, updated_at', 'safe'),
+			array('provider, data, query, lang, usertime, created_at, updated_at', 'safe'),
 			array('member_id, user_id, share, usertime, language_support, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, member_id, user_id, provider, data, query, lang, share, usertime, language_support, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
