@@ -90,10 +90,12 @@ $(function() {
     }
 
     $('#autocomplete').on('blur',function(){
+        
         setTimeout(
             function() {
-                $('[id=autocomplete]').val(arguments[0]);
-            }, 200, route);
+                console.log('blur route:'+route);
+                $('[id=autocomplete]').val(route);
+            }, 300);
     });
 
     $('#registration-form').validate({
