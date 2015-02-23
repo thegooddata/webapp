@@ -87,9 +87,9 @@ abstract class BaseQueries extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('user_id', $this->user_id, true);
-		$criteria->compare('provider', $this->provider, true);
+		$criteria->compare('LOWER(provider)', strtolower($this->provider), true);
 		$criteria->compare('data', $this->data, true);
-		$criteria->compare('query', $this->query, true);
+		$criteria->compare('LOWER(query)', strtolower($this->query), true);
 		$criteria->compare('lang', $this->lang, true);
 		$criteria->compare('share', $this->share, true);
 		$criteria->compare('usertime', $this->usertime, true);
