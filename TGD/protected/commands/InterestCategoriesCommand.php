@@ -1,6 +1,8 @@
 <?php
-//    * 01 * * * /usr/bin/php /var/www/tgd/protected/yiic.php cron SitesCategories
-class CronCommand extends CConsoleCommand
+//    * 01 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories SitesCategories
+//    * 02 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories SitesCategoriesCounts
+//    * 02 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories SitesUsersCategoriesCounts
+class InterestCategoriesCommand extends CConsoleCommand
 {
     public function actionSitesCategories(){
 
@@ -60,8 +62,8 @@ class CronCommand extends CConsoleCommand
     public function actionSitesCategoriesCounts(){
         $counts = Yii::app()->db->createCommand(
             "SELECT SUM(cc.counter) as counter, cs.category_id
-                FROM tbl_interest_categories_counts cc
-                JOIN tbl_interest_categories_sites cs ON cs.id=cc.site_id
+                FROM tbl_interest_categories_sites cs
+                JOIN tbl_interest_categories_counts cc ON cs.site=cc.site
                 WHERE cc.date_visit >= (now() - '7 days'::interval) AND cc.date_visit <=  now()
                 GROUP BY cs.category_id"
             )->queryAll();

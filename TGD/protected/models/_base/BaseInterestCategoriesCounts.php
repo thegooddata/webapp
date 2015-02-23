@@ -12,7 +12,7 @@
  * @property integer $id
  * @property integer $member_id
  * @property integer $user_id
- * @property integer $site_id
+ * @property string $site
  * @property integer $counter
  * @property string $created_at
  * @property string $updated_at
@@ -38,8 +38,8 @@ abstract class BaseInterestCategoriesCounts extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('member_id, site_id, counter', 'numerical', 'integerOnly'=>true),
-			array('member_id, user_id, site_id, counter, created_at, updated_at', 'safe'),
+			array('member_id, counter', 'numerical', 'integerOnly'=>true),
+			array('member_id, user_id, site, counter, created_at, updated_at', 'safe'),
 			array('id, user_id, member_id, site_id, counter, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
@@ -57,7 +57,7 @@ abstract class BaseInterestCategoriesCounts extends GxActiveRecord {
 			'id' => Yii::t('app', 'ID'),
 			'member_id' => Yii::t('app', 'Member'),
 			'user_id' => Yii::t('app', 'User'),
-			'site_id' => Yii::t('app', 'Site'),
+			'site' => Yii::t('app', 'Site'),
 			'counter' => Yii::t('app', 'Counter'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
@@ -70,7 +70,7 @@ abstract class BaseInterestCategoriesCounts extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('user_id', $this->member_id);
-		$criteria->compare('site_id', $this->site_id, true);
+		$criteria->compare('site', $this->site, true);
 		$criteria->compare('counter', $this->counter, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);

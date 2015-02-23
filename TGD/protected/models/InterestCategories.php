@@ -42,8 +42,8 @@ class InterestCategories extends BaseInterestCategories
         }
         $counts = Yii::app()->db->createCommand(
             "SELECT SUM(cc.counter) as counter, cs.category_id, ic.category, ic.url
-                FROM tbl_interest_categories_counts cc
-                JOIN tbl_interest_categories_sites cs ON cs.id=cc.site_id
+                FROM tbl_interest_categories_sites cs
+                JOIN tbl_interest_categories_counts cc ON cs.site=cc.site
                 JOIN tbl_interest_categories ic ON ic.id=cs.category_id
                 WHERE $where cc.date_visit >= (now() - '7 days'::interval) AND cc.date_visit <=  now()
                 GROUP BY cs.category_id, ic.category, ic.url"
