@@ -62,4 +62,7 @@ CONST EMAIL_PERSONAL_USERNAME = 'you@thegooddata.org';
 CONST EMAIL_PERSONAL_PASSWORD = 'password';
 CONST EMAIL_PERSONAL_PORT = '465';
 
+/* enable slow_query log */
+const SLOW_QUERY_LOG=false;
+
 ?>
