@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 <?php endif; ?>
-                <form id="profile-form" action="<?php echo Yii::app()->request->url; ?>" method="POST">
+                <form id="profile-form" action="<?php echo Yii::app()->request->url; ?>" method="POST" enctype="multipart/form-data">
                     <div  class="form-group col-sm-16 col-md-16 col-lg-16">
                         <label>Username</label>
                         <input type="text" class="form-control" id="username" name="ProfileForm[username]" value="<?php echo $user->username; ?>">
@@ -35,7 +35,39 @@
                         <input type="text" class="form-control" id="email" name="ProfileForm[email]" value="<?php echo $user->email; ?>">
                         <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="Used for password recovery and infrequent legal communications as a company Member"></span>
                     </div>
-                    
+                    <div class="form-group col-sm-16 col-md-16 col-lg-16 has-info has-feedback">
+                        <label>Avatar</label>
+                        <div class="row">
+                            <div class="pull-left">
+                                <label for="User_image" class="btn btn-success">Upload Avatar</label>
+                            </div>
+                            <div class="pull-right">
+                                <?php echo CHtml::activeFileField($user, 'image'); ?>
+                                <?php if (!empty($user->avatar)) : ?>
+                                    <img class="thumbnail" id="profile_image" src="<?php echo Yii::app()->baseUrl; ?>/uploads/avatars/<?php echo $user->id ?>/thumb/<?php echo $user->avatar ?>" style="height: 100px;" />
+                                <?php else : ?>
+                                    <img class="thumbnail hide" id="profile_image" src="#" style="height: 100px;" />
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <span class="glyphicon glyphicon-exclamation-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="This image may be visible by others in the about-us page and when participating in the collaboration network. We recommend that you leave it blank or that you use an avatar instead of a picture if you want to preserve your anonymity"></span>
+                    </div>
+                    <div class="form-group col-sm-16 col-md-16 col-lg-16 has-info has-feedback">
+                        <label>Url</label>
+                        <input type="text" class="form-control" id="url" name="ProfileForm[url]" value="<?php echo $user->url; ?>">
+                        <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content="If you want, you can provide us with your personal webpage, blog, twitter url, etc)"></span>
+                    </div>
+                    <div class="form-group col-sm-16 col-md-16 col-lg-16 has-info has-feedback">
+                        <label>Notification Preferences</label>
+                        <div class="checkbox">
+                            <label id="notification_preferences_label">
+                                <input type="checkbox" id="notification_preferences" name="ProfileForm[notification_preferences]" value="1" <?php if($user->notification_preferences) echo 'checked'; ?>>
+                                <span><?php echo ($user->notification_preferences) ? 'Subscribed' : 'Unsubscribed'; ?></span>
+                            </label>
+                        </div>
+                        <span class="glyphicon glyphicon-question-sign form-control-feedback" data-toggle="popover" data-placement="top" data-content='Subscribe or unsubscribe from both company newsletters and Collaboration network updates.'></span>
+                    </div>
+
                         <div  class="password-form form-group col-sm-16 col-md-16 col-lg-16">
                             <label>Current password</label>
                             <input type="password" class="form-control" id="current-password" name="ProfileForm[current-password]">
@@ -104,4 +136,38 @@
         //     $popover.find('.arrow').css('left', '50%');
         // })
     });
+</script>
+
+<script>
+    // this script for collecting the form data and pass to the controller action and doing the on success validations
+    $(document).ready(function(){
+        $('#User_image').addClass('hide');
+
+        $('#User_image').change(function () {
+            if(this.value.match(/\.(jpg|jpeg|png|gif)$/)) {
+                readURL(this);
+            }
+        });
+
+        $('#notification_preferences').change(function(){
+            if(this.checked){
+                $('#notification_preferences_label span').text('Subscribed')
+            }else{
+                $('#notification_preferences_label span').text('Unsubscribed')
+            }
+        })
+    })
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#profile_image').attr('src', e.target.result).removeClass('hide');
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>

@@ -35,7 +35,9 @@ class ProfileController extends Controller
 
             $user->username = $profile_form['username'];
             $user->email = $profile_form['email'];
-            
+            $user->url = $profile_form['url'];
+            $user->notification_preferences = !empty($profile_form['notification_preferences']) ? 1 : 0;
+
             if ($profile_form['current-password']!=""){
 
             	$identity=new UserIdentity($user->username,$profile_form['current-password']);
@@ -73,7 +75,46 @@ class ProfileController extends Controller
 
             if($error=="" && $user->validate())
             {
-            	$user->save();
+//                $user->avatar = CUploadedFile::getInstance($user,'image');
+
+                echo
+                /* START UPLOAD FILE */
+                Yii::import('ext.EUploadedImage.EUploadedImage');
+
+                $avatar = EUploadedImage::getInstance($user, 'image');
+
+                if(!empty($avatar)) {
+                    $user->avatar = $avatar;
+                    $user->avatar->maxWidth = 800;
+                    $user->avatar->maxHeight = 800;
+
+                    $user->avatar->thumb = array(
+                        'maxWidth' => 150,
+                        'maxHeight' => 150,
+                        'dir' => 'thumb',
+                        'prefix' => '',
+                    );
+
+                    $user->avatar->preview = array(
+                        'maxWidth' => 400,
+                        'maxHeight' => 400,
+                        'dir' => 'preview',
+                        'prefix' => '',
+                    );
+                }
+                /* END UPLOAD FILE */
+
+            	if($user->save()){
+                    /* START UPLOAD FILE */
+                    if (!empty($avatar)){
+                        $path = realpath(Yii::app()->basePath . "/../uploads/avatars");
+
+                        if(!is_dir($path)) mkdir($path, 0777);
+
+                        $user->avatar->saveAs($path . "/". $user->id . "/" . $user->avatar->getName());
+                    }
+                    /* END UPLOAD FILE */
+                }
             	Yii::app()->user->username = $user->username;
             	$success="Changes have been made successfully";
             	
@@ -92,11 +133,6 @@ class ProfileController extends Controller
               if ($redirect_url != null) {
                 $this->redirect($redirect_url);
               }
-            	
-            	
-            	
-            	
-            	
             }
             else
             {
