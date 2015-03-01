@@ -83,9 +83,9 @@ abstract class BaseMembers extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('username', $this->username, true);
+		$criteria->compare('LOWER(username)', strtolower($this->username), true);
 		$criteria->compare('password', $this->password, true);
-		$criteria->compare('email', $this->email, true);
+		$criteria->compare('LOWER(email)', strtolower($this->email), true);
 		$criteria->compare('activkey', $this->activkey, true);
 		$criteria->compare('lastvisit_at', $this->lastvisit_at, true);
 		$criteria->compare('superuser', $this->superuser);
