@@ -17,56 +17,7 @@ return array(
 
 	'theme'=>'tgd',
 
-	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		'redoctober' => array(
-			'class'=>'ext.redoctober'
-		),
-
-		'TGD' => array(
-			'class'=>'ext.TGD'
-		),
-
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'admin',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-			'generatorPaths' => array(
-				'ext.giix-core', // giix generators
-			),
-		),
-		
-		'user'=>array(
-            # encrypting method (php hash function)
-            'hash' => 'md5',
-
-            # send activation email
-            'sendActivationMail' => true,
-
-            # allow access for non-activated users
-            'loginNotActiv' => false,
-
-            # activate user on registration (only sendActivationMail = false)
-            'activeAfterRegister' => false,
-
-            # automatically login from registration
-            'autoLogin' => true,
-
-            # registration path
-            'registrationUrl' => array('/user/registration'),
-
-            # recovery password path
-            'recoveryUrl' => array('/user/recovery'),
-
-            # login form path
-            'loginUrl' => array('/user/login'),
-
-            # page after logout
-            'returnLogoutUrl' => array('/user/login'),
-        ),
-
-	),
+	'modules'=>require(dirname(__FILE__).'/common.modules.php'),
 
 	// application components
 	'components'=>array(
@@ -128,13 +79,13 @@ return array(
 			'rules'=>require(dirname(__FILE__).'/common.rules.php'),
 		),
 
-		'db'=>array(
+		'db'=>CMap::mergeArray(require(dirname(__FILE__).'/common.db.php'), array(
 		    'tablePrefix' => 'tbl_',
 		    'connectionString' => 'pgsql:host=localhost;port=5432;dbname=tgd_webapp',
 		    'username'=>'tgd',
 		    'password'=>'tGdwA0101',
 		    'charset'=>'UTF8',
-		),
+		)),
 		// 'db'=>array(
 		// 	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		// ),
@@ -152,21 +103,8 @@ return array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
-			),
-		),
+		'log'=>CMap::mergeArray(require(dirname(__FILE__).'/common.log.php'), array(
+        )),
 	),
 
     'controllerMap'=>array(

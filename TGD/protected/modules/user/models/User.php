@@ -12,6 +12,8 @@ class User extends CActiveRecord
 	const STATUS_PRE_ACCEPTED = 1;
 	const STATUS_ACCEPTED = 2;
 
+    public $image;
+
 	//TODO: Delete for next version (backward compatibility)
 	//const STATUS_BANED=-1;
 	
@@ -29,6 +31,9 @@ class User extends CActiveRecord
      * @var timestamp $created_at
      * @var timestamp $lastvisit_at
      * @var key $key
+     * @property string $avatar
+     * @property string $url
+     * @property integer $notification_preferences
 	 */
 
 	/**
@@ -86,7 +91,7 @@ class User extends CActiveRecord
 			//array('username, email, superuser, status', 'required'),
 			array('username,  superuser, status', 'required'),
 			array('superuser, status', 'numerical', 'integerOnly'=>true),
-			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status', 'safe', 'on'=>'search'),
+			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status, avatar, url', 'safe', 'on'=>'search'),
 		):((Yii::app()->user->id==$this->id)?array(
 			//array('username, email', 'required'),
 			array('username', 'required'),
@@ -95,6 +100,10 @@ class User extends CActiveRecord
 			array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
 			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => UserModule::t("Incorrect symbols (A-z0-9).")),
 			//array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
+
+            array('notification_preferences', 'default', 'value' => 0, 'setOnEmpty' => true),
+            array('image', 'length', 'max' => 255, 'tooLong' => '{attribute} is too long (max {max} chars).'),
+            array('image', 'file', 'types' => 'jpg,jpeg,gif,png', 'allowEmpty'=>true, 'maxSize' => 1024 * 1024 * 2, 'tooLarge' => 'Size should be less then 2MB'),
 		):array()));
 	}
 
@@ -129,6 +138,10 @@ class User extends CActiveRecord
 			'superuser' => UserModule::t("Superuser"),
 			'status' => UserModule::t("Status"),
 			'key' => UserModule::t("Key"),
+
+            'avatar' => Yii::t('app', 'Avatar'),
+            'url' => Yii::t('app', 'Url'),
+            'notification_preferences' => Yii::t('app', 'Notification Preferences'),
 		);
 	}
 	
@@ -157,7 +170,7 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key',
+            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key, user.avatar, user.url, user.notification_preferences',
         ));
     }
 

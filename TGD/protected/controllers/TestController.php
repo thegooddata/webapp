@@ -1,6 +1,16 @@
 <?php
 
 class TestController extends Controller {
+  
+    public function actionSlowQueryLog() {
+      $rows=Yii::app()->db->createCommand("
+      SELECT id, user_id, member_id, adtracks_sources_id, domain, url, usertime, 
+            status, created_at, updated_at
+       FROM tbl_adtracks limit 150000  
+      ")->queryAll();
+      echo count($rows);
+    }
+  
     public function actionResetApprovedMember() {
       
       $pii=MembersPii::model()->findByPk("3561170");
