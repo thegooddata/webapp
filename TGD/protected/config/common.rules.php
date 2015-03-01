@@ -8,6 +8,9 @@ return array(
 	
 	array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
 	
+  array('api/addToPHPList', 'pattern'=>'api/phplist/add/<user_email:[\w+.@]+>/<list:[\w+]+>', 'verb'=>'GET'),
+  array('api/moveUser', 'pattern'=>'api/phplist/move/<user_email:[\w+.@]+>/<from:\d+>/<to:\d+>', 'verb'=>'GET'),
+
 	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
 	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
 

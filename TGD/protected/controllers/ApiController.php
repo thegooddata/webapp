@@ -568,6 +568,75 @@ class ApiController extends Controller
 	        $this->_sendResponse(500, $msg );
 	}
 
+	/**
+	 * Adds an email to a PHPList list.
+	 * @return void
+	 */
+	public function actionAddToPHPList(){
+		$email = $_GET['user_email'];
+		$list = $_GET['list'];
+
+		// Validate email
+		$validator=new CEmailValidator;
+		if(!$validator->validateValue($email)){
+			$result_data = array(
+				'result' => 'fail',
+				'message' => 'Email provided is not valid');
+			$this->_sendResponse(200, CJSON::encode($result_data), 'application/json');
+			return;
+		}
+
+		// Process data
+		$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+		$result = $phplist->addUserToList($email, $list);
+		
+		if($result > 0){
+			$result_data = array(
+				'result'=>'success',
+				'message'=>'The user with email ' . $email . ' has been added to the list ' . $list . '.'
+			);
+		}else{
+			$result_data = array('result'=>'fail');
+			if($result == -1){
+				$result_data['message'] = 'User with email ' . $email . ' couldn\'t be created.';	
+			}else if($result == -2){
+				$result_data['message'] = 'There\'s no list called ' . $list . '.';	
+			}else if($result == -3){
+				$result_data['message'] = 'User with email ' . $email . ' is already in list ' . $list . '.';	
+			}else if($result === false){
+				$result_data['message'] = 'There has been an error processing the request.';
+			}
+
+		}
+
+		$this->_sendResponse(200, CJSON::encode($result_data), 'application/json');
+	}
+
+	/**
+	 * Moves a user from one list to another.
+	 * @return void
+	 */
+	public function actionMoveUser(){
+		$email = $_GET['user_email'];
+		$from = $_GET['from'];
+		$to = $_GET['to'];
+
+		$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+		$result = $phplist->moveUser($email, $from, $to);
+		
+		if($result > 0){
+			$result_data = array(
+				'result'=>'success',
+				'message'=>'The user with email ' . $email . ' has been moved from list ' . $from . ' to list ' . $to . '.'
+			);
+		}else if($result == 0){
+			$result_data = array('result'=>'fail');
+			$result_data['message'] = 'No changes.';	
+		}
+
+		$this->_sendResponse(200, CJSON::encode($result_data), 'application/json');
+	}
+
     public function actionDelete()
 	{
 	    switch($_GET['model'])
