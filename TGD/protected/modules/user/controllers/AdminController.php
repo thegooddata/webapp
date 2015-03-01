@@ -14,6 +14,15 @@ class AdminController extends Controller
 
 	private $_model;
 
+	private $statusToList = array(
+		User::STATUS_APPLIED => PHPLIST_APPLIED_LIST,
+		User::STATUS_PRE_ACCEPTED => PHPLIST_PRE_ACCEPTED_LIST,
+		User::STATUS_ACCEPTED => PHPLIST_ACCEPTED_LIST,
+		User::STATUS_DENIED => PHPLIST_DENIED_LIST,
+		User::STATUS_LEFT => PHPLIST_LEFT_LIST,
+		User::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
+		);
+
 	/**
 	 * @return array action filters
 	 */
@@ -125,32 +134,72 @@ class AdminController extends Controller
 		if(isset($_POST['User']))
 		{
 
-			$previus_status=$model->status;
+			$previous_status=$model->status;
 
 			$model->attributes=$_POST['User'];
 
 			$new_status=$model->status;
 
 
-			$profile->attributes=((isset($_POST['Profile'])?$_POST['Profile']:array()));;
+			$profile->attributes=((isset($_POST['Profile']) ? $_POST['Profile'] : array()));;
 			
 			
-			if($model->validate()&&$profile->validate()) {
+			if($model->validate() && $profile->validate()) {
 				$old_password = User::model()->notsafe()->findByPk($model->id);
-				if ($old_password->password!=$model->password) {
-					$model->password=Yii::app()->controller->module->encrypting($model->password);
-					$model->activkey=Yii::app()->controller->module->encrypting(microtime().$model->password);
+
+				if ($old_password->password != $model->password) {
+					$model->password = Yii::app()->controller->module->encrypting($model->password);
+					$model->activkey = Yii::app()->controller->module->encrypting(microtime().$model->password);
 				}
+
 				$model->save();
 				$profile->save();
 
-				if ($previus_status != $new_status &&  $new_status == User::STATUS_PRE_ACCEPTED)
-				{
-					Yii::app()->getModule('user')->sendApplicationApproval($model);
+				if ($previous_status != $new_status){
+					
+					$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+
+					$email = $model->email;
+					$to_list = $this->statusToList[$new_status];
+					$from_list = $this->statusToList[$previous_status];
+
+
+					// There's a special case when the user changes from status Applied to status Pre-accepted.
+					// In this case, the user doesn't move from one list to another, but instead is added to the list.
+					if($previous_status == User::STATUS_APPLIED && $new_status == User::STATUS_PRE_ACCEPTED){
+						// send email
+						Yii::app()->getModule('user')->sendApplicationApproval($model);
+						// add user to list
+						$result = $phplist->addUserToList($email, $to_list);
+
+						if($result == 1){
+							Yii::app()->user->setFlash('userAdmin', "The user has been added to PHPList pre-accepted list.");
+						}
+
+					}
+
+					// if both of the lists assigned to each status, exists in config.
+				    
+					elseif($from_list * $to_list > 0){
+						// move user between lists
+						$result = $phplist->moveUser($email, $from_list, $to_list);
+
+						if($result == 1){
+							Yii::app()->user->setFlash('userAdmin', "The user has been moved from list {$from_list} to list {$to_list} .");
+						}
+					}
+
+					elseif($to_list == 0){
+						// delete user from lists
+						$result = $phplist->removeUserFromList($email, $from_list);
+					}
+
 				}
 
 				$this->redirect(array('view','id'=>$model->id));
-			} else $profile->validate();
+			} else {
+				$profile->validate();
+			}
 		}
 
 		$this->render('update',array(
@@ -165,8 +214,9 @@ class AdminController extends Controller
      */
     public function actionApproveApplication($id) {
       $model=$this->loadModel($id);
-      if ($model && $model->status!=User::STATUS_ACCEPTED) {
-        $model->status=User::STATUS_PRE_ACCEPTED;
+
+      if ($model && $model->status != User::STATUS_ACCEPTED) {
+        $model->status = User::STATUS_PRE_ACCEPTED;
         $model->update(array('status'));
         Yii::app()->getModule('user')->sendApplicationApproval($model);
         Yii::app()->user->setFlash('userAdmin', "The user {$model->username} has been pre-accepted.");
