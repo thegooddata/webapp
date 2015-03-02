@@ -31,73 +31,9 @@ class GoodDataController extends Controller {
         if($result===false)
         {
             // regenerate because it is not found in cache
+            $goodEvilCache = new GoodEvilCache();
 
-            // Active users ----------------------
-            $total = Yii::app()->db->createCommand("
-                SELECT count(*) from (
-                    SELECT member_or_user_id
-                    FROM tbl_active_users 
-                    WHERE tbl_active_users.created_at >= (now() - '30 days'::interval) AND tbl_active_users.created_at <=  now()  
-                    GROUP BY member_or_user_id
-                ) as tmp")->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['monthly_active_users'] = $total;
-
-            // registered members ----------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*) as total')
-                ->from('tbl_members')
-                ->where(array(
-                        'and',
-                        'status = :status',
-                    ), array(
-                        ':status' => User::STATUS_ACCEPTED)
-                )
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['total_registered_members'] = $total;
-
-            // queries last month ---------------------
-
-            $startdate = date('Y-m-d', strtotime("-1 month"));
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*) as total')
-                ->from('tbl_browsing')
-                ->where("DATE(created_at) >= '$startdate'")
-                ->queryScalar();
-
-            $result['monthly_visits_stored'] = (!empty($total)) ? $total : 0;
-
-            // queries traded blocked last month ------------------
-
-            $startdate = date('Y-m-d', strtotime("-1 month"));
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*) as total')
-                ->from('tbl_adtracks')
-                ->where("status = 'blocked'")
-                ->andWhere("DATE(created_at) >= '$startdate'")
-                ->queryScalar();
-
-            $result['monthly_adtracks_blocked'] = (!empty($total)) ? $total : 0;
-
-            // queries traded last month ------------------
-
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*) as total')
-                ->from('view_queries_trade_month')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['monthly_queries_trade_processed'] = $total;
-
-            // and save it in cache for later use:
-            Yii::app()->cache->set($cacheKey, $result, Yii::app()->params['cacheLifespanOneDay']);
+            $result = $goodEvilCache->setGoodCompanyAchievementsData();
         }
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
@@ -113,63 +49,10 @@ class GoodDataController extends Controller {
         if($result===false)
         {
             // regenerate because it is not found in cache
+            $goodEvilCache = new GoodEvilCache();
 
-            // money earned -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('(sum(gross_amount) - sum(expenses)) as total')
-                ->from('tbl_incomes')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            // convert to usd
-            $total=Currencies::convertDefaultTo($total, 'USD');
-            $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
-            $result['total_money_earned'] = $total;
-
-            // money lost -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(loss) as total')
-                ->from('tbl_loans')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['total_lost'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
-            // money lent -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(contribution) as total')
-                ->from('tbl_loans')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['total_contribution'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
-            // Outstanding portfolio -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(contribution - paidback - loss) as total')
-                ->from('tbl_loans')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['total_outstanding'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
-            // money repaid -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(paidback) as total')
-                ->from('tbl_loans')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['total_paidback'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
-            // and save it in cache for later use:
-            Yii::app()->cache->set($cacheKey, $result, Yii::app()->params['cacheLifespanOneDay']);
+            $result = $goodEvilCache->setGoodInvestmentsData();
+            
         }
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
@@ -185,78 +68,9 @@ class GoodDataController extends Controller {
         if($result===false)
         {
             // regenerate because it is not found in cache
+            $goodEvilCache = new GoodEvilCache();
 
-            // loans_countries -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*)')
-                ->from('view_loans_countries')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['loans_countries'] = $total;
-
-            // loans_count -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*)')
-                ->from('tbl_loans')
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['loans_count'] = $total;
-
-            // loans_paying_back_count -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*)')
-                ->from('tbl_loans')
-                ->where(array(
-                        'and',
-                        'id_loans_status = :id',
-                    ), array(
-                        ':id' => 3)
-                )
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-
-            $result['loans_paying_back_count'] = $total;
-
-            // loans_paid_back_count -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*)')
-                ->from('tbl_loans')
-                ->where(array(
-                        'and',
-                        'id_loans_status = :id',
-                    ), array(
-                        ':id' => 4)
-                )
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['loans_paid_back_count'] = $total;
-
-            // loans_lost_count -----------------------
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*)')
-                ->from('tbl_loans')
-                ->where(array(
-                        'and',
-                        'id_loans_status = :id',
-                    ), array(
-                        ':id' => 5)
-                )
-                ->queryScalar();
-
-            if (!count($total) > 0) $total = 0;
-            $result['loans_lost_count'] = $total;
-
-            // and save it in cache for later use:
-            Yii::app()->cache->set($cacheKey, $result, Yii::app()->params['cacheLifespanOneDay']);
+            $result = $goodEvilCache->setGoodProjectsData();
         }
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');

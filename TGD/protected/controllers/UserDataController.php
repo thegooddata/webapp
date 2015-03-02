@@ -100,7 +100,7 @@ class UserDataController extends Controller {
                 ->queryAll();
 
         $browsing_total = count($browsing);
-        
+
         // build pagination: set total queries, page size, page variable and params
         $browsing_pages=new CPagination($browsing_total);
         $browsing_pages->pageSize=$browsing_pag_size;
@@ -115,7 +115,7 @@ class UserDataController extends Controller {
                     array(
                         'and',
                         'q.member_id = :value'
-                    ), 
+                    ),
                     array(':value' => $user_id)
                 )
                 ->order('count desc')
@@ -125,28 +125,6 @@ class UserDataController extends Controller {
                 ->queryAll();
 
         $browsing_details = array();
-
-        foreach ($browsing as $browse) {
-            $domain = $browse->domain;
-
-            $browsing_details[$domain] = Yii::app()->db->createCommand()
-                    ->setFetchMode(PDO::FETCH_OBJ)
-                    ->select('*')
-                    ->from('tbl_browsing q')
-                    ->where(
-                        array(
-                            'and',
-                            'q.member_id = :value',
-                            'q.domain = :domain'
-                        ), 
-                        array(
-                            ':value' => $user_id,
-                            ':domain' => $domain
-                        )
-                    )
-                    ->order('created_at desc')
-                    ->queryAll();
-        }
 
         //COUNT QUERIES
         $member_id = $user_id;
@@ -160,12 +138,12 @@ class UserDataController extends Controller {
                     array(
                         'and',
                         'member_id = :member_id'
-                    ), 
+                    ),
                     array(
                         'member_id' => $member_id
                     )
                 )
-                ->andWhere("DATE(created_at) >= '$startdate'")
+                ->andWhere("daydate >= '$startdate'")
                 ->queryAll();
 
         $queries_count = $datas[0]->count;

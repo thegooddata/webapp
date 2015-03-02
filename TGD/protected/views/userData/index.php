@@ -75,7 +75,7 @@
                        <button type="button" class="btn btn-xs delete_one">DELETE</button> 
                     </div>
                     <div class="pull-right">
-                      
+
                         <?php $this->widget('ext.TGDLinkPager', array(
                             'header' => '',
                             'cssFile' => false,
@@ -119,16 +119,6 @@
                                 <td class="date">Multiple</td>
                                 <td class="events"><?php echo $browse->count; ?></td>
                             </tr>
-                            <?php foreach ($browsing_details[$browse->domain] as $browsing_detail) { ?>
-
-                            <tr class="child">
-                                <td class="query"><?php echo $browsing_detail->domain;?></td>
-                                <td class="engine"><?php echo (strlen($browsing_detail->url) > 45) ? substr($browsing_detail->url,0,45).'...' : $browsing_detail->url;?></td>
-                                <td class="date"><?php echo date_format(date_create($browsing_detail->created_at), 'Y-m-d H:i:s')?></td>
-                                <td class="events">1</td>
-                            </tr>
-
-                            <?php } ?>
 
                             <?php } else { ?>
                             <tr>
