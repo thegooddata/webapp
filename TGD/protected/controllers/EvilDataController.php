@@ -234,7 +234,7 @@ class EvilDataController extends Controller {
 
         // get cache data
         $userCacheData = $this->_getUserCacheData($member_id,"RiskMember");
-        $userCacheData = false;
+
         // if the is valid data in the cache 
         if ($userCacheData !== false){
             // send cache response
