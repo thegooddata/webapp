@@ -126,6 +126,29 @@ class UserDataController extends Controller {
 
         $browsing_details = array();
 
+        foreach ($browsing as $browse) {
+            $domain = $browse->domain;
+
+            $browsing_details[$domain] = Yii::app()->db->createCommand()
+                    ->setFetchMode(PDO::FETCH_OBJ)
+                    ->select('*')
+                    ->from('tbl_browsing q')
+                    ->where(
+                        array(
+                            'and',
+                            'q.member_id = :value',
+                            'q.domain = :domain'
+                        ),
+                        array(
+                            ':value' => $user_id,
+                            ':domain' => $domain
+                        )
+                    )
+                    ->order('created_at desc')
+                    ->limit(1)
+                    ->queryAll();
+        }
+
         //COUNT QUERIES
         $member_id = $user_id;
 
