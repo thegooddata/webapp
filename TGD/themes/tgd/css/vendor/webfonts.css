@@ -45,3 +45,6 @@
   
 @font-face {font-family: 'ProximaNovaSoft-Regular';src: url('../../fonts/2926A8_3_0.eot');src: url('../../fonts/2926A8_3_0.eot?#iefix') format('embedded-opentype'),url('../../fonts/2926A8_3_0.woff') format('woff'),url('../../fonts/2926A8_3_0.ttf') format('truetype');}
  
+.dummy_class_force_minScript {
+  
+}
