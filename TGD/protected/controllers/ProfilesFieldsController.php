@@ -78,14 +78,19 @@ class ProfilesFieldsController extends GxController {
 	}
 
 	public function actionAdmin() {
+		// add js specific for this page
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/admin.js', CClientScript::POS_END);
+
 		$model = new ProfilesFields('search');
 		$model->unsetAttributes();
 
 		if (isset($_GET['ProfilesFields']))
 			$model->setAttributes($_GET['ProfilesFields']);
 
+		$columns = $this->_getTableColumns('profiles_fields');
 		$this->render('admin', array(
 			'model' => $model,
+			'columns' => $columns,
 		));
 	}
 

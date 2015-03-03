@@ -9,6 +9,6 @@ return array(
 	    'ext.yii-mail.YiiMailMessage',
 	    'ext.giix-components.*',
 	    'ext.Mailchimp.*',
-	    'ext.CSVExport',
+	    'ext.ECSVExport',
 	    'ext.PHPList',
 	);

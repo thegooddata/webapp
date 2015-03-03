@@ -53,7 +53,7 @@ class ExcelHelper {
   		                     ->limit($pageSize,$i*$pageSize)
   		                     ->queryAll();
   		
-		$csv = new CSVExport($provider);
+		$csv = new ECSVExport($provider);
 		$csv->setToAppend();
 		$content = $csv->toCSV($fullPath,null,null,$i==0);	
 	}
