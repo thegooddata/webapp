@@ -2,10 +2,10 @@
 /**
  * ExtMinScriptController class file.
  *
- * @author Tobias Giacometti
- * @link http://bitbucket.org/limi7less/minscript/
- * @copyright Copyright &copy; 2011-2013 Tobias Giacometti
- * @license http://bitbucket.org/limi7less/minscript/wiki/License
+ * @author TeamTPG
+ * @link http://bitbucket.org/TeamTPG/minscript/
+ * @copyright Copyright &copy; 2011-2012 Team T P Giacometti & Co.
+ * @license http://bitbucket.org/TeamTPG/minscript/wiki/License
  * @package ext.minScript.controllers
  * @since 1.0
  */
@@ -14,7 +14,7 @@
  * ExtMinScriptController serves files from minScript groups in a minified, combined and compressed state.
  * A far future "Expires" header ensures that the client browser caches the files optimally.
  *
- * @author Tobias Giacometti
+ * @author TeamTPG
  * @package ext.minScript.controllers
  * @since 1.0
  */
@@ -36,7 +36,6 @@ class ExtMinScriptController extends CExtController {
 	 * Serve files.
 	 */
 	public function actionServe() {
-		Yii::$enableIncludePath = false;
 		require (dirname(dirname(__FILE__)) . '/vendors/minify/min/index.php');
 	}
 
@@ -111,7 +110,7 @@ require_once (dirname(dirname(__FILE__)) . '/vendors/minify/min/lib/Minify/Sourc
 /**
  * ExtMinScriptSource extends Minify_Source to offer custom source handling for minScript.
  *
- * @author Tobias Giacometti
+ * @author TeamTPG
  * @package ext.minScript.controllers
  * @since 2.1
  */
@@ -127,7 +126,7 @@ class ExtMinScriptSource extends Minify_Source {
 			$this -> filepath = $options['filepath'];
 			$this -> _id = $options['filepath'];
 			$this -> lastModified = isset($options['lastModified']) ? $options['lastModified'] : time();
-			$this -> minifier = isset($options['minifier']) ? $options['minifier'] : null;
+      $this -> minifier = isset($options['minifier']) ? $options['minifier'] : null;
 		}
 	}
 
@@ -136,7 +135,7 @@ class ExtMinScriptSource extends Minify_Source {
 /**
  * ExtYiiMinCache gives Minify the ability to access Yii's cache application components for caching.
  *
- * @author Tobias Giacometti
+ * @author TeamTPG
  * @package ext.minScript.controllers
  * @since 2.1
  */
@@ -246,7 +245,7 @@ class ExtYiiMinCache {
 		}
 		list($this -> _lm, $this -> _data) = explode('|', $ret, 2);
 		$this -> _id = $id;
-		Yii::log('Processed files for ID "' . $id . '" are served directly from cache.', CLogger::LEVEL_INFO, 'ext.minScript.controllers.ExtMinScriptController');
+		Yii::log('Processed files for ID "'.$id.'" are served directly from cache.', CLogger::LEVEL_INFO, 'ext.minScript.controllers.ExtMinScriptController');
 		return true;
 	}
 

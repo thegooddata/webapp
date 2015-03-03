@@ -100,7 +100,7 @@ class UserDataController extends Controller {
                 ->queryAll();
 
         $browsing_total = count($browsing);
-        
+
         // build pagination: set total queries, page size, page variable and params
         $browsing_pages=new CPagination($browsing_total);
         $browsing_pages->pageSize=$browsing_pag_size;
@@ -115,7 +115,7 @@ class UserDataController extends Controller {
                     array(
                         'and',
                         'q.member_id = :value'
-                    ), 
+                    ),
                     array(':value' => $user_id)
                 )
                 ->order('count desc')
@@ -138,13 +138,14 @@ class UserDataController extends Controller {
                             'and',
                             'q.member_id = :value',
                             'q.domain = :domain'
-                        ), 
+                        ),
                         array(
                             ':value' => $user_id,
                             ':domain' => $domain
                         )
                     )
                     ->order('created_at desc')
+                    ->limit(1)
                     ->queryAll();
         }
 
@@ -160,12 +161,12 @@ class UserDataController extends Controller {
                     array(
                         'and',
                         'member_id = :member_id'
-                    ), 
+                    ),
                     array(
                         'member_id' => $member_id
                     )
                 )
-                ->andWhere("DATE(created_at) >= '$startdate'")
+                ->andWhere("daydate >= '$startdate'")
                 ->queryAll();
 
         $queries_count = $datas[0]->count;

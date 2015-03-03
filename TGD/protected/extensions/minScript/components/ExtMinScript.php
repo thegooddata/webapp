@@ -2,10 +2,10 @@
 /**
  * ExtMinScript class file.
  *
- * @author Tobias Giacometti
- * @link http://bitbucket.org/limi7less/minscript/
- * @copyright Copyright &copy; 2011-2013 Tobias Giacometti
- * @license http://bitbucket.org/limi7less/minscript/wiki/License
+ * @author TeamTPG
+ * @link http://bitbucket.org/TeamTPG/minscript/
+ * @copyright Copyright &copy; 2011-2012 Team T P Giacometti & Co.
+ * @license http://bitbucket.org/TeamTPG/minscript/wiki/License
  */
 
 /**
@@ -20,7 +20,7 @@
  *
  * @property CCache $minScriptCache The cache application component instance used by minScript.
  *
- * @author Tobias Giacometti
+ * @author TeamTPG
  * @package ext.minScript.components
  * @since 1.0
  */
@@ -33,7 +33,7 @@ class ExtMinScript extends CClientScript {
 	public $minScriptControllerId = 'min';
 
 	/**
-	 * @var string ID of the cache application component that is used by minScript. If set to an invalid ID,
+	 * @var string ID of the cache application component that is used by minScript. If set to an invalid ID, 
 	 * minScript will automatically create a cache application component based on CFileCache. Defaults to "cache".
 	 * @since 2.1
 	 */
@@ -64,28 +64,20 @@ class ExtMinScript extends CClientScript {
 	public $minScriptLmCache = false;
 
 	/**
-	 * @var array In case of URL rewrites or aliases, this property helps minScript locate files by assigning
-	 * file system paths to URLs. This property uses an array of URL to path mappings where the key is a URL
-	 * and the value a file system path. The URL matching is done using Regular Expressions. Backreferences
-	 * can be used in the path values. For example:
+	 * @var array In case of, for example, URL rewrites or aliases, this property helps minScript locate files
+	 * by assigning file system paths to URLs. This property takes an array of URL to path mappings where the
+	 * key is a URL and the value a file system path. The URL matching is done using Regular Expressions and
+	 * backreferences can be used in the path values. For example:
 	 * <pre>
 	 * array(
 	 * 		'/^\/url\/to\/(file)$/' => 'path/to/$1',
 	 * )
 	 * </pre>
-	 * Another use case of this property is the exclusion of URLs from automatic processing. If false is
-	 * assigned to a URL, minScript will not process it automatically. For example:
-	 * <pre>
-	 * // Exclude all URLs from automatic minScript processing
-	 * array(
-	 * 		'/^.*$/' => false,
-	 * )
-	 * </pre>
 	 * @since 2.1
 	 */
 	public $minScriptUrlMap = array();
-
-	/**
+  
+  /**
 	 * @var array This property is used to disable minification of specific files. The files will still be
 	 * combined and compressed. The matching is done using Regular Expression patterns which are applied to
 	 * file system paths. By default, files ending with "-min.js", ".min.js", "-min.css" and ".min.css" won't
@@ -93,16 +85,6 @@ class ExtMinScript extends CClientScript {
 	 * @since 2.2
 	 */
 	public $minScriptDisableMin = array('/[-\.]min\.(?:js|css)$/i');
-
-	/**
-	 * @var boolean When combining multiple CSS files, @import at-rules can end up after normal CSS rules,
-	 * which is invalid. If this happens, a warning comment will be placed at the top of the minScript output.
-	 * To resolve this, the @import at-rules can either be moved manually or this property can be set to true,
-	 * which will move all @import at-rules to the top of the minScript output. Please note that moving @import
-	 * at-rules could affect how other CSS rules are applied. Defaults to false.
-	 * @since 2.2
-	 */
-	public $minScriptBubbleCssImports = false;
 
 	protected $_minScriptCache;
 
@@ -147,7 +129,7 @@ class ExtMinScript extends CClientScript {
 		if (!empty($this -> minScriptLmCache) && !YII_DEBUG && ($lmCache = $this -> _minScriptCache -> get($lmId)) !== false) {
 			// Get last modified timestamp from cache
 			$lm = $lmCache;
-			if ($log === true) {
+			if($log === true) {
 				Yii::log('Last modified timestamp was fetched from cache.', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 			}
 		} else {
@@ -169,19 +151,16 @@ class ExtMinScript extends CClientScript {
 	/**
 	 * Get the file system path from a URL.
 	 * @param string $url The URL for which to get the path.
-	 * @return mixed The absolute file system path with no trailing slash. Returns false if the URL points
-	 * to a remote resource or is excluded from processing.
+	 * @return string The absolute file system path with no trailing slash or false if the URL points to
+	 * a remote resource.
 	 * @since 2.1
 	 */
 	protected function _minScriptGetPath($url) {
 		// Check ExtMinScript::$minScriptUrlMap for matches
 		foreach ($this -> minScriptUrlMap as $mapUrl => $mapPath) {
-			if (($path = preg_replace($mapUrl, $mapPath, $url, -1, $mapCount)) && $mapCount > 0 && $mapPath !== false) {
-				Yii::log('A URL to path mapping was found. The URL "' . $url . '" points to the file system path "' . $path . '".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
+			if (($path = preg_replace($mapUrl, $mapPath, $url, -1, $mapCount)) && $mapCount > 0) {
+				Yii::log('A URL to path mapping was found. The URL "'.$url.'" points to the file system path "'.$path.'".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 				return $path;
-			} elseif ($mapPath === false && $mapCount > 0) {
-				Yii::log('The URL "' . $url . '" is excluded from automatic processing.', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
-				return false;
 			}
 		}
 		// Get document root
@@ -191,21 +170,21 @@ class ExtMinScript extends CClientScript {
 			// The URL is absolute
 			$urlAbsolute = (strpos($url, '//') === 0) ? 'http:' . $url : $url;
 			if (($urlSegments = @parse_url($urlAbsolute)) && isset($urlSegments['host']) && $urlSegments['host'] != @parse_url(Yii::app() -> request -> hostInfo . Yii::app() -> request -> url, PHP_URL_HOST)) {
-				Yii::log('The URL "' . $url . '" is pointing to an external resource.', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
+				Yii::log('The URL "'.$url.'" is pointing to an external resource.', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 				return false;
 			}
 			$urlPath = (isset($urlSegments['path'])) ? $urlSegments['path'] : '';
 			$path = $docRoot . $urlPath;
-			Yii::log('The URL "' . $url . '" is absolute and points to the file system path "' . $path . '".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
+			Yii::log('The URL "'.$url.'" is absolute and points to the file system path "'.$path.'".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 		} elseif (strpos($url, Yii::app() -> assetManager -> baseUrl) === 0) {
 			// The URL points to an asset
 			$assetBasePath = rtrim(Yii::app() -> assetManager -> basePath, '/\\');
-			$path = $assetBasePath . (string)@parse_url(substr($url, strlen(Yii::app() -> assetManager -> baseUrl)), PHP_URL_PATH);
-			Yii::log('The URL "' . $url . '" is an asset and points to the file system path "' . $path . '".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
+			$path = $assetBasePath . substr($url, strlen(Yii::app() -> assetManager -> baseUrl));
+			Yii::log('The URL "'.$url.'" is an asset and points to the file system path "'.$path.'".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 		} elseif (strpos($url, '/') === 0) {
 			// The URL is relative to the document root
-			$path = $docRoot . (string)@parse_url($url, PHP_URL_PATH);
-			Yii::log('The URL "' . $url . '" is relative to the document root and points to the file system path "' . $path . '".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
+			$path = $docRoot . $url;
+			Yii::log('The URL "'.$url.'" is relative to the document root and points to the file system path "'.$path.'".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 		} else {
 			// The URL is relative to the current request
 			$requestPathRaw = (($requestPathRaw = @parse_url(Yii::app() -> request -> hostInfo . Yii::app() -> request -> url, PHP_URL_PATH)) && substr($requestPathRaw, -1) == '/') ? $requestPathRaw .= 'dummy' : $requestPathRaw;
@@ -214,8 +193,8 @@ class ExtMinScript extends CClientScript {
 				$basePathRaw = (($basePathRaw = @parse_url($this -> minScriptBaseUrl, PHP_URL_PATH)) && substr($basePathRaw, -1) == '/') ? $basePathRaw .= 'dummy' : $basePathRaw;
 				$basePath = rtrim(dirname($basePathRaw), '/\\');
 			}
-			$path = (isset($basePath)) ? $docRoot . $basePath . '/' . (string)@parse_url($url, PHP_URL_PATH) : $docRoot . $requestPath . '/' . (string)@parse_url($url, PHP_URL_PATH);
-			Yii::log('The URL "' . $url . '" is relative to the current request "' . Yii::app() -> request -> url . '" and points to the file system path "' . $path . '".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
+			$path = (isset($basePath)) ? $docRoot . $basePath . '/' . $url : $docRoot . $requestPath . '/' . $url;
+			Yii::log('The URL "'.$url.'" is relative to the current request "'.Yii::app() -> request -> url.'" and points to the file system path "'.$path.'".', CLogger::LEVEL_INFO, 'ext.minScript.components.ExtMinScript');
 		}
 		return rtrim($path, '/\\');
 	}
@@ -303,7 +282,7 @@ class ExtMinScript extends CClientScript {
 				if ($path !== false) {
 					$paths[] = $path;
 				} else {
-					// To keep the correct order, the minScript group creation process is split up if an external/excluded URL is detected
+					// To keep the correct order, the minScript group creation process is split up if an external URL is detected
 					if (!empty($paths)) {
 						$urls[] = $this -> minScriptCreateGroup($paths);
 						$paths = array();

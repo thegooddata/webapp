@@ -17,22 +17,15 @@ return array(
 
 	// application components
 	'components'=>array(
-		'db'=>array(
+		'db'=>CMap::mergeArray(require(dirname(__FILE__).'/common.db.php'), array(
 		    'tablePrefix' => 'tbl_',
-		    'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME,
-		    // 'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode=require;', // <-- this one is from main.prod.php, maybe should be put into a constant like the rest?
-				'username'=>BD_USERNAME,
-				'password'=>BD_PASSWORD,
+	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode=require;',
+		    'username'=>BD_USERNAME,
+		    'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',
-		),
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-			),
-		),
+		)),
+		'log'=>CMap::mergeArray(require(dirname(__FILE__).'/common.log.php'), array(
+        )),
+        'cache'=>require(dirname(__FILE__).'/common.cache.php'),
 	),
 );

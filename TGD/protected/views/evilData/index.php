@@ -340,8 +340,14 @@
                $('.risk-meter', $riskProfile).addClass(risk_class).html(result.risk_level_name);
                $('.amount.risk.average', $riskProfile).html(result.risk_average);
 
-               $('.amount.ratio.you', $riskProfile).html(result.risk_ratio_you+"%");
-               $('.amount.ratio.average', $riskProfile).html(result.risk_ratio_average+"%");
+               if('risk_ratio_you' in result) {
+                   $('.amount.ratio.you', $riskProfile).html(result.risk_ratio_you + "%");
+               }
+
+                if('risk_ratio_average' in result ){
+                    $('.amount.ratio.average', $riskProfile).html(result.risk_ratio_average+"%");
+                }
+
 
                // hide spinner an show contents
                $('.fa-spinner', $riskProfile).hide();
@@ -387,15 +393,17 @@
                   }
                 }
 
-                // rearrange last two sections
-                dataTGD.splice(2, 0, dataTGD.splice(3,1)[0]);
+                if(dataTGD.length){
+                    // rearrange last two sections
+                    dataTGD.splice(2, 0, dataTGD.splice(3,1)[0]);
 
-                for(index in dataTGD){
-                    totalAverage += Number(dataTGD[index].value);
-                }
-                for(index in dataTGD){
-                    dataTGD[index].value = Number(dataTGD[index].value);
-                    dataTGD[index].label = (dataTGD[index].value * 100 /totalAverage).toFixed(1) + "%";
+                    for(index in dataTGD){
+                        totalAverage += Number(dataTGD[index].value);
+                    }
+                    for(index in dataTGD){
+                        dataTGD[index].value = Number(dataTGD[index].value);
+                        dataTGD[index].label = (dataTGD[index].value * 100 /totalAverage).toFixed(1) + "%";
+                    }
                 }
 
                 //Get context with jQuery - using jQuery's .get() method.
