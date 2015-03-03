@@ -220,20 +220,20 @@ class ApiController extends Controller
 			$member_id=-1;
 		}
 
+        $startdate = date('Y-m-d', strtotime("-1 month"));
 		$datas = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
 			                ->select('count(*)')
 			                ->from('tbl_queries')
 			                ->where(array(
 			                            'and',
-			                            '(user_id = :user_id or member_id = :member_id)',
-			                            'share = :share'
+			                            '(user_id = :user_id or member_id = :member_id)'
 			                            ),
 					                    array(
 				                            'user_id'=>$user_id,
-				                            'member_id'=>$member_id,
-				                            'share'=>'true')
+				                            'member_id'=>$member_id)
 					                    )
+                            ->andWhere("date(created_at) >= '$startdate'")
 			                ->queryAll();
 
 		return $datas[0]->count;
