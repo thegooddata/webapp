@@ -21,55 +21,60 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data' => $model,
 	'attributes' => array(
-'id',
-'loan_identifier',
-array(
+		'id',
+		'loan_identifier',
+		array(
 			'name' => 'leader0',
 			'type' => 'raw',
 			'value' => $model->leader0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->leader0)), array('loansLeaders/view', 'id' => GxActiveRecord::extractPkValue($model->leader0, true))) : null,
-			),
-'loan_url',
-'title_en',
-'title_es',
-array(
+		),
+		'loan_url',
+		'title_en',
+		'title_es',
+		array(
 			'name' => 'idLoansActivity',
 			'type' => 'raw',
 			'value' => $model->idLoansActivity !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansActivity)), array('loansActivities/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansActivity, true))) : null,
-			),
-
-array(
+		),
+		array(
 			'name' => 'idCountries',
 			'type' => 'raw',
 			'value' => $model->idCountries !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idCountries)), array('countries/view', 'id' => GxActiveRecord::extractPkValue($model->idCountries, true))) : null,
-			),
-'partner',
-'amount',
-array(
+		),
+		'partner',
+		'amount',
+		array(
 			'name' => 'currency0',
 			'type' => 'raw',
 			'value' => $model->currency0 !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->currency0)), array('currencies/view', 'id' => GxActiveRecord::extractPkValue($model->currency0, true))) : null,
-			),
-'term',
-'contribution',
-'loan_date',
-'loan_update',
-'paidback',
-'loss',
-array(
+		),
+		'term',
+		'contribution',
+		'loan_date',
+		'loan_update',
+		'paidback',
+		'loss',
+		array(
 			'name' => 'idLoansStatus',
 			'type' => 'raw',
 			'value' => $model->idLoansStatus !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansStatus)), array('loansStatus/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansStatus, true))) : null,
-			),
-/* START UPLOAD FILE */
-array(
+		),
+		/* START UPLOADED FILE */
+		array(
+			'name' => 'image',
             'type'=>'raw',
             'width'=>'200',
             'alt'=>'hi images',
-            'value'=> CHtml::image(Yii::app()->baseUrl.'/uploads/'.$model->image),
+            'value'=> CHtml::image(file_exists(Yii::app()->getBasePath()."/../uploads/".$model->loan_identifier."-".$model->image) ? 
+            	Yii::app()->baseUrl."/uploads/".$model->loan_identifier."-".$model->image : 
+            	(file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? 
+            		Yii::app()->baseUrl."/uploads/".$model->image :
+            		''
+            	),'',array("style"=>"width:250px;")),
         ),
-/* END UPLOAD FILE */
-'created_at',
-'updated_at',
+		/* END UPLOADED FILE */
+		'created_at',
+		'updated_at',
 	),
 )); ?>
 

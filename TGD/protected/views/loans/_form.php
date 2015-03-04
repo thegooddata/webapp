@@ -128,7 +128,7 @@
 
 		<!-- START UPLOAD FILE -->
 		<?php if ($model->image != null) { ?>
-		<img src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo $model->image ?>" />
+		<img style="width:250px;" src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo file_exists(Yii::app()->getBasePath()."/../uploads/".$model->loan_identifier."-".$model->image) ? $model->loan_identifier."-".$model->image : (file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? $model->image : '' ) ?>" />
 		<?php } ?>
 		<!-- END UPLOAD FILE -->
 
