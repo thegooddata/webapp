@@ -24,13 +24,11 @@ class GoodDataController extends Controller {
 
         $result = array();
 
-        // Active users ----------------------
-
         // set cache key for this data
-        $cacheKey="CompanyAchievementsData-ActiveUsers";
-        $total=Yii::app()->cache->get($cacheKey);
+        $cacheKey="CompanyAchievementsData";
+        $result=Yii::app()->cache->get($cacheKey);
 
-        if($total===false)
+        if($result===false)
         {
             // regenerate because it is not found in cache
             $goodEvilCache = new GoodEvilCache();
@@ -38,57 +36,15 @@ class GoodDataController extends Controller {
             $result = $goodEvilCache->setGoodCompanyAchievementsData();
         }
 
-        if (!count($total) > 0)
-            $total = 0;
-
-        $result['monthly_queries_trade_processed'] = $total;
-        
-        // money earned -----------------------
-
-        $cacheKey="CompanyAchievementsData-MoneyEarned";
-        $total=Yii::app()->cache->get($cacheKey);
-
-        if($total===false)
-        {
-            // regenerate because it is not found in cache
-            $total = Yii::app()->db->createCommand()
-                ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('sum(gross_amount) as total')
-                ->from('tbl_incomes')
-                ->queryScalar();
-
-            // and save it in cache for later use:
-            Yii::app()->cache->set($cacheKey, $total, Yii::app()->params['cacheLifespanOneDay']);
-        }
-
-        if (!count($total) > 0)
-            $total = 0;
-
-        // convert to usd
-        $total=Currencies::convertDefaultTo($total, 'USD');
-                
-        $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
-
-        $result['total_money_earned'] = $total;
-
-
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
 
     public function actionGoodInvestmentsData() {
 
         $result = array();
-        
-        // Money lost
-        $datas = Yii::app()->db->createCommand()
-        ->setFetchMode(PDO::FETCH_OBJ)
-        ->select('sum(loss) as total')
-        ->from('tbl_loans')
-        ->queryAll();
 
-        $total_lost = 0;
-        if ($datas[0]->total != null)
-            $total_lost = $datas[0]->total;
+        $cacheKey="GoodInvestmentsData";
+        $result=Yii::app()->cache->get($cacheKey);
 
         if($result===false)
         {
