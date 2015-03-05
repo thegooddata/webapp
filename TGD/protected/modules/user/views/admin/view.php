@@ -57,6 +57,10 @@ if ($model->status==User::STATUS_APPLIED) {
 			'name' => 'status',
 			'value' => User::itemAlias("UserStatus",$model->status),
 		),
+        array(
+            'name' => 'seniority_level',
+            'value' => ($level = SeniorityLevels::model()->findByPk($model->seniority_level)) ? $level->level : 'N/A',
+        ),
 		'key'
 	);
 	

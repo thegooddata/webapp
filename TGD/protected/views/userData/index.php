@@ -5,10 +5,11 @@
 
     <section id="seniority">
 
-        <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are 5 levels of seniority based on data shared, ownership status and particiation on company forums: Apprentice, Journeyman, Owner, Expert owner, Manager." data-placement="right" data-toggle="popover"></i></h2>
+        <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are <?php echo $seniority_levels['count']; ?> levels of seniority based on data shared, ownership status and particiation on company forums:<?php echo $seniority_levels['levels']; ?>." data-placement="right" data-toggle="popover"></i></h2>
 
-        <div class="seniority <?php echo strtolower( $queries_percentile_text );?>">
-            <span><?php echo $queries_percentile_text;?></span>
+        <div class="seniority">
+            <?php echo CHtml::image(Yii::app()->baseUrl."/uploads/seniority/".$queries_percentile_data['icon']); ?>
+            <span style="color:<?php echo $queries_percentile_data['color'] ?>"><?php echo $queries_percentile_data['level'];?></span>
         </div>                                      
 
         <div class="gray">

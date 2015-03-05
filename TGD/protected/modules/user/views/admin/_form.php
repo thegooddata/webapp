@@ -40,6 +40,12 @@
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'seniority_level'); ?>
+        <?php echo $form->dropDownList($model, 'seniority_level', CHtml::listData(SeniorityLevels::model()->findAll('status!=0'), 'id', 'level'),array('empty' => 'N/A'));?>
+        <?php echo $form->error($model,'seniority_level'); ?>
+    </div><!-- row -->
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'key'); ?>
 		<?php echo $form->textArea($model, 'key'); ?>

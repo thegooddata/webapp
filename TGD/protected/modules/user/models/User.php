@@ -34,6 +34,7 @@ class User extends CActiveRecord
      * @property string $avatar
      * @property string $url
      * @property integer $notification_preferences
+     * @property integer $seniority_level
 	 */
 
 	/**
@@ -90,8 +91,8 @@ class User extends CActiveRecord
             array('lastvisit_at', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
 			//array('username, email, superuser, status', 'required'),
 			array('username,  superuser, status', 'required'),
-			array('superuser, status', 'numerical', 'integerOnly'=>true),
-			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status, avatar, url', 'safe', 'on'=>'search'),
+			array('superuser, status, seniority_level', 'numerical', 'integerOnly'=>true),
+			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status, avatar, url, seniority_level', 'safe', 'on'=>'search'),
 		):((Yii::app()->user->id==$this->id)?array(
 			//array('username, email', 'required'),
 			array('username', 'required'),
@@ -142,6 +143,7 @@ class User extends CActiveRecord
             'avatar' => Yii::t('app', 'Avatar'),
             'url' => Yii::t('app', 'Url'),
             'notification_preferences' => Yii::t('app', 'Notification Preferences'),
+            'seniority_level' => Yii::t('app', 'Seniority Level'),
 		);
 	}
 	
@@ -170,7 +172,7 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key, user.avatar, user.url, user.notification_preferences',
+            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key, user.avatar, user.url, user.notification_preferences user.seniority_level',
         ));
     }
 

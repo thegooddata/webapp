@@ -44,6 +44,7 @@ class Controller extends CController
 		array('label'=>'Manage Announcements', 'url'=>array('/achievements/admin')),
 
 		array('label'=>'Manage Transactions', 'url'=>array('/transactions/admin')),
+        array('label'=>'Manage Seniority Levels', 'url'=>array('/admin/seniorityLevels')),
 		array('label'=>'Slow Query Logs', 'url'=>array('/admin/slowQueryLog/admin')),
 		//array('label'=>'Manage Achievement Types', 'url'=>array('/achievementsTypes/admin')),
 		

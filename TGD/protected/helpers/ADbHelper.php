@@ -145,41 +145,40 @@ class ADbHelper {
   static public function getSeniorityLevelAndPercentile($id) {
       
     $percentile = ADbHelper::getPercentile($id);
-    $result = array('value' => $percentile, 'level' => '');
+    $result = array('value' => $percentile, 'level' => '', 'icon' => 'seniority.png', 'color' => 'black');
+    $type = 1;
 
     if(!Yii::app()->user->isGuest)
     {
       if(Yii::app()->user->user($id)->status == 2) // community member
       {
-        if(false /* TODO: find out a way to figure out if the user is a collaborator*/)
-        {
-          $result['level'] = 'Collaborator';
-        }
-        else
-        {
-          if($percentile < 20)
-          {
-            $result['level'] = 'Owner';
-          }
-          else
-          {
-            $result['level'] = 'Expert';
+        $type = 2;
+        if (Yii::app()->user->user($id)->seniority_level != 0 && Yii::app()->user->user($id)->seniority_level != 4) {
+          $seniority_level = SeniorityLevels::model()->findByPk(Yii::app()->user->user($id)->seniority_level);
+          if ($seniority_level) {
+             $result['level'] = $seniority_level->level;
+             $result['icon'] = $seniority_level->icon;
+             $result['color'] = $seniority_level->color;
+
+             return $result;
           }
         }
-        return $result;
       }
     }
-    
-    // user is guest or member not accepted (rejected and expelled included)
-    if($percentile < 5)
-    {
-      $result['level'] = 'Apprentice';
-    }
-    else
-    {
-      $result['level'] = 'Journeyman';
-    }
 
+    // user is guest or member not accepted (rejected and expelled included)
+      $seniority_level = SeniorityLevels::model()->find(array(
+          "condition" => 'percentile <= :percentile AND type = :type',
+          "params" => array(':percentile'=>floor ($percentile), ':type'=>$type),
+          'order'=>'percentile DESC'
+      ));
+
+    if($seniority_level) {
+        $result['level'] = $seniority_level->level;
+        $result['icon'] = $seniority_level->icon;
+        $result['color'] = $seniority_level->color;
+    }
+//      $result['level'] = 'Expert';
     return $result;
   }
 
