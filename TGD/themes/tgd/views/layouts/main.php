@@ -190,7 +190,7 @@
                             </div>
                             <button type="submit" class="btn btn-default col-sm-6 tgd-button tgd-send">Send</button>
                         </form>
-                        <button type="button" class="btn btn-default col-sm-6 tgd-button tgd-send" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default col-sm-6 tgd-button tgd-send" data-dismiss="modal" style="display: none;">Close</button>
                         <a type="button" class="btn btn-default tgd-button tgd-send" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>">Continue</a>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                         <h4>company</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate");?>" class="red">Donate</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate/index");?>" class="red">Donate</a></li>
                     </ul>
                     <ul>
                         <h4>contact</h4>
