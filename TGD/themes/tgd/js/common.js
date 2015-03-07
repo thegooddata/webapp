@@ -41,6 +41,7 @@ jQuery(document).ready(function ($) {
       resetModalFooter = function(){
         disableFormControls(false);
         $('input',$modalFooter).val('');
+        $('input',$modalFooter).attr("placeholder","enter your email address")
         $('form', $modalFooter).show();
         $('button[type=button]', $modalFooter).css('float','right').hide();
       },
@@ -148,9 +149,11 @@ jQuery(document).ready(function ($) {
       $('input, button', $modalFooter).prop('disabled', true);
       
       if(email != '' && validateEmail(email)){
+        $('input',$modalFooter).removeClass("error").parent().removeClass('has-error');
         sendRequest(email, list);
       }else{
         resetModalFooter();
+        $('input',$modalFooter).attr("placeholder","Please, enter a valid email address.").addClass('error').parent().addClass('has-error');
       }
     });
   }
