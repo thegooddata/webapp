@@ -175,6 +175,21 @@ class UserDataController extends Controller {
         $member_id = $user_id;
         $queries_percentile_data = ADbHelper::getSeniorityLevelAndPercentile($member_id);
 
+
+        $seniority_levels = array(
+            'count' => '',
+            'levels' => ''
+        );
+        $seniority_levels_temp = SeniorityLevels::model()->findAll();
+        if(!empty($seniority_levels)){
+            $seniority_levels['count'] = count($seniority_levels_temp);
+            foreach($seniority_levels_temp as $level){
+                $seniority_levels['levels'] .= ' ' . $level['level'] . ',';
+            }
+            $seniority_levels['levels'] = rtrim($seniority_levels['levels'], ',');
+        }
+
+
         // $loans = Yii::app()->db->createCommand()
         //            ->setFetchMode(PDO::FETCH_OBJ)
         //            ->select('*')
@@ -201,7 +216,8 @@ class UserDataController extends Controller {
             'browsing_pag' => $browsing_pag,
             'browsing_pages' => $browsing_pages,
             'queries_count' => $queries_count,
-            'queries_percentile_text' => $queries_percentile_data['level'],
+            'queries_percentile_data' => $queries_percentile_data,
+            'seniority_levels' => $seniority_levels,
                 )
         );
     }

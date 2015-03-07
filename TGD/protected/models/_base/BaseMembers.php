@@ -21,6 +21,7 @@
  * @property string $avatar
  * @property string $url
  * @property integer $notification_preferences
+ * @property integer $seniority_level
  * @property string $created_at
  *
  * @property Whitelists[] $whitelists
@@ -46,12 +47,12 @@ abstract class BaseMembers extends GxActiveRecord {
 	public function rules() {
 		return array(
 			array('username, password, created_at', 'required'),
-			array('superuser, status', 'numerical', 'integerOnly'=>true),
+			array('superuser, seniority_level, status', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>20),
 			array('password, email, activkey', 'length', 'max'=>128),
 			array('lastvisit_at, key, avatar, url', 'safe'),
 			array('email, activkey, lastvisit_at, superuser, status, key', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, username, password, email, activkey, lastvisit_at, superuser, status, key, avatar, url, notification_preferences, created_at', 'safe', 'on'=>'search'),
+			array('id, username, password, email, activkey, lastvisit_at, superuser, status, key, avatar, url, notification_preferences, seniority_level, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,6 +81,7 @@ abstract class BaseMembers extends GxActiveRecord {
             'avatar' => Yii::t('app', 'Avatar'),
             'url' => Yii::t('app', 'Url'),
             'notification_preferences' => Yii::t('app', 'Notification Preferences'),
+            'seniority_level' => Yii::t('app', 'Seniority level'),
 			'created_at' => Yii::t('app', 'Created At'),
 			'whitelists' => null,
 		);
@@ -100,6 +102,7 @@ abstract class BaseMembers extends GxActiveRecord {
         $criteria->compare('avatar', $this->avatar);
         $criteria->compare('url', $this->url);
         $criteria->compare('notification_preferences', $this->notification_preferences);
+        $criteria->compare('seniority_level', $this->seniority_level);
 		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(
