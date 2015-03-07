@@ -115,11 +115,12 @@ jQuery(document).ready(function ($) {
 
   var email,
       list,
+      isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Mobile|mobile/.test(navigator.userAgent);
       isChrome = /chrome/.test(browser),
       isFirefox = /firefox/.test(browser),
       isSafari = /safari/.test(browser);
 
-  if(isSafari || isFirefox){
+  if((isSafari || isFirefox) && !isMobile ){
     $('.modal-footer > a').hide();
     $('.modal-footer > button[type=button]').hide();
     $('.modal-footer > form').show();
