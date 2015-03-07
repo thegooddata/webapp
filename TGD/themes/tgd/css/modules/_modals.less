@@ -131,13 +131,28 @@
     }
 
     input{
+      &.error{
+        &::-webkit-input-placeholder { /* WebKit browsers */
+            color: #A94442;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+           color: #A94442;
+           opacity:  1;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+           color: #A94442;
+           opacity:  1;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+           color: #A94442;
+        }
+      }
       width: 100%;
       line-height: 42px;
       height: 42px;
       padding-top: 0;
       padding-bottom: 0;
     }
-
     button,a {
       border: none;
       &.tgd-button {
