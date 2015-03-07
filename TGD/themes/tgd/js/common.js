@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
   var $modal = $('#chromeModal'),
       $modalFooter = $('.modal-footer'), 
       $modalDescription= $('#modal-description'),
-
+      
       validateEmail = function (email) { 
           var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return re.test(email);
@@ -64,8 +64,9 @@ jQuery(document).ready(function ($) {
       browser = navigator.browserInfo.browser.toLowerCase(),
 
       sendRequest = function(email, list){
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', "http://tgd.local/api/phplist/add/"+email+"/"+list, false);
+          var xhr = new XMLHttpRequest(),
+              location = document.location;
+          xhr.open('GET', location.protocol + '//' + location.host +"/api/phplist/add/"+email+"/"+list, false);
           xhr.onload = function () {
               if (xhr.readyState == 4) {
                 
