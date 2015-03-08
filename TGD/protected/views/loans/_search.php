@@ -71,36 +71,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'loan_date'); ?>
-		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'model' => $model,
-			'attribute' => 'loan_date',
-			'value' => $model->loan_date,
-			'options' => array(
-				'showButtonPanel' => true,
-				'changeYear' => true,
-				'dateFormat' => 'yy-mm-dd',
-				),
-			));
-; ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model, 'loan_update'); ?>
-		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'model' => $model,
-			'attribute' => 'loan_update',
-			'value' => $model->loan_update,
-			'options' => array(
-				'showButtonPanel' => true,
-				'changeYear' => true,
-				'dateFormat' => 'yy-mm-dd',
-				),
-			));
-; ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model, 'paidback'); ?>
 		<?php echo $form->textField($model, 'paidback'); ?>
 	</div>

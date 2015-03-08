@@ -50,8 +50,6 @@ $this->menu=array(
 		),
 		'term',
 		'contribution',
-		'loan_date',
-		'loan_update',
 		'paidback',
 		'loss',
 		array(

@@ -129,7 +129,7 @@
                             <div class="col-2"><img src="<?php echo Yii::app()->baseUrl; ?>/uploads/flags/<?php echo strtolower($loan->code); ?>.png" class="flag"/><?php echo $loan->country; ?><div class="subtext"><?php echo $loan->partner; ?></div></div>
                             <div class="col-3">$<?php echo number_format($loan->amount,2); ?></div>
                             <div class="col-4"><?php echo $loan->term; ?> months</div>
-                            <div class="col-5">$<?php echo number_format($loan->contribution,2); ?><div class="subtext"><?php echo date('F d, Y', strtotime($loan->loan_date));?></div></div>
+                            <div class="col-5">$<?php echo number_format($loan->contribution,2); ?><div class="subtext"><?php echo date('F d, Y', strtotime($loan->created_at));?></div></div>
                             <div class="col-6">$<?php echo number_format($loan->paidback,2); ?></div>
                             <div class="col-7"><?php echo $loan->status;?></div>                        
                         </div>

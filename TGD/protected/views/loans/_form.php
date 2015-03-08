@@ -76,36 +76,7 @@
 		<?php echo $form->textField($model, 'contribution'); ?>
 		<?php echo $form->error($model,'contribution'); ?>
 		</div><!-- row -->
-		<div class="row loans_loan_date loan_date">
-		<?php echo $form->labelEx($model,'loan_date'); ?>
-		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'model' => $model,
-			'attribute' => 'loan_date',
-			'value' => $model->loan_date,
-			'options' => array(
-				'showButtonPanel' => true,
-				'changeYear' => true,
-				'dateFormat' => 'yy-mm-dd',
-				),
-			));
-; ?>
-		<?php echo $form->error($model,'loan_date'); ?>
-		</div><!-- row -->
-		<div class="row loans_loan_update loan_update">
-		<?php echo $form->labelEx($model,'loan_update'); ?>
-		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'model' => $model,
-			'attribute' => 'loan_update',
-			'value' => $model->loan_update,
-			'options' => array(
-				'showButtonPanel' => true,
-				'changeYear' => true,
-				'dateFormat' => 'yy-mm-dd',
-				),
-			));
-; ?>
-		<?php echo $form->error($model,'loan_update'); ?>
-		</div><!-- row -->
+
 		<div class="row loans_paidback paidback">
 		<?php echo $form->labelEx($model,'paidback'); ?>
 		<?php echo $form->textField($model, 'paidback'); ?>
@@ -132,36 +103,6 @@
 		<?php } ?>
 		<!-- END UPLOAD FILE -->
 
-		</div><!-- row -->
-		<div class="row loans_created_at created_at">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'model' => $model,
-			'attribute' => 'created_at',
-			'value' => $model->created_at,
-			'options' => array(
-				'showButtonPanel' => true,
-				'changeYear' => true,
-				'dateFormat' => 'yy-mm-dd',
-				),
-			));
-; ?>
-		<?php echo $form->error($model,'created_at'); ?>
-		</div><!-- row -->
-		<div class="row loans_updated_at updated_at">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-			'model' => $model,
-			'attribute' => 'updated_at',
-			'value' => $model->updated_at,
-			'options' => array(
-				'showButtonPanel' => true,
-				'changeYear' => true,
-				'dateFormat' => 'yy-mm-dd',
-				),
-			));
-; ?>
-		<?php echo $form->error($model,'updated_at'); ?>
 		</div><!-- row -->
 
 

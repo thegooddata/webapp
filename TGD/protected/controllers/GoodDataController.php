@@ -122,7 +122,7 @@ class GoodDataController extends Controller {
                             'tbl_loans_status.id = tbl_loans.id_loans_status',
                         )
                     )
-                ->order('loan_date DESC')
+                ->order('created_at DESC')
                 ->limit($loans_pag_size)
                 ->offset(($loans_pag-1) * $loans_pag_size)
                 ->queryAll();
