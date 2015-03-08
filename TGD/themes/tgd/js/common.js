@@ -59,6 +59,12 @@ jQuery(document).ready(function ($) {
         $('.modal-body').height($('.modal-body').height());
       },
 
+      showError = function(){
+        setModalLabel("Ops!");
+        setModalDescription('Something went wrong. Please try again later.');
+        $modalFooter.removeClass('loading').children('button').prop('disabled',false);
+      },
+
       originalDescription,
       originalLabel, 
       
@@ -69,8 +75,10 @@ jQuery(document).ready(function ($) {
               location = document.location;
           xhr.open('GET', location.protocol + '//' + location.host +"/api/phplist/add/"+email+"/"+list, false);
           xhr.onload = function () {
+              var timeout = setTimeout(showError, 10000);
+
               if (xhr.readyState == 4) {
-                
+                clearTimeout(timeout);
                 var resp = JSON.parse(xhr.responseText);
 
                 if ( xhr.status == 200)  {
@@ -81,11 +89,10 @@ jQuery(document).ready(function ($) {
                   $modalFooter.removeClass('loading').children('button').prop('disabled',false);
 
                   if (resp.result == 'success'){
-                    setModalLabel("Perfect!");
-                    setModalDescription("You will receive news from us.")
+                    setModalLabel("Thanks!");
+                    setModalDescription('We will send you an invite once we are ready.<br>For frequent updates, follow us <a href="http://twitter.com/thegooddata">@thegooddata</a>.')
                   }else if (resp.result == 'fail'){
-                    setModalLabel("Doh!");
-                    setModalDescription(resp.message);
+                    showError();
                   }else{
                     ;
                   }
@@ -94,7 +101,6 @@ jQuery(document).ready(function ($) {
                   resetModalFooter();
                   console.log( "Error: " + xhr.status + ": " + xhr.statusText);
                 }
-                
               }
           };
 
