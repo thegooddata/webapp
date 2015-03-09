@@ -26,34 +26,6 @@ class SeniorityLevelsController extends AdminModuleController
         ));
     }
 
-    /**
-     * Creates a new model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     */
-    public function actionCreate()
-    {
-        $model = new SeniorityLevels;
-        if(Yii::app()->request->isPostRequest)
-        {
-            $model->attributes=$_POST['SeniorityLevels'];
-            $image = CUploadedFile::getInstance($model,'image');
-            if (!empty($image)){
-                $model->icon = $image;
-            }
-            if($model->save()){
-                if (!empty($image)){
-                    $path = Yii::app()->basePath . "/../uploads/seniority";
-
-                    if(!is_dir($path)) mkdir($path, 0777);
-
-                    $model->icon->saveAs($path . "/" . $model->icon->getName());
-                }
-                $this->redirect(array('view','id'=>$model->id));
-            }
-        }
-
-        $this->render('create',array('model'=>$model));
-    }
 
     /**
      * Updates a particular model.
@@ -82,18 +54,6 @@ class SeniorityLevelsController extends AdminModuleController
 
         }
 
-        $this->render('create',array('model'=>$model));
+        $this->render('update',array('model'=>$model));
     }
-
-    /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     */
-    public function actionDelete($id)
-    {
-        if(Yii::app()->request->isPostRequest){
-            $this->loadModel($id, 'SeniorityLevels')->delete();
-        }
-    }
-
 }

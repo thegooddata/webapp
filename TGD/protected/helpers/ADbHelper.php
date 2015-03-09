@@ -153,7 +153,7 @@ class ADbHelper {
       if(Yii::app()->user->user($id)->status == 2) // community member
       {
         $type = 2;
-        if (Yii::app()->user->user($id)->seniority_level != 0 && Yii::app()->user->user($id)->seniority_level != 4) {
+        if (Yii::app()->user->user($id)->seniority_level != 0 && Yii::app()->user->user($id)->seniority_level != 3) {
           $seniority_level = SeniorityLevels::model()->findByPk(Yii::app()->user->user($id)->seniority_level);
           if ($seniority_level) {
              $result['level'] = $seniority_level->level;
