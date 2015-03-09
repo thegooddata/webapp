@@ -28,20 +28,8 @@
 		<?php echo $form->error($model,'image'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'percentile'); ?>
-		<?php echo $form->textField($model,'percentile'); ?>
-		<?php echo $form->error($model,'percentile'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->dropDownList($model,'type',$model->itemAlias('Type')); ?>
-		<?php echo $form->error($model,'type'); ?>
-	</div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton('Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

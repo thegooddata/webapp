@@ -42,7 +42,7 @@
 
     <div class="row">
         <?php echo $form->labelEx($model,'seniority_level'); ?>
-        <?php echo $form->dropDownList($model, 'seniority_level', CHtml::listData(SeniorityLevels::model()->findAll('status!=0'), 'id', 'level'),array('empty' => 'N/A'));?>
+        <?php echo $form->dropDownList($model, 'seniority_level', CHtml::listData(SeniorityLevels::model()->findAll('id=3 OR type=3'), 'id', 'level'),array('empty' => 'Automatically Calculated'));?>
         <?php echo $form->error($model,'seniority_level'); ?>
     </div><!-- row -->
 

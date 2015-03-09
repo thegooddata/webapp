@@ -59,7 +59,7 @@ if ($model->status==User::STATUS_APPLIED) {
 		),
         array(
             'name' => 'seniority_level',
-            'value' => ($level = SeniorityLevels::model()->findByPk($model->seniority_level)) ? $level->level : 'N/A',
+            'value' => ($level = SeniorityLevels::model()->findByPk($model->seniority_level)) ? $level->level : 'Automatically Calculated',
         ),
 		'key'
 	);

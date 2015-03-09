@@ -5,9 +5,6 @@ $this->breadcrumbs=array(
 
 $this->layout='//layouts/column2';
 
-$this->menu=array(
-    array('label'=>'Create Seniority Levels', 'url'=>array('seniorityLevels/create')),
-);
 ?>
 
     <h1><?php echo 'Update Seniority Level'; ?></h1>
