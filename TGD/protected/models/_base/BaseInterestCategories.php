@@ -64,8 +64,14 @@ abstract class BaseInterestCategories extends GxActiveRecord {
 		$criteria->compare('parent_id', $this->parent_id);
 		$criteria->compare('category', $this->category, true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria' => $criteria,
-		));
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+            'sort'=>array(
+                'defaultOrder'=>'id',
+            ),
+            'pagination'=>array(
+                'pageSize'=>20
+            )
+        ));
 	}
 }
