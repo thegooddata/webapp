@@ -33,6 +33,23 @@ const STRIPE_TEST=true;
 const STRIPE_SK='';
 const STRIPE_PK='';
 
+/* PHPlist*/
+// fill with your own config
+const PHPLIST_HOST = '';
+const PHPLIST_DB = 'phplistdb';
+const PHPLIST_LOGIN = 'phplist';
+const PHPLIST_PASSWORD = '';
+
+// fill with your own lists values
+const PHPLIST_FIREFOX_LIST = 0;
+const PHPLIST_SAFARI_LIST = 0;
+const PHPLIST_APPLIED_LIST = 0;
+const PHPLIST_PRE_ACCEPTED_LIST = 0;
+const PHPLIST_ACCEPTED_LIST = 0;
+const PHPLIST_DENIED_LIST = 0;
+const PHPLIST_LEFT_LIST = 0;
+const PHPLIST_EXPELLED_LIST = 0;
+
 /* db */
 CONST BD_NAME = 'tgd';
 CONST BD_HOST = 'localhost';
