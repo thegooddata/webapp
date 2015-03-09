@@ -43,17 +43,59 @@ class GoodDataController extends Controller {
 
         $result = array();
 
-        $cacheKey="GoodInvestmentsData";
-        $result=Yii::app()->cache->get($cacheKey);
+        // money earned -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('(sum(gross_amount) - sum(expenses)) as total')
+            ->from('tbl_incomes')
+            ->queryScalar();
 
-        if($result===false)
-        {
-            // regenerate because it is not found in cache
-            $goodEvilCache = new GoodEvilCache();
+        if (!count($total) > 0) $total = 0;
+        // convert to usd
+        $total=Currencies::convertDefaultTo($total, 'USD');
+        $total=Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
-            $result = $goodEvilCache->setGoodInvestmentsData();
-            
-        }
+        $result['total_money_earned'] = $total;
+
+        // money lost -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('sum(loss) as total')
+            ->from('tbl_loans')
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['total_lost'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+
+        // money lent -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('sum(contribution) as total')
+            ->from('tbl_loans')
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['total_contribution'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+
+        // Outstanding portfolio -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('sum(contribution - paidback - loss) as total')
+            ->from('tbl_loans')
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['total_outstanding'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
+
+        // money repaid -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('sum(paidback) as total')
+            ->from('tbl_loans')
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['total_paidback'] = Yii::app()->numberFormatter->formatCurrency($total, 'USD');
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
@@ -62,16 +104,75 @@ class GoodDataController extends Controller {
 
         $result = array();
 
-        $cacheKey="GoodProjectsData";
-        $result=Yii::app()->cache->get($cacheKey);
+        // loans_countries -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('count(*)')
+            ->from('view_loans_countries')
+            ->queryScalar();
 
-        if($result===false)
-        {
-            // regenerate because it is not found in cache
-            $goodEvilCache = new GoodEvilCache();
+        if (!count($total) > 0) $total = 0;
+        $result['loans_countries'] = $total;
 
-            $result = $goodEvilCache->setGoodProjectsData();
-        }
+        // loans_count -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('count(*)')
+            ->from('tbl_loans')
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['loans_count'] = $total;
+
+        // loans_paying_back_count -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('count(*)')
+            ->from('tbl_loans')
+            ->where(array(
+                    'and',
+                    'id_loans_status = :id',
+                ), array(
+                    ':id' => 3)
+            )
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+
+        $result['loans_paying_back_count'] = $total;
+
+        // loans_paid_back_count -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('count(*)')
+            ->from('tbl_loans')
+            ->where(array(
+                    'and',
+                    'id_loans_status = :id',
+                ), array(
+                    ':id' => 4)
+            )
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['loans_paid_back_count'] = $total;
+
+        // loans_lost_count -----------------------
+        $total = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('count(*)')
+            ->from('tbl_loans')
+            ->where(array(
+                    'and',
+                    'id_loans_status = :id',
+                ), array(
+                    ':id' => 5)
+            )
+            ->queryScalar();
+
+        if (!count($total) > 0) $total = 0;
+        $result['loans_lost_count'] = $total;
+
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
