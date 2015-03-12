@@ -78,7 +78,7 @@ class PHPList
             $stmt->bindParam("email", $email);
             $stmt->execute();
 
-            
+
             if($stmt->rowCount() > 0){
                 $row = $stmt->fetch();
                 return $row['id'];
@@ -132,6 +132,7 @@ class PHPList
             $sql = "INSERT INTO phplist_user_user (email, confirmed, htmlemail, rssfrequency, password, passwordchanged, disabled, entered, uniqid) VALUES (:email, :confirmed, :htmlemail, :rssfrequency, :password, now(), :disabled, now(), :uniqid);";
 
             try {
+                $uniqid = md5(uniqid(mt_rand()));
                 $db = $this->_db;
                 $stmt = $db->prepare($sql);
                 $stmt->bindParam("email", $data['email']);
@@ -140,7 +141,7 @@ class PHPList
                 $stmt->bindParam("rssfrequency", $data['rssfrequency']);
                 $stmt->bindParam("password", $data['password']);
                 $stmt->bindParam("disabled", $data['disabled']);
-                $stmt->bindParam("uniqid", md5(uniqid(mt_rand())));
+                $stmt->bindParam("uniqid", $uniqid);
                 $stmt->execute();
 
                 // Assign id of recently created user.
