@@ -92,7 +92,7 @@ class User extends CActiveRecord
 			//array('username, email, superuser, status', 'required'),
 			array('username,  superuser, status', 'required'),
 			array('superuser, status, seniority_level', 'numerical', 'integerOnly'=>true),
-			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status, avatar, url, seniority_level', 'safe', 'on'=>'search'),
+			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status, avatar, url, seniority_level, notification_preferences', 'safe', 'on'=>'search'),
 		):((Yii::app()->user->id==$this->id)?array(
 			//array('username, email', 'required'),
 			array('username', 'required'),
@@ -172,7 +172,7 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key, user.avatar, user.url, user.notification_preferences user.seniority_level',
+            'select' => 'user.id, user.username, user.email, user.created_at, user.lastvisit_at, user.updated_at, user.superuser, user.status, user.key, user.avatar, user.url, user.notification_preferences, user.seniority_level',
         ));
     }
 
