@@ -17,62 +17,137 @@ class InterestCategories extends BaseInterestCategories
         return parent::beforeSave();
     }
 
-    public function categoriesAllCounts()
-    {
-        $categories = array();
-        $all_categories = InterestCategories::model()->findAll('counter > 0');
-        foreach($all_categories as $category){
-            $categories[$category['id']] = array(
-                'counter' => $category['counter'],
-                'category' => $category['category'],
-                'parent_id' => $category['parent_id'],
-                'url' => $category['url']
-            );
-        }
-
-        return $categories;
+    public function getCategoriesRating($parent_id, $member_id, $datefrom, $dateinto){
+        return Yii::app()->db
+            ->createCommand("
+                  SELECT c.*, (CASE WHEN EXISTS (SELECT 1 FROM tbl_interest_categories c1 WHERE c1.parent_id = c.id) THEN 1 ELSE 0 END) as has_sub
+                  FROM _getcategoriesrating($parent_id, $member_id, '$datefrom', '$dateinto') c
+                  ORDER BY c.id
+                  ")
+            ->setFetchMode(PDO::FETCH_OBJ)->queryAll();
     }
 
-    public function categoriesCounts($member_id = 0)
-    {
-        $this->categories = array();
-        $where = '';
-        if($member_id > 0){
-            $where = "cc.member_id = $member_id AND";
-        }
-        $counts = Yii::app()->db->createCommand(
-            "SELECT SUM(cc.counter) as counter, cs.category_id, ic.category, ic.url
-                FROM tbl_interest_categories_sites cs
-                JOIN tbl_interest_categories_counts cc ON cs.site=cc.site
-                JOIN tbl_interest_categories ic ON ic.id=cs.category_id
-                WHERE $where cc.date_visit >= (now() - '7 days'::interval) AND cc.date_visit <=  now()
-                GROUP BY cs.category_id, ic.category, ic.url"
-        )->queryAll();
-
-        foreach($counts as $count){
-            $this->saveParentCategoriesCounts($count['category_id'], $count['counter']);
-        }
-
-        return $this->categories;
+    public function getInterestedCategories($member_id, $datefrom, $dateinto){
+        return Yii::app()->db
+            ->createCommand("
+                  select *
+                    from tbl_interest_categories c
+                    join _getcategoriesvisitcounter(c.id, '$datefrom', '$dateinto') s
+                        on s.member_id = $member_id
+                    where c.parent_id = 0
+                    ORDER BY s.counter DESC
+                    LIMIT 3
+                  ")
+            ->setFetchMode(PDO::FETCH_OBJ)->queryAll();
     }
 
-    protected function saveParentCategoriesCounts($parent_id, $count){
+    public function getFanCategories($member_id, $datefrom, $dateinto){
+        return Yii::app()->db
+            ->createCommand("
+                  select *
+                    from tbl_interest_categories c
+                    join _getcategoriesvisitcounter(c.id, '$datefrom', '$dateinto') s
+                        on s.member_id = $member_id
+                    where c.parent_id IN (SELECT id FROM tbl_interest_categories WHERE parent_id=0)
+                    ORDER BY s.counter DESC
+                    LIMIT 5
+                  ")
+            ->setFetchMode(PDO::FETCH_OBJ)->queryAll();
+    }
+
+    public function checkCategoriesRating($member_id, $datefrom, $dateinto){
+        return Yii::app()->db
+            ->createCommand("
+                  SELECT id FROM tbl_interest_categories_counts
+                  WHERE member_id=$member_id
+                    AND date_visit BETWEEN '$datefrom' AND '$dateinto'
+                  LIMIT 1
+                  ")
+            ->queryScalar();
+    }
+
+    public function getParentCategories($parent_id){
         if(!empty($parent_id)) {
             $category = InterestCategories::model()->findByPk($parent_id);
             if (!empty($category)) {
                 if(empty($this->categories[$category['id']])) {
                     $this->categories[$category['id']] = array(
-                        'counter' => (int)$category['counter'] + (int)$count,
                         'category' => $category['category'],
                         'parent_id' => $category['parent_id'],
-                        'url' => $category['url']
+                        'id' => $category['id'],
                     );
-                }else{
-                    $this->categories[$category['id']]['counter'] += (int)$count;
                 }
-                $this->saveParentCategoriesCounts($category['parent_id'], $count);
+                $this->getParentCategories($category['parent_id']);
             }
         }
+        return $this->categories;
+    }
+
+    public function setUserCategoriesCache($member_id, $datefrom, $dateinto){
+        $data = array();
+        $interest_categories = InterestCategories::model()->getInterestedCategories($member_id, $datefrom, $dateinto);
+        $fan_categories = InterestCategories::model()->getFanCategories($member_id, $datefrom, $dateinto);
+
+        if(!empty($interest_categories)){
+            foreach($interest_categories as $category){
+                $data['interest'][] = array(
+                    'id' => $category->id,
+                    'category' => $category->category,
+                );
+            }
+        }
+        if(!empty($fan_categories)){
+            foreach($fan_categories as $category){
+                $data['fan'][] = array(
+                    'id' => $category->id,
+                    'category' => $category->category,
+                );
+            }
+        }
+
+        if(!empty($data)){
+            $updatedRows = Yii::app()->db->createCommand()->update(
+                'tbl_interest_categories_cache',
+                array('member_id' => $member_id, 'data' => json_encode($data), 'daydate'=>date('Y-m-d')),
+                'member_id = :id', array(':id' => $member_id)
+            );
+            if($updatedRows == 0) {
+                Yii::app()->db->createCommand()->insert(
+                    'tbl_interest_categories_cache',
+                    array('member_id' => $member_id, 'data' => json_encode($data))
+                );
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getUserCategoriesCache($member_id, $date){
+        $data = array();
+        $res = Yii::app()->db->createCommand()
+            ->select('data')
+            ->from('tbl_interest_categories_cache')
+            ->where(
+                array(
+                    'and',
+                    'member_id= :member_id',
+                    'daydate= :date',
+                ), array(
+                    'member_id' => $member_id,
+                    'date' => $date,
+                )
+            )
+            ->queryScalar();
+        if(!empty($res)){
+            $data = json_decode($res);
+        }
+
+        return $data;
+    }
+
+    public function deleteUserCategoriesCache($member_id){
+        return Yii::app()->db->createCommand()->delete('tbl_interest_categories_cache', 'member_id=:member_id', array('member_id' => $member_id));
     }
 
     /* Generate multilanguage fields */

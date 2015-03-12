@@ -1,7 +1,6 @@
 <?php
 //    * 01 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories SitesCategories
-//    * 02 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories SitesCategoriesCounts
-//    * 02 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories SitesUsersCategoriesCounts
+//    * 03 * * * /usr/bin/php /var/www/tgd/protected/yiic.php interestCategories UsersCategoriesCache
 class InterestCategoriesCommand extends CConsoleCommand
 {
     public function actionSitesCategories(){
@@ -59,56 +58,19 @@ class InterestCategoriesCommand extends CConsoleCommand
         return $categories;
     }
 
-    public function actionSitesCategoriesCounts(){
-        $counts = Yii::app()->db->createCommand(
-            "SELECT SUM(cc.counter) as counter, cs.category_id
-                FROM tbl_interest_categories_sites cs
-                JOIN tbl_interest_categories_counts cc ON cs.site=cc.site
-                WHERE cc.date_visit >= (now() - '7 days'::interval) AND cc.date_visit <=  now()
-                GROUP BY cs.category_id"
-            )->queryAll();
+    public function actionUsersCategoriesCache(){
 
-        InterestCategories::model()->updateAll(array('counter'=>0));
+        $datefrom = date("Y-m-d", strtotime("-1 month"));
+        $dateinto = date("Y-m-d");
 
-        foreach($counts as $count){
-            $this->saveParentCategoriesCounts($count['category_id'], $count['counter']);
-        }
-
-
-        // set cache key for this data
-        $cacheKey="InterestCategories7DayAvg";
-//        $result=Yii::app()->cache->get($cacheKey);
-
-        $categories = InterestCategories::model()->categoriesAllCounts();
-
-        Yii::app()->cache->set($cacheKey, $categories, Yii::app()->params['cacheLifespanOneDay']);
-
-    }
-
-    public function actionSitesUsersCategoriesCounts(){
-
-        $startdate = date('Y-m-d', strtotime("-7 days"));
-        $categoriesCounts = InterestCategoriesCounts::model()->findAll(array('select'=>'distinct(member_id)', 'condition'=>"DATE(date_visit) >= '$startdate' AND member_id > 0"));
-
-        if(!empty($categoriesCounts)){
-            foreach($categoriesCounts as $cat){
-                $cacheKey="InterestCategories7DayAvgMember".$cat['member_id'];
-
-                $categories = InterestCategories::model()->categoriesCounts($cat['member_id']);
-
-                Yii::app()->cache->set($cacheKey, $categories, Yii::app()->params['cacheLifespanOneDay']);
-            }
-        }
-    }
-
-    protected function saveParentCategoriesCounts($parent_id, $count){
-        if(!empty($parent_id)) {
-            $category = InterestCategories::model()->findByPk($parent_id);
-            if (!empty($category)) {
-                $category->counter = (int)$category->counter + (int)$count;
-                if ($category->save()) {
-                    $this->saveParentCategoriesCounts($category['parent_id'], $count);
-                }
+        $users = InterestCategoriesCounts::model()->findAll(array(
+            'select'=>'member_id',
+            'condition'=>'member_id > 0',
+            'distinct'=>true,
+        ));
+        if(!empty($users)){
+            foreach($users as $user){
+                InterestCategories::model()->setUserCategoriesCache($user->member_id, $datefrom, $dateinto);
             }
         }
     }
