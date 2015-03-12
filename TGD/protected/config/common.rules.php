@@ -61,6 +61,7 @@ return array(
   'get-your-share/not-applicable'=>'/purchase/notApplicable',
   'get-your-share/thanks'=> '/purchase/thanks',
   'robots.txt'=>'/site/robots',
+  'interest'=>'/interest/index',
 
 	'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 	'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
