@@ -42,7 +42,12 @@ class InterestCategoriesController extends AdminModuleController
         $model = $this->loadModel($id, 'InterestCategories');
         if(Yii::app()->request->isPostRequest)
         {
+            $model->status = $_POST['InterestCategories']['status'];
             if($model->save())
+                $categories = InterestCategories::model()->getSubCategories($id, 2);
+                foreach($categories as $cat){
+                    InterestCategories::model()->updateByPk($cat['id'], array('status' => $model->status));
+                }
                 $this->redirect(array('view','id'=>$model->id));
 
         }

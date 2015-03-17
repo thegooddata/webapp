@@ -35,7 +35,7 @@ abstract class BaseInterestCategories extends GxActiveRecord {
 	public function rules() {
 		return array(
 			array('parent_id', 'numerical', 'integerOnly'=>true),
-			array('parent_id, category', 'safe'),
+			array('parent_id, category, status', 'safe'),
 			array('id, parent_id, category', 'safe', 'on'=>'search'),
 		);
 	}

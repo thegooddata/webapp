@@ -25,7 +25,7 @@ class InterestCategoriesCommand extends CConsoleCommand
                     $url = str_replace('Top/', '', $alexa_category);
                     $count = substr_count($url, '/');
                     for($i = 0; $i <= $count; $i++){
-                        $search_category = InterestCategories::model()->findByAttributes(array('url'=> $url));
+                        $search_category = InterestCategories::model()->findByAttributes(array('url'=> $url, 'status'=> 1));
                         if($search_category){
                             $categorySitePrev = InterestCategoriesSites::model()->findByAttributes(array('site'=> $site, 'category_id' => $search_category['id']));
                             if(!$categorySitePrev){

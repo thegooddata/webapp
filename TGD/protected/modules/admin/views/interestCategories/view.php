@@ -19,6 +19,10 @@ $this->breadcrumbs=array(
             'name' => 'category',
             'value' => CHtml::link($model->category, array("/admin/interestCategories?id=".$model->id)),
             'type' => 'raw'
-        )
-	)
+        ),
+        array(
+            'name' => 'status',
+            'value' => ($model->status) ? 'Enabled' : 'Disabled',
+        ),
+    )
 )); ?>

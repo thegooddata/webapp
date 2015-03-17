@@ -34,7 +34,7 @@ class InterestCategories extends BaseInterestCategories
                     from tbl_interest_categories c
                     join _getcategoriesvisitcounter(c.id, '$datefrom', '$dateinto') s
                         on s.member_id = $member_id
-                    where c.parent_id = 0
+                    where c.parent_id = 0 AND c.status = 1
                     ORDER BY s.counter DESC
                     LIMIT 3
                   ")
@@ -48,7 +48,7 @@ class InterestCategories extends BaseInterestCategories
                     from tbl_interest_categories c
                     join _getcategoriesvisitcounter(c.id, '$datefrom', '$dateinto') s
                         on s.member_id = $member_id
-                    where c.parent_id IN (SELECT id FROM tbl_interest_categories WHERE parent_id=0)
+                    where c.parent_id IN (SELECT id FROM tbl_interest_categories WHERE parent_id=0 AND status = 1)
                     ORDER BY s.counter DESC
                     LIMIT 5
                   ")
@@ -81,6 +81,12 @@ class InterestCategories extends BaseInterestCategories
             }
         }
         return $this->categories;
+    }
+
+    public function getSubCategories($id, $status = 1){
+        return Yii::app()->db
+            ->createCommand("SELECT id FROM _getsubcategories($id, $status)")
+            ->queryAll();
     }
 
     public function setUserCategoriesCache($member_id, $datefrom, $dateinto){
