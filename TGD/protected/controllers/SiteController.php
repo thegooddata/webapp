@@ -206,8 +206,21 @@ class SiteController extends Controller {
         Yii::app()->theme = 'tgd';
         $this->pageTitle = " - Your company";
         $this->bodyId = "tgd-company";
-        
-        $this->render('company');
+
+        $people = Members::model()->getOurPeople();
+
+        $colors = array();
+        $levels = SeniorityLevels::model()->findAll();
+
+        foreach($levels as $level){
+            $colors[$level['id']] = $level['color'];
+            if($level['id'] == 3){
+                $colors[0] = $level['color'];
+            }
+        }
+
+
+        $this->render('company', array('people'=>$people, 'colors'=>$colors));
     }
 
     public function actionIndex() {
@@ -474,5 +487,4 @@ class SiteController extends Controller {
       }
       Yii::app()->end();
     }
-
 }
