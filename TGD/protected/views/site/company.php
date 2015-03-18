@@ -32,8 +32,7 @@
                 <section id="our_people" class="tgd-box col-sm-16 col-md-16 col-lg-16">
                     <h2>Our People</h2>
                     <div class="our_people tgd-box col-sm-16 col-md-8 col-lg-8"></div>
-                    <div class="our_people_desc our_people_border tgd-box col-sm-16 col-md-8 col-lg-8">
-                        <h4>The best way we know to ensure your collaboration and guarantee continued transparency is to make you the majority owners of TheGoodData. In doing so, our interests will always be aligned with yours, which means we’ll never sell out to another company so your data will always be safe with us.</h4>
+                    <div class="our_people_desc tgd-box col-sm-16 col-md-8 col-lg-8">
                         <p>To ensure we have as many owners as possible, TheGoodData is incorporated as an English Industrial and Provident Society, which means you can apply for membership simply by using the service and registering with us. From that moment on, you’ll be kept up to date with company progress and you’ll be able to take part in major company decisions. If you don’t like something, you can change it!</p>
                     </div>
                     <div class="our_people_border tgd-box col-sm-16 col-md-16 col-lg-16">
