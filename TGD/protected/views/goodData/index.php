@@ -2,10 +2,12 @@
         <section id="notice">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-16 col-md-12 col-md-offset-2 col-lg-12 col-lg-offset-2 alert alert-warning alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/start.png"/>Even though we’re really still at the starting line, we wanted to share our stats with you from the get-go. We believe that transparency is a must in order to ensure real collaboration. Have a look below to find out what we’ve been working on.
-                    </div>
+                    <?php if(empty($_COOKIE['goodDataStartMessageDontShow'])) : ?>
+                        <div class="col-sm-16 col-md-12 col-md-offset-2 col-lg-12 col-lg-offset-2 alert alert-warning alert-dismissable">
+                            <button type="button" class="close close-alert-button" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/start.png"/>Even though we’re really still at the starting line, we wanted to share our stats with you from the get-go. We believe that transparency is a must in order to ensure real collaboration. Have a look below to find out what we’ve been working on.
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -198,4 +200,9 @@
             $('.projects_at_lost').html(result.loans_lost_count);
         }, "json" );
 
+        $(document).ready(function(){
+            $('.close-alert-button').on('click', function(){
+                document.cookie = "goodDataStartMessageDontShow=true";
+            })
+        });
         </script>
