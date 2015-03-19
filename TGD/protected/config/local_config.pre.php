@@ -2,7 +2,7 @@
 
 return array(
         'yiiFrameworkPath' => '/srv/webapp/shared/yii-1.1.14.f0fee9/framework',
-        'YII_DEBUG' => true
+        'YII_DEBUG' => false
     );
 
 ?>
