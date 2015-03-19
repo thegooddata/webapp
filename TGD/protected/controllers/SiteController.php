@@ -250,7 +250,7 @@ class SiteController extends Controller {
      * This is the action to handle external exceptions.
      */
     public function actionError() {
-        Yii::app()->theme = 'blank';
+//        Yii::app()->theme = 'blank';
 
         if ($error = Yii::app()->errorHandler->error) {
             if (Yii::app()->request->isAjaxRequest)
