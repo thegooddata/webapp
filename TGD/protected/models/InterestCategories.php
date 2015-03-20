@@ -28,31 +28,77 @@ class InterestCategories extends BaseInterestCategories
     }
 
     public function getInterestedCategories($member_id, $datefrom, $dateinto){
-        return Yii::app()->db
+        $result = null;
+
+        $categories = Yii::app()->db
             ->createCommand("
                   select *
                     from tbl_interest_categories c
-                    join _getcategoriesvisitcounter(c.id, '$datefrom', '$dateinto') s
-                        on s.member_id = $member_id
                     where c.parent_id = 0 AND c.status = 1
-                    ORDER BY s.counter DESC
-                    LIMIT 3
                   ")
             ->setFetchMode(PDO::FETCH_OBJ)->queryAll();
+
+
+        $counters = array();
+        $sort_counters = array();
+        if(!empty($categories)){
+            foreach($categories as $cat){
+                $counter = Yii::app()->db
+                    ->createCommand("select * FROM _getcategoriesvisitcounter($cat->id, '$datefrom', '$dateinto') WHERE member_id = $member_id")
+                    ->setFetchMode(PDO::FETCH_OBJ)->queryRow();
+                if(!empty($counter)){
+                    $counter->id = $cat->id;
+                    $counter->category = $cat->category;
+                    $counters[] = $counter;
+                    $sort_counters[] = $counter->counter;
+                }
+            }
+        }
+        asort($sort_counters);
+        $i=0;
+        foreach($sort_counters as $key => $sort){
+            if($i == 3) break;
+            $result[$i] = $counters[$key];
+            $i++;
+        }
+        return $result;
     }
 
     public function getFanCategories($member_id, $datefrom, $dateinto){
-        return Yii::app()->db
+        $result = null;
+
+        $categories = Yii::app()->db
             ->createCommand("
                   select *
                     from tbl_interest_categories c
-                    join _getcategoriesvisitcounter(c.id, '$datefrom', '$dateinto') s
-                        on s.member_id = $member_id
                     where c.parent_id IN (SELECT id FROM tbl_interest_categories WHERE parent_id=0 AND status = 1)
-                    ORDER BY s.counter DESC
-                    LIMIT 5
                   ")
             ->setFetchMode(PDO::FETCH_OBJ)->queryAll();
+
+
+        $counters = array();
+        $sort_counters = array();
+        if(!empty($categories)){
+            foreach($categories as $cat){
+                $counter = Yii::app()->db
+                    ->createCommand("select * FROM _getcategoriesvisitcounter($cat->id, '$datefrom', '$dateinto') WHERE member_id = $member_id")
+                    ->setFetchMode(PDO::FETCH_OBJ)->queryRow();
+                if(!empty($counter)){
+                    $counter->id = $cat->id;
+                    $counter->category = $cat->category;
+                    $counters[] = $counter;
+                    $sort_counters[] = $counter->counter;
+                }
+            }
+        }
+        asort($sort_counters);
+        $i=0;
+        foreach($sort_counters as $key => $sort){
+            if($i == 5) break;
+            $result[$i] = $counters[$key];
+            $i++;
+        }
+        return $result;
     }
 
     public function checkCategoriesRating($member_id, $datefrom, $dateinto){
