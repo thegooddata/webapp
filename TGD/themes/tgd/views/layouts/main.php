@@ -68,6 +68,7 @@
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index");?>">Good data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/evilData/index");?>">Evil data</a></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/userData/index");?>">Your data</a></li>
+                                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/interest");?>">Interests</a></li>
 
                                         <li class="divider"></li>
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/logout");?>"><span class="glyphicon glyphicon-off"></span> sign out</a></li>
@@ -144,7 +145,8 @@
                               $menu_items[]=array('label'=>'GOOD DATA', 'url'=>array('/goodData/index'));
                               $menu_items[]=array('label'=>'EVIL DATA', 'url'=>array('/evilData/index'));
                               $menu_items[]=array('label'=>'YOUR DATA', 'url'=>array('/userData/index'));
-                              
+                              $menu_items[]=array('label'=>'INTERESTS', 'url'=>array('/interest/index'));
+
                             }
                         
                             $this->widget('zii.widgets.CMenu',array(

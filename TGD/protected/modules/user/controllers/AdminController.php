@@ -163,36 +163,44 @@ class AdminController extends Controller
 					$to_list = $this->statusToList[$new_status];
 					$from_list = $this->statusToList[$previous_status];
 
+                    //if notification preferences: subscribe and phplist segments are 24 or 25. Issue:Add more membership details #20
+                    if(($to_list != PHPLIST_PRE_ACCEPTED_LIST && $to_list != PHPLIST_ACCEPTED_LIST) ||
+                        (($to_list == PHPLIST_PRE_ACCEPTED_LIST  || $to_list == PHPLIST_ACCEPTED_LIST) && $model->notification_preferences))
+                    {
 
-					// There's a special case when the user changes from status Applied to status Pre-accepted.
-					// In this case, the user doesn't move from one list to another, but instead is added to the list.
-					if($previous_status == User::STATUS_APPLIED && $new_status == User::STATUS_PRE_ACCEPTED){
-						// send email
-						Yii::app()->getModule('user')->sendApplicationApproval($model);
-						// add user to list
-						$result = $phplist->addUserToList($email, $to_list);
 
-						if($result == 1){
-							Yii::app()->user->setFlash('userAdmin', "The user has been added to PHPList pre-accepted list.");
-						}
+                        // There's a special case when the user changes from status Applied to status Pre-accepted.
+                        // In this case, the user doesn't move from one list to another, but instead is added to the list.
+                        if ($previous_status == User::STATUS_APPLIED && $new_status == User::STATUS_PRE_ACCEPTED) {
+                            // send email
+                            Yii::app()->getModule('user')->sendApplicationApproval($model);
+                            // add user to list
+                            $result = $phplist->addUserToList($email, $to_list);
 
-					}
+                            if ($result == 1) {
+                                Yii::app()->user->setFlash('userAdmin', "The user has been added to PHPList pre-accepted list.");
+                            }
 
-					// if both of the lists assigned to each status, exists in config.
-				    
-					elseif($from_list * $to_list > 0){
-						// move user between lists
-						$result = $phplist->moveUser($email, $from_list, $to_list);
+                        } // if both of the lists assigned to each status, exists in config.
 
-						if($result == 1){
-							Yii::app()->user->setFlash('userAdmin', "The user has been moved from list {$from_list} to list {$to_list} .");
-						}
-					}
+                        elseif ($from_list * $to_list > 0) {
+                            // move user between lists
+                            $result = $phplist->moveUser($email, $from_list, $to_list);
 
-					elseif($to_list == 0){
-						// delete user from lists
-						$result = $phplist->removeUserFromList($email, $from_list);
-					}
+                            if ($result == 1) {
+                                Yii::app()->user->setFlash('userAdmin', "The user has been moved from list {$from_list} to list {$to_list} .");
+                            }
+                        } elseif ($to_list == 0) {
+                            // delete user from lists
+                            $result = $phplist->removeUserFromList($email, $from_list);
+                        }
+
+
+                    //if notification preferences: unsubscribe remove segment 24 and 25. Issue:Add more membership details #20
+                    }else{
+                        $phplist->removeUserFromList($email, PHPLIST_ACCEPTED_LIST);
+                        $phplist->removeUserFromList($email, PHPLIST_PRE_ACCEPTED_LIST);
+                    }
 
 				}
 

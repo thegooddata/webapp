@@ -46,7 +46,7 @@ class GoodDataController extends Controller {
         // money earned -----------------------
         $total = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select('(sum(gross_amount) - sum(expenses)) as total')
+            ->select('sum((gross_amount - expenses)*loan_reserved/100) as total')
             ->from('tbl_incomes')
             ->queryScalar();
 

@@ -9,6 +9,16 @@ class ProfileController extends Controller
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
+
+    private $statusToList = array(
+        User::STATUS_APPLIED => PHPLIST_APPLIED_LIST,
+        User::STATUS_PRE_ACCEPTED => PHPLIST_PRE_ACCEPTED_LIST,
+        User::STATUS_ACCEPTED => PHPLIST_ACCEPTED_LIST,
+        User::STATUS_DENIED => PHPLIST_DENIED_LIST,
+        User::STATUS_LEFT => PHPLIST_LEFT_LIST,
+        User::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
+    );
+
 	/**
 	 * Shows a particular model.
 	 */
@@ -114,6 +124,24 @@ class ProfileController extends Controller
                         $user->avatar->saveAs($path . "/". $user->id . "/" . $user->avatar->getName());
                     }
                     /* END UPLOAD FILE */
+
+                    /* START PHPList */
+                    $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+
+                    $email = $user->email;
+                    if($user->notification_preferences){
+                        $list = $this->statusToList[$user->status];
+                        if($list == PHPLIST_ACCEPTED_LIST){
+                            $phplist->addUserToList($email, PHPLIST_ACCEPTED_LIST);
+                        }
+                        if($list == PHPLIST_PRE_ACCEPTED_LIST){
+                            $phplist->addUserToList($email, PHPLIST_PRE_ACCEPTED_LIST);
+                        }
+                    }else{
+                        $phplist->removeUserFromList($email, PHPLIST_ACCEPTED_LIST);
+                        $phplist->removeUserFromList($email, PHPLIST_PRE_ACCEPTED_LIST);
+                    }
+                    /* END PHPList */
                 }
             	Yii::app()->user->username = $user->username;
             	$success="Changes have been made successfully";

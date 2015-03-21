@@ -25,6 +25,12 @@ $this->layout='//layouts/column2';
             'type'=>'raw',
         ),
         array(
+            'name' => 'status',
+            'value' => function($data, $row) {
+                return ($data->status) ? 'Enabled' : 'Disabled';
+            },
+        ),
+        array(
             'class'=>'CButtonColumn',
             'template'=>'{view}{update}',
         ),
