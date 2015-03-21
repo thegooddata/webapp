@@ -281,7 +281,9 @@
             </div>
         </footer>
         
-        <?php if (Yii::app()->params['enableAnalytics']): ?>
+        <?php if (Yii::app()->params['enableAnalytics'] 
+            && !($this instanceof GxController) 
+            && !(isset($this->isAdminPage) && $this->isAdminPage === true)): ?>
           <!-- Piwik -->
           <script type="text/javascript">
             var _paq = _paq || [];

@@ -4,6 +4,8 @@ class ManageController extends Controller
 {
     public $displayMenu = true;
     
+    public $isAdminPage = true;
+
 	public function filters()
     {
         return array( 'accessControl' ); // perform access control for CRUD operations
