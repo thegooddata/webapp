@@ -113,6 +113,12 @@
                                             <td>Persistent cookies</td>
                                             <td>Used by Piwik analytics platform.</td>
                                         </tr>
+                                        <tr>
+                                            <td>goodDataStartMessageDontShow</td>
+                                            <td>Persistent cookie</td>
+                                            <td>Used for user preferences in the website.</td>
+                                        </tr>
+                                        
                                     </table>
                                     
                                     <?php if (Yii::app()->params['enableAnalytics']): ?>
