@@ -155,7 +155,7 @@ class GoodEvilCache
 
         $total = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select('count(*) as total')
+            ->select('*')
             ->from('view_queries_trade_month')
             ->queryScalar();
 
