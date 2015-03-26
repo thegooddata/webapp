@@ -46,6 +46,7 @@ class Controller extends CController
 		array('label'=>'Manage Transactions', 'url'=>array('/transactions/admin')),
         array('label'=>'Manage Seniority Levels', 'url'=>array('/admin/seniorityLevels')),
         array('label'=>'Manage Interest Categories', 'url'=>array('/admin/interestCategories')),
+        array('label'=>'Compare Web Trackers', 'url'=>array('/admin/webtrackers')),
 		array('label'=>'Slow Query Logs', 'url'=>array('/admin/slowQueryLog/admin')),
 		//array('label'=>'Manage Achievement Types', 'url'=>array('/achievementsTypes/admin')),
 		
