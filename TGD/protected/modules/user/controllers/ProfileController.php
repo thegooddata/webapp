@@ -117,7 +117,7 @@ class ProfileController extends Controller
             	if($user->save()){
                     /* START UPLOAD FILE */
                     if (!empty($avatar)){
-                        $path = realpath(Yii::app()->basePath . "/../uploads/avatars");
+                        $path = Yii::app()->basePath . "/../uploads/avatars";
 
                         if(!is_dir($path)) mkdir($path, 0777);
 
