@@ -78,8 +78,8 @@ abstract class BaseTransactions extends GxActiveRecord {
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('transaction_id', $this->transaction_id, true);
-		$criteria->compare('type', $this->type, true);
-		$criteria->compare('status', $this->status, true);
+		$criteria->compare('LOWER(type)', strtolower($this->type), true);
+		$criteria->compare('LOWER(status)', strtolower($this->status), true);
 		$criteria->compare('currency', $this->currency, true);
 		$criteria->compare('amount', $this->amount, true);
 		$criteria->compare('member_id', $this->member_id);

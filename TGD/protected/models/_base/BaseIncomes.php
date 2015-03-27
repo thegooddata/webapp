@@ -87,7 +87,7 @@ abstract class BaseIncomes extends GxActiveRecord {
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('type', $this->type);
-		$criteria->compare('source_name', $this->source_name, true);
+		$criteria->compare('LOWER(source_name)', strtolower($this->source_name), true);
 		$criteria->compare('gross_amount', $this->gross_amount, true);
 		$criteria->compare('expenses', $this->expenses, true);
 		$criteria->compare('income_date', $this->income_date, true);

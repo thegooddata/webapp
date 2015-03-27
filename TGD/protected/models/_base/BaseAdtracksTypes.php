@@ -63,7 +63,7 @@ abstract class BaseAdtracksTypes extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('name', $this->name, true);
+		$criteria->compare('LOWER(name)', strtolower($this->name), true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

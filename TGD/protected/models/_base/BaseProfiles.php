@@ -62,8 +62,8 @@ abstract class BaseProfiles extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('user_id', $this->user_id);
-		$criteria->compare('lastname', $this->lastname, true);
-		$criteria->compare('firstname', $this->firstname, true);
+		$criteria->compare('LOWER(lastname)', strtolower($this->lastname), true);
+		$criteria->compare('LOWER(firstname)', strtolower($this->firstname), true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

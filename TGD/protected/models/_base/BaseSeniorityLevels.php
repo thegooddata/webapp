@@ -94,8 +94,8 @@ abstract class BaseSeniorityLevels extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('level', $this->level, true);
-		$criteria->compare('color', $this->color, true);
+		$criteria->compare('LOWER(level)', strtolower($this->level), true);
+		$criteria->compare('LOWER(color)', strtolower($this->color), true);
 		$criteria->compare('icon', $this->icon, true);
 		$criteria->compare('percentile', $this->percentile);
 		$criteria->compare('type', $this->type);

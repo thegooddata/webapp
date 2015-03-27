@@ -94,7 +94,7 @@ abstract class BaseProfilesFields extends GxActiveRecord {
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('varname', $this->varname, true);
-		$criteria->compare('title', $this->title, true);
+		$criteria->compare('LOWER(title)', strtolower($this->title), true);
 		$criteria->compare('field_type', $this->field_type, true);
 		$criteria->compare('field_size', $this->field_size, true);
 		$criteria->compare('field_size_min', $this->field_size_min, true);

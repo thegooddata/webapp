@@ -71,8 +71,8 @@ abstract class BaseQueriesBlacklist extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('lang', $this->lang, true);
-		$criteria->compare('category', $this->category, true);
+		$criteria->compare('LOWER(lang)', strtolower($this->lang), true);
+		$criteria->compare('LOWER(category)', strtolower($this->category), true);
 		$criteria->compare('stem', $this->stem, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);

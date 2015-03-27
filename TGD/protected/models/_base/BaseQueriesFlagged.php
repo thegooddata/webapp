@@ -80,10 +80,10 @@ abstract class BaseQueriesFlagged extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('provider', $this->provider, true);
+		$criteria->compare('LOWER(provider)', strtolower($this->provider), true);
 		$criteria->compare('data', $this->data, true);
-		$criteria->compare('query', $this->query, true);
-		$criteria->compare('lang', $this->lang, true);
+		$criteria->compare('LOWER(query)', strtolower($this->query), true);
+		$criteria->compare('LOWER(lang)', strtolower($this->lang), true);
 		$criteria->compare('share', $this->share, true);
 		$criteria->compare('usertime', $this->usertime, true);
 		$criteria->compare('language_support', $this->language_support, true);

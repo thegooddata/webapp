@@ -65,8 +65,8 @@ abstract class BaseLoansLeaders extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('name_en', $this->name_en, true);
-		$criteria->compare('name_es', $this->name_es, true);
+		$criteria->compare('LOWER(name_en)', strtolower($this->name_en), true);
+		$criteria->compare('LOWER(name_es)', strtolower($this->name_es), true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
