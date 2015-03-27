@@ -219,8 +219,10 @@ class SiteController extends Controller {
             }
         }
 
+        $arr = array(6 => 'our_director', 5 => 'our_collaborator', 3 => 'our_member', 0 => 'our_member');
 
-        $this->render('company', array('people'=>$people, 'colors'=>$colors));
+
+        $this->render('company', array('people'=>$people, 'colors'=>$colors, 'arr'=>$arr));
     }
 
     public function actionIndex() {
