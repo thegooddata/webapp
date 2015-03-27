@@ -14,7 +14,7 @@ class Members extends BaseMembers
             ->createCommand("
                  SELECT id, username, avatar, url, seniority_level
                   FROM tbl_members
-                  WHERE avatar IS NOT NULL AND avatar != ''
+                  WHERE avatar IS NOT NULL AND avatar != '' AND status = 2 AND superuser != 1
                   ORDER BY seniority_level DESC, RANDOM();
                   ")
             ->queryAll();
