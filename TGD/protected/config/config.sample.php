@@ -56,6 +56,7 @@ CONST BD_HOST = 'localhost';
 CONST BD_USERNAME = 'user';
 CONST BD_PASSWORD = '';
 CONST BD_PORT=5432;
+CONST BD_SSL_MODE='require'; // use 'require' or 'disable'
 
 /* mailing */
 const EMAIL_ADMIN = 'admin@thegooddata.com';

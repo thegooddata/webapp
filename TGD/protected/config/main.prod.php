@@ -77,7 +77,7 @@ return array(
 
 		'db'=>CMap::mergeArray(require(dirname(__FILE__).'/common.db.php'), array(
 		    'tablePrefix' => 'tbl_',
-	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode=require;',
+	    	'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode='.BD_SSL_MODE.';',
 		    'username'=>BD_USERNAME,
 		    'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',

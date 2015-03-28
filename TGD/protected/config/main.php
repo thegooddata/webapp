@@ -79,7 +79,7 @@ return array(
 	    	// 'connectionString' => 'pgsql:host=localhost'.';port=5432'.';dbname=tgd',
 		    // 'username'=>'postgres',
 		    // 'password'=> 'perrovaca',
-		    'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME,
+		    'connectionString' => 'pgsql:host='.BD_HOST.';port='.BD_PORT.';dbname='.BD_NAME.';sslmode='.BD_SSL_MODE.';',
 				'username'=>BD_USERNAME,
 				'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',
