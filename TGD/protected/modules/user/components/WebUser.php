@@ -15,6 +15,32 @@ class WebUser extends CWebUser
      * @see CController::createUrl
      */
     public $loginUrl=array('/user/login');
+    
+    /**
+     * @var User
+     */
+    private $_current_user;
+    
+    public function init() {
+      
+      parent::init();
+
+      if (!$this->getIsGuest()) {
+        $user=$this->getCurrentUser();
+        if (!$user) {
+          $this->logout();
+        }
+      }
+
+    }
+    
+    public function getCurrentUser() {
+      if ($this->_current_user===null)
+      {
+        $this->_current_user=User::model()->findbyPk($this->getId());
+      }
+      return $this->_current_user;
+    }
 
     public function getRole()
     {
