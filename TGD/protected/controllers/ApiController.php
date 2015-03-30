@@ -1193,7 +1193,7 @@ class ApiController extends Controller
     public function _createInterestCategories($params) {
 
         // get post info
-        $member_id=$params['member_id'];
+        $member_id=  is_numeric($params['member_id']) ? $params['member_id'] : 0; // if empty value set to 0 so that sql queries don't throw error
         $user_id= (!empty($params['user_id'])) ? $params['user_id'] : null;
         $site = $params['domain'];
         if(!empty($site)) {
@@ -1208,7 +1208,13 @@ class ApiController extends Controller
                 }
             }
 
-            $categoriesCount = InterestCategoriesCounts::model()->findByAttributes(array('member_id' => $member_id, 'user_id' => $user_id, 'site' => $site, 'date_visit' => date('Y-m-d')));
+            $categoriesCountAttr=array(
+              'member_id' => $member_id, 
+              'user_id' => $user_id, 
+              'site' => $site, 
+              'date_visit' => date('Y-m-d')
+            );
+            $categoriesCount = InterestCategoriesCounts::model()->findByAttributes($categoriesCountAttr);
             if (!empty($categoriesCount)) {
                 $categoriesCount->counter = $categoriesCount->counter + 1;
             } else {
