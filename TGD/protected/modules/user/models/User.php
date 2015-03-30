@@ -89,7 +89,12 @@ class User extends CActiveRecord
 			array('superuser', 'in', 'range'=>array(0,1)),
             array('created_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
             array('lastvisit_at', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
-			//array('username, email, superuser, status', 'required'),
+
+            array('avatar, url, notification_preferences', 'safe'),
+            array('notification_preferences', 'default', 'value' => 0, 'setOnEmpty' => true),
+            array('image', 'length', 'max' => 255, 'tooLong' => '{attribute} is too long (max {max} chars).'),
+            array('image', 'file', 'types' => 'jpg,jpeg,gif,png', 'allowEmpty'=>true, 'maxSize' => 1024 * 1024 * 2, 'tooLarge' => 'Size should be less then 2MB'),
+
 			array('username,  superuser, status', 'required'),
 			array('superuser, status, seniority_level', 'numerical', 'integerOnly'=>true),
 			array('id, username, password, email, activkey, created_at, lastvisit_at, superuser, status, avatar, url, seniority_level, notification_preferences', 'safe', 'on'=>'search'),

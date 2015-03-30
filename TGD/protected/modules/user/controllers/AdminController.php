@@ -152,10 +152,49 @@ class AdminController extends Controller
 					$model->activkey = Yii::app()->controller->module->encrypting(microtime().$model->password);
 				}
 
+                $avatar = CUploadedFile::getInstance($model,'image');
+                if (!empty($avatar)) {
+                    $model->avatar = $avatar;
+                }
+
 				$model->save();
 				$profile->save();
 
-				if ($previous_status != $new_status){
+
+                if (!empty($avatar)){
+                    $path = Yii::app()->basePath . "/../uploads/avatars";
+
+                    if(!is_dir($path)) mkdir($path, 0777);
+
+                    if(!is_dir($path . "/". $model->id)) mkdir($path . "/". $model->id, 0777);
+
+                    $model->avatar->saveAs($path . "/". $model->id . "/" . $model->avatar->getName());
+
+                    Yii::import('ext.jcrop.EJCropper');
+                    $jcropper = new EJCropper();
+
+                    $jcropper->jpeg_quality = 95;
+                    $jcropper->png_compression = 8;
+                    $coords = $jcropper->getCoordsFromPost('crop');
+
+                    $jcropper->targ_w = 400;
+                    $jcropper->targ_h = 400;
+                    $jcropper->thumbPath = $path . "/". $model->id . "/preview";
+                    if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
+                    $thumbnail = $jcropper->crop($path . "/". $model->id . "/" . $model->avatar->getName(), $coords);
+                    $model->avatar->saveAs($thumbnail);
+
+                    $jcropper->targ_w = 150;
+                    $jcropper->targ_h = 150;
+                    $jcropper->thumbPath = $path . "/". $model->id . "/thumb";
+                    if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
+                    $thumbnail = $jcropper->crop($path . "/". $model->id . "/" . $model->avatar->getName(), $coords);
+
+                    $model->avatar->saveAs($thumbnail);
+                }
+                /* END UPLOAD FILE */
+
+				if ($previous_status != $new_status ){
 					
 					$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
 
@@ -163,11 +202,14 @@ class AdminController extends Controller
 					$to_list = $this->statusToList[$new_status];
 					$from_list = $this->statusToList[$previous_status];
 
+
+//                    User::STATUS_PRE_ACCEPTED => array(24, 36);
+//                    User::STATUS_ACCEPTED => array(35, 25);
+
                     //if notification preferences: subscribe and phplist segments are 24 or 25. Issue:Add more membership details #20
                     if(($to_list != PHPLIST_PRE_ACCEPTED_LIST && $to_list != PHPLIST_ACCEPTED_LIST) ||
                         (($to_list == PHPLIST_PRE_ACCEPTED_LIST  || $to_list == PHPLIST_ACCEPTED_LIST) && $model->notification_preferences))
                     {
-
 
                         // There's a special case when the user changes from status Applied to status Pre-accepted.
                         // In this case, the user doesn't move from one list to another, but instead is added to the list.
@@ -176,6 +218,7 @@ class AdminController extends Controller
                             Yii::app()->getModule('user')->sendApplicationApproval($model);
                             // add user to list
                             $result = $phplist->addUserToList($email, $to_list);
+                            $result = $phplist->addUserToList($email, 36);
 
                             if ($result == 1) {
                                 Yii::app()->user->setFlash('userAdmin', "The user has been added to PHPList pre-accepted list.");
@@ -183,9 +226,14 @@ class AdminController extends Controller
 
                         } // if both of the lists assigned to each status, exists in config.
 
-                        elseif ($from_list * $to_list > 0) {
+                        elseif ($to_list > 0) {
                             // move user between lists
                             $result = $phplist->moveUser($email, $from_list, $to_list);
+                            if($to_list == PHPLIST_PRE_ACCEPTED_LIST){
+                                $result = $phplist->addUserToList($email, 36);
+                            }elseif($to_list == PHPLIST_ACCEPTED_LIST){
+                                $result = $phplist->addUserToList($email, 35);
+                            }
 
                             if ($result == 1) {
                                 Yii::app()->user->setFlash('userAdmin', "The user has been moved from list {$from_list} to list {$to_list} .");
@@ -193,6 +241,11 @@ class AdminController extends Controller
                         } elseif ($to_list == 0) {
                             // delete user from lists
                             $result = $phplist->removeUserFromList($email, $from_list);
+                            if($to_list == PHPLIST_PRE_ACCEPTED_LIST){
+                                $result = $phplist->removeUserFromList($email, 35);
+                            }elseif($to_list == PHPLIST_ACCEPTED_LIST){
+                                $result = $phplist->removeUserFromList($email, 36);
+                            }
                         }
 
 
@@ -200,6 +253,8 @@ class AdminController extends Controller
                     }else{
                         $phplist->removeUserFromList($email, PHPLIST_ACCEPTED_LIST);
                         $phplist->removeUserFromList($email, PHPLIST_PRE_ACCEPTED_LIST);
+                        $phplist->removeUserFromList($email, 35);
+                        $phplist->removeUserFromList($email, 36);
                     }
 
 				}

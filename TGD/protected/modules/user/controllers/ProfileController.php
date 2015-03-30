@@ -11,12 +11,8 @@ class ProfileController extends Controller
 	private $_model;
 
     private $statusToList = array(
-        User::STATUS_APPLIED => PHPLIST_APPLIED_LIST,
-        User::STATUS_PRE_ACCEPTED => PHPLIST_PRE_ACCEPTED_LIST,
-        User::STATUS_ACCEPTED => PHPLIST_ACCEPTED_LIST,
-        User::STATUS_DENIED => PHPLIST_DENIED_LIST,
-        User::STATUS_LEFT => PHPLIST_LEFT_LIST,
-        User::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
+        User::STATUS_PRE_ACCEPTED => array(24, 36),
+        User::STATUS_ACCEPTED => array(35, 25),
     );
 
 	/**
@@ -85,34 +81,10 @@ class ProfileController extends Controller
 
             if($error=="" && $user->validate())
             {
-//                $user->avatar = CUploadedFile::getInstance($user,'image');
-
-                echo
-                /* START UPLOAD FILE */
-                Yii::import('ext.EUploadedImage.EUploadedImage');
-
-                $avatar = EUploadedImage::getInstance($user, 'image');
-
-                if(!empty($avatar)) {
+                $avatar = CUploadedFile::getInstance($user,'image');
+                if (!empty($avatar)) {
                     $user->avatar = $avatar;
-                    $user->avatar->maxWidth = 800;
-                    $user->avatar->maxHeight = 800;
-
-                    $user->avatar->thumb = array(
-                        'maxWidth' => 150,
-                        'maxHeight' => 150,
-                        'dir' => 'thumb',
-                        'prefix' => '',
-                    );
-
-                    $user->avatar->preview = array(
-                        'maxWidth' => 400,
-                        'maxHeight' => 400,
-                        'dir' => 'preview',
-                        'prefix' => '',
-                    );
                 }
-                /* END UPLOAD FILE */
 
             	if($user->save()){
                     /* START UPLOAD FILE */
@@ -121,7 +93,31 @@ class ProfileController extends Controller
 
                         if(!is_dir($path)) mkdir($path, 0777);
 
+                        if(!is_dir($path . "/". $user->id)) mkdir($path . "/". $user->id, 0777);
+
                         $user->avatar->saveAs($path . "/". $user->id . "/" . $user->avatar->getName());
+
+                        Yii::import('ext.jcrop.EJCropper');
+                        $jcropper = new EJCropper();
+
+                        $jcropper->jpeg_quality = 95;
+                        $jcropper->png_compression = 8;
+                        $coords = $jcropper->getCoordsFromPost('crop');
+
+                        $jcropper->targ_w = 400;
+                        $jcropper->targ_h = 400;
+                        $jcropper->thumbPath = $path . "/". $user->id . "/preview";
+                        if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
+                        $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $user->avatar->getName(), $coords);
+                        $user->avatar->saveAs($thumbnail);
+
+                        $jcropper->targ_w = 150;
+                        $jcropper->targ_h = 150;
+                        $jcropper->thumbPath = $path . "/". $user->id . "/thumb";
+                        if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
+                        $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $user->avatar->getName(), $coords);
+
+                        $user->avatar->saveAs($thumbnail);
                     }
                     /* END UPLOAD FILE */
 
@@ -130,16 +126,19 @@ class ProfileController extends Controller
 
                     $email = $user->email;
                     if($user->notification_preferences){
-                        $list = $this->statusToList[$user->status];
-                        if($list == PHPLIST_ACCEPTED_LIST){
-                            $phplist->addUserToList($email, PHPLIST_ACCEPTED_LIST);
-                        }
-                        if($list == PHPLIST_PRE_ACCEPTED_LIST){
-                            $phplist->addUserToList($email, PHPLIST_PRE_ACCEPTED_LIST);
+                        if(array_key_exists($user->status, $this->statusToList)){
+                            if(!empty($this->statusToList[$user->status])){
+                                foreach($this->statusToList[$user->status] as $list){
+                                    $phplist->addUserToList($email, $list);
+                                }
+                            }
                         }
                     }else{
-                        $phplist->removeUserFromList($email, PHPLIST_ACCEPTED_LIST);
-                        $phplist->removeUserFromList($email, PHPLIST_PRE_ACCEPTED_LIST);
+                        foreach($this->statusToList as $list){
+                            foreach($list as $list_id){
+                                $phplist->removeUserFromList($email, $list_id);
+                            }
+                        }
                     }
                     /* END PHPList */
                 }
