@@ -126,6 +126,13 @@ class YiiMailMessage extends CComponent {
 	* @param string charset optional
 	*/
 	public function setBody($body = '', $contentType = null, $charset = null) {
+        if($contentType = 'html/text'){
+            if($body != strip_tags($body)){
+                $body = "<p>$body</p>";
+            }
+            $this->message->setBody($body,'text');
+        }
+
 		if ($this->view !== null) {
 			if (!is_array($body)) $body = array('body'=>$body);
 			
