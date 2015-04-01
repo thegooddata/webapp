@@ -14,15 +14,16 @@ class Members extends BaseMembers
             ->createCommand("
                  SELECT id, username, avatar, url, seniority_level
                   FROM tbl_members
-                  WHERE avatar IS NOT NULL AND avatar != '' AND status = 2
+                  WHERE avatar IS NOT NULL AND avatar != '' AND status = 2 AND superuser != 1
                   ORDER BY seniority_level DESC, RANDOM();
                   ")
             ->queryAll();
 
+        $http = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
 
         if(!empty($users)){
             foreach($users as $key => $user) {
-                if(!@getimagesize( Yii::app()->baseUrl."/uploads/avatars/" . $user['id'] . "/thumb/" . $user['avatar'])) {
+                if(!@getimagesize( "$http://" . $_SERVER['HTTP_HOST'] . "/uploads/avatars/" . $user['id'] . "/thumb/" . $user['avatar'])) {
                     unset($users[$key]);
                 }
             }
