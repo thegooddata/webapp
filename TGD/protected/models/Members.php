@@ -19,9 +19,10 @@ class Members extends BaseMembers
                   ")
             ->queryAll();
 
+
         if(!empty($users)){
             foreach($users as $key => $user) {
-                if(!@getimagesize( "http://" . $_SERVER['HTTP_HOST'] . "/uploads/avatars/" . $user['id'] . "/thumb/" . $user['avatar'])) {
+                if(!@getimagesize( Yii::app()->baseUrl."/uploads/avatars/" . $user['id'] . "/thumb/" . $user['avatar'])) {
                     unset($users[$key]);
                 }
             }
