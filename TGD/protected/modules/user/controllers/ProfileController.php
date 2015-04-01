@@ -37,6 +37,9 @@ class ProfileController extends Controller
         $user = $this->loadUser();
 
         if(isset($_POST['ProfileForm'])) {
+            if(empty($_POST['ProfileForm']['notification_preferences'])){
+                $_POST['User']['notification_preferences'] = 0;
+            }
             $profile_form=$_POST['ProfileForm'];
 
             $user->username = $profile_form['username'];

@@ -23,6 +23,11 @@ class AdminController extends Controller
 		User::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
 		);
 
+    private $statusToListNotification = array(
+        User::STATUS_PRE_ACCEPTED => array(24, 36),
+        User::STATUS_ACCEPTED => array(35, 25),
+    );
+
 	/**
 	 * @return array action filters
 	 */
@@ -136,6 +141,9 @@ class AdminController extends Controller
 
 			$previous_status=$model->status;
 
+            if(empty($_POST['User']['notification_preferences'])){
+                $_POST['User']['notification_preferences'] = 0;
+            }
 			$model->attributes=$_POST['User'];
 
 			$new_status=$model->status;
@@ -194,17 +202,17 @@ class AdminController extends Controller
                 }
                 /* END UPLOAD FILE */
 
-				if ($previous_status != $new_status ){
-					
-					$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
 
-					$email = $model->email;
+                $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+                $email = $model->email;
+
+				if ($previous_status != $new_status){
+					
+//					$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+//
+//					$email = $model->email;
 					$to_list = $this->statusToList[$new_status];
 					$from_list = $this->statusToList[$previous_status];
-
-
-//                    User::STATUS_PRE_ACCEPTED => array(24, 36);
-//                    User::STATUS_ACCEPTED => array(35, 25);
 
                     //if notification preferences: subscribe and phplist segments are 24 or 25. Issue:Add more membership details #20
                     if(($to_list != PHPLIST_PRE_ACCEPTED_LIST && $to_list != PHPLIST_ACCEPTED_LIST) ||
@@ -218,7 +226,7 @@ class AdminController extends Controller
                             Yii::app()->getModule('user')->sendApplicationApproval($model);
                             // add user to list
                             $result = $phplist->addUserToList($email, $to_list);
-                            $result = $phplist->addUserToList($email, 36);
+                            $phplist->addUserToList($email, 36);
 
                             if ($result == 1) {
                                 Yii::app()->user->setFlash('userAdmin', "The user has been added to PHPList pre-accepted list.");
@@ -226,13 +234,16 @@ class AdminController extends Controller
 
                         } // if both of the lists assigned to each status, exists in config.
 
-                        elseif ($to_list > 0) {
+                        elseif ($from_list * $to_list > 0) {
                             // move user between lists
-                            $result = $phplist->moveUser($email, $from_list, $to_list);
+                            $phplist->removeUserFromList($email, $from_list);
+                            $result = $phplist->addUserToList($email, $to_list);
                             if($to_list == PHPLIST_PRE_ACCEPTED_LIST){
-                                $result = $phplist->addUserToList($email, 36);
+                                $phplist->removeUserFromList($email, 35);
+                                $phplist->addUserToList($email, 36);
                             }elseif($to_list == PHPLIST_ACCEPTED_LIST){
-                                $result = $phplist->addUserToList($email, 35);
+                                $phplist->removeUserFromList($email, 35);
+                                $phplist->addUserToList($email, 35);
                             }
 
                             if ($result == 1) {
@@ -242,22 +253,38 @@ class AdminController extends Controller
                             // delete user from lists
                             $result = $phplist->removeUserFromList($email, $from_list);
                             if($to_list == PHPLIST_PRE_ACCEPTED_LIST){
-                                $result = $phplist->removeUserFromList($email, 35);
+                                $phplist->removeUserFromList($email, 35);
                             }elseif($to_list == PHPLIST_ACCEPTED_LIST){
-                                $result = $phplist->removeUserFromList($email, 36);
+                                $phplist->removeUserFromList($email, 36);
                             }
                         }
-
-
-                    //if notification preferences: unsubscribe remove segment 24 and 25. Issue:Add more membership details #20
                     }else{
-                        $phplist->removeUserFromList($email, PHPLIST_ACCEPTED_LIST);
-                        $phplist->removeUserFromList($email, PHPLIST_PRE_ACCEPTED_LIST);
-                        $phplist->removeUserFromList($email, 35);
-                        $phplist->removeUserFromList($email, 36);
+                        foreach($this->statusToListNotification as $list){
+                            foreach($list as $list_id){
+                                $phplist->removeUserFromList($email, $list_id);
+                            }
+                        }
+                        Yii::app()->user->setFlash('userAdmin', "The user has been removed from PHPList pre-accepted and accepted list.");
                     }
 
-				}
+				}elseif($model->notification_preferences){
+                    if(array_key_exists($model->status, $this->statusToListNotification)){
+                        if(!empty($this->statusToListNotification[$model->status])){
+                            foreach($this->statusToListNotification[$model->status] as $list){
+                                $phplist->addUserToList($email, $list);
+                            }
+                            Yii::app()->user->setFlash('userAdmin', "The user has been added to PHPList pre-accepted or accepted list.");
+                        }
+                    }
+                }else{
+                    foreach($this->statusToListNotification as $list){
+                        foreach($list as $list_id){
+                            $phplist->removeUserFromList($email, $list_id);
+                        }
+                    }
+                    Yii::app()->user->setFlash('userAdmin', "The user has been removed from PHPList pre-accepted and accepted list.");
+
+                }
 
 				$this->redirect(array('view','id'=>$model->id));
 			} else {
