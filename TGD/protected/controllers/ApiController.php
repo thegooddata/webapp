@@ -590,23 +590,14 @@ class ApiController extends Controller
 		$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
 		$result = $phplist->addUserToList($email, $list);
 		
-		if($result > 0){
+		if($result){
 			$result_data = array(
 				'result'=>'success',
 				'message'=>'The user with email ' . $email . ' has been added to the list ' . $list . '.'
 			);
 		}else{
-			$result_data = array('result'=>'fail');
-			if($result == -1){
-				$result_data['message'] = 'User with email ' . $email . ' couldn\'t be created.';	
-			}else if($result == -2){
-				$result_data['message'] = 'There\'s no list called ' . $list . '.';	
-			}else if($result == -3){
-				$result_data['message'] = 'User with email ' . $email . ' is already in list ' . $list . '.';	
-			}else if($result === false){
-				$result_data['message'] = 'There has been an error processing the request.';
-			}
-
+			$result_data = array('result'=>'fail',
+								 'message' => 'There has been an error processing the request.');
 		}
 
 		$this->_sendResponse(200, CJSON::encode($result_data), 'application/json');

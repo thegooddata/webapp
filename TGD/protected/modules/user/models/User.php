@@ -14,6 +14,18 @@ class User extends CActiveRecord
 
     public $image;
 
+    // this is for PHPList management
+    private $_old_data = array();
+    private $_new_data = array();
+    private $_statusToList = array(
+    	self::STATUS_APPLIED => PHPLIST_APPLIED_LIST,
+        self::STATUS_PRE_ACCEPTED => array(PHPLIST_PRE_ACCEPTED_LIST, PHPLIST_PRE_ACCEPTED_OPTED_OUT_LIST),
+    	self::STATUS_ACCEPTED => array(PHPLIST_ACCEPTED_LIST, PHPLIST_ACCEPTED_OPTED_OUT_LIST),
+        self::STATUS_DENIED => PHPLIST_DENIED_LIST,
+        self::STATUS_LEFT => PHPLIST_LEFT_LIST,
+        self::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
+    );
+
 	//TODO: Delete for next version (backward compatibility)
 	//const STATUS_BANED=-1;
 	
@@ -266,6 +278,87 @@ class User extends CActiveRecord
         return parent::afterSave();
     }
     */
+   
+    public function afterDelete() {
+
+        $this->_deleteFromPHPLists($this->email);
+
+        return parent::afterDelete();
+    }
+
+    public function afterSave() {
+
+        $this->_new_data['status'] = $this->status;
+        $this->_new_data['notification_preferences'] = $this->notification_preferences;
+
+		$this->_managePHPLists();
+
+        return parent::afterSave();
+    }
+
+    private function _deleteFromPHPLists($userEmail, $phpList = null){
+		if($phpList == null){
+			$phpList = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+		}
+
+		$phpList->deleteUser($this->email);
+	}
+
+    private function _managePHPLists(){
+    	$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+    	$added = false;
+
+        // check change in notification status
+        if($this->_old_data['notification_preferences'] != $this->_new_data['notification_preferences']){
+
+        	// if the user has opted-in
+        	if($this->_new_data['notification_preferences']){
+        		// add to list depending on his new status
+                $lists = $this->_statusToList[$this->_new_data['status']];
+                $lists = (is_int($lists)) ? array($lists) : $lists;
+                foreach($lists as $listId){
+                    if($listId > 0){
+        		      $added = $added && $phplist->addUserToList($this->email, $listId);
+                    }
+                }
+        	}
+        	// if the user has opted-out
+        	else{
+        		// remove user
+        		$this->_deleteFromPHPLists($this->email, $phplist);
+        	}
+        }
+
+        // check for a change in status
+        if($this->_new_data['notification_preferences'] && ($this->_old_data['status'] != $this->_new_data['status'])){
+        	// add user to list if it wasn't added in the previous step
+
+        	if(!$added){
+                $lists = $this->_statusToList[$this->_new_data['status']];
+                $lists = (is_int($lists)) ? array($lists) : $lists;
+                foreach($lists as $listId){
+                    if($listId > 0){
+                        $phplist->addUserToList($this->email, $listId);
+                    }
+                }
+            }
+
+        	// remove from old list if necessary
+            if($this->_old_data['status'] == null) { 
+                // when User is saved after creation, there's no old status. 
+                // There's no need to continue.
+                return;
+            }
+
+            $lists = $this->_statusToList[$this->_old_data['status']];
+            $lists = (is_int($lists)) ? array($lists) : $lists;
+            foreach($lists as $listId){
+                if($listId > 0){
+                    $phplist->deleteUserFromList($this->email, $listId);
+                }
+            } 
+        }
+    }
     
     public function beforeSave() {
         
@@ -273,5 +366,25 @@ class User extends CActiveRecord
         
         return parent::beforeSave();
     }
-    
+
+    public function afterFind() {
+        
+        // initialize old and new data to the same values
+        $this->_old_data['status'] = $this->status;
+        $this->_old_data['notification_preferences'] = $this->notification_preferences;
+        $this->_new_data['status'] = $this->status;
+        $this->_new_data['notification_preferences'] = $this->notification_preferences;
+
+        return parent::afterFind();
+    }
+
+    public function afterConstruct() {
+        // initialize old and new data to the same values
+        $this->_old_data['status'] = null;
+        $this->_old_data['notification_preferences'] = null;
+        $this->_new_data['status'] = null;
+        $this->_new_data['notification_preferences'] = null;
+
+        return parent::afterConstruct();
+    }
 }

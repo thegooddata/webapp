@@ -10,10 +10,10 @@ class ProfileController extends Controller
 	 */
 	private $_model;
 
-    private $statusToList = array(
-        User::STATUS_PRE_ACCEPTED => array(24, 36),
-        User::STATUS_ACCEPTED => array(35, 25),
-    );
+    // private $statusToList = array(
+    //     User::STATUS_PRE_ACCEPTED => array(24, 36),
+    //     User::STATUS_ACCEPTED => array(35, 25),
+    // );
 
 	/**
 	 * Shows a particular model.
@@ -124,7 +124,7 @@ class ProfileController extends Controller
                     }
                     /* END UPLOAD FILE */
 
-                    /* START PHPList */
+                    /* START PHPList 
                     $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
 
                     $email = $user->email;
@@ -143,7 +143,7 @@ class ProfileController extends Controller
                             }
                         }
                     }
-                    /* END PHPList */
+                     END PHPList */
                 }
             	Yii::app()->user->username = $user->username;
             	$success="Changes have been made successfully";

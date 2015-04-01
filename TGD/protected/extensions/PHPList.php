@@ -70,10 +70,17 @@ class PHPList
         return $dbh;   
     }
 
+    /**
+     * Get the user id 
+     * @param  string $email User email address
+     * @return mixed         User id or false if not found.
+     */
     private function _getUserId($email){
+
+        $db = $this->_db;
         $sql = "SELECT * FROM phplist_user_user WHERE email = :email";
+        
         try{
-            $db = $this->_db;
             $stmt = $db->prepare($sql);
             $stmt->bindParam("email", $email);
             $stmt->execute();
@@ -83,7 +90,7 @@ class PHPList
                 $row = $stmt->fetch();
                 return $row['id'];
             }else{
-                return -1;
+                return false;
             }
         }catch(PDOException $e){
             return false;
@@ -91,49 +98,53 @@ class PHPList
     }
 
     /**
-     * Finds the Id of on existing list, givent its name.
-     * @param string $list The list name.
-     * @return mixed The list id if it exists, false if it doesn't and 
-     *                                            -1 in case of an error processing the request.
+     * Finds the Id of the lists a user is in.
+     * @param int $userId The user id.
+     * @return array The list ids 
+     *               false in case of an error processing the request.
      */
-    private function _getListId($list){
+    private function _getUserLists($userId){
 
-        $sql = "SELECT * FROM phplist_list WHERE lower(name) = :list";
+        $db = $this->_db;
+        $list = array();
+        $sql = "SELECT * FROM phplist_listuser WHERE userid = :id";
+
         try{
-            $db = $this->_db;
             $stmt = $db->prepare($sql);
-            $list = strtolower($list);
-            $stmt->bindParam("list", $list);
+            $stmt->bindParam("id", $userId);
             $stmt->execute();
+            $rowCount = $stmt->rowCount();
 
-            if($stmt->rowCount() > 0){
-                $row = $stmt->fetch();
-                return $row['id'];
-
-            }else{
-                return -1;
+            while($row = $stmt->fetch()){
+                $list[] = $row['listid'];
             }
+            
+            return sizeof($list)? $list : false;
+        
         }catch(PDOException $e){
             return false;
         }
     }
+
     /**
      * Creates a PHPList user with a set of provided properties. If a user with the given 
      * email address already exists, it returns her id.
      * @param array  $data Properties with which the user will be created.
-     * @return int The user id or -1 if there was an error processing the request.
+     * @return int The user id 
+     *             false otherwise.
      */
     private function _createUser($data){
-        
-        $id = $this->_getUserId($data['email']);
+    
+        $db = $this->_db;
+        $userId = $this->_getUserId($data['email']);
 
-        if($id == -1){
+
+        if($userId === false){
             // User doesn't exist. Create it.
             $sql = "INSERT INTO phplist_user_user (email, confirmed, htmlemail, rssfrequency, password, passwordchanged, disabled, entered, uniqid) VALUES (:email, :confirmed, :htmlemail, :rssfrequency, :password, now(), :disabled, now(), :uniqid);";
 
             try {
                 $uniqid = md5(uniqid(mt_rand()));
-                $db = $this->_db;
                 $stmt = $db->prepare($sql);
                 $stmt->bindParam("email", $data['email']);
                 $stmt->bindParam("confirmed", $data['confirmed']);
@@ -146,125 +157,163 @@ class PHPList
 
                 // Assign id of recently created user.
                 if($stmt->rowCount() > 0){
-                    $id = $db->lastInsertId();
+                    return $db->lastInsertId();
                 }else{
-                    $id = -1;
+                    return false;
                 }
             } catch(PDOException $e) {
                 return false;
             }
         }
 
-        return $id;
+        return $userId;
     }
-
+    
     /**
-     * Adds a user to a list.
-     * @param string $email User email.
-     * @param string $list List name.
-     * @return mixed false if there was an exception thrown,
-     *                1 if the user was added successfully 
-     *               -1 if user wasn't found, 
-     *               -2 if list wasn't found, 
-     *               -3 if user already was in the list.
+     * Deletes a PHPList user.
+     * @param   int  $id    User id.
+     * @return  int         The amount of deleted users
+     *                      false if there was an error processing the request.
      */
-    public function addUserToList( $email, $list ){
+    private function _deleteUser($userId){
 
-        $user_id = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
-        $list_id = is_int($list)? $list : (ctype_digit($list) ? intval($list) : $this->_getListId($list));
-
-        if( $user_id && $list_id === false ) {
-            return false;
-        }
-
-
-        if($list_id < 0) return -2;
-        if($user_id < 0) return -1;
-
-        $sql = "INSERT INTO phplist_listuser (userid, listid, entered, modified) VALUES (:user_id, :list_id, now(), now());";
+        $db = $this->_db;
+        $sql = "DELETE FROM phplist_user_user WHERE id=:id;";
 
         try {
-            $db = $this->_db;
             $stmt = $db->prepare($sql);
-            $stmt->bindParam("user_id", $user_id );
-            $stmt->bindParam("list_id", $list_id );
+            $stmt->bindParam("id", $userId);
             $stmt->execute();
-
-            return $stmt->rowCount();
+            return $stmt->rowCount() > 0;
+                
         } catch(PDOException $e) {
-            if ($e->getCode() == '23000'){
-                return -3;
-            }
-
             return false;
         }
     }
 
     /**
-     * Removes a user from a list.
-     * @param string $email User email.
-     * @param string $list List name.
-     * @return mixed false if there was an exception thrown, 
-     *               -1 if user wasn't found, 
-     *               -2 if list wasn't found.
+     * Deletes user from some lists
+     * @param  int      $user_id User Id.
+     * @param  array    $lists   Lists to remove the user from.
+     * @return boolean           True if no error was found, false if there was.
      */
-    public function removeUserFromList( $email, $list ){
-
-        $user_id = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
-        $list_id = is_int($list)? $list : (ctype_digit($list) ? intval($list) : $this->_getListId($list));
-
-
-        if( $user_id && $list_id === false ) {
-            return false;
-        }
-
-
-        if($list_id < 0) return -2;
-        if($user_id < 0) return -1;
+    private function _deleteUserFromList($userId, $listId){
+        
+        $db = $this->_db;
 
         $sql = "DELETE FROM phplist_listuser WHERE userid=:user_id AND listid=:list_id;";
 
         try {
-            $db = $this->_db;
             $stmt = $db->prepare($sql);
-            $stmt->bindParam("user_id", $user_id );
-            $stmt->bindParam("list_id", $list_id );
+            $stmt->bindParam("user_id", $userId );
+            $stmt->bindParam("list_id", $listId );
             $stmt->execute();
 
-            return $stmt->rowCount();
+            return $stmt->rowCount() >= 0;
         } catch(PDOException $e) {
+            return false;
+        }    
+    }
+
+    /**
+     * Delete user.
+     * @param  string $email User email.
+     * @return boolean
+     */
+    public function deleteUser($email){
+        $userId = $this->_getUserId($email);
+        if(!$userId){
+            return true;
+        }
+        $lists = $this->_getUserLists($userId);
+        
+        $listsDeleted = true;
+        foreach($lists as $listId){
+            $listsDeleted = $listsDeleted && $this->_deleteUserFromList($userId, $listId);
+        }
+
+        return  $this->_deleteUser($userId);
+    }
+
+    /**
+     * Adds a user to a list.
+     * @param   string  $email  User email.
+     * @param   string  $list   List id.
+     * @return  boolean         false if fail,
+     *                          true if the user was added successfully 
+     */
+    public function addUserToList( $email, $listId ){
+
+        $db = $this->_db;
+        $userId = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
+        if( $userId === false ) {
+            return false;
+        }
+
+        $sql = "INSERT INTO phplist_listuser (userid, listid, entered, modified) VALUES (:user_id, :list_id, now(), now());";
+
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("user_id", $userId );
+            $stmt->bindParam("list_id", $listId );
+            $stmt->execute();
+            return $stmt->rowCount() > 0;
+        } catch(PDOException $e) {
+            if ($e->getCode() == '23000'){
+                return true;
+            }
             return false;
         }
     }
 
     /**
      * Removes a user from a list.
-     * @param string $email User email.
-     * @param int $from List origin.
-     * @param int $to List destination.
-     * @return mixed false if there was an exception thrown, 
-     *               1 if the user list was updated.
-     *               0 if no user list was updated.
+     * @param   string $email   User email.
+     * @param   string $list    List name.
+     * @return  mixed           true if it worked
+     *                          false if there was an exception thrown, 
+     */
+    public function deleteUserFromList( $email, $listId ){
+
+        $userId = $this->_getUserId($email);
+        if(!$userId){
+            // there's no user with that email. Fair enough. Return OK.
+            return true;
+        }
+
+        return $this->_deleteUserFromList($userId, $listId);
+    }
+
+    /**
+     * Moves a user from a list to another.
+     * @param string    $email  User email.
+     * @param int       $from   List origin.
+     * @param int       $to     List destination.
+     * @return mixed            true if it worked.
+     *                          false if there's not such user, 
+     *                              no user-list combination was found
+     *                              or there was an exception thrown, 
      */
     public function moveUser( $email, $from, $to ){
+        
+        $db = $this->_db;
+        $user_id = $this->_getUserId($email);
 
-        $user_id = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
-
-        if( $user_id === false ) {
+        if(!$user_id) {
             return false;
         }
 
         $sql = "UPDATE phplist_listuser SET listid=:to_list_id WHERE userid=:user_id AND listid=:from_list_id;";
 
         try {
-            $db = $this->_db;
             $stmt = $db->prepare($sql);
             $stmt->bindParam("user_id", $user_id );
             $stmt->bindParam("from_list_id", $from );
             $stmt->bindParam("to_list_id", $to );
             $stmt->execute();
 
-            return $stmt->rowCount();
+            return $stmt->rowCount() > 0;
+
         } catch(PDOException $e) {
             echo $e->getMessage();
             return false;
