@@ -316,6 +316,7 @@ class User extends CActiveRecord
         		// add to list depending on his new status
                 $lists = $this->_statusToList[$this->_new_data['status']];
                 $lists = (is_int($lists)) ? array($lists) : $lists;
+                $added = true;
                 foreach($lists as $listId){
                     if($listId > 0){
         		      $added = $added && $phplist->addUserToList($this->email, $listId);
