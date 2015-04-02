@@ -8,6 +8,11 @@ class WebtrackersController extends AdminModuleController
      */
     public function actionIndex()
     {
+        $this->render('index');
+    }
+
+    public function actionCompare()
+    {
         $file1 = file_get_contents("https://raw.github.com/disconnectme/disconnect/master/firefox/content/disconnect.safariextension/opera/chrome/data/services.json");
         $file2 = file_get_contents("https://raw.githubusercontent.com/thegooddata/extension/94d49837a68c5c9382b2c8e20b59d36c7d0d6fea/chrome/data/services.json");
 
@@ -35,18 +40,29 @@ class WebtrackersController extends AdminModuleController
             }
         }
 
-        $trackers = $this->arrayRecursiveDiff($file1['categories'], $file2['categories']);
+        $trackers1 = $this->arrayRecursiveDiff($file1['categories'], $file2['categories']);
 
-        foreach($trackers as $index => $arr) {
+        foreach($trackers1 as $index => $arr) {
             foreach ($arr as $k => $value) {
                 foreach ($value as $key => $val)
-                    $trackers[$index][][$key] = array_values($val);
-                unset($trackers[$index][$k]);
+                    $trackers1[$index][][$key] = array_values($val);
+                unset($trackers1[$index][$k]);
             }
         }
-        $trackers = json_encode($trackers, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $trackers1 = json_encode($trackers1, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
-        $this->render('index',array('trackers'=>$trackers));
+        $trackers2 = $this->arrayRecursiveDiff($file2['categories'], $file1['categories']);
+
+        foreach($trackers2 as $index => $arr) {
+            foreach ($arr as $k => $value) {
+                foreach ($value as $key => $val)
+                    $trackers2[$index][][$key] = array_values($val);
+                unset($trackers2[$index][$k]);
+            }
+        }
+        $trackers2 = json_encode($trackers2, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+        $this->render('compare',array('trackers1'=>$trackers1, 'trackers2'=>$trackers2));
     }
 
     protected function arrayRecursiveDiff($aArray1, $aArray2) {

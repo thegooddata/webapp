@@ -1,14 +1,16 @@
 <?php
 $this->breadcrumbs=array(
-    'Compare Web Trackers'=>array('index')
+    'Manage Web Trackers'=>array('index')
+);
+
+$this->menu=array(
+
+    array('label'=>'Compare Web Trackers', 'url'=>array('/admin/webtrackers/compare')),
 );
 
 $this->layout='//layouts/column2';
 
 ?>
+<h1>Manage Web Trackers</h1>
 
-<h1>Compare Web Trackers</h1>
-
-<div>
-    <?php echo "<pre>$trackers</pre>"; ?>
-</div><!-- form -->
+<?php echo CHtml::link('Compare Web Trackers', array("/admin/webtrackers/compare"), array('class' => 'btn btn-success'));?>
