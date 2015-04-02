@@ -11,6 +11,7 @@ $this->menu = array(
 		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Sources', 'url' => array('adtracksSources/admin')),
 		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Types', 'url' => array('adtracksTypes/admin')),
 		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Whitelist', 'url' => array('whitelists/admin')),
+		array('label'=>Yii::t('app', 'Manage') . ' ' . 'Webtrack Compare', 'url' => array('adtracks/compare')),
 
 	);
 
