@@ -109,6 +109,7 @@
                             <th class="engine">URL</th>
                             <th class="date">Date</th>
                             <th class="events">Visits</th>
+                            <th class="sensitive-data">Is it sensitive?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,6 +120,7 @@
                                 <td class="engine">Multiple</td>
                                 <td class="date">Multiple</td>
                                 <td class="events"><?php echo $browse->count; ?></td>
+                                <td class="sensitive-data checked"><a href="<?php echo Yii::app()->createUrl('userData/deleteBrowse', array('browsing_pag' => $browsing_pag, 'browse_domain'=>$browse->domain))?>" class="glyphicon glyphicon-remove delete"></a></td>
                             </tr>
 
                             <?php } else { ?>
@@ -127,6 +129,7 @@
                                 <td class="engine"><?php echo (strlen($browsing_details[$browse->domain][0]->url) > 45) ? substr($browsing_details[$browse->domain][0]->url,0,45).'...' : $browsing_details[$browse->domain][0]->url;?></td>
                                 <td class="date"><?php echo date_format(date_create($browsing_details[$browse->domain][0]->created_at), 'Y-m-d H:i:s')?></td>
                                 <td class="events">1</td>
+                                <td class="sensitive-data checked"><a href="<?php echo Yii::app()->createUrl('userData/deleteBrowse', array('browsing_pag' => $browsing_pag, 'browse_domain'=>$browse->domain))?>" class="glyphicon glyphicon-remove delete"></a></td>
                             </tr>
                             <?php } ?>
                         <?php } ?>

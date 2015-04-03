@@ -246,6 +246,30 @@ class UserDataController extends Controller {
         $this->redirect(array('userData/index','queries_pag'=>$_GET['queries_pag']));
     }
 
+    public function actionDeleteBrowse() {
+
+
+        $browse_domain = $_GET['browse_domain'];
+        $model = Browsing::model()->findByAttributes(array('member_id' => Yii::app()->user->id, 'domain' => $browse_domain));
+
+        if ($model != null)
+        {
+            $flagger = new BrowsingFlagged();
+            $flagger->member_id = $model->member_id;
+            $flagger->domain = $model->domain;
+            $flagger->url= $model->url;
+            $flagger->usertime= $model->usertime;
+            $flagger->save();
+
+            InterestCategoriesSites::model()->deleteAll("site = :site", array(':site' => $model->domain));
+            InterestCategoriesCounts::model()->deleteAll("site = :site", array(':site' => $model->domain));
+
+            Browsing::model()->deleteAllByAttributes(array('member_id' => Yii::app()->user->id, 'domain' => $browse_domain));
+        }
+
+        $this->redirect(array('userData/index','browsing_pag'=>$_GET['browsing_pag']));
+    }
+
     public function actionIndex() {
         $this->visualizar();
 

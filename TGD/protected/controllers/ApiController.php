@@ -1188,34 +1188,38 @@ class ApiController extends Controller
         $user_id= (!empty($params['user_id'])) ? $params['user_id'] : null;
         $site = $params['domain'];
         if(!empty($site)) {
-            $categories = InterestCategoriesSites::model()->findByAttributes(array('site' => $site));
-            if (empty($categories)) {
-                $categories = new InterestCategoriesSites;
-                $categories->site = $site;
+            $browsingFlagged = BrowsingFlagged::model()->findByAttributes(array('domain' => $site), '(member_id = :member_id OR member_id = 0)', array(':member_id' => $member_id));
+            if(empty($browsingFlagged)){
+                $categories = InterestCategoriesSites::model()->findByAttributes(array('site' => $site));
+                if (empty($categories)) {
+                    $categories = new InterestCategoriesSites;
+                    $categories->site = $site;
 
-                if (!$categories->save()) {
-                    var_dump($categories->errors);
-                    die;
+                    if (!$categories->save()) {
+                        var_dump($categories->errors);
+                        die;
+                    }
                 }
+
+                $categoriesCountAttr=array(
+                    'member_id' => $member_id,
+                    'user_id' => $user_id,
+                    'site' => $site,
+                    'date_visit' => date('Y-m-d')
+                );
+                $categoriesCount = InterestCategoriesCounts::model()->findByAttributes($categoriesCountAttr);
+                if (!empty($categoriesCount)) {
+                    $categoriesCount->counter = $categoriesCount->counter + 1;
+                } else {
+                    $categoriesCount = new InterestCategoriesCounts;
+                    $categoriesCount->member_id = $member_id;
+                    $categoriesCount->user_id = $user_id;
+                    $categoriesCount->site = $site;
+                    $categoriesCount->counter = 1;
+                }
+                return $categoriesCount->save();
             }
 
-            $categoriesCountAttr=array(
-              'member_id' => $member_id, 
-              'user_id' => $user_id, 
-              'site' => $site, 
-              'date_visit' => date('Y-m-d')
-            );
-            $categoriesCount = InterestCategoriesCounts::model()->findByAttributes($categoriesCountAttr);
-            if (!empty($categoriesCount)) {
-                $categoriesCount->counter = $categoriesCount->counter + 1;
-            } else {
-                $categoriesCount = new InterestCategoriesCounts;
-                $categoriesCount->member_id = $member_id;
-                $categoriesCount->user_id = $user_id;
-                $categoriesCount->site = $site;
-                $categoriesCount->counter = 1;
-            }
-            return $categoriesCount->save();
         }
 
         return false;
