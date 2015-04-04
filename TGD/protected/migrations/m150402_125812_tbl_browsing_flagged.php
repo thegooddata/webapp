@@ -1,6 +1,6 @@
 <?php
 
-class m150402_125812_tbl_browsing_flagged_and_add_queries_flagged_member_id extends CDbMigration
+class m150402_125812_tbl_browsing_flagged extends CDbMigration
 {
 	public function up()
 	{
