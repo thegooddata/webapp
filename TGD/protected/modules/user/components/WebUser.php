@@ -27,11 +27,26 @@ class WebUser extends CWebUser
 
       if (!$this->getIsGuest()) {
         $user=$this->getCurrentUser();
-        if (!$user) {
+        if ($this->userMustBeLoggedOut($user)) {
           $this->logout();
         }
       }
 
+    }
+    
+    private function userMustBeLoggedOut(&$user) {
+      
+      // user was not found, so logout
+      if (!$user) {
+        return true;
+      }
+      
+      // if user was banned or so, also force logout
+      if ((int)UserIdentity::getCanLoginError($user) !== UserIdentity::ERROR_NONE) {
+        return true;
+      }
+      
+      return false;
     }
     
     public function getCurrentUser() {

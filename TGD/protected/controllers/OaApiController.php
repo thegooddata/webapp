@@ -82,18 +82,27 @@ class OaApiController extends Controller {
     private function getUserInfoById($user_id=null) {
         $result=array();
         
+        // check we've got a valid ID
         if (!empty($user_id)) {
           $user = Yii::app()->getModule('user')->user($user_id);
+          
+          // check user was found 
           if ($user) {
-            $result['id']=$user->id;
-            $result['username']=$user->username;
-            $result['email']=$user->email;
-            $result['status']=$user->status;
-            $result['updated']=strtotime($user->updated_at);
+            
+            // check the user is still allowed to login, ie: was not banned in the meanwhile
+            if ((int)UserIdentity::getCanLoginError($user) === UserIdentity::ERROR_NONE) {
+              $result['id']=$user->id;
+              $result['username']=$user->username;
+              $result['email']=$user->email;
+              $result['status']=$user->status;
+              $result['updated']=strtotime($user->updated_at);
+            }
+            
           } else {
             $result['not_found']=1;
           }
         }
+        
         return $result;
     }
 
