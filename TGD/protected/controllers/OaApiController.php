@@ -1,8 +1,10 @@
 <?php
 
+/**
+ * Class used by the SSO (Single Sign On) system between collaborate and webapp.
+ * Recovers logged in user from session.
+ */
 class OaApiController extends Controller {
-
-    public $displayMenu = true;
     
     /**
      * @return array action filters
@@ -13,6 +15,10 @@ class OaApiController extends Controller {
         );
     }
 
+    /**
+     * Checks if we've got a valid token in the url to access this API
+     * @param type $filterChain
+     */
     public function filterCheckToken($filterChain) {
         $token=Yii::app()->request->getQuery("token", null);
         if (!defined('OA_API_TOKEN')) {
@@ -34,6 +40,9 @@ class OaApiController extends Controller {
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
 
+    /**
+     * Action to get logged user by a Session ID
+     */
     public function actionGetLoggedUserBySessionId() {
         $result=array();
         $session_id=Yii::app()->request->getQuery("session_id", null);
@@ -57,7 +66,7 @@ class OaApiController extends Controller {
     }
 
     /**
-     * Get a user fields by user_id.
+     * Action to get user fields by user_id.
      */
     public function actionGetUserInfoById() {
         $user_id=Yii::app()->request->getQuery("user_id", null);
@@ -74,20 +83,14 @@ class OaApiController extends Controller {
         $result=array();
         
         if (!empty($user_id)) {
-            $user = Yii::app()->getModule('user')->user($user_id);
+          $user = Yii::app()->getModule('user')->user($user_id);
+          if ($user) {
             $result['id']=$user->id;
             $result['username']=$user->username;
             $result['email']=$user->email;
             $result['status']=$user->status;
             $result['updated']=strtotime($user->updated_at);
-            
-            
-            
-//            $date = new DateTime($user->updated_at, new DateTimeZone(date_default_timezone_get()));
-//            $result['updated_at']=$user->updated_at;
-//            $result['updated_at_f']=date("r", strtotime($user->updated_at));
-//            $result['updated_at_u']=$date->format('U');
-//            $result['updated_at_ur']=$date->format('Y-m-d H:i:s');
+          }
         }
         return $result;
     }
