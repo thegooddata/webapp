@@ -35,6 +35,7 @@ const STRIPE_PK='';
 
 /* PHPlist*/
 // fill with your own config
+const PHPLIST_ENABLED = true;
 const PHPLIST_HOST = '';
 const PHPLIST_DB = 'phplistdb';
 const PHPLIST_LOGIN = 'phplist';

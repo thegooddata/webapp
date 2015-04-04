@@ -297,6 +297,14 @@ class User extends CActiveRecord
     }
 
     private function _deleteFromPHPLists($userEmail, $phpList = null){
+      
+        // check that phplist is enabled before connecting
+        if (defined('PHPLIST_ENABLED') && PHPLIST_ENABLED) {
+          
+        } else {
+          return;
+        }
+      
 		if($phpList == null){
 			$phpList = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
 		}
@@ -305,6 +313,14 @@ class User extends CActiveRecord
 	}
 
     private function _managePHPLists(){
+      
+        // check that phplist is enabled before connecting
+        if (defined('PHPLIST_ENABLED') && PHPLIST_ENABLED) {
+          
+        } else {
+          return;
+        }
+      
     	$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
     	$added = false;
 
