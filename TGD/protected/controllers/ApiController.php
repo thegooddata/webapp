@@ -233,7 +233,7 @@ class ApiController extends Controller
 				                            'user_id'=>$user_id,
 				                            'member_id'=>$member_id)
 					                    )
-                            ->andWhere("date(created_at) >= '$startdate'")
+                            ->andWhere("daydate >= '$startdate'")
 			                ->queryAll();
 
 		return $datas[0]->count;
