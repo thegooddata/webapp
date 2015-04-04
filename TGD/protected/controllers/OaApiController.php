@@ -90,6 +90,8 @@ class OaApiController extends Controller {
             $result['email']=$user->email;
             $result['status']=$user->status;
             $result['updated']=strtotime($user->updated_at);
+          } else {
+            $result['not_found']=1;
           }
         }
         return $result;
