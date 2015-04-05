@@ -587,8 +587,15 @@ class ApiController extends Controller
 		}
 
 		// Process data
-		$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
-		$result = $phplist->addUserToList($email, $list);
+        
+        if (defined('PHPLIST_ENABLED') && PHPLIST_ENABLED) {
+          $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+          $result = $phplist->addUserToList($email, $list);
+        } else {
+          $result = true;
+        }
+        
+		
 		
 		if($result){
 			$result_data = array(
