@@ -2,6 +2,13 @@
 
 class TestController extends Controller {
   
+    /**
+     * Testing the error page and email notification.
+     */
+    public function actionErrorPage() {
+      $this->unexistingProperty='somevalue';
+    }
+  
     public function actionSlowQueryLog() {
       $rows=Yii::app()->db->createCommand("
       SELECT id, user_id, member_id, adtracks_sources_id, domain, url, usertime, 
@@ -174,9 +181,5 @@ class TestController extends Controller {
     die();
   
   }
-  public function actionOa_user() {
-    $oa_errors=array();
-    Yii::app()->openAtrium->createUser("test_150720141851", "testing", "test_150720141851@gmail.com", "test_150720141851", $oa_errors);
-    var_dump($oa_errors);
-  }
+  
 }

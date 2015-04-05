@@ -11,16 +11,18 @@ $this->breadcrumbs=array(
     <h1>Error <?php echo $code; ?></h1>
 
     <div>
-        <?php if(empty(YII_DEBUG)) {?>
-            <?php if($code == '404'): ?>
-                <p>Page not found!</p>
-            <?php else : ?>
-                <p>Looks like something went wrong!</p>
-                <p>We track these errors automatically. In the meantime, try refreshing.</p>
-            <?php endif; ?>
-        <?php }else {
-            echo CHtml::encode($message);
-        };?>
+      
+      <?php if (defined('YII_DEBUG') && YII_DEBUG): ?>
+        <?php echo CHtml::encode($message); ?>
+      <?php else: ?>
+        <?php if((int)$code === 404): ?>
+          <p>Page not found!</p>
+        <?php else : ?>
+          <p>Looks like something went wrong!</p>
+          <p>We track these errors automatically. In the meantime, try refreshing.</p>
+        <?php endif; ?>
+      <?php endif; ?>
+      
     </div>
 </div>
 <style>
