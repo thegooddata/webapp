@@ -86,4 +86,8 @@ CONST EMAIL_PERSONAL_PORT = '465';
 /* enable slow_query log */
 const SLOW_QUERY_LOG=false;
 
+/* send errors by email */
+const SEND_ERRORS_BY_MAIL=false;
+const SEND_ERRORS_TO_EMAILS='info@thegooddata.org';
+
 ?>

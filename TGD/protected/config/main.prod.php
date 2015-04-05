@@ -87,7 +87,7 @@ return array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
-		'log'=>CMap::mergeArray(require(dirname(__FILE__).'/common.log.prod.php'), array(
+		'log'=>CMap::mergeArray(require(dirname(__FILE__).'/common.log.php'), array(
         )),
 	),
 
