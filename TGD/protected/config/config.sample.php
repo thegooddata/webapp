@@ -90,4 +90,7 @@ const SLOW_QUERY_LOG=false;
 const SEND_ERRORS_BY_MAIL=false;
 const SEND_ERRORS_TO_EMAILS='info@thegooddata.org';
 
+/* hide features */
+const HIDE_INTERESTS=true; // this constant should be added to prod to hide interest feature for now
+
 ?>
