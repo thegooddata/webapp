@@ -1,6 +1,7 @@
 .gitignore
 assets/
 TGD/protected/runtime/
+TGD/uploads/avatars/
 TGD/protected/runtime/application.log
 application.log
 application.log.*
