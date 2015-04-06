@@ -1,6 +1,8 @@
 <?php
 
 class UpdateRatesCommand extends CConsoleCommand{
+	private $_debug;
+
 	/**
 	 * Gets the currencies stored in the database table tbl_currencies and builds the 
 	 * curreny pair taking GBP as the base currency.
@@ -49,11 +51,16 @@ class UpdateRatesCommand extends CConsoleCommand{
 		foreach ($rates as $code => $rate) {
 			// trim "GBP" from the pair
 			$code = substr($code,3); 
-
 			// UPDATE "tbl_currencies" SET "exchange_rate"=:exchange_rate WHERE code=:code
-			if(0 < $command->update('{{currencies}}', array('exchange_rate'=>$rate), 'code=:code', array(':code'=>$code))){
-				// save those that where affected
-				$result[$code] = $rate;
+
+			try{
+				if (0 < $command->update('{{currencies}}', array('exchange_rate'=>$rate), 'code=:code', array(':code'=>$code))){
+					// save those that where affected
+					$this->_debug("Currency {$code} was updated with value: {$rate}\n");
+					$result[$code] = $rate;
+				}
+			}catch (Exception $e){
+
 			}
 		}
 		
@@ -61,13 +68,19 @@ class UpdateRatesCommand extends CConsoleCommand{
 		return $result;		
 	}
 
+	private function _debug($string){
+		if($this->_debug){
+			echo $string;
+		}
+	}
+
 	/**
 	 * Default command action.
 	 * 
 	 * @return integer 0 for success, 1 for failure.
 	 */
-	public function actionIndex() {
-		
+	public function actionIndex($debug = 0) {
+		$this->_debug = ($debug)? true: false;
 		$yahoo_query = 'select * from yahoo.finance.xchange where pair in ('.join(',',$this->_getCurrencyPairs()).')';
 		$env = 'store://datatables.org/alltableswithkeys';
 		$service_url = 'https://query.yahooapis.com/v1/public/yql?q='.urlencode($yahoo_query).'&format=json&env='.urlencode($env).'&callback=';
@@ -86,9 +99,10 @@ class UpdateRatesCommand extends CConsoleCommand{
 		curl_close($curl);
 
 		if($httpcode == 200){
-
+			
 			$curl_response = json_decode($curl_response);
-
+			//print_r ($curl_response->query->results->rate);
+			//exit();
 			// select only the rates from the response data
 			$rates = $curl_response->query->results->rate;
 
