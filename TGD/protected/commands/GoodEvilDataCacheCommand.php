@@ -14,8 +14,5 @@ class GoodEvilDataCacheCommand extends CConsoleCommand
         //Good Data Cache
         $goodEvilCache->setGoodCompanyAchievementsData();
 
-        $goodEvilCache->setGoodInvestmentsData();
-
-        $goodEvilCache->setGoodProjectsData();
     }
 }
