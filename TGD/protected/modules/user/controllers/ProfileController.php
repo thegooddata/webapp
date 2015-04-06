@@ -106,13 +106,12 @@ class ProfileController extends Controller
                         $jcropper->jpeg_quality = 95;
                         $jcropper->png_compression = 8;
                         $coords = $jcropper->getCoordsFromPost('crop');
-
+                        
                         $jcropper->targ_w = 400;
                         $jcropper->targ_h = 400;
                         $jcropper->thumbPath = $path . "/". $user->id . "/preview";
                         if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
                         $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $user->avatar->getName(), $coords);
-                        $user->avatar->saveAs($thumbnail);
 
                         $jcropper->targ_w = 150;
                         $jcropper->targ_h = 150;
@@ -120,7 +119,6 @@ class ProfileController extends Controller
                         if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
                         $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $user->avatar->getName(), $coords);
 
-                        $user->avatar->saveAs($thumbnail);
                     }
                     /* END UPLOAD FILE */
 

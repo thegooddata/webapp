@@ -121,8 +121,12 @@
     </div>
 
 </section>
-<script src="themes\tgd\js\vendor\jquery.Jcrop.js"></script>
-<link rel="stylesheet" href="themes\tgd\css\vendor\jquery.Jcrop.css" type="text/css" />
+
+<?php
+$cs=Yii::app()->clientScript;
+$cs->registerPackage('jcrop');
+?>
+
 <script>
     $(function() {
         var sameSize = function() {

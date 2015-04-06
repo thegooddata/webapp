@@ -4,7 +4,8 @@ $main=require(dirname(__FILE__).'/main.php');
 
 // disable minScript locally
 unset($main['controllerMap']['min']);
-unset($main['components']['clientScript']);
+unset($main['components']['clientScript']['class']);
+unset($main['components']['clientScript']['minScriptDisableMin']);
 
 return CMap::mergeArray(
 	$main,
