@@ -92,13 +92,28 @@ class ProfileController extends Controller
             	if($user->save()){
                     /* START UPLOAD FILE */
                     if (!empty($avatar)){
+                        $name = $user->avatar->getName();
+
                         $path = Yii::app()->basePath . "/../uploads/avatars";
 
                         if(!is_dir($path)) mkdir($path, 0777);
-
                         if(!is_dir($path . "/". $user->id)) mkdir($path . "/". $user->id, 0777);
 
-                        $user->avatar->saveAs($path . "/". $user->id . "/" . $user->avatar->getName());
+                        //if ajax upload don't work
+                        if(empty($_POST['crop_w']) && empty($_POST['crop_h'])){
+                            $user->avatar->saveAs($path . "/". $user->id . "/" . $name);
+
+                            $w = $h = 0;
+                            $http = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
+                            list($w, $h) = @getimagesize($path . "/". $user->id . "/" . $name);
+
+                            $gh = $w;
+                            if($w > $h) $gh = $h;
+                            $_POST['crop_w'] = $gh;
+                            $_POST['crop_h'] = $gh;
+                            $_POST['crop_x'] = 0;
+                            $_POST['crop_y'] = 0;
+                        }
 
                         Yii::import('ext.jcrop.EJCropper');
                         $jcropper = new EJCropper();
@@ -106,42 +121,23 @@ class ProfileController extends Controller
                         $jcropper->jpeg_quality = 95;
                         $jcropper->png_compression = 8;
                         $coords = $jcropper->getCoordsFromPost('crop');
-                        
+
                         $jcropper->targ_w = 400;
                         $jcropper->targ_h = 400;
                         $jcropper->thumbPath = $path . "/". $user->id . "/preview";
                         if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
-                        $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $user->avatar->getName(), $coords);
+                        $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $name, $coords);
+                        $user->avatar->saveAs($thumbnail);
 
                         $jcropper->targ_w = 150;
                         $jcropper->targ_h = 150;
                         $jcropper->thumbPath = $path . "/". $user->id . "/thumb";
                         if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
-                        $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $user->avatar->getName(), $coords);
+                        $thumbnail = $jcropper->crop($path . "/". $user->id . "/" . $name, $coords);
 
+                        $user->avatar->saveAs($thumbnail);
                     }
                     /* END UPLOAD FILE */
-
-                    /* START PHPList 
-                    $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
-
-                    $email = $user->email;
-                    if($user->notification_preferences){
-                        if(array_key_exists($user->status, $this->statusToList)){
-                            if(!empty($this->statusToList[$user->status])){
-                                foreach($this->statusToList[$user->status] as $list){
-                                    $phplist->addUserToList($email, $list);
-                                }
-                            }
-                        }
-                    }else{
-                        foreach($this->statusToList as $list){
-                            foreach($list as $list_id){
-                                $phplist->removeUserFromList($email, $list_id);
-                            }
-                        }
-                    }
-                     END PHPList */
                 }
             	Yii::app()->user->username = $user->username;
             	$success="Changes have been made successfully";
@@ -303,5 +299,37 @@ class ProfileController extends Controller
 		}	
 
         return "";
+    }
+
+    public function actionUpload(){
+        if(isset($_FILES['User'])) {
+            if(empty($_POST['user_id'])){
+                $user = $this->loadUser();
+            }else{
+                $user = User::model()->findByPk($_POST['user_id']);
+            }
+
+
+            $user->avatar = CUploadedFile::getInstance($user, 'image');
+
+            if (!empty($user->avatar)) {
+                $name = $user->avatar->getName();
+
+                $path = Yii::app()->basePath . "/../uploads/avatars";
+
+                if (!is_dir($path)) mkdir($path, 0777);
+
+                if (!is_dir($path . "/" . $user->id)) mkdir($path . "/" . $user->id, 0777);
+
+                $user->avatar->saveAs($path . "/" . $user->id . "/" . $name);
+
+                $src = Yii::app()->baseUrl."/uploads/avatars/$user->id/$name";
+                $w = $h = 0;
+                $http = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
+                list($w, $h) = @getimagesize( "$http://" . $_SERVER['HTTP_HOST'] . $src);
+
+                echo json_encode(array('src' => $src, 'w' => $w, 'h' => $h));
+            }
+        }
     }
 }

@@ -168,15 +168,30 @@ class AdminController extends Controller
 				$model->save();
 				$profile->save();
 
-
+                /* START UPLOAD FILE */
                 if (!empty($avatar)){
+                    $name = $model->avatar->getName();
+
                     $path = Yii::app()->basePath . "/../uploads/avatars";
 
                     if(!is_dir($path)) mkdir($path, 0777);
-
                     if(!is_dir($path . "/". $model->id)) mkdir($path . "/". $model->id, 0777);
 
-                    $model->avatar->saveAs($path . "/". $model->id . "/" . $model->avatar->getName());
+                    //if ajax upload don't work
+                    if(empty($_POST['crop_w']) && empty($_POST['crop_h'])){
+                        $model->avatar->saveAs($path . "/". $model->id . "/" . $name);
+
+                        $w = $h = 0;
+                        $http = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
+                        list($w, $h) = @getimagesize($path . "/". $model->id . "/" . $name);
+
+                        $gh = $w;
+                        if($w > $h) $gh = $h;
+                        $_POST['crop_w'] = $gh;
+                        $_POST['crop_h'] = $gh;
+                        $_POST['crop_x'] = 0;
+                        $_POST['crop_y'] = 0;
+                    }
 
                     Yii::import('ext.jcrop.EJCropper');
                     $jcropper = new EJCropper();
@@ -189,14 +204,14 @@ class AdminController extends Controller
                     $jcropper->targ_h = 400;
                     $jcropper->thumbPath = $path . "/". $model->id . "/preview";
                     if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
-                    $thumbnail = $jcropper->crop($path . "/". $model->id . "/" . $model->avatar->getName(), $coords);
+                    $thumbnail = $jcropper->crop($path . "/". $model->id . "/" . $name, $coords);
                     $model->avatar->saveAs($thumbnail);
 
                     $jcropper->targ_w = 150;
                     $jcropper->targ_h = 150;
                     $jcropper->thumbPath = $path . "/". $model->id . "/thumb";
                     if(!is_dir($jcropper->thumbPath)) mkdir($jcropper->thumbPath, 0777);
-                    $thumbnail = $jcropper->crop($path . "/". $model->id . "/" . $model->avatar->getName(), $coords);
+                    $thumbnail = $jcropper->crop($path . "/". $model->id . "/" . $name, $coords);
 
                     $model->avatar->saveAs($thumbnail);
                 }
