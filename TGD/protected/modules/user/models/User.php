@@ -19,8 +19,8 @@ class User extends CActiveRecord
     private $_new_data = array();
     private $_statusToList = array(
     	self::STATUS_APPLIED => PHPLIST_APPLIED_LIST,
-        self::STATUS_PRE_ACCEPTED => array(PHPLIST_PRE_ACCEPTED_LIST, PHPLIST_PRE_ACCEPTED_OPTED_OUT_LIST),
-    	self::STATUS_ACCEPTED => array(PHPLIST_ACCEPTED_LIST, PHPLIST_ACCEPTED_OPTED_OUT_LIST),
+        self::STATUS_PRE_ACCEPTED => array(PHPLIST_PRE_ACCEPTED_LIST, PHPLIST_PRE_ACCEPTED_LEGAL_COMMS_LIST),
+    	self::STATUS_ACCEPTED => array(PHPLIST_ACCEPTED_LIST, PHPLIST_ACCEPTED_LEGAL_COMMS_LIST),
         self::STATUS_DENIED => PHPLIST_DENIED_LIST,
         self::STATUS_LEFT => PHPLIST_LEFT_LIST,
         self::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
@@ -218,7 +218,7 @@ class User extends CActiveRecord
 			return isset($_items[$type]) ? $_items[$type] : false;
 	}
 	
-/**
+    /**
      * Retrieves a list of models based on the current search/filter conditions.
      * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
      */
@@ -286,6 +286,10 @@ class User extends CActiveRecord
         return parent::afterDelete();
     }
 
+
+    /**
+     * This method is called after save() has been called on current model.
+     */
     public function afterSave() {
 
         $this->_new_data['status'] = $this->status;
@@ -296,31 +300,45 @@ class User extends CActiveRecord
         return parent::afterSave();
     }
 
-    private function _deleteFromPHPLists($userEmail, $phpList = null){
+    /**
+     * Deletes a user from PHPList.
+     * @param  string $userEmail User's email address.
+     * @param  object $phpList   PHPList object.
+     * @param  array  $paramname Array of list IDs to remove the user from
+     * @return void            
+     */
+    private function _deleteFromPHPLists($userEmail, $phpList = null, $lists = null){
       
         // check that phplist is enabled before connecting
-        if (defined('PHPLIST_ENABLED') && PHPLIST_ENABLED) {
-          
-        } else {
+        if (!defined('PHPLIST_ENABLED') || PHPLIST_ENABLED === false) {
           return;
-        }
+        } 
       
 		if($phpList == null){
 			$phpList = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
 		}
 
-		$phpList->deleteUser($this->email);
+        if($lists == null){
+		  $phpList->deleteUser($this->email);
+        }else if(is_array($lists)){
+            foreach ($lists as $listId) {
+                $phpList->deleteUserFromList($this->email, $listId);
+            }
+        }
 	}
 
+    /**
+     * Manages PHPLists depending on old and new data in the model.
+     * @return void 
+     */
     private function _managePHPLists(){
       
         // check that phplist is enabled before connecting
-        if (defined('PHPLIST_ENABLED') && PHPLIST_ENABLED) {
-          
-        } else {
+        if (!defined('PHPLIST_ENABLED') || PHPLIST_ENABLED === false) {
           return;
-        }
+        } 
       
+        // initialize defaults
     	$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
     	$added = false;
 
@@ -329,7 +347,7 @@ class User extends CActiveRecord
 
         	// if the user has opted-in
         	if($this->_new_data['notification_preferences']){
-        		// add to list depending on his new status
+        		// add to both list depending on his new status (regular an "legal coms")
                 $lists = $this->_statusToList[$this->_new_data['status']];
                 $lists = (is_int($lists)) ? array($lists) : $lists;
                 $added = true;
@@ -341,33 +359,41 @@ class User extends CActiveRecord
         	}
         	// if the user has opted-out
         	else{
-        		// remove user
-        		$this->_deleteFromPHPLists($this->email, $phplist);
+        		// leave user only in "legal comms" lists
+                $lists = array(PHPLIST_PRE_ACCEPTED_LIST, PHPLIST_ACCEPTED_LIST);
+                // TODO: the user belongs to only one of the lists but trying to remove it
+                // from a list it doesn't belong to doesn't throw any exception. It is not efficient anyway
+                // so we could do it better.
+        		$this->_deleteFromPHPLists($this->email, $phplist, $lists);
         	}
         }
 
-        // check for a change in status
+        // Check for a change in status
         if($this->_new_data['notification_preferences'] && ($this->_old_data['status'] != $this->_new_data['status'])){
         	// add user to list if it wasn't added in the previous step
-
         	if(!$added){
                 $lists = $this->_statusToList[$this->_new_data['status']];
                 $lists = (is_int($lists)) ? array($lists) : $lists;
                 foreach($lists as $listId){
                     if($listId > 0){
-                        $phplist->addUserToList($this->email, $listId);
+                        // add to both lists if the user is opted-in or only to "legal comms" if is opted-out.
+                        if($this->_new_data['notification_preferences'] || ($listId != PHPLIST_ACCEPTED_LIST && $listId != PHPLIST_PRE_ACCEPTED_LIST)){
+                            $phplist->addUserToList($this->email, $listId);
+                        }
                     }
                 }
             }
 
-        	// remove from old list if necessary
-            if($this->_old_data['status'] == null) { 
-                // when User is saved after creation, there's no old status. 
-                // There's no need to continue.
+        	// Remove from old list if necessary.
+            // When the User is saved after creation (__construct), there's no old status (null). 
+            // There's no need to continue.
+            $oldStatus = $this->_old_data['status'];
+            if( $oldStatus == null) { 
                 return;
             }
 
-            $lists = $this->_statusToList[$this->_old_data['status']];
+            // In any other circumstances the User model is created through find(), so there's an old status.
+            $lists = $this->_statusToList[$oldStatus];
             $lists = (is_int($lists)) ? array($lists) : $lists;
             foreach($lists as $listId){
                 if($listId > 0){
@@ -377,6 +403,9 @@ class User extends CActiveRecord
         }
     }
     
+    /**
+     * This method is called when save() has been called on current model but before data is saved to database.
+     */
     public function beforeSave() {
         
         $this->updated_at = new CDbExpression('NOW()');
@@ -384,6 +413,9 @@ class User extends CActiveRecord
         return parent::beforeSave();
     }
 
+    /**
+     * This method is called after find() has been called on current model.
+     */
     public function afterFind() {
         
         // initialize old and new data to the same values
@@ -395,8 +427,13 @@ class User extends CActiveRecord
         return parent::afterFind();
     }
 
+
+    /**
+     * This method is called after __construct() has been called on current model.
+     */
     public function afterConstruct() {
-        // initialize old and new data to the same values
+        // Same as in find(), initialize old and new data 
+        // to the same values.
         $this->_old_data['status'] = null;
         $this->_old_data['notification_preferences'] = null;
         $this->_new_data['status'] = null;
