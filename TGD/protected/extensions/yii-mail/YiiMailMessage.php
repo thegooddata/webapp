@@ -128,20 +128,68 @@ class YiiMailMessage extends CComponent {
 	public function setBody($body = '', $contentType = null, $charset = null) {
 		if ($this->view !== null) {
 			if (!is_array($body)) $body = array('body'=>$body);
-			
-			// if Yii::app()->controller doesn't exist create a dummy 
+
+			// if Yii::app()->controller doesn't exist create a dummy
 			// controller to render the view (needed in the console app)
 			if(isset(Yii::app()->controller))
 				$controller = Yii::app()->controller;
 			else
 				$controller = new CController('YiiMail');
-			
-			// renderPartial won't work with CConsoleApplication, so use 
-			// renderInternal - this requires that we use an actual path to the 
+
+			// renderPartial won't work with CConsoleApplication, so use
+			// renderInternal - this requires that we use an actual path to the
 			// view rather than the usual alias
 			$viewPath = Yii::getPathOfAlias(Yii::app()->mail->viewPath.'.'.$this->view).'.php';
-			$body = $controller->renderInternal($viewPath, array_merge($body, array('mail'=>$this)), true);	
+			$body = $controller->renderInternal($viewPath, array_merge($body, array('mail'=>$this)), true);
 		}
+
+        if($contentType == 'text/html'){
+
+            //add html tags if not exists
+            if($body != strip_tags($body) || strpos($body, '<html>') === false){
+                $body = "<html>$body<html>";
+            }
+
+
+            //add text/plain content if not exists
+            $text = false;
+            if (count($this->message->getChildren()) > 0) {
+                foreach ($this->message->getChildren() as $child) {
+                    if ($child->getContentType() == 'text/plain') {
+                        $text = true;
+                    }
+                }
+            }
+            if(!$text){
+                $bodyText = strip_tags($body, '<a></a>');
+
+                $regexp='/<a.+href=\"(.*?)\"/';
+                $regexp2='/<a.+href=\".+\">.+<\/a>/';
+
+                $preg = preg_match_all($regexp,$bodyText,$urls);
+
+                if($preg > 0){
+                    foreach($urls[1] as $url){
+                        $bodyText = preg_replace($regexp2, $url, $bodyText);
+                    }
+                }
+
+                $this->message->addPart($bodyText,'text/plain');
+            }
+        }
+
 		return $this->message->setBody($body, $contentType, $charset);
 	}
+
+
+    //add Reverse-Path (Envelope-FROM) to mail header
+    public function setFrom($addresses, $name = null){
+        if (!is_array($addresses)){
+            $this->message->setReturnPath($addresses);
+        }else{
+            reset($addresses);
+            $this->message->setReturnPath(key($addresses));
+        }
+        return $this->message->setFrom($addresses, $name);
+    }
 }
