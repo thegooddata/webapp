@@ -12,18 +12,18 @@ jQuery(document).ready(function ($) {
 
       if(M[1] === 'Chrome'){
         tem = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
-        if(tem != null){
+        if(tem !== null){
           return tem.slice(1).join(' ').replace('OPR', 'Opera');
         }
       }
 
       M = M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-      if((tem = userAgent.match(/version\/(\d+)/i))!= null){
+      if((tem = userAgent.match(/version\/(\d+)/i))!== null){
         M.splice(1, 1, tem[1]);
       } 
 
       return { 'browser': M[0], 'version': M[1] };
-    })();
+  })();
   
   var $modal = $('#chromeModal'),
       $modalFooter = $('.modal-footer'), 
@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
       resetModalFooter = function(){
         disableFormControls(false);
         $('input',$modalFooter).val('');
-        $('input',$modalFooter).attr("placeholder","enter your email address")
+        $('input',$modalFooter).attr("placeholder","enter your email address");
         $('form', $modalFooter).show();
         $('button[type=button]', $modalFooter).css('float','right').hide();
       },
@@ -90,7 +90,7 @@ jQuery(document).ready(function ($) {
 
                   if (resp.result == 'success'){
                     setModalLabel("Thanks!");
-                    setModalDescription('We will send you an invite once we are ready.<br>For frequent updates, follow us <a href="http://twitter.com/thegooddata">@thegooddata</a>.')
+                    setModalDescription('We will send you an invite once we are ready.<br>For frequent updates, follow us <a href="http://twitter.com/thegooddata">@thegooddata</a>.');
                   }else if (resp.result == 'fail'){
                     showError();
                   }else{
@@ -105,7 +105,6 @@ jQuery(document).ready(function ($) {
           };
 
           xhr.send();
-
       };
 
 
@@ -121,12 +120,15 @@ jQuery(document).ready(function ($) {
 
   var email,
       list,
-      isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Mobile|mobile/.test(navigator.userAgent);
+      isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Mobile|mobile/.test(navigator.userAgent),
       isChrome = /chrome/.test(browser),
       isFirefox = /firefox/.test(browser),
-      isSafari = /safari/.test(browser);
+      isSafari = /safari/.test(browser),
+      firefoxId = 37,
+      safariId = 38,
+      chromeId = 46;
 
-  if((isSafari || isFirefox) && !isMobile ){
+  if((isChrome || isSafari || isFirefox) && !isMobile ){
     $('.modal-footer > a').hide();
     $('.modal-footer > button[type=button]').hide();
     $('.modal-footer > form').show();
@@ -135,46 +137,55 @@ jQuery(document).ready(function ($) {
       // firefox
       originalLabel = "Firefox browser is not supported yet, but...";
       $('#myModalLabel').html(originalLabel);
-      originalDescription = "...if you tell us your email address we will let you know as soon as we have our extension available for Firefox."
+      originalDescription = "...if you tell us your email address we will let you know as soon as we have our extension available for Firefox.";
       $modalDescription.html(originalDescription);
 
-      list = 'firefox';
+      list = firefoxId;
     }else if (isSafari){
       // safari
       originalLabel = "Safari browser is not supported yet, but...";
       $('#myModalLabel').html(originalLabel);
-      originalDescription = "...if you tell us your email address we will let you know as soon as we have our extension available for Safari."
+      originalDescription = "...if you tell us your email address we will let you know as soon as we have our extension available for Safari.";
       $modalDescription.html(originalDescription);
-      list = 'safari';
+      list = safariId;
+    }else if (isChrome){
+      // chrome
+      originalLabel = "We're sorry...";
+      $('#myModalLabel').html(originalLabel);
+      originalDescription = "Browser extension for Chrome will be back soon. If you want to be notified, please leave your email address here.";
+      $modalDescription.html(originalDescription);
+
+      list = chromeId;
     }
-
-    // submit button click event handler 
-    $('.modal-footer button[type=submit]').click(function(e){
-      e.preventDefault();
-
-      email = $modalFooter.addClass("loading").find('input').val();
-      $('input, button', $modalFooter).prop('disabled', true);
-      
-      if(email != '' && validateEmail(email)){
-        $('input',$modalFooter).removeClass("error").parent().removeClass('has-error');
-        sendRequest(email, list);
-      }else{
-        resetModalFooter();
-        $('input',$modalFooter).attr("placeholder","Please, enter a valid email address.").addClass('error').parent().addClass('has-error');
-      }
-    });
   }
+
+  // submit button click event handler 
+  $('.modal-footer button[type=submit]').click(function(e){
+    e.preventDefault();
+
+    email = $modalFooter.addClass("loading").find('input').val();
+    $('input, button', $modalFooter).prop('disabled', true);
+    
+    if(email !== '' && validateEmail(email)){
+      $('input',$modalFooter).removeClass("error").parent().removeClass('has-error');
+      sendRequest(email, list);
+    }else{
+      resetModalFooter();
+      $('input',$modalFooter).attr("placeholder","Please, enter a valid email address.").addClass('error').parent().addClass('has-error');
+    }
+  });
 
   // Click event handler that triggers the modal
   $('.install a, .modal-trigger').click(function(e){
     e.preventDefault();
-
+/*
     if(isChrome){
       // is Chrome, redirect to chrome store
       var win = window.open($(this).attr('href'), '_blank');
     }else{
       $modal.modal('show');
-    }
+    }*/
+    $modal.modal('show');
   });
 
 });
