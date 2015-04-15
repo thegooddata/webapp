@@ -1,3 +1,4 @@
+// test minScript cached files
 jQuery(document).ready(function ($) { 
 
   navigator.browserInfo = (function(){
