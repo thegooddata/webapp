@@ -319,11 +319,9 @@ class User extends CActiveRecord
 		}
 
         if($lists == null){
-		  $phpList->deleteUser($this->email);
-        }else if(is_array($lists)){
-            foreach ($lists as $listId) {
-                $phpList->deleteUserFromList($this->email, $listId);
-            }
+            $phpList->deleteUser($this->email);
+        }else{
+            $phpList->deleteUserFromList($this->email, $lists);
         }
 	}
 
@@ -340,67 +338,10 @@ class User extends CActiveRecord
       
         // initialize defaults
     	$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
-    	$added = false;
-
-        // check change in notification status
-        if($this->_old_data['notification_preferences'] != $this->_new_data['notification_preferences']){
-
-        	// if the user has opted-in
-        	if($this->_new_data['notification_preferences']){
-        		// add to both list depending on his new status (regular an "legal coms")
-                $lists = $this->_statusToList[$this->_new_data['status']];
-                $lists = (is_int($lists)) ? array($lists) : $lists;
-                $added = true;
-                foreach($lists as $listId){
-                    if($listId > 0){
-        		      $added = $added && $phplist->addUserToList($this->email, $listId);
-                    }
-                }
-        	}
-        	// if the user has opted-out
-        	else{
-        		// leave user only in "legal comms" lists
-                $lists = array(PHPLIST_PRE_ACCEPTED_LIST, PHPLIST_ACCEPTED_LIST);
-                // TODO: the user belongs to only one of the lists but trying to remove it
-                // from a list it doesn't belong to doesn't throw any exception. It is not efficient anyway
-                // so we could do it better.
-        		$this->_deleteFromPHPLists($this->email, $phplist, $lists);
-        	}
-        }
-
-        // Check for a change in status
-        if($this->_new_data['notification_preferences'] && ($this->_old_data['status'] != $this->_new_data['status'])){
-        	// add user to list if it wasn't added in the previous step
-        	if(!$added){
-                $lists = $this->_statusToList[$this->_new_data['status']];
-                $lists = (is_int($lists)) ? array($lists) : $lists;
-                foreach($lists as $listId){
-                    if($listId > 0){
-                        // add to both lists if the user is opted-in or only to "legal comms" if is opted-out.
-                        if($this->_new_data['notification_preferences'] || ($listId != PHPLIST_ACCEPTED_LIST && $listId != PHPLIST_PRE_ACCEPTED_LIST)){
-                            $phplist->addUserToList($this->email, $listId);
-                        }
-                    }
-                }
-            }
-
-        	// Remove from old list if necessary.
-            // When the User is saved after creation (__construct), there's no old status (null). 
-            // There's no need to continue.
-            $oldStatus = $this->_old_data['status'];
-            if( $oldStatus == null) { 
-                return;
-            }
-
-            // In any other circumstances the User model is created through find(), so there's an old status.
-            $lists = $this->_statusToList[$oldStatus];
-            $lists = (is_int($lists)) ? array($lists) : $lists;
-            foreach($lists as $listId){
-                if($listId > 0){
-                    $phplist->deleteUserFromList($this->email, $listId);
-                }
-            } 
-        }
+ 
+        $status = ['old'=>$this->_old_data['status'], 'new'=>$this->_new_data['status']];
+        $preference = ['old'=>$this->_old_data['notification_preferences'], 'new'=>$this->_new_data['notification_preferences']];
+        $phplist->updateStatusLists($this->email, $status, $preference);
     }
     
     /**
