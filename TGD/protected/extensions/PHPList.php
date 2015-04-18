@@ -119,6 +119,27 @@ class PHPList
     }
 
     /**
+     * Check if a list with a given id exists. 
+     * @param  int $id List id.
+     * @return boolean         
+     */
+    private function _checkList($id){
+
+        $sql = "SELECT * FROM phplist_list WHERE id = :id";
+        
+        $db = $this->_db;
+        try{
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("id", $id);
+            $stmt->execute();
+
+            return $stmt->rowCount() > 0;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    /**
      * Get the user id 
      * @param  string $email User email address
      * @return mixed         User id or false if not found.
@@ -301,9 +322,13 @@ class PHPList
      */
     private function _addUserToList( $listId, $userId ){
 
+        if(!$this->_checkList($listId)){
+            return false;
+        }
+
         $db = $this->_db;
         $sql = "INSERT INTO phplist_listuser (userid, listid, entered, modified) VALUES (:user_id, :list_id, now(), now());";
-
+    
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindParam("user_id", $userId );
@@ -326,7 +351,7 @@ class PHPList
      * @return  boolean         false if fail,
      *                          true if the user was added successfully 
      */
-    public function addUserToList( $email, $key, $onlyLegalComms=false ){
+    private function _addUserToListByStatus( $email, $key, $onlyLegalComms=false ){
 
         $userId = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
         if( $userId === false ) {
@@ -334,12 +359,7 @@ class PHPList
         }
 
         $result = true; // default
-        if (is_int($key) || !is_int($key) && is_numeric($key)){
-            $lists = $this->_statusToList[intval($key)];
-        }else{
-            $lists = $this->_getListId($key);
-        }
-
+        $lists = $this->_statusToList[$key];
         $lists = $this->_makeArray($lists);
         $lists = ($onlyLegalComms !== null && $onlyLegalComms!==true)? $lists : [$lists[1]]; 
 
@@ -348,6 +368,26 @@ class PHPList
         }
 
         return $result;
+    }
+
+        /**
+     * Adds a user to a list.
+     * @param   string  $email  User email.
+     * @param   string  $list   List id.
+     * @return  boolean         false if fail,
+     *                          true if the user was added successfully 
+     */
+    public function addUserToList( $email, $listId){
+        $userId = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
+        if( $userId === false ) {
+            return false;
+        }
+
+        if(is_string($listId) && !is_numeric($listId)){
+            $listId = $this->_getListId($listId);
+        }
+
+        return $this->_addUserToList($listId, $userId);
     }
     
     /**
@@ -440,7 +480,7 @@ class PHPList
             
             // add only to "legal comms" if 3rd parameter is true.
             // add to both lists otherwise.
-            $added = $this->addUserToList($email, $status['new'], $preference['new']==0);
+            $added = $this->_addUserToListByStatus($email, $status['new'], $preference['new']==0);
         
             // Remove from old list if necessary.
             // When the User is saved after creation (__construct), there's no old status (null). 
@@ -459,7 +499,7 @@ class PHPList
             // if the user has opted-in
             if($preference['new']){
                 // add to both lists 
-                return $this->addUserToList($email, $status['new']);
+                return $this->_addUserToListBySatus($email, $status['new']);
             }
             // if the user has opted-out
             else{
