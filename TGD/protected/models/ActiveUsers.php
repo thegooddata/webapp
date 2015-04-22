@@ -11,6 +11,7 @@
  * @property string $created_at
  * @property string $updated_at
  * @property string $host
+ * @property string $country
  */
 class ActiveUsers extends CActiveRecord {
 
@@ -30,7 +31,7 @@ class ActiveUsers extends CActiveRecord {
     return array(
         array('member_id', 'numerical', 'integerOnly' => true),
         array('user_id, member_or_user_id', 'length', 'max' => 255),
-        array('created_at, updated_at', 'safe'),
+        array('created_at, updated_at, country', 'safe'),
         // The following rule is used by search().
         // @todo Please remove those attributes that should not be searched.
         array('id, member_id, user_id, member_or_user_id, created_at, updated_at', 'safe', 'on' => 'search'),
@@ -125,6 +126,11 @@ class ActiveUsers extends CActiveRecord {
     $model->member_or_user_id = $member_id ? $member_id : $user_id;
     
     $model->host=ADbHelper::encrypt_ip(Yii::app()->request->userHostAddress);
+
+    $location = Yii::app()->geoip->lookupLocation();
+      if(!empty($location->countryCode)){
+          $model->country = $location->countryCode;
+      }
 
     $activeUserLogged = Yii::app()->user->getState('activeUserLogged', null);
     

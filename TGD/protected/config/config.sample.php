@@ -93,4 +93,6 @@ const SEND_ERRORS_TO_EMAILS='info@thegooddata.org';
 /* hide features */
 const HIDE_INTERESTS=true; // this constant should be added to prod to hide interest feature for now
 
+const GEOIP_DAT_PATH = "/extensions/geoip/GeoIP.dat"
+
 ?>

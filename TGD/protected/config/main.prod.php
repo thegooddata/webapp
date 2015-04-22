@@ -50,6 +50,14 @@ return array(
     		'dryRun' => false          
 		),
 
+        'geoip' => array(
+            'class' => 'application.extensions.geoip.CGeoIP',
+            // specify filename location for the corresponding database
+            'filename' => dirname(__FILE__).'/..'.GEOIP_DAT_PATH,
+            // Choose MEMORY_CACHE or STANDARD mode
+            'mode' => 'STANDARD',
+        ),
+
         'clientScript'=>require(dirname(__FILE__).'/common.clientScript.php'),
 
 		'user'=>array(
