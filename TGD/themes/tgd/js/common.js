@@ -125,9 +125,9 @@ jQuery(document).ready(function ($) {
       isChrome = /chrome/.test(browser),
       isFirefox = /firefox/.test(browser),
       isSafari = /safari/.test(browser),
-      firefoxId = 37,
-      safariId = 38,
-      chromeId = 46;
+      firefoxId = 'firefox',
+      safariId = 'safari',
+      chromeId = 'chrome';
 
   if((isChrome || isSafari || isFirefox) && !isMobile ){
     $('.modal-footer > a').hide();

@@ -572,11 +572,12 @@ class ApiController extends Controller
 	 * Adds an email to a PHPList list.
 	 * @return void
 	 */
-	public function actionAddToPHPList(){
+	public function actionAddToBrowserPHPList(){
 		$email = $_GET['user_email'];
 		$list = $_GET['list'];
 
 		// Validate email
+		
 		$validator=new CEmailValidator;
 		if(!$validator->validateValue($email)){
 			$result_data = array(
@@ -587,12 +588,20 @@ class ApiController extends Controller
 		}
 
 		// Process data
-        
+		
         if (defined('PHPLIST_ENABLED') && PHPLIST_ENABLED) {
-          $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
-          $result = $phplist->addUserToList($email, $list);
+        	try{
+          		$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+        	}catch(Exception $e){
+        		print $e->getMessage().PHP_EOL;
+				return false;
+        	}
+
+          	$result = $phplist->addUserToListByBrowser($email, $list);
         } else {
-          $result = true;
+        	// If there's no PHPList enabled, the user will no be added to any list, and 
+        	// there should be show an error message. Therefore we should return false.
+          	$result = false;
         }
         
 		

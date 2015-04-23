@@ -17,14 +17,6 @@ class User extends CActiveRecord
     // this is for PHPList management
     private $_old_data = array();
     private $_new_data = array();
-    private $_statusToList = array(
-    	self::STATUS_APPLIED => PHPLIST_APPLIED_LIST,
-        self::STATUS_PRE_ACCEPTED => array(PHPLIST_PRE_ACCEPTED_LIST, PHPLIST_PRE_ACCEPTED_LEGAL_COMMS_LIST),
-    	self::STATUS_ACCEPTED => array(PHPLIST_ACCEPTED_LIST, PHPLIST_ACCEPTED_LEGAL_COMMS_LIST),
-        self::STATUS_DENIED => PHPLIST_DENIED_LIST,
-        self::STATUS_LEFT => PHPLIST_LEFT_LIST,
-        self::STATUS_EXPELLED => PHPLIST_EXPELLED_LIST,
-    );
 
 	//TODO: Delete for next version (backward compatibility)
 	//const STATUS_BANED=-1;
@@ -335,13 +327,18 @@ class User extends CActiveRecord
         if (!defined('PHPLIST_ENABLED') || PHPLIST_ENABLED === false) {
           return;
         } 
-      
-        // initialize defaults
-    	$phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
- 
-        $status = ['old'=>$this->_old_data['status'], 'new'=>$this->_new_data['status']];
-        $preference = ['old'=>$this->_old_data['notification_preferences'], 'new'=>$this->_new_data['notification_preferences']];
-        $phplist->updateStatusLists($this->email, $status, $preference);
+
+        try{
+            // initialize defaults
+            $phplist = new PHPList(PHPLIST_HOST, PHPLIST_DB, PHPLIST_LOGIN, PHPLIST_PASSWORD);
+     
+            $statusChanges= ['old'=>$this->_old_data['status'], 'new'=>$this->_new_data['status']];
+            $preferencesChanges = ['old'=>$this->_old_data['notification_preferences'], 'new'=>$this->_new_data['notification_preferences']];
+            $phplist->processUserByStatus($this->email, $statusChanges, $preferencesChanges);
+        }catch(Exception $e){
+            return;
+        }
+        
     }
     
     /**
