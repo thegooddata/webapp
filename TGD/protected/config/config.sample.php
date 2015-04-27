@@ -41,9 +41,11 @@ const PHPLIST_DB = 'phplistdb';
 const PHPLIST_LOGIN = 'phplist';
 const PHPLIST_PASSWORD = '';
 
-// fill with your own lists values
+// fill with your own lists values as configured in your local PHPList 
 const PHPLIST_FIREFOX_LIST = 0;
 const PHPLIST_SAFARI_LIST = 0;
+const PHPLIST_CHROME_EXTENSION_LIST = 0;
+
 const PHPLIST_APPLIED_LIST = 0;
 const PHPLIST_PRE_ACCEPTED_LIST = 0;
 const PHPLIST_ACCEPTED_LIST = 0;
@@ -94,5 +96,15 @@ const SEND_ERRORS_TO_EMAILS='info@thegooddata.org';
 const HIDE_INTERESTS=true; // this constant should be added to prod to hide interest feature for now
 
 const GEOIP_DAT_PATH = "/extensions/geoip/GeoIP.dat"
+
+// USER STATUS
+CONST STATUS_APPLIED = -1;
+CONST STATUS_EXPELLED = -2;
+CONST STATUS_DENIED = -3;
+CONST STATUS_LEFT = -4;
+
+CONST STATUS_PRE_ACCEPTED = 1;
+CONST STATUS_ACCEPTED = 2;
+
 
 ?>
