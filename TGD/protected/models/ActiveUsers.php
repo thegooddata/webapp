@@ -127,9 +127,11 @@ class ActiveUsers extends CActiveRecord {
     
     $model->host=ADbHelper::encrypt_ip(Yii::app()->request->userHostAddress);
 
-    $location = Yii::app()->geoip->lookupLocation();
-      if(!empty($location->countryCode)){
-          $model->country = $location->countryCode;
+      try {
+          $location = Yii::app()->geoip->lookupCountryCode();
+          $model->country = $location;
+      } catch (Exception $e) {
+//        echo $e->getMessage(), "\n";
       }
 
     $activeUserLogged = Yii::app()->user->getState('activeUserLogged', null);
