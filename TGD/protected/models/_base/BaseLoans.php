@@ -114,13 +114,13 @@ abstract class BaseLoans extends GxActiveRecord {
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('loan_identifier', $this->loan_identifier, true);
-		$criteria->compare('leader', $this->leader);
-		$criteria->compare('loan_url', $this->loan_url, true);
+		$criteria->compare('LOWER(leader)', strtolower($this->leader));
+		$criteria->compare('LOWER(loan_url)', strtolower($this->loan_url), true);
 		$criteria->compare('LOWER(title_en)', strtolower($this->title_en), true);
 		$criteria->compare('LOWER(title_es)', strtolower($this->title_es), true);
 		$criteria->compare('id_loans_activity', $this->id_loans_activity);
 		$criteria->compare('id_countries', $this->id_countries);
-		$criteria->compare('partner', $this->partner, true);
+		$criteria->compare('LOWER(partner)', strtolower($this->partner), true);
 		$criteria->compare('amount', $this->amount);
 		$criteria->compare('currency', $this->currency);
 		$criteria->compare('term', $this->term);

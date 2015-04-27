@@ -82,7 +82,7 @@ abstract class BaseAdtracksSources extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('adtrack_type_id', $this->adtrack_type_id);
 		$criteria->compare('LOWER(name)', strtolower($this->name), true);
-		$criteria->compare('url', $this->url, true);
+		$criteria->compare('LOWER(url)', strtolower($this->url), true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
 

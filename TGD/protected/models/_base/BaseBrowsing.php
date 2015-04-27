@@ -76,8 +76,8 @@ abstract class BaseBrowsing extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('user_id', $this->user_id, true);
-		$criteria->compare('domain', $this->domain, true);
-		$criteria->compare('url', $this->url, true);
+		$criteria->compare('LOWER(domain)', strtolower($this->domain), true);
+		$criteria->compare('LOWER(url)', strtolower($this->url), true);
 		$criteria->compare('usertime', $this->usertime, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);

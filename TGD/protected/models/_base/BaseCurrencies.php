@@ -73,7 +73,7 @@ abstract class BaseCurrencies extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('code', $this->code, true);
+		$criteria->compare('LOWER(code)', strtolower($this->code), true);
 		$criteria->compare('LOWER(name_en)', strtolower($this->name_en), true);
 		$criteria->compare('LOWER(name_es)', strtolower($this->name_es), true);
 		$criteria->compare('exchange_rate', $this->exchange_rate, true);

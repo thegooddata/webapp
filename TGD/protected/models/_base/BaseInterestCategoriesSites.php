@@ -67,9 +67,9 @@ abstract class BaseInterestCategoriesSites extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('site', $this->site_id, true);
+		$criteria->compare('LOWER(site)', strtolower($this->site_id), true);
 		$criteria->compare('category_id', $this->status);
-		$criteria->compare('status', $this->status);
+		$criteria->compare('LOWER(status)', strtolower($this->status));
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
 

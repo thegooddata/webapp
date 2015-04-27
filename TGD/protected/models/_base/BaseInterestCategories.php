@@ -62,7 +62,7 @@ abstract class BaseInterestCategories extends GxActiveRecord {
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('parent_id', $this->parent_id);
-		$criteria->compare('category', $this->category, true);
+		$criteria->compare('LOWER(category)', strtolower($this->category), true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

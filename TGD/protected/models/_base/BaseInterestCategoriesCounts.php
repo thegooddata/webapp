@@ -70,7 +70,7 @@ abstract class BaseInterestCategoriesCounts extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('member_id', $this->member_id);
 		$criteria->compare('user_id', $this->member_id);
-		$criteria->compare('site', $this->site, true);
+		$criteria->compare('LOWER(site)', strtolower($this->site), true);
 		$criteria->compare('counter', $this->counter, true);
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
