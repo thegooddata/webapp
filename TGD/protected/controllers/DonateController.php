@@ -107,9 +107,9 @@ class DonateController extends Controller {
             if (count($errors)) {
               $this->status=DonateController::TRANSACTION_ERROR;
             }
-            
-            
-            if ( Transactions::model()->find('transaction_id=:id_transaction', array(':id_transaction'=>$this->transaction_id)) == null)
+
+            $transaction = Transactions::model()->find('transaction_id=:id_transaction', array(':id_transaction'=>$this->transaction_id));
+            if ( $transaction == null)
             {
                 $transaction = new Transactions();
                 $transaction->transaction_id=$this->transaction_id;
@@ -122,7 +122,22 @@ class DonateController extends Controller {
             }
             
             if (count($errors)==0) {
-              $this->redirect(array('donate/thanks'));
+
+                if($this->type == 'DONATION'){
+                    $rate = Currencies::model()->findByAttributes(array('code' => 'USD'))->exchange_rate;
+
+                    $incomes = new Incomes;
+                    $incomes->type = 1;
+                    $incomes->source_name = 'Stripe ' . $transaction->id;
+                    $incomes->gross_amount = $this->amount * $rate;
+//                    $incomes->expenses = 0;
+                    $incomes->income_date = date('Y-m-d');
+                    $incomes->currency = 50;
+                    $incomes->loan_reserved = 50;
+                    $incomes->save();
+                }
+
+                $this->redirect(array('donate/thanks'));
             }
 
             $this->render('index', array(
