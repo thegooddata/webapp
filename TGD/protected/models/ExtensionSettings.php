@@ -99,8 +99,8 @@ class ExtensionSettings extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('member_id',$this->member_id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('value',$this->value,true);
+		$criteria->compare('LOWER(name)',strtolower($this->name),true);
+		$criteria->compare('LOWER(value)',strtolower($this->value),true);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 

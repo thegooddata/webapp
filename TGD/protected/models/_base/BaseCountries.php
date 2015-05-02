@@ -72,7 +72,7 @@ abstract class BaseCountries extends GxActiveRecord {
 		$criteria->compare('id', $this->id);
 		$criteria->compare('LOWER(name_en)', strtolower($this->name_en), true);
 		$criteria->compare('LOWER(name_es)', strtolower($this->name_es), true);
-		$criteria->compare('code', $this->code, true);
+		$criteria->compare('LOWER(code)', strtolower($this->code), true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

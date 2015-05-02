@@ -17,8 +17,8 @@ class Achievements extends BaseAchievements
 		$criteria->compare('achievement_type_id', $this->achievement_type_id);
 		$criteria->compare('link_en', $this->link_en, true);
 		$criteria->compare('link_es', $this->link_es, true);
-		$criteria->compare('text_en', $this->text_en, true);
-		$criteria->compare('text_es', $this->text_es, true);
+		$criteria->compare('LOWER(text_en)', strtolower($this->text_en), true);
+		$criteria->compare('LOWER(text_es)', strtolower($this->text_es), true);
 		$criteria->compare('achievements_start', $this->achievements_start, true);
 		$criteria->compare('achievements_finish', $this->achievements_finish, true);
 		$criteria->compare('created_at', $this->created_at, true);

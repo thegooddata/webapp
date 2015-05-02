@@ -11,7 +11,7 @@ class SlowQueryLog extends BaseSlowQueryLog
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('query', $this->query, true);
+		$criteria->compare('LOWER(query)', strtolower($this->query), true);
 		$criteria->compare('count', $this->count);
 		$criteria->compare('total_s', $this->total_s, true);
 		$criteria->compare('avg_s', $this->avg_s, true);
