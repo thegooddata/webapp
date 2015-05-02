@@ -10,7 +10,7 @@ class LoginController extends Controller
 	 */
 	public function actionLogin()
 	{
-	
+
             $redirect_url=Yii::app()->request->getQuery("next",null);
             if ($redirect_url !== null && !empty($redirect_url)) {
                 $redirect_url=urldecode($redirect_url);
@@ -49,6 +49,8 @@ class LoginController extends Controller
                         Yii::app()->user->returnUrl=Yii::app()->controller->createAbsoluteUrl('//purchase/index');
                       }
                     }
+
+                    ActiveUsers::logActiveUser();
                     
 					if (Yii::app()->user->returnUrl=='/') {
 						$this->redirect(Yii::app()->createUrl('//goodData/index'));
