@@ -50,6 +50,11 @@ class ApiController extends Controller
 		  $this->_sendResponse(200, CJSON::encode($result),'application/json');
     }
     
+    public function actionCheckQueriesBlacklist() {
+      $model = $this->_viewQueriesblacklist('POST');
+      $this->_sendResponse(200, CJSON::encode($model),'application/json');
+    }
+    
     public function actionLogin() {
       
       // force loading user module
@@ -360,7 +365,7 @@ class ApiController extends Controller
 	            $model = $this->_viewBlacklist();
 	            break;	            
 	       	case 'queriesblacklist':
-	       		$model = $this->_viewQueriesblacklist();
+	       		$model = $this->_viewQueriesblacklist('GET');
 	       		break;
        		case 'languagesSupport':
        			$model = LanguagesSupport::model()->findLanguage($_GET['query']);
@@ -1016,10 +1021,16 @@ class ApiController extends Controller
           ->queryAll();
   }
 	
-	public function _viewQueriesblacklist() {
-    
-		$query= $_GET['query'];
-		$lang= $_GET['lang'];
+	public function _viewQueriesblacklist($verb='POST') {
+      
+        if ($verb==='POST') {
+          $params=$_POST;
+        } elseif ($verb==='GET') {
+          $params=$_GET;
+        }
+                
+		$query= $params['query'];
+		$lang= $params['lang'];
 		$fallbackLang= 'en';
 
 		$data = $this->getQueriesblacklistByLang($lang);
