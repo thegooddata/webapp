@@ -1,5 +1,7 @@
 // test minScript cached files
 jQuery(document).ready(function ($) { 
+    
+    var chromeExtAvailable=true;
 
   navigator.browserInfo = (function(){
       var userAgent = navigator.userAgent, 
@@ -129,7 +131,7 @@ jQuery(document).ready(function ($) {
       safariId = 'safari',
       chromeId = 'chrome';
 
-  if((isChrome || isSafari || isFirefox) && !isMobile ){
+  if(( (isChrome && !chromeExtAvailable)  || isSafari || isFirefox) && !isMobile ){
     $('.modal-footer > a').hide();
     $('.modal-footer > button[type=button]').hide();
     $('.modal-footer > form').show();
@@ -178,15 +180,20 @@ jQuery(document).ready(function ($) {
 
   // Click event handler that triggers the modal
   $('.install a, .modal-trigger').click(function(e){
-    e.preventDefault();
-/*
-    if(isChrome){
-      // is Chrome, redirect to chrome store
-      var win = window.open($(this).attr('href'), '_blank');
+      
+      console.log("isChrome: "+isChrome);
+      console.log("chromeExtAvailable: "+chromeExtAvailable);
+
+    if (isChrome && chromeExtAvailable) {
+      // is Chrome, and ext is available, redirect to chrome store
+      // just leave normal behaviour
+      return true;
     }else{
+      e.preventDefault();
       $modal.modal('show');
-    }*/
-    $modal.modal('show');
+      return false;
+    }
+    
   });
 
 });
