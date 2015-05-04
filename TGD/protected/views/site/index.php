@@ -1,5 +1,5 @@
        
-        <div class="slide" id="slide2" data-slide="2" style="overflow: hidden;">
+        <div class="slide" id="slide2" style="overflow: hidden;">
             <section id="intro" class="intro clearfix">       
 
                 <div class="container clearfix">
