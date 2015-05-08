@@ -5,7 +5,7 @@ class m150427_124314_tbl_usage_data_domain extends CDbMigration
 	public function up()
 	{
         $this->execute("
-            CREATE TABLE tbl_usage_data_domain
+            CREATE TABLE IF NOT EXISTS tbl_usage_data_domain
             (
               id serial NOT NULL,
               member_id integer DEFAULT 0,
@@ -21,8 +21,9 @@ class m150427_124314_tbl_usage_data_domain extends CDbMigration
             );
         ");
 
+        $this->execute("DROP VIEW view_adtracks_members;");
+
         $this->execute("
-            DROP VIEW view_adtracks_members;
             CREATE OR REPLACE VIEW view_adtracks_members AS
              SELECT member_id, domain, SUM(adtracks) as adtracks FROM (
                  SELECT tbl_adtracks.member_id,
@@ -41,8 +42,9 @@ class m150427_124314_tbl_usage_data_domain extends CDbMigration
                   ORDER BY adtracks
         ");
 
+        $this->execute("DROP VIEW view_browsing_members;");
+
         $this->execute("
-            DROP VIEW view_browsing_members;
             CREATE OR REPLACE VIEW view_browsing_members AS
              SELECT member_id, domain, SUM(visited) as visited FROM (
                  SELECT tbl_browsing.member_id,
