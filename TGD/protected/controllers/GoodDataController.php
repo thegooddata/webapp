@@ -35,7 +35,14 @@ class GoodDataController extends Controller {
 
             $result = $goodEvilCache->setGoodCompanyAchievementsData();
         }
-
+        
+        // format decimals
+        if (is_array($result) && count($result)) {
+          foreach ($result as &$number) {
+            $number=Yii::app()->numberFormatter->formatDecimal($number);
+          }
+        }
+        
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
 
@@ -172,7 +179,13 @@ class GoodDataController extends Controller {
 
         if (!count($total) > 0) $total = 0;
         $result['loans_lost_count'] = $total;
-
+        
+        // format decimals
+        if (is_array($result) && count($result)) {
+          foreach ($result as &$number) {
+            $number=Yii::app()->numberFormatter->formatDecimal($number);
+          }
+        }
 
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
     }
