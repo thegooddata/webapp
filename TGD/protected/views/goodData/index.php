@@ -20,23 +20,23 @@
                             <h2>Company achievements</h2>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_active_users">0</div>
+                            <div class="amount monthly_active_users">&nbsp;</div>
                             <div class="subtext">Monthly Active Users</div>
                         </div>
                         <div class="item">
-                            <div class="amount total_registered_members">0</div>
+                            <div class="amount total_registered_members">&nbsp;</div>
                             <div class="subtext">Registered Members</div>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_visits_stored">0</div>
+                            <div class="amount monthly_visits_stored">&nbsp;</div>
                             <div class="subtext">Monthly Visits Stored</div>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_adtracks_blocked">0</div>
+                            <div class="amount monthly_adtracks_blocked">&nbsp;</div>
                             <div class="subtext">Monthly Threats Blocked</div>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_queries_traded">0</div>
+                            <div class="amount monthly_queries_traded">&nbsp;</div>
                             <div class="subtext">Monthly Queries Traded</div>
                         </div>
                     </div>
@@ -45,23 +45,23 @@
                             <h2>Good investments</h2>
                         </div>
                         <div class="item">
-                            <div class="amount total_money_earned">$0</div>
+                            <div class="amount total_money_earned">&nbsp;</div>
                             <div class="subtext">Total Money earned</div>
                         </div>
                         <div class="item">
-                            <div class="amount total_contribution">$0</div>
+                            <div class="amount total_contribution">&nbsp;</div>
                             <div class="subtext">Money Lent</div>
                         </div>
                         <div class="item">
-                            <div class="amount total_paidback">$0</div>
+                            <div class="amount total_paidback">&nbsp;</div>
                             <div class="subtext">Money Repaid</div>
                         </div>
                         <div class="item">
-                            <div class="amount total_lost">$0</div>
+                            <div class="amount total_lost">&nbsp;</div>
                             <div class="subtext">Money Lost</div>
                         </div>
                         <div class="item">
-                            <div class="amount total_outstanding">$0</div>
+                            <div class="amount total_outstanding">&nbsp;</div>
                             <div class="subtext">Outstanding Portfolio</div>
                         </div>
                     </div>
@@ -71,23 +71,23 @@
                             <h2>Good projects</h2>
                         </div>
                         <div class="item">
-                            <div class="amount countries_covered">0</div>
+                            <div class="amount countries_covered">&nbsp;</div>
                             <div class="subtext">Countries Covered</div>
                         </div>
                         <div class="item">
-                            <div class="amount projects_funded">0</div>
+                            <div class="amount projects_funded">&nbsp;</div>
                             <div class="subtext">Projects Funded</div>
                         </div>
                         <div class="item">
-                            <div class="amount projects_paying_back">0</div>
+                            <div class="amount projects_paying_back">&nbsp;</div>
                             <div class="subtext">Projects Paying Back</div>
                         </div>
                         <div class="item">
-                            <div class="amount projects_paid_back">0</div>
+                            <div class="amount projects_paid_back">&nbsp;</div>
                             <div class="subtext">Projects Paid Back</div>
                         </div>
                         <div class="item">
-                            <div class="amount projects_at_lost">0</div>
+                            <div class="amount projects_at_lost">&nbsp;</div>
                             <div class="subtext">Projects at Lost</div>
                         </div>
                     </div>
