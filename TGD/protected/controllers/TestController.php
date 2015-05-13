@@ -2,6 +2,13 @@
 
 class TestController extends Controller {
   
+    public function actionGeoip($ip=null) {
+      if (!$ip) {
+        $ip=Yii::app()->request->userHostAddress;
+      }
+      var_dump(Yii::app()->geoip->lookupCountryCode($ip));
+    }
+  
     /**
      * Testing the error page and email notification.
      */

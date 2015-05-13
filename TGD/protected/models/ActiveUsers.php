@@ -109,6 +109,8 @@ class ActiveUsers extends CActiveRecord {
    */
   static public function logActiveUser($user_id = null) {
     
+    $ip=Yii::app()->request->userHostAddress;
+        
     $prefix=date("Y-m-d"); // quick fix so we store data every day
     
     // temporary in case extension is not updated and doesn't send a user_id
@@ -125,16 +127,18 @@ class ActiveUsers extends CActiveRecord {
     $model->member_id = $member_id?$member_id:NULL;
     $model->member_or_user_id = $member_id ? $member_id : $user_id;
     
-    $model->host=ADbHelper::encrypt_ip(Yii::app()->request->userHostAddress);
+    $model->host=ADbHelper::encrypt_ip($ip);
 
       try {
-          $location = Yii::app()->geoip->lookupCountryCode('176.8.9.17');
+          $location = Yii::app()->geoip->lookupCountryCode($ip);
           if(!empty($location)){
               $model->country = $location;
           }
-      } catch (Exception $e) {
+      } catch (CException $e) {
 //        echo $e->getMessage(), "\n";
       }
+      
+    // TODO: We could log a Warning when IP was not resolved.
 
     $activeUserLogged = Yii::app()->user->getState('activeUserLogged', null);
     
