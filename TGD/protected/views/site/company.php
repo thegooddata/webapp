@@ -48,7 +48,7 @@
                                         <?php foreach($people[0] as $key => $member) : ?>
                                             <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 <?php if($key%5 == 0 ) echo 'our_people_margin';?>">
                                                 <?php
-                                                $img = CHtml::image(Yii::app()->baseUrl."/uploads/avatars/".$member['id']."/thumb/".$member['avatar'], '', array('class'=>'thumbnail ' . $arr[$member['seniority_level']], 'style' => 'background-color:'.$colors[$member['seniority_level']]));
+                                                $img = CHtml::image(Yii::app()->baseUrl."/uploads/avatars/".$member['id']."/thumb/".$member['avatar'], '', array('class'=>'thumbnail ' . $arr[$member['seniority_level']], 'style' => 'border:2px solid '.$colors[$member['seniority_level']]));
                                                 if(empty($member['url']))
                                                     echo $img;
                                                 else

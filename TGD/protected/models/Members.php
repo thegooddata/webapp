@@ -15,15 +15,12 @@ class Members extends BaseMembers
                  SELECT id, username, avatar, url, seniority_level
                   FROM tbl_members
                   WHERE avatar IS NOT NULL AND avatar != '' AND status = 2 AND superuser != 1
-                  ORDER BY seniority_level DESC, RANDOM();
-                  ")
+                  ORDER BY seniority_level DESC, RANDOM();")
             ->queryAll();
-
-        $http = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
-
+        
         if(!empty($users)){
             foreach($users as $key => $user) {
-                if(!@getimagesize( "$http://" . $_SERVER['HTTP_HOST'] . "/uploads/avatars/" . $user['id'] . "/thumb/" . $user['avatar'])) {
+                if(!file_exists(Yii::app()->basePath ."/../uploads/avatars/" . $user['id'] . "/thumb/" . $user['avatar'])) {
                     unset($users[$key]);
                 }
             }

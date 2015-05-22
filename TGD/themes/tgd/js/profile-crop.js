@@ -5,7 +5,8 @@ $(document).ready(function(){
 
     $(window).load(function() {
         jcrop_api = $.Jcrop('#profile_crop', {
-            aspectRatio: 1
+            aspectRatio: 1,
+            bgColor : 'transparent'
         });
     });
 
@@ -96,7 +97,8 @@ function show_crop(data){
         onChange: showPreview,
         onSelect: showPreview,
         setSelect: [0, 0, default_width, image_height],
-        aspectRatio: 1
+        aspectRatio: 1,
+        bgColor : 'transparent' 
     });
 
     $('.jcrop-holder').addClass('thumbnail');

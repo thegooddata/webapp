@@ -66,6 +66,8 @@ class EJCropper
 			return false;
 		}
 		$dest_r = imagecreatetruecolor($this->targ_w, $this->targ_h);
+		imagealphablending( $dest_r, false );
+        imagesavealpha( $dest_r, true );
 		if (!imagecopyresampled($dest_r, $img, 0, 0, $coords['x'], $coords['y'], $this->targ_w, $this->targ_h, $coords['w'], $coords['h'])) {
 			return false;
 		}
