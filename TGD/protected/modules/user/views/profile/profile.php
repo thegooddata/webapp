@@ -147,6 +147,8 @@
             }else{
                 $('#notification_preferences_label span').text('Unsubscribed')
             }
-        })
+        });
+        
+        $('.form-control-feedback').popover({'trigger': 'hover'});
     });
 </script>
