@@ -173,11 +173,11 @@ class TestController extends Controller {
     CVarDumper::dump($data, 10, true);
   }
   
-  public function actionTest_email() {
+  public function actionTest_email($to) {
     $message = new YiiMailMessage;
     $message->subject = 'This is a test email';
-    $message->setBody("<h1>test email</h1>",'text/html');
-    $message->addTo("atrandafirc@gmail.com");
+    $message->setBody("<h1>test email</h1><p>this is a text paragraph</p><p>and another</p>",'text/html');
+    $message->addTo($to);
     $message->setFrom(Yii::app()->params['marcosEmail'], Yii::app()->params['marcosEmailName']);
     Yii::app()->mail->send($message);
   }
