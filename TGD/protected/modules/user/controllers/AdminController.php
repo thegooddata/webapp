@@ -8,7 +8,8 @@ class AdminController extends Controller
 	
 	public $displayMenu = true;
 
-
+	public $isAdminPage = true;
+	
         // set title
     public $pageTitle = " - Manage Members";
 
