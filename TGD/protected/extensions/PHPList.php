@@ -165,7 +165,7 @@ class PHPList
         $userId = $this->_getUserId($email);
 
         if($userId === false){
-            $userId = $this->_createUser(array('email' =>$email, 'confirmed'=>1));
+            $userId = $this->_createUser(array('email' =>$email, 'confirmed'=>1, 'htmlemail'=>1));
         }
 
         return $userId;
@@ -210,7 +210,7 @@ class PHPList
     private function _createUser($data){
         
         // User doesn't exist. Create it.
-        $sql = "INSERT INTO phplist_user_user (email, confirmed, htmlemail, rssfrequency, password, passwordchanged, disabled, entered, uniqid) VALUES (:email, :confirmed, :htmlemail, :rssfrequency, :password, now(), :disabled, now(), :uniqid);";
+        $sql = "INSERT INTO phplist_user_user (email, confirmed, htmlemail, passwordchanged, entered) VALUES (:email, :confirmed, :htmlemail, now(), now());";
         
         $db = $this->_db;
         try {
@@ -219,10 +219,6 @@ class PHPList
             $stmt->bindParam("email", $data['email']);
             $stmt->bindParam("confirmed", $data['confirmed']);
             $stmt->bindParam("htmlemail", $data['htmlemail']);
-            $stmt->bindParam("rssfrequency", $data['rssfrequency']);
-            $stmt->bindParam("password", $data['password']);
-            $stmt->bindParam("disabled", $data['disabled']);
-            $stmt->bindParam("uniqid", $uniqid);
             $stmt->execute();
 
             // Assign id of recently created user.
