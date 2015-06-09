@@ -31,7 +31,7 @@
 
 /* @import must be at top of file, otherwise CSS will not work */
 
-@import url("//hello.myfonts.net/count/2926a8");
+/*@import url("//hello.myfonts.net/count/2926a8");*/
 
   
 @font-face {font-family: 'ProximaNovaSoft-Medium';src: url('../../fonts/2926A8_0_0.eot');src: url('../../fonts/2926A8_0_0.eot?#iefix') format('embedded-opentype'),url('../../fonts/2926A8_0_0.woff') format('woff'),url('../../fonts/2926A8_0_0.ttf') format('truetype');}
