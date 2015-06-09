@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="TheGoodData helps you enjoy the benefits of being a data owner. Its browser extension will improve your privacy by blocking data threats that track you online. Moreover, if you you give us express permission, it will also make that data work for a good cause.">
+        <meta name="keywords" content="privacy, trackers, block trackers, online privacy, data privacy, data ownership, data protection, data for good, good data, value of data, data locker, data vault, secure vault, data assistant, personal data assistant, social good, philanthropy, donating, donation, charity, social development, economic development, grassroots development, poverty alleviation, social investment, social entrepreneurship, innovation, data cooperative">
+        <meta name="author" content="">
+        <!--<link rel="shortcut icon" href="/favicon.ico">-->
+
+        <link rel="stylesheet" type="text/css" href="../css/vendor/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/vendor/bootstrap_vertical_tabs.css" />
+<link rel="stylesheet" type="text/css" href="../css/vendor/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/vendor/webfonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<script type="text/javascript" src="../js/vendor/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<title>TheGoodData | Enjoy your data </title>
+
+        
+    </head>
+
+    <body id="landing-page">
+
+        <header class="navbar  navbar-fixed-top">
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="navbar-header">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="http://www.tgd.local/index-test.php/" class="navbar-brand"><img alt="TheGoodData" src="../img/logo.png"/></a>
+                        </div>
+
+                        
+                        <!-- header non-logged -->
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li id="sign-in"><a href="http://www.tgd.local/index-test.php/sign-in">Sign In</a></li>
+                                <li class="install"><a href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank">Get TheGoodData</a></li>
+                            </ul>
+                        </div>
+                        
+                        
+                        <!-- header logged 
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
+                                        admin                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="http://www.tgd.local/index-test.php/membership">membership details</a></li>
+
+                                        <li class="divider"></li>
+                                                                                    <li><a href="http://www.tgd.local/index-test.php/manage/index">Admin</a></li>
+                                                                                <li><a href="http://www.tgd.local/index-test.php/good-data">Good data</a></li>
+                                        <li><a href="http://www.tgd.local/index-test.php/evil-data">Evil data</a></li>
+                                        <li><a href="http://www.tgd.local/index-test.php/your-data">Your data</a></li>
+                                        
+                                                                                  <li><a href="http://www.tgd.local/index-test.php/interest">Interests</a></li>
+                                        
+                                        <li class="divider"></li>
+                                        <li><a href="http://www.tgd.local/index-test.php/user/logout"><span class="glyphicon glyphicon-off"></span> sign out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        -->
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        
+        <!-- modal chrome only install -->
+        <div id="chromeModal" tabindex="-1" role="dialog" aria-labelledby="chromeModal" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Browser not supported</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-sm-16" id="modal-description">
+                                We only support Chrome for the time being. We would appreciate your help to extend our service to other browsers either by collaborating in our 
+                                <a href="https://github.com/thegooddata">open source developments</a> or 
+                                <a href="http://www.tgd.local/index-test.php/donate">giving us a donation.</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <form class="form-inline" id="phplist-signup" style="display:none;">
+                            <div class="form-group col-sm-10">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="enter your email">
+                            </div>
+                            <button type="submit" class="btn btn-default col-sm-6 tgd-button tgd-send">Send</button>
+                        </form>
+                        <button type="button" class="btn btn-default col-sm-6 tgd-button tgd-send" data-dismiss="modal" style="display: none;">Close</button>
+                        <a type="button" class="btn btn-default tgd-button tgd-send" href="http://www.tgd.local/index-test.php/donate">Continue</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- main content -->
+
+               
+        <div class="slide" id="slide2" style="overflow: hidden;">
+            <section id="intro" class="intro clearfix">       
+
+                <div class="container clearfix">
+                    <h1>Protect your online data<br/>and make it work for a better cause.</h1>
+                    <a class="tgd-button modal-trigger" target="_blank" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd">Get TheGoodData</a>
+                    <p>TheGoodData gives you back control<br/>of your valuable browsing data<br/>and lets you do some good with it.</p>
+
+                    <img class="drops small_drop" src="../img/yellow_small.png" data-stellar-ratio="-3" alt="">
+                    <img class="drops big_drop" src="../img/green_big.png" data-stellar-ratio="-1.2" alt="">
+                    <img class="drops small_drop" src="../img/red_small.png" data-stellar-ratio="-1.5" alt="">
+                    <img class="drops big_drop" src="../img/yellow_big.png" data-stellar-ratio="-2.7" alt="">
+                    <img class="drops small_drop" src="../img/blue_small.png" data-stellar-ratio="-3" alt="">
+                    <img class="drops big_drop" src="../img/blue_big.png" data-stellar-ratio="-1" alt="">
+                    <img class="drops small_drop" src="../img/green_small.png" data-stellar-ratio="-1.5" alt="">
+                    <img class="drops big_drop" src="../img/red_big.png" data-stellar-ratio="-2.7" alt="">  
+
+                </div> <!-- container -->
+            </section> <!-- intro -->
+        </div><!--End Slide 2 Parallax Scrolling Div -->
+
+        <section id="bag" class="our_product clearfix">
+            <div class="container clearfix">        
+                <div class="content clearfix">
+                    <h1>You own your data.</h1>
+                    <p>No one should have unlimited access to your data <br/> 
+                    without your express consent.<br/>
+                    Right now, companies use your data to their advantage,<br/> 
+                    but give you nothing in exchange.</p>
+                    <p>TheGoodData extension prevents third party trackers from <br/>
+                    accessing your information so you can take back your privacy online.</p>
+                    <a class="tgd-button" href="/index-test.php/product">About our product</a>
+                </div> <!-- content -->
+
+                <img class="seeds" src="../img/seed3.png" alt="Your Data">
+                <img class="seeds" src="../img/seed4.png" alt="Your Data">
+                <img class="seeds" src="../img/seed5.png" alt="Your Data">
+                <img id="bag1" src="../img/bag1.png" alt="Your Data">
+                <img id="bag2" src="../img/bag.jpg" alt="Your Data">
+                <img class="seeds" src="../img/seed1.png" alt="Your Data">
+                <img class="seeds" src="../img/seed2.png" alt="Your Data">
+
+            </div> <!-- container -->
+        </section> <!-- our_product -->
+
+        <section id="hand" class="our_partners clearfix">
+            <div class="container clearfix">
+                <div class="content clearfix">
+                    <h1>With TheGoodData, <br/>your data has the power <br/>to do good.</h1>
+                    <p>With your consent, we will trade selected anonymous data<br/>
+                    to a fraction of those companies who have previously <br/>
+                    collected it for free. We will reinvest 50% of the revenues<br/>
+                    into TheGoodData - your company - and the other 50% will fund<br/>
+                    microloans to people in developing countries <br/>
+                    via our partner, Zidisha.</p>
+                    <a class="tgd-button" href="/index-test.php/partners">About our partners</a>
+                </div> <!-- content -->
+                <img src="../img/hand.png" alt="Its in Your Hand">
+            </div> <!-- container -->
+        </section> <!-- our_partners -->
+
+        <section id="your_company" class="your_company clearfix">
+            <div class="container clearfix">
+                <h1>You don't just own your data,<br/> You also own TheGoodData.</h1>
+                <p>The more we collaborate, the less choice companies will have to get <br/>your data for free. So come join us, become an owner of TheGoodData <br/>and you’ll have a say in major company decisions and be kept <br/>updated on company progress - all at no cost.</p>
+                <a class="tgd-button" href="/index-test.php/your-company">About your company</a>  
+                <div class="sun clearfix">
+                    <img id="sun1" src="../img/sun1.png" alt="">
+                    <img id="sun2" src="../img/sun2.png" alt="">
+                    <img id="sun3" src="../img/sun3.png" alt="">        
+                </div>      
+            </div> <!-- container -->
+            <div class="cloud clearfix">
+                <div id="cloud1"></div>
+                <div id="cloud2"></div>
+            </div>
+            <img id="fields" src="../img/fields.png" alt="">
+        </section> <!-- your_company -->
+
+        <section id="start" class="start clearfix">
+            <div class="container clearfix">
+                <a class="button modal-trigger" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank"><h2>take back your data now</h2></a>            
+            </div> <!-- container -->
+        </section> <!-- start -->      
+
+        <section id="mentions" class="start clearfix">
+            <div class="container clearfix">
+                <span class="helper">
+                    <a href="https://gigaom.com/2014/11/27/thegooddata-wants-your-browsing-data-to-benefit-good-causes/" target="_blank">
+                    <img src="../img/gigaom.png" alt="placeholder+image">
+                    </a>
+                </span>
+
+                <span class="helper">
+                    <a href="http://www.fastcoexist.com/3026452/instead-of-giving-google-your-data-for-free-now-you-can-donate-it-for-good" target="_blank">
+                    <img src="../img/fastcompany.png" alt="">
+                    </a>
+                </span>
+                
+                <span class="helper">
+                    <a href="http://www.forbes.com/sites/adamtanner/2014/11/28/share-your-data-fund-microloans-to-developing-world/" target="_blank">
+                    <img src="../img/forbes.png" alt="placeholder+image">
+                    </a>
+                </span>
+            </div> <!-- container -->
+        </section> <!-- start -->      
+       
+     
+        
+
+
+        <!-- END main content -->
+      
+
+        <footer>
+            <div class="footer">
+                <div class="container clearfix">
+                    <ul>
+                        <h4>service</h4>
+                        <li><a href="http://www.tgd.local/index-test.php/product">Product</a></li>
+                        <li><a href="http://www.tgd.local/index-test.php/faq">FAQs</a></li>
+                        <li><a href="mailto:support@thegooddata.org">Support</a></li>
+                    </ul>
+                    <ul>
+                        <h4>third parties</h4>
+                        <li><a href="http://www.tgd.local/index-test.php/partners">Partners</a></li>
+                        <li><a href="http://www.tgd.local/index-test.php/coders">Coders</a></li>
+                        <li><a href="mailto:media@thegooddata.org">Media</a></li>
+                    </ul>
+                    <ul>
+                        <h4>company</h4>
+                        <li><a href="http://www.tgd.local/index-test.php/your-company">Your Company</a></li>
+                        <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
+                        <li><a href="http://www.tgd.local/index-test.php/support-us" class="red">Donate</a></li>
+                    </ul>
+                    <ul>
+                        <h4>contact</h4>
+                        <li>82 Clerkenwell Road</li>
+                        <li>London EC1M 5RF, UK</li>
+                        <li><a href="mailto:info@thegooddata.org">Email Us</a></li>
+                    </ul>
+                    <ul id="fifth">
+                        <h4>legal stuff</h4>
+                        <li><a href="http://www.tgd.local/index-test.php/legal#terms">Terms of Use</a></li>
+                        <li><a href="http://www.tgd.local/index-test.php/legal#privacy">Privacy & Cookies</a></li>
+                        <li><a href="http://www.tgd.local/index-test.php/legal#rules">Company Rules</a></li>
+                    </ul>        
+                    <ul class="social">
+                        <li class="first">
+                            <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
+                        </li>
+                        <li>
+                            <a id="wordpress" href="//blog.thegooddata.org"></a>
+                        </li>
+                        <li>
+                            <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
+                        </li>
+                        <li class="last">
+                            <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
+                        </li>
+                        <em><a href="http://www.thegooddata.org">&copy; 2014, thegooddata.org</a></em>
+                    </ul>
+                </div> <!-- wrap -->
+            </div>
+
+            
+            <div class="license">
+                <div class="wrap">
+                    <ul class="clearfix">
+                        <li>
+                            <img alt="License" src="../img/license.png">
+                            <p>Except where otherwise noted, content on this site is licensed under a 
+                                <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
+                                    Creative Commons Attribution 4.0 International License.
+                                </a>
+                            </p>
+                        </li>
+                        <li>
+                            <a href="http://timeless.co" title="Designed by Timeless">
+                                <img alt="Timeless" src="../img/timeless_logo.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        
+                
+    <script type="text/javascript" src="../js/vendor/modernizr-2.6.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.stellar.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+</body>
+</html>
