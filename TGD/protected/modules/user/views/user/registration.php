@@ -16,7 +16,7 @@
                     browser extension, but if you want to become an owner/Member 
                     of TheGoodData Cooperative Ltd then we need some details in order 
                     to register you. Before filling this out, please ensure you’ve 
-                    <a href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank">downloaded the browser extension</a>.</p>
+                    <a class="modal-trigger" href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;">downloaded the browser extension</a>.</p>
                     <p>Once you’re a Member, you will be able to access company 
                     information, participate in our collaborative platform and 
                     take part in Annual General Meetings. You will also be able 

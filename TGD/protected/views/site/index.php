@@ -5,11 +5,7 @@
                 <div class="container clearfix">
                     <h1>Protect your online data<br/>and make it work for a better cause.</h1>
                     
-                    <?php if (Yii::app()->request->getQuery("inline", false)===false): ?>
-                      <a class="tgd-button modal-trigger" target="_blank" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd">Get TheGoodData</a>
-                    <?php else: ?>
-                      <a class="tgd-button modal-trigger" href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;">Get TheGoodData</a>
-                    <?php endif; ?>
+                    <a class="tgd-button modal-trigger" href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;">Get TheGoodData</a>
                     
                     <p>TheGoodData gives you back control<br/>of your valuable browsing data<br/>and lets you do some good with it.</p>
 
@@ -86,7 +82,7 @@
 
         <section id="start" class="start clearfix">
             <div class="container clearfix">
-                <a class="button modal-trigger" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank"><h2>take back your data now</h2></a>            
+                <a class="button modal-trigger" href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;"><h2>take back your data now</h2></a>            
             </div> <!-- container -->
         </section> <!-- start -->      
 

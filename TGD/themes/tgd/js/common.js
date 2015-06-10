@@ -198,6 +198,7 @@ jQuery(document).ready(function ($) {
 
 });
 
+// TODO: maybe we should define chrome.webstore.install somehow for non-chrome browsers to handle undefined errors?
 
 function chromeInstallSuccess() {
     console.log('chromeInstallSuccess');

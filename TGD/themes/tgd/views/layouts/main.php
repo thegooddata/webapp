@@ -82,7 +82,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/login"); ?>">Sign In</a></li>
-                                <li class="install"><a href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd" target="_blank">Get TheGoodData</a></li>
+                                <li class="install"><a href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;">Get TheGoodData</a></li>
                             </ul>
                         </div>
                         <?php } ?>
@@ -108,7 +108,7 @@
                     <div class="row">
 
                         <?php
-                        
+                                                
                             $menu_items=array();
                                 
                             if (Yii::app()->user->isGuest) {
@@ -122,11 +122,12 @@
                                   array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
                                   array(
-                                    'url'=>'https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd', 
+                                    'url'=>'javascript:void(0);', 
                                     'label'=>'GET THEGOODDATA', 
                                     'visible'=>Yii::app()->user->isGuest,
                                     'linkOptions'=>array(
-                                        'target'=>'_blank',
+                                      'class'=>'modal-trigger',
+                                      'onclick'=>"chrome.webstore.install('". Yii::app()->params['chromeExtensionUrl'] . "',chromeInstallSuccess,chromeInstallFail); return false;",
                                     ),
                                   ),
                                );
