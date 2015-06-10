@@ -198,3 +198,13 @@ jQuery(document).ready(function ($) {
 
 });
 
+
+function chromeInstallSuccess() {
+    console.log('chromeInstallSuccess');
+    $('#chromeModalInstallSuccess').modal('show');
+}
+
+function chromeInstallFail() {
+    console.log('chromeInstallFail');
+    $('#chromeModalInstallFail').modal('show');
+}

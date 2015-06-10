@@ -99,11 +99,3 @@ jQuery(document).ready(function ($) {
 	});
 
 });
-
-function chromeInstallSuccess() {
-    console.log('chromeInstallSuccess');
-}
-
-function chromeInstallFail() {
-    console.log('chromeInstallFail');
-}
