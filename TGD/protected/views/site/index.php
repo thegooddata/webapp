@@ -4,7 +4,13 @@
 
                 <div class="container clearfix">
                     <h1>Protect your online data<br/>and make it work for a better cause.</h1>
-                    <a class="tgd-button modal-trigger" target="_blank" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd">Get TheGoodData</a>
+                    
+                    <?php if (Yii::app()->request->getQuery("inline", false)===false): ?>
+                      <a class="tgd-button modal-trigger" target="_blank" href="https://chrome.google.com/webstore/detail/thegooddata/elbfekgipcdaikbmepglnkghplljagkd">Get TheGoodData</a>
+                    <?php else: ?>
+                      <a class="tgd-button modal-trigger" href="#" onclick="chrome.webstore.install(); return false;">Get TheGoodData</a>
+                    <?php endif; ?>
+                    
                     <p>TheGoodData gives you back control<br/>of your valuable browsing data<br/>and lets you do some good with it.</p>
 
                     <img class="drops small_drop" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/yellow_small.png" data-stellar-ratio="-3" alt="">
