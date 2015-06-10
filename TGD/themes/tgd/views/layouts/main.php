@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/favicon.ico">
         
-        <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/elbfekgipcdaikbmepglnkghplljagkd">
+        <link rel="chrome-webstore-item" href="<?php echo Yii::app()->params['chromeExtensionUrl']; ?>">
 
         <title>TheGoodData | Enjoy your data <?php echo (isset($this->pageTitle))?$this->pageTitle:'';?></title>
 

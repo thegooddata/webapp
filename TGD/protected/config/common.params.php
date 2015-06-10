@@ -28,5 +28,6 @@ return array(
         'collaborate-pre.thegooddata.org',
     ),
     'dataThreatsYearCacheDuration'=>86400,
-    'cacheLifespanOneDay'=>86400
+    'cacheLifespanOneDay'=>86400,
+    'chromeExtensionUrl'=>'https://chrome.google.com/webstore/detail/elbfekgipcdaikbmepglnkghplljagkd',
 );
