@@ -24,6 +24,7 @@
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/main.css');
         
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
+        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/dummy-regenerate-1.js', CClientScript::POS_HEAD);
         
         ?>
 
