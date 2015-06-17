@@ -188,7 +188,8 @@ class ApiController extends Controller
 	            $models = Loans::model()->findAll();
 	            break;
             case 'queries':
-            	$models = $this->_countQueries();
+				$models =  $this->_countQueries();
+				$models += $this->_countSites();
             	break;
 
     		default:
@@ -218,13 +219,14 @@ class ApiController extends Controller
 	}
 
 	public function _countQueries(){
-		$user_id=$_GET['user_id'];
-		$member_id=$_GET['user_id'];
+		$user_id   =$_GET['user_id'];
+		$member_id =$_GET['user_id'];
 
 		if (!is_numeric($_GET['user_id'])){
 			$member_id=-1;
 		}
 
+		// number of queries
         $startdate = date('Y-m-d', strtotime("-1 month"));
 		$datas = Yii::app()->db->createCommand()
 			                ->setFetchMode(PDO::FETCH_OBJ)
@@ -244,7 +246,33 @@ class ApiController extends Controller
 		return $datas[0]->count;
 	}
 
+	public function _countSites(){
+		$user_id   =$_GET['user_id'];
+		$member_id =$_GET['user_id'];
 
+		if (!is_numeric($_GET['user_id'])){
+			$member_id=-1;
+		}
+
+		// number of queries
+        $startdate = date('Y-m-d', strtotime("-1 month"));
+		$datas = Yii::app()->db->createCommand()
+			                ->setFetchMode(PDO::FETCH_OBJ)
+			                ->select('count(*)')
+			                ->from('tbl_browsing')
+			                ->where(array(
+			                            'and',
+			                            '(user_id = :user_id or member_id = :member_id)'
+			                            ),
+					                    array(
+				                            'user_id'=>$user_id,
+				                            'member_id'=>$member_id)
+					                    )
+                            ->andWhere("daydate >= '$startdate'")
+			                ->queryAll();
+
+		return $datas[0]->count;
+	}
 	public function actionPercentil()
 	{
 		switch($_GET['model'])
