@@ -34,6 +34,8 @@ class GoodDataController extends Controller {
             $goodEvilCache = new GoodEvilCache();
 
             $result = $goodEvilCache->setGoodCompanyAchievementsData();
+        }else{
+            Yii::app()->cache->flush($cacheKey);
         }
         
         // format decimals
