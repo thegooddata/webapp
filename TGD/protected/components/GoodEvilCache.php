@@ -134,9 +134,11 @@ class GoodEvilCache
             ->where("created_at >= '$startdate'")
             ->queryScalar();
 
-        $usageTotal = UsageDataDaily::getTotalUsageData('browsing');
-
-        $result['monthly_visits_stored'] = $total + $usageTotal;
+//        $usageTotal = UsageDataDaily::getTotalUsageData('browsing');
+//
+//        $result['monthly_visits_stored'] = $total + $usageTotal;
+        
+        $result['monthly_visits_stored'] = $total;
 
         // queries traded blocked last month ------------------
 
@@ -149,9 +151,11 @@ class GoodEvilCache
             ->andWhere("created_at >= '$startdate'")
             ->queryScalar();
 
-        $usageTotal = UsageDataDaily::getTotalUsageData('adtracksBlocked');
-
-        $result['monthly_adtracks_blocked'] = $total + $usageTotal;
+//        $usageTotal = UsageDataDaily::getTotalUsageData('adtracksBlocked');
+//
+//        $result['monthly_adtracks_blocked'] = $total + $usageTotal;
+        
+        $result['monthly_adtracks_blocked'] = $total;
 
         // queries traded last month ------------------
 
@@ -161,9 +165,11 @@ class GoodEvilCache
             ->from('view_queries_trade_month')
             ->queryScalar();
 
-        $usageTotal = UsageDataDaily::getTotalUsageData('queriesShared');
-
-        $result['monthly_queries_trade_processed'] = $total + $usageTotal;
+//        $usageTotal = UsageDataDaily::getTotalUsageData('queriesShared');
+//
+//        $result['monthly_queries_trade_processed'] = $total + $usageTotal;
+        
+        $result['monthly_queries_trade_processed'] = $total;
 
         // and save it in cache for later use:
         Yii::app()->cache->set($cacheKey, $result, Yii::app()->params['cacheLifespanOneDay']);

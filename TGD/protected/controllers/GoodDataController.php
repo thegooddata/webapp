@@ -27,6 +27,8 @@ class GoodDataController extends Controller {
         // set cache key for this data
         $cacheKey="CompanyAchievementsData";
         $result=Yii::app()->cache->get($cacheKey);
+        
+//        $result=false;
 
         if($result===false)
         {
@@ -44,6 +46,8 @@ class GoodDataController extends Controller {
         }
         
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
+        
+//        CVarDumper::dump($result, 10, true);
     }
 
     public function actionGoodInvestmentsData() {
