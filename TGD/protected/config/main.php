@@ -87,8 +87,6 @@ return array(
 				'username'=>BD_USERNAME,
 				'password'=>BD_PASSWORD,
 		    'charset'=>'UTF8',
-        'schemaCachingDuration' => 3600,
-        'queryCachingDuration'=> 3600,
 		)),
 
 		'errorHandler'=>array(
