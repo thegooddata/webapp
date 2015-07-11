@@ -50,13 +50,11 @@
             <div class="container clearfix">
                 <div class="content clearfix">
                     <h1>With TheGoodData, <br/>your data has the power <br/>to do good.</h1>
-                    <p>With your consent, we will trade selected anonymous data<br/>
-                    to a fraction of those companies who have previously <br/>
-                    collected it for free. We will reinvest 50% of the revenues<br/>
-                    into TheGoodData - your company - and the other 50% will fund<br/>
-                    microloans to people in developing countries <br/>
+                    <p>Our donors reward your care with your data.<br/> 
+                    We reinvest 50% of these donations into TheGoodData, <br/>
+                    and the other 50% fund microloans to people in developing countries<br/> 
                     via our partner, Zidisha.</p>
-                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("site/partners"); ?>">About our partners</a>
+                    <a class="tgd-button" href="<?php echo Yii::app()->controller->createUrl("/good-data"); ?>">About our good data</a>
                 </div> <!-- content -->
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/hand.png" alt="Its in Your Hand">
             </div> <!-- container -->

@@ -118,7 +118,6 @@
                                $menu_items=array(
                                   array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/site/product'), 'label'=>'PRODUCT', 'visible'=>Yii::app()->user->isGuest),
-                                  array('url'=>array('/site/partners'), 'label'=>'PARTNERS', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
@@ -266,7 +265,6 @@
                     </ul>
                     <ul>
                         <h4>third parties</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/partners");?>">Partners</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
                         <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>

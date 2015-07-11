@@ -9,7 +9,7 @@
                     <ul class="nav nav-tabs tabs-left"><!-- 'tabs-right' for right tabs -->
                         <li class="active"><a href="#prevent" data-toggle="tab"><span>1</span>Our browser extension prevents data tracking</a></li>
                         <li><a href="#securely" data-toggle="tab"><span>2</span>We process your data securely</a></li>
-                        <li><a href="#anonymous" data-toggle="tab"><span>3</span>We trade the anonymous data you select</a></li>
+                        <li><a href="#anonymous" data-toggle="tab"><span>3</span>We raise money thanks to your data</a></li>
                         <li><a href="#earnings" data-toggle="tab"><span>4</span>We reinvest our earnings for everybody’s benefit</a></li>
                     </ul>
                 </div>
@@ -31,15 +31,19 @@
                             </ul>
                         </div>
                         <div class="tab-pane red_drop_list" id="securely">
+                        
                             <ul class="clearfix">
                                 <li>
-                                    <p>We anonymize and store those search queries which you have given us your permission to trade. You can change your preferences at any time.</p>
+                                    <p>If you give us permission, we anonymize and store your browsing history and search queries for a limited period of time (3 months).</p>
                                 </li>
                                 <li>
-                                    <p>We will never trade, or even store, any queries which contain sensitive terms - health, sexual, religious, political or financial scoring - so that you can rest easy in the knowledge that we’re on your side.</p>
+                                    <p>This valuable information will help us build reports identifying good and evil players in terms of online tracking. We will publish them as soon as we have enough volume of users.</p>
                                 </li>
                                 <li>
-                                    <p>You can access and/or delete any of your stored information at any time.</p>
+                                    <p>We never store any queries which contain sensitive terms - health, sexual, religious, political or financial scoring - so that you can rest easy about that.</p>
+                                </li>
+                                <li>
+                                    <p>You can access or delete any of your stored information at any time.</p>
                                 </li>                          
                             </ul>
                             <ul class="brief_desc clearfix">
@@ -65,20 +69,20 @@
                         <div class="tab-pane dark_blue_drop_list" id="anonymous">
                             <ul class="clearfix">
                                 <li>
-                                    <p>Anonymous data is sold to retargeting networks. This means that the only outcome of selling your data is that you’ll see more relevant adverts when you’re online.</p>
+                                    <p>At this point we are not trading any anonymous browsing data anymore. Problems with Google Webstore have forced us to postpone this option until we manage a higher volume of users & traffic.</p>
                                 </li>
                                 <li>
-                                    <p>These networks pay us the money that would previously have been earned for free by the third-party companies without your consent or benefit.</p>
+                                    <p>In the meantime we are raising funds from private donors that are sponsoring our users care with their data without getting anything in exchange (no one access your data).</p>
                                 </li>
                                 <li>
-                                    <p>We expect to bring in new friendly buyers in the future so you can decide who to sell it to.</p>
-                                </li>                       
+                                    <p>We believe in data consent and respect. If you are interested in sponsoring or buying our users’ anonymized data you can contact us at: data@thegooddata.org</p>
+                                </li>                                                       
                             </ul>
                         </div>
                         <div class="tab-pane green_drop_list" id="earnings">
                             <ul class="clearfix">
                                 <li>
-                                    <p>We reinvest 50% of our revenue in projects run in developing countries by Zidisha, the person-to-person microcredit leader.</p>
+                                    <p>We reinvest 50% of the money raised in projects run in developing countries by Zidisha, the person-to-person microcredit leader.</p>
                                 </li>
                                 <li>
                                     <p>We invest the other 50% in developing new features for TheGoodData, protecting your data and ensuring our mission is on track.</p>

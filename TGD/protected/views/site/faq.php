@@ -38,17 +38,18 @@
                   <p>At TheGoodData, we want to ensure that people are aware of the data they produce, that they can control who has access to it, and that they receive the maximum benefit if they decide to share it.</p>
                 </li>
                 <li>
-                  <em>What are your goals?</em>
+                  <em>What are your starting business goals?</em>
                   <p>Our first objective is to ensure that people own their online data. This means helping them to control who has access to their browsing data and maximizing the social benefit of that data if they decide to anonymously trade part of it.</p>
                 </li>
                 <li>
                   <em>How do you make money?</em>
-                  <p>When TheGoodData trades information on your behalf, we are able to charge companies for anonymous data. This model allows us to be self-sustaining, and provide a free service to all of our Members, irrespective of whether you decide to trade any of your data or not. We are also fortunate enough to receive donations from our generous supporters.</p>
+                  <p>We are currently raising funds from private donors that are sponsoring our users care with their data without getting anything in exchange (no one access your data).</p>
+                  <p>Once we manage a higher volume of users, we expect to attract friendly sponsors and buyers interested in accessing anonymized data with people's consent.</p>
                 </li>
                 <li>
                   <em>Why are you organized as a cooperative?</em>
                   <p>Because our company mission is so ambitious, we believe that it will only be truly achievable with the active collaboration of many people. We also believe that this need for active involvement is best enabled through a platform which facilitates transparency, participation and fairness.</p>
-                  <p>For this reason, TheGoodData has taken the legal form of an Industrial and Provident Society in the UK. It is a for-profit cooperative, in which users of the service become company owners if they should choose to do so (‘Member’ is the legal term). In this way, important decisions including the use of benefits and the property of key assets such as the data gathered, remain in the hands of our Members.</p>
+                  <p>For this reason, TheGoodData has taken the legal form of an Industrial and Provident Society in the UK. It is a cooperative, in which users of the service become company owners if they should choose to do so (‘Member’ is the legal term). In this way, important decisions including the use of benefits and the property of key assets such as the data gathered, remain in the hands of our Members.</p>
                 </li>
                 <li>
                   <em>Does TheGoodData have any financial investors?</em>
@@ -73,8 +74,8 @@
                 <li>
                   <em>How does TheGoodData work?</em>
                   <p>TheGoodData uses opensource disconnect.me technology to block data requests from over two thousand third-party tracking companies, all without degrading the functionality of the sites that you visit. TheGoodData allows you to easily unblock a third party that you trust by clicking the extension icon and then clicking on the name of the third party you want to allow, or to simply allow all tracking by a particular website if you wish.</p>
-                  <p>In addition to blocking browsing threats, TheGoodData captures your search queries and, where we have your express permission to do so, we will sell anonymous non-sensitive data to search retargeting companies. By using TheGoodData, these companies can now only access your data with your permission and by paying a fee to TheGoodData in exchange for the chance to display ads related to your searches.</p>
-                  <p>100% of the money earned when we protect and trade your data is reinvested in social good projects and in improving TheGoodData service.</p>
+                  <p>In addition to blocking browsing threats -if you give permission- TheGoodData anonymizes and stores your browsing history and search queries for a limited amount of time (3 months). This valuable information will help us build reports identifying good and evil players in terms of online tracking.</p>
+                  <p>We are currently raising funds from private donors that are sponsoring our users care with their data without getting anything in exchange (no one access your data). 100% of the money raised is reinvested in social good projects and in improving TheGoodData service.</p>
                 </li>
                 <li>
                   <em>What kind of projects does TheGoodData fund with my data?</em>
@@ -165,7 +166,8 @@
                 </li>
                 <li>
                   <em>Do I need to pay for a share to become a Member?</em>
-                  <p>The short answer is no. Because TheGoodData is registered as an Industrial and Provident Society, we are forced by law to ask our Members to own a fully paid share. In order to facilitate the process we have reduced the share price to the minimum possible (1 pence) and created a 0% interest loan agreement so you can buy the necessary share without making any payment. If you ever terminate your Membership, this loan is cancelled in exchange for the transfer of your share’s ownership to TheGoodData. You’re also welcome to buy your 1p share with bitcoins or support us by making a donation, from which we’ll deduct the 1p cost of your share.</p>
+                  <p>The short answer is no. Because TheGoodData is registered as an Industrial and Provident Society, we are forced by law to ask our Members to own a fully paid share. In order to facilitate the process we have reduced the share price to the minimum possible (1 pence) and created a 0% interest loan agreement so you can buy the necessary share without making any payment. If you ever terminate your Membership, this loan is cancelled in exchange for the transfer of your share’s ownership to TheGoodData.</p>
+                  <p>You’re also welcome to buy your 1p share with bitcoins or support us by making a donation, from which we’ll deduct the 1p cost of your share.</p>  
                 </li>
                 <li>
                   <em>Are there any Membership rules?</em>
@@ -173,7 +175,8 @@
                 </li>
                 <li>
                   <em>How can Membership be cancelled?</em>
-                  <p>You can terminate your Membership at any time simply by emailing <a href="mailto:members@thegooddata.org">members@thegooddata.org</a>. Membership will also be cancelled in the case of non-usage of TheGoodData service over 3 consecutive months or due to the failure to hold one Membership share. The Membership Committee can also decide to expel a Member if they have acted against company interests or principles, if they have repeatedly misbehaved in company meetings or forums or if they have provided false information to the company. If Membership comes to an end for any of these reasons, the Member must sell back their share to the company at its nominal value.</p>
+                  <p>You can terminate your Membership at any time simply by emailing <a href="mailto:members@thegooddata.org">members@thegooddata.org</a>. Membership will also be cancelled in the case of non-usage of TheGoodData service over 3 consecutive months or due to the failure to hold one Membership share.</p>
+                  <p>The Membership Committee can also decide to expel a Member if they have acted against company interests or principles, if they have repeatedly misbehaved in company meetings or forums or if they have provided false information to the company. If Membership comes to an end for any of these reasons, the Member must sell back their share to the company at its nominal value.</p>
                 </li>
               </ul>
             </div>
@@ -216,7 +219,7 @@
 
       <div class="last_edit">
         <p>
-          Last revision – January 2015.</br>
+          Last revision – June 2015.</br>
           If you have another question that has not been answered above, please <a href="mailto:info@thegooddata.org?subject=Question reported from TheGoodData webpage">email us</a>
         </p>
       </div>
