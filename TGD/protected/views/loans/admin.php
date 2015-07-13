@@ -87,10 +87,15 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'id',
 		'loan_identifier',
 		array(
+			'name' => 'idLoansStatus',
+			'type' => 'raw',
+			'value' => $model->idLoansStatus !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->idLoansStatus)), array('loansStatus/view', 'id' => GxActiveRecord::extractPkValue($model->idLoansStatus, true))) : null,
+		),/*
+		array(
 				'name'=>'leader',
 				'value'=>'GxHtml::valueEx($data->leader0)',
 				'filter'=>GxHtml::listDataEx(LoansLeaders::model()->findAllAttributes(null, true)),
-				),
+				),*/
 		'loan_url',
 		'title_en',
 		/*'title_es',
