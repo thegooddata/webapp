@@ -133,6 +133,12 @@ class ActiveUsers extends CActiveRecord {
           $location = Yii::app()->geoip->lookupCountryCode($ip);
           if(!empty($location)){
               $model->country = $location;
+              // Update country for logged-in user
+              if($member_id !== null){
+                $user = Members::model()->findByPk($member_id);
+                $user->country = $location;
+                $user->save();
+              }
           }
       } catch (CException $e) {
 //        echo $e->getMessage(), "\n";
