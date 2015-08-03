@@ -28,16 +28,16 @@
                             <div class="subtext">Registered Members</div>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_visits_stored">&nbsp;</div>
-                            <div class="subtext">Monthly Visits Stored</div>
-                        </div>
-                        <div class="item">
                             <div class="amount monthly_adtracks_blocked">&nbsp;</div>
                             <div class="subtext">Monthly Threats Blocked</div>
                         </div>
                         <div class="item">
-                            <div class="amount monthly_queries_traded">&nbsp;</div>
-                            <div class="subtext">Monthly Queries Traded</div>
+                            <div class="amount monthly_visits_stored">&nbsp;</div>
+                            <div class="subtext">Monthly Visits Stored</div>
+                        </div>
+                        <div class="item">
+                            <div class="amount monthly_queries_run">&nbsp;</div>
+                            <div class="subtext">Monthly Queries Run</div>
                         </div>
                     </div>
                     <div id="investments" class="col-sm-4 col-md-4  col-md-offset-2 col-sm-offset-2">
@@ -180,7 +180,7 @@
             $('.total_registered_members').html(result.total_registered_members);
             $('.monthly_visits_stored').html(result.monthly_visits_stored);
             $('.monthly_adtracks_blocked').html(result.monthly_adtracks_blocked);
-            $('.monthly_queries_traded').html(result.monthly_queries_trade_processed);
+            $('.monthly_queries_run').html(result.monthly_queries_run);
         }, "json" );
 
         $.get( "<?php echo Yii::app()->createUrl('goodData/GoodInvestmentsData')?>", function( result ) {

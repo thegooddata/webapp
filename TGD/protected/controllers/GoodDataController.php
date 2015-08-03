@@ -25,29 +25,23 @@ class GoodDataController extends Controller {
         $result = array();
 
         // set cache key for this data
-        $cacheKey="CompanyAchievementsData";
-        $result=Yii::app()->cache->get($cacheKey);
+        $cacheKey = "CompanyAchievementsData";
+        $result   = Yii::app()->cache->get($cacheKey);
         
-//        $result=false;
-
-        if($result===false)
-        {
+        if($result === false) {
             // regenerate because it is not found in cache
             $goodEvilCache = new GoodEvilCache();
-
-            $result = $goodEvilCache->setGoodCompanyAchievementsData();
+            $result        = $goodEvilCache->setGoodCompanyAchievementsData();
         }
         
         // format decimals
         if (is_array($result) && count($result)) {
           foreach ($result as &$number) {
-            $number=Yii::app()->numberFormatter->formatDecimal($number);
+            $number = Yii::app()->numberFormatter->formatDecimal($number);
           }
         }
         
         $this->_sendResponse(200, CJSON::encode($result), 'application/json');
-        
-//        CVarDumper::dump($result, 10, true);
     }
 
     public function actionGoodInvestmentsData() {
@@ -210,8 +204,9 @@ class GoodDataController extends Controller {
         $loans_pag = 1;
         $loans_pag_size = 10;
 
-        if (isset($_GET['loans_pag']))
+        if (isset($_GET['loans_pag'])) {
             $loans_pag = $_GET['loans_pag'];
+        }
 
         // get amount of data
         $loans = Yii::app()->db->createCommand()

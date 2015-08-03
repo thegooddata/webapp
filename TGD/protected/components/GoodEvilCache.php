@@ -94,7 +94,6 @@ class GoodEvilCache
 
     public function setGoodCompanyAchievementsData(){
         $result = array();
-
         // set cache key for this data
         $cacheKey="CompanyAchievementsData";
 
@@ -124,7 +123,7 @@ class GoodEvilCache
 
         $result['total_registered_members'] = $total;
 
-        // queries last month ---------------------
+        // browsed pages last month ---------------------
 
         $startdate = date('Y-m-d', strtotime("-1 month"));
         $total = Yii::app()->db->createCommand()
@@ -140,7 +139,7 @@ class GoodEvilCache
         
         $result['monthly_visits_stored'] = $total;
 
-        // queries traded blocked last month ------------------
+        // adtracks blocked last month ------------------
 
         $startdate = date('Y-m-d', strtotime("-1 month"));
         $total = Yii::app()->db->createCommand()
@@ -157,19 +156,23 @@ class GoodEvilCache
         
         $result['monthly_adtracks_blocked'] = $total;
 
-        // queries traded last month ------------------
+        // queries run last month ------------------
 
         $total = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select('*')
-            ->from('view_queries_trade_month')
+            ->select('count(*)')
+            ->from('view_queries_month')
             ->queryScalar();
 
 //        $usageTotal = UsageDataDaily::getTotalUsageData('queriesShared');
 //
 //        $result['monthly_queries_trade_processed'] = $total + $usageTotal;
         
-        $result['monthly_queries_trade_processed'] = $total;
+        $result['monthly_queries_run'] = $total;
+
+
+
+
 
         // and save it in cache for later use:
         Yii::app()->cache->set($cacheKey, $result, Yii::app()->params['cacheLifespanOneDay']);
