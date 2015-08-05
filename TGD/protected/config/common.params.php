@@ -30,4 +30,7 @@ return array(
     'dataThreatsYearCacheDuration'=>86400,
     'cacheLifespanOneDay'=>86400,
     'chromeExtensionUrl'=>'https://chrome.google.com/webstore/detail/elbfekgipcdaikbmepglnkghplljagkd',
+    
+    'incomePerSiteVisited' => 0.00002,
+    'incomePerQuery' => 0.001,
 );
