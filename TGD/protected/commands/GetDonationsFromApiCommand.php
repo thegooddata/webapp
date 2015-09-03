@@ -13,7 +13,7 @@ public function run($args)
         // Getting time minus 1 day
         $time = time() - 24*60*60;
         // Getting charges 1 day before actual time
-        $charge = Stripe_Charge::all(array("created[gte]" => $time));
+        $charge = Stripe_Charge::all(array("limit" => 5));
         // Json to Array charge
         $charge = json_decode($charge, true);
         foreach ($charge['data'] as $singleCharge) {
@@ -22,6 +22,9 @@ public function run($args)
                 //Getting currency ID
                 $sql = "SELECT id FROM tbl_currencies WHERE code = '" . strtoupper($singleCharge["currency"]) . "'";   // like where id IN(1,2,3,4)
                 $currency = Yii::app()->db->createCommand($sql)->queryRow();
+                if($singleCharge['application_fee'] == NULL){
+                    $singleCharge['application_fee'] = 0;
+                }
                 // Inserting charge in DB
                 $result = $command->insert('tbl_incomes', array(
                     'type'         => 1,
