@@ -1,6 +1,6 @@
 <?php
 
-require_once('/extensions/yii-stripe/stripe/lib/Stripe.php');
+require_once('extensions/yii-stripe/stripe/lib/Stripe.php');
 
 class GetDonationsFromApiCommand extends CConsoleCommand{
 
@@ -20,7 +20,7 @@ public function run($args)
             // Filtering only charges succeeded
             if($singleCharge['object'] == 'charge' && $singleCharge['status'] == 'succeeded' || $singleCharge['status'] == 'paid'){
                 //Getting currency ID
-                $sql = "SELECT id FROM tbl_currencies WHERE code = '" . strtoupper($singleCharge["currency"]) . "'";   // like where id IN(1,2,3,4)
+                $sql = "SELECT id FROM tbl_currencies WHERE code = '" . strtoupper($singleCharge["currency"]) . "'"; 
                 $currency = Yii::app()->db->createCommand($sql)->queryRow();
                 if($singleCharge['application_fee'] == NULL){
                     $singleCharge['application_fee'] = 0;
