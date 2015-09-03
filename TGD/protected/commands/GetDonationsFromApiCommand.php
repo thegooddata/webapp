@@ -1,6 +1,6 @@
 <?php
 
-require_once('extensions/yii-stripe/stripe/lib/Stripe.php');
+//require_once('extensions/yii-stripe/stripe/lib/Stripe.php');
 
 class GetDonationsFromApiCommand extends CConsoleCommand{
 
@@ -9,11 +9,11 @@ public function run($args)
         $command = Yii::app()->db->createCommand();
         $model = new Incomes;
         // Setting API Key 
-        Stripe::setApiKey('sk_live_Gy5OxwwFqtxeuMJRxFGwHWMi');
+        //Stripe::setApiKey('sk_live_Gy5OxwwFqtxeuMJRxFGwHWMi');
         // Getting time minus 1 day
-        $time = time() - 24*60*60;
+        $time = time() - 1*24*60*60;
         // Getting charges 1 day before actual time
-        $charge = Stripe_Charge::all(array("created[gte]" => $time));
+        $charge = Yii::app()->stripe->all(array("created[gte]" => $time));
         // Json to Array charge
         $charge = json_decode($charge, true);
         foreach ($charge['data'] as $singleCharge) {

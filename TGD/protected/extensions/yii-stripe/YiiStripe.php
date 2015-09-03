@@ -14,8 +14,8 @@ class YiiStripe extends CApplicationComponent
 {
   
   public $test=true;
-  public $test_secret_key='sk_test_B8HMrs0HYcTmoLdtvmOUZP5l';
-  public $test_publishable_key='pk_test_flBzSw7jwY4lJ7B3KoCmFzZs';
+  public $test_secret_key='sk_test_8Zv1WEarotm4f0qRs38og84d';
+  public $test_publishable_key='pk_test_98EuIVzy9YCeUOrbG1lz7JZ1';
   
   public $secret_key=null;
   public $publishable_key=null;
@@ -49,6 +49,18 @@ class YiiStripe extends CApplicationComponent
     }
   }
   
+  public function all($params) {
+    $this->cleanError();
+    // Create the charge on Stripe's servers - this will charge the user's card
+    try {
+      $all = Stripe_Charge::all($params);
+      return $all;
+    } catch(Stripe_Error $e) {
+      // The card has been declined
+      $this->error=$e->getMessage();
+    }
+  }
+
   public function cleanError() {
     $this->error=null;
   }
