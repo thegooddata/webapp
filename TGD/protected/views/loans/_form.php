@@ -15,11 +15,6 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-		<div class="row loans_loan_identifier loan_identifier">
-		<?php echo $form->labelEx($model,'loan_identifier'); ?>
-		<?php echo $form->textField($model, 'loan_identifier', array('maxlength' => 255)); ?>
-		<?php echo $form->error($model,'loan_identifier'); ?>
-		</div><!-- row -->
 		<div class="row loans_leader leader">
 		<?php echo $form->labelEx($model,'leader'); ?>
 		<?php echo $form->dropDownList($model, 'leader', GxHtml::listDataEx(LoansLeaders::model()->findAllAttributes(null, true))); ?>
@@ -99,7 +94,7 @@
 
 		<!-- START UPLOAD FILE -->
 		<?php if ($model->image != null) { ?>
-		<img style="width:250px;" src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo file_exists(Yii::app()->getBasePath()."/../uploads/".$model->loan_identifier."-".$model->image) ? $model->loan_identifier."-".$model->image : (file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? $model->image : '' ) ?>" />
+		<img style="width:250px;" src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo file_exists(Yii::app()->getBasePath()."/../uploads/".$model->id."-".$model->image) ? $model->id."-".$model->image : (file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? $model->image : '' ) ?>" />
 		<?php } ?>
 		<!-- END UPLOAD FILE -->
 

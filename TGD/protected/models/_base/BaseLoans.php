@@ -50,7 +50,7 @@ abstract class BaseLoans extends GxActiveRecord {
 	}
 
 	public static function representingColumn() {
-		return 'loan_identifier';
+		return 'id';
 	}
 
 	public function rules() {
@@ -58,10 +58,10 @@ abstract class BaseLoans extends GxActiveRecord {
 			array('leader, id_loans_activity, id_countries, currency, id_loans_status', 'required'),
 			array('leader, id_loans_activity, id_countries, currency, term, id_loans_status', 'numerical', 'integerOnly'=>true),
 			array('amount, contribution, paidback, loss', 'numerical'),
-			array('loan_identifier, loan_url, title_en, title_es, partner, image', 'length', 'max'=>255),
+			array('loan_url, title_en, title_es, partner, image', 'length', 'max'=>255),
 			array('created_at, updated_at', 'safe'),
-			array('loan_identifier, loan_url, title_en, title_es, partner, amount, term, contribution, paidback, loss, image, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, loan_identifier, leader, loan_url, title_en, title_es, id_loans_activity, id_countries, partner, amount, currency, term, contribution, paidback, loss, id_loans_status, image, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('loan_url, title_en, title_es, partner, amount, term, contribution, paidback, loss, image, created_at, updated_at', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, leader, loan_url, title_en, title_es, id_loans_activity, id_countries, partner, amount, currency, term, contribution, paidback, loss, id_loans_status, image, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,7 +83,6 @@ abstract class BaseLoans extends GxActiveRecord {
 	public function attributeLabels() {
 		return array(
 			'id' => Yii::t('app', 'ID'),
-			'loan_identifier' => Yii::t('app', 'Loan Identifier'),
 			'leader' => null,
 			'loan_url' => Yii::t('app', 'Loan Url'),
 			'title_en' => Yii::t('app', 'Title En'),
@@ -113,7 +112,6 @@ abstract class BaseLoans extends GxActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id);
-		$criteria->compare('loan_identifier', $this->loan_identifier, true);
 		$criteria->compare('LOWER(leader)', strtolower($this->leader));
 		$criteria->compare('LOWER(loan_url)', strtolower($this->loan_url), true);
 		$criteria->compare('LOWER(title_en)', strtolower($this->title_en), true);

@@ -85,7 +85,6 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'filter' => $model,
 	'columns' => array(
 		'id',
-		'loan_identifier',
 		array(
 			'name' => 'idLoansStatus',
 			'type' => 'raw',

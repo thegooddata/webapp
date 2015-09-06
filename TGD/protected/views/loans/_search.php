@@ -11,11 +11,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'loan_identifier'); ?>
-		<?php echo $form->textField($model, 'loan_identifier', array('maxlength' => 255)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model, 'leader'); ?>
 		<?php echo $form->dropDownList($model, 'leader', GxHtml::listDataEx(LoansLeaders::model()->findAllAttributes(null, true)), array('prompt' => Yii::t('app', 'All'))); ?>
 	</div>

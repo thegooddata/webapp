@@ -4,9 +4,6 @@
 	<?php echo GxHtml::link(GxHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
 	<br />
 
-	<?php echo GxHtml::encode($data->getAttributeLabel('loan_identifier')); ?>:
-	<?php echo GxHtml::encode($data->loan_identifier); ?>
-	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('leader')); ?>:
 		<?php echo GxHtml::encode(GxHtml::valueEx($data->leader0)); ?>
 	<br />
