@@ -27,6 +27,12 @@ return array(
 		'log'=>CMap::mergeArray(require(dirname(__FILE__).'/common.log.php'), array(
         )),
         'cache'=>require(dirname(__FILE__).'/common.cache.php'),
+        'stripe' => array(
+			'class' => 'ext.yii-stripe.YiiStripe',
+			'test' => STRIPE_TEST,
+			'secret_key' => STRIPE_SK,
+			'publishable_key' => STRIPE_PK,
+	  ),
 	),
 	
 	// application-level parameters that can be accessed
