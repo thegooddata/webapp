@@ -28,4 +28,8 @@ return array(
         )),
         'cache'=>require(dirname(__FILE__).'/common.cache.php'),
 	),
+	
+	// application-level parameters that can be accessed
+	'params'=>require(dirname(__FILE__).'/common.params.php'),
+
 );
