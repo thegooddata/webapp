@@ -34,4 +34,8 @@ return array(
 			'publishable_key' => STRIPE_PK,
 	  ),
 	),
+	
+	// application-level parameters that can be accessed
+	'params'=>require(dirname(__FILE__).'/common.params.php'),
+
 );

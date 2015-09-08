@@ -22,7 +22,6 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 		'id',
-		'loan_identifier',
 		array(
 			'name' => 'leader0',
 			'type' => 'raw',
@@ -63,8 +62,8 @@ $this->menu=array(
             'type'=>'raw',
             'width'=>'200',
             'alt'=>'hi images',
-            'value'=> CHtml::image(file_exists(Yii::app()->getBasePath()."/../uploads/".$model->loan_identifier."-".$model->image) ? 
-            	Yii::app()->baseUrl."/uploads/".$model->loan_identifier."-".$model->image : 
+            'value'=> CHtml::image(file_exists(Yii::app()->getBasePath()."/../uploads/".$model->id."-".$model->image) ? 
+            	Yii::app()->baseUrl."/uploads/".$model->id."-".$model->image : 
             	(file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? 
             		Yii::app()->baseUrl."/uploads/".$model->image :
             		''
