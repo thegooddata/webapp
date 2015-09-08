@@ -43,7 +43,7 @@ class LoansController extends GxController {
 				/* START UPLOAD FILE */
 				if ($model->image!=null){
 					$model->image->saveAs(
-						 Yii::app()->getBasePath()."/../uploads/".$model->loan_identifier."-".$model->image->getName()
+						 Yii::app()->getBasePath()."/../uploads/".$model->id."-".$model->image->getName()
 					);	
 				}
 				/* END UPLOAD FILE */

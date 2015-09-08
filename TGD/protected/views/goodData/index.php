@@ -33,7 +33,7 @@
                         </div>
                         <div class="item">
                             <div class="amount monthly_visits_stored">&nbsp;</div>
-                            <div class="subtext">Monthly Visits Stored</div>
+                            <div class="subtext">Monthly Pages Viewed</div>
                         </div>
                         <div class="item">
                             <div class="amount monthly_queries_run">&nbsp;</div>
