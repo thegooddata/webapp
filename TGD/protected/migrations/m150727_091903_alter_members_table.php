@@ -6,7 +6,7 @@ class m150727_091903_alter_members_table extends CDbMigration
 	{
 		$this->execute("ALTER TABLE tbl_members ADD COLUMN country character varying(10) NULL");
 
-		$data = Yii::app()->db->createCommand("SELECT b.member_id, a.country FROM tbl_active_users a,(SELECT member_id, max(updated_at) updated_at FROM tbl_active_users GROUP BY member_id order by member_id) b WHERE a.member_id = b.member_id AND a.updated_at = b.updated_at ORDER BY b.member_id")->select()->queryAll();
+		$data = Yii::app()->db->createCommand("SELECT b.member_id, a.country FROM tbl_active_users a,(SELECT member_id, max(updated_at) updated_at FROM tbl_active_users GROUP BY member_id order by member_id) b WHERE a.country IS NOT NULL AND a.member_id = b.member_id AND a.updated_at = b.updated_at ORDER BY b.member_id")->select()->queryAll();
 		foreach ($data as $key => $value) {
 			$member_id = $value['member_id'];
 			$country   = $value['country'];
