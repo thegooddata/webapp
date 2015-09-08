@@ -1,6 +1,5 @@
 <?php
 
-//require_once('extensions/yii-stripe/stripe/lib/Stripe.php');
 
 class GetDonationsFromApiCommand extends CConsoleCommand{
 
