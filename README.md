@@ -16,24 +16,17 @@ For more info about TheGoodData, please visit our site and FAQs
 ## Local Installation of webapp
 
 0. After cloning the repository, install PostgreSQL (9.1.13 v).
-
 Optionally you could also install PgAdmin tool if you want to be able to manage the database visually: http://www.pgadmin.org/ 
 1. Create the new database named "tgd" and create a database user named "tgd".
 2. Import the database dump:
-
 	pg_restore -U <username> -d <dbname> -1 -f <filename>.dump
 	For access to the dump file, contact one of the developers.
 3. Set bytea_output to your database: ALTER DATABASE tgd SET bytea_output = 'escape' .
-
 4. Create a virtual host in Apache/Nginx named "www.tgd.local" that points to the directoy: /path/to/tgd-webapp/TGD.
-
 5. Download Yii framework and place it somewhere outside the project from where you can include it later:
-
 https://github.com/yiisoft/yii/releases/download/1.1.16/yii-1.1.16.bca042.zip. 
 6. Create /path/to/tgd-webapp/TGD/assets and /path/to/tgd-webapp/TGD/protected/runtime directories, there are not display because in the git repo add to .gitignore.
-
 7. Copy /tgd-webapp/TGD/protected/config/config.sample.php to /config.php and change it according to your data.
-
 8. Create /tgd-webapp/TGD/protected/config/local_config.php with the following contents and adjust path to Yii framework.
 		<?php
 
