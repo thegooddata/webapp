@@ -124,8 +124,6 @@
                             <div class="col-1"><a target="_blank" href="<?php echo $loan->loan_url; ?>">
                             <?php if(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->id."-".$loan->image)): ?>
                                 <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->id."-".$loan->image; ?>" class="avatar"/>
-                            <?php elseif(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->loan_identifier."-".$loan->image)): ?>
-                                <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->loan_identifier."-".$loan->image; ?>" class="avatar"/>
                             <?php elseif(file_exists(Yii::app()->getBasePath()."/../uploads/".$loan->image)): ?>
                                 <img src="<?php echo Yii::app()->baseUrl."/uploads/".$loan->image; ?>" class="avatar"/>
                             <?php endif; ?>
