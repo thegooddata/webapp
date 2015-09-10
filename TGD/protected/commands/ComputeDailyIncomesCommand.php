@@ -37,7 +37,7 @@ class ComputeDailyIncomesCommand extends CConsoleCommand{
         $insertId = Yii::app()->db->createCommand()
             ->select("id")
             ->from("tbl_incomes")
-            ->where("income_date = :date", array(":date" => $this->_endDate))
+            ->where("income_date = :date AND source_name = :source", array(":date" => $this->_endDate, ":source" => 'Queries plus visits'))
             ->queryScalar();
 
 
