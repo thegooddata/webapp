@@ -505,6 +505,7 @@ footer{
 footer .license {
     font-size: 10px;
     padding: 25px 0!important;
+    text-align: center;
 }
 
 footer .license img{
