@@ -92,38 +92,6 @@
                         </div>
                         <?php } ?>
                         
-                        
-                        <!-- header logged 
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
-                                        admin                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="http://www.tgd.local/index-test.php/membership">membership details</a></li>
-
-                                        <li class="divider"></li>
-                                                                                    <li><a href="http://www.tgd.local/index-test.php/manage/index">Admin</a></li>
-                                                                                <li><a href="http://www.tgd.local/index-test.php/good-data">Good data</a></li>
-                                        <li><a href="http://www.tgd.local/index-test.php/evil-data">Evil data</a></li>
-                                        <li><a href="http://www.tgd.local/index-test.php/your-data">Your data</a></li>
-                                        
-                                                                                  <li><a href="http://www.tgd.local/index-test.php/interest">Interests</a></li>
-                                        
-                                        <li class="divider"></li>
-                                        <li><a href="http://www.tgd.local/index-test.php/user/logout"><span class="glyphicon glyphicon-off"></span> sign out</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        -->
-                        
-                        
-                        
-                        
-                        
                     </div>
                 </div>
             </div>
@@ -498,7 +466,7 @@
                     </div>
                 </div>
             </div> <!-- container -->
-        </section> <!-- start -->     
+        </div> <!-- start -->     
 
         <!-- END main content -->
       
@@ -557,8 +525,8 @@
             
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 license">
-                    <img alt="License" class="col-md-3" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
-                    <p class="col-md-7">Except where otherwise noted, content on this site is licensed under a 
+                    <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
+                    <p>Except where otherwise noted, content on this site is licensed under a 
                         <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
                             Creative Commons Attribution 4.0 International License.
                         </a>
