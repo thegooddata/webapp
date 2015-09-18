@@ -228,7 +228,10 @@ class SiteController extends Controller {
     public function actionIndex() {
       
         Yii::app()->theme = 'tgd';
-        
+
+        if(SHOW_NEW_LANDING){
+            $this->layout ='newMain';
+        }
         // set title
         $this->pageTitle = "";
 

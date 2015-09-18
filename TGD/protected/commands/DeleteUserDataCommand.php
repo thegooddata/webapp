@@ -10,28 +10,35 @@ class DeleteUserDataCommand extends CConsoleCommand
     }
 
     //Delete all usage data that is older than 3 months except the totals needed to show yearly figures
+    //Working
     public function actionDeleteUsageDataOlder(){
+        $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-3 month'));
         $this->userData->deleteAllUsageData($date);
     }
 
     //Delete all user data of those members that have been inactive for more than 3 months
+    //Working
     public function actionDeleteUserDataInactive(){
-        $date = date('Y-m-d', strtotime('-3 month'));
-        $users = ActiveUsers::model()->findAll(array('condition'=>'date(updated_at)<:date', 'params'=>array(':date'=>$date)));
+        $this->userData = new UserData();
+        $date = date('Y-m-d', strtotime('-3 months'));
+
+        $users = members::model()->findAll(array('condition'=>'date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUserData($user->id);
 
-                $this->sendInactiveMail($user->email);
+                //$this->sendInactiveMail($user->email);
             }
         }
     }
 
     //Delete all usage data after resignation
-    public function actionDeleteUsageDataAfterRegistration(){
+    //Working
+    public function actionDeleteUsageDataAfterResign(){
+        $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-1 day'));
-        $users = ActiveUsers::model()->findAll(array('condition'=>'status=-1 AND date(updated_at)=:date', 'params'=>array(':date'=>$date)));
+        $users = members::model()->findAll(array('condition'=>'status=-4 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUsageDataByUser($user->id);
@@ -39,9 +46,10 @@ class DeleteUserDataCommand extends CConsoleCommand
         }
     }
     //Delete all user and member data of members 1 month after resignation
-    public function actionDeleteUserAndMemberDataAfterRegistration(){
+    public function actionDeleteUserAndMemberDataAfterResign(){
+        $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-1 month'));
-        $users = ActiveUsers::model()->findAll(array('condition'=>'status=-1 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
+        $users = members::model()->findAll(array('condition'=>'status=-4 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUserData($user->id);
@@ -53,7 +61,7 @@ class DeleteUserDataCommand extends CConsoleCommand
     //Delete all user and member data if they have been inactive more than 6 months
     public function actionDeleteUserAndMemberDataInactive(){
         $date = date('Y-m-d', strtotime('-6 month'));
-        $users = ActiveUsers::model()->findAll(array('condition'=>'date(updated_at)<:date', 'params'=>array(':date'=>$date)));
+        $users = members::model()->findAll(array('condition'=>'date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUserData($user->id);

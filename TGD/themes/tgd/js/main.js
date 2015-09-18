@@ -31,27 +31,29 @@ $(document).ready(function(){
 
     $(window).scroll(function(){
 
+    	if($("#bag").length){
+	        if ($(this).scrollTop() > ($("#bag").offset().top-vh-200)) { //240
 
-        if ($(this).scrollTop() > ($("#bag").offset().top-vh-200)) { //240
-
-            $('section.our_product #bag1').css({
-            	'top': 0,
-            	'opacity': 1,
-            	'transition': 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-            });
-			setTimeout(function(){
-				$('section.our_product .seeds').css({
-	            	'zoom': 1,
+	            $('section.our_product #bag1').css({
+	            	'top': 0,
 	            	'opacity': 1,
-	            	'transition': 'zoom 0.5s ease-out'
+	            	'transition': 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
 	            });
-			},600);
-            
-        } // bag
-
-        if ($(this).scrollTop() > ($("#hand").offset().top-vh-250)) { //100
-            $('section.our_partners img').addClass('show_hand');
-        }
+				setTimeout(function(){
+					$('section.our_product .seeds').css({
+		            	'zoom': 1,
+		            	'opacity': 1,
+		            	'transition': 'zoom 0.5s ease-out'
+		            });
+				},600);
+	            
+	        } // bag
+    	}
+    	if($("#hand").length){
+	        if ($(this).scrollTop() > ($("#hand").offset().top-vh-250)) { //100
+	            $('section.our_partners img').addClass('show_hand');
+	        }
+	    }
 
     }); // scroll  
     

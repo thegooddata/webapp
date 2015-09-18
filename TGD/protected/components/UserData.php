@@ -3,6 +3,7 @@
 class UserData {
 
     //usage data - browsing and search history
+    //Working
     public function deleteAllUsageDataByUser($member_id){
         $date = date('Y-m-d');
         $dataDaily = $this->getUsageDataDaily($date, $member_id);
@@ -18,6 +19,7 @@ class UserData {
     }
 
     //usage data - browsing and search history for all
+    //Working
     public function deleteAllUsageData($date){
         $dataDaily = $this->getUsageDataDaily($date);
         $dataTotal = $this->getUsageDataTotal($date);
@@ -33,6 +35,7 @@ class UserData {
         return true;
     }
 
+    //Working
     protected function deleteUsageDataByUser($member_id){
         Browsing::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
         Queries::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
@@ -43,6 +46,7 @@ class UserData {
         return true;
     }
 
+    //Working
     protected function deleteUsageData($date){
         Browsing::model()->deleteAll('daydate<:daydate', array(':daydate' => $date));
         Queries::model()->deleteAll('daydate<:daydate', array(':daydate' => $date));
@@ -54,17 +58,18 @@ class UserData {
     }
 
     //user data I - user id, blocking and whitelist preference, etc
+    //Working
     public function deleteAllUserData($member_id){
 //        Members::model()->deleteByPk($member_id);
-        $user = User::model()->findByPk($member_id);
-        $user->status = User::STATUS_LEFT;
+        $user = Members::model()->findByPk($member_id);
+        $user->status = -4;
         $user->save();
 
         Whitelists::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
         ExtensionSettings::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
 
         BrowsingFlagged::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
-        QueriesFlagged::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
+        //QueriesFlagged::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
 
         return true;
     }
@@ -72,19 +77,12 @@ class UserData {
     //member data - username and email as well as PII
     public function deleteAllMemberData($member_id){
 //        Members::model()->deleteByPk($member_id);
-        $user = User::model()->findByPk($member_id);
+        $user = Members::model()->findByPk($member_id);
         $user->email = '';
         $user->save();
 
-        Profile::model()->deleteByPk($member_id);
-
-        if(!empty($user->key)) {
-            $member_pii_id = Yii::app()->redoctober->decrypt($user->key);
-
-            if ($member_pii_id) {
-                MembersPii::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_pii_id));
-            }
-        }
+        MembersPii::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
+        
 
         return true;
     }
