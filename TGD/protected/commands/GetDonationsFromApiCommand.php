@@ -10,7 +10,7 @@ public function run($args)
         // Getting time minus 1 day
         $time = time() - 1*24*60*60;
         // Getting charges 1 day before actual time
-        $charge = Yii::app()->stripe->all(array("limit" => 5));
+        $charge = Yii::app()->stripe->all(array("created[gte]" => $time));
         // Json to Array charge
         $charge = json_decode($charge, true);
         foreach ($charge['data'] as $singleCharge) {
