@@ -1,6 +1,6 @@
 <?php
 
-class m150905_172517_drop_column_loan_identifier_in_tbl_loans extends CDbMigration
+class m150919_110901_drop_column_loan_identifier_in_tbl_loans extends CDbMigration
 {
 	public function up()
 	{
@@ -58,7 +58,7 @@ class m150905_172517_drop_column_loan_identifier_in_tbl_loans extends CDbMigrati
 
 		// Second: alter table.
 		if(sizeof($loansWithErrors)){
-			print("There's been a problem processing the images. (The following loans: ".join(", ",$loansWithErrors)."  have images associated but those files do not exist in the filesystem).\n");
+			print("There's been a problem processing the images. (The following loans: ".join(", ",$loansWithErrors )."  have images associated but those files do not exist in the filesystem).\n");
 			print("The database migration will not take place until these error is solved.\n");
 			return false;
 		}
