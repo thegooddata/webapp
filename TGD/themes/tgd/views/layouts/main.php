@@ -316,10 +316,8 @@
                                 </a>
                             </p>
                         </li>
-                        <li>
-                            <a href="http://timeless.co" title="Designed by Timeless">
-                                <img alt="Timeless" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/timeless_logo.png">
-                            </a>
+                        <li style="border: none">
+                           
                         </li>
                     </ul>
                 </div>
