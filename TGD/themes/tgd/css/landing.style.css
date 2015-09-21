@@ -507,7 +507,7 @@ footer{
 }
 footer .license {
     font-size: 10px;
-    padding: 25px 0!important;
+    padding: 25px 2%!important;
     text-align: center;
 }
 
@@ -594,7 +594,7 @@ iframe{
 	color:#55A0EB!important;
 }
 .tc-beau-blue{
-	color:#c3d3ec!important;
+	color:#81aaea!important;
 }
 /* Button colour styles */
 

@@ -526,7 +526,7 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 license">
                     <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
-                    <p>Except where otherwise noted, content on this site is licensed under a 
+                    <p>Except where otherwise noted,<br/> content on  this site is licensed under a <br/>
                         <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
                             Creative Commons Attribution 4.0 International License.
                         </a>
