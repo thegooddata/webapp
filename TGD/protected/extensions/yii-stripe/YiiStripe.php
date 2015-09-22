@@ -51,12 +51,24 @@ class YiiStripe extends CApplicationComponent
   
   public function all($params) {
     $this->cleanError();
-    // Create the charge on Stripe's servers - this will charge the user's card
+    
     try {
       $all = Stripe_Charge::all($params);
       return $all;
     } catch(Stripe_Error $e) {
-      // The card has been declined
+      
+      $this->error=$e->getMessage();
+    }
+  }
+
+  public function transfers($params) {
+    $this->cleanError();
+    
+    try {
+      $all = Stripe_Transfer::all($params);
+      return $all;
+    } catch(Stripe_Error $e) {
+      
       $this->error=$e->getMessage();
     }
   }
