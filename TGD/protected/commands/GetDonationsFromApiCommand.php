@@ -7,10 +7,10 @@ public function run($args)
     {
         $command = Yii::app()->db->createCommand();
         $model = new Incomes;
-        // Getting time minus 7 days
-        $time = time() - 7*24*60*60;
-        // Getting charges 1 week before actual time
-        $transfers = Yii::app()->stripe->transfers(array("created[gte]" => $time));
+        // Getting time minus 1 days
+        $time = time() - 1*24*60*60;
+        // Getting transfers 1 day before actual time and with 'paid' status
+        $transfers = Yii::app()->stripe->transfers(array("date[gte]" => $time, 'status' => 'paid'));
         // Json to Array transfer
         $transfers = json_decode($transfers, true);
         foreach ($transfers['data'] as $transfer) {
@@ -22,8 +22,6 @@ public function run($args)
             ->queryScalar();
 
             if($transferExist === false){
-                // Filtering only charges succeeded
-                if($transfer['status'] == 'succeeded' || $transfer['status'] == 'paid'){
                     //Getting currency ID
                     $sql = "SELECT id FROM tbl_currencies WHERE code = '" . strtoupper($transfer["currency"]) . "'"; 
                     $currency = Yii::app()->db->createCommand($sql)->queryRow();
@@ -33,12 +31,11 @@ public function run($args)
                     // Inserting transfer in DB
                     $result = $command->insert('tbl_incomes', array(
                         'type'         => 1,
-                        'income_date'  => date("Y-m-d H:i:s", $transfer['created']),
+                        'income_date'  => date("Y-m-d H:i:s", $transfer['date']),
                         'source_name'  => "Stripe " . $transfer['id'],
                         'gross_amount' =>  number_format((float)$transfer['amount']/100, 2),
                         'currency'     => $currency['id'],
                         'expenses'     => $transfer['application_fee'] ));
-                }
             }
         }
 
