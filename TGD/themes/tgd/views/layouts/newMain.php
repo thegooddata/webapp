@@ -257,7 +257,7 @@
         <?php endif; ?>
           
         <script type="text/javascript">
-            $('.dropdown-toggle').dropdown();
+            
             $.get( "<?php echo Yii::app()->createUrl('goodData/GoodProjectsData')?>", function( result ) {
             $('.projects_funded').html(result.loans_count);
         }, "json" );
