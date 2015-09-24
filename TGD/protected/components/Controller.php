@@ -92,5 +92,20 @@ class Controller extends CController
     	}
     	return($result);
     }
+    
+    public function useNewBootstrap() {
+      $cs=Yii::app()->clientScript;
+      $cs->packages['bootstrap']=array(
+        'baseUrl'=>'/themes/tgd/',
+        'js'=>array(
+            'js/landing.bootstrap.min.js',
+        ),
+        'css'=>array(
+            'css/landing.bootstrap.min.css',
+            'css/vendor/bootstrap_vertical_tabs.css', // leaving old one here
+        ),
+        'depends'=>array('jquery'),
+      );
+    }
 
 }

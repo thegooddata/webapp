@@ -21,11 +21,9 @@
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/font-awesome.min.css');
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/webfonts.css');
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/main.css');
-        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/landing.bootstrap.min.css');
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/landing.style.css');
         
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
-        $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/landing.bootstrap.min.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/dummy-regenerate-1.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/jquery.stellar.min.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/modernizr-2.6.2.min.js', CClientScript::POS_HEAD);

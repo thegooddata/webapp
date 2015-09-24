@@ -231,6 +231,7 @@ class SiteController extends Controller {
 
         if(SHOW_NEW_LANDING){
             $this->layout ='newMain';
+            $this->useNewBootstrap();
         }
         // set title
         $this->pageTitle = "";
