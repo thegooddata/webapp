@@ -215,4 +215,22 @@
             </div>
         </div>
     </div> <!-- container -->
-</div> <!-- start -->     
+</div> <!-- start -->
+
+<?php
+
+$script="
+  
+$.get( '". Yii::app()->createUrl('goodData/GoodProjectsData')."', function( result ) {
+  $('.projects_funded').html(result.loans_count);
+}, 'json' );
+
+$.get( '". Yii::app()->createUrl('goodData/CompanyAchievementsData')."', function( result ) {
+  $('.monthly_visits_stored').html(result.monthly_visits_stored);
+  $('.monthly_adtracks_blocked').html(result.monthly_adtracks_blocked);
+  $('.monthly_queries_run').html(result.monthly_queries_run);
+}, 'json' );
+
+";
+
+Yii::app()->clientScript->registerScript('new-home-scripts', $script);

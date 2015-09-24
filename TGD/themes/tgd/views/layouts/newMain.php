@@ -255,20 +255,6 @@
             && !(isset($this->isAdminPage) && $this->isAdminPage === true)): ?>
           <?php $this->renderPartial('//layouts/_analytics'); ?>
         <?php endif; ?>
-          
-        <script type="text/javascript">
-            
-            $.get( "<?php echo Yii::app()->createUrl('goodData/GoodProjectsData')?>", function( result ) {
-            $('.projects_funded').html(result.loans_count);
-        }, "json" );
-
-            $.get( "<?php echo Yii::app()->createUrl('goodData/CompanyAchievementsData')?>", function( result ) {
-
-            $('.monthly_visits_stored').html(result.monthly_visits_stored);
-            $('.monthly_adtracks_blocked').html(result.monthly_adtracks_blocked);
-            $('.monthly_queries_run').html(result.monthly_queries_run);
-        }, "json" );
-        </script>
                 
 </body>
 </html>
