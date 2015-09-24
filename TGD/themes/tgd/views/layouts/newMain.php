@@ -12,7 +12,9 @@
         <link rel="chrome-webstore-item" href="<?php echo Yii::app()->params['chromeExtensionUrl']; ?>">
 
         <title>TheGoodData | Enjoy your data <?php echo (isset($this->pageTitle))?$this->pageTitle:'';?></title>
-<?php
+        
+        <?php
+        
         $cs=Yii::app()->clientScript;
         
         $cs->registerCoreScript('jquery');
@@ -175,7 +177,7 @@
 
         <?php } ?>
       
-        <?php $this->renderPartial('_chromeModal'); ?>
+        <?php $this->renderPartial('//layouts/_chromeModal'); ?>
 
         <!-- main content -->
 
@@ -251,7 +253,7 @@
         <?php if (Yii::app()->params['enableAnalytics'] 
             && !($this instanceof GxController) 
             && !(isset($this->isAdminPage) && $this->isAdminPage === true)): ?>
-          <?php $this->renderPartial('_analytics'); ?>
+          <?php $this->renderPartial('//layouts/_analytics'); ?>
         <?php endif; ?>
           
         <script type="text/javascript">

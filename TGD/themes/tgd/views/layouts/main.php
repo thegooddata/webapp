@@ -173,7 +173,7 @@
 
         <?php } ?>
 
-        <?php $this->renderPartial('_chromeModal'); ?>
+        <?php $this->renderPartial('//layouts/_chromeModal'); ?>
 
         <!-- main content -->
 
@@ -255,7 +255,7 @@
         <?php if (Yii::app()->params['enableAnalytics'] 
             && !($this instanceof GxController) 
             && !(isset($this->isAdminPage) && $this->isAdminPage === true)): ?>
-          <?php $this->renderPartial('_analytics'); ?>
+          <?php $this->renderPartial('//layouts/_analytics'); ?>
         <?php endif; ?>
         
     </body>
