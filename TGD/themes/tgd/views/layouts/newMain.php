@@ -177,44 +177,6 @@
       
         <?php $this->renderPartial('_chromeModal'); ?>
 
-        <!-- modal chrome install success -->
-        <div id="chromeModalInstallSuccess" tabindex="-1" role="dialog" aria-labelledby="chromeModalInstallSuccess" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Congratulations!</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-sm-16">
-                                TheGoodData extension has been correctly installed on your browser. Enjoy!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- modal chrome install fail -->
-        <div id="chromeModalInstallFail" tabindex="-1" role="dialog" aria-labelledby="chromeModalInstallFail" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Oops!</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-sm-16">
-                                TheGoodData extension could not be installed. Please try again.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- main content -->
 
         <?php echo $content; ?>
