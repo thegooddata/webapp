@@ -197,8 +197,8 @@
                     </ul>
                     <ul class="col-md-2">
                         <h4>third parties</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Partners</a></li>
-                        <li><a href="http://www.tgd.local/index-test.php/coders">Coders</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/partners");?>">Partners</a></li>
+                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
                         <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>
                     <ul class="col-md-2">
