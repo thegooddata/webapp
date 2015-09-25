@@ -381,7 +381,7 @@ nav .caret{
 	min-height: 50%;
 	min-width: 50%;
 
-	background: url("<?php echo Yii::app()->theme->baseUrl; ?>"/img/tgd_background.jpg) no-repeat center center fixed;
+	background: url("../img/tgd_background.jpg") no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

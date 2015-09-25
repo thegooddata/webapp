@@ -23,7 +23,7 @@ class DeleteUserDataCommand extends CConsoleCommand
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-3 months'));
 
-        $users = members::model()->findAll(array('condition'=>'date(updated_at)<:date', 'params'=>array(':date'=>$date)));
+        $users = Members::model()->findAll(array('condition'=>'date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUserData($user->id);
@@ -38,7 +38,7 @@ class DeleteUserDataCommand extends CConsoleCommand
     public function actionDeleteUsageDataAfterResign(){
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-1 day'));
-        $users = members::model()->findAll(array('condition'=>'status=-4 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
+        $users = Members::model()->findAll(array('condition'=>'status=-4 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUsageDataByUser($user->id);
@@ -49,7 +49,7 @@ class DeleteUserDataCommand extends CConsoleCommand
     public function actionDeleteUserAndMemberDataAfterResign(){
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-1 month'));
-        $users = members::model()->findAll(array('condition'=>'status=-4 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
+        $users = Members::model()->findAll(array('condition'=>'status=-4 AND date(updated_at)<:date', 'params'=>array(':date'=>$date)));
         if(!empty($users)) {
             foreach ($users as $user) {
                 $this->userData->deleteAllUserData($user->id);

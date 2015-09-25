@@ -229,7 +229,7 @@ class SiteController extends Controller {
       
         Yii::app()->theme = 'tgd';
 
-        if(SHOW_NEW_LANDING){
+        if(Yii::app()->params['showNewLanding']){
             $this->layout ='newMain';
             $this->useNewBootstrap();
         }

@@ -33,4 +33,6 @@ return array(
     
     'incomePerSiteVisited' => 0.00002,
     'incomePerQuery' => 0.001,
+
+    'showNewLanding'=> defined('SHOW_NEW_LANDING') ? SHOW_NEW_LANDING : false,
 );
