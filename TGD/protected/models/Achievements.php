@@ -93,7 +93,7 @@ class Achievements extends BaseAchievements
           
           // set automatically a new id
           if (!$this->id) {
-            $max_id=Yii::app()->db->createCommand("SELECT max(id) FROM {{achievements}}")->queryScalar();
+            $max_id=Yii::app()->db->createCommand("SELECT max(cast(id as integer)) FROM {{achievements}}")->queryScalar();
             if ($max_id) {
               $max_id++;
             } else {
