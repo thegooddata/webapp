@@ -72,7 +72,7 @@ class DeleteUserDataCommand extends CConsoleCommand
         $users = Members::model()->findAll();
         if(!empty($users)) {
             foreach ($users as $user) {
-                $this->userData->deleteAllUsageDataByUser($user->id);
+                $this->userData->deleteAllUsageDataByUser(1);
             }
         }
     }

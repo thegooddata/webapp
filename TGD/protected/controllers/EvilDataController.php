@@ -235,7 +235,7 @@ class EvilDataController extends Controller {
         $member_id = Yii::app()->user->id;
 
         // get cache data
-        $userCacheData = $this->_getUserCacheData($member_id,"RiskMember567");
+        $userCacheData = $this->_getUserCacheData($member_id,"RiskMember");
 
         // if the is valid data in the cache 
         if (false){
@@ -302,7 +302,7 @@ class EvilDataController extends Controller {
             }
 
             // save data to cache
-            $this->_setUserCacheData($member_id, "RiskMember567", CJSON::encode($resultMember));
+            $this->_setUserCacheData($member_id, "RiskMember", CJSON::encode($resultMember));
         }
 
         // get cache data
