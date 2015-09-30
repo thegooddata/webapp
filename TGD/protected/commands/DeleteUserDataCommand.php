@@ -10,7 +10,6 @@ class DeleteUserDataCommand extends CConsoleCommand
     }
 
     //Delete all usage data that is older than 3 months except the totals needed to show yearly figures
-    //Working
     public function actionDeleteUsageDataOlder(){
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-3 month'));
@@ -18,7 +17,6 @@ class DeleteUserDataCommand extends CConsoleCommand
     }
 
     //Delete all user data of those members that have been inactive for more than 3 months
-    //Working
     public function actionDeleteUserDataInactive(){
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-3 months'));
@@ -34,7 +32,6 @@ class DeleteUserDataCommand extends CConsoleCommand
     }
 
     //Delete all usage data after resignation
-    //Working
     public function actionDeleteUsageDataAfterResign(){
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-1 day'));
@@ -66,6 +63,16 @@ class DeleteUserDataCommand extends CConsoleCommand
             foreach ($users as $user) {
                 $this->userData->deleteAllUserData($user->id);
                 $this->userData->deleteAllMemberData($user->id);
+            }
+        }
+    }
+
+    public function actionDeleteUsageDataForOptimization(){
+        $this->userData = new UserData();
+        $users = Members::model()->findAll();
+        if(!empty($users)) {
+            foreach ($users as $user) {
+                $this->userData->deleteAllUsageDataByUser($user->id);
             }
         }
     }

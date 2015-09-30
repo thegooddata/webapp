@@ -9,12 +9,14 @@ class GoodEvilCache
         // get cache data
         $average = array();
         // set cache key for this data
-        $cacheKey="GlobalCacheDataEvilDataAdtracksRatioTotal";
+        $cacheKey="GlobalCacheDataEvilDataAdtracksRatioTotals";
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("name, count")
-                ->from('view_adtracks_sources_total')
+                ->select("subname AS name, sum(value) as count")
+                ->from('tbl_usage_data_total')
+                ->where("name = 'adtracksSources'")
+                ->group('subname')
                 ->queryAll();
 
 
@@ -33,25 +35,42 @@ class GoodEvilCache
         // set cache key for this data
         $cacheKey="GlobalCacheDataEvilDataRiskTotal";
         // Get total risk
-        $adtracks = Yii::app()->db->createCommand()
+        /*$adtracks = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
             ->select("_getRiskTotal () as risk")
             ->from('tbl_members')
             ->limit(1)
             ->queryAll();
-
-        $resultGlobal['risk_average'] = number_format($adtracks[0]->risk, 2, '.', '');
-
-        // Get total risk ratio
-
+        */
         $adtracks = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select("_getRiskRatioTotal () as risk")
-            ->from('tbl_members')
+            ->select("value")
+            ->from('tbl_usage_data_total')
+            ->where("name= 'adtracks'")
             ->limit(1)
             ->queryAll();
 
-        $resultGlobal['risk_ratio_average'] = number_format($adtracks[0]->risk);
+        $adtracksAllowed = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select("value")
+            ->from('tbl_usage_data_total')
+            ->where("name= 'adtracksAllowed'")
+            ->limit(1)
+            ->queryAll();
+
+        $pagesVisited = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select("value")
+            ->from('tbl_usage_data_total')
+            ->where("name= 'browsing'")
+            ->limit(1)
+            ->queryAll();
+
+        $resultGlobal['risk_average'] = number_format($adtracks[0]->value/$pagesVisited[0]->value, 2, '.', '');
+
+        // Get total risk ratio
+
+        $resultGlobal['risk_ratio_average'] = number_format($adtracksAllowed[0]->value/$adtracks[0]->value*100);
 
         // save data to cache
         Yii::app()->cache->set($cacheKey, $resultGlobal, Yii::app()->params['cacheLifespanOneDay']);
@@ -144,9 +163,9 @@ class GoodEvilCache
         $startdate = date('Y-m-d', strtotime("-1 month"));
         $total = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select('count(*) as total')
-            ->from('tbl_adtracks')
-            ->where("status = 'blocked'")
+            ->select('value as total')
+            ->from('tbl_usage_data_total')
+            ->where("name = 'adtracksBlocked'")
             ->andWhere("created_at >= '$startdate'")
             ->queryScalar();
 

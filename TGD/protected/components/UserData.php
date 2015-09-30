@@ -91,13 +91,13 @@ class UserData {
     public function getUsageDataDaily($date, $member_id = 0)
     {
         $command = Yii::app()->db->createCommand()
-            ->select('daydate, count(*) as total')
+            ->select('daydate, count(*) as total, member_id')
             ->from('tbl_browsing')
             ->where(array('and', 'daydate <= :date'), array(':date' => $date));
             if ($member_id != 0){
                 $command->andWhere(array('and', 'member_id = :member_id'), array(':member_id' => $member_id));
             }
-            $command->group('daydate');
+            $command->group('daydate, member_id');
             $data['browsing'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
@@ -111,13 +111,13 @@ class UserData {
         $data['adtracksBlocked'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
-            ->select('daydate, count(*) as total')
+            ->select('daydate, count(*) as total, member_id')
             ->from('tbl_adtracks')
             ->where(array('and', 'status = :blocked', 'daydate <= :date'), array(':blocked' => 'allowed', ':date' => $date));
             if ($member_id != 0){
                 $command->andWhere(array('and', 'member_id = :member_id'), array(':member_id' => $member_id));
             }
-            $command->group('daydate');
+            $command->group('daydate , member_id');
             $data['adtracksAllowed'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
@@ -243,13 +243,13 @@ class UserData {
             $data['adtracksAllowed'] = $command->queryScalar();
 
         $command = Yii::app()->db->createCommand()
-            ->select('t.name, count(*) AS count')
+            ->select('t.name, count(*) AS count, a.member_id')
             ->from('tbl_adtracks a, tbl_adtracks_sources s, tbl_adtracks_types t')
             ->where(array('and', 'a.adtracks_sources_id = s.id AND s.adtrack_type_id = t.id AND daydate <= :date',), array(':date' => $date));
             if ($member_id != 0){
                 $command->andWhere(array('and', 'a.member_id = :member_id'), array(':member_id' => $member_id));
             }
-            $command->group('t.name');
+            $command->group('t.name, a.member_id');
             $command->order('t.name');
             $data['adtracksSources'] = $command->queryAll();
 
@@ -273,7 +273,7 @@ class UserData {
                         $model->save();
                     }else{
                         foreach ($arr as $val) {
-                            $model = UsageDataTotal::model()->findByAttributes(array('name' => $key, 'subname' => $val['name'], 'member_id' => 0));
+                            $model = UsageDataTotal::model()->findByAttributes(array('name' => $key, 'subname' => $val['name'], 'member_id' => $val['member_id']));
                             if ($model) {
                                 $model['value'] += $val['count'];
                             } else {
@@ -281,6 +281,7 @@ class UserData {
                                 $model->name = $key;
                                 $model->subname = $val['name'];
                                 $model->value = $val['count'];
+                                $model->member_id = $val['member_id'];
                             }
                             $model->save();
                         }

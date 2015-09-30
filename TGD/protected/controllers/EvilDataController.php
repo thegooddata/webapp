@@ -74,15 +74,16 @@ class EvilDataController extends Controller {
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select("member_id, DATE(EXTRACT(YEAR FROM daydate) || '-' || EXTRACT(MONTH FROM daydate) || '-01') as date,count(*) AS adtracks")
-                ->from('tbl_adtracks')
+                ->select("member_id, DATE(EXTRACT(YEAR FROM daydate) || '-' || EXTRACT(MONTH FROM daydate) || '-01') as date, sum(value) AS adtracks")
+                ->from('tbl_usage_data_daily')
                 ->where(array(
                     'and',
-                    'daydate between :day_start and :day_end and member_id= :member_id'
+                    'daydate between :day_start and :day_end and member_id= :member_id and name= :adtrack'
                         ), array(
                     'day_start' => $day_start,
                     'day_end' => $day_end,
-                    'member_id' => $member_id)
+                    'member_id' => $member_id,
+                    'adtrack' => 'adtracks')
                 )
                 ->group('member_id,date')
                 ->order('date')
@@ -128,17 +129,18 @@ class EvilDataController extends Controller {
 
         $adtracks = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('member_id, daydate AS date,count(*) AS adtracks')
-                ->from('tbl_adtracks')
+                ->select('member_id, daydate AS date, value AS adtracks')
+                ->from('tbl_usage_data_daily')
                 ->where(array(
                     'and',
-                    'daydate between :day_start and :day_end and member_id= :member_id'
+                    'daydate between :day_start and :day_end and member_id= :member_id and name= :adtrack'
                         ), array(
                     'day_start' => $day_start,
                     'day_end' => $day_end,
-                    'member_id' => $member_id)
+                    'member_id' => $member_id,
+                    'adtrack' => 'adtracks')
                 )
-                ->group('member_id,daydate')
+                ->group('member_id,daydate,value')
                 ->order('daydate')
                 ->queryAll();
 
@@ -188,19 +190,19 @@ class EvilDataController extends Controller {
         if ($userCacheData !== false){
             // send cache response
             $resultMember['adtracks_you'] = CJSON::decode($userCacheData);
-        }else{    
+        }else{
             $adtracks = Yii::app()->db->createCommand()
-                    ->setFetchMode(PDO::FETCH_OBJ)
-                    ->select("name, count")
-                    ->from('view_adtracks_sources_members')
-                    ->where(array(
+                ->setFetchMode(PDO::FETCH_OBJ)
+                ->select("subname AS name, sum(value) as count")
+                ->from('tbl_usage_data_total')
+                ->where(array(
                         'and',
-                        'member_id= :member_id'
+                        "member_id= :member_id and name = 'adtracksSources'"
                             ), array(
                         'member_id' => $member_id)
                     )
-                    ->queryAll();
-
+                ->group('subname')
+                ->queryAll();    
 
             $you = $goodEvilCache->_getColor($adtracks);
 
@@ -215,7 +217,7 @@ class EvilDataController extends Controller {
         $average = array();
 
         // set cache key for this data
-        $cacheKey="GlobalCacheDataEvilDataAdtracksRatioTotal";
+        $cacheKey="GlobalCacheDataEvilDataAdtracksRatioTotals";
         $average=Yii::app()->cache->get($cacheKey);
 
         // if the is valid data in the cache
@@ -233,34 +235,60 @@ class EvilDataController extends Controller {
         $member_id = Yii::app()->user->id;
 
         // get cache data
-        $userCacheData = $this->_getUserCacheData($member_id,"RiskMember");
+        $userCacheData = $this->_getUserCacheData($member_id,"RiskMember567");
 
         // if the is valid data in the cache 
-        if ($userCacheData !== false){
+        if (false){
             // send cache response
             $resultMember = CJSON::decode($userCacheData);
         }else{
+
             $adtracks = Yii::app()->db->createCommand()
-                    ->setFetchMode(PDO::FETCH_OBJ)
-                    ->select("_getRiskMember (" . $member_id . ") as risk")
-                    ->from('tbl_members')
-                    ->limit(1)
-                    ->queryAll();
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select("sum(value) AS value")
+            ->from('tbl_usage_data_total')
+            ->where(array(
+                        'and',
+                        "member_id= :member_id and name = 'adtracksSources'"
+                            ), array(
+                        'member_id' => $member_id)
+                    )
+            ->limit(1)
+            ->queryAll();
+
+            $adtracksAllowed = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select("sum(value) as value")
+            ->from('tbl_usage_data_daily')
+            ->where(array(
+                        'and',
+                        "member_id= :member_id and name = 'adtracksAllowed'"
+                            ), array(
+                        'member_id' => $member_id)
+                    )
+            ->limit(1)
+            ->queryAll();
+
+            $pagesVisited = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select("sum(value) AS value")
+            ->from('tbl_usage_data_daily')
+            ->where(array(
+                        'and',
+                        "member_id= :member_id and name = 'browsing'"
+                            ), array(
+                        'member_id' => $member_id)
+                    )
+            ->limit(1)
+            ->queryAll();
 
             $resultMember = array();
 
-            $resultMember['risk_you'] = number_format($adtracks[0]->risk, 2, '.', '');
+            $resultMember['risk_you'] = number_format($adtracks[0]->value/$pagesVisited[0]->value, 2, '.', '');
     
             // Get risk ratio for member 
 
-            $adtracks = Yii::app()->db->createCommand()
-                    ->setFetchMode(PDO::FETCH_OBJ)
-                    ->select("_getRiskRatioMember (" . $member_id . ") as risk")
-                    ->from('tbl_members')
-                    ->limit(1)
-                    ->queryAll();
-
-            $resultMember['risk_ratio_you'] = number_format($adtracks[0]->risk);
+            $resultMember['risk_ratio_you'] = number_format($adtracksAllowed[0]->value/$adtracks[0]->value*100);
 
             if ($resultMember['risk_ratio_you'] > 70) {
                 $resultMember['risk_level'] = 'high';
@@ -274,14 +302,14 @@ class EvilDataController extends Controller {
             }
 
             // save data to cache
-            $this->_setUserCacheData($member_id, "RiskMember", CJSON::encode($resultMember));
+            $this->_setUserCacheData($member_id, "RiskMember567", CJSON::encode($resultMember));
         }
 
         // get cache data
         $resultGlobal = array();
 
         // set cache key for this data
-        $cacheKey="GlobalCacheDataEvilDataRiskTotal";
+        $cacheKey="GlobalCacheDataEvilDataRiskTotal2";
         $resultGlobal=Yii::app()->cache->get($cacheKey);
 
         // if the is valid data in the cache 
