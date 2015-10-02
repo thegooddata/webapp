@@ -245,7 +245,7 @@ class ApiController extends Controller
 
 		return $datas[0]->count;
 	}
-
+//HERE
 	public function _countSites(){
 		$user_id   =$_GET['user_id'];
 		$member_id =$_GET['user_id'];
@@ -271,7 +271,22 @@ class ApiController extends Controller
                             ->andWhere("daydate >= '$startdate'")
 			                ->queryAll();
 
-		return $datas[0]->count;
+		$usageData = Yii::app()->db->createCommand()
+			                ->setFetchMode(PDO::FETCH_OBJ)
+			                ->select('sum(value) AS value')
+			                ->from('tbl_usage_data_daily')
+			                ->where(array(
+			                            'and',
+			                            ' member_id = :member_id'
+			                            ),
+					                    array(
+				                            'member_id'=>$member_id)
+					                    )
+                            ->andWhere("daydate >= '$startdate'")
+                            ->andWhere("name = 'browsing'")
+			                ->queryAll();
+
+		return $datas[0]->count + $usageData[0]->value;
 	}
 	public function actionPercentil()
 	{
