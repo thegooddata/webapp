@@ -76,8 +76,6 @@ class DeleteUserDataCommand extends CConsoleCommand
                     $this->userData->deleteAllUsageDataByUser($user->id);
                 }
             }
-            $date = date('Y-m-d',strtotime('+1 day'));
-            $this->userData->deleteAllUsageData($date);
         }else{
             $user = Members::model()->findByPk($member_id);
             if($user){
