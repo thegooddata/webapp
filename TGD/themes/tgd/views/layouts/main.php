@@ -189,12 +189,7 @@
                         <h4>service</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/product");?>">Product</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
-                        <li><a href="mailto:support@thegooddata.org">Support</a></li>
-                    </ul>
-                    <ul>
-                        <h4>third parties</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
-                        <li><a href="mailto:media@thegooddata.org">Media</a></li>
                     </ul>
                     <ul>
                         <h4>company</h4>
@@ -204,8 +199,8 @@
                     </ul>
                     <ul>
                         <h4>contact</h4>
-                        <li>82 Clerkenwell Road</li>
-                        <li>London EC1M 5RF, UK</li>
+                        <li>Unit 3, 7-15 Greatorex Street</li>
+                        <li>London E1 5NF, UK</li>
                         <li><a href="mailto:info@thegooddata.org">Email Us</a></li>
                     </ul>
                     <ul id="fifth">

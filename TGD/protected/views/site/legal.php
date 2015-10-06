@@ -191,7 +191,7 @@
                                   <p>Thank you for using TheGoodData. These terms of use &mdash; referred to as &ldquo;Terms&rdquo; &mdash; apply to your use of TheGoodData&rsquo;s software and services &mdash; referred to as &ldquo;Services&rdquo;. Your use of the Services indicates you agree to the Terms, so please read the following carefully.</p>
 
                                 <h2>Who we are</h2>
-                                <p>We are The Good Data Cooperative Limited, an Industrial and Provident Society Registered in England under number 32340R. Our registered office is at Unit 1, 82 Clerkenwell Road, London EC1M 5RF.</p>
+                                <p>We are The Good Data Cooperative Limited, an Industrial and Provident Society Registered in England under number 32340R. Our registered office is at Unit 3, 7-15 Greatorex Street, London E1 5NF.</p>
 
                                 <p>On this website we provide data management services once users have installed our browser extension (&quot;Services&quot;). </p>
 
@@ -274,7 +274,7 @@
 
                             <ol>
                                 <li value="2">
-                                    The registered office of the society shall be at Unit 1, 82 Clerkenwell Road London EC1M 5RF
+                                    The registered office of the society shall be at Unit 3, 7-15 Greatorex Street, London E1 5NF.
                                 </li>
                             </ol>
 
