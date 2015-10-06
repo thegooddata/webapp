@@ -70,7 +70,7 @@ class DeleteUserDataCommand extends CConsoleCommand
     public function actionDeleteUsageDataForOptimization($member_id = NULL){
         $this->userData = new UserData();
         if(!isset($member_id)){
-            $users = Members::model()->findAll();
+            $users = Members::model()->findAll(array('condition' => 'status >= 0'));
             if(!empty($users)) {
                 foreach ($users as $user) {
                     $this->userData->deleteAllUsageDataByUser($user->id);
