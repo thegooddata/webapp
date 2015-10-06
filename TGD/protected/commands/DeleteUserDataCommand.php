@@ -67,14 +67,15 @@ class DeleteUserDataCommand extends CConsoleCommand
         }
     }
 
-    public function actionDeleteUsageDataForOptimization($member_id = NULL){
+    public function actionDeleteUsageDataForOptimization($member_id = NULL, $start = 0, $finish = 999 ){
         $this->userData = new UserData();
         $date = date('Y-m-d', strtotime('-6 month'));
         if(!isset($member_id)){
-            $users = Members::model()->findAll(array('condition' => 'status >= 0 AND date(lastvisit_at)>:date', 'params'=>array(':date'=>$date)));
-            if(!empty($users)) {
-                foreach ($users as $user) {
+            for($i = $start ; $i <= $finish ; $i++){
+                $user = Members::model()->findByPk($i);
+                if($user) {
                     $this->userData->deleteAllUsageDataByUser($user->id);
+                    echo "Member No. " . $i . " done\n";
                 }
             }
         }else{
