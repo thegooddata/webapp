@@ -88,12 +88,15 @@ class UserDataController extends Controller {
         // get amount of data
         $browsing = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('count(*)')
-                ->from('tbl_browsing q')
+                ->select('sum(value)')
+                ->from('tbl_usage_data_domain q')
                 ->where(
                     array(
                         'and',
-                        'q.member_id = :value'), 
+                        'q.member_id = :value',
+                        "q.name = 'browsing'"
+
+                    ), 
                     array(':value' => $user_id)
                 )
                 ->group('domain')
@@ -109,17 +112,18 @@ class UserDataController extends Controller {
 
         $browsing = Yii::app()->db->createCommand()
                 ->setFetchMode(PDO::FETCH_OBJ)
-                ->select('domain,count(*)')
-                ->from('tbl_browsing q')
+                ->select('domain, value as count')
+                ->from('tbl_usage_data_domain q')
                 ->where(
                     array(
                         'and',
-                        'q.member_id = :value'
+                        'q.member_id = :user_id',
+                        "q.name = 'browsing'"
                     ),
-                    array(':value' => $user_id)
+                    array(':user_id' => $user_id)
                 )
                 ->order('count desc')
-                ->group('domain')
+                ->group('domain, count')
                 ->limit($browsing_pag_size)
                 ->offset(($browsing_pag-1) * $browsing_pag_size)
                 ->queryAll();
@@ -132,15 +136,16 @@ class UserDataController extends Controller {
             $browsing_details[$domain] = Yii::app()->db->createCommand()
                     ->setFetchMode(PDO::FETCH_OBJ)
                     ->select('*')
-                    ->from('tbl_browsing q')
+                    ->from('tbl_usage_data_domain as q')
                     ->where(
                         array(
                             'and',
-                            'q.member_id = :value',
-                            'q.domain = :domain'
+                            'q.member_id = :user_id',
+                            'q.domain = :domain',
+                            "q.name = 'browsing'"
                         ),
                         array(
-                            ':value' => $user_id,
+                            ':user_id' => $user_id,
                             ':domain' => $domain
                         )
                     )

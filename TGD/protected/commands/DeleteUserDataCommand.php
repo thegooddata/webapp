@@ -91,6 +91,13 @@ class DeleteUserDataCommand extends CConsoleCommand
         
     }
 
+    public function actionDeleteNonMemberDataForOptimization(){
+        $this->userData = new UserData();
+        $date = date('Y-m-d', strtotime('-1 day'));
+        $this->userData->deleteAllNonMemberData($date);
+        
+    }
+
     protected function sendInactiveMail($email){
         $subject = 'TGD: Inactive more than 3 months';
         $content = 'Your account is not used for 3 months. After 6 months of inactivity it will be removed with all data';
