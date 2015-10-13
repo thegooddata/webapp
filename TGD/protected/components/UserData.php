@@ -82,7 +82,7 @@ class UserData {
 
     //Non-member data
     public function deleteAllNonMemberData($date){
-        Adtracks::model()->deleteAll("'user_id'!='NULL' AND daydate <= '$date'");
+        Adtracks::model()->deleteAll("'user_id' is not NULL AND daydate <= '$date'");
         return true;
     }
 
