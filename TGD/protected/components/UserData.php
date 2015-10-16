@@ -35,7 +35,7 @@ class UserData {
 
     protected function deleteUsageDataByUser($member_id){
         Browsing::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
-        Queries::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
+        //Queries::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
         Adtracks::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
            //        InterestCategoriesCounts::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
         Yii::app()->db->createCommand()->delete('tbl_cache_data', 'member_id=:member_id', array(':member_id' => $member_id));
@@ -80,6 +80,11 @@ class UserData {
         return true;
     }
 
+    //Non-member data
+    public function deleteAllNonMemberData($date){
+        Adtracks::model()->deleteAll("'user_id' is not NULL AND daydate <= '$date'");
+        return true;
+    }
 
     public function getUsageDataDaily($date, $member_id = 0)
     {
@@ -114,13 +119,13 @@ class UserData {
             $data['adtracksAllowed'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
-            ->select('daydate, count(*) as total')
+            ->select('daydate, count(*) as total, member_id')
             ->from('tbl_queries')
             ->where(array('and', 'daydate <= :date'), array(':date' => $date));
             if ($member_id != 0){
                 $command->andWhere(array('and', 'member_id = :member_id'), array(':member_id' => $member_id));
             }
-            $command->group('daydate');
+            $command->group('daydate, member_id');
             $data['queries'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
