@@ -185,33 +185,36 @@
         <footer>
             <div class="footer">
                 <div class="container clearfix">
-                    <ul>
+                    <ul class="col-md-2">
                         <h4>service</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/product");?>">Product</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
                     </ul>
-                    <ul>
+                    <ul class="col-md-2">
                         <h4>company</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
                         <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate/index");?>" class="red">Donate</a></li>
                     </ul>
-                    <ul>
+                    <ul class="col-md-3">
                         <h4>contact</h4>
                         <li>Unit 3, 7-15 Greatorex Street</li>
                         <li>London E1 5NF, UK</li>
                         <li><a href="mailto:info@thegooddata.org">Email Us</a></li>
                     </ul>
-                    <ul id="fifth">
+                    <ul class="col-md-2" id="fifth">
                         <h4>legal stuff</h4>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Use</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy & Cookies</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#rules">Company Rules</a></li>
                     </ul>        
-                    <ul class="social">
+                    <ul class="col-md-4 social">
                         <li class="first">
                             <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
+                        </li>
+                        <li class="last">
+                            <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
                         </li>
                         <li>
                             <a id="wordpress" href="//blog.thegooddata.org"></a>
@@ -219,31 +222,16 @@
                         <li>
                             <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
                         </li>
-                        <li class="last">
-                            <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
-                        </li>
-                        <em><a href="http://www.thegooddata.org">&copy; 2014, thegooddata.org</a></em>
-                    </ul>
+                    </ul>     
+                    <div class="col-md-3 license">
+                        <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
+                        <p>Except where otherwise noted,<br/> content on  this site is licensed under a <br/>
+                            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
+                                Creative Commons Attribution 4.0 International License.
+                            </a>
+                        </p>
+                    </div>
                 </div> <!-- wrap -->
-            </div>
-
-            
-            <div class="license">
-                <div class="wrap">
-                    <ul class="clearfix">
-                        <li>
-                            <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
-                            <p>Except where otherwise noted, content on this site is licensed under a 
-                                <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
-                                    Creative Commons Attribution 4.0 International License.
-                                </a>
-                            </p>
-                        </li>
-                        <li style="border: none">
-                           
-                        </li>
-                    </ul>
-                </div>
             </div>
         </footer>
         

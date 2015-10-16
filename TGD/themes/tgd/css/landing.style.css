@@ -507,13 +507,14 @@ footer{
 }
 footer .license {
     font-size: 10px;
-    padding: 25px 2%!important;
     text-align: center;
+    padding: 0 !important;
+    /*padding: 25px 2%!important;*/
 }
 
 footer .license img{
     padding-left: 0;
-    float: left;
+    /*float: left;*/
 }
 
 footer .license p{
@@ -525,10 +526,14 @@ footer ul{
 }
 
 footer ul.social {
-    width: auto!important;
+    /*width: 110px!important;*/
+    text-align: right;
 }
 footer ul.social li {
     margin: 0 3px!important;
+}
+footer ul.social li a{
+    margin-bottom: 10px;
 }
 
 
