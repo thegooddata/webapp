@@ -277,9 +277,10 @@ class ApiController extends Controller
 			                ->from('tbl_usage_data_daily')
 			                ->where(array(
 			                            'and',
-			                            ' member_id = :member_id'
+			                            '(user_id = :user_id or member_id = :member_id)'
 			                            ),
 					                    array(
+				                            'user_id'=>$user_id,
 				                            'member_id'=>$member_id)
 					                    )
                             ->andWhere("daydate >= '$startdate'")

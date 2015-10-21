@@ -17,6 +17,41 @@ class UserData {
         return true;
     }
 
+    public function deleteAllNonMemberData($date){
+        // Get data from non-members
+        $command = Yii::app()->db->createCommand()
+            ->select('daydate, count(*) as total, user_id')
+            ->from('tbl_adtracks')
+            ->where(array('and', "daydate <= :date AND user_id IS NOT NULL AND status = 'blocked'"), array(':date' => $date));
+        $command->group('daydate, user_id');
+        $data['adtracksBlocked'] = $command->queryAll();
+
+        $command = Yii::app()->db->createCommand()
+            ->select('daydate, count(*) as total, user_id')
+            ->from('tbl_adtracks')
+            ->where(array('and', "daydate <= :date AND user_id IS NOT NULL AND status = 'allowed'"), array(':date' => $date));
+        $command->group('daydate, user_id');
+        $data['adtracksAllowed'] = $command->queryAll();
+
+        $command = Yii::app()->db->createCommand()
+            ->select('daydate, count(*) as total, user_id')
+            ->from('tbl_adtracks')
+            ->where(array('and', 'daydate <= :date AND user_id IS NOT NULL '), array(':date' => $date));
+        $command->group('daydate, user_id');
+        $data['adtracks'] = $command->queryAll();
+
+        $command = Yii::app()->db->createCommand()
+            ->select('daydate, count(*) as total, user_id')
+            ->from('tbl_browsing')
+            ->where(array('and', 'daydate <= :date AND user_id IS NOT NULL'), array(':date' => $date));
+        $command->group('daydate, user_id');
+        $data['browsing'] = $command->queryAll();
+
+        $this->setUsageDataDailyNonMember($data);
+        $this->deleteUsageDataByNonMember();
+        return true;
+    }
+
     //usage data - browsing and search history for all
     public function deleteAllUsageData($date){
         $dataDaily = $this->getUsageDataDaily($date);
@@ -39,6 +74,15 @@ class UserData {
         Adtracks::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
            //        InterestCategoriesCounts::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
         Yii::app()->db->createCommand()->delete('tbl_cache_data', 'member_id=:member_id', array(':member_id' => $member_id));
+
+        return true;
+    }
+
+    protected function deleteUsageDataByNonMember(){
+        $date = date('Y-m-d', strtotime('-1 day'));
+        Browsing::model()->deleteAll('daydate<=:daydate AND user_id is not null', array(':daydate' => $date));
+        Queries::model()->deleteAll('daydate<=:daydate AND user_id is not null', array(':daydate' => $date));
+        Adtracks::model()->deleteAll('daydate<=:daydate AND user_id is not null', array(':daydate' => $date));
 
         return true;
     }
@@ -77,12 +121,6 @@ class UserData {
         MembersPii::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
         
 
-        return true;
-    }
-
-    //Non-member data
-    public function deleteAllNonMemberData($date){
-        Adtracks::model()->deleteAll("'user_id' is not NULL AND daydate <= '$date'");
         return true;
     }
 
@@ -172,6 +210,37 @@ class UserData {
                             $model->name = $key;
                             if(isset($val['member_id'])){
                                 $model->member_id = $val['member_id'];
+                            }
+                            $model->value = $val['total'];
+                            $model->daydate = $val['daydate'];
+                        }
+                        $model->save();
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public function setUsageDataDailyNonMember($data)
+    {
+        if (!empty($data)){
+            foreach ($data as $key => $arr) {
+                if (!empty($arr)) {
+                    foreach ($arr as $val) {
+                        if(isset($val['user_id'])){
+                            $condition = array('name' => $key, 'daydate' => $val['daydate'], 'user_id' => $val['user_id']);
+                        }else{
+                            $condition = array('name' => $key, 'daydate' => $val['daydate']);
+                        }
+                        $model = UsageDataDaily::model()->findByAttributes($condition);
+                        if ($model) {
+                            $model['value'] += $val['total'];
+                        } else {
+                            $model = new UsageDataDaily;
+                            $model->name = $key;
+                            if(isset($val['user_id'])){
+                                $model->user_id = $val['user_id'];
                             }
                             $model->value = $val['total'];
                             $model->daydate = $val['daydate'];
