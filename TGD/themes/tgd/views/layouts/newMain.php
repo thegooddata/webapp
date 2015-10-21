@@ -212,35 +212,32 @@
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Use</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy & Cookies</a></li>
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#rules">Company Rules</a></li>
-                    </ul>        
-                    <ul class="col-md-2 social">
-                        <li class="first">
-                            <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
-                        </li>
-                        <li>
-                            <a id="wordpress" href="//blog.thegooddata.org"></a>
-                        </li>
-                        <li>
-                            <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
-                        </li>
-                        <li class="last">
-                            <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
-                        </li>
-                        <em><a href="http://www.thegooddata.org">&copy; 2015, thegooddata.org</a></em>
-                    </ul>
+                    </ul>   
+                    <div class="col-md-2">
+                        <ul class="social">
+                            <li class="first">
+                                <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
+                            </li>
+                            <li class="last">
+                                <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
+                            </li>
+                            <li>
+                                <a id="wordpress" href="//blog.thegooddata.org"></a>
+                            </li>
+                            <li>
+                                <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
+                            </li>
+                        </ul>
+                    </div>     
+                    <div class="col-md-2 license">
+                        <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
+                        <p>Except where otherwise noted,<br/> content on  this site is licensed under a <br/>
+                            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
+                                Creative Commons Attribution 4.0 International License.
+                            </a>
+                        </p>
+                    </div>
                 </div> <!-- wrap -->
-            </div>
-
-            
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 license">
-                    <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
-                    <p>Except where otherwise noted,<br/> content on  this site is licensed under a <br/>
-                        <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
-                            Creative Commons Attribution 4.0 International License.
-                        </a>
-                    </p>
-                </div>
             </div>
         </footer>
         
