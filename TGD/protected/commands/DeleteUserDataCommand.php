@@ -69,7 +69,6 @@ class DeleteUserDataCommand extends CConsoleCommand
 
     public function actionDeleteUsageDataForOptimization($member_id = NULL, $start = 0, $finish = 999 ){
         $this->userData = new UserData();
-        $date = date('Y-m-d', strtotime('-6 month'));
         if(!isset($member_id)){
             for($i = $start ; $i <= $finish ; $i++){
                 $user = Members::model()->findByPk($i);
@@ -93,7 +92,7 @@ class DeleteUserDataCommand extends CConsoleCommand
 
     public function actionDeleteNonMemberDataForOptimization(){
         $this->userData = new UserData();
-        $date = date('Y-m-d', strtotime('-1 day'));
+        $date = date('Y-m-d');
         $this->userData->deleteAllNonMemberData($date);
         
     }

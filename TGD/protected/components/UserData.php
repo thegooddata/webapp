@@ -22,28 +22,28 @@ class UserData {
         $command = Yii::app()->db->createCommand()
             ->select('daydate, count(*) as total, user_id')
             ->from('tbl_adtracks')
-            ->where(array('and', "daydate <= :date AND user_id IS NOT NULL AND status = 'blocked'"), array(':date' => $date));
+            ->where(array('and', "daydate <= :date AND user_id IS NOT NULL OR member_id = 0 AND status = 'blocked'"), array(':date' => $date));
         $command->group('daydate, user_id');
         $data['adtracksBlocked'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
             ->select('daydate, count(*) as total, user_id')
             ->from('tbl_adtracks')
-            ->where(array('and', "daydate <= :date AND user_id IS NOT NULL AND status = 'allowed'"), array(':date' => $date));
+            ->where(array('and', "daydate <= :date AND user_id IS NOT NULL OR member_id = 0 AND status = 'allowed'"), array(':date' => $date));
         $command->group('daydate, user_id');
         $data['adtracksAllowed'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
             ->select('daydate, count(*) as total, user_id')
             ->from('tbl_adtracks')
-            ->where(array('and', 'daydate <= :date AND user_id IS NOT NULL '), array(':date' => $date));
+            ->where(array('and', 'daydate <= :date AND user_id IS NOT NULL OR member_id = 0 '), array(':date' => $date));
         $command->group('daydate, user_id');
         $data['adtracks'] = $command->queryAll();
 
         $command = Yii::app()->db->createCommand()
             ->select('daydate, count(*) as total, user_id')
             ->from('tbl_browsing')
-            ->where(array('and', 'daydate <= :date AND user_id IS NOT NULL'), array(':date' => $date));
+            ->where(array('and', 'daydate <= :date AND user_id IS NOT NULL OR member_id = 0'), array(':date' => $date));
         $command->group('daydate, user_id');
         $data['browsing'] = $command->queryAll();
 
