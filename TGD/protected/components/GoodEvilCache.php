@@ -163,10 +163,10 @@ class GoodEvilCache
         $startdate = date('Y-m-d', strtotime("-1 month"));
         $total = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select('value as total')
-            ->from('tbl_usage_data_total')
+            ->select('sum(value) as total')
+            ->from('tbl_usage_data_daily')
             ->where("name = 'adtracksBlocked'")
-            ->andWhere("created_at >= '$startdate'")
+            ->andWhere("daydate >= '$startdate'")
             ->queryScalar();
 
 //        $usageTotal = UsageDataDaily::getTotalUsageData('adtracksBlocked');
