@@ -34,14 +34,7 @@ class GoodEvilCache
 
         // set cache key for this data
         $cacheKey="GlobalCacheDataEvilDataRiskTotal";
-        // Get total risk
-        /*$adtracks = Yii::app()->db->createCommand()
-            ->setFetchMode(PDO::FETCH_OBJ)
-            ->select("_getRiskTotal () as risk")
-            ->from('tbl_members')
-            ->limit(1)
-            ->queryAll();
-        */
+
         $adtracks = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
             ->select("value")
@@ -147,14 +140,11 @@ class GoodEvilCache
         $startdate = date('Y-m-d', strtotime("-1 month"));
         $total = Yii::app()->db->createCommand()
             ->setFetchMode(PDO::FETCH_OBJ)
-            ->select('count(*) as total')
-            ->from('tbl_browsing')
-            ->where("created_at >= '$startdate'")
+            ->select('sum(value) as total')
+            ->from('tbl_usage_data_daily')
+            ->where("name = 'browsing'")
+            ->andWhere("daydate >= '$startdate'")
             ->queryScalar();
-
-//        $usageTotal = UsageDataDaily::getTotalUsageData('browsing');
-//
-//        $result['monthly_visits_stored'] = $total + $usageTotal;
         
         $result['monthly_visits_stored'] = $total;
 
@@ -168,10 +158,6 @@ class GoodEvilCache
             ->where("name = 'adtracksBlocked'")
             ->andWhere("daydate >= '$startdate'")
             ->queryScalar();
-
-//        $usageTotal = UsageDataDaily::getTotalUsageData('adtracksBlocked');
-//
-//        $result['monthly_adtracks_blocked'] = $total + $usageTotal;
         
         $result['monthly_adtracks_blocked'] = $total;
 
@@ -182,10 +168,6 @@ class GoodEvilCache
             ->select('total')
             ->from('view_queries_month')
             ->queryScalar();
-
-//        $usageTotal = UsageDataDaily::getTotalUsageData('queriesShared');
-//
-//        $result['monthly_queries_trade_processed'] = $total + $usageTotal;
         
         $result['monthly_queries_run'] = $total;
 
