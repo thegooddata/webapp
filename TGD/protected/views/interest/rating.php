@@ -11,8 +11,8 @@
         <?php foreach ($categories as $category) { ?>
             <tr>
                 <td class="col-md-4 <?php if($category->has_sub) echo 'interest-category-link'; ?>" data-id="<?php echo $category->id; ?>"><?php echo $category->category;?> </td>
-                <td class="col-md-6 border-right"><?php if($category->rating < 0) : ?><div class="interest-bar nowidth pull-right <?php if($category->has_sub) echo 'interest-category-link'; ?>" data-id="<?php echo $category->id; ?>" style="background-color:#EA6654;width: <?php echo abs($category->rating*0.8); ?>%"></div><div class="pull-right interest-bar-number"><?php echo round($category->rating); ?></div><?php endif; ?></td>
-                <td class="col-md-6"><?php if($category->rating > 0) : ?><div class="interest-bar nowidth pull-left <?php if($category->has_sub) echo 'interest-category-link'; ?>" data-id="<?php echo $category->id; ?>" style="background-color:#A6D5AF;width: <?php echo $category->rating*0.8; ?>%"></div> <div class="pull-left interest-bar-number">+<?php echo round($category->rating); ?></div><?php endif; ?></td>
+                <td class="col-md-6 border-right"><?php if($category->rating < 0) : ?><div class="interest-bar nowidth pull-right <?php if($category->has_sub) echo 'interest-category-link'; ?>" data-id="<?php echo $category->id; ?>" style="background-color:#EA6654;width: <?php echo abs($category->rating*0.75); ?>%"></div><div class="pull-right interest-bar-number"><?php echo round($category->rating); ?>%</div><?php endif; ?></td>
+                <td class="col-md-6"><?php if($category->rating > 0) : ?><div class="interest-bar nowidth pull-left <?php if($category->has_sub) echo 'interest-category-link'; ?>" data-id="<?php echo $category->id; ?>" style="background-color:#A6D5AF;width: <?php echo $category->rating*0.75; ?>%"></div> <div class="pull-left interest-bar-number">+<?php echo round($category->rating); ?>%</div><?php endif; ?></td>
             </tr>
         <?php } ?>
 

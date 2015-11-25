@@ -53,24 +53,19 @@ class InterestCategoriesCommand extends CConsoleCommand
     }
 
     protected function alexa_categories($url){
-        $xml = simplexml_load_file("http://data.alexa.com/data?cli=10&url=".$url);
-        $categories = array();
-        if(isset($xml->DMOZ->SITE->CATS->CAT)) {
-            foreach($xml->DMOZ->SITE->CATS->CAT as $cat){
-                $categories[] = current($cat->attributes()->ID);
-            }
-        }
-        return $categories;
+        $urlInfo = new UrlInfo(ALEXA_ACCESS_KEY, ALEXA_SECRET_KEY, $url);
+        $path = $urlInfo->getUrlInfo();
+        return $path;
     }
 
-    public function actionUsersCategoriesCache(){
-
+    public function actionUsersCategoriesCache($start = 0, $finish =999){
+        echo 'Start: '.$start. ' finish: '.$finish;
         $datefrom = date("Y-m-d", strtotime("-1 month"));
         $dateinto = date("Y-m-d");
 
         $users = InterestCategoriesCounts::model()->findAll(array(
             'select'=>'member_id',
-            'condition'=>'member_id > 0',
+            'condition'=>'member_id > '.$start.' and member_id < '.$finish,
             'distinct'=>true,
         ));
         if(!empty($users)){
