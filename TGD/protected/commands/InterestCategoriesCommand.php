@@ -58,14 +58,14 @@ class InterestCategoriesCommand extends CConsoleCommand
         return $path;
     }
 
-    public function actionUsersCategoriesCache(){
-
+    public function actionUsersCategoriesCache($start = 0, $finish =999){
+        echo 'Start: '.$start. ' finish: '.$finish;
         $datefrom = date("Y-m-d", strtotime("-1 month"));
         $dateinto = date("Y-m-d");
 
         $users = InterestCategoriesCounts::model()->findAll(array(
             'select'=>'member_id',
-            'condition'=>'member_id > 0',
+            'condition'=>'member_id > '.$start.' and member_id < '.$finish,
             'distinct'=>true,
         ));
         if(!empty($users)){
