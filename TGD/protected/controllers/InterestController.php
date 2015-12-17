@@ -84,6 +84,24 @@ class InterestController extends Controller {
 
         InterestCategoriesCounts::model()->deleteAll('member_id = :member_id', array(':member_id' => $member_id));
 
+        Yii::app()->db->createCommand()->update(
+            'tbl_usage_data_domain',
+            array('member_id'=>-1),
+            'member_id = :param',
+            array(':param'=>$member_id)
+        );
+
+        Yii::app()->db->createCommand()->update(
+            'tbl_usage_data_daily',
+            array('member_id'=>-1),
+            'member_id = :param',
+            array(':param'=>$member_id)
+        );
+
+        Browsing::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
+        Queries::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
+        Adtracks::model()->deleteAll('member_id=:member_id', array(':member_id' => $member_id));
+
         InterestCategories::model()->deleteUserCategoriesCache($member_id);
 
 

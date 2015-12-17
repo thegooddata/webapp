@@ -144,6 +144,7 @@ class GoodEvilCache
             ->from('tbl_usage_data_daily')
             ->where("name = 'browsing'")
             ->andWhere("daydate >= '$startdate'")
+            ->andWhere("(user_id != 'anon' OR user_id is null)")
             ->queryScalar();
         
         $result['monthly_visits_stored'] = $total;

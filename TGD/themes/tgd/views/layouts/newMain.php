@@ -74,7 +74,7 @@
                                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/userData/index");?>">Your data</a></li>
                                         
                                         <?php if (!defined('HIDE_INTERESTS')): ?>
-                                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/interest");?>">Interests</a></li>
+                                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/interests");?>">Interests</a></li>
                                         <?php endif; ?>
 
                                         <li class="divider"></li>
@@ -154,7 +154,7 @@
                               $menu_items[]=array('label'=>'YOUR DATA', 'url'=>array('/userData/index'));
                               
                               if (!defined('HIDE_INTERESTS')) {
-                                $menu_items[]=array('label'=>'INTERESTS', 'url'=>array('/interest/index'));
+                                $menu_items[]=array('label'=>'INTERESTS', 'url'=>array('/interests'));
                               }
 
                             }

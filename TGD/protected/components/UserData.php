@@ -18,6 +18,33 @@ class UserData {
     }
 
     public function deleteAllNonMemberData($date){
+        //Get data from anonymous 
+        $command = Yii::app()->db->createCommand()
+            ->select('daydate, count(*) as total, user_id')
+            ->from('tbl_browsing')
+            ->where(array('and', 'daydate <= :date AND user_id IS NULL AND member_id = 0'), array(':date' => $date));
+        $command->group('daydate, user_id');
+        $browsing = $command->queryAll();
+
+        if (!empty($browsing)){
+            foreach ($browsing as $val) {
+                $condition = array('name' => 'browsing', 'daydate' => $val['daydate'], 'user_id' => 'anon');
+                $model = UsageDataDaily::model()->findByAttributes($condition);
+                if ($model) {
+                    $model['value'] += $val['total'];
+                } else {
+                    $model = new UsageDataDaily;
+                    $model->name = 'browsing';
+                    $model->user_id = 'anon';
+                    $model->value = $val['total'];
+                    $model->daydate = $val['daydate'];
+                }
+                $model->save();
+            }
+        }
+
+        Browsing::model()->deleteAll('daydate<=:daydate AND user_id is null AND member_id = 0', array(':daydate' => $date));
+
         // Get data from non-members
         $command = Yii::app()->db->createCommand()
             ->select('daydate, count(*) as total, user_id')
