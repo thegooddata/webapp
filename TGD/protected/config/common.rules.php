@@ -2,24 +2,24 @@
 
 return array(
 
-	// REST patterns
-	array('api/login', 'pattern'=>'api/login', 'verb'=>'POST'),
-	array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser', 'verb'=>'POST'),
-	
-	array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
-	array('api/checkQueriesBlacklist', 'pattern'=>'api/checkQueriesBlacklist', 'verb'=>'POST'),
-	
+  // REST patterns
+  array('api/login', 'pattern'=>'api/login', 'verb'=>'POST'),
+  array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser', 'verb'=>'POST'),
+  
+  array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
+  array('api/checkQueriesBlacklist', 'pattern'=>'api/checkQueriesBlacklist', 'verb'=>'POST'),
+  
   array('api/addToBrowserPHPList', 'pattern'=>'api/phplist/add/<user_email:[\w+.@_-]+>/<list:(\d+|[\w+])+>', 'verb'=>'GET'),
   //array('api/moveUser', 'pattern'=>'api/phplist/move/<user_email:[\w+.@_-]>/<from:\d+>/<to:\d+>', 'verb'=>'GET'),
 
-	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
-	array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
+  array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:[\w-]+>', 'verb'=>'GET'),
+  array('api/deleteQueries', 'pattern'=>'api/queries/delete/<user_id:\d+>', 'verb'=>'GET'),
 
-	array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
-	array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
+  array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
+  array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
 
-	array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
-	array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
+  array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
+  array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),
 
   array('api/list', 'pattern'=>'api/<model:\w+>', 'verb'=>'GET'),
   array('api/view', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET'),
@@ -57,15 +57,15 @@ return array(
   'support-us/thanks'=>'/donate/thanks',
   'coders'=>'/site/coders',
   'faq'=>'/site/faq',
-  'legal'=>'/site/legal',	
+  'legal'=>'/site/legal', 
   'get-your-share'=>'/purchase/index',
   'get-your-share/not-applicable'=>'/purchase/notApplicable',
   'get-your-share/thanks'=> '/purchase/thanks',
   'robots.txt'=>'/site/robots',
-  'interest'=>'/interest/index',
+  'interests'=>'/interest/index',
 
-	'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-	'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-	'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+  '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+  '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+  '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 );
