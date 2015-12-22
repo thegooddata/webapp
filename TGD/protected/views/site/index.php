@@ -57,7 +57,7 @@
 <div class="bloc bgc-dark-pastel-blue d-bloc" id="bloc-4">
     <div class="container bloc-md">
         <div class="row">
-            <div class="col-sm-2 col-sm-offset-2 text-center">
+            <div class="col-sm-3 text-center">
                 <h3>
                     <div class="amount projects_funded">&nbsp;</div>
                 </h3>
@@ -65,7 +65,7 @@
                     Projects supported in developed countries
                 </p>
             </div>
-            <div class="col-sm-2 text-center">
+            <div class="col-sm-3 text-center">
                 <h3>
                     <div class="amount monthly_adtracks_blocked">&nbsp;</div>
                 </h3>
@@ -73,7 +73,7 @@
                     Trackers blocked this month
                 </p>
             </div>
-            <div class="col-sm-2 text-center">
+            <div class="col-sm-3 text-center">
                 <h3>
                     <div class="amount monthly_visits_stored">&nbsp;</div>
                 </h3>
@@ -81,7 +81,7 @@
                     Sites visited by our users this month
                 </p>
             </div>
-            <div class="col-sm-2 text-center">
+            <div class="col-sm-3 text-center">
                 <h3>
                     <div class="amount monthly_queries_run">&nbsp;</div>
                 </h3>
