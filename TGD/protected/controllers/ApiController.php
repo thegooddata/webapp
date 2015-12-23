@@ -189,7 +189,7 @@ class ApiController extends Controller
 	            break;
             case 'queries':
 				$models =  $this->_countQueries();
-				$models += $this->_countSites();
+				//$models += $this->_countSites();
             	break;
 
     		default:
