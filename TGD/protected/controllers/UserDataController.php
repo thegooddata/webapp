@@ -118,7 +118,8 @@ class UserDataController extends Controller {
                     array(
                         'and',
                         'q.member_id = :user_id',
-                        "q.name = 'browsing'"
+                        "q.name = 'browsing'",
+                        "q.domain != ''"
                     ),
                     array(':user_id' => $user_id)
                 )
@@ -142,7 +143,8 @@ class UserDataController extends Controller {
                             'and',
                             'q.member_id = :user_id',
                             'q.domain = :domain',
-                            "q.name = 'browsing'"
+                            "q.name = 'browsing'",
+                            "q.domain != ''"
                         ),
                         array(
                             ':user_id' => $user_id,
