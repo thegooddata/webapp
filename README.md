@@ -6,13 +6,6 @@ TheGoodData is more than a technology or a service, but a new way to approach da
 
 For more info about TheGoodData, please visit our site and FAQs
 
-## Dev HOWTO
-
-0. Fork this repository.
-1. Switch to your working directory of choice.
-2. Clone the development repo:
-3. git clone git@github.com:thegooddata/webapp.git
-
 ## Local Installation of webapp
 
 0. After cloning the repository, install PostgreSQL (9.1.13 v).
