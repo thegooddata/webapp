@@ -49,7 +49,7 @@
                 </div>
                 
                  <div class="form-group">
-                    <p class="col-sm-7" id="becomeAMember"><?php echo("Do you want to get involved? ". CHtml::link(UserModule::t("Become a member"),Yii::app()->getModule('user')->registrationUrl )." and have a say!"); ?></p>
+                    <p class="col-sm-7" id="becomeAMember"><?php echo("Do you want to enjoy more services or become a company member? ". CHtml::link(UserModule::t("Sign-up here"),Yii::app()->getModule('user')->registrationUrl ).""); ?></p>
                 </div> 
 
             <?php echo CHtml::endForm(); ?>

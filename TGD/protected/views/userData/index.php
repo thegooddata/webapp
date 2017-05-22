@@ -1,32 +1,4 @@
-
-<div  class="col-lg-4 col-md-4 col-sm-16">
-
-    <!-- seniority -->
-
-    <section id="seniority">
-
-        <h2>Seniority<i class="glyphicon glyphicon-question-sign" id="seniority-help" data-content="There are <?php echo $seniority_levels['count']; ?> levels of seniority based on data shared, ownership status and particiation on company forums:<?php echo $seniority_levels['levels']; ?>." data-placement="right" data-toggle="popover"></i></h2>
-
-        <div class="seniority">
-            <?php echo CHtml::image(Yii::app()->baseUrl."/uploads/seniority/".$queries_percentile_data['icon']); ?>
-            <span style="color:<?php echo $queries_percentile_data['color'] ?>"><?php echo $queries_percentile_data['level'];?></span>
-        </div>                                      
-
-        <div class="gray">
-            <p><b>You have contributed <span class="green"><?php echo $queries_count; ?></span> pieces of data this month.</b></p>
-            <?php if ($queries_count==0) { ?>
-                <a class="" href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq#search_query_trade");?>">Why are my search queries not being traded?</a>
-            <?php } ?>
-        </div>
-
-    </section>
-
-    <!-- END seniority -->
-
-    <!-- warrant canary -->
-</div>
-
-<div class="col-lg-12 col-md-12 col-sm-16">
+<div class="col-lg-16 col-md-16 col-sm-16">
     <section id="data-table">
         <!-- Nav tabs -->
         <ul id="tabs" class="nav nav-tabs">

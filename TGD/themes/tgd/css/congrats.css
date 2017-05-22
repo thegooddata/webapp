@@ -1,0 +1,82 @@
+.top-banner-congrats {
+  background: url(../img/illustration-congrats.jpg) no-repeat center;
+  background-size: contain;
+  height: 0;
+  padding: 11.38%;
+}
+
+.desc-bloc {
+  background: #F7F7F7;
+}
+
+.mid-image .container-padding {
+  padding: 25px 0 0 0;
+}
+
+.desc-bloc .container-padding {
+  padding: 90px 0 80px 0;
+}
+
+@font-face {
+  font-family: 'changoregular';
+  src: url('../fonts/chango-regular-webfont.woff2') format('woff2'),
+       url('../fonts/chango-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.congrats h2 {
+  font-family: changoregular;
+  color: #71C1E9;
+  font-size: 4em;
+  margin-bottom: 0;
+}
+
+.congrats p {
+  font-size: 30px;
+}
+
+.congrats .container {
+  padding-bottom: 40px;
+}
+
+.desc-bloc .right-bloc {
+  margin-top: 15px;
+}
+
+#secondary-nav {
+    background-color: #FCC458;
+    box-shadow: 0 -1px 0 rgba(0,0,0,.05) inset;
+    margin-top: 60px;
+}
+
+#secondary-nav.public {
+    background-color: #FCC458;
+}
+
+#secondary-nav.public .navbar-nav>li a:hover, #secondary-nav.public .navbar-nav>li a:focus, #secondary-nav .navbar-nav>li a:hover, #secondary-nav .navbar-nav>li a:focus {
+    background-color: #d6a546;
+}
+
+.btn.sharp {
+  border-radius:0;
+}
+
+.sign-in-menu img {
+  max-width: 17px !important;
+}
+
+.sign-in-menu a {
+  color: #219E49 !important;
+}
+
+#secondary-nav .navbar-nav>li a {
+  color: #fff;
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .desc-bloc .right-bloc {
+    margin-top: 30px;
+  }
+}

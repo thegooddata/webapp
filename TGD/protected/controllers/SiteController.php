@@ -3,6 +3,7 @@
 class SiteController extends Controller {
 
    public $displayMenu = true;
+   public $displayTopButtons = true;
    private $_captchaBackgroundcolor = 0xFFFFFF;
 
    public function init() {
@@ -223,6 +224,22 @@ class SiteController extends Controller {
 
 
         $this->render('company', array('people'=>$people, 'colors'=>$colors, 'arr'=>$arr));
+    }
+    
+    public function actionCongrats(){
+        Yii::app()->theme = 'tgd';
+        $this->layout ='newMain';
+        $this->useNewBootstrap();
+        // set title
+        $this->pageTitle = " - Congrats";
+
+        // set body id
+        $this->bodyId = "tgd-congrats";
+        // dont display menu
+        $this->displayTopButtons = false;
+        
+        
+        $this->render('congrats');
     }
 
     public function actionIndex() {

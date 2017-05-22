@@ -3,7 +3,7 @@
 <div id="tgd-page-title">
   <div class="container">
     <div class="row">
-      <h2>Frequently Asked Questions</h2>
+      <h2>FREQUENTLY ASKED QUESTIONS</h2>
     </div>
   </div>
 </div> 
@@ -29,7 +29,7 @@
               <ul class="clearfix">
                 <li>
                   <em>What is TheGoodData Mission?</em>
-                  <p>We help people to enjoy ownership of their data.</br>
+                  <p>We help people enjoy ownership of their data.</br>
                   We want to do it following these <?php echo CHtml::link('Company Principles','legal#principles');?>.</p>
                 </li>
                 <li>
@@ -43,7 +43,7 @@
                 </li>
                 <li>
                   <em>How do you make money?</em>
-                  <p>We are currently raising funds from private donors that are sponsoring our users care with their data without getting anything in exchange (no one access your data).</p>
+                  <p>We are currently monetizing our users attention time through advertising. Moreover we are frequently receiving funds from private donors as you may also be here</p>
                   <p>Once we manage a higher volume of users, we expect to attract friendly sponsors and buyers interested in accessing anonymized data with people's consent.</p>
                 </li>
                 <li>
@@ -60,12 +60,12 @@
             <div class="tab-pane" id="service">
               <ul class="clearfix">
                 <li>
-                  <em>What is TheGoodData service</em>
+                  <em>What is TheGoodData service?</em>
                   <p>TheGoodData service as it exists today is an extension that helps you to control the browsing data that you produce, and to use this data for a good cause. It stops major third parties from tracking the webpages you visit and, if you agree to do so, it will trade non sensitive anonymous browsing data with brokers and reinvest 100% of the money earned into social good projects and in improving TheGoodData service.</p>
                 </li>
                 <li>
                   <em>Which browsers does TheGoodData support?</em>
-                  <p>Right now, TheGoodData is only available for Chrome. We would welcome your help in developing the open source extension for other browsers, and in return you can enjoy the benefits of our <a href="/coders">Coder’s Program</a>.</p>
+                  <p>Right now, TheGoodData is only available for Chrome. We would welcome your help in developing the open source extension for other browsers, and in return you can enjoy the benefits of our <a href="/coders">Collaborator’s Program</a>.</p>
                 </li>
                 <li>
                   <em>How do I use TheGoodData service?</em>
@@ -75,12 +75,11 @@
                   <em>How does TheGoodData work?</em>
                   <p>TheGoodData uses opensource disconnect.me technology to block data requests from over two thousand third-party tracking companies, all without degrading the functionality of the sites that you visit. TheGoodData allows you to easily unblock a third party that you trust by clicking the extension icon and then clicking on the name of the third party you want to allow, or to simply allow all tracking by a particular website if you wish.</p>
                   <p>In addition to blocking browsing threats -if you give permission- TheGoodData anonymizes and stores your browsing history and search queries for a limited amount of time (3 months). This valuable information will help us build reports identifying good and evil players in terms of online tracking.</p>
-                  <p>We are currently raising funds from private donors that are sponsoring our users care with their data without getting anything in exchange (no one access your data). 100% of the money raised is reinvested in social good projects and in improving TheGoodData service.</p>
                 </li>
                 <li>
                   <em>What kind of projects does TheGoodData fund with my data?</em>
-                  <p>50% of the money earned is reinvested in microloan credits to alleviate poverty in developing countries. This investment is done via Zidisha.</p>
-                  <p>The reasons for choosing Zidisha are threefold:</p>
+                  <p>20% of the money earned is shared with the collaborators that build TheGoodData. A small amount is used as well to pay running costs (e.g. servers). The remaining earnings are fully reinvested in microloan credits to alleviate poverty in developing countries. This investment is done via Zidisha.</p>
+                  <p>Our reasons for choosing Zidisha are threefold:</p>
                   <ul class="clearfix">
                     <li><p>We believe that data can be a powerful force for good, not only for our users and Members, but also for humanity.</p> </li>
                     <li><p>We embody and practise the same principles of collaboration, transparency and social good that Zidisha does.</p> </li>
@@ -100,33 +99,12 @@
                   <p>These features provide you with the ability to unblock some or all third parties on the site you are visiting with a single click. This can be especially useful if you notice that certain elements of a site are not functioning the way you would normally expect them to.</p>
                 </li>
                 <li>
-                  <em>How are the different user levels calculated?</em>
-                  <p>User levels are based on your degree of collaboration with TheGoodData over the previous 30 days. The more data you allow us trade for a good cause, the higher the level you will achieve:</p>
-                  <ul class="clearfix">
-                    <li>
-                      <p>Apprentice: When the user is among the lowest contributing 5% of all users.</p>
-                    </li>
-                    <li>
-                      <p>Journeyman: When the user has contributed more data than an Apprentice but has not yet become a Member of TheGoodData.</p>
-                    </li>
-                    <li>
-                      <p>Owner: When the user has become a Member of TheGoodData.</p>
-                    </li>
-                    <li>
-                      <p>Expert: When the Member is among the top 20% of data contributors.</p>
-                    </li>
-                    <li>
-                      <p>Collaborator: When the Member has participated in TheGoodData’s online collaboration platform within the previous month.</p>
-                    </li>
-                  </ul>
-                </li>
-                <li>
                   <em>What are the “Store” and “Share” extension features?</em>
-                  <p>If you don’t want to store your browsing history or your non-sensitive queries in our servers you can change these settings in the extension at any time. You can also decide to sell none of your search data. Irrespective of your settings, TheGoodData’s threat detection service will always be available to you.</p>
+                  <p>If you don’t want to store your browsing history or your non-sensitive queries in our servers you can change these settings in the website at any time. You can also decide to sell none of your search data. Irrespective of your settings, TheGoodData’s threat detection service will always be available to you.</p>
                 </li>
                 <li id="search_query_trade">
-                  <em>Why is the extension not trading my search queries?</em>
-                  <p>TheGoodData extension will only trade queries when the following criteria are met:</p>
+                  <em>Why is the extension not storing my search queries?</em>
+                  <p>TheGoodData extension will only store queries when the following criteria are met:</p>
                   <ul class="clearfix">
                     <li>
                       <p>You have performed the query in the Chrome browser, with the extension enabled, and you are using either the Google, Bing or Yahoo search engines.</p>
@@ -185,32 +163,21 @@
                 <li>
                   <em>How can I collaborate with TheGoodData?</em>
                   <p>The easiest and most effective way to collaborate with TheGoodData is by using the service and asking others to do so.</p>
-                  <p>In addition to that, we welcome as much support as you can would like to offer. As a collaborative company, TheGoodData is open to everyone. We have built a platform at <a href="https://collaborate.thegooddata.org/">https://collaborate.thegooddata.org/</a> to give you easy access to all relevant information and provide you with an opportunity to comment on or lead a discussion about existing or new lines of business. We would love to see your participation there.</p>
+                  <p>In addition to that, we welcome as much support as you can would like to offer. That is why we have set up a Decentralized Autonomous Organization (DAO) that is independently run by collaborators that receive a revenue share in exchange of their effort.</p>
+                  <p>Coders, designers, product managers, data analysts, … you are all invited to develop new features that help people enjoy ownership of their data.</p>
+                  <p>Our first DAO is focused on browsing data, but you could set up new ones focused on mobile data, health data, financial data, etc.</p>
+                  <p>Join our Slack for more information.</p>
+                </li>
+                <li>
+                  <em>Are Collaborators rewarded?</em>
+                  <p>If you want to build any kind of new functionality for our service by leveraging our assets, you are welcome to join our Collaborator’s Program. 20% of our annual company revenues will be paid to the DAO that will distribute them among its collaborators attending to their effort and delivery.</p>
+                  <p>Please contact any of our company Directors and describe your idea, the expected level of effort needed and attach a CV outline in order to receive a strategic priority evaluation. </p>
                 </li>
                 <li>
                   <em>Can I contact company Directors directly?</em>
                   <p>Transparency means open communication as well. If you have any ideas for improvement or any expertise that you believe might be useful to us, you can email or start a hangout with our company Director, Marcos Menendez at <a href="mailto:marcos@thegooddata.org">marcos@thegooddata.org</a></p>
                 </li>
-                <li>
-                  <em>Are coders rewarded?</em>
-                  <p>If you want to build any kind of new functionality for our service by leveraging our assets, you are welcome to join our Coder’s Program. A sixth of our annual company revenues will be reserved to distribute among our coders for the six years following their individual contributions.</p>
-                  <p>Please contact any of our company Directors or write to <a href="mailto:coders@thegooddata.org">coders@thegooddata.org</a> describing your idea, the expected level of effort needed and attach a CV outline in order to receive a strategic priority evaluation. </p>
-                </li>
-                <li id="rewards_calculation">
-                  <em>How are rewards calculated?</em>
-                  <p>In any given year, the coders who have written and released features over the previous six years will be rewarded with a share of the reserved sixth of that year’s company revenues. These coders will be rewarded based on the following considerations:</p>
-                  <ul class="clearfix">
-                    <li>
-                      <p>The strategic importance of the code created.</p>
-                    </li>
-                    <li>
-                      <p>The level of effort, considering either lines of code or alternatively the estimated number of hours of input.</p>
-                    </li>
-                    <li>
-                      <p>The output quality of the code, as evaluated by the other coders participating in the program.</p>
-                    </li>
-                  </ul>
-                </li>
+                
               </ul>
             </div>
           </div>
@@ -219,7 +186,7 @@
 
       <div class="last_edit">
         <p>
-          Last revision – June 2015.</br>
+          Latest revision – April 2017.</br>
           If you have another question that has not been answered above, please <a href="mailto:info@thegooddata.org?subject=Question reported from TheGoodData webpage">email us</a>
         </p>
       </div>

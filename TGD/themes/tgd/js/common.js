@@ -203,6 +203,8 @@ jQuery(document).ready(function ($) {
 function chromeInstallSuccess() {
     console.log('chromeInstallSuccess');
     $('#chromeModalInstallSuccess').modal('show');
+    window.location.href = "/congrats";
+    
 }
 
 function chromeInstallFail() {

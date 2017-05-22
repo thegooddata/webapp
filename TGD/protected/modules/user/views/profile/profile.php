@@ -104,12 +104,6 @@
                     <button type="submit" class="btn btn-primary">Submit changes</button>
                 </form>
             </section>
-            <section id="description" class="col-sm-16 col-md-7 col-lg-7">
-                <p>If you would like to update your membership details (for eg, your postal address), email us 
-                at <a href="mailto:members@thegooddata.org">members@thegooddata.org</a> and include your membership 
-                number, your full name and proof of the new information (eg, photocopy of new utility bill).</p>
-                <p>We have decoupled your personal details from your user data in order to protect your identity. For this reason, your details aren’t shown here.</p>
-            </section>
         </div>
         <div id="cancel-account" class="row">
             <div class="col-lg-14 col-md-14 col-md-offset-1 col-lg-offset-1 col-sm-16 btnResign">

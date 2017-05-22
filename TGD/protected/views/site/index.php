@@ -1,214 +1,211 @@
-<div id="hero-bloc" class="bloc hero">
-    <div class="hero-video-container">
-        <video autobuffer="" autoplay="" class="hero-video" loop="" muted="muted">
-            <source src="<?php echo Yii::app()->theme->baseUrl; ?>/img/tgd_background.mp4" type="video/mp4"></source>
-            <source src="<?php echo Yii::app()->theme->baseUrl; ?>/img/tgd_background.ogv" type="video/ogg"></source>
-        </video>
-    </div>
-    <div class="v-center text-center">
-        <div class="vc-content">
-            <h1 class=" lg-shadow">
-                Browsing is caring
-            </h1>
-            <h3 class=" lg-shadow">
-                Using the value of your browsing<br />data to help people in need
-            </h3>
-            <div class="text-center call-to-action">
-                <a href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;" class="btn btn-lg  btn-dark-coral">Get started</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Hero Bloc END -->
+<div class="top-banner-index"></div>
 
-<!-- bloc-3 -->
-<div class="bloc bgc-white l-bloc" id="bloc-3">
-    <div class="container bloc-md">
+<div class="desc-1">
+    <div class="container container-padding">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="mg-md text-center tc-united-nations-blue">
-                    Our mission
+                <img src="/themes/tgd/img/heart-aid-people.svg" class="center-block">
+            </div>
+            <div class="col-md-12">
+                <h2 class="title-margin text-center">
+                  Help people in need <span class="dark-blue font-bold">by simply browsing</span> 
                 </h2>
             </div>
-            <div class="col-sm-6">
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/info_a2.png" class="img-circle mg-sm center-block img-frame-rd" width="200" height="200" />
-                <h3 class="mg-md text-center ">
-                    The Evil Data
+            <div class="col-sm-12">
+                <img src="/themes/tgd/img/underline-yellow.svg" class="center-block">
+            </div>
+            <div class="col-sm-12">
+                <p class="desc-text-margin text-center">The attention and data that you produce while browsing are valuable.<br> Our browser extension captures that value and send it to good causes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="desc-2">
+    <div class="container container-padding">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="/themes/tgd/img/shield-trackers.svg" class="center-block">
+            </div>  
+            <div class="col-md-12">
+                <h2 class="title-margin text-center">
+                  Shield yourself from <span class="dark-blue font-bold">trackers</span> 
+                </h2>
+            </div>
+            <div class="col-sm-12">
+                <img src="/themes/tgd/img/underline-yellow.svg" class="center-block">
+            </div>
+            <div class="col-sm-12">
+                <p class="desc-text-margin text-center">The internet is full of trackers that without your consent make money out of you.<br> TheGoodData also blocks these digital spies. </p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="responsability">
+    <div class="container container-padding">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title-margin text-center">
+                    How does <span class="dark-blue font-bold">TheGoodData work</span>
+                </h2>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/ico-data-anonymous.svg" class="img-responsive center-block"/>
+                <h3 class="text-center">
+                    Your data is kept anonymous
                 </h3>
                 <p class="text-center">
-                    The internet is full of hidden companies to track you<br />and make money out of your data without your consent.<br />We call this The Evil Data.
+                    If you give us permission, we will collect and anonymize your browsing data, deleting all Personally Identifiable Information and other sensitive information.
                 </p>
             </div>
-            <div class="col-sm-6">
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/info_b2.png" class="img-circle center-block img-frame-rd" width="200" height="200" />
-                <h3 class="mg-md text-center ">
-                    The Good Data
+            <div class="col-sm-4">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/ico-who-buys.svg" class="img-responsive center-block"/>
+                <h3 class="text-center">
+                    We capture value out of your browsing
                 </h3>
                 <p class="text-center">
-                    What if we make sure that you take back the control over<br />your data, get a fair amount of it and reinvest it in<br />developing countries? Then Data is Good.
+                    TheGoodData is currently funded by advertising and your kind donations. Once we achieve a significant size, we will trade the anonymized data in fair terms with companies and researchers.
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/ico-invested.svg" class="img-responsive center-block"/>
+                <h3 class="text-center">
+                    We invest that value in social good
+                </h3>
+                <p class="text-center">
+                    Money collected is reinvested in social projects in developing countries. Thanks to our partner Zidisha you can see the direct beneficiaries of your aid. 
                 </p>
             </div>
         </div>
     </div>
 </div>
-<!-- bloc-3 END -->
 
-<!-- bloc-4 -->
-<div class="bloc bgc-dark-pastel-blue d-bloc" id="bloc-4">
-    <div class="container bloc-md">
+<div class="mid-banner-index"></div>
+
+<div class="results">
+    <div class="container container-padding">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title-margin text-center">
+                    Results achieved so far 
+                </h2>
+            </div>
+
+        </div>
         <div class="row">
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount projects_funded">&nbsp;</div>
+                    <div class="amount projects_funded">26</div>
                 </h3>
-                <p>
+                <p class="results-text">
                     Projects supported in developed countries
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount monthly_adtracks_blocked">&nbsp;</div>
+                    <div class="amount monthly_adtracks_blocked">2,822,041</div>
                 </h3>
-                <p class=" text-w-sm">
+                <p class="results-text">
                     Trackers blocked this month
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount monthly_visits_stored">&nbsp;</div>
+                    <div class="amount monthly_visits_stored">1,003,618</div>
                 </h3>
-                <p class=" text-w-sm">
+                <p class="results-text">
                     Sites visited by our users this month
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount monthly_queries_run">&nbsp;</div>
+                    <div class="amount monthly_queries_run">12,248</div>
                 </h3>
-                <p class=" text-w-sm">
+                <p class="results-text">
                     Search queries run this month
                 </p>
             </div>
         </div>
     </div>
 </div>
-<!-- bloc-4 END -->
 
-<!-- bloc-5 -->
-<div class="bloc bgc-white l-bloc" id="bloc-5">
-    <div class="container bloc-md">
+
+<div class="how-it-looks">
+    <div class="container container-padding">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mg-lg text-center tc-united-nations-blue">
-                    Start making a positive impact now!
+                <h2 class="text-center">
+                    This is how it looks
                 </h2>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div id="carousel-1" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-1" data-slide-to="0">
+                        <li data-target="#carousel-1" data-slide-to="0">Shield your privacy
                         </li>
-                        <li data-target="#carousel-1" data-slide-to="1">
+                        <li data-target="#carousel-1" data-slide-to="1">Understand your data
                         </li>
-                        <li data-target="#carousel-1" data-slide-to="2" class="active">
+                        <li data-target="#carousel-1" data-slide-to="2" class="active">Do good
                         </li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="item">
-                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/screenshot-01.png" />
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/screen-extention.png" />
                             <div class="carousel-caption">
                             </div>
                         </div>
                         <div class="item active left">
-                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/screenshot-02.png" />
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/screen-extention.png" />
                             <div class="carousel-caption">
                             </div>
                         </div>
                         <div class="item next left">
-                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/screenshot-03.png" />
+                            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/screen-extention.png" />
                             <div class="carousel-caption">
                             </div>
                         </div>
                     </div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><span class="fa fa-chevron-left"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><span class="fa fa-chevron-right"></span><span class="sr-only">Next</span></a>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <h3 class="mg-md">
-                    Download our browser extension and:
-                </h3>
-                <ul class="mg-lg">
-                    <li>Block The Evil Data trackers contained in every webpage you visit</li>
-                    <li>Use our reports to analyze and understand your browsing data</li>
-                    <li>Donate the value of your browsing data to people in need!</li>
-                </ul>
-                <a href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;" class="btn  btn-lg pull-left btn-dark-coral">Get started</a>
-            </div>
+
         </div>
     </div>
 </div>
-<!-- bloc-5 END -->
 
-<!-- bloc-6 -->
-<div class="bloc tc-beau-blue bgc-snow l-bloc" id="bloc-6">
-    <div class="container bloc-md">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="text-center mg-md  tc-united-nations-blue">
-                    This sounds too good to be real, what&rsquo;s the trick?<br />Well… there&rsquo;s no trick!
-                </h2>
-            </div>
+<div class="separator-rainbow"></div>
 
-        </div>
+<div class="install-button">
+    <div class="container container-padding">
         <div class="row">
-            <div class="col-sm-4">
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/info_05-02.png" class="center-block img-rd-lg" width="150" height="150" />
-                <h3 class="text-center mg-md  tc-united-nations-blue">
-                    We are transparent
-                </h3>
-                <p class="text-center ">
-                    To be successful in this adventure, we know that our members have to completely trust in us. Because of that, TheGoodData works with a completely transparent culture. You can see at any moment what new features we are working on or even what our financials are.
-                </p>
+          <div class="col-sm-12">
+            <div class="install-button-background">
+              <p class="install-button-text text-center">Install <strong>TheGoodData</strong></p>
+              <a href="javascript:void(0);" class="install-button-link" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;">
+              </a>
             </div>
-            <div class="col-sm-4">
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/info_07.png" class="img-responsive center-block" width="150" />
-                <h3 class="text-center mg-md  tc-united-nations-blue">
-                    We are collaborative
-                </h3>
-                <p class="text-center ">
-                     Not only can you see what&rsquo;s going on, but you can become part of it. Our company embraces open code and open data culture so if you feel there is something you can do to improve TheGoodData service, you are welcome to join our coders program.
-                </p>
-            </div>
-            <div class="col-sm-4">
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/info_06.png" class="img-responsive center-block" width="150" />
-                <h3 class="text-center mg-md  tc-united-nations-blue">
-                    You are the shareholder
-                </h3>
-                <p class="text-center ">
-                    It wouldn&rsquo;t be fair if you didn&rsquo;t enjoy the value created. That is why users who apply for membership own 100% of shares of TheGoodData, world&rsquo;s first data coop. Moreover this is the best way to ensure that the company is not sold to a third party that would indirectly buy your data.
-                </p>
-            </div>
+          </div>
         </div>
     </div>
-</div>
-<!-- bloc-7 END -->
+</div>  
 
-<div class="bloc tc-beau-blue bgc-snow l-bloc mentions" id="bloc-7">
-    <div class="container bloc-sm">
+
+<div class="partners">
+    <div class="container container-padding">
         <div class="row">
-
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-12 text-center logos-partners">
                 <a href="http://www.fastcoexist.com/3026452/instead-of-giving-google-your-data-for-free-now-you-can-donate-it-for-good" target="_blank">
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/fastcompany.png" alt="">
                 </a>
-            </div>
-
-            <div class="col-sm-4 text-center">
+            
                 <a href="http://www.forbes.com/sites/adamtanner/2014/11/28/share-your-data-fund-microloans-to-developing-world/" target="_blank">
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/forbes.png" alt="placeholder+image">
                 </a>
-            </div>
 
-            <div class="col-sm-4 text-center">
                 <a href="https://gigaom.com/2014/11/27/thegooddata-wants-your-browsing-data-to-benefit-good-causes/" target="_blank">
                 <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/gigaom.png" alt="placeholder+image">
                 </a>
