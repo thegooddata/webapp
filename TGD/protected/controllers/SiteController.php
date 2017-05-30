@@ -3,7 +3,7 @@
 class SiteController extends Controller {
 
    public $displayMenu = true;
-   public $displayTopButtons = true;
+   public $displayGetExtensionButton = true;
    private $_captchaBackgroundcolor = 0xFFFFFF;
 
    public function init() {
@@ -235,9 +235,9 @@ class SiteController extends Controller {
 
         // set body id
         $this->bodyId = "tgd-congrats";
-        // dont display menu
-        $this->displayTopButtons = false;
         
+        // hide get the extension top button
+        $this->displayGetExtensionButton = false;
         
         $this->render('congrats');
     }

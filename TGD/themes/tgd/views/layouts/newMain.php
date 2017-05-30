@@ -90,14 +90,17 @@
                                 </li>
                             </ul>
                         </div>
-                        <?php } elseif ( isset( $this->displayTopButtons ) && $this->displayTopButtons == true ) { ?>
+                        <?php } ?>
+                        
                         <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">                    
+                            <ul class="nav navbar-nav">
+                                <?php if ( isset( $this->displayGetExtensionButton ) && $this->displayGetExtensionButton == true ) { ?>
                                 <li class="install text-uppercase"><a href="javascript:void(0);" onclick="chrome.webstore.install('<?php echo Yii::app()->params['chromeExtensionUrl']; ?>',chromeInstallSuccess,chromeInstallFail); return false;">Get the extension</a></li>
+                                <?php } ?>
                                 <li class="text-uppercase" id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/login"); ?>">Sign In<img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sign-in-arrow.png" alt=""></a></li>
                             </ul>
                         </div>
-                        <?php } ?>
+                        
                         
                     </div>
                 </div>
@@ -131,9 +134,8 @@
                                   array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/evilData/index'), 'label'=>'EVIL DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/donate/index'), 'label'=>'SUPPORT', 'visible'=>Yii::app()->user->isGuest),
-                                  array('url'=>'https://collaborate.thegooddata.org/home', 'label'=>'COLLABORATE', 'visible'=>Yii::app()->user->isGuest),
-                                  array('url'=>array('/site/company'), 'label'=>'ABOUT US', 'visible'=>Yii::app()->user->isGuest),
-                                  array('url'=>array('/user/login'), 'itemOptions'=> array('class' => 'sign-in-menu'),'label'=>'SIGN IN &nbsp;<img src="'.Yii::app()->theme->baseUrl.'/img/sign-in-arrow.png">', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>'https://thegooddata.slack.com/', 'label'=>'COLLABORATE', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/site/company'), 'label'=>'ABOUT US', 'visible'=>Yii::app()->user->isGuest),                              
                                );
                             } else {
                               
@@ -201,17 +203,32 @@
                         <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate/index");?>" class="red">Donate</a></li>                    
                       </ul>
                       <br><br>  
-                      <ul class="social">
-                          <li class="first">
-                              <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
-                          </li>
-                          <li class="last">
-                              <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
-                          </li>
-                          <li>
-                              <a id="wordpress" href="//blog.thegooddata.org"></a>
-                          </li>
-                      </ul>
+                      <div class="social">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="slack-icon" href="https://thegooddata.slack.com/">
+                              <i class="fa fa-slack fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="twitter-icon" href="https://twitter.com/thegooddata">
+                              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="medium-icon" href="https://medium.com/thegooddata">
+                              <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="mail-icon" href="mailto:name@email.com">
+                              <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>    
+                      </div>
                     </div>
                   </div>
                   

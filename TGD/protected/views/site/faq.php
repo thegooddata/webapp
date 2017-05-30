@@ -166,7 +166,7 @@
                   <p>In addition to that, we welcome as much support as you can would like to offer. That is why we have set up a Decentralized Autonomous Organization (DAO) that is independently run by collaborators that receive a revenue share in exchange of their effort.</p>
                   <p>Coders, designers, product managers, data analysts, … you are all invited to develop new features that help people enjoy ownership of their data.</p>
                   <p>Our first DAO is focused on browsing data, but you could set up new ones focused on mobile data, health data, financial data, etc.</p>
-                  <p>Join our Slack for more information.</p>
+                  <p><a href="https://thegooddata.slack.com/" target="_blank">Join our Slack</a> for more information.</p>
                 </li>
                 <li>
                   <em>Are Collaborators rewarded?</em>

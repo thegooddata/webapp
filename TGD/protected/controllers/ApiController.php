@@ -181,42 +181,78 @@ class ApiController extends Controller
 
  	// Actions
     public function actionCount()
-	{
-		switch($_GET['model'])
-	    {	
-	    	case 'loans':
-	            $models = Loans::model()->findAll();
-	            break;
-            case 'queries':
-				$models =  $this->_countQueries();
-				//$models += $this->_countSites();
-            	break;
+    {
+      switch($_GET['model'])
+      {	
+        case 'loans':
+          $models = Loans::model()->findAll();
+          break;
+        case 'queries':
+          $models = $this->_countQueries();
+          //$models += $this->_countSites();
+          break;
+        
+        default:
+          // Model not implemented error
+          $this->_sendResponse(501, sprintf(
+              'Error: Mode <b>list</b> is not implemented for model <b>%s</b>',
+              $_GET['model']) );
+          Yii::app()->end();
+      }
 
-    		default:
-	            // Model not implemented error
-	            $this->_sendResponse(501, sprintf(
-	                'Error: Mode <b>list</b> is not implemented for model <b>%s</b>',
-	                $_GET['model']) );
-	            Yii::app()->end();
-	    }
-
-        // Prepare response
-        if (is_array($models))
-        {
-        	$rows = array();
-	        foreach($models as $model)
-	            $rows[] = $model->attributes;
-	        // Send the response
-	        $this->_sendResponse(200, CJSON::encode((string)count($rows)),'application/json');
-    	}
-    	else
-    	{
-    		// Send the response
+      // Prepare response
+      if (is_array($models))
+      {
+        $rows = array();
+        foreach($models as $model)
+            $rows[] = $model->attributes;
+        // Send the response
+        $this->_sendResponse(200, CJSON::encode((string)count($rows)),'application/json');
+      }
+      else
+      {
+        // Send the response
     		$rows = array();
-    		$this->_sendResponse(200, CJSON::encode((string)$models),'application/json');
-    	}
+        $this->_sendResponse(200, CJSON::encode((string)$models),'application/json');
+      }
 
-	}
+    }
+    
+    public function actionTotal()
+    {
+      switch($_GET['model'])
+      {	
+        case 'datacontribued':
+          $models = $this->_totalDatacontribued();
+          break;
+        case 'totalmoney':
+          $models = $this->_totalMoneyearned();
+          break;
+        
+        default:
+          // Model not implemented error
+          $this->_sendResponse(501, sprintf(
+              'Error: Mode <b>list</b> is not implemented for model <b>%s</b>',
+              $_GET['model']) );
+          Yii::app()->end();
+      }
+
+      // Prepare response
+      if (is_array($models))
+      {
+        $rows = array();
+        foreach($models as $model)
+            $rows[] = $model->attributes;
+        // Send the response
+        $this->_sendResponse(200, CJSON::encode((string)count($rows)),'application/json');
+      }
+      else
+      {
+        // Send the response
+        $this->_sendResponse(200, CJSON::encode((string)$models),'application/json');
+      }
+
+    }
 
 	public function _countQueries(){
 		$user_id   =$_GET['user_id'];
@@ -245,6 +281,78 @@ class ApiController extends Controller
 
 		return $datas[0]->count;
 	}
+        
+	public function _totalDatacontribued()
+        {
+          
+          $user_id   = $_GET['user_id'];
+          $member_id = $_GET['user_id'];
+
+          if ( ! is_numeric( $_GET['user_id'] ) )
+          {
+            $member_id = -1;
+          }
+
+          // monthly pages viwed + monthly queries run, last month, current user
+          
+          // browsed pages last month ---------------------
+
+          $startdate = date('Y-m-d', strtotime("-1 month"));
+          $monthly_visits_stored = Yii::app()->db->createCommand()
+                                  ->setFetchMode(PDO::FETCH_OBJ)
+                                  ->select('count(*) as total')
+                                  ->from('tbl_browsing')
+                                  ->where(array(
+                                            'and',
+                                            '(user_id = :user_id or member_id = :member_id)'
+                                            ),
+                                          array(
+                                            'user_id'=>$user_id,
+                                            'member_id'=>$member_id)
+                                          )
+                                  ->andWhere("daydate >= '$startdate'")
+                                  ->queryScalar();
+          
+           // queries run last month ------------------       
+          
+          $monthly_queries_run = Yii::app()->db->createCommand()
+                                ->setFetchMode(PDO::FETCH_OBJ)
+                                ->select('count(*)')
+                                ->from('tbl_queries')
+                                ->where(array(
+                                            'and',
+                                            '(user_id = :user_id or member_id = :member_id)'
+                                            ),
+                                        array(
+                                        'user_id'=>$user_id,
+                                        'member_id'=>$member_id)
+                                        )
+                                ->andWhere("daydate >= '$startdate'")
+                                ->queryScalar();
+          
+          $total = $monthly_visits_stored + $monthly_queries_run;
+         
+          return $total; 
+          
+	}
+        
+        public function _totalMoneyearned()
+       {
+          // money earned -----------------------
+          $total_money_earned = Yii::app()->db->createCommand()
+            ->setFetchMode(PDO::FETCH_OBJ)
+            ->select('sum((gross_amount - expenses)) as total')
+            ->from('tbl_incomes')
+            ->queryScalar();
+
+          if (!count($total_money_earned) > 0) $total_money_earned = 0;
+          // convert to usd
+          $total_money_earned=Currencies::convertDefaultTo($total_money_earned, 'USD');
+          $total_money_earned=Yii::app()->numberFormatter->formatCurrency($total_money_earned, 'USD');
+
+          return $total_money_earned;
+	}
+        
 //HERE
 	public function _countSites(){
 		$user_id   =$_GET['user_id'];

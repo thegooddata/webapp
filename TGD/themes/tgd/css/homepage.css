@@ -138,7 +138,7 @@ body {
 }
 
 .install-button-background {
-  background: url(../img/install-button.png) no-repeat center;
+  background: url(../img/install-button-orange.png) no-repeat center;
   padding: 40px;
   background-size: contain;
 }
@@ -174,7 +174,7 @@ body {
   margin-left: 10px;
 }
 
-.footer ul, .footer-left img {
+.footer ul, .footer-left img, .footer .social {
   float: right;
 }
 
@@ -192,13 +192,22 @@ body {
   margin-left: 10px;
 }
 
-.footer ul.social li a#gooddata:hover {
-  background-position: 0 -32px;
+.fa-slack:hover {
+    color: #e01563;
 }
 
-.footer ul.social li a#gooddata {
-  background: url(../img/social_icons.png) no-repeat;
+.fa-twitter:hover {
+    color: #00aced;
 }
+
+.fa-envelope:hover {
+    color: #e9a820;
+}
+
+.fa-medium:hover {
+    color: #00AB6C;
+}
+
 
 .footer ul.social li a {
   display: block;
@@ -206,30 +215,6 @@ body {
   height: 32px;
   margin-bottom: 10px;
   transition: opacity .5s;
-}
-
-.footer ul.social li a#twitter:hover {
-  background-position: -122px -32px;
-}
-
-.footer ul.social li a#twitter {
-  background: url(../img/social_icons.png) -122px 0 no-repeat;
-}
-
-.footer ul.social li a#wordpress:hover {
-  background-position: -41px -32px;
-}
-
-.footer ul.social li a#wordpress {
-  background: url(../img/social_icons.png) -41px 0 no-repeat;
-}
-
-.footer ul.social li a#reddit:hover {
-  background-position: -81px -32px;
-}
-
-.footer ul.social li a#reddit {
-  background: url(../img/social_icons.png) -81px 0 no-repeat;
 }
 
 .footer ul.social li {
@@ -306,11 +291,21 @@ body {
   height: 40px;
   margin: 0;
   color: #50599E;
+  background: url(../img/slider-white-arrow.png) no-repeat top center;
+  background-position: 80px -2px;
+  padding-top: 49px;
+}
+
+.carousel-indicators li:first-child {
+  margin-right: 50px;
 }
 
 .separator-rainbow {
-  background: url(../img/separator-rainbow.jpg) no-repeat center;
-  padding: 55px;
+  background: url(../img/separador-rainbow.svg) no-repeat center;
+  margin-top: 92px;
+  background-size: cover;
+  padding-top: 0.25%;
+  margin-bottom: 50px;
 }
 
 .partners {
@@ -334,11 +329,12 @@ body {
   background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 49%, rgba(237,237,237,1) 100%);
   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 49%, rgba(237,237,237,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+  border-bottom: 1px solid #ebebeb;
 }
 
 .how-it-looks .container-padding {
   padding-bottom: 0;
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
 }
 
 .partners .logos-partners a {
@@ -357,6 +353,7 @@ body {
   .carousel-indicators {
     bottom: -94px !important;
   }
+  
 }
 
 /* Landscape phones and portrait tablets */
@@ -368,10 +365,14 @@ body {
   .how-it-looks .container-padding {
     margin-bottom: 85px;
   }
+  
+  .separator-rainbow {
+    margin-top: 130px;
+  }
 }
 
 @media (max-width: 991px) {
- .footer-left, .footer-right {
+  .footer-left, .footer-right {
     text-align: center;
   }
   
@@ -380,7 +381,7 @@ body {
     margin: 0;
   }
   
-  .footer ul, .footer-left img {
+  .footer ul, .footer-left img, .footer .social {
     float: none;
     width: auto;
     padding: 0;
@@ -406,5 +407,16 @@ body {
 @media (max-width: 480px) {
   .partners .logos-partners img {
     margin: 10px 15px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .carousel-indicators .active {
+    background: none;
+    background-position: 80px -2px;
+    padding-top: 0;
+  }
+  .how-it-looks {
+    border-bottom: none;
   }
 }

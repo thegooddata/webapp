@@ -32,6 +32,20 @@ array(
 'text_es',
 'achievements_start',
 'achievements_finish',
+/* START UPLOADED FILE */
+ array(
+    'name' => 'image',
+    'type'=>'raw',
+    'width'=>'200',
+    'alt'=>'hi images',
+    'value'=> CHtml::image(file_exists(Yii::app()->getBasePath()."/../uploads/".$model->id."-".$model->image) ? 
+        Yii::app()->baseUrl."/uploads/".$model->id."-".$model->image : 
+        (file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? 
+                Yii::app()->baseUrl."/uploads/".$model->image :
+                ''
+        ),'',array("style"=>"width:250px;")),
+),
+/* END UPLOADED FILE */            
 'created_at',
 'updated_at',
 	),

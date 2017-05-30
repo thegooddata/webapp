@@ -5,7 +5,7 @@ return array(
   // REST patterns
   array('api/login', 'pattern'=>'api/login', 'verb'=>'POST'),
   array('api/getLoggedUser', 'pattern'=>'api/getLoggedUser', 'verb'=>'POST'),
-  
+    
   array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
   array('api/checkQueriesBlacklist', 'pattern'=>'api/checkQueriesBlacklist', 'verb'=>'POST'),
   
@@ -17,6 +17,9 @@ return array(
 
   array('api/count', 'pattern'=>'api/<model:\w+>/count', 'verb'=>'GET'),
   array('api/count', 'pattern'=>'api/<model:\w+>/count/<user_id:[\w-]+>', 'verb'=>'GET'),
+    
+  array('api/total', 'pattern'=>'api/<model:\w+>/total', 'verb'=>'GET'),
+  array('api/total', 'pattern'=>'api/<model:\w+>/total/<user_id:[\w-]+>', 'verb'=>'GET'),
 
   array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:[\w-]+>', 'verb'=>'GET'),
   array('api/percentil', 'pattern'=>'api/<model:\w+>/percentile/<user_id:\d+>', 'verb'=>'GET'),

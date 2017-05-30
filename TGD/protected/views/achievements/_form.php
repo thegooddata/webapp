@@ -4,6 +4,7 @@
 <?php $form = $this->beginWidget('GxActiveForm', array(
 	'id' => 'achievements-form',
 	'enableAjaxValidation' => false,
+        'htmlOptions' => array('enctype' => 'multipart/form-data'),
 ));
 ?>
 
@@ -111,6 +112,19 @@
 			));
 ; ?>
 		<?php echo $form->error($model,'updated_at'); ?>
+		</div><!-- row -->
+                
+                <div class="row">
+		<?php echo $form->labelEx($model,'image'); ?>
+		<?php echo $form->FileField($model, 'image', array('style'=>'width:500px; display:inline')); ?> 
+		<?php echo $form->error($model,'image'); ?>
+
+		<!-- START UPLOAD FILE -->
+		<?php  if ($model->image != null) { ?>
+		<img style="width:250px;" src="<?php echo Yii::app()->baseUrl; ?>/uploads/<?php echo file_exists(Yii::app()->getBasePath()."/../uploads/".$model->id."-".$model->image) ? $model->id."-".$model->image : (file_exists(Yii::app()->getBasePath()."/../uploads/".$model->image) ? $model->image : '' ) ?>" />
+		<?php  } ?>
+		<!-- END UPLOAD FILE -->
+
 		</div><!-- row -->
         
         
