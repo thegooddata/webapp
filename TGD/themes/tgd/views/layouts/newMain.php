@@ -90,7 +90,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <?php } ?>
+                        <?php } else { ?>
                         
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
@@ -100,6 +100,8 @@
                                 <li class="text-uppercase" id="sign-in"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/user/login"); ?>">Sign In<img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/sign-in-arrow.png" alt=""></a></li>
                             </ul>
                         </div>
+                        
+                        <?php } ?>
                         
                         
                     </div>
