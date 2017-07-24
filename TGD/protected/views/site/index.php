@@ -85,7 +85,9 @@
     </div>
 </div>
 
-<div class="mid-banner-index"></div>
+<a href="/good-data">
+  <span class="mid-banner-index"></span>
+</a>
 
 <div class="results">
     <div class="container container-padding">
@@ -100,34 +102,34 @@
         <div class="row">
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount projects_funded">0</div>
+                    <a href="/good-data" class="amount projects_funded">0</a>
                 </h3>
-                <p class="results-text">
-                    Projects supported in developed countries
+                <p href="/good-data" class="results-text">
+                  <a href="/good-data">Projects supported in developed countries</a>
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount monthly_adtracks_blocked">0</div>
+                    <a href="/good-data" class="amount monthly_adtracks_blocked">0</a>
                 </h3>
-                <p class="results-text">
-                    Trackers blocked this month
+                <p href="/good-data" class="results-text">
+                  <a href="/good-data">Trackers blocked this month</a>
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount monthly_visits_stored">0</div>
+                    <a href="/good-data" class="amount monthly_visits_stored">0</a>
                 </h3>
-                <p class="results-text">
-                    Sites visited by our users this month
+                <p href="/good-data" class="results-text">
+                  <a href="/good-data">Sites visited by our users this month</a>
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <div class="amount monthly_queries_run">0</div>
+                    <a href="/good-data" class="amount monthly_queries_run">0</a>
                 </h3>
-                <p class="results-text">
-                    Search queries run this month
+                <p href="/good-data" class="results-text">
+                  <a href="/good-data">Search queries run this month</a>
                 </p>
             </div>
         </div>

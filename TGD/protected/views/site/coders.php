@@ -38,7 +38,7 @@
             </div>
             <div>
               <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq#rewards_calculation");?>">
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/data.png" alt="">
+                <img class="dao-image" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/first-dao.svg" alt="">
                 <p>Have a look at our first DAO</p>
               </a>
             </div>

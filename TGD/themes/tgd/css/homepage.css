@@ -65,6 +65,7 @@ body {
   background: url(../img/fondo-who.jpg) no-repeat center;
   padding-top: 14%;
   background-size: cover;
+  display: block;
 }
 
 .container-padding {
