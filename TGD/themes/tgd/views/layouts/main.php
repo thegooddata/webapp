@@ -22,6 +22,7 @@
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/font-awesome.min.css');
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/vendor/webfonts.css');
         $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/main.css');
+        $cs->registerCssFile(Yii::app()->theme->baseUrl . '/css/custom_footer.css');
         
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/common.js', CClientScript::POS_HEAD);
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/dummy-regenerate-1.js', CClientScript::POS_HEAD);
@@ -119,6 +120,7 @@
                                   array('url'=>array('/site/index'), 'label'=>'HOME', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/site/company'), 'label'=>'YOUR COMPANY', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/goodData/index'), 'label'=>'GOOD DATA', 'visible'=>Yii::app()->user->isGuest),
+                                  array('url'=>array('/evilData/index'), 'label'=>'EVIL DATA', 'visible'=>Yii::app()->user->isGuest),
                                   array('url'=>array('/donate/index'), 'label'=>'SUPPORT US', 'visible'=>Yii::app()->user->isGuest),
                                   array(
                                     'url'=>'javascript:void(0);', 
@@ -184,51 +186,64 @@
         <footer>
             <div class="footer">
                 <div class="container clearfix">
-                    <ul class="col-md-2">
-                        <h4>service</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
-                    </ul>
-                    <ul class="col-md-2">
-                        <h4>company</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
-                        <li><a href="//collaborate.thegooddata.org" class="red exclude">Collaborate</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate/index");?>" class="red">Donate</a></li>
-                    </ul>
-                    <ul class="col-md-3">
-                        <h4>contact</h4>
-                        <li>Unit 3, 7-15 Greatorex Street</li>
-                        <li>London E1 5NF, UK</li>
-                        <li><a href="mailto:info@thegooddata.org">Email Us</a></li>
-                    </ul>
-                    <ul class="col-md-2" id="fifth">
-                        <h4>legal stuff</h4>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#terms">Terms of Use</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#privacy">Privacy & Cookies</a></li>
-                        <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>#rules">Company Rules</a></li>
-                    </ul>        
-                    <ul class="col-md-4 social">
-                        <li class="first">
-                            <a id="gooddata" href="//collaborate.thegooddata.org" class="exclude"></a>
-                        </li>
-                        <li class="last">
-                            <a id="twitter" href="https://twitter.com/thegooddata" class="exclude"></a>
-                        </li>
-                        <li>
-                            <a id="wordpress" href="//blog.thegooddata.org"></a>
-                        </li>
-                        <li>
-                            <a id="reddit" href="http://www.reddit.com/r/thegooddata" class="exclude"></a>
-                        </li>
-                    </ul>     
-                    <div class="col-md-3 license">
+                  <div class="footer-left col-md-8">
+                    <img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/wind-wheel-footer.svg">
+                    <div class="footer-bloc-l">                  
+                      <ul class="list-inline">
+                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company");?>">Your Company</a></li>
+                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/coders");?>">Coders</a></li>
+                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/faq");?>">FAQs</a></li>
+                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/legal");?>">Legal</a></li>
+                          <li><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate/index");?>" class="red">Donate</a></li>                    
+                        </ul>
+                      <br><br>  
+                      <div class="social">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="slack-icon" href="https://thegooddata.slack.com/">
+                              <i class="fa fa-slack fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="twitter-icon" href="https://twitter.com/thegooddata">
+                              <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="medium-icon" href="https://medium.com/thegooddata">
+                              <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <a id="mail-icon" href="mailto:name@email.com">
+                              <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </a>
+                          </span>    
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="footer-right col-md-8">
+                    <div class="footer-bloc-r">
+                      <a href="https://mutuals.fsa.gov.uk/SocietyDetails.aspx?Number=32340&Suffix=R">The Good Data Cooperative Ltd, Mutuals Register No.32340R</a>
+
+                      <div class="license-container">
+                        <br><br>
                         <img alt="License" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/license.png">
                         <p>Except where otherwise noted,<br/> content on  this site is licensed under a <br/>
                             <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" title="Creative Commons, Attribution 4.0 International">
                                 Creative Commons Attribution 4.0 International License.
                             </a>
                         </p>
+                      </div>
                     </div>
+                  </div>
+                    
+                  
+                  
                 </div> <!-- wrap -->
             </div>
         </footer>

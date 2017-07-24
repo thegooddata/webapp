@@ -1,0 +1,100 @@
+.footer-left img {
+    margin-left: 10px;
+}
+
+.footer ul, .footer-left img, .footer .social {
+    float: right;
+}
+
+.footer-bloc-l {
+    overflow: auto;
+    margin-top: 40px;
+}
+
+.footer ul li {
+    list-style: none;
+    color: #6f818d;
+    font-family: ProximaNovaSoft-Regular,Arial;
+    font-size: .875em;
+}
+
+.footer-right {
+    padding-left: 0;
+}
+
+.footer-bloc-r {
+    overflow: auto;
+    margin-top: 40px;
+}
+
+.footer ul li a, .footer-right a {
+    color: #333333;
+    font-size: .99em;
+}
+
+footer ul li a:hover {
+    color: #333333;
+}
+
+.license-container {
+    font-size: 10px;
+    line-height: 11px;
+}
+
+.footer .license-container img {
+    float: left;
+}
+
+.footer .license-container p {
+    float: left;
+    text-align: justify;
+    margin-left: 10px;
+}
+
+.fa-slack:hover {
+    color: #e01563;
+}
+
+.fa-twitter:hover {
+    color: #00aced;
+}
+
+.fa-envelope:hover {
+    color: #e9a820;
+}
+
+.fa-medium:hover {
+    color: #00AB6C;
+}
+
+@media (max-width: 991px) {
+  .footer-left, .footer-right {
+    text-align: center;
+  }
+  
+  .footer-bloc-l, .footer-bloc-r {
+    overflow: inherit;
+    margin: 0;
+  }
+  
+  .footer ul, .footer-left img, .footer .social {
+    float: none;
+    width: auto;
+    padding: 0;
+  }
+  
+  .footer-right {
+    padding-right: 15px;
+    padding-left: 15px;
+  } 
+  
+  .footer .license-container img {
+    float: none; 
+  }
+  
+  .footer .license-container p {
+    float: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
