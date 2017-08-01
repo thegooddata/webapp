@@ -8,6 +8,7 @@ return array(
     
   array('api/saveUserSettings', 'pattern'=>'api/saveUserSettings', 'verb'=>'POST'),
   array('api/checkQueriesBlacklist', 'pattern'=>'api/checkQueriesBlacklist', 'verb'=>'POST'),
+  array('api/notification', 'pattern'=>'api/notification', 'verb'=>'POST'),
   
   array('api/addToBrowserPHPList', 'pattern'=>'api/phplist/add/<user_email:[\w+.@_-]+>/<list:(\d+|[\w+])+>', 'verb'=>'GET'),
   //array('api/moveUser', 'pattern'=>'api/phplist/move/<user_email:[\w+.@_-]>/<from:\d+>/<to:\d+>', 'verb'=>'GET'),
@@ -67,6 +68,7 @@ return array(
   'robots.txt'=>'/site/robots',
   'interests'=>'/interest/index',
   'congrats'=>'/site/congrats',
+  'notification'=>'/notificationTab/index',
 
   '<controller:\w+>/<id:\d+>'=>'<controller>/view',
   '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

@@ -462,6 +462,9 @@ class ApiController extends Controller
             case 'queriesBlacklist':
 	            $models = QueriesBlacklist::model()->findAll();
 	            break;
+            case 'notification':
+                    $model = $this->_notificationStatus('GET');
+                    break;
 	        default:
 	            // Model not implemented error
 	            $this->_sendResponse(501, sprintf(
@@ -1402,5 +1405,31 @@ class ApiController extends Controller
         }
 
         return false;
+    }
+    
+    public function actionNotification() {
+      $model = $this->_notificationStatus('POST');
+    }
+    
+    public function _notificationStatus($verb = 'POST')
+    {
+      if ($verb=='POST') 
+      {
+        $status= $_POST['status'];
+        Yii::app()->user->setState('showNotification', $status);
+      }
+      elseif ($verb=='GET') 
+      {
+        $show_notification = Yii::app()->user->getState('showNotification');
+        $status = 'true';
+        
+        if ( 'false' == $show_notification )
+        {
+          $status = 'false';
+        }
+      }
+      
+      $this->_sendResponse(200, CJSON::encode($status),'application/json');      
+      
     }
 }
