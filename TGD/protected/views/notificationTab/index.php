@@ -83,7 +83,7 @@
     <footer class="footer-container">
       <div class="footer-left-column">
         <p class="inline-middle">In love with us?</p>
-        <a href="http://www.tgd.local/index-test.php/donate" class="btn sharp btn-primary inline-middle">DONATE</a>
+        <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/donate/index"); ?>" class="btn sharp btn-primary inline-middle">DONATE</a>
       </div>
       <div class="footer-right-column">
 <!--        <a href="javascript:void(0);" onclick="removeNotification();">
@@ -101,7 +101,7 @@
     
   </article>
 </section>
-<span class="footer-message"><a href="http://www.tgd.local/index-test.php/" target="_blank">TheGoodData</a> - Help people in need by simply browsing.</span>
+<span class="footer-message"><a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/index"); ?>" target="_blank">TheGoodData</a> - Help people in need by simply browsing.</span>
 
 <section class="ads-medium-rectangle-container">
   <div class="ads-medium-rectangle"></div>

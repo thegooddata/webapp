@@ -3,11 +3,12 @@
 class NotificationTabController extends Controller {
   
     public function actionIndex() {
+
       $this->layout = '//layouts/notification';
       
       $id = Yii::app()->request->getQuery('id');
       
-      var_dump($id);
+//      var_dump($id);
 //      die;
 //      Yii::app()->end();
       
@@ -32,7 +33,7 @@ class NotificationTabController extends Controller {
         $achievements= Achievements::model()->findByPk($id);
       }
       
-      $this->pageTitle = " - ".$achievements->title;
+      $this->pageTitle = $achievements->title;
       $this->pageDescription = substr($achievements->text_en, 0,160);
       
 //      var_dump($achievements);
