@@ -26,6 +26,7 @@ array(
 			'type' => 'raw',
 			'value' => $model->achievementType !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->achievementType)), array('achievementsTypes/view', 'id' => GxActiveRecord::extractPkValue($model->achievementType, true))) : null,
 			),
+'title',
 'link_en',
 'link_es',
 'text_en',

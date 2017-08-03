@@ -92,7 +92,7 @@ article.notification-container header {
 }
 
 .content-right-column {
-  width: 230px;
+  width: 210px;
 }
 
 .content-container .content-left-column img {
@@ -232,8 +232,8 @@ ul.social li a#twitter {
   background: url(../img/rs-2.svg) no-repeat;  
 }
 
-ul.social li a#instagram {
-   background: url(../img/rs-4.svg) no-repeat; 
+ul.social li a#googleplus {
+   background: url(../img/rs-3.svg) no-repeat; 
 }
 
 ul.social li a {
@@ -298,4 +298,14 @@ section.ads-medium-rectangle-container {
   background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+}
+
+span.footer-message {
+  position: absolute;
+  top: 64%;
+  left: 40%;
+}
+
+a {
+  color: #50599E;
 }

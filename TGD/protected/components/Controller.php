@@ -60,6 +60,8 @@ class Controller extends CController
 	public $breadcrumbs=array();
 
 	public $bodyId = "";
+        
+        public $pageDescription = "";
 	
     public function init() {
       parent::init();

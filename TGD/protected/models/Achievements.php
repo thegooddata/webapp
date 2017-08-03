@@ -24,6 +24,7 @@ class Achievements extends BaseAchievements
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
                 $criteria->compare('image', $this->image, true);
+                $criteria->compare('title', $this->title, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

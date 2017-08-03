@@ -44,10 +44,10 @@ abstract class BaseAchievements extends GxActiveRecord {
 		return array(
 			array('id', 'required'),
 			array('achievement_type_id', 'numerical', 'integerOnly'=>true),
-			array('id, link_en, link_es, image', 'length', 'max'=>255),
+			array('id, link_en, link_es, image, title', 'length', 'max'=>255),
 			array('text_en, text_es, achievements_start, achievements_finish, created_at, updated_at', 'safe'),
-			array('achievement_type_id, link_en, link_es, text_en, text_es, achievements_start, achievements_finish, created_at, updated_at, image', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, achievement_type_id, link_en, link_es, text_en, text_es, achievements_start, achievements_finish, created_at, updated_at, image', 'safe', 'on'=>'search'),
+			array('achievement_type_id, link_en, link_es, text_en, text_es, achievements_start, achievements_finish, created_at, updated_at, image, title', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, achievement_type_id, link_en, link_es, text_en, text_es, achievements_start, achievements_finish, created_at, updated_at, image, title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,6 +75,7 @@ abstract class BaseAchievements extends GxActiveRecord {
 			'created_at' => Yii::t('app', 'Created At'),
 			'updated_at' => Yii::t('app', 'Updated At'),
                         'image' => Yii::t('app', 'Image'),
+                        'title' => Yii::t('app', 'Title'),
 			'achievementType' => null,
 		);
 	}
@@ -93,6 +94,7 @@ abstract class BaseAchievements extends GxActiveRecord {
 		$criteria->compare('created_at', $this->created_at, true);
 		$criteria->compare('updated_at', $this->updated_at, true);
                 $criteria->compare('image', $this->image, true);
+                $criteria->compare('title', $this->title, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

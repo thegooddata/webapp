@@ -8,14 +8,25 @@
   <article class="notification-container">
     <header>
       <img class="inline-middle" src="<?php echo Yii::app()->theme->baseUrl; ?>/img/final-logo-200px.png">
-      <h2 class="inline-middle">new project funded with your help!</h2>  
+      <h2 class="inline-middle">
+        <?php 
+        if ( $achievements->title )
+        {
+          echo $achievements->title;
+        }
+        else
+        {
+          echo "New project funded with your help!";
+        }
+        ?>
+      </h2>  
     </header>
     <div class="content-container">
       <div class="content-left-column">
         <?php
-        if ( $achievements['image'] )
+        if ( $achievements->image )
         {
-          $img_src = '/uploads/'.$achievements['id'].'-'.$achievements['image'];
+          $img_src = '/uploads/'.$achievements->id.'-'.$achievements->image;
         }
         else
         {
@@ -26,21 +37,28 @@
         <div class="share-container">
           <p>SHARE THIS</p>
           <ul class="social">
+            <?php $url_path = Yii::app()->getRequest()->getHostInfo().Yii::app()->getRequest()->getRequestUri(); ?>
             <li>
-              <a id="facebook" href="#"></a>
+              <a id="facebook" href="http://www.facebook.com/sharer.php?s=100&amp;p[url]=<?php echo $url_path; ?>&amp;p[images][0]=<?php echo Yii::app()->getRequest()->getHostInfo().$img_src ?>&amp;p[title]=TheGoodData | Enjoy your data<?php echo $this->pageTitle;?>&amp;p[summary]=<?php echo $this->pageDescription; ?>" target="_blank"></a>
             </li>
             <li>
-              <a id="twitter" href="#"></a>
+              <a id="twitter" href="https://twitter.com/home?status=<?php echo $url_path; ?>%20TheGoodData%20%7C%20Enjoy%20your%20data" target="_blank"></a>
             </li>
             <li>
-              <a id="instagram" href="#"></a>
+              <a id="googleplus" href="https://plus.google.com/share?url=<?php echo $url_path; ?>" target="_blank"></a>
             </li>
           </ul>
         </div>
         
       </div>
       <div class="content-right-column">
-        <p><?php echo $achievements['text_en']; ?></p>
+        <p>
+          <?php echo $achievements->text_en; ?>
+          <?php if ( $achievements->link_en ) : ?>
+          <br><br>
+          <a href="<?php echo $achievements->link_en ?>" target="_blank">More information</a>
+          <?php endif; ?> 
+        </p>
       </div> 
     </div>
     
@@ -83,6 +101,7 @@
     
   </article>
 </section>
+<span class="footer-message"><a href="http://www.tgd.local/index-test.php/" target="_blank">TheGoodData</a> - Help people in need by simply browsing.</span>
 
 <section class="ads-medium-rectangle-container">
   <div class="ads-medium-rectangle"></div>
