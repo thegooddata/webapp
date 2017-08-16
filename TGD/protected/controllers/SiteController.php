@@ -227,9 +227,11 @@ class SiteController extends Controller {
     }
     
     public function actionCongrats(){
+      
         Yii::app()->theme = 'tgd';
         $this->layout ='newMain';
         $this->useNewBootstrap();
+        
         // set title
         $this->pageTitle = " - Congrats";
 

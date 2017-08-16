@@ -33,7 +33,7 @@
                 Be part of our <span class="dark-blue font-bold">organization</span> 
               </h2>
               <img src="/themes/tgd/img/underline-yellow.svg" class="img-responsive center-block">
-              <p class="desc-text-margin">Register now to secure & access more <br> info about your data. You can even become an owner <br> of the first data coop at no cost</p>
+              <p class="desc-text-margin">Register now to secure &amp; access more <br> info about your data. You can even become an owner <br> of the first data coop at no cost</p>
                 <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/site/company"); ?>" class="btn sharp btn-primary">JOIN THE CO-OP</a>
             </div>
             <div class="col-sm-4 text-center">

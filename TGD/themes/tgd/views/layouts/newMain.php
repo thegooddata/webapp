@@ -62,7 +62,7 @@
 
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="collaborate"><a href="https://collaborate.thegooddata.org/">Collaborate with us</a></li>
+                                <li class="collaborate"><a href="https://thegooddata.slack.com/">Collaborate with us</a></li>
                                 <li class="dropdown">
                                     <a data-target="#" class="dropdown-toggle user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <!-- <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/jacob.jpg" class="avatar"/> Commented until added on the form -->
@@ -226,7 +226,7 @@
                           </span>
                           <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
-                            <a id="mail-icon" href="mailto:name@email.com">
+                            <a id="mail-icon" href="mailto:info@thegooddata.org">
                               <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                             </a>
                           </span>    

@@ -4,7 +4,7 @@
     <div class="container container-padding">
         <div class="row">
             <div class="col-sm-12">
-                <img src="/themes/tgd/img/heart-aid-people.svg" class="center-block">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/heart-aid-people.svg" class="center-block">
             </div>
             <div class="col-md-12">
                 <h2 class="title-margin text-center">
@@ -12,7 +12,7 @@
                 </h2>
             </div>
             <div class="col-sm-12">
-                <img src="/themes/tgd/img/underline-yellow.svg" class="center-block">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/underline-yellow.svg" class="center-block">
             </div>
             <div class="col-sm-12">
                 <p class="desc-text-margin text-center">The attention and data that you produce while browsing are valuable.<br> Our browser extension captures that value and sends it to good causes.</p>
@@ -25,7 +25,7 @@
     <div class="container container-padding">
         <div class="row">
             <div class="col-sm-12">
-                <img src="/themes/tgd/img/shield-trackers.svg" class="center-block">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/shield-trackers.svg" class="center-block">
             </div>  
             <div class="col-md-12">
                 <h2 class="title-margin text-center">
@@ -33,10 +33,10 @@
                 </h2>
             </div>
             <div class="col-sm-12">
-                <img src="/themes/tgd/img/underline-yellow.svg" class="center-block">
+                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/underline-yellow.svg" class="center-block">
             </div>
             <div class="col-sm-12">
-                <p class="desc-text-margin text-center">TheGoodData extension protects as well that data from the digital spies<br> It blocks those trackers that without your consent make money out of you.</p>
+                <p class="desc-text-margin text-center">TheGoodData extension protects as well that data from the digital spies.<br> It blocks those trackers that without your consent make money out of you.</p>
             </div>
             
         </div>
@@ -85,7 +85,7 @@
     </div>
 </div>
 
-<a href="/good-data">
+<a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>">
   <span class="mid-banner-index"></span>
 </a>
 
@@ -102,34 +102,34 @@
         <div class="row">
             <div class="col-sm-3 text-center">
                 <h3>
-                    <a href="/good-data" class="amount projects_funded">0</a>
+                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="amount projects_funded">0</a>
                 </h3>
-                <p href="/good-data" class="results-text">
-                  <a href="/good-data">Projects supported in developed countries</a>
+                <p href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="results-text">
+                  <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>">Projects supported in developed countries</a>
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <a href="/good-data" class="amount monthly_adtracks_blocked">0</a>
+                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="amount monthly_adtracks_blocked">0</a>
                 </h3>
-                <p href="/good-data" class="results-text">
-                  <a href="/good-data">Trackers blocked this month</a>
+                <p href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="results-text">
+                  <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>">Trackers blocked this month</a>
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <a href="/good-data" class="amount monthly_visits_stored">0</a>
+                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="amount monthly_visits_stored">0</a>
                 </h3>
-                <p href="/good-data" class="results-text">
-                  <a href="/good-data">Sites visited by our users this month</a>
+                <p href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="results-text">
+                  <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>">Sites visited by our users this month</a>
                 </p>
             </div>
             <div class="col-sm-3 text-center">
                 <h3>
-                    <a href="/good-data" class="amount monthly_queries_run">0</a>
+                    <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="amount monthly_queries_run">0</a>
                 </h3>
-                <p href="/good-data" class="results-text">
-                  <a href="/good-data">Search queries run this month</a>
+                <p href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>" class="results-text">
+                  <a href="<?php echo Yii::app()->controller->createAbsoluteUrl("/goodData/index"); ?>">Search queries run this month</a>
                 </p>
             </div>
         </div>
