@@ -24,7 +24,7 @@ class UrlInfo {
     public function getUrlInfo() {
         $queryParams = $this->buildQueryParams();
         $sig = $this->generateSignature($queryParams);
-        $url = 'http://' . self::$ServiceHost . '/?' . $queryParams . 
+        $url = 'https://' . self::$ServiceHost . '/?' . $queryParams . 
             '&Signature=' . $sig;
         $ret = self::makeRequest($url);
         return self::parseResponse($ret);
@@ -84,7 +84,7 @@ class UrlInfo {
     public static function parseResponse($response) {
         $categoryPath = '';
         $xml = new SimpleXMLElement($response,null,false,
-                                    'http://awis.amazonaws.com/doc/2005-07-11');
+                                    'https://awis.amazonaws.com/doc/2005-07-11');
         if($xml->count() && $xml->Response->UrlInfoResult->Alexa->count()) {
             $info = $xml->Response->UrlInfoResult->Alexa; 
         }
