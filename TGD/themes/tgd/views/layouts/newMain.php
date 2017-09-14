@@ -31,6 +31,12 @@
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/vendor/modernizr-2.6.2.min.js', CClientScript::POS_HEAD);
 
         ?>    
+        
+        <?php if (Yii::app()->params['enableAnalytics'] 
+            && !($this instanceof GxController) 
+            && !(isset($this->isAdminPage) && $this->isAdminPage === true)): ?>
+          <?php $this->renderPartial('//layouts/_adsense_head'); ?>
+        <?php endif; ?>
 
     </head>
 
