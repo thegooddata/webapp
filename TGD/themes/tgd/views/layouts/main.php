@@ -27,6 +27,12 @@
         $cs->registerScriptFile(Yii::app()->theme->baseUrl . '/js/dummy-regenerate-1.js', CClientScript::POS_HEAD);
         
         ?>
+        
+        <?php if (Yii::app()->params['enableAnalytics'] 
+            && !($this instanceof GxController) 
+            && !(isset($this->isAdminPage) && $this->isAdminPage === true)): ?>
+          <?php $this->renderPartial('//layouts/_adsense_head'); ?>
+        <?php endif; ?>
 
     </head>
 
